@@ -5,6 +5,7 @@
 #define BUCKYBUCK_DISASSEMBLER_H
 
 #include <cstdint>
+#include <string>
 
 class Disassembler
 {
