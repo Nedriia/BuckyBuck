@@ -1,7 +1,8 @@
-#include <iostream>
+#include "Disassembler.h"
 
 int main()
 {
-	std::cout << "Hello, World!" << std::endl;
+	Disassembler oDisassembler;
+
 	return 0;
 }
