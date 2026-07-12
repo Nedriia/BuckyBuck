@@ -235,14 +235,14 @@ void Disassembler::_FillOpcodesTables()
 			switch( y )
 			{
 				//const char* format = (z == 6) ? "%s (HL)" : "%s %c";
-				case 0: AddCPUInstruction( i,{ &Disassembler::ADD },static_cast< uint8_t >( Z | N | H | C ),1,z == 6 ? 8 : 4,false,z == 6 ? "%s (HL)",alu[ y ].data() : "%s %c",alu[ y ].data(),r[ z ] ); break;
+				/*case 0: AddCPUInstruction( i,{ &Disassembler::ADD },static_cast< uint8_t >( Z | N | H | C ),1,z == 6 ? 8 : 4,false,z == 6 ? "%s (HL)",alu[ y ].data() : "%s %c",alu[ y ].data(),r[ z ] ); break;
 				case 1: AddCPUInstruction( i,{ &Disassembler::ADC },static_cast< uint8_t >( Z | N | H | C ),1,z == 6 ? 8 : 4,false,z == 6 ? "%s (HL)",alu[ y ].data() : "%s %c",alu[ y ].data(),r[ z ] ); break;
 				case 2: AddCPUInstruction( i,{ &Disassembler::SUB },static_cast< uint8_t >( Z | N | H | C ),1,z == 6 ? 8 : 4,false,z == 6 ? "%s (HL)",alu[ y ].data() : "%s %c",alu[ y ].data(),r[ z ] ); break;
 				case 3: AddCPUInstruction( i,{ &Disassembler::SBC },static_cast< uint8_t >( Z | N | H | C ),1,z == 6 ? 8 : 4,false,z == 6 ? "%s (HL)",alu[ y ].data() : "%s %c",alu[ y ].data(),r[ z ] ); break;
 				case 4: AddCPUInstruction( i,{ &Disassembler::AND },static_cast< uint8_t >( Z | N | H | C ),1,z == 6 ? 8 : 4,false,z == 6 ? "%s (HL)",alu[ y ].data() : "%s %c",alu[ y ].data(),r[ z ] ); break;
 				case 5: AddCPUInstruction( i,{ &Disassembler::XOR },static_cast< uint8_t >( Z | N | H | C ),1,z == 6 ? 8 : 4,false,z == 6 ? "%s (HL)",alu[ y ].data() : "%s %c",alu[ y ].data(),r[ z ] ); break;
 				case 6: AddCPUInstruction( i,{ &Disassembler::OR },static_cast< uint8_t >( Z | N | H | C ),1,z == 6 ? 8 : 4, false,z == 6 ? "%s (HL)",alu[ y ].data() : "%s %c",alu[ y ].data(),r[ z ] ); break;
-				case 7: AddCPUInstruction( i,{ &Disassembler::CP },static_cast< uint8_t >( Z | N | H | C ),1,z == 6 ? 8 : 4, false,z == 6 ? "%s (HL)",alu[ y ].data() : "%s %c",alu[ y ].data(),r[ z ] ); break;
+				case 7: AddCPUInstruction( i,{ &Disassembler::CP },static_cast< uint8_t >( Z | N | H | C ),1,z == 6 ? 8 : 4, false,z == 6 ? "%s (HL)",alu[ y ].data() : "%s %c",alu[ y ].data(),r[ z ] ); break;*/
 			}
 			break;
 		}

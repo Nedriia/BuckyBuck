@@ -14,7 +14,7 @@ add_executable( ${PROJECT_NAME}
                 ${SRC_DIR}/Disassembler.h
 )
 
-option( LEAK_DETECTOR_ENABLE "Enable leak detector" ON )
+option( LEAK_DETECTOR_ENABLE "Enable leak detector" OFF )
 if( LEAK_DETECTOR_ENABLE )
     target_compile_definitions( ${PROJECT_NAME} PRIVATE LEAK_DETECTOR )
 
