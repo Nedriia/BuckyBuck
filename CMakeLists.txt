@@ -13,3 +13,19 @@ add_executable( ${PROJECT_NAME}
                 ${SRC_DIR}/Disassembler.cpp
                 ${SRC_DIR}/Disassembler.h
 )
+
+option( LEAK_DETECTOR_ENABLE "Enable leak detector" ON )
+if( LEAK_DETECTOR_ENABLE )
+    target_compile_definitions( ${PROJECT_NAME} PRIVATE LEAK_DETECTOR )
+
+    set(VLD_PATH "C:/Program Files (x86)/Visual Leak Detector")
+
+    target_include_directories(${PROJECT_NAME} PRIVATE
+            ${VLD_PATH}/include
+    )
+
+    target_link_libraries(${PROJECT_NAME}
+            PRIVATE
+            "${VLD_PATH}/lib/Win64/vld.lib"
+    )
+endif()
