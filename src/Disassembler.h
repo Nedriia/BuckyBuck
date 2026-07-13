@@ -5,8 +5,7 @@
 #define BUCKYBUCK_DISASSEMBLER_H
 
 #include <cstdint>
-#include <string>
-
+#include <array>
 enum CPU_FLAGS
 {
 	Z = 0b00000001,
@@ -22,7 +21,7 @@ public:
 	~Disassembler();
 	typedef void ( Disassembler::* fct_opcode )( );
 
-	static void AddCPUInstruction( const uint8_t iIndex, const fct_opcode& fct, uint8_t aFlags, uint8_t iLength, uint8_t iDuration, bool bExtent, const char* sMnemonic, ... );
+	static void AddCPUInstruction( const uint8_t iIndex, const fct_opcode& fct, uint8_t aFlags, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );
 
 	void Init();
 
@@ -33,6 +32,7 @@ public:
 		uint8_t		m_aFlags; //Flags Affected
 		uint8_t		m_iLength;
 		uint8_t		m_iDuration; //T-state
+		uint8_t		m_iConditionalDuration;
 
 	} CPU_Instructions;
 //private:
