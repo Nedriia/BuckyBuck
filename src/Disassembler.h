@@ -6,6 +6,7 @@
 
 #include <cstdint>
 #include <array>
+
 enum CPU_FLAGS
 {
 	Z = 0b00000001,
