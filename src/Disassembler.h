@@ -9,10 +9,10 @@
 
 enum CPU_FLAGS
 {
-	Z = 0b00000001,
-	N = 0b00000010,
-	H = 0b00000100,
-	C = 0b00001000
+	Z = 1 << 0,
+	N = 1 << 1,
+	H = 1 << 2,
+	C = 1 << 3,
 };
 
 class Disassembler
@@ -22,7 +22,7 @@ public:
 	~Disassembler();
 	typedef void ( Disassembler::* fct_opcode )( );
 
-	static void AddCPUInstruction( const uint8_t iIndex, const fct_opcode& fct, uint8_t aFlags, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );
+	static void AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8_t iFlags, uint8_t iFlagSet1, uint8_t iFlagReset0, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );
 
 	void Init();
 
@@ -31,10 +31,11 @@ public:
 		char		m_sMnemonic[32];
 		fct_opcode	m_pFct;
 		uint8_t		m_aFlags; //Flags Affected
+		uint8_t		m_aFlagSet_1;
+		uint8_t		m_aFlagReset_0;
 		uint8_t		m_iLength;
 		uint8_t		m_iDuration; //T-state
 		uint8_t		m_iConditionalDuration;
-
 	} CPU_Instructions;
 //private:
 	void _FillOpcodesTables();

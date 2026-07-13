@@ -46,7 +46,7 @@ void Disassembler::Init()
 	_FillOpcodesTables();
 }
 
-void Disassembler::AddCPUInstruction( const uint8_t iIndex,const fct_opcode& fct,uint8_t aFlags, std::array<uint8_t,3> aValues,bool bExtent,const char* sMnemonic,... )
+void Disassembler::AddCPUInstruction( const uint8_t iIndex,const fct_opcode& fct,uint8_t iFlags,uint8_t iFlagSet1, uint8_t iFlagReset0, std::array<uint8_t,3> aValues,bool bExtent,const char* sMnemonic,... )
 {
 	if( m_aOpcodesTable[ iIndex ] != nullptr && !bExtent )
 	{
@@ -68,7 +68,9 @@ void Disassembler::AddCPUInstruction( const uint8_t iIndex,const fct_opcode& fct
 	va_end( args );
 
 	pInstruction->m_pFct = fct;
-	pInstruction->m_aFlags = aFlags;
+	pInstruction->m_aFlags = iFlags;
+	pInstruction->m_aFlagSet_1 = iFlagSet1;
+	pInstruction->m_aFlagReset_0 = iFlagReset0;
 	pInstruction->m_iLength = aValues[0];
 	pInstruction->m_iDuration = aValues[1];
 	pInstruction->m_iConditionalDuration = aValues[2];
@@ -79,17 +81,59 @@ void Disassembler::AddCPUInstruction( const uint8_t iIndex,const fct_opcode& fct
 		m_aOpcodesTable[ iIndex ] = pInstruction;
 
 	std::cout << pInstruction->m_sMnemonic << std::endl;
-	std::cout << ( int )pInstruction->m_iLength << " " << (int)pInstruction->m_iDuration << " " << (int)pInstruction->m_iConditionalDuration << std::endl;
-	if ( aFlags & Z )
-		std::cout << "Z | ";
-	if ( aFlags & N )
-		std::cout << "N | ";
-	if ( aFlags & H )
-		std::cout << "H | ";
-	if ( aFlags & C )
-		std::cout << "C " << std::endl;
+	std::cout << ( int )pInstruction->m_iLength << " " << (int)pInstruction->m_iDuration << " ";
+	if ( pInstruction->m_iConditionalDuration != 0 )
+		std::cout << (int)pInstruction->m_iConditionalDuration << std::endl;
 	else
 		std::cout << std::endl;
+
+	if ( iFlags & Z )
+	{
+		if ( iFlagSet1 & Z)
+			std::cout << "1 | ";
+		else if ( iFlagReset0 & Z)
+			std::cout << "0 | ";
+		else
+			std::cout << "Z | ";
+	}
+	else
+		std::cout << "- | ";
+
+	if ( iFlags & N )
+	{
+		if ( iFlagSet1 & N)
+			std::cout << "1 | ";
+		else if ( iFlagReset0 & N)
+			std::cout << "0 | ";
+		else
+			std::cout << "N | ";
+	}
+	else
+		std::cout << "- | ";
+
+	if ( iFlags & H )
+	{
+		if ( iFlagSet1 & H)
+			std::cout << "1 | ";
+		else if ( iFlagReset0 & H)
+			std::cout << "0 | ";
+		else
+			std::cout << "H | ";
+	}
+	else
+		std::cout << "- | ";
+
+	if ( iFlags & C )
+	{
+		if ( iFlagSet1 & C)
+			std::cout << "1" << std::endl;
+		else if ( iFlagReset0 & C)
+			std::cout << "0" << std::endl;
+		else
+			std::cout << "C" << std::endl;
+	}
+	else
+		std::cout << "-" << std::endl;
 	std::cout << std::endl;
 }
 
@@ -113,15 +157,15 @@ void Disassembler::_FillOpcodesTables()
 			{
 				switch( y )
 				{
-					case 0: AddCPUInstruction( i,{ &Disassembler::NOP },0,{1,4},false,"NOP" ); break;
-					case 1: AddCPUInstruction( i,{ &Disassembler::LD },0,{3,20},false,"LD (a16), SP" ); break;
-					case 2: AddCPUInstruction( i,{ &Disassembler::STOP },0,{2,4},false,"STOP" ); break;
-					case 3: AddCPUInstruction( i,{ &Disassembler::JR },0,{2,12},false,"JR s8" ); break;
+					case 0: AddCPUInstruction( i,{ &Disassembler::NOP },0,0,0,{1,4},false,"NOP" ); break;
+					case 1: AddCPUInstruction( i,{ &Disassembler::LD }, 0,0,0,{3,20},false,"LD (a16), SP" ); break;
+					case 2: AddCPUInstruction( i,{ &Disassembler::STOP },0,0,0,{2,4},false,"STOP" ); break;
+					case 3: AddCPUInstruction( i,{ &Disassembler::JR }, 0,0,0,{2,12},false,"JR s8" ); break;
 					case 4:
 					case 5:
 					case 6:
 					case 7:
-						AddCPUInstruction( i,{ &Disassembler::JR },0,{2,12,8},false,"JR %s s8",cc[ y-4 ].data() ); break;
+						AddCPUInstruction( i,{ &Disassembler::JR },0,0,0,{2,12,8},false,"JR %s s8",cc[ y-4 ].data() ); break;
 				}
 				break;
 			}
@@ -129,8 +173,8 @@ void Disassembler::_FillOpcodesTables()
 			{
 				switch( q )
 				{
-					case 0: AddCPUInstruction( i,{ &Disassembler::LD },0,{3,12},false,"LD %s, d16",rp[ p ].data() ); break;
-					case 1: AddCPUInstruction( i,{ &Disassembler::ADD },static_cast< uint8_t >( N | H | C ),{1,8},false,"ADD HL, %s",rp[ p ].data() ); break;
+					case 0: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{3,12},false,"LD %s, d16",rp[ p ].data() ); break;
+					case 1: AddCPUInstruction( i,{ &Disassembler::ADD },static_cast< uint8_t >( N | H | C ), (0), (N),{1,8},false,"ADD HL, %s",rp[ p ].data() ); break;
 				}
 				break;
 			}
@@ -142,10 +186,10 @@ void Disassembler::_FillOpcodesTables()
 				{
 					switch( p )
 					{
-						case 0: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD (BC), A" ); break;
-						case 1: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD (DE), A" ); break;
-						case 2: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD (HL+), A" ); break;
-						case 3: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD (HL-), A" ); break;
+						case 0: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD (BC), A" ); break;
+						case 1: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD (DE), A" ); break;
+						case 2: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD (HL+), A" ); break;
+						case 3: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD (HL-), A" ); break;
 					}
 					break;
 				}
@@ -153,10 +197,10 @@ void Disassembler::_FillOpcodesTables()
 				{
 					switch( p )
 					{
-						case 0: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD A, (BC)" ); break;
-						case 1: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD A, (DE)" ); break;
-						case 2: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD A, (HL+)" ); break;
-						case 3: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD A, (HL-)" ); break;
+						case 0: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD A, (BC)" ); break;
+						case 1: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD A, (DE)" ); break;
+						case 2: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD A, (HL+)" ); break;
+						case 3: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD A, (HL-)" ); break;
 					}
 					break;
 				}
@@ -167,47 +211,47 @@ void Disassembler::_FillOpcodesTables()
 			{
 				switch( q )
 				{
-				case 0: AddCPUInstruction( i,{ &Disassembler::INC },0,{1,8},false,"INC, %s",rp[ p ].data() ); break;
-				case 1: AddCPUInstruction( i,{ &Disassembler::DEC },0,{1,8},false,"DEC, %s",rp[ p ].data() ); break;
+				case 0: AddCPUInstruction( i,{ &Disassembler::INC },0,0,0,{1,8},false,"INC, %s",rp[ p ].data() ); break;
+				case 1: AddCPUInstruction( i,{ &Disassembler::DEC },0,0,0,{1,8},false,"DEC, %s",rp[ p ].data() ); break;
 				}
 				break;
 			}
 			case 4:
 			{
 				if( y == 6 )
-					AddCPUInstruction( i,{ &Disassembler::INC },static_cast< uint8_t >( Z | N | H ),{1,4},false,"INC (HL)" );
+					AddCPUInstruction( i,{ &Disassembler::INC },( Z | N | H ),0, ( N ),{1,12},false,"INC (HL)" );
 				else
-					AddCPUInstruction( i,{ &Disassembler::INC },static_cast< uint8_t >( Z | N | H ),{1,4},false,"INC, %c",r[ y ] );
+					AddCPUInstruction( i,{ &Disassembler::INC },( Z | N | H ),0, ( N ),{1,4},false,"INC, %c",r[ y ] );
 				break;
 			}
 			case 5:
 			{
 				if( y == 6 )
-					AddCPUInstruction( i,{ &Disassembler::DEC },static_cast< uint8_t >( Z | N | H ),{1,12},false,"DEC (HL)" );
+					AddCPUInstruction( i,{ &Disassembler::DEC },(Z | N | H),( N ), 0,{1,12},false,"DEC (HL)" );
 				else
-					AddCPUInstruction( i,{ &Disassembler::DEC },static_cast< uint8_t >( Z | N | H ),{1,4},false,"DEC, %c",r[ y ] );
+					AddCPUInstruction( i,{ &Disassembler::DEC },(Z | N | H),( N ), 0,{1,4},false,"DEC, %c",r[ y ] );
 				break;
 			}
 			case 6:
 			{
 				if( y == 6 )
-					AddCPUInstruction( i,{ &Disassembler::LD },0,{2,12},false,"LD (HL), d8" );
+					AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{2,12},false,"LD (HL), d8" );
 				else
-					AddCPUInstruction( i,{ &Disassembler::LD },0,{2,8},false,"LD, %c, d8",r[ y ] );
+					AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{2,8},false,"LD, %c, d8",r[ y ] );
 				break;
 			}
 			case 7:
 			{
 				switch( y )
 				{
-					case 0: AddCPUInstruction( i,{ &Disassembler::RLCA },static_cast< uint8_t >( Z | N | H | C ),{1,4},false,"RLCA" ); break;
-					case 1: AddCPUInstruction( i,{ &Disassembler::RRCA },static_cast< uint8_t >( Z | N | H | C ),{1,4},false,"RRCA" ); break;
-					case 2: AddCPUInstruction( i,{ &Disassembler::RLA },static_cast< uint8_t >(  Z | N | H | C ),{1,4},false,"RLA" ); break;
-					case 3: AddCPUInstruction( i,{ &Disassembler::RRA },static_cast< uint8_t >(  Z | N | H | C ),{1,4},false,"RRA" ); break;
-					case 4: AddCPUInstruction( i,{ &Disassembler::DAA },static_cast< uint8_t >(  Z |	   H | C ),{1,4},false,"DAA" ); break;
-					case 5: AddCPUInstruction( i,{ &Disassembler::CPL },static_cast< uint8_t >(		   H | C ),{1,4},false,"CPL" ); break;
-					case 6: AddCPUInstruction( i,{ &Disassembler::SCF },static_cast< uint8_t >(	   N | H | C ),{1,4},false,"SCF" ); break;
-					case 7: AddCPUInstruction( i,{ &Disassembler::CCF },static_cast< uint8_t >(	   N | H | C ),{1,4},false,"CCF" ); break;
+					case 0: AddCPUInstruction( i,{ &Disassembler::RLCA },( Z | N | H | C ), 0, ( Z | N | H ),{1,4},false,"RLCA" ); break;
+					case 1: AddCPUInstruction( i,{ &Disassembler::RRCA },( Z | N | H | C ), 0, ( Z | N | H ),{1,4},false,"RRCA" ); break;
+					case 2: AddCPUInstruction( i,{ &Disassembler::RLA }, ( Z | N | H | C ), 0, ( Z | N | H ),{1,4},false,"RLA" ); break;
+					case 3: AddCPUInstruction( i,{ &Disassembler::RRA }, ( Z | N | H | C ), 0, ( Z | N | H ),{1,4},false,"RRA" ); break;
+					case 4: AddCPUInstruction( i,{ &Disassembler::DAA }, ( Z     | H | C ), 0, ( H ),{1,4},false,"DAA" ); break;
+					case 5: AddCPUInstruction( i,{ &Disassembler::CPL }, (	   N | H	),  ( N | H	), 0,{1,4},false,"CPL" ); break;
+					case 6: AddCPUInstruction( i,{ &Disassembler::SCF }, (     N | H | C ),( C ), ( N | H	),{1,4},false,"SCF" ); break;
+					case 7: AddCPUInstruction( i,{ &Disassembler::CCF }, (     N | H | C ),0, ( N | H ),{1,4},false,"CCF" ); break;
 				}
 				break;
 			}
@@ -218,38 +262,114 @@ void Disassembler::_FillOpcodesTables()
 		{
 			if( z == 6 && y == 6 )
 			{
-				AddCPUInstruction( i,{ &Disassembler::HALT },0,{1,4},false,"HALT" );
+				AddCPUInstruction( i,{ &Disassembler::HALT },0,0,0,{1,4},false,"HALT" );
 			}
 			else
 			{
 				if( y == 6 )
-					AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD (HL), %c",r[ z ] );
+					AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD (HL), %c",r[ z ] );
 				else if( z == 6 )
-					AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD %c, (HL)",r[ y ] );
+					AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD %c, (HL)",r[ y ] );
 				else
-					AddCPUInstruction( i,{ &Disassembler::LD },0,{1,4},false,"LD %c, %c",r[ y ],r[ z ] );
+					AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,4},false,"LD %c, %c",r[ y ],r[ z ] );
 			}
 			break;
 		}
 		case 2:
 		{
-			const char* format = "%s %c";
-			uint8_t iDuration = 4;
-			if ( z == 6 )
-			{
-				format =  "%s (HL)";
-				iDuration = 8;
-			}
 			switch( y )
 			{
-				case 0: AddCPUInstruction( i,{ &Disassembler::ADD },static_cast< uint8_t >( Z | N | H | C ),{1,iDuration},false, format, alu[ y ].data(),r[ z ] ); break;
-				case 1: AddCPUInstruction( i,{ &Disassembler::ADC },static_cast< uint8_t >( Z | N | H | C ),{1,iDuration},false, format, alu[ y ].data(),r[ z ] ); break;
-				case 2: AddCPUInstruction( i,{ &Disassembler::SUB },static_cast< uint8_t >( Z | N | H | C ),{1,iDuration},false, format, alu[ y ].data(),r[ z ] ); break;
-				case 3: AddCPUInstruction( i,{ &Disassembler::SBC },static_cast< uint8_t >( Z | N | H | C ),{1,iDuration},false, format, alu[ y ].data(),r[ z ] ); break;
-				case 4: AddCPUInstruction( i,{ &Disassembler::AND },static_cast< uint8_t >( Z | N | H | C ),{1,iDuration},false, format, alu[ y ].data(),r[ z ] ); break;
-				case 5: AddCPUInstruction( i,{ &Disassembler::XOR },static_cast< uint8_t >( Z | N | H | C ),{1,iDuration},false, format, alu[ y ].data(),r[ z ] ); break;
-				case 6: AddCPUInstruction( i,{ &Disassembler::OR },static_cast< uint8_t >(  Z | N | H | C ),{1,iDuration},false, format, alu[ y ].data(),r[ z ] ); break;
-				case 7: AddCPUInstruction( i,{ &Disassembler::CP },static_cast< uint8_t >(  Z | N | H | C ),{1,iDuration},false, format, alu[ y ].data(),r[ z ] ); break;
+				case 0:
+				{
+					if ( z == 6 )
+						AddCPUInstruction( i,{ &Disassembler::ADD },( Z | N | H | C ),0, ( N ),{1,8},false,"%s (HL)", alu[ y ].data(),r[ z ] );
+					else
+						AddCPUInstruction( i,{ &Disassembler::ADD },( Z | N | H | C ),0,( N ),{1,4},false,"%s %c", alu[ y ].data(),r[ z ] );
+					break;
+				}
+
+				case 1:
+				{
+					if ( z == 6 )
+						AddCPUInstruction( i,{ &Disassembler::ADC },( Z | N | H | C ),0, ( N ),{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+					else
+						AddCPUInstruction( i,{ &Disassembler::ADC },( Z | N | H | C ),0,( N ),{1,4},false,"%s %c", alu[ y ].data(),r[ z ] );
+					break;
+				}
+
+				case 2:
+				{
+					if ( z == 6 )
+						AddCPUInstruction( i,{ &Disassembler::SUB },( Z | N | H | C ),( N ), 0,{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+					else
+					{
+						if ( z == 7 )
+							AddCPUInstruction( i,{ &Disassembler::SUB },( Z | N | H | C ),( Z | N ),( H | C ),{1,4},false,"%s %c", alu[ y ].data(),r[ z ] );
+						else
+							AddCPUInstruction( i,{ &Disassembler::SUB },( Z | N | H | C ),( N ),0,{1,4},false,"%s %c", alu[ y ].data(),r[ z ] );
+					}
+					break;
+				}
+
+				case 3:
+				{
+					if ( z == 6 )
+						AddCPUInstruction( i,{ &Disassembler::SBC },( Z | N | H | C ),( N ),0,{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+					else
+					{
+						if ( z == 7 )
+							AddCPUInstruction( i,{ &Disassembler::SBC },( Z | N | H ), ( N ), 0,{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
+						else
+							AddCPUInstruction( i,{ &Disassembler::SBC },( Z | N | H | C ),( N ), 0,{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
+					}
+					break;
+				}
+
+				case 4:
+				{
+					if ( z == 6 )
+						AddCPUInstruction( i,{ &Disassembler::AND },( Z | N | H | C ), ( H ),( N | C ),{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+					else
+						AddCPUInstruction( i,{ &Disassembler::AND },( Z | N | H | C ), ( H ),( N | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
+					break;
+				}
+
+				case 5:
+				{
+					if ( z == 6 )
+						AddCPUInstruction( i,{ &Disassembler::XOR },( Z | N | H | C ), ( Z ),( N | H | C ),{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+					else
+					{
+						if ( z == 7 )
+							AddCPUInstruction( i,{ &Disassembler::XOR },( Z | N | H | C ), ( Z ),( N | H | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
+						else
+							AddCPUInstruction( i,{ &Disassembler::XOR },( Z | N | H | C ), 0,( N | H | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
+					}
+					break;
+				}
+
+				case 6:
+				{
+					if ( z == 6 )
+						AddCPUInstruction( i,{ &Disassembler::OR },( Z | N | H | C ), 0,( N | H | C ),{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+					else
+						AddCPUInstruction( i,{ &Disassembler::OR },( Z | N | H | C ), ( Z ),( N | H | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
+					break;
+				}
+
+				case 7:
+				{
+					if ( z == 6 )
+						AddCPUInstruction( i,{ &Disassembler::CP },( Z | N | H | C ), 0,( N ),{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+					else
+					{
+						if ( z == 7 )
+							AddCPUInstruction( i,{ &Disassembler::CP },( Z | N | H | C ), ( Z | N ),( H | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
+						else
+							AddCPUInstruction( i,{ &Disassembler::CP },( Z | N | H | C ), ( N ),0,{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
+					}
+					break;
+				}
 			}
 			break;
 		}
@@ -265,11 +385,11 @@ void Disassembler::_FillOpcodesTables()
 					case 1:
 					case 2:
 					case 3:
-							AddCPUInstruction( i,{ &Disassembler::RET },0,{1,20,8},false,"RET %s",cc[ y ].data() ); break;
-					case 4: AddCPUInstruction( i,{ &Disassembler::LD },0,{2,12},false,"LD (a8), A" ); break;
-					case 5: AddCPUInstruction( i,{ &Disassembler::ADD },static_cast< uint8_t >( Z | N | H | C ),{2,16},false,"ADD SP, s8" ); break;
-					case 6: AddCPUInstruction( i,{ &Disassembler::LD },0,{2,8},false,"LD A, (a8)" ); break;
-					case 7: AddCPUInstruction( i,{ &Disassembler::LD }, static_cast< uint8_t >( Z | N | H | C ),{2,12},false,"LD HL, SP+s8" ); break;
+							AddCPUInstruction( i,{ &Disassembler::RET },0,0,0,{1,20,8},false,"RET %s",cc[ y ].data() ); break;
+					case 4: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{2,12},false,"LD (a8), A" ); break;
+					case 5: AddCPUInstruction( i,{ &Disassembler::ADD },( Z | N | H | C ),0,( Z | N ), {2,16},false,"ADD SP, s8" ); break;
+					case 6: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{2,8},false,"LD A, (a8)" ); break;
+					case 7: AddCPUInstruction( i,{ &Disassembler::LD }, ( Z | N | H | C ),0,( Z | N ),{2,12},false,"LD HL, SP+s8" ); break;
 				}
 				break;
 			}
@@ -280,19 +400,19 @@ void Disassembler::_FillOpcodesTables()
 				case 0:
 				{
 					if( p == 3 ) //AF
-						AddCPUInstruction( i,{ &Disassembler::POP },static_cast< uint8_t >( Z | N | H | C ),{1,12},false,"POP %s",rp2[ p ].data() );
+						AddCPUInstruction( i,{ &Disassembler::POP },( Z | N | H | C ),0,0,{1,12},false,"POP %s",rp2[ p ].data() );
 					else
-						AddCPUInstruction( i,{ &Disassembler::POP },0,{1,12},false,"POP %s",rp2[ p ].data() );
+						AddCPUInstruction( i,{ &Disassembler::POP },0,0,0,{1,12},false,"POP %s",rp2[ p ].data() );
 					break;
 				}
 				case 1:
 				{
 					switch( p )
 					{
-						case 0: AddCPUInstruction( i,{ &Disassembler::RET },0,{1,16},false,"RET" ); break;
-						case 1: AddCPUInstruction( i,{ &Disassembler::RETI },0,{1,16},false,"RETI" ); break;
-						case 2: AddCPUInstruction( i,{ &Disassembler::JP },0,{1,4},false,"JP HL" ); break;
-						case 3: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD SP, HL" ); break;
+						case 0: AddCPUInstruction( i,{ &Disassembler::RET },0,0,0,{1,16},false,"RET" ); break;
+						case 1: AddCPUInstruction( i,{ &Disassembler::RETI },0,0,0,{1,16},false,"RETI" ); break;
+						case 2: AddCPUInstruction( i,{ &Disassembler::JP },0,0,0,{1,4},false,"JP HL" ); break;
+						case 3: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD SP, HL" ); break;
 					}
 					break;
 				}
@@ -307,11 +427,11 @@ void Disassembler::_FillOpcodesTables()
 					case 1:
 					case 2:
 					case 3:
-							AddCPUInstruction( i,{ &Disassembler::JP },0,{3,16,12},false,"JP %s a16",cc[ y ].data() ); break;
-					case 4: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD (C), A",cc[ y ].data() ); break;
-					case 5: AddCPUInstruction( i,{ &Disassembler::LD },0,{3,16},false,"LD a16, A" ); break;
-					case 6: AddCPUInstruction( i,{ &Disassembler::LD },0,{1,8},false,"LD A, (C)" ); break;
-					case 7: AddCPUInstruction( i,{ &Disassembler::LD },0,{3,16},false,"JP A, a16" ); break;
+							AddCPUInstruction( i,{ &Disassembler::JP },0,0,0,{3,16,12},false,"JP %s a16",cc[ y ].data() ); break;
+					case 4: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD (C), A",cc[ y ].data() ); break;
+					case 5: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{3,16},false,"LD a16, A" ); break;
+					case 6: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{1,8},false,"LD A, (C)" ); break;
+					case 7: AddCPUInstruction( i,{ &Disassembler::LD },0,0,0,{3,16},false,"JP A, a16" ); break;
 				}
 				break;
 			}
@@ -319,7 +439,7 @@ void Disassembler::_FillOpcodesTables()
 			{
 				switch( y )
 				{
-				case 0: AddCPUInstruction( i,{ &Disassembler::JP },0,{3,16},false,"JP a16" ); break;
+				case 0: AddCPUInstruction( i,{ &Disassembler::JP },0,0,0,{3,16},false,"JP a16" ); break;
 				case 1:
 				{
 					for( int k = 0; k < 256; ++k )
@@ -341,46 +461,46 @@ void Disassembler::_FillOpcodesTables()
 							}
 							switch( y )
 							{
-								case 0: AddCPUInstruction( k,{ &Disassembler::RLC }, static_cast< uint8_t >( Z | N | H | C ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 1: AddCPUInstruction( k,{ &Disassembler::RRC }, static_cast< uint8_t >( Z | N | H | C ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 2: AddCPUInstruction( k,{ &Disassembler::RL },  static_cast< uint8_t >( Z | N | H | C ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 3: AddCPUInstruction( k,{ &Disassembler::RR },  static_cast< uint8_t >( Z | N | H | C ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 4: AddCPUInstruction( k,{ &Disassembler::SLA }, static_cast< uint8_t >( Z | N | H | C ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 5: AddCPUInstruction( k,{ &Disassembler::SRA }, static_cast< uint8_t >( Z | N | H | C ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 6: AddCPUInstruction( k,{ &Disassembler::SWAP },static_cast< uint8_t >( Z | N | H | C ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 7: AddCPUInstruction( k,{ &Disassembler::SRL }, static_cast< uint8_t >( Z | N | H | C ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
+								case 0: AddCPUInstruction( k,{ &Disassembler::RLC }, ( Z | N | H | C ), 0,( N | H ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
+								case 1: AddCPUInstruction( k,{ &Disassembler::RRC }, ( Z | N | H | C ), 0,( N | H ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
+								case 2: AddCPUInstruction( k,{ &Disassembler::RL },  ( Z | N | H | C ), 0,( N | H ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
+								case 3: AddCPUInstruction( k,{ &Disassembler::RR },  ( Z | N | H | C ), 0,( N | H ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
+								case 4: AddCPUInstruction( k,{ &Disassembler::SLA }, ( Z | N | H | C ), 0,( N | H ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
+								case 5: AddCPUInstruction( k,{ &Disassembler::SRA }, ( Z | N | H | C ), 0,( N | H ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
+								case 6: AddCPUInstruction( k,{ &Disassembler::SWAP },( Z | N | H | C ), 0,( N | H | C ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
+								case 7: AddCPUInstruction( k,{ &Disassembler::SRL }, ( Z | N | H | C ), 0,( N | H ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
 							}
 							break;
 						}
 						case 1:
 						{
 							if( z == 6 )
-								AddCPUInstruction( k,{ &Disassembler::BIT },static_cast< uint8_t >( Z | N | H ),{2,12},true,"BIT %i, (HL)",y );
+								AddCPUInstruction( k,{ &Disassembler::BIT },( Z | N | H ), ( H ),( N ),{2,12},true,"BIT %i, (HL)",y );
 							else
-								AddCPUInstruction( k,{ &Disassembler::BIT },static_cast< uint8_t >( Z | N | H ),{2,8},true,"BIT %i, %c",y,r[ z ] );
+								AddCPUInstruction( k,{ &Disassembler::BIT },( Z | N | H ),( H ),( N ),{2,8},true,"BIT %i, %c",y,r[ z ] );
 							break;
 						}
 						case 2:
 						{
 							if( z == 6 )
-								AddCPUInstruction( k,{ &Disassembler::RES },0,{2,16},true,"RES %i, (HL)",y );
+								AddCPUInstruction( k,{ &Disassembler::RES },0,0,0,{2,16},true,"RES %i, (HL)",y );
 							else
-								AddCPUInstruction( k,{ &Disassembler::RES },0,{2,8},true,"RES %i, %c",y,r[ z ] );
+								AddCPUInstruction( k,{ &Disassembler::RES },0,0,0,{2,8},true,"RES %i, %c",y,r[ z ] );
 							break;
 						}
 						case 3:
 						{
 							if( z == 6 )
-								AddCPUInstruction( k,{ &Disassembler::SET },0,{2,16},true,"SET %i, (HL)",y );
+								AddCPUInstruction( k,{ &Disassembler::SET },0,0,0,{2,16},true,"SET %i, (HL)",y );
 							else
-								AddCPUInstruction( k,{ &Disassembler::SET },0,{2,8},true,"SET %i, %c",y,r[ z ] );
+								AddCPUInstruction( k,{ &Disassembler::SET },0,0,0,{2,8},true,"SET %i, %c",y,r[ z ] );
 						}
 						}
 					}
 					break;
 				}
-				case 6: AddCPUInstruction( i,{ &Disassembler::DI },0,{1,4},false,"DI" ); break;
-				case 7: AddCPUInstruction( i,{ &Disassembler::EI },0,{1,4},false,"EI" ); break;
+				case 6: AddCPUInstruction( i,{ &Disassembler::DI },0,0,0,{1,4},false,"DI" ); break;
+				case 7: AddCPUInstruction( i,{ &Disassembler::EI },0,0,0,{1,4},false,"EI" ); break;
 				}
 				break;
 			}
@@ -392,34 +512,34 @@ void Disassembler::_FillOpcodesTables()
 					case 1:
 					case 2:
 					case 3:
-						AddCPUInstruction( i,{ &Disassembler::PUSH },0,{3,24,12},false,"CALL %s, a16",cc[ y ].data() ); break;
+						AddCPUInstruction( i,{ &Disassembler::PUSH },0,0,0,{3,24,12},false,"CALL %s, a16",cc[ y ].data() ); break;
 				}
 				break;
 			}
 			case 5:
 			{
 				if( q == 0 )
-					AddCPUInstruction( i,{ &Disassembler::PUSH },0,{1,16},false,"PUSH %s",rp2[ p ].data() );
+					AddCPUInstruction( i,{ &Disassembler::PUSH },0,0,0,{1,16},false,"PUSH %s",rp2[ p ].data() );
 				else if( q == 1 && p == 0 )
-					AddCPUInstruction( i,{ &Disassembler::CALL },0,{3,24},false,"CALL a16" );
+					AddCPUInstruction( i,{ &Disassembler::CALL },0,0,0,{3,24},false,"CALL a16" );
 				break;
 			}
 			case 6:
 			{
 				switch( y )
 				{
-					case 0: AddCPUInstruction( i,{ &Disassembler::ADD },static_cast< uint8_t >( Z | N | H | C ),{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 1: AddCPUInstruction( i,{ &Disassembler::ADC },static_cast< uint8_t >( Z | N | H | C ),{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 2: AddCPUInstruction( i,{ &Disassembler::SUB },static_cast< uint8_t >( Z | N | H | C ),{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 3: AddCPUInstruction( i,{ &Disassembler::SBC },static_cast< uint8_t >( Z | N | H | C ),{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 4: AddCPUInstruction( i,{ &Disassembler::AND },static_cast< uint8_t >( Z | N | H | C ),{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 5: AddCPUInstruction( i,{ &Disassembler::XOR },static_cast< uint8_t >( Z | N | H | C ),{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 6: AddCPUInstruction( i,{ &Disassembler::OR }, static_cast< uint8_t >( Z | N | H | C ), {2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 7: AddCPUInstruction( i,{ &Disassembler::CP }, static_cast< uint8_t >( Z | N | H | C ), {2,8},false,"%s d8",alu[ y ].data() ); break;
+					case 0: AddCPUInstruction( i,{ &Disassembler::ADD },( Z | N | H | C ), 0,( N ),{2,8},false,"%s d8",alu[ y ].data() ); break;
+					case 1: AddCPUInstruction( i,{ &Disassembler::ADC },( Z | N | H | C ), 0,( N ),{2,8},false,"%s d8",alu[ y ].data() ); break;
+					case 2: AddCPUInstruction( i,{ &Disassembler::SUB },( Z | N | H | C ), ( N ),0,{2,8},false,"%s d8",alu[ y ].data() ); break;
+					case 3: AddCPUInstruction( i,{ &Disassembler::SBC },( Z | N | H | C ), ( N ),0,{2,8},false,"%s d8",alu[ y ].data() ); break;
+					case 4: AddCPUInstruction( i,{ &Disassembler::AND },( Z | N | H | C ), ( H ), ( N | C ),{2,8},false,"%s d8",alu[ y ].data() ); break;
+					case 5: AddCPUInstruction( i,{ &Disassembler::XOR },( Z | N | H | C ), 0,( N | H | C ),{2,8},false,"%s d8",alu[ y ].data() ); break;
+					case 6: AddCPUInstruction( i,{ &Disassembler::OR }, ( Z | N | H | C ), 0,( N | H | C ), {2,8},false,"%s d8",alu[ y ].data() ); break;
+					case 7: AddCPUInstruction( i,{ &Disassembler::CP }, ( Z | N | H | C ), ( N ),0, {2,8},false,"%s d8",alu[ y ].data() ); break;
 				}
 				break;
 			}
-			case 7: AddCPUInstruction( i,{ &Disassembler::RST },0,{1,16},false,"RST %i",y ); break;
+			case 7: AddCPUInstruction( i,{ &Disassembler::RST },0,0,0,{1,16},false,"RST %i",y ); break;
 			}
 			break;
 		}
