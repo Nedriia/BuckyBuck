@@ -3,15 +3,22 @@ project(BuckyBuck)
 
 set( CMAKE_CXX_STANDARD 20)
 
-set( PROJECT_DIR "${CMAKE_CURRENT_SOURCE_DIR}" )
-set( VENDOR_DIR  "${CMAKE_CURRENT_SOURCE_DIR}/vendor" )
-set( LIBS_DIR    "${CMAKE_CURRENT_SOURCE_DIR}/librairies" )
-set( SRC_DIR     "${CMAKE_CURRENT_SOURCE_DIR}/src" )
+set( PROJECT_DIR    "${CMAKE_CURRENT_SOURCE_DIR}" )
+set( VENDOR_DIR     "${CMAKE_CURRENT_SOURCE_DIR}/vendor" )
+set( LIBS_DIR       "${CMAKE_CURRENT_SOURCE_DIR}/librairies" )
+set( SRC_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/src" )
 
 add_executable( ${PROJECT_NAME}
                 ${SRC_DIR}/main.cpp
                 ${SRC_DIR}/Disassembler.cpp
                 ${SRC_DIR}/Disassembler.h
+                ${SRC_DIR}/CPU.cpp
+                ${SRC_DIR}/CPU.h
+)
+
+target_compile_definitions(${PROJECT_NAME} PRIVATE
+        PATH_ROMS="${CMAKE_CURRENT_SOURCE_DIR}/Roms/"
+        DISASSM_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Disassembly/"
 )
 
 option( LEAK_DETECTOR_ENABLE "Enable leak detector" OFF )

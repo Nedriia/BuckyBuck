@@ -6,6 +6,7 @@
 
 #include <cstdint>
 #include <array>
+#include "CPU.h"
 
 enum CPU_FLAGS
 {
@@ -20,11 +21,15 @@ class Disassembler
 public:
 	Disassembler();
 	~Disassembler();
-	typedef void ( Disassembler::* fct_opcode )( );
+	typedef void ( CPU::* fct_opcode )( );
 
 	static void AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8_t iFlags, uint8_t iFlagSet1, uint8_t iFlagReset0, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );
-
+	static void Disassemble_ROM( const char* sRomPath );
+	static std::string Format( const char* sFormat, ... );
+	static void DecryptCartridge(std::fstream& file);
+	static void DecryptIORange(std::fstream& file);
 	void Init();
+
 
 	typedef struct
 	{
@@ -37,56 +42,15 @@ public:
 		uint8_t		m_iDuration; //T-state
 		uint8_t		m_iConditionalDuration;
 	} CPU_Instructions;
+	static void _WriteInstruction( std::fstream& file, const uint16_t iAdress, const char* sComment, uint8_t* iLengthIncrease = nullptr );
+
 //private:
 	void _FillOpcodesTables();
 
 
 	static CPU_Instructions* m_aOpcodesTable[256];
-	static CPU_Instructions* m_aExtendeOpcodesTable[256];
-
-	void NOP() {};
-	void LD() {};
-	void INC() {};
-	void DEC() {};
-	void RLCA() {};
-	void RRCA() {};
-	void RLA() {};
-	void RRA() {};
-	void STOP() {};
-	void JR() {};
-	void ADD() {};
-	void ADC() {};
-	void SUB() {};
-	void SBC() {};
-	void AND() {};
-	void XOR() {};
-	void OR() {};
-	void CP() {};
-	void DAA() {};
-	void CPL() {};
-	void SCF() {};
-	void CCF() {};
-	void HALT() {};
-	void DI() {};
-	void EI() {};
-	void RET() {};
-	void RETI() {};
-	void POP() {};
-	void PUSH() {};
-	void JP() {};
-	void CALL() {};
-	void RST() {};
-	void RLC() {};
-	void RRC() {};
-	void RL() {};
-	void RR() {};
-	void SLA() {};
-	void SRA() {};
-	void SWAP() {};
-	void SRL() {};
-	void BIT() {};
-	void RES() {};
-	void SET() {};
+	static CPU_Instructions* m_aExtendOpcodesTable[256];
+	static CPU m_oCPU;
 };
 
 

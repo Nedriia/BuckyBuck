@@ -1,0 +1,24055 @@
+0000	 C3 0C 02			JP a16	;4		4	
+0003	 00					NOP	;1		5	
+0004	 00					NOP	;1		6	
+0005	 00					NOP	;1		7	
+0006	 00					NOP	;1		8	
+0007	 00					NOP	;1		9	
+0008	 C3 0C 02			JP a16	;4		13	
+000B	 FF					RST 7	;4		17	
+000C	 FF					RST 7	;4		21	
+000D	 FF					RST 7	;4		25	
+000E	 FF					RST 7	;4		29	
+000F	 FF					RST 7	;4		33	
+0010	 FF					RST 7	;4		37	
+0011	 FF					RST 7	;4		41	
+0012	 FF					RST 7	;4		45	
+0013	 FF					RST 7	;4		49	
+0014	 FF					RST 7	;4		53	
+0015	 FF					RST 7	;4		57	
+0016	 FF					RST 7	;4		61	
+0017	 FF					RST 7	;4		65	
+0018	 FF					RST 7	;4		69	
+0019	 FF					RST 7	;4		73	
+001A	 FF					RST 7	;4		77	
+001B	 FF					RST 7	;4		81	
+001C	 FF					RST 7	;4		85	
+001D	 FF					RST 7	;4		89	
+001E	 FF					RST 7	;4		93	
+001F	 FF					RST 7	;4		97	
+0020	 FF					RST 7	;4		101	
+0021	 FF					RST 7	;4		105	
+0022	 FF					RST 7	;4		109	
+0023	 FF					RST 7	;4		113	
+0024	 FF					RST 7	;4		117	
+0025	 FF					RST 7	;4		121	
+0026	 FF					RST 7	;4		125	
+0027	 FF					RST 7	;4		129	
+0028	 87					ADD A, A	;1		130	
+0029	 E1					POP (HL)	;3		133	
+002A	 5F					LD E, A	;1		134	
+002B	 16 00				LD, D, d8	;2		136	
+002D	 19					ADD HL, DE	;2		138	
+002E	 5E					LD E, (HL)	;2		140	
+002F	 23					INC, (HL)	;2		142	
+0030	 56					LD D, (HL)	;2		144	
+0031	 D5					PUSH DE	;4		148	
+0032	 E1					POP (HL)	;3		151	
+0033	 E9					JP HL	;1		152	
+0034	 FF					RST 7	;4		156	
+0035	 FF					RST 7	;4		160	
+0036	 FF					RST 7	;4		164	
+0037	 FF					RST 7	;4		168	
+0038	 FF					RST 7	;4		172	
+0039	 FF					RST 7	;4		176	
+003A	 FF					RST 7	;4		180	
+003B	 FF					RST 7	;4		184	
+003C	 FF					RST 7	;4		188	
+003D	 FF					RST 7	;4		192	
+003E	 FF					RST 7	;4		196	
+003F	 FF					RST 7	;4		200	
+0040	 C3 7E 01			JP a16	;4		204	
+0043	 FF					RST 7	;4		208	
+0044	 FF					RST 7	;4		212	
+0045	 FF					RST 7	;4		216	
+0046	 FF					RST 7	;4		220	
+0047	 FF					RST 7	;4		224	
+0048	 C3 BE 26			JP a16	;4		228	
+004B	 FF					RST 7	;4		232	
+004C	 FF					RST 7	;4		236	
+004D	 FF					RST 7	;4		240	
+004E	 FF					RST 7	;4		244	
+004F	 FF					RST 7	;4		248	
+0050	 C3 BE 26			JP a16	;4		252	
+0053	 FF					RST 7	;4		256	
+0054	 FF					RST 7	;4		260	
+0055	 FF					RST 7	;4		264	
+0056	 FF					RST 7	;4		268	
+0057	 FF					RST 7	;4		272	
+0058	 C3 5B 00			JP a16	;4		276	
+005B	 F5					PUSH AF	;4		280	
+005C	 E5					PUSH (HL)	;4		284	
+005D	 D5					PUSH DE	;4		288	
+005E	 C5					PUSH BC	;4		292	
+005F	 CD 6B 00			CALL a16	;6		298	
+0062	 3E 01				LD, A, d8	;2		300	
+0064	 E0 CC				LD (a8), A	;3		303	
+0066	 C1					POP BC	;3		306	
+0067	 D1					POP DE	;3		309	
+0068	 E1					POP (HL)	;3		312	
+0069	 F1					POP AF	;3		315	
+006A	 D9					RETI	;4		319	
+006B	 F0 CD				LD A, (a8)	;2		321	
+006D	 EF					RST 5	;4		325	
+006E	 78					LD A, B	;1		326	
+006F	 00					NOP	;1		327	
+0070	 9F					SBC A, A	;1		328	
+0071	 00					NOP	;1		329	
+0072	 A4					AND H	;1		330	
+0073	 00					NOP	;1		331	
+0074	 BA					CP D	;1		332	
+0075	 00					NOP	;1		333	
+0076	 EA 27 F0			LD a16, A	;4		337	
+0079	 E1					POP (HL)	;3		340	
+007A	 FE 07				CP d8	;2		342	
+007C	 28 08				JR Z s8	;3		345	
+007E	 FE 06				CP d8	;2		347	
+0080	 C8					RET Z	;5		352	
+0081	 3E 06				LD, A, d8	;2		354	
+0083	 E0 E1				LD (a8), A	;3		357	
+0085	 C9					RET	;4		361	
+0086	 F0 01				LD A, (a8)	;2		363	
+0088	 FE 55				CP d8	;2		365	
+008A	 20 08				JR NZ s8	;3		368	
+008C	 3E 29				LD, A, d8	;2		370	
+008E	 E0 CB				LD (a8), A	;3		373	
+0090	 3E 01				LD, A, d8	;2		375	
+0092	 18 08				JR s8	;3		378	
+0094	 FE 29				CP d8	;2		380	
+0096	 C0					RET NZ	;5		385	
+0097	 3E 55				LD, A, d8	;2		387	
+0099	 E0 CB				LD (a8), A	;3		390	
+009B	 AF					XOR A	;1		391	
+009C	 E0 02				LD (a8), A	;3		394	
+009E	 C9					RET	;4		398	
+009F	 F0 01				LD A, (a8)	;2		400	
+00A1	 E0 D0				LD (a8), A	;3		403	
+00A3	 C9					RET	;4		407	
+00A4	 F0 01				LD A, (a8)	;2		409	
+00A6	 E0 D0				LD (a8), A	;3		412	
+00A8	 F0 CB				LD A, (a8)	;2		414	
+00AA	 FE 29				CP d8	;2		416	
+00AC	 C8					RET Z	;5		421	
+00AD	 F0 CF				LD A, (a8)	;2		423	
+00AF	 E0 01				LD (a8), A	;3		426	
+00B1	 3E FF				LD, A, d8	;2		428	
+00B3	 E0 CF				LD (a8), A	;3		431	
+00B5	 3E 80				LD, A, d8	;2		433	
+00B7	 E0 02				LD (a8), A	;3		436	
+00B9	 C9					RET	;4		440	
+00BA	 F0 01				LD A, (a8)	;2		442	
+00BC	 E0 D0				LD (a8), A	;3		445	
+00BE	 F0 CB				LD A, (a8)	;2		447	
+00C0	 FE 29				CP d8	;2		449	
+00C2	 C8					RET Z	;5		454	
+00C3	 F0 CF				LD A, (a8)	;2		456	
+00C5	 E0 01				LD (a8), A	;3		459	
+00C7	 FB					EI	;1		460	
+00C8	 CD 98 0A			CALL a16	;6		466	
+00CB	 3E 80				LD, A, d8	;2		468	
+00CD	 E0 02				LD (a8), A	;3		471	
+00CF	 C9					RET	;4		475	
+00D0	 F0 CD				LD A, (a8)	;2		477	
+00D2	 FE 02				CP d8	;2		479	
+00D4	 C0					RET NZ	;5		484	
+00D5	 AF					XOR A	;1		485	
+00D6	 E0 0F				LD (a8), A	;3		488	
+00D8	 FB					EI	;1		489	
+00D9	 C9					RET	;4		493	
+00DA	 FF					RST 7	;4		497	
+00DB	 FF					RST 7	;4		501	
+00DC	 FF					RST 7	;4		505	
+00DD	 FF					RST 7	;4		509	
+00DE	 FF					RST 7	;4		513	
+00DF	 FF					RST 7	;4		517	
+00E0	 FF					RST 7	;4		521	
+00E1	 FF					RST 7	;4		525	
+00E2	 FF					RST 7	;4		529	
+00E3	 FF					RST 7	;4		533	
+00E4	 FF					RST 7	;4		537	
+00E5	 FF					RST 7	;4		541	
+00E6	 FF					RST 7	;4		545	
+00E7	 FF					RST 7	;4		549	
+00E8	 FF					RST 7	;4		553	
+00E9	 FF					RST 7	;4		557	
+00EA	 FF					RST 7	;4		561	
+00EB	 FF					RST 7	;4		565	
+00EC	 FF					RST 7	;4		569	
+00ED	 FF					RST 7	;4		573	
+00EE	 FF					RST 7	;4		577	
+00EF	 FF					RST 7	;4		581	
+00F0	 FF					RST 7	;4		585	
+00F1	 FF					RST 7	;4		589	
+00F2	 FF					RST 7	;4		593	
+00F3	 FF					RST 7	;4		597	
+00F4	 FF					RST 7	;4		601	
+00F5	 FF					RST 7	;4		605	
+00F6	 FF					RST 7	;4		609	
+00F7	 FF					RST 7	;4		613	
+00F8	 FF					RST 7	;4		617	
+00F9	 FF					RST 7	;4		621	
+00FA	 FF					RST 7	;4		625	
+00FB	 FF					RST 7	;4		629	
+00FC	 FF					RST 7	;4		633	
+00FD	 FF					RST 7	;4		637	
+00FE	 FF					RST 7	;4		641	
+00FF	 FF					RST 7	;4		645	
+0100	 00					NOP	;1		646	
+0101	 C3 50 01			JP a16	;4		650	
+0104	 CE ED 66 66 CC 0D 00 0B 03 73 00 83 00 0C 00 0D
+0114	 00 08 11 1F 88 89 00 0E DC CC 6E E6 DD DD D9 99
+0124	 BB BB 67 63 6E 0E EC CC DD DC 99 9F BB B9 33 3E;Nintendo Logo
+0134	 TETRIS	;Title
+013F	 00		;Manufacturer code
+0143	 00		;DMG - classic gameboy	;CGB Flag
+0144	 00		;New Licence Code
+0146	 00		;SGB Flag
+0147	 00		;ROM ONLY	;Cartridge Type
+0148	 00		;32 KiB, 2 (no banking)	;ROM size
+0149	 00		;0, No RAM	;RAM size
+014A	 00		;Destination code : Japanese	;Destination code
+014B	 01		;Old Licence code
+014C	 01		;Mask ROM version number
+014D	 0A		;Header Checksum
+014E	 16 BF			;Global Checksum
+0150	 C3 0C 02			JP a16	;4		654	
+0153	 CD E3 29			CALL a16	;6		660	
+0156	 F0 41				LD A, (a8)	;2		662	
+0158	 E6 03				AND d8	;2		664	
+015A	 20 FA				JR NZ s8	;3		667	
+015C	 46					LD B, (HL)	;2		669	
+015D	 F0 41				LD A, (a8)	;2		671	
+015F	 E6 03				AND d8	;2		673	
+0161	 20 FA				JR NZ s8	;3		676	
+0163	 7E					LD A, (HL)	;2		678	
+0164	 A0					AND B	;1		679	
+0165	 C9					RET	;4		683	
+0166	 7B					LD A, E	;1		684	
+0167	 86					ADD A, (HL)	;2		686	
+0168	 27					DAA	;1		687	
+0169	 22					LD (HL+), A	;2		689	
+016A	 7A					LD A, D	;1		690	
+016B	 8E					ADC A, (HL)	;2		692	
+016C	 27					DAA	;1		693	
+016D	 22					LD (HL+), A	;2		695	
+016E	 3E 00				LD, A, d8	;2		697	
+0170	 8E					ADC A, (HL)	;2		699	
+0171	 27					DAA	;1		700	
+0172	 77					LD (HL), A	;2		702	
+0173	 3E 01				LD, A, d8	;2		704	
+0175	 E0 E0				LD (a8), A	;3		707	
+0177	 D0					RET NC	;5		712	
+0178	 3E 99				LD, A, d8	;2		714	
+017A	 32					LD (HL-), A	;2		716	
+017B	 32					LD (HL-), A	;2		718	
+017C	 77					LD (HL), A	;2		720	
+017D	 C9					RET	;4		724	
+017E	 F5					PUSH AF	;4		728	
+017F	 C5					PUSH BC	;4		732	
+0180	 D5					PUSH DE	;4		736	
+0181	 E5					PUSH (HL)	;4		740	
+0182	 F0 CE				LD A, (a8)	;2		742	
+0184	 A7					AND A	;1		743	
+0185	 28 12				JR Z s8	;3		746	
+0187	 F0 CB				LD A, (a8)	;2		748	
+0189	 FE 29				CP d8	;2		750	
+018B	 20 0C				JR NZ s8	;3		753	
+018D	 AF					XOR A	;1		754	
+018E	 E0 CE				LD (a8), A	;3		757	
+0190	 F0 CF				LD A, (a8)	;2		759	
+0192	 E0 01				LD (a8), A	;3		762	
+0194	 21 02 FF			LD (HL), d16	;3		765	
+0197	 36 81				LD (HL), d8	;3		768	
+0199	 CD E0 21			CALL a16	;6		774	
+019C	 CD CC 23			CALL a16	;6		780	
+019F	 CD B7 23			CALL a16	;6		786	
+01A2	 CD 9E 23			CALL a16	;6		792	
+01A5	 CD 8C 23			CALL a16	;6		798	
+01A8	 CD 7D 23			CALL a16	;6		804	
+01AB	 CD 6E 23			CALL a16	;6		810	
+01AE	 CD 5F 23			CALL a16	;6		816	
+01B1	 CD 50 23			CALL a16	;6		822	
+01B4	 CD 41 23			CALL a16	;6		828	
+01B7	 CD 32 23			CALL a16	;6		834	
+01BA	 CD 23 23			CALL a16	;6		840	
+01BD	 CD F8 22			CALL a16	;6		846	
+01C0	 CD E9 22			CALL a16	;6		852	
+01C3	 CD DA 22			CALL a16	;6		858	
+01C6	 CD CB 22			CALL a16	;6		864	
+01C9	 CD BC 22			CALL a16	;6		870	
+01CC	 CD AD 22			CALL a16	;6		876	
+01CF	 CD 9E 22			CALL a16	;6		882	
+01D2	 CD D7 1E			CALL a16	;6		888	
+01D5	 CD B6 FF			CALL a16	;6		894	
+01D8	 CD CA 18			CALL a16	;6		900	
+01DB	 FA CE C0			JP A, a16	;4		904	
+01DE	 A7					AND A	;1		905	
+01DF	 28 1A				JR Z s8	;3		908	
+01E1	 F0 98				LD A, (a8)	;2		910	
+01E3	 FE 03				CP d8	;2		912	
+01E5	 20 14				JR NZ s8	;3		915	
+01E7	 21 6D 98			LD (HL), d16	;3		918	
+01EA	 CD 3B 24			CALL a16	;6		924	
+01ED	 3E 01				LD, A, d8	;2		926	
+01EF	 E0 E0				LD (a8), A	;3		929	
+01F1	 21 6D 9C			LD (HL), d16	;3		932	
+01F4	 CD 3B 24			CALL a16	;6		938	
+01F7	 AF					XOR A	;1		939	
+01F8	 EA CE C0			LD a16, A	;4		943	
+01FB	 21 E2 FF			LD (HL), d16	;3		946	
+01FE	 34					INC (HL)	;3		949	
+01FF	 AF					XOR A	;1		950	
+0200	 E0 43				LD (a8), A	;3		953	
+0202	 E0 42				LD (a8), A	;3		956	
+0204	 3C					INC, A	;1		957	
+0205	 E0 85				LD (a8), A	;3		960	
+0207	 E1					POP (HL)	;3		963	
+0208	 D1					POP DE	;3		966	
+0209	 C1					POP BC	;3		969	
+020A	 F1					POP AF	;3		972	
+020B	 D9					RETI	;4		976	
+020C	 AF					XOR A	;1		977	
+020D	 21 FF DF			LD (HL), d16	;3		980	
+0210	 0E 10				LD, C, d8	;2		982	
+0212	 06 00				LD, B, d8	;2		984	
+0214	 32					LD (HL-), A	;2		986	
+0215	 05					DEC, B	;1		987	
+0216	 20 FC				JR NZ s8	;3		990	
+0218	 0D					DEC, C	;1		991	
+0219	 20 F9				JR NZ s8	;3		994	
+021B	 3E 01				LD, A, d8	;2		996	
+021D	 F3					DI	;1		997	
+021E	 E0 0F				LD (a8), A	;3		1000	
+0220	 E0 FF				LD (a8), A	;3		1003	
+0222	 AF					XOR A	;1		1004	
+0223	 E0 42				LD (a8), A	;3		1007	
+0225	 E0 43				LD (a8), A	;3		1010	
+0227	 E0 A4				LD (a8), A	;3		1013	
+0229	 E0 41				LD (a8), A	;3		1016	
+022B	 E0 01				LD (a8), A	;3		1019	
+022D	 E0 02				LD (a8), A	;3		1022	
+022F	 3E 80				LD, A, d8	;2		1024	
+0231	 E0 40				LD (a8), A	;3		1027	
+0233	 F0 44				LD A, (a8)	;2		1029	
+0235	 FE 94				CP d8	;2		1031	
+0237	 20 FA				JR NZ s8	;3		1034	
+0239	 3E 03				LD, A, d8	;2		1036	
+023B	 E0 40				LD (a8), A	;3		1039	
+023D	 3E E4				LD, A, d8	;2		1041	
+023F	 E0 47				LD (a8), A	;3		1044	
+0241	 E0 48				LD (a8), A	;3		1047	
+0243	 3E C4				LD, A, d8	;2		1049	
+0245	 E0 49				LD (a8), A	;3		1052	
+0247	 21 26 FF			LD (HL), d16	;3		1055	
+024A	 3E 80				LD, A, d8	;2		1057	
+024C	 32					LD (HL-), A	;2		1059	
+024D	 3E FF				LD, A, d8	;2		1061	
+024F	 32					LD (HL-), A	;2		1063	
+0250	 36 77				LD (HL), d8	;3		1066	
+0252	 3E 01				LD, A, d8	;2		1068	
+0254	 EA 00 20			LD a16, A	;4		1072	
+0257	 31 FF CF			LD SP, d16	;3		1075	
+025A	 AF					XOR A	;1		1076	
+025B	 21 FF DF			LD (HL), d16	;3		1079	
+025E	 06 00				LD, B, d8	;2		1081	
+0260	 32					LD (HL-), A	;2		1083	
+0261	 05					DEC, B	;1		1084	
+0262	 20 FC				JR NZ s8	;3		1087	
+0264	 21 FF CF			LD (HL), d16	;3		1090	
+0267	 0E 10				LD, C, d8	;2		1092	
+0269	 06 00				LD, B, d8	;2		1094	
+026B	 32					LD (HL-), A	;2		1096	
+026C	 05					DEC, B	;1		1097	
+026D	 20 FC				JR NZ s8	;3		1100	
+026F	 0D					DEC, C	;1		1101	
+0270	 20 F9				JR NZ s8	;3		1104	
+0272	 21 FF 9F			LD (HL), d16	;3		1107	
+0275	 0E 20				LD, C, d8	;2		1109	
+0277	 AF					XOR A	;1		1110	
+0278	 06 00				LD, B, d8	;2		1112	
+027A	 32					LD (HL-), A	;2		1114	
+027B	 05					DEC, B	;1		1115	
+027C	 20 FC				JR NZ s8	;3		1118	
+027E	 0D					DEC, C	;1		1119	
+027F	 20 F9				JR NZ s8	;3		1122	
+0281	 21 FF FE			LD (HL), d16	;3		1125	
+0284	 06 00				LD, B, d8	;2		1127	
+0286	 32					LD (HL-), A	;2		1129	
+0287	 05					DEC, B	;1		1130	
+0288	 20 FC				JR NZ s8	;3		1133	
+028A	 21 FE FF			LD (HL), d16	;3		1136	
+028D	 06 80				LD, B, d8	;2		1138	
+028F	 32					LD (HL-), A	;2		1140	
+0290	 05					DEC, B	;1		1141	
+0291	 20 FC				JR NZ s8	;3		1144	
+0293	 0E B6				LD, C, d8	;2		1146	
+0295	 06 0C				LD, B, d8	;2		1148	
+0297	 21 7F 2A			LD (HL), d16	;3		1151	
+029A	 2A					LD A, (HL+)	;2		1153	
+029B	 E2					LD (C), A	;2		1155	
+029C	 0C					INC, C	;1		1156	
+029D	 05					DEC, B	;1		1157	
+029E	 20 FA				JR NZ s8	;3		1160	
+02A0	 CD 95 27			CALL a16	;6		1166	
+02A3	 CD F3 7F			CALL a16	;6		1172	
+02A6	 3E 09				LD, A, d8	;2		1174	
+02A8	 E0 FF				LD (a8), A	;3		1177	
+02AA	 3E 37				LD, A, d8	;2		1179	
+02AC	 E0 C0				LD (a8), A	;3		1182	
+02AE	 3E 1C				LD, A, d8	;2		1184	
+02B0	 E0 C1				LD (a8), A	;3		1187	
+02B2	 3E 24				LD, A, d8	;2		1189	
+02B4	 E0 E1				LD (a8), A	;3		1192	
+02B6	 3E 80				LD, A, d8	;2		1194	
+02B8	 E0 40				LD (a8), A	;3		1197	
+02BA	 FB					EI	;1		1198	
+02BB	 AF					XOR A	;1		1199	
+02BC	 E0 0F				LD (a8), A	;3		1202	
+02BE	 E0 4A				LD (a8), A	;3		1205	
+02C0	 E0 4B				LD (a8), A	;3		1208	
+02C2	 E0 06				LD (a8), A	;3		1211	
+02C4	 CD A6 29			CALL a16	;6		1217	
+02C7	 CD F8 02			CALL a16	;6		1223	
+02CA	 CD F0 7F			CALL a16	;6		1229	
+02CD	 F0 80				LD A, (a8)	;2		1231	
+02CF	 E6 0F				AND d8	;2		1233	
+02D1	 FE 0F				CP d8	;2		1235	
+02D3	 CA 1B 02			JP Z a16	;4		1239	
+02D6	 21 A6 FF			LD (HL), d16	;3		1242	
+02D9	 06 02				LD, B, d8	;2		1244	
+02DB	 7E					LD A, (HL)	;2		1246	
+02DC	 A7					AND A	;1		1247	
+02DD	 28 01				JR Z s8	;3		1250	
+02DF	 35					DEC (HL)	;3		1253	
+02E0	 2C					INC, L	;1		1254	
+02E1	 05					DEC, B	;1		1255	
+02E2	 20 F7				JR NZ s8	;3		1258	
+02E4	 F0 C5				LD A, (a8)	;2		1260	
+02E6	 A7					AND A	;1		1261	
+02E7	 28 04				JR Z s8	;3		1264	
+02E9	 3E 09				LD, A, d8	;2		1266	
+02EB	 E0 FF				LD (a8), A	;3		1269	
+02ED	 F0 85				LD A, (a8)	;2		1271	
+02EF	 A7					AND A	;1		1272	
+02F0	 28 FB				JR Z s8	;3		1275	
+02F2	 AF					XOR A	;1		1276	
+02F3	 E0 85				LD (a8), A	;3		1279	
+02F5	 C3 C4 02			JP a16	;4		1283	
+02F8	 F0 E1				LD A, (a8)	;2		1285	
+02FA	 EF					RST 5	;4		1289	
+02FB	 CE 1B				ADC A, d8	;2		1291	
+02FD	 E2					LD (C), A	;2		1293	
+02FE	 1C					INC, E	;1		1294	
+02FF	 44					LD B, H	;1		1295	
+0300	 12					LD (DE), A	;2		1297	
+0301	 7B					LD A, E	;1		1298	
+0302	 12					LD (DE), A	;2		1300	
+0303	 06 1D				LD, B, d8	;2		1302	
+0305	 26 1D				LD, H, d8	;2		1304	
+0307	 AE					XOR (HL)	;2		1306	
+0308	 03					INC, BC	;2		1308	
+0309	 79					LD A, C	;1		1309	
+030A	 04					INC, B	;1		1310	
+030B	 44					LD B, H	;1		1311	
+030C	 14					INC, D	;1		1312	
+030D	 8C					ADC A, H	;1		1313	
+030E	 14					INC, D	;1		1314	
+030F	 07					RLCA	;1		1315	
+0310	 1A					LD A, (DE)	;2		1317	
+0311	 C0					RET NZ	;5		1322	
+0312	 1D					DEC, E	;1		1323	
+0313	 16 1F				LD, D, d8	;2		1325	
+0315	 1F					RRA	;1		1326	
+0316	 1F					RRA	;1		1327	
+0317	 25					DEC, H	;1		1328	
+0318	 15					DEC, D	;1		1329	
+0319	 B0					OR B	;1		1330	
+031A	 14					INC, D	;1		1331	
+031B	 7B					LD A, E	;1		1332	
+031C	 15					DEC, D	;1		1333	
+031D	 BF					CP A	;1		1334	
+031E	 15					DEC, D	;1		1335	
+031F	 29					ADD HL, (HL)	;2		1337	
+0320	 16 7A				LD, D, d8	;2		1339	
+0322	 16 EB				LD, D, d8	;2		1341	
+0324	 16 13				LD, D, d8	;2		1343	
+0326	 19					ADD HL, DE	;2		1345	
+0327	 77					LD (HL), A	;2		1347	
+0328	 06 2C				LD, B, d8	;2		1349	
+032A	 07					RLCA	;1		1350	
+032B	 25					DEC, H	;1		1351	
+032C	 08 E4 08			LD (a16), SP	;5		1356	
+032F	 31 0B EB			LD SP, d16	;3		1359	
+0332	 0C					INC, C	;1		1360	
+0333	 D2 0A 32			JP NC a16	;4		1364	
+0336	 0D					DEC, C	;1		1365	
+0337	 23					INC, (HL)	;2		1367	
+0338	 0E 12				LD, C, d8	;2		1369	
+033A	 11 99 0D			LD DE, d16	;3		1372	
+033D	 8A					ADC A, D	;1		1373	
+033E	 0E CE				LD, C, d8	;2		1375	
+0340	 1D					DEC, E	;1		1376	
+0341	 41					LD B, C	;1		1377	
+0342	 1E 69				LD, E, d8	;2		1379	
+0344	 03					INC, BC	;2		1381	
+0345	 93					SUB E	;1		1382	
+0346	 03					INC, BC	;2		1384	
+0347	 67					LD H, A	;1		1385	
+0348	 11 E6 11			LD DE, d16	;3		1388	
+034B	 FC		
+034E	 12					LD (DE), A	;2		1390	
+034F	 C7					RST 0	;4		1394	
+0350	 05					DEC, B	;1		1395	
+0351	 F7					RST 6	;4		1399	
+0352	 05					DEC, B	;1		1400	
+0353	 B3					OR E	;1		1401	
+0354	 12					LD (DE), A	;2		1403	
+0355	 05					DEC, B	;1		1404	
+0356	 13					INC, DE	;2		1406	
+0357	 24					INC, H	;1		1407	
+0358	 13					INC, DE	;2		1409	
+0359	 51					LD D, C	;1		1410	
+035A	 13					INC, DE	;2		1412	
+035B	 67					LD H, A	;1		1413	
+035C	 13					INC, DE	;2		1415	
+035D	 7E					LD A, (HL)	;2		1417	
+035E	 13					INC, DE	;2		1419	
+035F	 B5					OR L	;1		1420	
+0360	 13					INC, DE	;2		1422	
+0361	 E5					PUSH (HL)	;4		1426	
+0362	 13					INC, DE	;2		1428	
+0363	 1B					DEC, DE	;2		1430	
+0364	 13					INC, DE	;2		1432	
+0365	 A0					AND B	;1		1433	
+0366	 03					INC, BC	;2		1435	
+0367	 EA 27 CD			LD a16, A	;4		1439	
+036A	 20 28				JR NZ s8	;3		1442	
+036C	 CD D7 27			CALL a16	;6		1448	
+036F	 11 07 4A			LD DE, d16	;3		1451	
+0372	 CD EB 27			CALL a16	;6		1457	
+0375	 CD 8A 17			CALL a16	;6		1463	
+0378	 21 00 C3			LD (HL), d16	;3		1466	
+037B	 11 50 64			LD DE, d16	;3		1469	
+037E	 1A					LD A, (DE)	;2		1471	
+037F	 22					LD (HL+), A	;2		1473	
+0380	 13					INC, DE	;2		1475	
+0381	 7C					LD A, H	;1		1476	
+0382	 FE C4				CP d8	;2		1478	
+0384	 20 F8				JR NZ s8	;3		1481	
+0386	 3E D3				LD, A, d8	;2		1483	
+0388	 E0 40				LD (a8), A	;3		1486	
+038A	 3E FA				LD, A, d8	;2		1488	
+038C	 E0 A6				LD (a8), A	;3		1491	
+038E	 3E 25				LD, A, d8	;2		1493	
+0390	 E0 E1				LD (a8), A	;3		1496	
+0392	 C9					RET	;4		1500	
+0393	 F0 A6				LD A, (a8)	;2		1502	
+0395	 A7					AND A	;1		1503	
+0396	 C0					RET NZ	;5		1508	
+0397	 3E FA				LD, A, d8	;2		1510	
+0399	 E0 A6				LD (a8), A	;3		1513	
+039B	 3E 35				LD, A, d8	;2		1515	
+039D	 E0 E1				LD (a8), A	;3		1518	
+039F	 C9					RET	;4		1522	
+03A0	 F0 81				LD A, (a8)	;2		1524	
+03A2	 A7					AND A	;1		1525	
+03A3	 20 04				JR NZ s8	;3		1528	
+03A5	 F0 A6				LD A, (a8)	;2		1530	
+03A7	 A7					AND A	;1		1531	
+03A8	 C0					RET NZ	;5		1536	
+03A9	 3E 06				LD, A, d8	;2		1538	
+03AB	 E0 E1				LD (a8), A	;3		1541	
+03AD	 C9					RET	;4		1545	
+03AE	 CD 20 28			CALL a16	;6		1551	
+03B1	 AF					XOR A	;1		1552	
+03B2	 E0 E9				LD (a8), A	;3		1555	
+03B4	 E0 98				LD (a8), A	;3		1558	
+03B6	 E0 9C				LD (a8), A	;3		1561	
+03B8	 E0 9B				LD (a8), A	;3		1564	
+03BA	 E0 FB				LD (a8), A	;3		1567	
+03BC	 E0 9F				LD (a8), A	;3		1570	
+03BE	 E0 E3				LD (a8), A	;3		1573	
+03C0	 E0 C7				LD (a8), A	;3		1576	
+03C2	 CD 93 22			CALL a16	;6		1582	
+03C5	 CD 51 26			CALL a16	;6		1588	
+03C8	 CD D7 27			CALL a16	;6		1594	
+03CB	 21 00 C8			LD (HL), d16	;3		1597	
+03CE	 3E 2F				LD, A, d8	;2		1599	
+03D0	 22					LD (HL+), A	;2		1601	
+03D1	 7C					LD A, H	;1		1602	
+03D2	 FE CC				CP d8	;2		1604	
+03D4	 20 F8				JR NZ s8	;3		1607	
+03D6	 21 01 C8			LD (HL), d16	;3		1610	
+03D9	 CD A9 26			CALL a16	;6		1616	
+03DC	 21 0C C8			LD (HL), d16	;3		1619	
+03DF	 CD A9 26			CALL a16	;6		1625	
+03E2	 21 41 CA			LD (HL), d16	;3		1628	
+03E5	 06 0C				LD, B, d8	;2		1630	
+03E7	 3E 8E				LD, A, d8	;2		1632	
+03E9	 22					LD (HL+), A	;2		1634	
+03EA	 05					DEC, B	;1		1635	
+03EB	 20 FC				JR NZ s8	;3		1638	
+03ED	 11 6F 4B			LD DE, d16	;3		1641	
+03F0	 CD EB 27			CALL a16	;6		1647	
+03F3	 CD 8A 17			CALL a16	;6		1653	
+03F6	 21 00 C0			LD (HL), d16	;3		1656	
+03F9	 36 80				LD (HL), d8	;3		1659	
+03FB	 2C					INC, L	;1		1660	
+03FC	 36 10				LD (HL), d8	;3		1663	
+03FE	 2C					INC, L	;1		1664	
+03FF	 36 58				LD (HL), d8	;3		1667	
+0401	 3E 03				LD, A, d8	;2		1669	
+0403	 EA E8 DF			LD a16, A	;4		1673	
+0406	 3E D3				LD, A, d8	;2		1675	
+0408	 E0 40				LD (a8), A	;3		1678	
+040A	 3E 07				LD, A, d8	;2		1680	
+040C	 E0 E1				LD (a8), A	;3		1683	
+040E	 3E 7D				LD, A, d8	;2		1685	
+0410	 E0 A6				LD (a8), A	;3		1688	
+0412	 3E 04				LD, A, d8	;2		1690	
+0414	 E0 C6				LD (a8), A	;3		1693	
+0416	 F0 E4				LD A, (a8)	;2		1695	
+0418	 A7					AND A	;1		1696	
+0419	 C0					RET NZ	;5		1701	
+041A	 3E 13				LD, A, d8	;2		1703	
+041C	 E0 C6				LD (a8), A	;3		1706	
+041E	 C9					RET	;4		1710	
+041F	 3E 37				LD, A, d8	;2		1712	
+0421	 E0 C0				LD (a8), A	;3		1715	
+0423	 3E 09				LD, A, d8	;2		1717	
+0425	 E0 C2				LD (a8), A	;3		1720	
+0427	 AF					XOR A	;1		1721	
+0428	 E0 C5				LD (a8), A	;3		1724	
+042A	 E0 B0				LD (a8), A	;3		1727	
+042C	 E0 ED				LD (a8), A	;3		1730	
+042E	 E0 EA				LD (a8), A	;3		1733	
+0430	 3E 62				LD, A, d8	;2		1735	
+0432	 E0 EB				LD (a8), A	;3		1738	
+0434	 3E B0				LD, A, d8	;2		1740	
+0436	 E0 EC				LD (a8), A	;3		1743	
+0438	 F0 E4				LD A, (a8)	;2		1745	
+043A	 FE 02				CP d8	;2		1747	
+043C	 3E 02				LD, A, d8	;2		1749	
+043E	 20 1A				JR NZ s8	;3		1752	
+0440	 3E 77				LD, A, d8	;2		1754	
+0442	 E0 C0				LD (a8), A	;3		1757	
+0444	 3E 09				LD, A, d8	;2		1759	
+0446	 E0 C3				LD (a8), A	;3		1762	
+0448	 3E 02				LD, A, d8	;2		1764	
+044A	 E0 C4				LD (a8), A	;3		1767	
+044C	 3E 63				LD, A, d8	;2		1769	
+044E	 E0 EB				LD (a8), A	;3		1772	
+0450	 3E B0				LD, A, d8	;2		1774	
+0452	 E0 EC				LD (a8), A	;3		1777	
+0454	 3E 11				LD, A, d8	;2		1779	
+0456	 E0 B0				LD (a8), A	;3		1782	
+0458	 3E 01				LD, A, d8	;2		1784	
+045A	 E0 E4				LD (a8), A	;3		1787	
+045C	 3E 0A				LD, A, d8	;2		1789	
+045E	 E0 E1				LD (a8), A	;3		1792	
+0460	 CD 20 28			CALL a16	;6		1798	
+0463	 CD AD 27			CALL a16	;6		1804	
+0466	 11 D7 4C			LD DE, d16	;3		1807	
+0469	 CD EB 27			CALL a16	;6		1813	
+046C	 CD 8A 17			CALL a16	;6		1819	
+046F	 3E D3				LD, A, d8	;2		1821	
+0471	 E0 40				LD (a8), A	;3		1824	
+0473	 C9					RET	;4		1828	
+0474	 3E FF				LD, A, d8	;2		1830	
+0476	 E0 E9				LD (a8), A	;3		1833	
+0478	 C9					RET	;4		1837	
+0479	 F0 A6				LD A, (a8)	;2		1839	
+047B	 A7					AND A	;1		1840	
+047C	 20 0A				JR NZ s8	;3		1843	
+047E	 21 C6 FF			LD (HL), d16	;3		1846	
+0481	 35					DEC (HL)	;3		1849	
+0482	 28 9B				JR Z s8	;3		1852	
+0484	 3E 7D				LD, A, d8	;2		1854	
+0486	 E0 A6				LD (a8), A	;3		1857	
+0488	 CD 98 0A			CALL a16	;6		1863	
+048B	 3E 55				LD, A, d8	;2		1865	
+048D	 E0 01				LD (a8), A	;3		1868	
+048F	 3E 80				LD, A, d8	;2		1870	
+0491	 E0 02				LD (a8), A	;3		1873	
+0493	 F0 CC				LD A, (a8)	;2		1875	
+0495	 A7					AND A	;1		1876	
+0496	 28 0A				JR Z s8	;3		1879	
+0498	 F0 CB				LD A, (a8)	;2		1881	
+049A	 A7					AND A	;1		1882	
+049B	 20 3A				JR NZ s8	;3		1885	
+049D	 AF					XOR A	;1		1886	
+049E	 E0 CC				LD (a8), A	;3		1889	
+04A0	 18 67				JR s8	;3		1892	
+04A2	 F0 81				LD A, (a8)	;2		1894	
+04A4	 47					LD B, A	;1		1895	
+04A5	 F0 C5				LD A, (a8)	;2		1897	
+04A7	 CB		
+04A9	 20 48				JR NZ s8	;3		1900	
+04AB	 CB		
+04AD	 20 53				JR NZ s8	;3		1903	
+04AF	 CB		
+04B1	 20 54				JR NZ s8	;3		1906	
+04B3	 CB		
+04B5	 C8					RET Z	;5		1911	
+04B6	 A7					AND A	;1		1912	
+04B7	 3E 08				LD, A, d8	;2		1914	
+04B9	 28 2C				JR Z s8	;3		1917	
+04BB	 78					LD A, B	;1		1918	
+04BC	 FE 08				CP d8	;2		1920	
+04BE	 C0					RET NZ	;5		1925	
+04BF	 F0 CB				LD A, (a8)	;2		1927	
+04C1	 FE 29				CP d8	;2		1929	
+04C3	 28 12				JR Z s8	;3		1932	
+04C5	 3E 29				LD, A, d8	;2		1934	
+04C7	 E0 01				LD (a8), A	;3		1937	
+04C9	 3E 81				LD, A, d8	;2		1939	
+04CB	 E0 02				LD (a8), A	;3		1942	
+04CD	 F0 CC				LD A, (a8)	;2		1944	
+04CF	 A7					AND A	;1		1945	
+04D0	 28 FB				JR Z s8	;3		1948	
+04D2	 F0 CB				LD A, (a8)	;2		1950	
+04D4	 A7					AND A	;1		1951	
+04D5	 28 32				JR Z s8	;3		1954	
+04D7	 3E 2A				LD, A, d8	;2		1956	
+04D9	 E0 E1				LD (a8), A	;3		1959	
+04DB	 AF					XOR A	;1		1960	
+04DC	 E0 A6				LD (a8), A	;3		1963	
+04DE	 E0 C2				LD (a8), A	;3		1966	
+04E0	 E0 C3				LD (a8), A	;3		1969	
+04E2	 E0 C4				LD (a8), A	;3		1972	
+04E4	 E0 E4				LD (a8), A	;3		1975	
+04E6	 C9					RET	;4		1979	
+04E7	 F5					PUSH AF	;4		1983	
+04E8	 F0 80				LD A, (a8)	;2		1985	
+04EA	 CB		
+04EC	 28 02				JR Z s8	;3		1988	
+04EE	 E0 F4				LD (a8), A	;3		1991	
+04F0	 F1					POP AF	;3		1994	
+04F1	 18 E6				JR s8	;3		1997	
+04F3	 EE 01				XOR d8	;2		1999	
+04F5	 E0 C5				LD (a8), A	;3		2002	
+04F7	 A7					AND A	;1		2003	
+04F8	 3E 10				LD, A, d8	;2		2005	
+04FA	 28 02				JR Z s8	;3		2008	
+04FC	 3E 60				LD, A, d8	;2		2010	
+04FE	 EA 01 C0			LD a16, A	;4		2014	
+0501	 C9					RET	;4		2018	
+0502	 A7					AND A	;1		2019	
+0503	 C0					RET NZ	;5		2024	
+0504	 AF					XOR A	;1		2025	
+0505	 18 EC				JR s8	;3		2028	
+0507	 A7					AND A	;1		2029	
+0508	 C8					RET Z	;5		2034	
+0509	 AF					XOR A	;1		2035	
+050A	 18 E9				JR s8	;3		2038	
+050C	 F0 E4				LD A, (a8)	;2		2040	
+050E	 A7					AND A	;1		2041	
+050F	 C8					RET Z	;5		2046	
+0510	 CD 98 0A			CALL a16	;6		2052	
+0513	 AF					XOR A	;1		2053	
+0514	 E0 01				LD (a8), A	;3		2056	
+0516	 3E 80				LD, A, d8	;2		2058	
+0518	 E0 02				LD (a8), A	;3		2061	
+051A	 F0 81				LD A, (a8)	;2		2063	
+051C	 CB		
+051E	 28 0D				JR Z s8	;3		2066	
+0520	 3E 33				LD, A, d8	;2		2068	
+0522	 E0 01				LD (a8), A	;3		2071	
+0524	 3E 81				LD, A, d8	;2		2073	
+0526	 E0 02				LD (a8), A	;3		2076	
+0528	 3E 06				LD, A, d8	;2		2078	
+052A	 E0 E1				LD (a8), A	;3		2081	
+052C	 C9					RET	;4		2085	
+052D	 21 B0 FF			LD (HL), d16	;3		2088	
+0530	 F0 E4				LD A, (a8)	;2		2090	
+0532	 FE 02				CP d8	;2		2092	
+0534	 06 10				LD, B, d8	;2		2094	
+0536	 28 02				JR Z s8	;3		2097	
+0538	 06 1D				LD, B, d8	;2		2099	
+053A	 7E					LD A, (HL)	;2		2101	
+053B	 B8					CP B	;1		2102	
+053C	 C0					RET NZ	;5		2107	
+053D	 3E 06				LD, A, d8	;2		2109	
+053F	 E0 E1				LD (a8), A	;3		2112	
+0541	 C9					RET	;4		2116	
+0542	 F0 E4				LD A, (a8)	;2		2118	
+0544	 A7					AND A	;1		2119	
+0545	 C8					RET Z	;5		2124	
+0546	 F0 E9				LD A, (a8)	;2		2126	
+0548	 FE FF				CP d8	;2		2128	
+054A	 C8					RET Z	;5		2133	
+054B	 F0 EA				LD A, (a8)	;2		2135	
+054D	 A7					AND A	;1		2136	
+054E	 28 05				JR Z s8	;3		2139	
+0550	 3D					DEC, A	;1		2140	
+0551	 E0 EA				LD (a8), A	;3		2143	
+0553	 18 1C				JR s8	;3		2146	
+0555	 F0 EB				LD A, (a8)	;2		2148	
+0557	 67					LD H, A	;1		2149	
+0558	 F0 EC				LD A, (a8)	;2		2151	
+055A	 6F					LD L, A	;1		2152	
+055B	 2A					LD A, (HL+)	;2		2154	
+055C	 47					LD B, A	;1		2155	
+055D	 F0 ED				LD A, (a8)	;2		2157	
+055F	 A8					XOR B	;1		2158	
+0560	 A0					AND B	;1		2159	
+0561	 E0 81				LD (a8), A	;3		2162	
+0563	 78					LD A, B	;1		2163	
+0564	 E0 ED				LD (a8), A	;3		2166	
+0566	 2A					LD A, (HL+)	;2		2168	
+0567	 E0 EA				LD (a8), A	;3		2171	
+0569	 7C					LD A, H	;1		2172	
+056A	 E0 EB				LD (a8), A	;3		2175	
+056C	 7D					LD A, L	;1		2176	
+056D	 E0 EC				LD (a8), A	;3		2179	
+056F	 18 03				JR s8	;3		2182	
+0571	 AF					XOR A	;1		2183	
+0572	 E0 81				LD (a8), A	;3		2186	
+0574	 F0 80				LD A, (a8)	;2		2188	
+0576	 E0 EE				LD (a8), A	;3		2191	
+0578	 F0 ED				LD A, (a8)	;2		2193	
+057A	 E0 80				LD (a8), A	;3		2196	
+057C	 C9					RET	;4		2200	
+057D	 AF					XOR A	;1		2201	
+057E	 E0 ED				LD (a8), A	;3		2204	
+0580	 18 EF				JR s8	;3		2207	
+0582	 C9					RET	;4		2211	
+0583	 F0 E4				LD A, (a8)	;2		2213	
+0585	 A7					AND A	;1		2214	
+0586	 C8					RET Z	;5		2219	
+0587	 F0 E9				LD A, (a8)	;2		2221	
+0589	 FE FF				CP d8	;2		2223	
+058B	 C0					RET NZ	;5		2228	
+058C	 F0 80				LD A, (a8)	;2		2230	
+058E	 47					LD B, A	;1		2231	
+058F	 F0 ED				LD A, (a8)	;2		2233	
+0591	 B8					CP B	;1		2234	
+0592	 28 19				JR Z s8	;3		2237	
+0594	 F0 EB				LD A, (a8)	;2		2239	
+0596	 67					LD H, A	;1		2240	
+0597	 F0 EC				LD A, (a8)	;2		2242	
+0599	 6F					LD L, A	;1		2243	
+059A	 F0 ED				LD A, (a8)	;2		2245	
+059C	 22					LD (HL+), A	;2		2247	
+059D	 F0 EA				LD A, (a8)	;2		2249	
+059F	 22					LD (HL+), A	;2		2251	
+05A0	 7C					LD A, H	;1		2252	
+05A1	 E0 EB				LD (a8), A	;3		2255	
+05A3	 7D					LD A, L	;1		2256	
+05A4	 E0 EC				LD (a8), A	;3		2259	
+05A6	 78					LD A, B	;1		2260	
+05A7	 E0 ED				LD (a8), A	;3		2263	
+05A9	 AF					XOR A	;1		2264	
+05AA	 E0 EA				LD (a8), A	;3		2267	
+05AC	 C9					RET	;4		2271	
+05AD	 F0 EA				LD A, (a8)	;2		2273	
+05AF	 3C					INC, A	;1		2274	
+05B0	 E0 EA				LD (a8), A	;3		2277	
+05B2	 C9					RET	;4		2281	
+05B3	 F0 E4				LD A, (a8)	;2		2283	
+05B5	 A7					AND A	;1		2284	
+05B6	 C8					RET Z	;5		2289	
+05B7	 F0 E9				LD A, (a8)	;2		2291	
+05B9	 A7					AND A	;1		2292	
+05BA	 C0					RET NZ	;5		2297	
+05BB	 F0 EE				LD A, (a8)	;2		2299	
+05BD	 E0 80				LD (a8), A	;3		2302	
+05BF	 C9					RET	;4		2306	
+05C0	 21 02 FF			LD (HL), d16	;3		2309	
+05C3	 CB		
+05C6	 0A					LD A, (BC)	;2		2311	
+05C7	 3E 03				LD, A, d8	;2		2313	
+05C9	 E0 CD				LD (a8), A	;3		2316	
+05CB	 F0 CB				LD A, (a8)	;2		2318	
+05CD	 FE 29				CP d8	;2		2320	
+05CF	 20 EF				JR NZ s8	;3		2323	
+05D1	 CD 4F 14			CALL a16	;6		2329	
+05D4	 3E 80				LD, A, d8	;2		2331	
+05D6	 EA 10 C2			LD a16, A	;4		2335	
+05D9	 CD 71 26			CALL a16	;6		2341	
+05DC	 E0 CE				LD (a8), A	;3		2344	
+05DE	 AF					XOR A	;1		2345	
+05DF	 E0 01				LD (a8), A	;3		2348	
+05E1	 E0 CF				LD (a8), A	;3		2351	
+05E3	 E0 DC				LD (a8), A	;3		2354	
+05E5	 E0 D2				LD (a8), A	;3		2357	
+05E7	 E0 D3				LD (a8), A	;3		2360	
+05E9	 E0 D4				LD (a8), A	;3		2363	
+05EB	 E0 D5				LD (a8), A	;3		2366	
+05ED	 E0 E3				LD (a8), A	;3		2369	
+05EF	 CD F3 7F			CALL a16	;6		2375	
+05F2	 3E 2B				LD, A, d8	;2		2377	
+05F4	 E0 E1				LD (a8), A	;3		2380	
+05F6	 C9					RET	;4		2384	
+05F7	 F0 CB				LD A, (a8)	;2		2386	
+05F9	 FE 29				CP d8	;2		2388	
+05FB	 28 16				JR Z s8	;3		2391	
+05FD	 F0 F0				LD A, (a8)	;2		2393	
+05FF	 A7					AND A	;1		2394	
+0600	 28 1E				JR Z s8	;3		2397	
+0602	 AF					XOR A	;1		2398	
+0603	 E0 F0				LD (a8), A	;3		2401	
+0605	 11 01 C2			LD DE, d16	;3		2404	
+0608	 CD 92 14			CALL a16	;6		2410	
+060B	 CD 17 15			CALL a16	;6		2416	
+060E	 CD 71 26			CALL a16	;6		2422	
+0611	 18 0D				JR s8	;3		2425	
+0613	 F0 81				LD A, (a8)	;2		2427	
+0615	 CB		
+0617	 20 07				JR NZ s8	;3		2430	
+0619	 CB		
+061B	 20 03				JR NZ s8	;3		2433	
+061D	 CD B0 14			CALL a16	;6		2439	
+0620	 F0 CB				LD A, (a8)	;2		2441	
+0622	 FE 29				CP d8	;2		2443	
+0624	 28 1E				JR Z s8	;3		2446	
+0626	 F0 CC				LD A, (a8)	;2		2448	
+0628	 A7					AND A	;1		2449	
+0629	 C8					RET Z	;5		2454	
+062A	 AF					XOR A	;1		2455	
+062B	 E0 CC				LD (a8), A	;3		2458	
+062D	 3E 39				LD, A, d8	;2		2460	
+062F	 E0 CF				LD (a8), A	;3		2463	
+0631	 F0 D0				LD A, (a8)	;2		2465	
+0633	 FE 50				CP d8	;2		2467	
+0635	 28 2D				JR Z s8	;3		2470	
+0637	 47					LD B, A	;1		2471	
+0638	 F0 C1				LD A, (a8)	;2		2473	
+063A	 B8					CP B	;1		2474	
+063B	 C8					RET Z	;5		2479	
+063C	 78					LD A, B	;1		2480	
+063D	 E0 C1				LD (a8), A	;3		2483	
+063F	 3E 01				LD, A, d8	;2		2485	
+0641	 E0 F0				LD (a8), A	;3		2488	
+0643	 C9					RET	;4		2492	
+0644	 F0 81				LD A, (a8)	;2		2494	
+0646	 CB		
+0648	 20 22				JR NZ s8	;3		2497	
+064A	 CB		
+064C	 20 1E				JR NZ s8	;3		2500	
+064E	 F0 CC				LD A, (a8)	;2		2502	
+0650	 A7					AND A	;1		2503	
+0651	 C8					RET Z	;5		2508	
+0652	 AF					XOR A	;1		2509	
+0653	 E0 CC				LD (a8), A	;3		2512	
+0655	 F0 CF				LD A, (a8)	;2		2514	
+0657	 FE 50				CP d8	;2		2516	
+0659	 28 09				JR Z s8	;3		2519	
+065B	 F0 C1				LD A, (a8)	;2		2521	
+065D	 E0 CF				LD (a8), A	;3		2524	
+065F	 3E 01				LD, A, d8	;2		2526	
+0661	 E0 CE				LD (a8), A	;3		2529	
+0663	 C9					RET	;4		2533	
+0664	 CD 8A 17			CALL a16	;6		2539	
+0667	 3E 16				LD, A, d8	;2		2541	
+0669	 E0 E1				LD (a8), A	;3		2544	
+066B	 C9					RET	;4		2548	
+066C	 3E 50				LD, A, d8	;2		2550	
+066E	 18 ED				JR s8	;3		2553	
+0670	 21 02 FF			LD (HL), d16	;3		2556	
+0673	 CB		
+0676	 1F					RRA	;1		2557	
+0677	 3E 03				LD, A, d8	;2		2559	
+0679	 E0 CD				LD (a8), A	;3		2562	
+067B	 F0 CB				LD A, (a8)	;2		2564	
+067D	 FE 29				CP d8	;2		2566	
+067F	 20 EF				JR NZ s8	;3		2569	
+0681	 CD A1 0A			CALL a16	;6		2575	
+0684	 CD A1 0A			CALL a16	;6		2581	
+0687	 CD A1 0A			CALL a16	;6		2587	
+068A	 06 00				LD, B, d8	;2		2589	
+068C	 21 00 C3			LD (HL), d16	;3		2592	
+068F	 CD A1 0A			CALL a16	;6		2598	
+0692	 22					LD (HL+), A	;2		2600	
+0693	 05					DEC, B	;1		2601	
+0694	 20 F9				JR NZ s8	;3		2604	
+0696	 CD 20 28			CALL a16	;6		2610	
+0699	 CD AD 27			CALL a16	;6		2616	
+069C	 11 14 52			LD DE, d16	;3		2619	
+069F	 CD EB 27			CALL a16	;6		2625	
+06A2	 CD 8A 17			CALL a16	;6		2631	
+06A5	 3E 2F				LD, A, d8	;2		2633	
+06A7	 CD DD 1F			CALL a16	;6		2639	
+06AA	 3E 03				LD, A, d8	;2		2641	
+06AC	 E0 CE				LD (a8), A	;3		2644	
+06AE	 AF					XOR A	;1		2645	
+06AF	 E0 01				LD (a8), A	;3		2648	
+06B1	 E0 CF				LD (a8), A	;3		2651	
+06B3	 E0 DC				LD (a8), A	;3		2654	
+06B5	 E0 D2				LD (a8), A	;3		2657	
+06B7	 E0 D3				LD (a8), A	;3		2660	
+06B9	 E0 D4				LD (a8), A	;3		2663	
+06BB	 E0 D5				LD (a8), A	;3		2666	
+06BD	 E0 E3				LD (a8), A	;3		2669	
+06BF	 E0 CC				LD (a8), A	;3		2672	
+06C1	 21 00 C4			LD (HL), d16	;3		2675	
+06C4	 06 0A				LD, B, d8	;2		2677	
+06C6	 3E 28				LD, A, d8	;2		2679	
+06C8	 22					LD (HL+), A	;2		2681	
+06C9	 05					DEC, B	;1		2682	
+06CA	 20 FC				JR NZ s8	;3		2685	
+06CC	 F0 D6				LD A, (a8)	;2		2687	
+06CE	 A7					AND A	;1		2688	
+06CF	 C2 6D 07			JP NZ a16	;4		2692	
+06D2	 CD 17 15			CALL a16	;6		2698	
+06D5	 3E D3				LD, A, d8	;2		2700	
+06D7	 E0 40				LD (a8), A	;3		2703	
+06D9	 21 80 C0			LD (HL), d16	;3		2706	
+06DC	 11 05 07			LD DE, d16	;3		2709	
+06DF	 06 20				LD, B, d8	;2		2711	
+06E1	 CD 25 07			CALL a16	;6		2717	
+06E4	 21 00 C2			LD (HL), d16	;3		2720	
+06E7	 11 ED 26			LD DE, d16	;3		2723	
+06EA	 0E 02				LD, C, d8	;2		2725	
+06EC	 CD 76 17			CALL a16	;6		2731	
+06EF	 CD 0E 08			CALL a16	;6		2737	
+06F2	 CD 71 26			CALL a16	;6		2743	
+06F5	 AF					XOR A	;1		2744	
+06F6	 E0 D7				LD (a8), A	;3		2747	
+06F8	 E0 D8				LD (a8), A	;3		2750	
+06FA	 E0 D9				LD (a8), A	;3		2753	
+06FC	 E0 DA				LD (a8), A	;3		2756	
+06FE	 E0 DB				LD (a8), A	;3		2759	
+0700	 3E 17				LD, A, d8	;2		2761	
+0702	 E0 E1				LD (a8), A	;3		2764	
+0704	 C9					RET	;4		2768	
+0705	 40					LD B, B	;1		2769	
+0706	 28 AE				JR Z s8	;3		2772	
+0708	 00					NOP	;1		2773	
+0709	 40					LD B, B	;1		2774	
+070A	 30 AE				JR NC s8	;3		2777	
+070C	 20 48				JR NZ s8	;3		2780	
+070E	 28 AF				JR Z s8	;3		2783	
+0710	 00					NOP	;1		2784	
+0711	 48					LD C, B	;1		2785	
+0712	 30 AF				JR NC s8	;3		2788	
+0714	 20 78				JR NZ s8	;3		2791	
+0716	 28 C0				JR Z s8	;3		2794	
+0718	 00					NOP	;1		2795	
+0719	 78					LD A, B	;1		2796	
+071A	 30 C0				JR NC s8	;3		2799	
+071C	 20 80				JR NZ s8	;3		2802	
+071E	 28 C1				JR Z s8	;3		2805	
+0720	 00					NOP	;1		2806	
+0721	 80					ADD A, B	;1		2807	
+0722	 30 C1				JR NC s8	;3		2810	
+0724	 20 1A				JR NZ s8	;3		2813	
+0726	 22					LD (HL+), A	;2		2815	
+0727	 13					INC, DE	;2		2817	
+0728	 05					DEC, B	;1		2818	
+0729	 20 FA				JR NZ s8	;3		2821	
+072B	 C9					RET	;4		2825	
+072C	 F0 CB				LD A, (a8)	;2		2827	
+072E	 FE 29				CP d8	;2		2829	
+0730	 28 23				JR Z s8	;3		2832	
+0732	 F0 CC				LD A, (a8)	;2		2834	
+0734	 A7					AND A	;1		2835	
+0735	 28 13				JR Z s8	;3		2838	
+0737	 F0 D0				LD A, (a8)	;2		2840	
+0739	 FE 60				CP d8	;2		2842	
+073B	 28 2D				JR Z s8	;3		2845	
+073D	 FE 06				CP d8	;2		2847	
+073F	 30 02				JR NC s8	;3		2850	
+0741	 E0 AC				LD (a8), A	;3		2853	
+0743	 F0 AD				LD A, (a8)	;2		2855	
+0745	 E0 CF				LD (a8), A	;3		2858	
+0747	 AF					XOR A	;1		2859	
+0748	 E0 CC				LD (a8), A	;3		2862	
+074A	 11 10 C2			LD DE, d16	;3		2865	
+074D	 CD 66 17			CALL a16	;6		2871	
+0750	 21 AD FF			LD (HL), d16	;3		2874	
+0753	 18 68				JR s8	;3		2877	
+0755	 F0 81				LD A, (a8)	;2		2879	
+0757	 CB		
+0759	 28 04				JR Z s8	;3		2882	
+075B	 3E 60				LD, A, d8	;2		2884	
+075D	 18 4D				JR s8	;3		2887	
+075F	 F0 CC				LD A, (a8)	;2		2889	
+0761	 A7					AND A	;1		2890	
+0762	 28 50				JR Z s8	;3		2893	
+0764	 F0 CF				LD A, (a8)	;2		2895	
+0766	 FE 60				CP d8	;2		2897	
+0768	 20 38				JR NZ s8	;3		2900	
+076A	 CD 8A 17			CALL a16	;6		2906	
+076D	 F0 D6				LD A, (a8)	;2		2908	
+076F	 A7					AND A	;1		2909	
+0770	 20 18				JR NZ s8	;3		2912	
+0772	 3E 18				LD, A, d8	;2		2914	
+0774	 E0 E1				LD (a8), A	;3		2917	
+0776	 F0 CB				LD A, (a8)	;2		2919	
+0778	 FE 29				CP d8	;2		2921	
+077A	 C0					RET NZ	;5		2926	
+077B	 AF					XOR A	;1		2927	
+077C	 E0 A0				LD (a8), A	;3		2930	
+077E	 3E 06				LD, A, d8	;2		2932	
+0780	 11 E0 FF			LD DE, d16	;3		2935	
+0783	 21 A2 C9			LD (HL), d16	;3		2938	
+0786	 CD 68 1B			CALL a16	;6		2944	
+0789	 C9					RET	;4		2948	
+078A	 F0 CB				LD A, (a8)	;2		2950	
+078C	 FE 29				CP d8	;2		2952	
+078E	 C2 28 08			JP NZ a16	;4		2956	
+0791	 AF					XOR A	;1		2957	
+0792	 E0 A0				LD (a8), A	;3		2960	
+0794	 3E 06				LD, A, d8	;2		2962	
+0796	 11 E0 FF			LD DE, d16	;3		2965	
+0799	 21 A2 C9			LD (HL), d16	;3		2968	
+079C	 CD 68 1B			CALL a16	;6		2974	
+079F	 C3 28 08			JP a16	;4		2978	
+07A2	 F0 D0				LD A, (a8)	;2		2980	
+07A4	 FE 06				CP d8	;2		2982	
+07A6	 30 02				JR NC s8	;3		2985	
+07A8	 E0 AD				LD (a8), A	;3		2988	
+07AA	 F0 AC				LD A, (a8)	;2		2990	
+07AC	 E0 CF				LD (a8), A	;3		2993	
+07AE	 AF					XOR A	;1		2994	
+07AF	 E0 CC				LD (a8), A	;3		2997	
+07B1	 3C					INC, A	;1		2998	
+07B2	 E0 CE				LD (a8), A	;3		3001	
+07B4	 11 00 C2			LD DE, d16	;3		3004	
+07B7	 CD 66 17			CALL a16	;6		3010	
+07BA	 21 AC FF			LD (HL), d16	;3		3013	
+07BD	 7E					LD A, (HL)	;2		3015	
+07BE	 CB		
+07BF	 60					LD H, B	;1		3016	
+07C0	 20 14				JR NZ s8	;3		3019	
+07C2	 CB		
+07C4	 20 22				JR NZ s8	;3		3022	
+07C6	 CB		
+07C8	 20 24				JR NZ s8	;3		3025	
+07CA	 CB		
+07CC	 28 13				JR Z s8	;3		3028	
+07CE	 FE 03				CP d8	;2		3030	
+07D0	 30 0F				JR NC s8	;3		3033	
+07D2	 C6 03				ADD A, d8	;2		3035	
+07D4	 18 05				JR s8	;3		3038	
+07D6	 FE 05				CP d8	;2		3040	
+07D8	 28 07				JR Z s8	;3		3043	
+07DA	 3C					INC, A	;1		3044	
+07DB	 77					LD (HL), A	;2		3046	
+07DC	 3E 01				LD, A, d8	;2		3048	
+07DE	 EA E0 DF			LD a16, A	;4		3052	
+07E1	 CD 0E 08			CALL a16	;6		3058	
+07E4	 CD 71 26			CALL a16	;6		3064	
+07E7	 C9					RET	;4		3068	
+07E8	 A7					AND A	;1		3069	
+07E9	 28 F6				JR Z s8	;3		3072	
+07EB	 3D					DEC, A	;1		3073	
+07EC	 18 ED				JR s8	;3		3076	
+07EE	 FE 03				CP d8	;2		3078	
+07F0	 38 EF				JR C s8	;3		3081	
+07F2	 D6 03				SUB d8	;2		3083	
+07F4	 18 E5				JR s8	;3		3086	
+07F6	 40					LD B, B	;1		3087	
+07F7	 60					LD H, B	;1		3088	
+07F8	 40					LD B, B	;1		3089	
+07F9	 70					LD (HL), B	;2		3091	
+07FA	 40					LD B, B	;1		3092	
+07FB	 80					ADD A, B	;1		3093	
+07FC	 50					LD D, B	;1		3094	
+07FD	 60					LD H, B	;1		3095	
+07FE	 50					LD D, B	;1		3096	
+07FF	 70					LD (HL), B	;2		3098	
+0800	 50					LD D, B	;1		3099	
+0801	 80					ADD A, B	;1		3100	
+0802	 78					LD A, B	;1		3101	
+0803	 60					LD H, B	;1		3102	
+0804	 78					LD A, B	;1		3103	
+0805	 70					LD (HL), B	;2		3105	
+0806	 78					LD A, B	;1		3106	
+0807	 80					ADD A, B	;1		3107	
+0808	 88					ADC A, B	;1		3108	
+0809	 60					LD H, B	;1		3109	
+080A	 88					ADC A, B	;1		3110	
+080B	 70					LD (HL), B	;2		3112	
+080C	 88					ADC A, B	;1		3113	
+080D	 80					ADD A, B	;1		3114	
+080E	 F0 AC				LD A, (a8)	;2		3116	
+0810	 11 01 C2			LD DE, d16	;3		3119	
+0813	 21 F6 07			LD (HL), d16	;3		3122	
+0816	 CD 55 17			CALL a16	;6		3128	
+0819	 F0 AD				LD A, (a8)	;2		3130	
+081B	 11 11 C2			LD DE, d16	;3		3133	
+081E	 21 02 08			LD (HL), d16	;3		3136	
+0821	 CD 55 17			CALL a16	;6		3142	
+0824	 C9					RET	;4		3146	
+0825	 CD 20 28			CALL a16	;6		3152	
+0828	 AF					XOR A	;1		3153	
+0829	 EA 10 C2			LD a16, A	;4		3157	
+082C	 E0 98				LD (a8), A	;3		3160	
+082E	 E0 9C				LD (a8), A	;3		3163	
+0830	 E0 9B				LD (a8), A	;3		3166	
+0832	 E0 FB				LD (a8), A	;3		3169	
+0834	 E0 9F				LD (a8), A	;3		3172	
+0836	 E0 CC				LD (a8), A	;3		3175	
+0838	 E0 01				LD (a8), A	;3		3178	
+083A	 E0 CE				LD (a8), A	;3		3181	
+083C	 E0 D0				LD (a8), A	;3		3184	
+083E	 E0 CF				LD (a8), A	;3		3187	
+0840	 E0 D1				LD (a8), A	;3		3190	
+0842	 CD 51 26			CALL a16	;6		3196	
+0845	 CD 93 22			CALL a16	;6		3202	
+0848	 CD F2 1F			CALL a16	;6		3208	
+084B	 AF					XOR A	;1		3209	
+084C	 E0 E3				LD (a8), A	;3		3212	
+084E	 CD 8A 17			CALL a16	;6		3218	
+0851	 11 7C 53			LD DE, d16	;3		3221	
+0854	 D5					PUSH DE	;4		3225	
+0855	 3E 01				LD, A, d8	;2		3227	
+0857	 E0 A9				LD (a8), A	;3		3230	
+0859	 E0 C5				LD (a8), A	;3		3233	
+085B	 CD EB 27			CALL a16	;6		3239	
+085E	 D1					POP DE	;3		3242	
+085F	 21 00 9C			LD (HL), d16	;3		3245	
+0862	 CD EE 27			CALL a16	;6		3251	
+0865	 11 39 28			LD DE, d16	;3		3254	
+0868	 21 63 9C			LD (HL), d16	;3		3257	
+086B	 0E 0A				LD, C, d8	;2		3259	
+086D	 CD 7D 1F			CALL a16	;6		3265	
+0870	 21 00 C2			LD (HL), d16	;3		3268	
+0873	 11 BF 26			LD DE, d16	;3		3271	
+0876	 CD B6 26			CALL a16	;6		3277	
+0879	 21 10 C2			LD (HL), d16	;3		3280	
+087C	 11 C7 26			LD DE, d16	;3		3283	
+087F	 CD B6 26			CALL a16	;6		3289	
+0882	 21 51 99			LD (HL), d16	;3		3292	
+0885	 3E 30				LD, A, d8	;2		3294	
+0887	 E0 9E				LD (a8), A	;3		3297	
+0889	 36 00				LD (HL), d8	;3		3300	
+088B	 2D					DEC, L	;1		3301	
+088C	 36 03				LD (HL), d8	;3		3304	
+088E	 CD E8 1A			CALL a16	;6		3310	
+0891	 AF					XOR A	;1		3311	
+0892	 E0 A0				LD (a8), A	;3		3314	
+0894	 F0 CB				LD A, (a8)	;2		3316	
+0896	 FE 29				CP d8	;2		3318	
+0898	 11 D4 08			LD DE, d16	;3		3321	
+089B	 F0 AC				LD A, (a8)	;2		3323	
+089D	 28 05				JR Z s8	;3		3326	
+089F	 11 C4 08			LD DE, d16	;3		3329	
+08A2	 F0 AD				LD A, (a8)	;2		3331	
+08A4	 21 B0 98			LD (HL), d16	;3		3334	
+08A7	 77					LD (HL), A	;2		3336	
+08A8	 26 9C				LD, H, d8	;2		3338	
+08AA	 77					LD (HL), A	;2		3340	
+08AB	 21 80 C0			LD (HL), d16	;3		3343	
+08AE	 06 10				LD, B, d8	;2		3345	
+08B0	 CD 25 07			CALL a16	;6		3351	
+08B3	 3E 77				LD, A, d8	;2		3353	
+08B5	 E0 C0				LD (a8), A	;3		3356	
+08B7	 3E D3				LD, A, d8	;2		3358	
+08B9	 E0 40				LD (a8), A	;3		3361	
+08BB	 3E 19				LD, A, d8	;2		3363	
+08BD	 E0 E1				LD (a8), A	;3		3366	
+08BF	 3E 01				LD, A, d8	;2		3368	
+08C1	 E0 CD				LD (a8), A	;3		3371	
+08C3	 C9					RET	;4		3375	
+08C4	 18 84				JR s8	;3		3378	
+08C6	 C0					RET NZ	;5		3383	
+08C7	 00					NOP	;1		3384	
+08C8	 18 8C				JR s8	;3		3387	
+08CA	 C0					RET NZ	;5		3392	
+08CB	 20 20				JR NZ s8	;3		3395	
+08CD	 84					ADD A, H	;1		3396	
+08CE	 C1					POP BC	;3		3399	
+08CF	 00					NOP	;1		3400	
+08D0	 20 8C				JR NZ s8	;3		3403	
+08D2	 C1					POP BC	;3		3406	
+08D3	 20 18				JR NZ s8	;3		3409	
+08D5	 84					ADD A, H	;1		3410	
+08D6	 AE					XOR (HL)	;2		3412	
+08D7	 00					NOP	;1		3413	
+08D8	 18 8C				JR s8	;3		3416	
+08DA	 AE					XOR (HL)	;2		3418	
+08DB	 20 20				JR NZ s8	;3		3421	
+08DD	 84					ADD A, H	;1		3422	
+08DE	 AF					XOR A	;1		3423	
+08DF	 00					NOP	;1		3424	
+08E0	 20 8C				JR NZ s8	;3		3427	
+08E2	 AF					XOR A	;1		3428	
+08E3	 20 3E				JR NZ s8	;3		3431	
+08E5	 08 E0 FF			LD (a16), SP	;5		3436	
+08E8	 AF					XOR A	;1		3437	
+08E9	 E0 0F				LD (a8), A	;3		3440	
+08EB	 F0 CB				LD A, (a8)	;2		3442	
+08ED	 FE 29				CP d8	;2		3444	
+08EF	 C2 F6 09			JP NZ a16	;4		3448	
+08F2	 CD 98 0A			CALL a16	;6		3454	
+08F5	 CD 98 0A			CALL a16	;6		3460	
+08F8	 AF					XOR A	;1		3461	
+08F9	 E0 CC				LD (a8), A	;3		3464	
+08FB	 3E 29				LD, A, d8	;2		3466	
+08FD	 E0 01				LD (a8), A	;3		3469	
+08FF	 3E 81				LD, A, d8	;2		3471	
+0901	 E0 02				LD (a8), A	;3		3474	
+0903	 F0 CC				LD A, (a8)	;2		3476	
+0905	 A7					AND A	;1		3477	
+0906	 28 FB				JR Z s8	;3		3480	
+0908	 F0 01				LD A, (a8)	;2		3482	
+090A	 FE 55				CP d8	;2		3484	
+090C	 20 E4				JR NZ s8	;3		3487	
+090E	 11 16 00			LD DE, d16	;3		3490	
+0911	 0E 0A				LD, C, d8	;2		3492	
+0913	 21 02 C9			LD (HL), d16	;3		3495	
+0916	 06 0A				LD, B, d8	;2		3497	
+0918	 AF					XOR A	;1		3498	
+0919	 E0 CC				LD (a8), A	;3		3501	
+091B	 CD 98 0A			CALL a16	;6		3507	
+091E	 2A					LD A, (HL+)	;2		3509	
+091F	 E0 01				LD (a8), A	;3		3512	
+0921	 3E 81				LD, A, d8	;2		3514	
+0923	 E0 02				LD (a8), A	;3		3517	
+0925	 F0 CC				LD A, (a8)	;2		3519	
+0927	 A7					AND A	;1		3520	
+0928	 28 FB				JR Z s8	;3		3523	
+092A	 05					DEC, B	;1		3524	
+092B	 20 EB				JR NZ s8	;3		3527	
+092D	 19					ADD HL, DE	;2		3529	
+092E	 0D					DEC, C	;1		3530	
+092F	 20 E5				JR NZ s8	;3		3533	
+0931	 F0 AC				LD A, (a8)	;2		3535	
+0933	 FE 05				CP d8	;2		3537	
+0935	 28 3D				JR Z s8	;3		3540	
+0937	 21 22 CA			LD (HL), d16	;3		3543	
+093A	 11 40 00			LD DE, d16	;3		3546	
+093D	 19					ADD HL, DE	;2		3548	
+093E	 3C					INC, A	;1		3549	
+093F	 FE 05				CP d8	;2		3551	
+0941	 20 FA				JR NZ s8	;3		3554	
+0943	 11 22 CA			LD DE, d16	;3		3557	
+0946	 0E 0A				LD, C, d8	;2		3559	
+0948	 06 0A				LD, B, d8	;2		3561	
+094A	 1A					LD A, (DE)	;2		3563	
+094B	 22					LD (HL+), A	;2		3565	
+094C	 1C					INC, E	;1		3566	
+094D	 05					DEC, B	;1		3567	
+094E	 20 FA				JR NZ s8	;3		3570	
+0950	 D5					PUSH DE	;4		3574	
+0951	 11 D6 FF			LD DE, d16	;3		3577	
+0954	 19					ADD HL, DE	;2		3579	
+0955	 D1					POP DE	;3		3582	
+0956	 E5					PUSH (HL)	;4		3586	
+0957	 21 D6 FF			LD (HL), d16	;3		3589	
+095A	 19					ADD HL, DE	;2		3591	
+095B	 E5					PUSH (HL)	;4		3595	
+095C	 D1					POP DE	;3		3598	
+095D	 E1					POP (HL)	;3		3601	
+095E	 0D					DEC, C	;1		3602	
+095F	 20 E7				JR NZ s8	;3		3605	
+0961	 11 D6 FF			LD DE, d16	;3		3608	
+0964	 06 0A				LD, B, d8	;2		3610	
+0966	 7C					LD A, H	;1		3611	
+0967	 FE C8				CP d8	;2		3613	
+0969	 28 09				JR Z s8	;3		3616	
+096B	 3E 2F				LD, A, d8	;2		3618	
+096D	 22					LD (HL+), A	;2		3620	
+096E	 05					DEC, B	;1		3621	
+096F	 20 FC				JR NZ s8	;3		3624	
+0971	 19					ADD HL, DE	;2		3626	
+0972	 18 F0				JR s8	;3		3629	
+0974	 CD 98 0A			CALL a16	;6		3635	
+0977	 CD 98 0A			CALL a16	;6		3641	
+097A	 AF					XOR A	;1		3642	
+097B	 E0 CC				LD (a8), A	;3		3645	
+097D	 3E 29				LD, A, d8	;2		3647	
+097F	 E0 01				LD (a8), A	;3		3650	
+0981	 3E 81				LD, A, d8	;2		3652	
+0983	 E0 02				LD (a8), A	;3		3655	
+0985	 F0 CC				LD A, (a8)	;2		3657	
+0987	 A7					AND A	;1		3658	
+0988	 28 FB				JR Z s8	;3		3661	
+098A	 F0 01				LD A, (a8)	;2		3663	
+098C	 FE 55				CP d8	;2		3665	
+098E	 20 E4				JR NZ s8	;3		3668	
+0990	 21 00 C3			LD (HL), d16	;3		3671	
+0993	 06 00				LD, B, d8	;2		3673	
+0995	 AF					XOR A	;1		3674	
+0996	 E0 CC				LD (a8), A	;3		3677	
+0998	 2A					LD A, (HL+)	;2		3679	
+0999	 CD 98 0A			CALL a16	;6		3685	
+099C	 E0 01				LD (a8), A	;3		3688	
+099E	 3E 81				LD, A, d8	;2		3690	
+09A0	 E0 02				LD (a8), A	;3		3693	
+09A2	 F0 CC				LD A, (a8)	;2		3695	
+09A4	 A7					AND A	;1		3696	
+09A5	 28 FB				JR Z s8	;3		3699	
+09A7	 04					INC, B	;1		3700	
+09A8	 20 EB				JR NZ s8	;3		3703	
+09AA	 CD 98 0A			CALL a16	;6		3709	
+09AD	 CD 98 0A			CALL a16	;6		3715	
+09B0	 AF					XOR A	;1		3716	
+09B1	 E0 CC				LD (a8), A	;3		3719	
+09B3	 3E 30				LD, A, d8	;2		3721	
+09B5	 E0 01				LD (a8), A	;3		3724	
+09B7	 3E 81				LD, A, d8	;2		3726	
+09B9	 E0 02				LD (a8), A	;3		3729	
+09BB	 F0 CC				LD A, (a8)	;2		3731	
+09BD	 A7					AND A	;1		3732	
+09BE	 28 FB				JR Z s8	;3		3735	
+09C0	 F0 01				LD A, (a8)	;2		3737	
+09C2	 FE 56				CP d8	;2		3739	
+09C4	 20 E4				JR NZ s8	;3		3742	
+09C6	 CD 8C 0A			CALL a16	;6		3748	
+09C9	 3E 09				LD, A, d8	;2		3750	
+09CB	 E0 FF				LD (a8), A	;3		3753	
+09CD	 3E 1C				LD, A, d8	;2		3755	
+09CF	 E0 E1				LD (a8), A	;3		3758	
+09D1	 3E 02				LD, A, d8	;2		3760	
+09D3	 E0 E3				LD (a8), A	;3		3763	
+09D5	 3E 03				LD, A, d8	;2		3765	
+09D7	 E0 CD				LD (a8), A	;3		3768	
+09D9	 F0 CB				LD A, (a8)	;2		3770	
+09DB	 FE 29				CP d8	;2		3772	
+09DD	 28 05				JR Z s8	;3		3775	
+09DF	 21 02 FF			LD (HL), d16	;3		3778	
+09E2	 CB		
+09E5	 00					NOP	;1		3779	
+09E6	 C3 2A EA			JP a16	;4		3783	
+09E9	 03					INC, BC	;2		3785	
+09EA	 C2 2A EA			JP NZ a16	;4		3789	
+09ED	 13					INC, DE	;2		3791	
+09EE	 C2 7C E0			JP NZ a16	;4		3795	
+09F1	 AF					XOR A	;1		3796	
+09F2	 7D					LD A, L	;1		3797	
+09F3	 E0 B0				LD (a8), A	;3		3800	
+09F5	 C9					RET	;4		3804	
+09F6	 F0 AD				LD A, (a8)	;2		3806	
+09F8	 3C					INC, A	;1		3807	
+09F9	 47					LD B, A	;1		3808	
+09FA	 21 42 CA			LD (HL), d16	;3		3811	
+09FD	 11 C0 FF			LD DE, d16	;3		3814	
+0A00	 05					DEC, B	;1		3815	
+0A01	 28 03				JR Z s8	;3		3818	
+0A03	 19					ADD HL, DE	;2		3820	
+0A04	 18 FA				JR s8	;3		3823	
+0A06	 CD 98 0A			CALL a16	;6		3829	
+0A09	 AF					XOR A	;1		3830	
+0A0A	 E0 CC				LD (a8), A	;3		3833	
+0A0C	 3E 55				LD, A, d8	;2		3835	
+0A0E	 E0 01				LD (a8), A	;3		3838	
+0A10	 3E 80				LD, A, d8	;2		3840	
+0A12	 E0 02				LD (a8), A	;3		3843	
+0A14	 F0 CC				LD A, (a8)	;2		3845	
+0A16	 A7					AND A	;1		3846	
+0A17	 28 FB				JR Z s8	;3		3849	
+0A19	 F0 01				LD A, (a8)	;2		3851	
+0A1B	 FE 29				CP d8	;2		3853	
+0A1D	 20 E7				JR NZ s8	;3		3856	
+0A1F	 11 16 00			LD DE, d16	;3		3859	
+0A22	 0E 0A				LD, C, d8	;2		3861	
+0A24	 06 0A				LD, B, d8	;2		3863	
+0A26	 AF					XOR A	;1		3864	
+0A27	 E0 CC				LD (a8), A	;3		3867	
+0A29	 E0 01				LD (a8), A	;3		3870	
+0A2B	 3E 80				LD, A, d8	;2		3872	
+0A2D	 E0 02				LD (a8), A	;3		3875	
+0A2F	 F0 CC				LD A, (a8)	;2		3877	
+0A31	 A7					AND A	;1		3878	
+0A32	 28 FB				JR Z s8	;3		3881	
+0A34	 F0 01				LD A, (a8)	;2		3883	
+0A36	 22					LD (HL+), A	;2		3885	
+0A37	 05					DEC, B	;1		3886	
+0A38	 20 EC				JR NZ s8	;3		3889	
+0A3A	 19					ADD HL, DE	;2		3891	
+0A3B	 0D					DEC, C	;1		3892	
+0A3C	 20 E6				JR NZ s8	;3		3895	
+0A3E	 CD 98 0A			CALL a16	;6		3901	
+0A41	 AF					XOR A	;1		3902	
+0A42	 E0 CC				LD (a8), A	;3		3905	
+0A44	 3E 55				LD, A, d8	;2		3907	
+0A46	 E0 01				LD (a8), A	;3		3910	
+0A48	 3E 80				LD, A, d8	;2		3912	
+0A4A	 E0 02				LD (a8), A	;3		3915	
+0A4C	 F0 CC				LD A, (a8)	;2		3917	
+0A4E	 A7					AND A	;1		3918	
+0A4F	 28 FB				JR Z s8	;3		3921	
+0A51	 F0 01				LD A, (a8)	;2		3923	
+0A53	 FE 29				CP d8	;2		3925	
+0A55	 20 E7				JR NZ s8	;3		3928	
+0A57	 06 00				LD, B, d8	;2		3930	
+0A59	 21 00 C3			LD (HL), d16	;3		3933	
+0A5C	 AF					XOR A	;1		3934	
+0A5D	 E0 CC				LD (a8), A	;3		3937	
+0A5F	 E0 01				LD (a8), A	;3		3940	
+0A61	 3E 80				LD, A, d8	;2		3942	
+0A63	 E0 02				LD (a8), A	;3		3945	
+0A65	 F0 CC				LD A, (a8)	;2		3947	
+0A67	 A7					AND A	;1		3948	
+0A68	 28 FB				JR Z s8	;3		3951	
+0A6A	 F0 01				LD A, (a8)	;2		3953	
+0A6C	 22					LD (HL+), A	;2		3955	
+0A6D	 04					INC, B	;1		3956	
+0A6E	 20 EC				JR NZ s8	;3		3959	
+0A70	 CD 98 0A			CALL a16	;6		3965	
+0A73	 AF					XOR A	;1		3966	
+0A74	 E0 CC				LD (a8), A	;3		3969	
+0A76	 3E 56				LD, A, d8	;2		3971	
+0A78	 E0 01				LD (a8), A	;3		3974	
+0A7A	 3E 80				LD, A, d8	;2		3976	
+0A7C	 E0 02				LD (a8), A	;3		3979	
+0A7E	 F0 CC				LD A, (a8)	;2		3981	
+0A80	 A7					AND A	;1		3982	
+0A81	 28 FB				JR Z s8	;3		3985	
+0A83	 F0 01				LD A, (a8)	;2		3987	
+0A85	 FE 30				CP d8	;2		3989	
+0A87	 20 E7				JR NZ s8	;3		3992	
+0A89	 C3 C6 09			JP a16	;4		3996	
+0A8C	 21 42 CA			LD (HL), d16	;3		3999	
+0A8F	 3E 80				LD, A, d8	;2		4001	
+0A91	 06 0A				LD, B, d8	;2		4003	
+0A93	 22					LD (HL+), A	;2		4005	
+0A94	 05					DEC, B	;1		4006	
+0A95	 20 FC				JR NZ s8	;3		4009	
+0A97	 C9					RET	;4		4013	
+0A98	 C5					PUSH BC	;4		4017	
+0A99	 06 FA				LD, B, d8	;2		4019	
+0A9B	 40					LD B, B	;1		4020	
+0A9C	 05					DEC, B	;1		4021	
+0A9D	 20 FC				JR NZ s8	;3		4024	
+0A9F	 C1					POP BC	;3		4027	
+0AA0	 C9					RET	;4		4031	
+0AA1	 E5					PUSH (HL)	;4		4035	
+0AA2	 C5					PUSH BC	;4		4039	
+0AA3	 F0 FC				LD A, (a8)	;2		4041	
+0AA5	 E6 FC				AND d8	;2		4043	
+0AA7	 4F					LD C, A	;1		4044	
+0AA8	 26 03				LD, H, d8	;2		4046	
+0AAA	 F0 04				LD A, (a8)	;2		4048	
+0AAC	 47					LD B, A	;1		4049	
+0AAD	 AF					XOR A	;1		4050	
+0AAE	 05					DEC, B	;1		4051	
+0AAF	 28 0A				JR Z s8	;3		4054	
+0AB1	 3C					INC, A	;1		4055	
+0AB2	 3C					INC, A	;1		4056	
+0AB3	 3C					INC, A	;1		4057	
+0AB4	 3C					INC, A	;1		4058	
+0AB5	 FE 1C				CP d8	;2		4060	
+0AB7	 28 F4				JR Z s8	;3		4063	
+0AB9	 18 F3				JR s8	;3		4066	
+0ABB	 57					LD D, A	;1		4067	
+0ABC	 F0 AE				LD A, (a8)	;2		4069	
+0ABE	 5F					LD E, A	;1		4070	
+0ABF	 25					DEC, H	;1		4071	
+0AC0	 28 07				JR Z s8	;3		4074	
+0AC2	 B2					OR D	;1		4075	
+0AC3	 B1					OR C	;1		4076	
+0AC4	 E6 FC				AND d8	;2		4078	
+0AC6	 B9					CP C	;1		4079	
+0AC7	 28 E1				JR Z s8	;3		4082	
+0AC9	 7A					LD A, D	;1		4083	
+0ACA	 E0 AE				LD (a8), A	;3		4086	
+0ACC	 7B					LD A, E	;1		4087	
+0ACD	 E0 FC				LD (a8), A	;3		4090	
+0ACF	 C1					POP BC	;3		4093	
+0AD0	 E1					POP (HL)	;3		4096	
+0AD1	 C9					RET	;4		4100	
+0AD2	 3E 01				LD, A, d8	;2		4102	
+0AD4	 E0 FF				LD (a8), A	;3		4105	
+0AD6	 F0 E3				LD A, (a8)	;2		4107	
+0AD8	 A7					AND A	;1		4108	
+0AD9	 20 27				JR NZ s8	;3		4111	
+0ADB	 06 44				LD, B, d8	;2		4113	
+0ADD	 0E 20				LD, C, d8	;2		4115	
+0ADF	 CD 3F 11			CALL a16	;6		4121	
+0AE2	 3E 02				LD, A, d8	;2		4123	
+0AE4	 E0 CD				LD (a8), A	;3		4126	
+0AE6	 FA DE C0			JP A, a16	;4		4130	
+0AE9	 A7					AND A	;1		4131	
+0AEA	 28 05				JR Z s8	;3		4134	
+0AEC	 3E 80				LD, A, d8	;2		4136	
+0AEE	 EA 10 C2			LD a16, A	;4		4140	
+0AF1	 CD 83 26			CALL a16	;6		4146	
+0AF4	 CD 96 26			CALL a16	;6		4152	
+0AF7	 CD 17 15			CALL a16	;6		4158	
+0AFA	 AF					XOR A	;1		4159	
+0AFB	 E0 D6				LD (a8), A	;3		4162	
+0AFD	 3E 1A				LD, A, d8	;2		4164	
+0AFF	 E0 E1				LD (a8), A	;3		4167	
+0B01	 C9					RET	;4		4171	
+0B02	 FE 05				CP d8	;2		4173	
+0B04	 C0					RET NZ	;5		4178	
+0B05	 21 30 C0			LD (HL), d16	;3		4181	
+0B08	 06 12				LD, B, d8	;2		4183	
+0B0A	 36 F0				LD (HL), d8	;3		4186	
+0B0C	 23					INC, (HL)	;2		4188	
+0B0D	 36 10				LD (HL), d8	;3		4191	
+0B0F	 23					INC, (HL)	;2		4193	
+0B10	 36 B6				LD (HL), d8	;3		4196	
+0B12	 23					INC, (HL)	;2		4198	
+0B13	 36 80				LD (HL), d8	;3		4201	
+0B15	 23					INC, (HL)	;2		4203	
+0B16	 05					DEC, B	;1		4204	
+0B17	 20 F1				JR NZ s8	;3		4207	
+0B19	 FA FF C3			JP A, a16	;4		4211	
+0B1C	 06 0A				LD, B, d8	;2		4213	
+0B1E	 21 00 C4			LD (HL), d16	;3		4216	
+0B21	 3D					DEC, A	;1		4217	
+0B22	 28 06				JR Z s8	;3		4220	
+0B24	 2C					INC, L	;1		4221	
+0B25	 05					DEC, B	;1		4222	
+0B26	 20 F9				JR NZ s8	;3		4225	
+0B28	 18 F2				JR s8	;3		4228	
+0B2A	 36 2F				LD (HL), d8	;3		4231	
+0B2C	 3E 03				LD, A, d8	;2		4233	
+0B2E	 E0 CE				LD (a8), A	;3		4236	
+0B30	 C9					RET	;4		4240	
+0B31	 3E 01				LD, A, d8	;2		4242	
+0B33	 E0 FF				LD (a8), A	;3		4245	
+0B35	 21 9C C0			LD (HL), d16	;3		4248	
+0B38	 AF					XOR A	;1		4249	
+0B39	 22					LD (HL+), A	;2		4251	
+0B3A	 36 50				LD (HL), d8	;3		4254	
+0B3C	 2C					INC, L	;1		4255	
+0B3D	 36 27				LD (HL), d8	;3		4258	
+0B3F	 2C					INC, L	;1		4259	
+0B40	 36 00				LD (HL), d8	;3		4262	
+0B42	 CD 0D 1C			CALL a16	;6		4268	
+0B45	 CD 88 1C			CALL a16	;6		4274	
+0B48	 CD BB 24			CALL a16	;6		4280	
+0B4B	 CD 9C 20			CALL a16	;6		4286	
+0B4E	 CD 3E 21			CALL a16	;6		4292	
+0B51	 CD A1 25			CALL a16	;6		4298	
+0B54	 CD 4D 22			CALL a16	;6		4304	
+0B57	 CD 9B 0B			CALL a16	;6		4310	
+0B5A	 F0 D5				LD A, (a8)	;2		4312	
+0B5C	 A7					AND A	;1		4313	
+0B5D	 28 14				JR Z s8	;3		4316	
+0B5F	 3E 77				LD, A, d8	;2		4318	
+0B61	 E0 CF				LD (a8), A	;3		4321	
+0B63	 E0 B1				LD (a8), A	;3		4324	
+0B65	 3E AA				LD, A, d8	;2		4326	
+0B67	 E0 D1				LD (a8), A	;3		4329	
+0B69	 3E 1B				LD, A, d8	;2		4331	
+0B6B	 E0 E1				LD (a8), A	;3		4334	
+0B6D	 3E 05				LD, A, d8	;2		4336	
+0B6F	 E0 A7				LD (a8), A	;3		4339	
+0B71	 18 10				JR s8	;3		4342	
+0B73	 F0 E1				LD A, (a8)	;2		4344	
+0B75	 FE 01				CP d8	;2		4346	
+0B77	 20 1B				JR NZ s8	;3		4349	
+0B79	 3E AA				LD, A, d8	;2		4351	
+0B7B	 E0 CF				LD (a8), A	;3		4354	
+0B7D	 E0 B1				LD (a8), A	;3		4357	
+0B7F	 3E 77				LD, A, d8	;2		4359	
+0B81	 E0 D1				LD (a8), A	;3		4362	
+0B83	 AF					XOR A	;1		4363	
+0B84	 E0 DC				LD (a8), A	;3		4366	
+0B86	 E0 D2				LD (a8), A	;3		4369	
+0B88	 E0 D3				LD (a8), A	;3		4372	
+0B8A	 E0 D4				LD (a8), A	;3		4375	
+0B8C	 F0 CB				LD A, (a8)	;2		4377	
+0B8E	 FE 29				CP d8	;2		4379	
+0B90	 20 02				JR NZ s8	;3		4382	
+0B92	 E0 CE				LD (a8), A	;3		4385	
+0B94	 CD F0 0B			CALL a16	;6		4391	
+0B97	 CD 8C 0C			CALL a16	;6		4397	
+0B9A	 C9					RET	;4		4401	
+0B9B	 11 20 00			LD DE, d16	;3		4404	
+0B9E	 21 02 C8			LD (HL), d16	;3		4407	
+0BA1	 3E 2F				LD, A, d8	;2		4409	
+0BA3	 0E 12				LD, C, d8	;2		4411	
+0BA5	 06 0A				LD, B, d8	;2		4413	
+0BA7	 E5					PUSH (HL)	;4		4417	
+0BA8	 BE					CP (HL)	;2		4419	
+0BA9	 20 0A				JR NZ s8	;3		4422	
+0BAB	 23					INC, (HL)	;2		4424	
+0BAC	 05					DEC, B	;1		4425	
+0BAD	 20 F9				JR NZ s8	;3		4428	
+0BAF	 E1					POP (HL)	;3		4431	
+0BB0	 19					ADD HL, DE	;2		4433	
+0BB1	 0D					DEC, C	;1		4434	
+0BB2	 20 F1				JR NZ s8	;3		4437	
+0BB4	 E5					PUSH (HL)	;4		4441	
+0BB5	 E1					POP (HL)	;3		4444	
+0BB6	 79					LD A, C	;1		4445	
+0BB7	 E0 B1				LD (a8), A	;3		4448	
+0BB9	 FE 0C				CP d8	;2		4450	
+0BBB	 FA E9 DF			JP A, a16	;4		4454	
+0BBE	 30 07				JR NC s8	;3		4457	
+0BC0	 FE 08				CP d8	;2		4459	
+0BC2	 C0					RET NZ	;5		4464	
+0BC3	 CD 17 15			CALL a16	;6		4470	
+0BC6	 C9					RET	;4		4474	
+0BC7	 FE 08				CP d8	;2		4476	
+0BC9	 C8					RET Z	;5		4481	
+0BCA	 FA F0 DF			JP A, a16	;4		4485	
+0BCD	 FE 02				CP d8	;2		4487	
+0BCF	 C8					RET Z	;5		4492	
+0BD0	 3E 08				LD, A, d8	;2		4494	
+0BD2	 EA E8 DF			LD a16, A	;4		4498	
+0BD5	 C9					RET	;4		4502	
+0BD6	 F0 CB				LD A, (a8)	;2		4504	
+0BD8	 FE 29				CP d8	;2		4506	
+0BDA	 28 52				JR Z s8	;3		4509	
+0BDC	 3E 01				LD, A, d8	;2		4511	
+0BDE	 EA 7F DF			LD a16, A	;4		4515	
+0BE1	 E0 AB				LD (a8), A	;3		4518	
+0BE3	 F0 CF				LD A, (a8)	;2		4520	
+0BE5	 E0 F1				LD (a8), A	;3		4523	
+0BE7	 AF					XOR A	;1		4524	
+0BE8	 E0 F2				LD (a8), A	;3		4527	
+0BEA	 E0 CF				LD (a8), A	;3		4530	
+0BEC	 CD CB 1C			CALL a16	;6		4536	
+0BEF	 C9					RET	;4		4540	
+0BF0	 F0 CC				LD A, (a8)	;2		4542	
+0BF2	 A7					AND A	;1		4543	
+0BF3	 C8					RET Z	;5		4548	
+0BF4	 21 30 C0			LD (HL), d16	;3		4551	
+0BF7	 11 04 00			LD DE, d16	;3		4554	
+0BFA	 AF					XOR A	;1		4555	
+0BFB	 E0 CC				LD (a8), A	;3		4558	
+0BFD	 F0 D0				LD A, (a8)	;2		4560	
+0BFF	 FE AA				CP d8	;2		4562	
+0C01	 28 61				JR Z s8	;3		4565	
+0C03	 FE 77				CP d8	;2		4567	
+0C05	 28 49				JR Z s8	;3		4570	
+0C07	 FE 94				CP d8	;2		4572	
+0C09	 28 CB				JR Z s8	;3		4575	
+0C0B	 47					LD B, A	;1		4576	
+0C0C	 A7					AND A	;1		4577	
+0C0D	 28 51				JR Z s8	;3		4580	
+0C0F	 CB		
+0C11	 20 6F				JR NZ s8	;3		4583	
+0C13	 FE 13				CP d8	;2		4585	
+0C15	 30 17				JR NC s8	;3		4588	
+0C17	 3E 12				LD, A, d8	;2		4590	
+0C19	 90					SUB B	;1		4591	
+0C1A	 4F					LD C, A	;1		4592	
+0C1B	 0C					INC, C	;1		4593	
+0C1C	 3E 98				LD, A, d8	;2		4595	
+0C1E	 77					LD (HL), A	;2		4597	
+0C1F	 19					ADD HL, DE	;2		4599	
+0C20	 D6 08				SUB d8	;2		4601	
+0C22	 05					DEC, B	;1		4602	
+0C23	 20 F9				JR NZ s8	;3		4605	
+0C25	 3E F0				LD, A, d8	;2		4607	
+0C27	 0D					DEC, C	;1		4608	
+0C28	 28 04				JR Z s8	;3		4611	
+0C2A	 77					LD (HL), A	;2		4613	
+0C2B	 19					ADD HL, DE	;2		4615	
+0C2C	 18 F9				JR s8	;3		4618	
+0C2E	 F0 DC				LD A, (a8)	;2		4620	
+0C30	 A7					AND A	;1		4621	
+0C31	 28 07				JR Z s8	;3		4624	
+0C33	 F6 80				OR d8	;2		4626	
+0C35	 E0 B1				LD (a8), A	;3		4629	
+0C37	 AF					XOR A	;1		4630	
+0C38	 E0 DC				LD (a8), A	;3		4633	
+0C3A	 3E FF				LD, A, d8	;2		4635	
+0C3C	 E0 D0				LD (a8), A	;3		4638	
+0C3E	 F0 CB				LD A, (a8)	;2		4640	
+0C40	 FE 29				CP d8	;2		4642	
+0C42	 F0 B1				LD A, (a8)	;2		4644	
+0C44	 20 07				JR NZ s8	;3		4647	
+0C46	 E0 CF				LD (a8), A	;3		4650	
+0C48	 3E 01				LD, A, d8	;2		4652	
+0C4A	 E0 CE				LD (a8), A	;3		4655	
+0C4C	 C9					RET	;4		4659	
+0C4D	 E0 CF				LD (a8), A	;3		4662	
+0C4F	 C9					RET	;4		4666	
+0C50	 F0 D1				LD A, (a8)	;2		4668	
+0C52	 FE AA				CP d8	;2		4670	
+0C54	 28 26				JR Z s8	;3		4673	
+0C56	 3E 77				LD, A, d8	;2		4675	
+0C58	 E0 D1				LD (a8), A	;3		4678	
+0C5A	 3E 01				LD, A, d8	;2		4680	
+0C5C	 E0 E1				LD (a8), A	;3		4683	
+0C5E	 18 CE				JR s8	;3		4686	
+0C60	 0E 13				LD, C, d8	;2		4688	
+0C62	 18 C1				JR s8	;3		4691	
+0C64	 F0 D1				LD A, (a8)	;2		4693	
+0C66	 FE 77				CP d8	;2		4695	
+0C68	 28 12				JR Z s8	;3		4698	
+0C6A	 3E AA				LD, A, d8	;2		4700	
+0C6C	 E0 D1				LD (a8), A	;3		4703	
+0C6E	 3E 1B				LD, A, d8	;2		4705	
+0C70	 E0 E1				LD (a8), A	;3		4708	
+0C72	 3E 05				LD, A, d8	;2		4710	
+0C74	 E0 A7				LD (a8), A	;3		4713	
+0C76	 0E 01				LD, C, d8	;2		4715	
+0C78	 06 12				LD, B, d8	;2		4717	
+0C7A	 18 A0				JR s8	;3		4720	
+0C7C	 3E 01				LD, A, d8	;2		4722	
+0C7E	 E0 EF				LD (a8), A	;3		4725	
+0C80	 18 AC				JR s8	;3		4728	
+0C82	 E6 7F				AND d8	;2		4730	
+0C84	 FE 05				CP d8	;2		4732	
+0C86	 30 A6				JR NC s8	;3		4735	
+0C88	 E0 D2				LD (a8), A	;3		4738	
+0C8A	 18 AE				JR s8	;3		4741	
+0C8C	 F0 D3				LD A, (a8)	;2		4743	
+0C8E	 A7					AND A	;1		4744	
+0C8F	 28 07				JR Z s8	;3		4747	
+0C91	 CB		
+0C93	 C8					RET Z	;5		4752	
+0C94	 E6 07				AND d8	;2		4754	
+0C96	 18 0A				JR s8	;3		4757	
+0C98	 F0 D2				LD A, (a8)	;2		4759	
+0C9A	 A7					AND A	;1		4760	
+0C9B	 C8					RET Z	;5		4765	
+0C9C	 E0 D3				LD (a8), A	;3		4768	
+0C9E	 AF					XOR A	;1		4769	
+0C9F	 E0 D2				LD (a8), A	;3		4772	
+0CA1	 C9					RET	;4		4776	
+0CA2	 4F					LD C, A	;1		4777	
+0CA3	 C5					PUSH BC	;4		4781	
+0CA4	 21 22 C8			LD (HL), d16	;3		4784	
+0CA7	 11 E0 FF			LD DE, d16	;3		4787	
+0CAA	 19					ADD HL, DE	;2		4789	
+0CAB	 0D					DEC, C	;1		4790	
+0CAC	 20 FC				JR NZ s8	;3		4793	
+0CAE	 11 22 C8			LD DE, d16	;3		4796	
+0CB1	 0E 11				LD, C, d8	;2		4798	
+0CB3	 06 0A				LD, B, d8	;2		4800	
+0CB5	 1A					LD A, (DE)	;2		4802	
+0CB6	 22					LD (HL+), A	;2		4804	
+0CB7	 1C					INC, E	;1		4805	
+0CB8	 05					DEC, B	;1		4806	
+0CB9	 20 FA				JR NZ s8	;3		4809	
+0CBB	 D5					PUSH DE	;4		4813	
+0CBC	 11 16 00			LD DE, d16	;3		4816	
+0CBF	 19					ADD HL, DE	;2		4818	
+0CC0	 D1					POP DE	;3		4821	
+0CC1	 E5					PUSH (HL)	;4		4825	
+0CC2	 21 16 00			LD (HL), d16	;3		4828	
+0CC5	 19					ADD HL, DE	;2		4830	
+0CC6	 E5					PUSH (HL)	;4		4834	
+0CC7	 D1					POP DE	;3		4837	
+0CC8	 E1					POP (HL)	;3		4840	
+0CC9	 0D					DEC, C	;1		4841	
+0CCA	 20 E7				JR NZ s8	;3		4844	
+0CCC	 C1					POP BC	;3		4847	
+0CCD	 11 00 C4			LD DE, d16	;3		4850	
+0CD0	 06 0A				LD, B, d8	;2		4852	
+0CD2	 1A					LD A, (DE)	;2		4854	
+0CD3	 22					LD (HL+), A	;2		4856	
+0CD4	 13					INC, DE	;2		4858	
+0CD5	 05					DEC, B	;1		4859	
+0CD6	 20 FA				JR NZ s8	;3		4862	
+0CD8	 D5					PUSH DE	;4		4866	
+0CD9	 11 16 00			LD DE, d16	;3		4869	
+0CDC	 19					ADD HL, DE	;2		4871	
+0CDD	 D1					POP DE	;3		4874	
+0CDE	 0D					DEC, C	;1		4875	
+0CDF	 20 EC				JR NZ s8	;3		4878	
+0CE1	 3E 02				LD, A, d8	;2		4880	
+0CE3	 E0 E3				LD (a8), A	;3		4883	
+0CE5	 E0 D4				LD (a8), A	;3		4886	
+0CE7	 AF					XOR A	;1		4887	
+0CE8	 E0 D3				LD (a8), A	;3		4890	
+0CEA	 C9					RET	;4		4894	
+0CEB	 F0 A6				LD A, (a8)	;2		4896	
+0CED	 A7					AND A	;1		4897	
+0CEE	 C0					RET NZ	;5		4902	
+0CEF	 3E 01				LD, A, d8	;2		4904	
+0CF1	 E0 FF				LD (a8), A	;3		4907	
+0CF3	 3E 03				LD, A, d8	;2		4909	
+0CF5	 E0 CD				LD (a8), A	;3		4912	
+0CF7	 F0 D1				LD A, (a8)	;2		4914	
+0CF9	 FE 77				CP d8	;2		4916	
+0CFB	 20 0C				JR NZ s8	;3		4919	
+0CFD	 F0 D0				LD A, (a8)	;2		4921	
+0CFF	 FE AA				CP d8	;2		4923	
+0D01	 20 10				JR NZ s8	;3		4926	
+0D03	 3E 01				LD, A, d8	;2		4928	
+0D05	 E0 EF				LD (a8), A	;3		4931	
+0D07	 18 0A				JR s8	;3		4934	
+0D09	 FE AA				CP d8	;2		4936	
+0D0B	 20 06				JR NZ s8	;3		4939	
+0D0D	 F0 D0				LD A, (a8)	;2		4941	
+0D0F	 FE 77				CP d8	;2		4943	
+0D11	 28 F0				JR Z s8	;3		4946	
+0D13	 06 34				LD, B, d8	;2		4948	
+0D15	 0E 43				LD, C, d8	;2		4950	
+0D17	 CD 3F 11			CALL a16	;6		4956	
+0D1A	 AF					XOR A	;1		4957	
+0D1B	 E0 E3				LD (a8), A	;3		4960	
+0D1D	 F0 D1				LD A, (a8)	;2		4962	
+0D1F	 FE AA				CP d8	;2		4964	
+0D21	 3E 1E				LD, A, d8	;2		4966	
+0D23	 20 02				JR NZ s8	;3		4969	
+0D25	 3E 1D				LD, A, d8	;2		4971	
+0D27	 E0 E1				LD (a8), A	;3		4974	
+0D29	 3E 28				LD, A, d8	;2		4976	
+0D2B	 E0 A6				LD (a8), A	;3		4979	
+0D2D	 3E 1D				LD, A, d8	;2		4981	
+0D2F	 E0 C6				LD (a8), A	;3		4984	
+0D31	 C9					RET	;4		4988	
+0D32	 F0 A6				LD A, (a8)	;2		4990	
+0D34	 A7					AND A	;1		4991	
+0D35	 C0					RET NZ	;5		4996	
+0D36	 F0 EF				LD A, (a8)	;2		4998	
+0D38	 A7					AND A	;1		4999	
+0D39	 20 05				JR NZ s8	;3		5002	
+0D3B	 F0 D7				LD A, (a8)	;2		5004	
+0D3D	 3C					INC, A	;1		5005	
+0D3E	 E0 D7				LD (a8), A	;3		5008	
+0D40	 CD 6F 0F			CALL a16	;6		5014	
+0D43	 11 F9 26			LD DE, d16	;3		5017	
+0D46	 F0 CB				LD A, (a8)	;2		5019	
+0D48	 FE 29				CP d8	;2		5021	
+0D4A	 28 03				JR Z s8	;3		5024	
+0D4C	 11 0B 27			LD DE, d16	;3		5027	
+0D4F	 21 00 C2			LD (HL), d16	;3		5030	
+0D52	 0E 03				LD, C, d8	;2		5032	
+0D54	 CD 76 17			CALL a16	;6		5038	
+0D57	 3E 19				LD, A, d8	;2		5040	
+0D59	 E0 A6				LD (a8), A	;3		5043	
+0D5B	 F0 EF				LD A, (a8)	;2		5045	
+0D5D	 A7					AND A	;1		5046	
+0D5E	 28 05				JR Z s8	;3		5049	
+0D60	 21 20 C2			LD (HL), d16	;3		5052	
+0D63	 36 80				LD (HL), d8	;3		5055	
+0D65	 3E 03				LD, A, d8	;2		5057	
+0D67	 CD 73 26			CALL a16	;6		5063	
+0D6A	 3E 20				LD, A, d8	;2		5065	
+0D6C	 E0 E1				LD (a8), A	;3		5068	
+0D6E	 3E 09				LD, A, d8	;2		5070	
+0D70	 EA E8 DF			LD a16, A	;4		5074	
+0D73	 F0 D7				LD A, (a8)	;2		5076	
+0D75	 FE 05				CP d8	;2		5078	
+0D77	 C0					RET NZ	;5		5083	
+0D78	 3E 11				LD, A, d8	;2		5085	
+0D7A	 EA E8 DF			LD a16, A	;4		5089	
+0D7D	 C9					RET	;4		5093	
+0D7E	 F0 D7				LD A, (a8)	;2		5095	
+0D80	 FE 05				CP d8	;2		5097	
+0D82	 20 07				JR NZ s8	;3		5100	
+0D84	 F0 C6				LD A, (a8)	;2		5102	
+0D86	 A7					AND A	;1		5103	
+0D87	 28 08				JR Z s8	;3		5106	
+0D89	 18 22				JR s8	;3		5109	
+0D8B	 F0 81				LD A, (a8)	;2		5111	
+0D8D	 CB		
+0D8F	 28 1C				JR Z s8	;3		5114	
+0D91	 3E 60				LD, A, d8	;2		5116	
+0D93	 E0 CF				LD (a8), A	;3		5119	
+0D95	 E0 CE				LD (a8), A	;3		5122	
+0D97	 18 1D				JR s8	;3		5125	
+0D99	 3E 01				LD, A, d8	;2		5127	
+0D9B	 E0 FF				LD (a8), A	;3		5130	
+0D9D	 F0 CC				LD A, (a8)	;2		5132	
+0D9F	 28 0C				JR Z s8	;3		5135	
+0DA1	 F0 CB				LD A, (a8)	;2		5137	
+0DA3	 FE 29				CP d8	;2		5139	
+0DA5	 28 D7				JR Z s8	;3		5142	
+0DA7	 F0 D0				LD A, (a8)	;2		5144	
+0DA9	 FE 60				CP d8	;2		5146	
+0DAB	 28 09				JR Z s8	;3		5149	
+0DAD	 CD BD 0D			CALL a16	;6		5155	
+0DB0	 3E 03				LD, A, d8	;2		5157	
+0DB2	 CD 73 26			CALL a16	;6		5163	
+0DB5	 C9					RET	;4		5167	
+0DB6	 3E 1F				LD, A, d8	;2		5169	
+0DB8	 E0 E1				LD (a8), A	;3		5172	
+0DBA	 E0 CC				LD (a8), A	;3		5175	
+0DBC	 C9					RET	;4		5179	
+0DBD	 F0 A6				LD A, (a8)	;2		5181	
+0DBF	 A7					AND A	;1		5182	
+0DC0	 20 23				JR NZ s8	;3		5185	
+0DC2	 21 C6 FF			LD (HL), d16	;3		5188	
+0DC5	 35					DEC (HL)	;3		5191	
+0DC6	 3E 19				LD, A, d8	;2		5193	
+0DC8	 E0 A6				LD (a8), A	;3		5196	
+0DCA	 CD 60 0F			CALL a16	;6		5202	
+0DCD	 21 01 C2			LD (HL), d16	;3		5205	
+0DD0	 7E					LD A, (HL)	;2		5207	
+0DD1	 EE 30				XOR d8	;2		5209	
+0DD3	 22					LD (HL+), A	;2		5211	
+0DD4	 FE 60				CP d8	;2		5213	
+0DD6	 CC 17 0F			CALL Z, a16	;6		5219	
+0DD9	 2C					INC, L	;1		5220	
+0DDA	 F5					PUSH AF	;4		5224	
+0DDB	 7E					LD A, (HL)	;2		5226	
+0DDC	 EE 01				XOR d8	;2		5228	
+0DDE	 77					LD (HL), A	;2		5230	
+0DDF	 2E 13				LD, L, d8	;2		5232	
+0DE1	 32					LD (HL-), A	;2		5234	
+0DE2	 F1					POP AF	;3		5237	
+0DE3	 2D					DEC, L	;1		5238	
+0DE4	 77					LD (HL), A	;2		5240	
+0DE5	 F0 D7				LD A, (a8)	;2		5242	
+0DE7	 FE 05				CP d8	;2		5244	
+0DE9	 20 28				JR NZ s8	;3		5247	
+0DEB	 F0 C6				LD A, (a8)	;2		5249	
+0DED	 21 21 C2			LD (HL), d16	;3		5252	
+0DF0	 FE 06				CP d8	;2		5254	
+0DF2	 28 1B				JR Z s8	;3		5257	
+0DF4	 FE 08				CP d8	;2		5259	
+0DF6	 30 1B				JR NC s8	;3		5262	
+0DF8	 7E					LD A, (HL)	;2		5264	
+0DF9	 FE 72				CP d8	;2		5266	
+0DFB	 30 06				JR NC s8	;3		5269	
+0DFD	 FE 69				CP d8	;2		5271	
+0DFF	 C8					RET Z	;5		5276	
+0E00	 34					INC (HL)	;3		5279	
+0E01	 34					INC (HL)	;3		5282	
+0E02	 C9					RET	;4		5286	
+0E03	 36 69				LD (HL), d8	;3		5289	
+0E05	 2C					INC, L	;1		5290	
+0E06	 2C					INC, L	;1		5291	
+0E07	 36 57				LD (HL), d8	;3		5294	
+0E09	 3E 06				LD, A, d8	;2		5296	
+0E0B	 EA E0 DF			LD a16, A	;4		5300	
+0E0E	 C9					RET	;4		5304	
+0E0F	 2D					DEC, L	;1		5305	
+0E10	 36 80				LD (HL), d8	;3		5308	
+0E12	 C9					RET	;4		5312	
+0E13	 F0 A7				LD A, (a8)	;2		5314	
+0E15	 A7					AND A	;1		5315	
+0E16	 C0					RET NZ	;5		5320	
+0E17	 3E 0F				LD, A, d8	;2		5322	
+0E19	 E0 A7				LD (a8), A	;3		5325	
+0E1B	 21 23 C2			LD (HL), d16	;3		5328	
+0E1E	 7E					LD A, (HL)	;2		5330	
+0E1F	 EE 01				XOR d8	;2		5332	
+0E21	 77					LD (HL), A	;2		5334	
+0E22	 C9					RET	;4		5338	
+0E23	 F0 A6				LD A, (a8)	;2		5340	
+0E25	 A7					AND A	;1		5341	
+0E26	 C0					RET NZ	;5		5346	
+0E27	 F0 EF				LD A, (a8)	;2		5348	
+0E29	 A7					AND A	;1		5349	
+0E2A	 20 05				JR NZ s8	;3		5352	
+0E2C	 F0 D8				LD A, (a8)	;2		5354	
+0E2E	 3C					INC, A	;1		5355	
+0E2F	 E0 D8				LD (a8), A	;3		5358	
+0E31	 CD 6F 0F			CALL a16	;6		5364	
+0E34	 11 1D 27			LD DE, d16	;3		5367	
+0E37	 F0 CB				LD A, (a8)	;2		5369	
+0E39	 FE 29				CP d8	;2		5371	
+0E3B	 28 03				JR Z s8	;3		5374	
+0E3D	 11 29 27			LD DE, d16	;3		5377	
+0E40	 21 00 C2			LD (HL), d16	;3		5380	
+0E43	 0E 02				LD, C, d8	;2		5382	
+0E45	 CD 76 17			CALL a16	;6		5388	
+0E48	 3E 19				LD, A, d8	;2		5390	
+0E4A	 E0 A6				LD (a8), A	;3		5393	
+0E4C	 F0 EF				LD A, (a8)	;2		5395	
+0E4E	 A7					AND A	;1		5396	
+0E4F	 28 05				JR Z s8	;3		5399	
+0E51	 21 10 C2			LD (HL), d16	;3		5402	
+0E54	 36 80				LD (HL), d8	;3		5405	
+0E56	 3E 02				LD, A, d8	;2		5407	
+0E58	 CD 73 26			CALL a16	;6		5413	
+0E5B	 3E 21				LD, A, d8	;2		5415	
+0E5D	 E0 E1				LD (a8), A	;3		5418	
+0E5F	 3E 09				LD, A, d8	;2		5420	
+0E61	 EA E8 DF			LD a16, A	;4		5424	
+0E64	 F0 D8				LD A, (a8)	;2		5426	
+0E66	 FE 05				CP d8	;2		5428	
+0E68	 C0					RET NZ	;5		5433	
+0E69	 3E 11				LD, A, d8	;2		5435	
+0E6B	 EA E8 DF			LD a16, A	;4		5439	
+0E6E	 C9					RET	;4		5443	
+0E6F	 F0 D8				LD A, (a8)	;2		5445	
+0E71	 FE 05				CP d8	;2		5447	
+0E73	 20 07				JR NZ s8	;3		5450	
+0E75	 F0 C6				LD A, (a8)	;2		5452	
+0E77	 A7					AND A	;1		5453	
+0E78	 28 08				JR Z s8	;3		5456	
+0E7A	 18 22				JR s8	;3		5459	
+0E7C	 F0 81				LD A, (a8)	;2		5461	
+0E7E	 CB		
+0E80	 28 1C				JR Z s8	;3		5464	
+0E82	 3E 60				LD, A, d8	;2		5466	
+0E84	 E0 CF				LD (a8), A	;3		5469	
+0E86	 E0 CE				LD (a8), A	;3		5472	
+0E88	 18 1D				JR s8	;3		5475	
+0E8A	 3E 01				LD, A, d8	;2		5477	
+0E8C	 E0 FF				LD (a8), A	;3		5480	
+0E8E	 F0 CC				LD A, (a8)	;2		5482	
+0E90	 28 0C				JR Z s8	;3		5485	
+0E92	 F0 CB				LD A, (a8)	;2		5487	
+0E94	 FE 29				CP d8	;2		5489	
+0E96	 28 D7				JR Z s8	;3		5492	
+0E98	 F0 D0				LD A, (a8)	;2		5494	
+0E9A	 FE 60				CP d8	;2		5496	
+0E9C	 28 09				JR Z s8	;3		5499	
+0E9E	 CD AE 0E			CALL a16	;6		5505	
+0EA1	 3E 02				LD, A, d8	;2		5507	
+0EA3	 CD 73 26			CALL a16	;6		5513	
+0EA6	 C9					RET	;4		5517	
+0EA7	 3E 1F				LD, A, d8	;2		5519	
+0EA9	 E0 E1				LD (a8), A	;3		5522	
+0EAB	 E0 CC				LD (a8), A	;3		5525	
+0EAD	 C9					RET	;4		5529	
+0EAE	 F0 A6				LD A, (a8)	;2		5531	
+0EB0	 A7					AND A	;1		5532	
+0EB1	 20 1C				JR NZ s8	;3		5535	
+0EB3	 21 C6 FF			LD (HL), d16	;3		5538	
+0EB6	 35					DEC (HL)	;3		5541	
+0EB7	 3E 19				LD, A, d8	;2		5543	
+0EB9	 E0 A6				LD (a8), A	;3		5546	
+0EBB	 CD 60 0F			CALL a16	;6		5552	
+0EBE	 21 11 C2			LD (HL), d16	;3		5555	
+0EC1	 7E					LD A, (HL)	;2		5557	
+0EC2	 EE 08				XOR d8	;2		5559	
+0EC4	 22					LD (HL+), A	;2		5561	
+0EC5	 FE 68				CP d8	;2		5563	
+0EC7	 CC 17 0F			CALL Z, a16	;6		5569	
+0ECA	 2C					INC, L	;1		5570	
+0ECB	 7E					LD A, (HL)	;2		5572	
+0ECC	 EE 01				XOR d8	;2		5574	
+0ECE	 77					LD (HL), A	;2		5576	
+0ECF	 F0 D8				LD A, (a8)	;2		5578	
+0ED1	 FE 05				CP d8	;2		5580	
+0ED3	 20 32				JR NZ s8	;3		5583	
+0ED5	 F0 C6				LD A, (a8)	;2		5585	
+0ED7	 21 01 C2			LD (HL), d16	;3		5588	
+0EDA	 FE 05				CP d8	;2		5590	
+0EDC	 28 25				JR Z s8	;3		5593	
+0EDE	 FE 06				CP d8	;2		5595	
+0EE0	 28 11				JR Z s8	;3		5598	
+0EE2	 FE 08				CP d8	;2		5600	
+0EE4	 30 21				JR NC s8	;3		5603	
+0EE6	 7E					LD A, (HL)	;2		5605	
+0EE7	 FE 72				CP d8	;2		5607	
+0EE9	 30 18				JR NC s8	;3		5610	
+0EEB	 FE 61				CP d8	;2		5612	
+0EED	 C8					RET Z	;5		5617	
+0EEE	 34					INC (HL)	;3		5620	
+0EEF	 34					INC (HL)	;3		5623	
+0EF0	 34					INC (HL)	;3		5626	
+0EF1	 34					INC (HL)	;3		5629	
+0EF2	 C9					RET	;4		5633	
+0EF3	 2D					DEC, L	;1		5634	
+0EF4	 36 00				LD (HL), d8	;3		5637	
+0EF6	 2C					INC, L	;1		5638	
+0EF7	 36 61				LD (HL), d8	;3		5641	
+0EF9	 2C					INC, L	;1		5642	
+0EFA	 2C					INC, L	;1		5643	
+0EFB	 36 56				LD (HL), d8	;3		5646	
+0EFD	 3E 06				LD, A, d8	;2		5648	
+0EFF	 EA E0 DF			LD a16, A	;4		5652	
+0F02	 C9					RET	;4		5656	
+0F03	 2D					DEC, L	;1		5657	
+0F04	 36 80				LD (HL), d8	;3		5660	
+0F06	 C9					RET	;4		5664	
+0F07	 F0 A7				LD A, (a8)	;2		5666	
+0F09	 A7					AND A	;1		5667	
+0F0A	 C0					RET NZ	;5		5672	
+0F0B	 3E 0F				LD, A, d8	;2		5674	
+0F0D	 E0 A7				LD (a8), A	;3		5677	
+0F0F	 21 03 C2			LD (HL), d16	;3		5680	
+0F12	 7E					LD A, (HL)	;2		5682	
+0F13	 EE 01				XOR d8	;2		5684	
+0F15	 77					LD (HL), A	;2		5686	
+0F16	 C9					RET	;4		5690	
+0F17	 F5					PUSH AF	;4		5694	
+0F18	 E5					PUSH (HL)	;4		5698	
+0F19	 F0 D7				LD A, (a8)	;2		5700	
+0F1B	 FE 05				CP d8	;2		5702	
+0F1D	 28 1A				JR Z s8	;3		5705	
+0F1F	 F0 D8				LD A, (a8)	;2		5707	
+0F21	 FE 05				CP d8	;2		5709	
+0F23	 28 14				JR Z s8	;3		5712	
+0F25	 F0 CB				LD A, (a8)	;2		5714	
+0F27	 FE 29				CP d8	;2		5716	
+0F29	 20 0E				JR NZ s8	;3		5719	
+0F2B	 21 60 C0			LD (HL), d16	;3		5722	
+0F2E	 06 24				LD, B, d8	;2		5724	
+0F30	 11 3C 0F			LD DE, d16	;3		5727	
+0F33	 1A					LD A, (DE)	;2		5729	
+0F34	 22					LD (HL+), A	;2		5731	
+0F35	 13					INC, DE	;2		5733	
+0F36	 05					DEC, B	;1		5734	
+0F37	 20 FA				JR NZ s8	;3		5737	
+0F39	 E1					POP (HL)	;3		5740	
+0F3A	 F1					POP AF	;3		5743	
+0F3B	 C9					RET	;4		5747	
+0F3C	 42					LD B, D	;1		5748	
+0F3D	 30 0D				JR NC s8	;3		5751	
+0F3F	 00					NOP	;1		5752	
+0F40	 42					LD B, D	;1		5753	
+0F41	 38 B2				JR C s8	;3		5756	
+0F43	 00					NOP	;1		5757	
+0F44	 42					LD B, D	;1		5758	
+0F45	 40					LD B, B	;1		5759	
+0F46	 0E 00				LD, C, d8	;2		5761	
+0F48	 42					LD B, D	;1		5762	
+0F49	 48					LD C, B	;1		5763	
+0F4A	 1C					INC, E	;1		5764	
+0F4B	 00					NOP	;1		5765	
+0F4C	 42					LD B, D	;1		5766	
+0F4D	 58					LD E, B	;1		5767	
+0F4E	 0E 00				LD, C, d8	;2		5769	
+0F50	 42					LD B, D	;1		5770	
+0F51	 60					LD H, B	;1		5771	
+0F52	 1D					DEC, E	;1		5772	
+0F53	 00					NOP	;1		5773	
+0F54	 42					LD B, D	;1		5774	
+0F55	 68					LD L, B	;1		5775	
+0F56	 B5					OR L	;1		5776	
+0F57	 00					NOP	;1		5777	
+0F58	 42					LD B, D	;1		5778	
+0F59	 70					LD (HL), B	;2		5780	
+0F5A	 BB					CP E	;1		5781	
+0F5B	 00					NOP	;1		5782	
+0F5C	 42					LD B, D	;1		5783	
+0F5D	 78					LD A, B	;1		5784	
+0F5E	 1D					DEC, E	;1		5785	
+0F5F	 00					NOP	;1		5786	
+0F60	 21 60 C0			LD (HL), d16	;3		5789	
+0F63	 11 04 00			LD DE, d16	;3		5792	
+0F66	 06 09				LD, B, d8	;2		5794	
+0F68	 AF					XOR A	;1		5795	
+0F69	 77					LD (HL), A	;2		5797	
+0F6A	 19					ADD HL, DE	;2		5799	
+0F6B	 05					DEC, B	;1		5800	
+0F6C	 20 FB				JR NZ s8	;3		5803	
+0F6E	 C9					RET	;4		5807	
+0F6F	 CD 20 28			CALL a16	;6		5813	
+0F72	 21 AC 55			LD (HL), d16	;3		5816	
+0F75	 01 00 10			LD BC, d16	;3		5819	
+0F78	 CD E4 27			CALL a16	;6		5825	
+0F7B	 CD 95 27			CALL a16	;6		5831	
+0F7E	 21 00 98			LD (HL), d16	;3		5834	
+0F81	 11 E4 54			LD DE, d16	;3		5837	
+0F84	 06 04				LD, B, d8	;2		5839	
+0F86	 CD F0 27			CALL a16	;6		5845	
+0F89	 21 80 99			LD (HL), d16	;3		5848	
+0F8C	 06 06				LD, B, d8	;2		5850	
+0F8E	 CD F0 27			CALL a16	;6		5856	
+0F91	 F0 CB				LD A, (a8)	;2		5858	
+0F93	 FE 29				CP d8	;2		5860	
+0F95	 20 22				JR NZ s8	;3		5863	
+0F97	 21 41 98			LD (HL), d16	;3		5866	
+0F9A	 36 BD				LD (HL), d8	;3		5869	
+0F9C	 2C					INC, L	;1		5870	
+0F9D	 36 B2				LD (HL), d8	;3		5873	
+0F9F	 2C					INC, L	;1		5874	
+0FA0	 36 2E				LD (HL), d8	;3		5877	
+0FA2	 2C					INC, L	;1		5878	
+0FA3	 36 BE				LD (HL), d8	;3		5881	
+0FA5	 2C					INC, L	;1		5882	
+0FA6	 36 2E				LD (HL), d8	;3		5885	
+0FA8	 21 01 9A			LD (HL), d16	;3		5888	
+0FAB	 36 B4				LD (HL), d8	;3		5891	
+0FAD	 2C					INC, L	;1		5892	
+0FAE	 36 B5				LD (HL), d8	;3		5895	
+0FB0	 2C					INC, L	;1		5896	
+0FB1	 36 BB				LD (HL), d8	;3		5899	
+0FB3	 2C					INC, L	;1		5900	
+0FB4	 36 2E				LD (HL), d8	;3		5903	
+0FB6	 2C					INC, L	;1		5904	
+0FB7	 36 BC				LD (HL), d8	;3		5907	
+0FB9	 F0 EF				LD A, (a8)	;2		5909	
+0FBB	 A7					AND A	;1		5910	
+0FBC	 20 03				JR NZ s8	;3		5913	
+0FBE	 CD 85 10			CALL a16	;6		5919	
+0FC1	 F0 D7				LD A, (a8)	;2		5921	
+0FC3	 A7					AND A	;1		5922	
+0FC4	 28 49				JR Z s8	;3		5925	
+0FC6	 FE 05				CP d8	;2		5927	
+0FC8	 20 16				JR NZ s8	;3		5930	
+0FCA	 21 A5 98			LD (HL), d16	;3		5933	
+0FCD	 06 0B				LD, B, d8	;2		5935	
+0FCF	 F0 CB				LD A, (a8)	;2		5937	
+0FD1	 FE 29				CP d8	;2		5939	
+0FD3	 11 F3 10			LD DE, d16	;3		5942	
+0FD6	 28 03				JR Z s8	;3		5945	
+0FD8	 11 FE 10			LD DE, d16	;3		5948	
+0FDB	 CD D8 10			CALL a16	;6		5954	
+0FDE	 3E 04				LD, A, d8	;2		5956	
+0FE0	 4F					LD C, A	;1		5957	
+0FE1	 F0 CB				LD A, (a8)	;2		5959	
+0FE3	 FE 29				CP d8	;2		5961	
+0FE5	 3E 93				LD, A, d8	;2		5963	
+0FE7	 20 02				JR NZ s8	;3		5966	
+0FE9	 3E 8F				LD, A, d8	;2		5968	
+0FEB	 E0 A0				LD (a8), A	;3		5971	
+0FED	 21 E7 99			LD (HL), d16	;3		5974	
+0FF0	 CD 6A 10			CALL a16	;6		5980	
+0FF3	 F0 D9				LD A, (a8)	;2		5982	
+0FF5	 A7					AND A	;1		5983	
+0FF6	 28 17				JR Z s8	;3		5986	
+0FF8	 3E AC				LD, A, d8	;2		5988	
+0FFA	 E0 A0				LD (a8), A	;3		5991	
+0FFC	 21 F0 99			LD (HL), d16	;3		5994	
+0FFF	 0E 01				LD, C, d8	;2		5996	
+1001	 CD 6A 10			CALL a16	;6		6002	
+1004	 21 A6 98			LD (HL), d16	;3		6005	
+1007	 11 09 11			LD DE, d16	;3		6008	
+100A	 06 09				LD, B, d8	;2		6010	
+100C	 CD D8 10			CALL a16	;6		6016	
+100F	 F0 D8				LD A, (a8)	;2		6018	
+1011	 A7					AND A	;1		6019	
+1012	 28 3E				JR Z s8	;3		6022	
+1014	 FE 05				CP d8	;2		6024	
+1016	 20 16				JR NZ s8	;3		6027	
+1018	 21 A5 98			LD (HL), d16	;3		6030	
+101B	 06 0B				LD, B, d8	;2		6032	
+101D	 F0 CB				LD A, (a8)	;2		6034	
+101F	 FE 29				CP d8	;2		6036	
+1021	 11 FE 10			LD DE, d16	;3		6039	
+1024	 28 03				JR Z s8	;3		6042	
+1026	 11 F3 10			LD DE, d16	;3		6045	
+1029	 CD D8 10			CALL a16	;6		6051	
+102C	 3E 04				LD, A, d8	;2		6053	
+102E	 4F					LD C, A	;1		6054	
+102F	 F0 CB				LD A, (a8)	;2		6056	
+1031	 FE 29				CP d8	;2		6058	
+1033	 3E 8F				LD, A, d8	;2		6060	
+1035	 20 02				JR NZ s8	;3		6063	
+1037	 3E 93				LD, A, d8	;2		6065	
+1039	 E0 A0				LD (a8), A	;3		6068	
+103B	 21 27 98			LD (HL), d16	;3		6071	
+103E	 CD 6A 10			CALL a16	;6		6077	
+1041	 F0 DA				LD A, (a8)	;2		6079	
+1043	 A7					AND A	;1		6080	
+1044	 28 0C				JR Z s8	;3		6083	
+1046	 3E AC				LD, A, d8	;2		6085	
+1048	 E0 A0				LD (a8), A	;3		6088	
+104A	 21 30 98			LD (HL), d16	;3		6091	
+104D	 0E 01				LD, C, d8	;2		6093	
+104F	 CD 6A 10			CALL a16	;6		6099	
+1052	 F0 DB				LD A, (a8)	;2		6101	
+1054	 A7					AND A	;1		6102	
+1055	 28 0B				JR Z s8	;3		6105	
+1057	 21 A7 98			LD (HL), d16	;3		6108	
+105A	 11 ED 10			LD DE, d16	;3		6111	
+105D	 06 06				LD, B, d8	;2		6113	
+105F	 CD D8 10			CALL a16	;6		6119	
+1062	 3E D3				LD, A, d8	;2		6121	
+1064	 E0 40				LD (a8), A	;3		6124	
+1066	 CD 8A 17			CALL a16	;6		6130	
+1069	 C9					RET	;4		6134	
+106A	 F0 A0				LD A, (a8)	;2		6136	
+106C	 E5					PUSH (HL)	;4		6140	
+106D	 11 20 00			LD DE, d16	;3		6143	
+1070	 06 02				LD, B, d8	;2		6145	
+1072	 E5					PUSH (HL)	;4		6149	
+1073	 22					LD (HL+), A	;2		6151	
+1074	 3C					INC, A	;1		6152	
+1075	 77					LD (HL), A	;2		6154	
+1076	 3C					INC, A	;1		6155	
+1077	 E1					POP (HL)	;3		6158	
+1078	 19					ADD HL, DE	;2		6160	
+1079	 05					DEC, B	;1		6161	
+107A	 20 F6				JR NZ s8	;3		6164	
+107C	 E1					POP (HL)	;3		6167	
+107D	 11 03 00			LD DE, d16	;3		6170	
+1080	 19					ADD HL, DE	;2		6172	
+1081	 0D					DEC, C	;1		6173	
+1082	 20 E6				JR NZ s8	;3		6176	
+1084	 C9					RET	;4		6180	
+1085	 21 D7 FF			LD (HL), d16	;3		6183	
+1088	 11 D8 FF			LD DE, d16	;3		6186	
+108B	 F0 D9				LD A, (a8)	;2		6188	
+108D	 A7					AND A	;1		6189	
+108E	 20 3A				JR NZ s8	;3		6192	
+1090	 F0 DA				LD A, (a8)	;2		6194	
+1092	 A7					AND A	;1		6195	
+1093	 20 3C				JR NZ s8	;3		6198	
+1095	 F0 DB				LD A, (a8)	;2		6200	
+1097	 A7					AND A	;1		6201	
+1098	 20 21				JR NZ s8	;3		6204	
+109A	 7E					LD A, (HL)	;2		6206	
+109B	 FE 04				CP d8	;2		6208	
+109D	 28 11				JR Z s8	;3		6211	
+109F	 1A					LD A, (DE)	;2		6213	
+10A0	 FE 04				CP d8	;2		6215	
+10A2	 C0					RET NZ	;5		6220	
+10A3	 3E 05				LD, A, d8	;2		6222	
+10A5	 12					LD (DE), A	;2		6224	
+10A6	 18 0A				JR s8	;3		6227	
+10A8	 1A					LD A, (DE)	;2		6229	
+10A9	 FE 03				CP d8	;2		6231	
+10AB	 C0					RET NZ	;5		6236	
+10AC	 3E 03				LD, A, d8	;2		6238	
+10AE	 18 05				JR s8	;3		6241	
+10B0	 36 05				LD (HL), d8	;3		6244	
+10B2	 AF					XOR A	;1		6245	
+10B3	 E0 DB				LD (a8), A	;3		6248	
+10B5	 AF					XOR A	;1		6249	
+10B6	 E0 D9				LD (a8), A	;3		6252	
+10B8	 E0 DA				LD (a8), A	;3		6255	
+10BA	 C9					RET	;4		6259	
+10BB	 7E					LD A, (HL)	;2		6261	
+10BC	 FE 04				CP d8	;2		6263	
+10BE	 20 06				JR NZ s8	;3		6266	
+10C0	 E0 D9				LD (a8), A	;3		6269	
+10C2	 AF					XOR A	;1		6270	
+10C3	 E0 DB				LD (a8), A	;3		6273	
+10C5	 C9					RET	;4		6277	
+10C6	 E0 DA				LD (a8), A	;3		6280	
+10C8	 18 F8				JR s8	;3		6283	
+10CA	 7E					LD A, (HL)	;2		6285	
+10CB	 FE 05				CP d8	;2		6287	
+10CD	 28 E1				JR Z s8	;3		6290	
+10CF	 18 DB				JR s8	;3		6293	
+10D1	 1A					LD A, (DE)	;2		6295	
+10D2	 FE 05				CP d8	;2		6297	
+10D4	 28 CD				JR Z s8	;3		6300	
+10D6	 18 D4				JR s8	;3		6303	
+10D8	 C5					PUSH BC	;4		6307	
+10D9	 E5					PUSH (HL)	;4		6311	
+10DA	 1A					LD A, (DE)	;2		6313	
+10DB	 22					LD (HL+), A	;2		6315	
+10DC	 13					INC, DE	;2		6317	
+10DD	 05					DEC, B	;1		6318	
+10DE	 20 FA				JR NZ s8	;3		6321	
+10E0	 E1					POP (HL)	;3		6324	
+10E1	 11 20 00			LD DE, d16	;3		6327	
+10E4	 19					ADD HL, DE	;2		6329	
+10E5	 C1					POP BC	;3		6332	
+10E6	 3E B6				LD, A, d8	;2		6334	
+10E8	 22					LD (HL+), A	;2		6336	
+10E9	 05					DEC, B	;1		6337	
+10EA	 20 FC				JR NZ s8	;3		6340	
+10EC	 C9					RET	;4		6344	
+10ED	 B0					OR B	;1		6345	
+10EE	 B1					OR C	;1		6346	
+10EF	 B2					OR D	;1		6347	
+10F0	 B3					OR E	;1		6348	
+10F1	 B1					OR C	;1		6349	
+10F2	 3E B4				LD, A, d8	;2		6351	
+10F4	 B5					OR L	;1		6352	
+10F5	 BB					CP E	;1		6353	
+10F6	 2E BC				LD, L, d8	;2		6355	
+10F8	 2F					CPL	;1		6356	
+10F9	 2D					DEC, L	;1		6357	
+10FA	 2E 3D				LD, L, d8	;2		6359	
+10FC	 0E 3E				LD, C, d8	;2		6361	
+10FE	 BD					CP L	;1		6362	
+10FF	 B2					OR D	;1		6363	
+1100	 2E BE				LD, L, d8	;2		6365	
+1102	 2E 2F				LD, L, d8	;2		6367	
+1104	 2D					DEC, L	;1		6368	
+1105	 2E 3D				LD, L, d8	;2		6370	
+1107	 0E 3E				LD, C, d8	;2		6372	
+1109	 B5					OR L	;1		6373	
+110A	 B0					OR B	;1		6374	
+110B	 41					LD B, C	;1		6375	
+110C	 B5					OR L	;1		6376	
+110D	 3D					DEC, A	;1		6377	
+110E	 1D					DEC, E	;1		6378	
+110F	 B5					OR L	;1		6379	
+1110	 BE					CP (HL)	;2		6381	
+1111	 B1					OR C	;1		6382	
+1112	 3E 01				LD, A, d8	;2		6384	
+1114	 E0 FF				LD (a8), A	;3		6387	
+1116	 F0 A6				LD A, (a8)	;2		6389	
+1118	 A7					AND A	;1		6390	
+1119	 C0					RET NZ	;5		6395	
+111A	 CD 8A 17			CALL a16	;6		6401	
+111D	 AF					XOR A	;1		6402	
+111E	 E0 EF				LD (a8), A	;3		6405	
+1120	 06 27				LD, B, d8	;2		6407	
+1122	 0E 79				LD, C, d8	;2		6409	
+1124	 CD 3F 11			CALL a16	;6		6415	
+1127	 CD F3 7F			CALL a16	;6		6421	
+112A	 F0 D7				LD A, (a8)	;2		6423	
+112C	 FE 05				CP d8	;2		6425	
+112E	 28 0A				JR Z s8	;3		6428	
+1130	 F0 D8				LD A, (a8)	;2		6430	
+1132	 FE 05				CP d8	;2		6432	
+1134	 28 04				JR Z s8	;3		6435	
+1136	 3E 01				LD, A, d8	;2		6437	
+1138	 E0 D6				LD (a8), A	;3		6440	
+113A	 3E 16				LD, A, d8	;2		6442	
+113C	 E0 E1				LD (a8), A	;3		6445	
+113E	 C9					RET	;4		6449	
+113F	 F0 CC				LD A, (a8)	;2		6451	
+1141	 A7					AND A	;1		6452	
+1142	 28 14				JR Z s8	;3		6455	
+1144	 AF					XOR A	;1		6456	
+1145	 E0 CC				LD (a8), A	;3		6459	
+1147	 F0 CB				LD A, (a8)	;2		6461	
+1149	 FE 29				CP d8	;2		6463	
+114B	 F0 D0				LD A, (a8)	;2		6465	
+114D	 20 11				JR NZ s8	;3		6468	
+114F	 B8					CP B	;1		6469	
+1150	 28 08				JR Z s8	;3		6472	
+1152	 3E 02				LD, A, d8	;2		6474	
+1154	 E0 CF				LD (a8), A	;3		6477	
+1156	 E0 CE				LD (a8), A	;3		6480	
+1158	 E1					POP (HL)	;3		6483	
+1159	 C9					RET	;4		6487	
+115A	 79					LD A, C	;1		6488	
+115B	 E0 CF				LD (a8), A	;3		6491	
+115D	 E0 CE				LD (a8), A	;3		6494	
+115F	 C9					RET	;4		6498	
+1160	 B9					CP C	;1		6499	
+1161	 C8					RET Z	;5		6504	
+1162	 78					LD A, B	;1		6505	
+1163	 E0 CF				LD (a8), A	;3		6508	
+1165	 E1					POP (HL)	;3		6511	
+1166	 C9					RET	;4		6515	
+1167	 CD B2 11			CALL a16	;6		6521	
+116A	 21 E6 9C			LD (HL), d16	;3		6524	
+116D	 11 1B 14			LD DE, d16	;3		6527	
+1170	 06 07				LD, B, d8	;2		6529	
+1172	 CD 37 14			CALL a16	;6		6535	
+1175	 21 E7 9C			LD (HL), d16	;3		6538	
+1178	 11 22 14			LD DE, d16	;3		6541	
+117B	 06 07				LD, B, d8	;2		6543	
+117D	 CD 37 14			CALL a16	;6		6549	
+1180	 21 08 9D			LD (HL), d16	;3		6552	
+1183	 36 72				LD (HL), d8	;3		6555	
+1185	 2C					INC, L	;1		6556	
+1186	 36 C4				LD (HL), d8	;3		6559	
+1188	 21 28 9D			LD (HL), d16	;3		6562	
+118B	 36 B7				LD (HL), d8	;3		6565	
+118D	 2C					INC, L	;1		6566	
+118E	 36 B8				LD (HL), d8	;3		6569	
+1190	 11 71 27			LD DE, d16	;3		6572	
+1193	 21 00 C2			LD (HL), d16	;3		6575	
+1196	 0E 03				LD, C, d8	;2		6577	
+1198	 CD 76 17			CALL a16	;6		6583	
+119B	 3E 03				LD, A, d8	;2		6585	
+119D	 CD 73 26			CALL a16	;6		6591	
+11A0	 3E DB				LD, A, d8	;2		6593	
+11A2	 E0 40				LD (a8), A	;3		6596	
+11A4	 3E BB				LD, A, d8	;2		6598	
+11A6	 E0 A6				LD (a8), A	;3		6601	
+11A8	 3E 27				LD, A, d8	;2		6603	
+11AA	 E0 E1				LD (a8), A	;3		6606	
+11AC	 3E 10				LD, A, d8	;2		6608	
+11AE	 EA E8 DF			LD a16, A	;4		6612	
+11B1	 C9					RET	;4		6616	
+11B2	 CD 20 28			CALL a16	;6		6622	
+11B5	 21 AC 55			LD (HL), d16	;3		6625	
+11B8	 01 00 10			LD BC, d16	;3		6628	
+11BB	 CD E4 27			CALL a16	;6		6634	
+11BE	 21 FF 9F			LD (HL), d16	;3		6637	
+11C1	 CD 98 27			CALL a16	;6		6643	
+11C4	 21 C0 9D			LD (HL), d16	;3		6646	
+11C7	 11 C4 51			LD DE, d16	;3		6649	
+11CA	 06 04				LD, B, d8	;2		6651	
+11CC	 CD F0 27			CALL a16	;6		6657	
+11CF	 21 EC 9C			LD (HL), d16	;3		6660	
+11D2	 11 29 14			LD DE, d16	;3		6663	
+11D5	 06 07				LD, B, d8	;2		6665	
+11D7	 CD 37 14			CALL a16	;6		6671	
+11DA	 21 ED 9C			LD (HL), d16	;3		6674	
+11DD	 11 30 14			LD DE, d16	;3		6677	
+11E0	 06 07				LD, B, d8	;2		6679	
+11E2	 CD 37 14			CALL a16	;6		6685	
+11E5	 C9					RET	;4		6689	
+11E6	 F0 A6				LD A, (a8)	;2		6691	
+11E8	 A7					AND A	;1		6692	
+11E9	 C0					RET NZ	;5		6697	
+11EA	 21 10 C2			LD (HL), d16	;3		6700	
+11ED	 36 00				LD (HL), d8	;3		6703	
+11EF	 2E 20				LD, L, d8	;2		6705	
+11F1	 36 00				LD (HL), d8	;3		6708	
+11F3	 3E FF				LD, A, d8	;2		6710	
+11F5	 E0 A6				LD (a8), A	;3		6713	
+11F7	 3E 28				LD, A, d8	;2		6715	
+11F9	 E0 E1				LD (a8), A	;3		6718	
+11FB	 C9					RET	;4		6722	
+11FC	 F0 A6				LD A, (a8)	;2		6724	
+11FE	 A7					AND A	;1		6725	
+11FF	 28 04				JR Z s8	;3		6728	
+1201	 CD FA 13			CALL a16	;6		6734	
+1204	 C9					RET	;4		6738	
+1205	 3E 29				LD, A, d8	;2		6740	
+1207	 E0 E1				LD (a8), A	;3		6743	
+1209	 21 13 C2			LD (HL), d16	;3		6746	
+120C	 36 35				LD (HL), d8	;3		6749	
+120E	 2E 23				LD, L, d8	;2		6751	
+1210	 36 35				LD (HL), d8	;3		6754	
+1212	 3E FF				LD, A, d8	;2		6756	
+1214	 E0 A6				LD (a8), A	;3		6759	
+1216	 3E 2F				LD, A, d8	;2		6761	
+1218	 CD D7 1F			CALL a16	;6		6767	
+121B	 C9					RET	;4		6771	
+121C	 F0 A6				LD A, (a8)	;2		6773	
+121E	 A7					AND A	;1		6774	
+121F	 28 04				JR Z s8	;3		6777	
+1221	 CD FA 13			CALL a16	;6		6783	
+1224	 C9					RET	;4		6787	
+1225	 3E 02				LD, A, d8	;2		6789	
+1227	 E0 E1				LD (a8), A	;3		6792	
+1229	 21 08 9D			LD (HL), d16	;3		6795	
+122C	 06 2F				LD, B, d8	;2		6797	
+122E	 CD FF 19			CALL a16	;6		6803	
+1231	 21 09 9D			LD (HL), d16	;3		6806	
+1234	 CD FF 19			CALL a16	;6		6812	
+1237	 21 28 9D			LD (HL), d16	;3		6815	
+123A	 CD FF 19			CALL a16	;6		6821	
+123D	 21 29 9D			LD (HL), d16	;3		6824	
+1240	 CD FF 19			CALL a16	;6		6830	
+1243	 C9					RET	;4		6834	
+1244	 F0 A6				LD A, (a8)	;2		6836	
+1246	 A7					AND A	;1		6837	
+1247	 20 2E				JR NZ s8	;3		6840	
+1249	 3E 0A				LD, A, d8	;2		6842	
+124B	 E0 A6				LD (a8), A	;3		6845	
+124D	 21 01 C2			LD (HL), d16	;3		6848	
+1250	 35					DEC (HL)	;3		6851	
+1251	 7E					LD A, (HL)	;2		6853	
+1252	 FE 58				CP d8	;2		6855	
+1254	 20 21				JR NZ s8	;3		6858	
+1256	 21 10 C2			LD (HL), d16	;3		6861	
+1259	 36 00				LD (HL), d8	;3		6864	
+125B	 2C					INC, L	;1		6865	
+125C	 C6 20				ADD A, d8	;2		6867	
+125E	 22					LD (HL+), A	;2		6869	
+125F	 36 4C				LD (HL), d8	;3		6872	
+1261	 2C					INC, L	;1		6873	
+1262	 36 40				LD (HL), d8	;3		6876	
+1264	 2E 20				LD, L, d8	;2		6878	
+1266	 36 80				LD (HL), d8	;3		6881	
+1268	 3E 03				LD, A, d8	;2		6883	
+126A	 CD 73 26			CALL a16	;6		6889	
+126D	 3E 03				LD, A, d8	;2		6891	
+126F	 E0 E1				LD (a8), A	;3		6894	
+1271	 3E 04				LD, A, d8	;2		6896	
+1273	 EA F8 DF			LD a16, A	;4		6900	
+1276	 C9					RET	;4		6904	
+1277	 CD FA 13			CALL a16	;6		6910	
+127A	 C9					RET	;4		6914	
+127B	 F0 A6				LD A, (a8)	;2		6916	
+127D	 A7					AND A	;1		6917	
+127E	 20 1D				JR NZ s8	;3		6920	
+1280	 3E 0A				LD, A, d8	;2		6922	
+1282	 E0 A6				LD (a8), A	;3		6925	
+1284	 21 11 C2			LD (HL), d16	;3		6928	
+1287	 35					DEC (HL)	;3		6931	
+1288	 2E 01				LD, L, d8	;2		6933	
+128A	 35					DEC (HL)	;3		6936	
+128B	 7E					LD A, (HL)	;2		6938	
+128C	 FE D0				CP d8	;2		6940	
+128E	 20 0D				JR NZ s8	;3		6943	
+1290	 3E 9C				LD, A, d8	;2		6945	
+1292	 E0 C9				LD (a8), A	;3		6948	
+1294	 3E 82				LD, A, d8	;2		6950	
+1296	 E0 CA				LD (a8), A	;3		6953	
+1298	 3E 2C				LD, A, d8	;2		6955	
+129A	 E0 E1				LD (a8), A	;3		6958	
+129C	 C9					RET	;4		6962	
+129D	 F0 A7				LD A, (a8)	;2		6964	
+129F	 A7					AND A	;1		6965	
+12A0	 20 0B				JR NZ s8	;3		6968	
+12A2	 3E 06				LD, A, d8	;2		6970	
+12A4	 E0 A7				LD (a8), A	;3		6973	
+12A6	 21 13 C2			LD (HL), d16	;3		6976	
+12A9	 7E					LD A, (HL)	;2		6978	
+12AA	 EE 01				XOR d8	;2		6980	
+12AC	 77					LD (HL), A	;2		6982	
+12AD	 3E 03				LD, A, d8	;2		6984	
+12AF	 CD 73 26			CALL a16	;6		6990	
+12B2	 C9					RET	;4		6994	
+12B3	 F0 A6				LD A, (a8)	;2		6996	
+12B5	 A7					AND A	;1		6997	
+12B6	 C0					RET NZ	;5		7002	
+12B7	 3E 06				LD, A, d8	;2		7004	
+12B9	 E0 A6				LD (a8), A	;3		7007	
+12BB	 F0 CA				LD A, (a8)	;2		7009	
+12BD	 D6 82				SUB d8	;2		7011	
+12BF	 5F					LD E, A	;1		7012	
+12C0	 16 00				LD, D, d8	;2		7014	
+12C2	 21 F5 12			LD (HL), d16	;3		7017	
+12C5	 19					ADD HL, DE	;2		7019	
+12C6	 E5					PUSH (HL)	;4		7023	
+12C7	 D1					POP DE	;3		7026	
+12C8	 F0 C9				LD A, (a8)	;2		7028	
+12CA	 67					LD H, A	;1		7029	
+12CB	 F0 CA				LD A, (a8)	;2		7031	
+12CD	 6F					LD L, A	;1		7032	
+12CE	 1A					LD A, (DE)	;2		7034	
+12CF	 CD FE 19			CALL a16	;6		7040	
+12D2	 E5					PUSH (HL)	;4		7044	
+12D3	 11 20 00			LD DE, d16	;3		7047	
+12D6	 19					ADD HL, DE	;2		7049	
+12D7	 06 B6				LD, B, d8	;2		7051	
+12D9	 CD FF 19			CALL a16	;6		7057	
+12DC	 E1					POP (HL)	;3		7060	
+12DD	 23					INC, (HL)	;2		7062	
+12DE	 3E 02				LD, A, d8	;2		7064	
+12E0	 EA E0 DF			LD a16, A	;4		7068	
+12E3	 7C					LD A, H	;1		7069	
+12E4	 E0 C9				LD (a8), A	;3		7072	
+12E6	 7D					LD A, L	;1		7073	
+12E7	 E0 CA				LD (a8), A	;3		7076	
+12E9	 FE 92				CP d8	;2		7078	
+12EB	 C0					RET NZ	;5		7083	
+12EC	 3E FF				LD, A, d8	;2		7085	
+12EE	 E0 A6				LD (a8), A	;3		7088	
+12F0	 3E 2D				LD, A, d8	;2		7090	
+12F2	 E0 E1				LD (a8), A	;3		7093	
+12F4	 C9					RET	;4		7097	
+12F5	 B3					OR E	;1		7098	
+12F6	 BC					CP H	;1		7099	
+12F7	 3D					DEC, A	;1		7100	
+12F8	 BE					CP (HL)	;2		7102	
+12F9	 BB					CP E	;1		7103	
+12FA	 B5					OR L	;1		7104	
+12FB	 1D					DEC, E	;1		7105	
+12FC	 B2					OR D	;1		7106	
+12FD	 BD					CP L	;1		7107	
+12FE	 B5					OR L	;1		7108	
+12FF	 1D					DEC, E	;1		7109	
+1300	 2E BC				LD, L, d8	;2		7111	
+1302	 3D					DEC, A	;1		7112	
+1303	 0E 3E				LD, C, d8	;2		7114	
+1305	 F0 A6				LD A, (a8)	;2		7116	
+1307	 A7					AND A	;1		7117	
+1308	 C0					RET NZ	;5		7122	
+1309	 CD 20 28			CALL a16	;6		7128	
+130C	 CD AD 27			CALL a16	;6		7134	
+130F	 CD 93 22			CALL a16	;6		7140	
+1312	 3E 93				LD, A, d8	;2		7142	
+1314	 E0 40				LD (a8), A	;3		7145	
+1316	 3E 05				LD, A, d8	;2		7147	
+1318	 E0 E1				LD (a8), A	;3		7150	
+131A	 C9					RET	;4		7154	
+131B	 F0 A6				LD A, (a8)	;2		7156	
+131D	 A7					AND A	;1		7157	
+131E	 C0					RET NZ	;5		7162	
+131F	 3E 2E				LD, A, d8	;2		7164	
+1321	 E0 E1				LD (a8), A	;3		7167	
+1323	 C9					RET	;4		7171	
+1324	 CD B2 11			CALL a16	;6		7177	
+1327	 11 83 27			LD DE, d16	;3		7180	
+132A	 21 00 C2			LD (HL), d16	;3		7183	
+132D	 0E 03				LD, C, d8	;2		7185	
+132F	 CD 76 17			CALL a16	;6		7191	
+1332	 F0 F3				LD A, (a8)	;2		7193	
+1334	 EA 03 C2			LD a16, A	;4		7197	
+1337	 3E 03				LD, A, d8	;2		7199	
+1339	 CD 73 26			CALL a16	;6		7205	
+133C	 AF					XOR A	;1		7206	
+133D	 E0 F3				LD (a8), A	;3		7209	
+133F	 3E DB				LD, A, d8	;2		7211	
+1341	 E0 40				LD (a8), A	;3		7214	
+1343	 3E BB				LD, A, d8	;2		7216	
+1345	 E0 A6				LD (a8), A	;3		7219	
+1347	 3E 2F				LD, A, d8	;2		7221	
+1349	 E0 E1				LD (a8), A	;3		7224	
+134B	 3E 10				LD, A, d8	;2		7226	
+134D	 EA E8 DF			LD a16, A	;4		7230	
+1350	 C9					RET	;4		7234	
+1351	 F0 A6				LD A, (a8)	;2		7236	
+1353	 A7					AND A	;1		7237	
+1354	 C0					RET NZ	;5		7242	
+1355	 21 10 C2			LD (HL), d16	;3		7245	
+1358	 36 00				LD (HL), d8	;3		7248	
+135A	 2E 20				LD, L, d8	;2		7250	
+135C	 36 00				LD (HL), d8	;3		7253	
+135E	 3E A0				LD, A, d8	;2		7255	
+1360	 E0 A6				LD (a8), A	;3		7258	
+1362	 3E 30				LD, A, d8	;2		7260	
+1364	 E0 E1				LD (a8), A	;3		7263	
+1366	 C9					RET	;4		7267	
+1367	 F0 A6				LD A, (a8)	;2		7269	
+1369	 A7					AND A	;1		7270	
+136A	 28 04				JR Z s8	;3		7273	
+136C	 CD FA 13			CALL a16	;6		7279	
+136F	 C9					RET	;4		7283	
+1370	 3E 31				LD, A, d8	;2		7285	
+1372	 E0 E1				LD (a8), A	;3		7288	
+1374	 3E 80				LD, A, d8	;2		7290	
+1376	 E0 A6				LD (a8), A	;3		7293	
+1378	 3E 2F				LD, A, d8	;2		7295	
+137A	 CD D7 1F			CALL a16	;6		7301	
+137D	 C9					RET	;4		7305	
+137E	 F0 A6				LD A, (a8)	;2		7307	
+1380	 A7					AND A	;1		7308	
+1381	 20 2E				JR NZ s8	;3		7311	
+1383	 3E 0A				LD, A, d8	;2		7313	
+1385	 E0 A6				LD (a8), A	;3		7316	
+1387	 21 01 C2			LD (HL), d16	;3		7319	
+138A	 35					DEC (HL)	;3		7322	
+138B	 7E					LD A, (HL)	;2		7324	
+138C	 FE 6A				CP d8	;2		7326	
+138E	 20 21				JR NZ s8	;3		7329	
+1390	 21 10 C2			LD (HL), d16	;3		7332	
+1393	 36 00				LD (HL), d8	;3		7335	
+1395	 2C					INC, L	;1		7336	
+1396	 C6 10				ADD A, d8	;2		7338	
+1398	 22					LD (HL+), A	;2		7340	
+1399	 36 54				LD (HL), d8	;3		7343	
+139B	 2C					INC, L	;1		7344	
+139C	 36 5C				LD (HL), d8	;3		7347	
+139E	 2E 20				LD, L, d8	;2		7349	
+13A0	 36 80				LD (HL), d8	;3		7352	
+13A2	 3E 03				LD, A, d8	;2		7354	
+13A4	 CD 73 26			CALL a16	;6		7360	
+13A7	 3E 32				LD, A, d8	;2		7362	
+13A9	 E0 E1				LD (a8), A	;3		7365	
+13AB	 3E 04				LD, A, d8	;2		7367	
+13AD	 EA F8 DF			LD a16, A	;4		7371	
+13B0	 C9					RET	;4		7375	
+13B1	 CD FA 13			CALL a16	;6		7381	
+13B4	 C9					RET	;4		7385	
+13B5	 F0 A6				LD A, (a8)	;2		7387	
+13B7	 A7					AND A	;1		7388	
+13B8	 20 15				JR NZ s8	;3		7391	
+13BA	 3E 0A				LD, A, d8	;2		7393	
+13BC	 E0 A6				LD (a8), A	;3		7396	
+13BE	 21 11 C2			LD (HL), d16	;3		7399	
+13C1	 35					DEC (HL)	;3		7402	
+13C2	 2E 01				LD, L, d8	;2		7404	
+13C4	 35					DEC (HL)	;3		7407	
+13C5	 7E					LD A, (HL)	;2		7409	
+13C6	 FE E0				CP d8	;2		7411	
+13C8	 20 05				JR NZ s8	;3		7414	
+13CA	 3E 33				LD, A, d8	;2		7416	
+13CC	 E0 E1				LD (a8), A	;3		7419	
+13CE	 C9					RET	;4		7423	
+13CF	 F0 A7				LD A, (a8)	;2		7425	
+13D1	 A7					AND A	;1		7426	
+13D2	 20 0B				JR NZ s8	;3		7429	
+13D4	 3E 06				LD, A, d8	;2		7431	
+13D6	 E0 A7				LD (a8), A	;3		7434	
+13D8	 21 13 C2			LD (HL), d16	;3		7437	
+13DB	 7E					LD A, (HL)	;2		7439	
+13DC	 EE 01				XOR d8	;2		7441	
+13DE	 77					LD (HL), A	;2		7443	
+13DF	 3E 03				LD, A, d8	;2		7445	
+13E1	 CD 73 26			CALL a16	;6		7451	
+13E4	 C9					RET	;4		7455	
+13E5	 CD 20 28			CALL a16	;6		7461	
+13E8	 CD AD 27			CALL a16	;6		7467	
+13EB	 CD F3 7F			CALL a16	;6		7473	
+13EE	 CD 93 22			CALL a16	;6		7479	
+13F1	 3E 93				LD, A, d8	;2		7481	
+13F3	 E0 40				LD (a8), A	;3		7484	
+13F5	 3E 10				LD, A, d8	;2		7486	
+13F7	 E0 E1				LD (a8), A	;3		7489	
+13F9	 C9					RET	;4		7493	
+13FA	 F0 A7				LD A, (a8)	;2		7495	
+13FC	 A7					AND A	;1		7496	
+13FD	 C0					RET NZ	;5		7501	
+13FE	 3E 0A				LD, A, d8	;2		7503	
+1400	 E0 A7				LD (a8), A	;3		7506	
+1402	 3E 03				LD, A, d8	;2		7508	
+1404	 EA F8 DF			LD a16, A	;4		7512	
+1407	 06 02				LD, B, d8	;2		7514	
+1409	 21 10 C2			LD (HL), d16	;3		7517	
+140C	 7E					LD A, (HL)	;2		7519	
+140D	 EE 80				XOR d8	;2		7521	
+140F	 77					LD (HL), A	;2		7523	
+1410	 2E 20				LD, L, d8	;2		7525	
+1412	 05					DEC, B	;1		7526	
+1413	 20 F7				JR NZ s8	;3		7529	
+1415	 3E 03				LD, A, d8	;2		7531	
+1417	 CD 73 26			CALL a16	;6		7537	
+141A	 C9					RET	;4		7541	
+141B	 C2 CA CA			JP NZ a16	;4		7545	
+141E	 CA CA CA			JP Z a16	;4		7549	
+1421	 CA C3 CB			JP Z a16	;4		7553	
+1424	 58					LD E, B	;1		7554	
+1425	 48					LD C, B	;1		7555	
+1426	 48					LD C, B	;1		7556	
+1427	 48					LD C, B	;1		7557	
+1428	 48					LD C, B	;1		7558	
+1429	 C8					RET Z	;5		7563	
+142A	 73					LD (HL), E	;2		7565	
+142B	 73					LD (HL), E	;2		7567	
+142C	 73					LD (HL), E	;2		7569	
+142D	 73					LD (HL), E	;2		7571	
+142E	 73					LD (HL), E	;2		7573	
+142F	 73					LD (HL), E	;2		7575	
+1430	 C9					RET	;4		7579	
+1431	 74					LD (HL), H	;2		7581	
+1432	 74					LD (HL), H	;2		7583	
+1433	 74					LD (HL), H	;2		7585	
+1434	 74					LD (HL), H	;2		7587	
+1435	 74					LD (HL), H	;2		7589	
+1436	 74					LD (HL), H	;2		7591	
+1437	 1A					LD A, (DE)	;2		7593	
+1438	 77					LD (HL), A	;2		7595	
+1439	 13					INC, DE	;2		7597	
+143A	 D5					PUSH DE	;4		7601	
+143B	 11 20 00			LD DE, d16	;3		7604	
+143E	 19					ADD HL, DE	;2		7606	
+143F	 D1					POP DE	;3		7609	
+1440	 05					DEC, B	;1		7610	
+1441	 20 F4				JR NZ s8	;3		7613	
+1443	 C9					RET	;4		7617	
+1444	 3E 01				LD, A, d8	;2		7619	
+1446	 E0 FF				LD (a8), A	;3		7622	
+1448	 AF					XOR A	;1		7623	
+1449	 E0 01				LD (a8), A	;3		7626	
+144B	 E0 02				LD (a8), A	;3		7629	
+144D	 E0 0F				LD (a8), A	;3		7632	
+144F	 CD 20 28			CALL a16	;6		7638	
+1452	 CD AD 27			CALL a16	;6		7644	
+1455	 11 D7 4C			LD DE, d16	;3		7647	
+1458	 CD EB 27			CALL a16	;6		7653	
+145B	 CD 8A 17			CALL a16	;6		7659	
+145E	 21 00 C2			LD (HL), d16	;3		7662	
+1461	 11 CF 26			LD DE, d16	;3		7665	
+1464	 0E 02				LD, C, d8	;2		7667	
+1466	 CD 76 17			CALL a16	;6		7673	
+1469	 11 01 C2			LD DE, d16	;3		7676	
+146C	 CD 8D 14			CALL a16	;6		7682	
+146F	 F0 C0				LD A, (a8)	;2		7684	
+1471	 1E 12				LD, E, d8	;2		7686	
+1473	 12					LD (DE), A	;2		7688	
+1474	 13					INC, DE	;2		7690	
+1475	 FE 37				CP d8	;2		7692	
+1477	 3E 1C				LD, A, d8	;2		7694	
+1479	 28 02				JR Z s8	;3		7697	
+147B	 3E 1D				LD, A, d8	;2		7699	
+147D	 12					LD (DE), A	;2		7701	
+147E	 CD 71 26			CALL a16	;6		7707	
+1481	 CD 17 15			CALL a16	;6		7713	
+1484	 3E D3				LD, A, d8	;2		7715	
+1486	 E0 40				LD (a8), A	;3		7718	
+1488	 3E 0E				LD, A, d8	;2		7720	
+148A	 E0 E1				LD (a8), A	;3		7723	
+148C	 C9					RET	;4		7727	
+148D	 3E 01				LD, A, d8	;2		7729	
+148F	 EA E0 DF			LD a16, A	;4		7733	
+1492	 F0 C1				LD A, (a8)	;2		7735	
+1494	 F5					PUSH AF	;4		7739	
+1495	 D6 1C				SUB d8	;2		7741	
+1497	 87					ADD A, A	;1		7742	
+1498	 4F					LD C, A	;1		7743	
+1499	 06 00				LD, B, d8	;2		7745	
+149B	 21 A8 14			LD (HL), d16	;3		7748	
+149E	 09					ADD HL, BC	;2		7750	
+149F	 2A					LD A, (HL+)	;2		7752	
+14A0	 12					LD (DE), A	;2		7754	
+14A1	 13					INC, DE	;2		7756	
+14A2	 7E					LD A, (HL)	;2		7758	
+14A3	 12					LD (DE), A	;2		7760	
+14A4	 13					INC, DE	;2		7762	
+14A5	 F1					POP AF	;3		7765	
+14A6	 12					LD (DE), A	;2		7767	
+14A7	 C9					RET	;4		7771	
+14A8	 70					LD (HL), B	;2		7773	
+14A9	 37					SCF	;1		7774	
+14AA	 70					LD (HL), B	;2		7776	
+14AB	 77					LD (HL), A	;2		7778	
+14AC	 80					ADD A, B	;1		7779	
+14AD	 37					SCF	;1		7780	
+14AE	 80					ADD A, B	;1		7781	
+14AF	 77					LD (HL), A	;2		7783	
+14B0	 11 00 C2			LD DE, d16	;3		7786	
+14B3	 CD 66 17			CALL a16	;6		7792	
+14B6	 21 C1 FF			LD (HL), d16	;3		7795	
+14B9	 7E					LD A, (HL)	;2		7797	
+14BA	 CB		
+14BB	 58					LD E, B	;1		7798	
+14BC	 C2 63 15			JP NZ a16	;4		7802	
+14BF	 CB		
+14C2	 63					LD H, E	;1		7803	
+14C3	 15					DEC, D	;1		7804	
+14C4	 CB		
+14C5	 48					LD C, B	;1		7805	
+14C6	 20 41				JR NZ s8	;3		7808	
+14C8	 1C					INC, E	;1		7809	
+14C9	 CB		
+14CA	 60					LD H, B	;1		7810	
+14CB	 20 26				JR NZ s8	;3		7813	
+14CD	 CB		
+14CF	 20 2D				JR NZ s8	;3		7816	
+14D1	 CB		
+14D3	 20 16				JR NZ s8	;3		7819	
+14D5	 CB		
+14D7	 CA 5F 15			JP Z a16	;4		7823	
+14DA	 FE 1E				CP d8	;2		7825	
+14DC	 30 09				JR NC s8	;3		7828	
+14DE	 C6 02				ADD A, d8	;2		7830	
+14E0	 77					LD (HL), A	;2		7832	
+14E1	 CD 8D 14			CALL a16	;6		7838	
+14E4	 CD 17 15			CALL a16	;6		7844	
+14E7	 CD 71 26			CALL a16	;6		7850	
+14EA	 C9					RET	;4		7854	
+14EB	 FE 1E				CP d8	;2		7856	
+14ED	 38 F8				JR C s8	;3		7859	
+14EF	 D6 02				SUB d8	;2		7861	
+14F1	 18 ED				JR s8	;3		7864	
+14F3	 FE 1D				CP d8	;2		7866	
+14F5	 28 F0				JR Z s8	;3		7869	
+14F7	 FE 1F				CP d8	;2		7871	
+14F9	 28 EC				JR Z s8	;3		7874	
+14FB	 3C					INC, A	;1		7875	
+14FC	 18 E2				JR s8	;3		7878	
+14FE	 FE 1C				CP d8	;2		7880	
+1500	 28 E5				JR Z s8	;3		7883	
+1502	 FE 1E				CP d8	;2		7885	
+1504	 28 E1				JR Z s8	;3		7888	
+1506	 3D					DEC, A	;1		7889	
+1507	 18 D7				JR s8	;3		7892	
+1509	 F5					PUSH AF	;4		7896	
+150A	 F0 C5				LD A, (a8)	;2		7898	
+150C	 A7					AND A	;1		7899	
+150D	 28 03				JR Z s8	;3		7902	
+150F	 F1					POP AF	;3		7905	
+1510	 18 B6				JR s8	;3		7908	
+1512	 F1					POP AF	;3		7911	
+1513	 3E 0E				LD, A, d8	;2		7913	
+1515	 18 5B				JR s8	;3		7916	
+1517	 F0 C1				LD A, (a8)	;2		7918	
+1519	 D6 17				SUB d8	;2		7920	
+151B	 FE 08				CP d8	;2		7922	
+151D	 20 02				JR NZ s8	;3		7925	
+151F	 3E FF				LD, A, d8	;2		7927	
+1521	 EA E8 DF			LD a16, A	;4		7931	
+1524	 C9					RET	;4		7935	
+1525	 11 10 C2			LD DE, d16	;3		7938	
+1528	 CD 66 17			CALL a16	;6		7944	
+152B	 21 C0 FF			LD (HL), d16	;3		7947	
+152E	 7E					LD A, (HL)	;2		7949	
+152F	 CB		
+1530	 58					LD E, B	;1		7950	
+1531	 20 30				JR NZ s8	;3		7953	
+1533	 CB		
+1535	 20 40				JR NZ s8	;3		7956	
+1537	 1C					INC, E	;1		7957	
+1538	 1C					INC, E	;1		7958	
+1539	 CB		
+153A	 60					LD H, B	;1		7959	
+153B	 20 0E				JR NZ s8	;3		7962	
+153D	 CB		
+153F	 28 1E				JR Z s8	;3		7965	
+1541	 FE 37				CP d8	;2		7967	
+1543	 28 1A				JR Z s8	;3		7970	
+1545	 3E 37				LD, A, d8	;2		7972	
+1547	 06 1C				LD, B, d8	;2		7974	
+1549	 18 08				JR s8	;3		7977	
+154B	 FE 77				CP d8	;2		7979	
+154D	 28 10				JR Z s8	;3		7982	
+154F	 3E 77				LD, A, d8	;2		7984	
+1551	 06 1D				LD, B, d8	;2		7986	
+1553	 77					LD (HL), A	;2		7988	
+1554	 F5					PUSH AF	;4		7992	
+1555	 3E 01				LD, A, d8	;2		7994	
+1557	 EA E0 DF			LD a16, A	;4		7998	
+155A	 F1					POP AF	;3		8001	
+155B	 12					LD (DE), A	;2		8003	
+155C	 13					INC, DE	;2		8005	
+155D	 78					LD A, B	;1		8006	
+155E	 12					LD (DE), A	;2		8008	
+155F	 CD 71 26			CALL a16	;6		8014	
+1562	 C9					RET	;4		8018	
+1563	 3E 02				LD, A, d8	;2		8020	
+1565	 EA E0 DF			LD a16, A	;4		8024	
+1568	 F0 C0				LD A, (a8)	;2		8026	
+156A	 FE 37				CP d8	;2		8028	
+156C	 3E 10				LD, A, d8	;2		8030	
+156E	 28 02				JR Z s8	;3		8033	
+1570	 3E 12				LD, A, d8	;2		8035	
+1572	 E0 E1				LD (a8), A	;3		8038	
+1574	 AF					XOR A	;1		8039	
+1575	 18 E7				JR s8	;3		8042	
+1577	 3E 0F				LD, A, d8	;2		8044	
+1579	 18 F7				JR s8	;3		8047	
+157B	 CD 20 28			CALL a16	;6		8053	
+157E	 11 3F 4E			LD DE, d16	;3		8056	
+1581	 CD EB 27			CALL a16	;6		8062	
+1584	 CD FC 18			CALL a16	;6		8068	
+1587	 CD 8A 17			CALL a16	;6		8074	
+158A	 21 00 C2			LD (HL), d16	;3		8077	
+158D	 11 DB 26			LD DE, d16	;3		8080	
+1590	 0E 01				LD, C, d8	;2		8082	
+1592	 CD 76 17			CALL a16	;6		8088	
+1595	 11 01 C2			LD DE, d16	;3		8091	
+1598	 F0 C2				LD A, (a8)	;2		8093	
+159A	 21 15 16			LD (HL), d16	;3		8096	
+159D	 CD 4E 17			CALL a16	;6		8102	
+15A0	 CD 71 26			CALL a16	;6		8108	
+15A3	 CD 95 17			CALL a16	;6		8114	
+15A6	 CD CA 18			CALL a16	;6		8120	
+15A9	 3E D3				LD, A, d8	;2		8122	
+15AB	 E0 40				LD (a8), A	;3		8125	
+15AD	 3E 11				LD, A, d8	;2		8127	
+15AF	 E0 E1				LD (a8), A	;3		8130	
+15B1	 F0 C7				LD A, (a8)	;2		8132	
+15B3	 A7					AND A	;1		8133	
+15B4	 20 04				JR NZ s8	;3		8136	
+15B6	 CD 17 15			CALL a16	;6		8142	
+15B9	 C9					RET	;4		8146	
+15BA	 3E 15				LD, A, d8	;2		8148	
+15BC	 E0 E1				LD (a8), A	;3		8151	
+15BE	 C9					RET	;4		8155	
+15BF	 11 00 C2			LD DE, d16	;3		8158	
+15C2	 CD 66 17			CALL a16	;6		8164	
+15C5	 21 C2 FF			LD (HL), d16	;3		8167	
+15C8	 3E 0A				LD, A, d8	;2		8169	
+15CA	 CB		
+15CC	 20 EE				JR NZ s8	;3		8172	
+15CE	 CB		
+15D0	 20 EA				JR NZ s8	;3		8175	
+15D2	 3E 08				LD, A, d8	;2		8177	
+15D4	 CB		
+15D6	 20 E4				JR NZ s8	;3		8180	
+15D8	 7E					LD A, (HL)	;2		8182	
+15D9	 CB		
+15DA	 60					LD H, B	;1		8183	
+15DB	 20 14				JR NZ s8	;3		8186	
+15DD	 CB		
+15DF	 20 26				JR NZ s8	;3		8189	
+15E1	 CB		
+15E3	 20 28				JR NZ s8	;3		8192	
+15E5	 CB		
+15E7	 28 1A				JR Z s8	;3		8195	
+15E9	 FE 05				CP d8	;2		8197	
+15EB	 30 16				JR NC s8	;3		8200	
+15ED	 C6 05				ADD A, d8	;2		8202	
+15EF	 18 05				JR s8	;3		8205	
+15F1	 FE 09				CP d8	;2		8207	
+15F3	 28 0E				JR Z s8	;3		8210	
+15F5	 3C					INC, A	;1		8211	
+15F6	 77					LD (HL), A	;2		8213	
+15F7	 11 01 C2			LD DE, d16	;3		8216	
+15FA	 21 15 16			LD (HL), d16	;3		8219	
+15FD	 CD 4E 17			CALL a16	;6		8225	
+1600	 CD 95 17			CALL a16	;6		8231	
+1603	 CD 71 26			CALL a16	;6		8237	
+1606	 C9					RET	;4		8241	
+1607	 A7					AND A	;1		8242	
+1608	 28 F9				JR Z s8	;3		8245	
+160A	 3D					DEC, A	;1		8246	
+160B	 18 E9				JR s8	;3		8249	
+160D	 FE 05				CP d8	;2		8251	
+160F	 38 F2				JR C s8	;3		8254	
+1611	 D6 05				SUB d8	;2		8256	
+1613	 18 E1				JR s8	;3		8259	
+1615	 40					LD B, B	;1		8260	
+1616	 30 40				JR NC s8	;3		8263	
+1618	 40					LD B, B	;1		8264	
+1619	 40					LD B, B	;1		8265	
+161A	 50					LD D, B	;1		8266	
+161B	 40					LD B, B	;1		8267	
+161C	 60					LD H, B	;1		8268	
+161D	 40					LD B, B	;1		8269	
+161E	 70					LD (HL), B	;2		8271	
+161F	 50					LD D, B	;1		8272	
+1620	 30 50				JR NC s8	;3		8275	
+1622	 40					LD B, B	;1		8276	
+1623	 50					LD D, B	;1		8277	
+1624	 50					LD D, B	;1		8278	
+1625	 50					LD D, B	;1		8279	
+1626	 60					LD H, B	;1		8280	
+1627	 50					LD D, B	;1		8281	
+1628	 70					LD (HL), B	;2		8283	
+1629	 CD 20 28			CALL a16	;6		8289	
+162C	 11 A7 4F			LD DE, d16	;3		8292	
+162F	 CD EB 27			CALL a16	;6		8298	
+1632	 CD 8A 17			CALL a16	;6		8304	
+1635	 21 00 C2			LD (HL), d16	;3		8307	
+1638	 11 E1 26			LD DE, d16	;3		8310	
+163B	 0E 02				LD, C, d8	;2		8312	
+163D	 CD 76 17			CALL a16	;6		8318	
+1640	 11 01 C2			LD DE, d16	;3		8321	
+1643	 F0 C3				LD A, (a8)	;2		8323	
+1645	 21 D2 16			LD (HL), d16	;3		8326	
+1648	 CD 4E 17			CALL a16	;6		8332	
+164B	 11 11 C2			LD DE, d16	;3		8335	
+164E	 F0 C4				LD A, (a8)	;2		8337	
+1650	 21 41 17			LD (HL), d16	;3		8340	
+1653	 CD 4E 17			CALL a16	;6		8346	
+1656	 CD 71 26			CALL a16	;6		8352	
+1659	 CD AF 17			CALL a16	;6		8358	
+165C	 CD CA 18			CALL a16	;6		8364	
+165F	 3E D3				LD, A, d8	;2		8366	
+1661	 E0 40				LD (a8), A	;3		8369	
+1663	 3E 13				LD, A, d8	;2		8371	
+1665	 E0 E1				LD (a8), A	;3		8374	
+1667	 F0 C7				LD A, (a8)	;2		8376	
+1669	 A7					AND A	;1		8377	
+166A	 20 04				JR NZ s8	;3		8380	
+166C	 CD 17 15			CALL a16	;6		8386	
+166F	 C9					RET	;4		8390	
+1670	 3E 15				LD, A, d8	;2		8392	
+1672	 E0 E1				LD (a8), A	;3		8395	
+1674	 C9					RET	;4		8399	
+1675	 E0 E1				LD (a8), A	;3		8402	
+1677	 AF					XOR A	;1		8403	
+1678	 12					LD (DE), A	;2		8405	
+1679	 C9					RET	;4		8409	
+167A	 11 00 C2			LD DE, d16	;3		8412	
+167D	 CD 66 17			CALL a16	;6		8418	
+1680	 21 C3 FF			LD (HL), d16	;3		8421	
+1683	 3E 0A				LD, A, d8	;2		8423	
+1685	 CB		
+1687	 20 EC				JR NZ s8	;3		8426	
+1689	 3E 14				LD, A, d8	;2		8428	
+168B	 CB		
+168D	 20 E6				JR NZ s8	;3		8431	
+168F	 3E 08				LD, A, d8	;2		8433	
+1691	 CB		
+1693	 20 E0				JR NZ s8	;3		8436	
+1695	 7E					LD A, (HL)	;2		8438	
+1696	 CB		
+1697	 60					LD H, B	;1		8439	
+1698	 20 14				JR NZ s8	;3		8442	
+169A	 CB		
+169C	 20 26				JR NZ s8	;3		8445	
+169E	 CB		
+16A0	 20 28				JR NZ s8	;3		8448	
+16A2	 CB		
+16A4	 28 1A				JR Z s8	;3		8451	
+16A6	 FE 05				CP d8	;2		8453	
+16A8	 30 16				JR NC s8	;3		8456	
+16AA	 C6 05				ADD A, d8	;2		8458	
+16AC	 18 05				JR s8	;3		8461	
+16AE	 FE 09				CP d8	;2		8463	
+16B0	 28 0E				JR Z s8	;3		8466	
+16B2	 3C					INC, A	;1		8467	
+16B3	 77					LD (HL), A	;2		8469	
+16B4	 11 01 C2			LD DE, d16	;3		8472	
+16B7	 21 D2 16			LD (HL), d16	;3		8475	
+16BA	 CD 4E 17			CALL a16	;6		8481	
+16BD	 CD AF 17			CALL a16	;6		8487	
+16C0	 CD 71 26			CALL a16	;6		8493	
+16C3	 C9					RET	;4		8497	
+16C4	 A7					AND A	;1		8498	
+16C5	 28 F9				JR Z s8	;3		8501	
+16C7	 3D					DEC, A	;1		8502	
+16C8	 18 E9				JR s8	;3		8505	
+16CA	 FE 05				CP d8	;2		8507	
+16CC	 38 F2				JR C s8	;3		8510	
+16CE	 D6 05				SUB d8	;2		8512	
+16D0	 18 E1				JR s8	;3		8515	
+16D2	 40					LD B, B	;1		8516	
+16D3	 18 40				JR s8	;3		8519	
+16D5	 28 40				JR Z s8	;3		8522	
+16D7	 38 40				JR C s8	;3		8525	
+16D9	 48					LD C, B	;1		8526	
+16DA	 40					LD B, B	;1		8527	
+16DB	 58					LD E, B	;1		8528	
+16DC	 50					LD D, B	;1		8529	
+16DD	 18 50				JR s8	;3		8532	
+16DF	 28 50				JR Z s8	;3		8535	
+16E1	 38 50				JR C s8	;3		8538	
+16E3	 48					LD C, B	;1		8539	
+16E4	 50					LD D, B	;1		8540	
+16E5	 58					LD E, B	;1		8541	
+16E6	 E0 E1				LD (a8), A	;3		8544	
+16E8	 AF					XOR A	;1		8545	
+16E9	 12					LD (DE), A	;2		8547	
+16EA	 C9					RET	;4		8551	
+16EB	 11 10 C2			LD DE, d16	;3		8554	
+16EE	 CD 66 17			CALL a16	;6		8560	
+16F1	 21 C4 FF			LD (HL), d16	;3		8563	
+16F4	 3E 0A				LD, A, d8	;2		8565	
+16F6	 CB		
+16F8	 20 EC				JR NZ s8	;3		8568	
+16FA	 CB		
+16FC	 20 E8				JR NZ s8	;3		8571	
+16FE	 3E 13				LD, A, d8	;2		8573	
+1700	 CB		
+1702	 20 E2				JR NZ s8	;3		8576	
+1704	 7E					LD A, (HL)	;2		8578	
+1705	 CB		
+1706	 60					LD H, B	;1		8579	
+1707	 20 14				JR NZ s8	;3		8582	
+1709	 CB		
+170B	 20 26				JR NZ s8	;3		8585	
+170D	 CB		
+170F	 20 28				JR NZ s8	;3		8588	
+1711	 CB		
+1713	 28 1A				JR Z s8	;3		8591	
+1715	 FE 03				CP d8	;2		8593	
+1717	 30 16				JR NC s8	;3		8596	
+1719	 C6 03				ADD A, d8	;2		8598	
+171B	 18 05				JR s8	;3		8601	
+171D	 FE 05				CP d8	;2		8603	
+171F	 28 0E				JR Z s8	;3		8606	
+1721	 3C					INC, A	;1		8607	
+1722	 77					LD (HL), A	;2		8609	
+1723	 11 11 C2			LD DE, d16	;3		8612	
+1726	 21 41 17			LD (HL), d16	;3		8615	
+1729	 CD 4E 17			CALL a16	;6		8621	
+172C	 CD AF 17			CALL a16	;6		8627	
+172F	 CD 71 26			CALL a16	;6		8633	
+1732	 C9					RET	;4		8637	
+1733	 A7					AND A	;1		8638	
+1734	 28 F9				JR Z s8	;3		8641	
+1736	 3D					DEC, A	;1		8642	
+1737	 18 E9				JR s8	;3		8645	
+1739	 FE 03				CP d8	;2		8647	
+173B	 38 F2				JR C s8	;3		8650	
+173D	 D6 03				SUB d8	;2		8652	
+173F	 18 E1				JR s8	;3		8655	
+1741	 40					LD B, B	;1		8656	
+1742	 70					LD (HL), B	;2		8658	
+1743	 40					LD B, B	;1		8659	
+1744	 80					ADD A, B	;1		8660	
+1745	 40					LD B, B	;1		8661	
+1746	 90					SUB B	;1		8662	
+1747	 50					LD D, B	;1		8663	
+1748	 70					LD (HL), B	;2		8665	
+1749	 50					LD D, B	;1		8666	
+174A	 80					ADD A, B	;1		8667	
+174B	 50					LD D, B	;1		8668	
+174C	 90					SUB B	;1		8669	
+174D	 00					NOP	;1		8670	
+174E	 F5					PUSH AF	;4		8674	
+174F	 3E 01				LD, A, d8	;2		8676	
+1751	 EA E0 DF			LD a16, A	;4		8680	
+1754	 F1					POP AF	;3		8683	
+1755	 F5					PUSH AF	;4		8687	
+1756	 87					ADD A, A	;1		8688	
+1757	 4F					LD C, A	;1		8689	
+1758	 06 00				LD, B, d8	;2		8691	
+175A	 09					ADD HL, BC	;2		8693	
+175B	 2A					LD A, (HL+)	;2		8695	
+175C	 12					LD (DE), A	;2		8697	
+175D	 13					INC, DE	;2		8699	
+175E	 7E					LD A, (HL)	;2		8701	
+175F	 12					LD (DE), A	;2		8703	
+1760	 13					INC, DE	;2		8705	
+1761	 F1					POP AF	;3		8708	
+1762	 C6 20				ADD A, d8	;2		8710	
+1764	 12					LD (DE), A	;2		8712	
+1765	 C9					RET	;4		8716	
+1766	 F0 81				LD A, (a8)	;2		8718	
+1768	 47					LD B, A	;1		8719	
+1769	 F0 A6				LD A, (a8)	;2		8721	
+176B	 A7					AND A	;1		8722	
+176C	 C0					RET NZ	;5		8727	
+176D	 3E 10				LD, A, d8	;2		8729	
+176F	 E0 A6				LD (a8), A	;3		8732	
+1771	 1A					LD A, (DE)	;2		8734	
+1772	 EE 80				XOR d8	;2		8736	
+1774	 12					LD (DE), A	;2		8738	
+1775	 C9					RET	;4		8742	
+1776	 E5					PUSH (HL)	;4		8746	
+1777	 06 06				LD, B, d8	;2		8748	
+1779	 1A					LD A, (DE)	;2		8750	
+177A	 22					LD (HL+), A	;2		8752	
+177B	 13					INC, DE	;2		8754	
+177C	 05					DEC, B	;1		8755	
+177D	 20 FA				JR NZ s8	;3		8758	
+177F	 E1					POP (HL)	;3		8761	
+1780	 3E 10				LD, A, d8	;2		8763	
+1782	 85					ADD A, L	;1		8764	
+1783	 6F					LD L, A	;1		8765	
+1784	 0D					DEC, C	;1		8766	
+1785	 20 EF				JR NZ s8	;3		8769	
+1787	 36 80				LD (HL), d8	;3		8772	
+1789	 C9					RET	;4		8776	
+178A	 AF					XOR A	;1		8777	
+178B	 21 00 C0			LD (HL), d16	;3		8780	
+178E	 06 A0				LD, B, d8	;2		8782	
+1790	 22					LD (HL+), A	;2		8784	
+1791	 05					DEC, B	;1		8785	
+1792	 20 FC				JR NZ s8	;3		8788	
+1794	 C9					RET	;4		8792	
+1795	 CD FC 18			CALL a16	;6		8798	
+1798	 F0 C2				LD A, (a8)	;2		8800	
+179A	 21 54 D6			LD (HL), d16	;3		8803	
+179D	 11 1B 00			LD DE, d16	;3		8806	
+17A0	 A7					AND A	;1		8807	
+17A1	 28 04				JR Z s8	;3		8810	
+17A3	 3D					DEC, A	;1		8811	
+17A4	 19					ADD HL, DE	;2		8813	
+17A5	 18 F9				JR s8	;3		8816	
+17A7	 23					INC, (HL)	;2		8818	
+17A8	 23					INC, (HL)	;2		8820	
+17A9	 E5					PUSH (HL)	;4		8824	
+17AA	 D1					POP DE	;3		8827	
+17AB	 CD 00 18			CALL a16	;6		8833	
+17AE	 C9					RET	;4		8837	
+17AF	 CD FC 18			CALL a16	;6		8843	
+17B2	 F0 C3				LD A, (a8)	;2		8845	
+17B4	 21 00 D0			LD (HL), d16	;3		8848	
+17B7	 11 A2 00			LD DE, d16	;3		8851	
+17BA	 A7					AND A	;1		8852	
+17BB	 28 04				JR Z s8	;3		8855	
+17BD	 3D					DEC, A	;1		8856	
+17BE	 19					ADD HL, DE	;2		8858	
+17BF	 18 F9				JR s8	;3		8861	
+17C1	 F0 C4				LD A, (a8)	;2		8863	
+17C3	 11 1B 00			LD DE, d16	;3		8866	
+17C6	 A7					AND A	;1		8867	
+17C7	 28 04				JR Z s8	;3		8870	
+17C9	 3D					DEC, A	;1		8871	
+17CA	 19					ADD HL, DE	;2		8873	
+17CB	 18 F9				JR s8	;3		8876	
+17CD	 23					INC, (HL)	;2		8878	
+17CE	 23					INC, (HL)	;2		8880	
+17CF	 E5					PUSH (HL)	;4		8884	
+17D0	 D1					POP DE	;3		8887	
+17D1	 CD 00 18			CALL a16	;6		8893	
+17D4	 C9					RET	;4		8897	
+17D5	 06 03				LD, B, d8	;2		8899	
+17D7	 7E					LD A, (HL)	;2		8901	
+17D8	 E6 F0				AND d8	;2		8903	
+17DA	 20 0B				JR NZ s8	;3		8906	
+17DC	 1C					INC, E	;1		8907	
+17DD	 3A					LD A, (HL-)	;2		8909	
+17DE	 E6 0F				AND d8	;2		8911	
+17E0	 20 0F				JR NZ s8	;3		8914	
+17E2	 1C					INC, E	;1		8915	
+17E3	 05					DEC, B	;1		8916	
+17E4	 20 F1				JR NZ s8	;3		8919	
+17E6	 C9					RET	;4		8923	
+17E7	 7E					LD A, (HL)	;2		8925	
+17E8	 E6 F0				AND d8	;2		8927	
+17EA	 CB		
+17EC	 12					LD (DE), A	;2		8929	
+17ED	 1C					INC, E	;1		8930	
+17EE	 3A					LD A, (HL-)	;2		8932	
+17EF	 E6 0F				AND d8	;2		8934	
+17F1	 12					LD (DE), A	;2		8936	
+17F2	 1C					INC, E	;1		8937	
+17F3	 05					DEC, B	;1		8938	
+17F4	 20 F1				JR NZ s8	;3		8941	
+17F6	 C9					RET	;4		8945	
+17F7	 06 03				LD, B, d8	;2		8947	
+17F9	 3A					LD A, (HL-)	;2		8949	
+17FA	 12					LD (DE), A	;2		8951	
+17FB	 1B					DEC, DE	;2		8953	
+17FC	 05					DEC, B	;1		8954	
+17FD	 20 FA				JR NZ s8	;3		8957	
+17FF	 C9					RET	;4		8961	
+1800	 7A					LD A, D	;1		8962	
+1801	 E0 FB				LD (a8), A	;3		8965	
+1803	 7B					LD A, E	;1		8966	
+1804	 E0 FC				LD (a8), A	;3		8969	
+1806	 0E 03				LD, C, d8	;2		8971	
+1808	 21 A2 C0			LD (HL), d16	;3		8974	
+180B	 D5					PUSH DE	;4		8978	
+180C	 06 03				LD, B, d8	;2		8980	
+180E	 1A					LD A, (DE)	;2		8982	
+180F	 96					SUB (HL)	;2		8984	
+1810	 38 10				JR C s8	;3		8987	
+1812	 20 05				JR NZ s8	;3		8990	
+1814	 2D					DEC, L	;1		8991	
+1815	 1B					DEC, DE	;2		8993	
+1816	 05					DEC, B	;1		8994	
+1817	 20 F5				JR NZ s8	;3		8997	
+1819	 D1					POP DE	;3		9000	
+181A	 13					INC, DE	;2		9002	
+181B	 13					INC, DE	;2		9004	
+181C	 13					INC, DE	;2		9006	
+181D	 0D					DEC, C	;1		9007	
+181E	 20 E8				JR NZ s8	;3		9010	
+1820	 18 5E				JR s8	;3		9013	
+1822	 D1					POP DE	;3		9016	
+1823	 F0 FB				LD A, (a8)	;2		9018	
+1825	 57					LD D, A	;1		9019	
+1826	 F0 FC				LD A, (a8)	;2		9021	
+1828	 5F					LD E, A	;1		9022	
+1829	 D5					PUSH DE	;4		9026	
+182A	 C5					PUSH BC	;4		9030	
+182B	 21 06 00			LD (HL), d16	;3		9033	
+182E	 19					ADD HL, DE	;2		9035	
+182F	 E5					PUSH (HL)	;4		9039	
+1830	 D1					POP DE	;3		9042	
+1831	 2B					DEC, (HL)	;2		9044	
+1832	 2B					DEC, (HL)	;2		9046	
+1833	 2B					DEC, (HL)	;2		9048	
+1834	 0D					DEC, C	;1		9049	
+1835	 28 05				JR Z s8	;3		9052	
+1837	 CD F7 17			CALL a16	;6		9058	
+183A	 18 F8				JR s8	;3		9061	
+183C	 21 A2 C0			LD (HL), d16	;3		9064	
+183F	 06 03				LD, B, d8	;2		9066	
+1841	 3A					LD A, (HL-)	;2		9068	
+1842	 12					LD (DE), A	;2		9070	
+1843	 1D					DEC, E	;1		9071	
+1844	 05					DEC, B	;1		9072	
+1845	 20 FA				JR NZ s8	;3		9075	
+1847	 C1					POP BC	;3		9078	
+1848	 D1					POP DE	;3		9081	
+1849	 79					LD A, C	;1		9082	
+184A	 E0 C8				LD (a8), A	;3		9085	
+184C	 21 12 00			LD (HL), d16	;3		9088	
+184F	 19					ADD HL, DE	;2		9090	
+1850	 E5					PUSH (HL)	;4		9094	
+1851	 11 06 00			LD DE, d16	;3		9097	
+1854	 19					ADD HL, DE	;2		9099	
+1855	 E5					PUSH (HL)	;4		9103	
+1856	 D1					POP DE	;3		9106	
+1857	 E1					POP (HL)	;3		9109	
+1858	 0D					DEC, C	;1		9110	
+1859	 28 07				JR Z s8	;3		9113	
+185B	 06 06				LD, B, d8	;2		9115	
+185D	 CD F9 17			CALL a16	;6		9121	
+1860	 18 F6				JR s8	;3		9124	
+1862	 3E 60				LD, A, d8	;2		9126	
+1864	 06 05				LD, B, d8	;2		9128	
+1866	 12					LD (DE), A	;2		9130	
+1867	 1B					DEC, DE	;2		9132	
+1868	 05					DEC, B	;1		9133	
+1869	 20 FB				JR NZ s8	;3		9136	
+186B	 3E 0A				LD, A, d8	;2		9138	
+186D	 12					LD (DE), A	;2		9140	
+186E	 7A					LD A, D	;1		9141	
+186F	 E0 C9				LD (a8), A	;3		9144	
+1871	 7B					LD A, E	;1		9145	
+1872	 E0 CA				LD (a8), A	;3		9148	
+1874	 AF					XOR A	;1		9149	
+1875	 E0 9C				LD (a8), A	;3		9152	
+1877	 E0 C6				LD (a8), A	;3		9155	
+1879	 3E 01				LD, A, d8	;2		9157	
+187B	 EA E8 DF			LD a16, A	;4		9161	
+187E	 E0 C7				LD (a8), A	;3		9164	
+1880	 11 AC C9			LD DE, d16	;3		9167	
+1883	 F0 FB				LD A, (a8)	;2		9169	
+1885	 67					LD H, A	;1		9170	
+1886	 F0 FC				LD A, (a8)	;2		9172	
+1888	 6F					LD L, A	;1		9173	
+1889	 06 03				LD, B, d8	;2		9175	
+188B	 E5					PUSH (HL)	;4		9179	
+188C	 D5					PUSH DE	;4		9183	
+188D	 C5					PUSH BC	;4		9187	
+188E	 CD D5 17			CALL a16	;6		9193	
+1891	 C1					POP BC	;3		9196	
+1892	 D1					POP DE	;3		9199	
+1893	 21 20 00			LD (HL), d16	;3		9202	
+1896	 19					ADD HL, DE	;2		9204	
+1897	 E5					PUSH (HL)	;4		9208	
+1898	 D1					POP DE	;3		9211	
+1899	 E1					POP (HL)	;3		9214	
+189A	 D5					PUSH DE	;4		9218	
+189B	 11 03 00			LD DE, d16	;3		9221	
+189E	 19					ADD HL, DE	;2		9223	
+189F	 D1					POP DE	;3		9226	
+18A0	 05					DEC, B	;1		9227	
+18A1	 20 E8				JR NZ s8	;3		9230	
+18A3	 2B					DEC, (HL)	;2		9232	
+18A4	 2B					DEC, (HL)	;2		9234	
+18A5	 06 03				LD, B, d8	;2		9236	
+18A7	 11 A4 C9			LD DE, d16	;3		9239	
+18AA	 D5					PUSH DE	;4		9243	
+18AB	 0E 06				LD, C, d8	;2		9245	
+18AD	 2A					LD A, (HL+)	;2		9247	
+18AE	 A7					AND A	;1		9248	
+18AF	 28 05				JR Z s8	;3		9251	
+18B1	 12					LD (DE), A	;2		9253	
+18B2	 13					INC, DE	;2		9255	
+18B3	 0D					DEC, C	;1		9256	
+18B4	 20 F7				JR NZ s8	;3		9259	
+18B6	 D1					POP DE	;3		9262	
+18B7	 E5					PUSH (HL)	;4		9266	
+18B8	 21 20 00			LD (HL), d16	;3		9269	
+18BB	 19					ADD HL, DE	;2		9271	
+18BC	 E5					PUSH (HL)	;4		9275	
+18BD	 D1					POP DE	;3		9278	
+18BE	 E1					POP (HL)	;3		9281	
+18BF	 05					DEC, B	;1		9282	
+18C0	 20 E8				JR NZ s8	;3		9285	
+18C2	 CD 51 26			CALL a16	;6		9291	
+18C5	 3E 01				LD, A, d8	;2		9293	
+18C7	 E0 E8				LD (a8), A	;3		9296	
+18C9	 C9					RET	;4		9300	
+18CA	 F0 E8				LD A, (a8)	;2		9302	
+18CC	 A7					AND A	;1		9303	
+18CD	 C8					RET Z	;5		9308	
+18CE	 21 A4 99			LD (HL), d16	;3		9311	
+18D1	 11 A4 C9			LD DE, d16	;3		9314	
+18D4	 0E 06				LD, C, d8	;2		9316	
+18D6	 E5					PUSH (HL)	;4		9320	
+18D7	 06 06				LD, B, d8	;2		9322	
+18D9	 1A					LD A, (DE)	;2		9324	
+18DA	 22					LD (HL+), A	;2		9326	
+18DB	 1C					INC, E	;1		9327	
+18DC	 05					DEC, B	;1		9328	
+18DD	 20 FA				JR NZ s8	;3		9331	
+18DF	 1C					INC, E	;1		9332	
+18E0	 2C					INC, L	;1		9333	
+18E1	 1C					INC, E	;1		9334	
+18E2	 2C					INC, L	;1		9335	
+18E3	 0D					DEC, C	;1		9336	
+18E4	 28 11				JR Z s8	;3		9339	
+18E6	 CB		
+18E8	 20 ED				JR NZ s8	;3		9342	
+18EA	 E1					POP (HL)	;3		9345	
+18EB	 11 20 00			LD DE, d16	;3		9348	
+18EE	 19					ADD HL, DE	;2		9350	
+18EF	 E5					PUSH (HL)	;4		9354	
+18F0	 D1					POP DE	;3		9357	
+18F1	 3E 30				LD, A, d8	;2		9359	
+18F3	 82					ADD A, D	;1		9360	
+18F4	 57					LD D, A	;1		9361	
+18F5	 18 DF				JR s8	;3		9364	
+18F7	 E1					POP (HL)	;3		9367	
+18F8	 AF					XOR A	;1		9368	
+18F9	 E0 E8				LD (a8), A	;3		9371	
+18FB	 C9					RET	;4		9375	
+18FC	 21 A4 C9			LD (HL), d16	;3		9378	
+18FF	 11 20 00			LD DE, d16	;3		9381	
+1902	 3E 60				LD, A, d8	;2		9383	
+1904	 0E 03				LD, C, d8	;2		9385	
+1906	 06 0E				LD, B, d8	;2		9387	
+1908	 E5					PUSH (HL)	;4		9391	
+1909	 22					LD (HL+), A	;2		9393	
+190A	 05					DEC, B	;1		9394	
+190B	 20 FC				JR NZ s8	;3		9397	
+190D	 E1					POP (HL)	;3		9400	
+190E	 19					ADD HL, DE	;2		9402	
+190F	 0D					DEC, C	;1		9403	
+1910	 20 F4				JR NZ s8	;3		9406	
+1912	 C9					RET	;4		9410	
+1913	 F0 C8				LD A, (a8)	;2		9412	
+1915	 21 E4 99			LD (HL), d16	;3		9415	
+1918	 11 E0 FF			LD DE, d16	;3		9418	
+191B	 3D					DEC, A	;1		9419	
+191C	 28 03				JR Z s8	;3		9422	
+191E	 19					ADD HL, DE	;2		9424	
+191F	 18 FA				JR s8	;3		9427	
+1921	 F0 C6				LD A, (a8)	;2		9429	
+1923	 5F					LD E, A	;1		9430	
+1924	 16 00				LD, D, d8	;2		9432	
+1926	 19					ADD HL, DE	;2		9434	
+1927	 F0 C9				LD A, (a8)	;2		9436	
+1929	 57					LD D, A	;1		9437	
+192A	 F0 CA				LD A, (a8)	;2		9439	
+192C	 5F					LD E, A	;1		9440	
+192D	 F0 A6				LD A, (a8)	;2		9442	
+192F	 A7					AND A	;1		9443	
+1930	 20 12				JR NZ s8	;3		9446	
+1932	 3E 07				LD, A, d8	;2		9448	
+1934	 E0 A6				LD (a8), A	;3		9451	
+1936	 F0 9C				LD A, (a8)	;2		9453	
+1938	 EE 01				XOR d8	;2		9455	
+193A	 E0 9C				LD (a8), A	;3		9458	
+193C	 1A					LD A, (DE)	;2		9460	
+193D	 28 02				JR Z s8	;3		9463	
+193F	 3E 2F				LD, A, d8	;2		9465	
+1941	 CD FE 19			CALL a16	;6		9471	
+1944	 F0 81				LD A, (a8)	;2		9473	
+1946	 47					LD B, A	;1		9474	
+1947	 F0 80				LD A, (a8)	;2		9476	
+1949	 4F					LD C, A	;1		9477	
+194A	 3E 17				LD, A, d8	;2		9479	
+194C	 CB		
+194E	 20 37				JR NZ s8	;3		9482	
+1950	 CB		
+1952	 20 2B				JR NZ s8	;3		9485	
+1954	 CB		
+1956	 20 58				JR NZ s8	;3		9488	
+1958	 CB		
+195A	 20 4C				JR NZ s8	;3		9491	
+195C	 CB		
+195E	 20 6C				JR NZ s8	;3		9494	
+1960	 CB		
+1962	 C2 EE 19			JP NZ a16	;4		9498	
+1965	 CB		
+1968	 1A					LD A, (DE)	;2		9500	
+1969	 CD FE 19			CALL a16	;6		9506	
+196C	 CD 17 15			CALL a16	;6		9512	
+196F	 AF					XOR A	;1		9513	
+1970	 E0 C7				LD (a8), A	;3		9516	
+1972	 F0 C0				LD A, (a8)	;2		9518	
+1974	 FE 37				CP d8	;2		9520	
+1976	 3E 11				LD, A, d8	;2		9522	
+1978	 28 02				JR Z s8	;3		9525	
+197A	 3E 13				LD, A, d8	;2		9527	
+197C	 E0 E1				LD (a8), A	;3		9530	
+197E	 C9					RET	;4		9534	
+197F	 F0 AA				LD A, (a8)	;2		9536	
+1981	 3D					DEC, A	;1		9537	
+1982	 E0 AA				LD (a8), A	;3		9540	
+1984	 C0					RET NZ	;5		9545	
+1985	 3E 09				LD, A, d8	;2		9547	
+1987	 E0 AA				LD (a8), A	;3		9550	
+1989	 06 26				LD, B, d8	;2		9552	
+198B	 F0 F4				LD A, (a8)	;2		9554	
+198D	 A7					AND A	;1		9555	
+198E	 28 02				JR Z s8	;3		9558	
+1990	 06 27				LD, B, d8	;2		9560	
+1992	 1A					LD A, (DE)	;2		9562	
+1993	 B8					CP B	;1		9563	
+1994	 20 0A				JR NZ s8	;3		9566	
+1996	 3E 2E				LD, A, d8	;2		9568	
+1998	 3C					INC, A	;1		9569	
+1999	 12					LD (DE), A	;2		9571	
+199A	 3E 01				LD, A, d8	;2		9573	
+199C	 EA E0 DF			LD a16, A	;4		9577	
+199F	 C9					RET	;4		9581	
+19A0	 FE 2F				CP d8	;2		9583	
+19A2	 20 F4				JR NZ s8	;3		9586	
+19A4	 3E 0A				LD, A, d8	;2		9588	
+19A6	 18 F1				JR s8	;3		9591	
+19A8	 F0 AA				LD A, (a8)	;2		9593	
+19AA	 3D					DEC, A	;1		9594	
+19AB	 E0 AA				LD (a8), A	;3		9597	
+19AD	 C0					RET NZ	;5		9602	
+19AE	 3E 09				LD, A, d8	;2		9604	
+19B0	 E0 AA				LD (a8), A	;3		9607	
+19B2	 06 26				LD, B, d8	;2		9609	
+19B4	 F0 F4				LD A, (a8)	;2		9611	
+19B6	 A7					AND A	;1		9612	
+19B7	 28 02				JR Z s8	;3		9615	
+19B9	 06 27				LD, B, d8	;2		9617	
+19BB	 1A					LD A, (DE)	;2		9619	
+19BC	 FE 0A				CP d8	;2		9621	
+19BE	 20 05				JR NZ s8	;3		9624	
+19C0	 3E 30				LD, A, d8	;2		9626	
+19C2	 3D					DEC, A	;1		9627	
+19C3	 18 D4				JR s8	;3		9630	
+19C5	 FE 2F				CP d8	;2		9632	
+19C7	 20 F9				JR NZ s8	;3		9635	
+19C9	 78					LD A, B	;1		9636	
+19CA	 18 CD				JR s8	;3		9639	
+19CC	 1A					LD A, (DE)	;2		9641	
+19CD	 CD FE 19			CALL a16	;6		9647	
+19D0	 3E 02				LD, A, d8	;2		9649	
+19D2	 EA E0 DF			LD a16, A	;4		9653	
+19D5	 F0 C6				LD A, (a8)	;2		9655	
+19D7	 3C					INC, A	;1		9656	
+19D8	 FE 06				CP d8	;2		9658	
+19DA	 28 8C				JR Z s8	;3		9661	
+19DC	 E0 C6				LD (a8), A	;3		9664	
+19DE	 13					INC, DE	;2		9666	
+19DF	 1A					LD A, (DE)	;2		9668	
+19E0	 FE 60				CP d8	;2		9670	
+19E2	 20 03				JR NZ s8	;3		9673	
+19E4	 3E 0A				LD, A, d8	;2		9675	
+19E6	 12					LD (DE), A	;2		9677	
+19E7	 7A					LD A, D	;1		9678	
+19E8	 E0 C9				LD (a8), A	;3		9681	
+19EA	 7B					LD A, E	;1		9682	
+19EB	 E0 CA				LD (a8), A	;3		9685	
+19ED	 C9					RET	;4		9689	
+19EE	 F0 C6				LD A, (a8)	;2		9691	
+19F0	 A7					AND A	;1		9692	
+19F1	 C8					RET Z	;5		9697	
+19F2	 1A					LD A, (DE)	;2		9699	
+19F3	 CD FE 19			CALL a16	;6		9705	
+19F6	 F0 C6				LD A, (a8)	;2		9707	
+19F8	 3D					DEC, A	;1		9708	
+19F9	 E0 C6				LD (a8), A	;3		9711	
+19FB	 1B					DEC, DE	;2		9713	
+19FC	 18 E9				JR s8	;3		9716	
+19FE	 47					LD B, A	;1		9717	
+19FF	 F0 41				LD A, (a8)	;2		9719	
+1A01	 E6 03				AND d8	;2		9721	
+1A03	 20 FA				JR NZ s8	;3		9724	
+1A05	 70					LD (HL), B	;2		9726	
+1A06	 C9					RET	;4		9730	
+1A07	 CD 20 28			CALL a16	;6		9736	
+1A0A	 AF					XOR A	;1		9737	
+1A0B	 EA 10 C2			LD a16, A	;4		9741	
+1A0E	 E0 98				LD (a8), A	;3		9744	
+1A10	 E0 9C				LD (a8), A	;3		9747	
+1A12	 E0 9B				LD (a8), A	;3		9750	
+1A14	 E0 FB				LD (a8), A	;3		9753	
+1A16	 E0 9F				LD (a8), A	;3		9756	
+1A18	 3E 2F				LD, A, d8	;2		9758	
+1A1A	 CD D7 1F			CALL a16	;6		9764	
+1A1D	 CD F2 1F			CALL a16	;6		9770	
+1A20	 CD 51 26			CALL a16	;6		9776	
+1A23	 AF					XOR A	;1		9777	
+1A24	 E0 E3				LD (a8), A	;3		9780	
+1A26	 CD 8A 17			CALL a16	;6		9786	
+1A29	 F0 C0				LD A, (a8)	;2		9788	
+1A2B	 11 F7 3F			LD DE, d16	;3		9791	
+1A2E	 21 C3 FF			LD (HL), d16	;3		9794	
+1A31	 FE 77				CP d8	;2		9796	
+1A33	 3E 50				LD, A, d8	;2		9798	
+1A35	 28 08				JR Z s8	;3		9801	
+1A37	 3E F1				LD, A, d8	;2		9803	
+1A39	 21 C2 FF			LD (HL), d16	;3		9806	
+1A3C	 11 8F 3E			LD DE, d16	;3		9809	
+1A3F	 D5					PUSH DE	;4		9813	
+1A40	 E0 E6				LD (a8), A	;3		9816	
+1A42	 7E					LD A, (HL)	;2		9818	
+1A43	 E0 A9				LD (a8), A	;3		9821	
+1A45	 CD EB 27			CALL a16	;6		9827	
+1A48	 D1					POP DE	;3		9830	
+1A49	 21 00 9C			LD (HL), d16	;3		9833	
+1A4C	 CD EE 27			CALL a16	;6		9839	
+1A4F	 11 39 28			LD DE, d16	;3		9842	
+1A52	 21 63 9C			LD (HL), d16	;3		9845	
+1A55	 0E 0A				LD, C, d8	;2		9847	
+1A57	 CD 7D 1F			CALL a16	;6		9853	
+1A5A	 26 98				LD, H, d8	;2		9855	
+1A5C	 F0 E6				LD A, (a8)	;2		9857	
+1A5E	 6F					LD L, A	;1		9858	
+1A5F	 F0 A9				LD A, (a8)	;2		9860	
+1A61	 77					LD (HL), A	;2		9862	
+1A62	 26 9C				LD, H, d8	;2		9864	
+1A64	 77					LD (HL), A	;2		9866	
+1A65	 F0 F4				LD A, (a8)	;2		9868	
+1A67	 A7					AND A	;1		9869	
+1A68	 28 07				JR Z s8	;3		9872	
+1A6A	 23					INC, (HL)	;2		9874	
+1A6B	 36 27				LD (HL), d8	;3		9877	
+1A6D	 26 98				LD, H, d8	;2		9879	
+1A6F	 36 27				LD (HL), d8	;3		9882	
+1A71	 21 00 C2			LD (HL), d16	;3		9885	
+1A74	 11 BF 26			LD DE, d16	;3		9888	
+1A77	 CD B6 26			CALL a16	;6		9894	
+1A7A	 21 10 C2			LD (HL), d16	;3		9897	
+1A7D	 11 C7 26			LD DE, d16	;3		9900	
+1A80	 CD B6 26			CALL a16	;6		9906	
+1A83	 21 51 99			LD (HL), d16	;3		9909	
+1A86	 F0 C0				LD A, (a8)	;2		9911	
+1A88	 FE 77				CP d8	;2		9913	
+1A8A	 3E 25				LD, A, d8	;2		9915	
+1A8C	 28 01				JR Z s8	;3		9918	
+1A8E	 AF					XOR A	;1		9919	
+1A8F	 E0 9E				LD (a8), A	;3		9922	
+1A91	 E6 0F				AND d8	;2		9924	
+1A93	 32					LD (HL-), A	;2		9926	
+1A94	 28 02				JR Z s8	;3		9929	
+1A96	 36 02				LD (HL), d8	;3		9932	
+1A98	 CD E8 1A			CALL a16	;6		9938	
+1A9B	 FA DE C0			JP A, a16	;4		9942	
+1A9E	 A7					AND A	;1		9943	
+1A9F	 28 05				JR Z s8	;3		9946	
+1AA1	 3E 80				LD, A, d8	;2		9948	
+1AA3	 EA 10 C2			LD a16, A	;4		9952	
+1AA6	 CD 07 20			CALL a16	;6		9958	
+1AA9	 CD 07 20			CALL a16	;6		9964	
+1AAC	 CD 07 20			CALL a16	;6		9970	
+1AAF	 CD 83 26			CALL a16	;6		9976	
+1AB2	 AF					XOR A	;1		9977	
+1AB3	 E0 A0				LD (a8), A	;3		9980	
+1AB5	 F0 C0				LD A, (a8)	;2		9982	
+1AB7	 FE 77				CP d8	;2		9984	
+1AB9	 20 25				JR NZ s8	;3		9987	
+1ABB	 3E 34				LD, A, d8	;2		9989	
+1ABD	 E0 99				LD (a8), A	;3		9992	
+1ABF	 F0 C4				LD A, (a8)	;2		9994	
+1AC1	 21 B0 98			LD (HL), d16	;3		9997	
+1AC4	 77					LD (HL), A	;2		9999	
+1AC5	 26 9C				LD, H, d8	;2		10001	
+1AC7	 77					LD (HL), A	;2		10003	
+1AC8	 A7					AND A	;1		10004	
+1AC9	 28 15				JR Z s8	;3		10007	
+1ACB	 47					LD B, A	;1		10008	
+1ACC	 F0 E4				LD A, (a8)	;2		10010	
+1ACE	 A7					AND A	;1		10011	
+1ACF	 28 05				JR Z s8	;3		10014	
+1AD1	 CD 1B 1B			CALL a16	;6		10020	
+1AD4	 18 0A				JR s8	;3		10023	
+1AD6	 78					LD A, B	;1		10024	
+1AD7	 11 C0 FF			LD DE, d16	;3		10027	
+1ADA	 21 02 9A			LD (HL), d16	;3		10030	
+1ADD	 CD 68 1B			CALL a16	;6		10036	
+1AE0	 3E D3				LD, A, d8	;2		10038	
+1AE2	 E0 40				LD (a8), A	;3		10041	
+1AE4	 AF					XOR A	;1		10042	
+1AE5	 E0 E1				LD (a8), A	;3		10045	
+1AE7	 C9					RET	;4		10049	
+1AE8	 F0 A9				LD A, (a8)	;2		10051	
+1AEA	 5F					LD E, A	;1		10052	
+1AEB	 F0 F4				LD A, (a8)	;2		10054	
+1AED	 A7					AND A	;1		10055	
+1AEE	 28 0A				JR Z s8	;3		10058	
+1AF0	 3E 0A				LD, A, d8	;2		10060	
+1AF2	 83					ADD A, E	;1		10061	
+1AF3	 FE 15				CP d8	;2		10063	
+1AF5	 38 02				JR C s8	;3		10066	
+1AF7	 3E 14				LD, A, d8	;2		10068	
+1AF9	 5F					LD E, A	;1		10069	
+1AFA	 21 06 1B			LD (HL), d16	;3		10072	
+1AFD	 16 00				LD, D, d8	;2		10074	
+1AFF	 19					ADD HL, DE	;2		10076	
+1B00	 7E					LD A, (HL)	;2		10078	
+1B01	 E0 99				LD (a8), A	;3		10081	
+1B03	 E0 9A				LD (a8), A	;3		10084	
+1B05	 C9					RET	;4		10088	
+1B06	 34					INC (HL)	;3		10091	
+1B07	 30 2C				JR NC s8	;3		10094	
+1B09	 28 24				JR Z s8	;3		10097	
+1B0B	 20 1B				JR NZ s8	;3		10100	
+1B0D	 15					DEC, D	;1		10101	
+1B0E	 10 0A				STOP	;1		10102	
+1B10	 09					ADD HL, BC	;2		10104	
+1B11	 08 07 06			LD (a16), SP	;5		10109	
+1B14	 05					DEC, B	;1		10110	
+1B15	 05					DEC, B	;1		10111	
+1B16	 04					INC, B	;1		10112	
+1B17	 04					INC, B	;1		10113	
+1B18	 03					INC, BC	;2		10115	
+1B19	 03					INC, BC	;2		10117	
+1B1A	 02					LD (BC), A	;2		10119	
+1B1B	 21 C2 99			LD (HL), d16	;3		10122	
+1B1E	 11 40 1B			LD DE, d16	;3		10125	
+1B21	 0E 04				LD, C, d8	;2		10127	
+1B23	 06 0A				LD, B, d8	;2		10129	
+1B25	 E5					PUSH (HL)	;4		10133	
+1B26	 1A					LD A, (DE)	;2		10135	
+1B27	 77					LD (HL), A	;2		10137	
+1B28	 E5					PUSH (HL)	;4		10141	
+1B29	 7C					LD A, H	;1		10142	
+1B2A	 C6 30				ADD A, d8	;2		10144	
+1B2C	 67					LD H, A	;1		10145	
+1B2D	 1A					LD A, (DE)	;2		10147	
+1B2E	 77					LD (HL), A	;2		10149	
+1B2F	 E1					POP (HL)	;3		10152	
+1B30	 2C					INC, L	;1		10153	
+1B31	 13					INC, DE	;2		10155	
+1B32	 05					DEC, B	;1		10156	
+1B33	 20 F1				JR NZ s8	;3		10159	
+1B35	 E1					POP (HL)	;3		10162	
+1B36	 D5					PUSH DE	;4		10166	
+1B37	 11 20 00			LD DE, d16	;3		10169	
+1B3A	 19					ADD HL, DE	;2		10171	
+1B3B	 D1					POP DE	;3		10174	
+1B3C	 0D					DEC, C	;1		10175	
+1B3D	 20 E4				JR NZ s8	;3		10178	
+1B3F	 C9					RET	;4		10182	
+1B40	 85					ADD A, L	;1		10183	
+1B41	 2F					CPL	;1		10184	
+1B42	 82					ADD A, D	;1		10185	
+1B43	 86					ADD A, (HL)	;2		10187	
+1B44	 83					ADD A, E	;1		10188	
+1B45	 2F					CPL	;1		10189	
+1B46	 2F					CPL	;1		10190	
+1B47	 80					ADD A, B	;1		10191	
+1B48	 82					ADD A, D	;1		10192	
+1B49	 85					ADD A, L	;1		10193	
+1B4A	 2F					CPL	;1		10194	
+1B4B	 82					ADD A, D	;1		10195	
+1B4C	 84					ADD A, H	;1		10196	
+1B4D	 82					ADD A, D	;1		10197	
+1B4E	 83					ADD A, E	;1		10198	
+1B4F	 2F					CPL	;1		10199	
+1B50	 83					ADD A, E	;1		10200	
+1B51	 2F					CPL	;1		10201	
+1B52	 87					ADD A, A	;1		10202	
+1B53	 2F					CPL	;1		10203	
+1B54	 2F					CPL	;1		10204	
+1B55	 85					ADD A, L	;1		10205	
+1B56	 2F					CPL	;1		10206	
+1B57	 83					ADD A, E	;1		10207	
+1B58	 2F					CPL	;1		10208	
+1B59	 86					ADD A, (HL)	;2		10210	
+1B5A	 82					ADD A, D	;1		10211	
+1B5B	 80					ADD A, B	;1		10212	
+1B5C	 81					ADD A, C	;1		10213	
+1B5D	 2F					CPL	;1		10214	
+1B5E	 83					ADD A, E	;1		10215	
+1B5F	 2F					CPL	;1		10216	
+1B60	 86					ADD A, (HL)	;2		10218	
+1B61	 83					ADD A, E	;1		10219	
+1B62	 2F					CPL	;1		10220	
+1B63	 85					ADD A, L	;1		10221	
+1B64	 2F					CPL	;1		10222	
+1B65	 85					ADD A, L	;1		10223	
+1B66	 2F					CPL	;1		10224	
+1B67	 2F					CPL	;1		10225	
+1B68	 47					LD B, A	;1		10226	
+1B69	 05					DEC, B	;1		10227	
+1B6A	 28 03				JR Z s8	;3		10230	
+1B6C	 19					ADD HL, DE	;2		10232	
+1B6D	 18 FA				JR s8	;3		10235	
+1B6F	 F0 04				LD A, (a8)	;2		10237	
+1B71	 47					LD B, A	;1		10238	
+1B72	 3E 80				LD, A, d8	;2		10240	
+1B74	 05					DEC, B	;1		10241	
+1B75	 28 08				JR Z s8	;3		10244	
+1B77	 FE 80				CP d8	;2		10246	
+1B79	 20 F7				JR NZ s8	;3		10249	
+1B7B	 3E 2F				LD, A, d8	;2		10251	
+1B7D	 18 F5				JR s8	;3		10254	
+1B7F	 FE 2F				CP d8	;2		10256	
+1B81	 28 08				JR Z s8	;3		10259	
+1B83	 F0 04				LD A, (a8)	;2		10261	
+1B85	 E6 07				AND d8	;2		10263	
+1B87	 F6 80				OR d8	;2		10265	
+1B89	 18 02				JR s8	;3		10268	
+1B8B	 E0 A0				LD (a8), A	;3		10271	
+1B8D	 F5					PUSH AF	;4		10275	
+1B8E	 7D					LD A, L	;1		10276	
+1B8F	 E6 0F				AND d8	;2		10278	
+1B91	 FE 0B				CP d8	;2		10280	
+1B93	 20 0B				JR NZ s8	;3		10283	
+1B95	 F0 A0				LD A, (a8)	;2		10285	
+1B97	 FE 2F				CP d8	;2		10287	
+1B99	 28 05				JR Z s8	;3		10290	
+1B9B	 F1					POP AF	;3		10293	
+1B9C	 3E 2F				LD, A, d8	;2		10295	
+1B9E	 18 01				JR s8	;3		10298	
+1BA0	 F1					POP AF	;3		10301	
+1BA1	 77					LD (HL), A	;2		10303	
+1BA2	 E5					PUSH (HL)	;4		10307	
+1BA3	 F5					PUSH AF	;4		10311	
+1BA4	 F0 C5				LD A, (a8)	;2		10313	
+1BA6	 A7					AND A	;1		10314	
+1BA7	 20 04				JR NZ s8	;3		10317	
+1BA9	 11 00 30			LD DE, d16	;3		10320	
+1BAC	 19					ADD HL, DE	;2		10322	
+1BAD	 F1					POP AF	;3		10325	
+1BAE	 77					LD (HL), A	;2		10327	
+1BAF	 E1					POP (HL)	;3		10330	
+1BB0	 23					INC, (HL)	;2		10332	
+1BB1	 7D					LD A, L	;1		10333	
+1BB2	 E6 0F				AND d8	;2		10335	
+1BB4	 FE 0C				CP d8	;2		10337	
+1BB6	 20 B7				JR NZ s8	;3		10340	
+1BB8	 AF					XOR A	;1		10341	
+1BB9	 E0 A0				LD (a8), A	;3		10344	
+1BBB	 7C					LD A, H	;1		10345	
+1BBC	 E6 0F				AND d8	;2		10347	
+1BBE	 FE 0A				CP d8	;2		10349	
+1BC0	 28 06				JR Z s8	;3		10352	
+1BC2	 11 16 00			LD DE, d16	;3		10355	
+1BC5	 19					ADD HL, DE	;2		10357	
+1BC6	 18 A7				JR s8	;3		10360	
+1BC8	 7D					LD A, L	;1		10361	
+1BC9	 FE 2C				CP d8	;2		10363	
+1BCB	 20 F5				JR NZ s8	;3		10366	
+1BCD	 C9					RET	;4		10370	
+1BCE	 CD 0D 1C			CALL a16	;6		10376	
+1BD1	 F0 AB				LD A, (a8)	;2		10378	
+1BD3	 A7					AND A	;1		10379	
+1BD4	 C0					RET NZ	;5		10384	
+1BD5	 CD 0C 05			CALL a16	;6		10390	
+1BD8	 CD 42 05			CALL a16	;6		10396	
+1BDB	 CD 83 05			CALL a16	;6		10402	
+1BDE	 CD BB 24			CALL a16	;6		10408	
+1BE1	 CD 9C 20			CALL a16	;6		10414	
+1BE4	 CD 3E 21			CALL a16	;6		10420	
+1BE7	 CD A1 25			CALL a16	;6		10426	
+1BEA	 CD 4D 22			CALL a16	;6		10432	
+1BED	 CD 91 1F			CALL a16	;6		10438	
+1BF0	 CD B3 05			CALL a16	;6		10444	
+1BF3	 C9					RET	;4		10448	
+1BF4	 CB		
+1BF5	 57					LD D, A	;1		10449	
+1BF6	 C8					RET Z	;5		10454	
+1BF7	 FA DE C0			JP A, a16	;4		10458	
+1BFA	 EE 01				XOR d8	;2		10460	
+1BFC	 EA DE C0			LD a16, A	;4		10464	
+1BFF	 28 09				JR Z s8	;3		10467	
+1C01	 3E 80				LD, A, d8	;2		10469	
+1C03	 EA 10 C2			LD a16, A	;4		10473	
+1C06	 CD 96 26			CALL a16	;6		10479	
+1C09	 C9					RET	;4		10483	
+1C0A	 AF					XOR A	;1		10484	
+1C0B	 18 F6				JR s8	;3		10487	
+1C0D	 F0 80				LD A, (a8)	;2		10489	
+1C0F	 E6 0F				AND d8	;2		10491	
+1C11	 FE 0F				CP d8	;2		10493	
+1C13	 CA 1B 02			JP Z a16	;4		10497	
+1C16	 F0 E4				LD A, (a8)	;2		10499	
+1C18	 A7					AND A	;1		10500	
+1C19	 C0					RET NZ	;5		10505	
+1C1A	 F0 81				LD A, (a8)	;2		10507	
+1C1C	 CB		
+1C1E	 28 D4				JR Z s8	;3		10510	
+1C20	 F0 C5				LD A, (a8)	;2		10512	
+1C22	 A7					AND A	;1		10513	
+1C23	 20 45				JR NZ s8	;3		10516	
+1C25	 21 40 FF			LD (HL), d16	;3		10519	
+1C28	 F0 AB				LD A, (a8)	;2		10521	
+1C2A	 EE 01				XOR d8	;2		10523	
+1C2C	 E0 AB				LD (a8), A	;3		10526	
+1C2E	 28 2A				JR Z s8	;3		10529	
+1C30	 CB		
+1C32	 3E 01				LD, A, d8	;2		10531	
+1C34	 EA 7F DF			LD a16, A	;4		10535	
+1C37	 21 4E 99			LD (HL), d16	;3		10538	
+1C3A	 11 4E 9D			LD DE, d16	;3		10541	
+1C3D	 06 04				LD, B, d8	;2		10543	
+1C3F	 F0 41				LD A, (a8)	;2		10545	
+1C41	 E6 03				AND d8	;2		10547	
+1C43	 20 FA				JR NZ s8	;3		10550	
+1C45	 2A					LD A, (HL+)	;2		10552	
+1C46	 12					LD (DE), A	;2		10554	
+1C47	 13					INC, DE	;2		10556	
+1C48	 05					DEC, B	;1		10557	
+1C49	 20 F4				JR NZ s8	;3		10560	
+1C4B	 3E 80				LD, A, d8	;2		10562	
+1C4D	 EA 10 C2			LD a16, A	;4		10566	
+1C50	 EA 00 C2			LD a16, A	;4		10570	
+1C53	 CD 83 26			CALL a16	;6		10576	
+1C56	 CD 96 26			CALL a16	;6		10582	
+1C59	 C9					RET	;4		10586	
+1C5A	 CB		
+1C5B	 9E					SBC A, (HL)	;2		10588	
+1C5C	 3E 02				LD, A, d8	;2		10590	
+1C5E	 EA 7F DF			LD a16, A	;4		10594	
+1C61	 FA DE C0			JP A, a16	;4		10598	
+1C64	 A7					AND A	;1		10599	
+1C65	 28 E6				JR Z s8	;3		10602	
+1C67	 AF					XOR A	;1		10603	
+1C68	 18 E6				JR s8	;3		10606	
+1C6A	 F0 CB				LD A, (a8)	;2		10608	
+1C6C	 FE 29				CP d8	;2		10610	
+1C6E	 C0					RET NZ	;5		10615	
+1C6F	 F0 AB				LD A, (a8)	;2		10617	
+1C71	 EE 01				XOR d8	;2		10619	
+1C73	 E0 AB				LD (a8), A	;3		10622	
+1C75	 28 33				JR Z s8	;3		10625	
+1C77	 3E 01				LD, A, d8	;2		10627	
+1C79	 EA 7F DF			LD a16, A	;4		10631	
+1C7C	 F0 D0				LD A, (a8)	;2		10633	
+1C7E	 E0 F2				LD (a8), A	;3		10636	
+1C80	 F0 CF				LD A, (a8)	;2		10638	
+1C82	 E0 F1				LD (a8), A	;3		10641	
+1C84	 CD CB 1C			CALL a16	;6		10647	
+1C87	 C9					RET	;4		10651	
+1C88	 F0 AB				LD A, (a8)	;2		10653	
+1C8A	 A7					AND A	;1		10654	
+1C8B	 C8					RET Z	;5		10659	
+1C8C	 F0 CC				LD A, (a8)	;2		10661	
+1C8E	 28 39				JR Z s8	;3		10664	
+1C90	 AF					XOR A	;1		10665	
+1C91	 E0 CC				LD (a8), A	;3		10668	
+1C93	 F0 CB				LD A, (a8)	;2		10670	
+1C95	 FE 29				CP d8	;2		10672	
+1C97	 20 08				JR NZ s8	;3		10675	
+1C99	 3E 94				LD, A, d8	;2		10677	
+1C9B	 E0 CF				LD (a8), A	;3		10680	
+1C9D	 E0 CE				LD (a8), A	;3		10683	
+1C9F	 E1					POP (HL)	;3		10686	
+1CA0	 C9					RET	;4		10690	
+1CA1	 AF					XOR A	;1		10691	
+1CA2	 E0 CF				LD (a8), A	;3		10694	
+1CA4	 F0 D0				LD A, (a8)	;2		10696	
+1CA6	 FE 94				CP d8	;2		10698	
+1CA8	 28 1F				JR Z s8	;3		10701	
+1CAA	 F0 F2				LD A, (a8)	;2		10703	
+1CAC	 E0 D0				LD (a8), A	;3		10706	
+1CAE	 F0 F1				LD A, (a8)	;2		10708	
+1CB0	 E0 CF				LD (a8), A	;3		10711	
+1CB2	 3E 02				LD, A, d8	;2		10713	
+1CB4	 EA 7F DF			LD a16, A	;4		10717	
+1CB7	 AF					XOR A	;1		10718	
+1CB8	 E0 AB				LD (a8), A	;3		10721	
+1CBA	 21 EE 98			LD (HL), d16	;3		10724	
+1CBD	 06 8E				LD, B, d8	;2		10726	
+1CBF	 0E 05				LD, C, d8	;2		10728	
+1CC1	 CD FF 19			CALL a16	;6		10734	
+1CC4	 2C					INC, L	;1		10735	
+1CC5	 0D					DEC, C	;1		10736	
+1CC6	 20 F9				JR NZ s8	;3		10739	
+1CC8	 C9					RET	;4		10743	
+1CC9	 E1					POP (HL)	;3		10746	
+1CCA	 C9					RET	;4		10750	
+1CCB	 21 EE 98			LD (HL), d16	;3		10753	
+1CCE	 0E 05				LD, C, d8	;2		10755	
+1CD0	 11 DD 1C			LD DE, d16	;3		10758	
+1CD3	 1A					LD A, (DE)	;2		10760	
+1CD4	 CD FE 19			CALL a16	;6		10766	
+1CD7	 13					INC, DE	;2		10768	
+1CD8	 2C					INC, L	;1		10769	
+1CD9	 0D					DEC, C	;1		10770	
+1CDA	 20 F7				JR NZ s8	;3		10773	
+1CDC	 C9					RET	;4		10777	
+1CDD	 19					ADD HL, DE	;2		10779	
+1CDE	 0A					LD A, (BC)	;2		10781	
+1CDF	 1E 1C				LD, E, d8	;2		10783	
+1CE1	 0E 3E				LD, C, d8	;2		10785	
+1CE3	 80					ADD A, B	;1		10786	
+1CE4	 EA 00 C2			LD a16, A	;4		10790	
+1CE7	 EA 10 C2			LD a16, A	;4		10794	
+1CEA	 CD 83 26			CALL a16	;6		10800	
+1CED	 CD 96 26			CALL a16	;6		10806	
+1CF0	 AF					XOR A	;1		10807	
+1CF1	 E0 98				LD (a8), A	;3		10810	
+1CF3	 E0 9C				LD (a8), A	;3		10813	
+1CF5	 CD 93 22			CALL a16	;6		10819	
+1CF8	 3E 87				LD, A, d8	;2		10821	
+1CFA	 CD D7 1F			CALL a16	;6		10827	
+1CFD	 3E 46				LD, A, d8	;2		10829	
+1CFF	 E0 A6				LD (a8), A	;3		10832	
+1D01	 3E 0D				LD, A, d8	;2		10834	
+1D03	 E0 E1				LD (a8), A	;3		10837	
+1D05	 C9					RET	;4		10841	
+1D06	 F0 81				LD A, (a8)	;2		10843	
+1D08	 CB		
+1D0A	 20 03				JR NZ s8	;3		10846	
+1D0C	 CB		
+1D0E	 C8					RET Z	;5		10851	
+1D0F	 AF					XOR A	;1		10852	
+1D10	 E0 E3				LD (a8), A	;3		10855	
+1D12	 F0 C5				LD A, (a8)	;2		10857	
+1D14	 A7					AND A	;1		10858	
+1D15	 3E 16				LD, A, d8	;2		10860	
+1D17	 20 0A				JR NZ s8	;3		10863	
+1D19	 F0 C0				LD A, (a8)	;2		10865	
+1D1B	 FE 37				CP d8	;2		10867	
+1D1D	 3E 10				LD, A, d8	;2		10869	
+1D1F	 28 02				JR Z s8	;3		10872	
+1D21	 3E 12				LD, A, d8	;2		10874	
+1D23	 E0 E1				LD (a8), A	;3		10877	
+1D25	 C9					RET	;4		10881	
+1D26	 F0 A6				LD A, (a8)	;2		10883	
+1D28	 A7					AND A	;1		10884	
+1D29	 C0					RET NZ	;5		10889	
+1D2A	 21 02 C8			LD (HL), d16	;3		10892	
+1D2D	 11 89 28			LD DE, d16	;3		10895	
+1D30	 CD 04 28			CALL a16	;6		10901	
+1D33	 F0 C3				LD A, (a8)	;2		10903	
+1D35	 A7					AND A	;1		10904	
+1D36	 28 2E				JR Z s8	;3		10907	
+1D38	 11 40 00			LD DE, d16	;3		10910	
+1D3B	 21 27 C8			LD (HL), d16	;3		10913	
+1D3E	 CD 84 1D			CALL a16	;6		10919	
+1D41	 11 00 01			LD DE, d16	;3		10922	
+1D44	 21 87 C8			LD (HL), d16	;3		10925	
+1D47	 CD 84 1D			CALL a16	;6		10931	
+1D4A	 11 00 03			LD DE, d16	;3		10934	
+1D4D	 21 E7 C8			LD (HL), d16	;3		10937	
+1D50	 CD 84 1D			CALL a16	;6		10943	
+1D53	 11 00 12			LD DE, d16	;3		10946	
+1D56	 21 47 C9			LD (HL), d16	;3		10949	
+1D59	 CD 84 1D			CALL a16	;6		10955	
+1D5C	 21 A0 C0			LD (HL), d16	;3		10958	
+1D5F	 06 03				LD, B, d8	;2		10960	
+1D61	 AF					XOR A	;1		10961	
+1D62	 22					LD (HL+), A	;2		10963	
+1D63	 05					DEC, B	;1		10964	
+1D64	 20 FC				JR NZ s8	;3		10967	
+1D66	 3E 80				LD, A, d8	;2		10969	
+1D68	 E0 A6				LD (a8), A	;3		10972	
+1D6A	 3E 80				LD, A, d8	;2		10974	
+1D6C	 EA 00 C2			LD a16, A	;4		10978	
+1D6F	 EA 10 C2			LD a16, A	;4		10982	
+1D72	 CD 83 26			CALL a16	;6		10988	
+1D75	 CD 96 26			CALL a16	;6		10994	
+1D78	 CD F3 7F			CALL a16	;6		11000	
+1D7B	 3E 25				LD, A, d8	;2		11002	
+1D7D	 E0 9E				LD (a8), A	;3		11005	
+1D7F	 3E 0B				LD, A, d8	;2		11007	
+1D81	 E0 E1				LD (a8), A	;3		11010	
+1D83	 C9					RET	;4		11014	
+1D84	 E5					PUSH (HL)	;4		11018	
+1D85	 21 A0 C0			LD (HL), d16	;3		11021	
+1D88	 06 03				LD, B, d8	;2		11023	
+1D8A	 AF					XOR A	;1		11024	
+1D8B	 22					LD (HL+), A	;2		11026	
+1D8C	 05					DEC, B	;1		11027	
+1D8D	 20 FC				JR NZ s8	;3		11030	
+1D8F	 F0 C3				LD A, (a8)	;2		11032	
+1D91	 47					LD B, A	;1		11033	
+1D92	 04					INC, B	;1		11034	
+1D93	 21 A0 C0			LD (HL), d16	;3		11037	
+1D96	 CD 66 01			CALL a16	;6		11043	
+1D99	 05					DEC, B	;1		11044	
+1D9A	 20 F7				JR NZ s8	;3		11047	
+1D9C	 E1					POP (HL)	;3		11050	
+1D9D	 06 03				LD, B, d8	;2		11052	
+1D9F	 11 A2 C0			LD DE, d16	;3		11055	
+1DA2	 1A					LD A, (DE)	;2		11057	
+1DA3	 E6 F0				AND d8	;2		11059	
+1DA5	 20 0A				JR NZ s8	;3		11062	
+1DA7	 1A					LD A, (DE)	;2		11064	
+1DA8	 E6 0F				AND d8	;2		11066	
+1DAA	 20 0B				JR NZ s8	;3		11069	
+1DAC	 1D					DEC, E	;1		11070	
+1DAD	 05					DEC, B	;1		11071	
+1DAE	 20 F2				JR NZ s8	;3		11074	
+1DB0	 C9					RET	;4		11078	
+1DB1	 1A					LD A, (DE)	;2		11080	
+1DB2	 E6 F0				AND d8	;2		11082	
+1DB4	 CB		
+1DB6	 22					LD (HL+), A	;2		11084	
+1DB7	 1A					LD A, (DE)	;2		11086	
+1DB8	 E6 0F				AND d8	;2		11088	
+1DBA	 22					LD (HL+), A	;2		11090	
+1DBB	 1D					DEC, E	;1		11091	
+1DBC	 05					DEC, B	;1		11092	
+1DBD	 20 F2				JR NZ s8	;3		11095	
+1DBF	 C9					RET	;4		11099	
+1DC0	 F0 A6				LD A, (a8)	;2		11101	
+1DC2	 A7					AND A	;1		11102	
+1DC3	 C0					RET NZ	;5		11107	
+1DC4	 3E 01				LD, A, d8	;2		11109	
+1DC6	 EA C6 C0			LD a16, A	;4		11113	
+1DC9	 3E 05				LD, A, d8	;2		11115	
+1DCB	 E0 A6				LD (a8), A	;3		11118	
+1DCD	 C9					RET	;4		11122	
+1DCE	 F0 A6				LD A, (a8)	;2		11124	
+1DD0	 A7					AND A	;1		11125	
+1DD1	 C0					RET NZ	;5		11130	
+1DD2	 21 02 C8			LD (HL), d16	;3		11133	
+1DD5	 11 0F 51			LD DE, d16	;3		11136	
+1DD8	 CD 04 28			CALL a16	;6		11142	
+1DDB	 CD 8A 17			CALL a16	;6		11148	
+1DDE	 21 00 C2			LD (HL), d16	;3		11151	
+1DE1	 11 35 27			LD DE, d16	;3		11154	
+1DE4	 0E 0A				LD, C, d8	;2		11156	
+1DE6	 CD 76 17			CALL a16	;6		11162	
+1DE9	 3E 10				LD, A, d8	;2		11164	
+1DEB	 21 66 C2			LD (HL), d16	;3		11167	
+1DEE	 77					LD (HL), A	;2		11169	
+1DEF	 2E 76				LD, L, d8	;2		11171	
+1DF1	 77					LD (HL), A	;2		11173	
+1DF2	 21 0E C2			LD (HL), d16	;3		11176	
+1DF5	 11 31 1E			LD DE, d16	;3		11179	
+1DF8	 06 0A				LD, B, d8	;2		11181	
+1DFA	 1A					LD A, (DE)	;2		11183	
+1DFB	 22					LD (HL+), A	;2		11185	
+1DFC	 22					LD (HL+), A	;2		11187	
+1DFD	 13					INC, DE	;2		11189	
+1DFE	 D5					PUSH DE	;4		11193	
+1DFF	 11 0E 00			LD DE, d16	;3		11196	
+1E02	 19					ADD HL, DE	;2		11198	
+1E03	 D1					POP DE	;3		11201	
+1E04	 05					DEC, B	;1		11202	
+1E05	 20 F3				JR NZ s8	;3		11205	
+1E07	 F0 C4				LD A, (a8)	;2		11207	
+1E09	 FE 05				CP d8	;2		11209	
+1E0B	 20 02				JR NZ s8	;3		11212	
+1E0D	 3E 09				LD, A, d8	;2		11214	
+1E0F	 3C					INC, A	;1		11215	
+1E10	 47					LD B, A	;1		11216	
+1E11	 21 00 C2			LD (HL), d16	;3		11219	
+1E14	 11 10 00			LD DE, d16	;3		11222	
+1E17	 AF					XOR A	;1		11223	
+1E18	 77					LD (HL), A	;2		11225	
+1E19	 19					ADD HL, DE	;2		11227	
+1E1A	 05					DEC, B	;1		11228	
+1E1B	 20 FB				JR NZ s8	;3		11231	
+1E1D	 F0 C4				LD A, (a8)	;2		11233	
+1E1F	 C6 0A				ADD A, d8	;2		11235	
+1E21	 EA E8 DF			LD a16, A	;4		11239	
+1E24	 3E 25				LD, A, d8	;2		11241	
+1E26	 E0 9E				LD (a8), A	;3		11244	
+1E28	 3E 1B				LD, A, d8	;2		11246	
+1E2A	 E0 A6				LD (a8), A	;3		11249	
+1E2C	 3E 23				LD, A, d8	;2		11251	
+1E2E	 E0 E1				LD (a8), A	;3		11254	
+1E30	 C9					RET	;4		11258	
+1E31	 1C					INC, E	;1		11259	
+1E32	 0F					RRCA	;1		11260	
+1E33	 1E 32				LD, E, d8	;2		11262	
+1E35	 20 18				JR NZ s8	;3		11265	
+1E37	 26 1D				LD, H, d8	;2		11267	
+1E39	 28 2B				JR Z s8	;3		11270	
+1E3B	 3E 0A				LD, A, d8	;2		11272	
+1E3D	 CD 73 26			CALL a16	;6		11278	
+1E40	 C9					RET	;4		11282	
+1E41	 F0 A6				LD A, (a8)	;2		11284	
+1E43	 FE 14				CP d8	;2		11286	
+1E45	 28 F4				JR Z s8	;3		11289	
+1E47	 A7					AND A	;1		11290	
+1E48	 C0					RET NZ	;5		11295	
+1E49	 21 0E C2			LD (HL), d16	;3		11298	
+1E4C	 11 10 00			LD DE, d16	;3		11301	
+1E4F	 06 0A				LD, B, d8	;2		11303	
+1E51	 E5					PUSH (HL)	;4		11307	
+1E52	 35					DEC (HL)	;3		11310	
+1E53	 20 15				JR NZ s8	;3		11313	
+1E55	 2C					INC, L	;1		11314	
+1E56	 3A					LD A, (HL-)	;2		11316	
+1E57	 77					LD (HL), A	;2		11318	
+1E58	 7D					LD A, L	;1		11319	
+1E59	 E6 F0				AND d8	;2		11321	
+1E5B	 F6 03				OR d8	;2		11323	
+1E5D	 6F					LD L, A	;1		11324	
+1E5E	 7E					LD A, (HL)	;2		11326	
+1E5F	 EE 01				XOR d8	;2		11328	
+1E61	 77					LD (HL), A	;2		11330	
+1E62	 FE 50				CP d8	;2		11332	
+1E64	 28 23				JR Z s8	;3		11335	
+1E66	 FE 51				CP d8	;2		11337	
+1E68	 28 25				JR Z s8	;3		11340	
+1E6A	 E1					POP (HL)	;3		11343	
+1E6B	 19					ADD HL, DE	;2		11345	
+1E6C	 05					DEC, B	;1		11346	
+1E6D	 20 E2				JR NZ s8	;3		11349	
+1E6F	 3E 0A				LD, A, d8	;2		11351	
+1E71	 CD 73 26			CALL a16	;6		11357	
+1E74	 FA E9 DF			JP A, a16	;4		11361	
+1E77	 A7					AND A	;1		11362	
+1E78	 C0					RET NZ	;5		11367	
+1E79	 CD 8A 17			CALL a16	;6		11373	
+1E7C	 F0 C4				LD A, (a8)	;2		11375	
+1E7E	 FE 05				CP d8	;2		11377	
+1E80	 3E 26				LD, A, d8	;2		11379	
+1E82	 28 02				JR Z s8	;3		11382	
+1E84	 3E 05				LD, A, d8	;2		11384	
+1E86	 E0 E1				LD (a8), A	;3		11387	
+1E88	 C9					RET	;4		11391	
+1E89	 2D					DEC, L	;1		11392	
+1E8A	 2D					DEC, L	;1		11393	
+1E8B	 36 67				LD (HL), d8	;3		11396	
+1E8D	 18 DB				JR s8	;3		11399	
+1E8F	 2D					DEC, L	;1		11400	
+1E90	 2D					DEC, L	;1		11401	
+1E91	 36 5D				LD (HL), d8	;3		11404	
+1E93	 18 D5				JR s8	;3		11407	
+1E95	 AF					XOR A	;1		11408	
+1E96	 EA C6 C0			LD a16, A	;4		11412	
+1E99	 11 C0 C0			LD DE, d16	;3		11415	
+1E9C	 1A					LD A, (DE)	;2		11417	
+1E9D	 6F					LD L, A	;1		11418	
+1E9E	 13					INC, DE	;2		11420	
+1E9F	 1A					LD A, (DE)	;2		11422	
+1EA0	 67					LD H, A	;1		11423	
+1EA1	 B5					OR L	;1		11424	
+1EA2	 CA 3A 26			JP Z a16	;4		11428	
+1EA5	 2B					DEC, (HL)	;2		11430	
+1EA6	 7C					LD A, H	;1		11431	
+1EA7	 12					LD (DE), A	;2		11433	
+1EA8	 1B					DEC, DE	;2		11435	
+1EA9	 7D					LD A, L	;1		11436	
+1EAA	 12					LD (DE), A	;2		11438	
+1EAB	 11 01 00			LD DE, d16	;3		11441	
+1EAE	 21 C2 C0			LD (HL), d16	;3		11444	
+1EB1	 D5					PUSH DE	;4		11448	
+1EB2	 CD 66 01			CALL a16	;6		11454	
+1EB5	 11 C4 C0			LD DE, d16	;3		11457	
+1EB8	 21 A5 99			LD (HL), d16	;3		11460	
+1EBB	 CD 36 2A			CALL a16	;6		11466	
+1EBE	 AF					XOR A	;1		11467	
+1EBF	 E0 A6				LD (a8), A	;3		11470	
+1EC1	 D1					POP DE	;3		11473	
+1EC2	 21 A0 C0			LD (HL), d16	;3		11476	
+1EC5	 CD 66 01			CALL a16	;6		11482	
+1EC8	 11 A2 C0			LD DE, d16	;3		11485	
+1ECB	 21 25 9A			LD (HL), d16	;3		11488	
+1ECE	 CD 3A 2A			CALL a16	;6		11494	
+1ED1	 3E 02				LD, A, d8	;2		11496	
+1ED3	 EA E0 DF			LD a16, A	;4		11500	
+1ED6	 C9					RET	;4		11504	
+1ED7	 FA C6 C0			JP A, a16	;4		11508	
+1EDA	 A7					AND A	;1		11509	
+1EDB	 C8					RET Z	;5		11514	
+1EDC	 FA C5 C0			JP A, a16	;4		11518	
+1EDF	 FE 04				CP d8	;2		11520	
+1EE1	 28 B2				JR Z s8	;3		11523	
+1EE3	 11 40 00			LD DE, d16	;3		11526	
+1EE6	 01 23 98			LD BC, d16	;3		11529	
+1EE9	 21 AC C0			LD (HL), d16	;3		11532	
+1EEC	 A7					AND A	;1		11533	
+1EED	 28 23				JR Z s8	;3		11536	
+1EEF	 11 00 01			LD DE, d16	;3		11539	
+1EF2	 01 83 98			LD BC, d16	;3		11542	
+1EF5	 21 B1 C0			LD (HL), d16	;3		11545	
+1EF8	 FE 01				CP d8	;2		11547	
+1EFA	 28 16				JR Z s8	;3		11550	
+1EFC	 11 00 03			LD DE, d16	;3		11553	
+1EFF	 01 E3 98			LD BC, d16	;3		11556	
+1F02	 21 B6 C0			LD (HL), d16	;3		11559	
+1F05	 FE 02				CP d8	;2		11561	
+1F07	 28 09				JR Z s8	;3		11564	
+1F09	 11 00 12			LD DE, d16	;3		11567	
+1F0C	 01 43 99			LD BC, d16	;3		11570	
+1F0F	 21 BB C0			LD (HL), d16	;3		11573	
+1F12	 CD D9 25			CALL a16	;6		11579	
+1F15	 C9					RET	;4		11583	
+1F16	 F0 81				LD A, (a8)	;2		11585	
+1F18	 A7					AND A	;1		11586	
+1F19	 C8					RET Z	;5		11591	
+1F1A	 3E 02				LD, A, d8	;2		11593	
+1F1C	 E0 E1				LD (a8), A	;3		11596	
+1F1E	 C9					RET	;4		11600	
+1F1F	 F0 A6				LD A, (a8)	;2		11602	
+1F21	 A7					AND A	;1		11603	
+1F22	 C0					RET NZ	;5		11608	
+1F23	 3E 04				LD, A, d8	;2		11610	
+1F25	 EA E8 DF			LD a16, A	;4		11614	
+1F28	 F0 C5				LD A, (a8)	;2		11616	
+1F2A	 A7					AND A	;1		11617	
+1F2B	 28 0A				JR Z s8	;3		11620	
+1F2D	 3E 3F				LD, A, d8	;2		11622	
+1F2F	 E0 A6				LD (a8), A	;3		11625	
+1F31	 3E 1B				LD, A, d8	;2		11627	
+1F33	 E0 CC				LD (a8), A	;3		11630	
+1F35	 18 37				JR s8	;3		11633	
+1F37	 3E 2F				LD, A, d8	;2		11635	
+1F39	 CD D7 1F			CALL a16	;6		11641	
+1F3C	 21 43 C8			LD (HL), d16	;3		11644	
+1F3F	 11 3E 29			LD DE, d16	;3		11647	
+1F42	 0E 07				LD, C, d8	;2		11649	
+1F44	 CD 7D 1F			CALL a16	;6		11655	
+1F47	 21 83 C9			LD (HL), d16	;3		11658	
+1F4A	 11 76 29			LD DE, d16	;3		11661	
+1F4D	 0E 06				LD, C, d8	;2		11663	
+1F4F	 CD 7D 1F			CALL a16	;6		11669	
+1F52	 F0 C0				LD A, (a8)	;2		11671	
+1F54	 FE 37				CP d8	;2		11673	
+1F56	 20 14				JR NZ s8	;3		11676	
+1F58	 21 A2 C0			LD (HL), d16	;3		11679	
+1F5B	 7E					LD A, (HL)	;2		11681	
+1F5C	 06 58				LD, B, d8	;2		11683	
+1F5E	 FE 20				CP d8	;2		11685	
+1F60	 30 0F				JR NC s8	;3		11688	
+1F62	 04					INC, B	;1		11689	
+1F63	 FE 15				CP d8	;2		11691	
+1F65	 30 0A				JR NC s8	;3		11694	
+1F67	 04					INC, B	;1		11695	
+1F68	 FE 10				CP d8	;2		11697	
+1F6A	 30 05				JR NC s8	;3		11700	
+1F6C	 3E 04				LD, A, d8	;2		11702	
+1F6E	 E0 E1				LD (a8), A	;3		11705	
+1F70	 C9					RET	;4		11709	
+1F71	 78					LD A, B	;1		11710	
+1F72	 E0 F3				LD (a8), A	;3		11713	
+1F74	 3E 90				LD, A, d8	;2		11715	
+1F76	 E0 A6				LD (a8), A	;3		11718	
+1F78	 3E 34				LD, A, d8	;2		11720	
+1F7A	 E0 E1				LD (a8), A	;3		11723	
+1F7C	 C9					RET	;4		11727	
+1F7D	 06 08				LD, B, d8	;2		11729	
+1F7F	 E5					PUSH (HL)	;4		11733	
+1F80	 1A					LD A, (DE)	;2		11735	
+1F81	 22					LD (HL+), A	;2		11737	
+1F82	 13					INC, DE	;2		11739	
+1F83	 05					DEC, B	;1		11740	
+1F84	 20 FA				JR NZ s8	;3		11743	
+1F86	 E1					POP (HL)	;3		11746	
+1F87	 D5					PUSH DE	;4		11750	
+1F88	 11 20 00			LD DE, d16	;3		11753	
+1F8B	 19					ADD HL, DE	;2		11755	
+1F8C	 D1					POP DE	;3		11758	
+1F8D	 0D					DEC, C	;1		11759	
+1F8E	 20 ED				JR NZ s8	;3		11762	
+1F90	 C9					RET	;4		11766	
+1F91	 F0 C0				LD A, (a8)	;2		11768	
+1F93	 FE 37				CP d8	;2		11770	
+1F95	 C0					RET NZ	;5		11775	
+1F96	 F0 E1				LD A, (a8)	;2		11777	
+1F98	 A7					AND A	;1		11778	
+1F99	 C0					RET NZ	;5		11783	
+1F9A	 F0 E3				LD A, (a8)	;2		11785	
+1F9C	 FE 05				CP d8	;2		11787	
+1F9E	 C0					RET NZ	;5		11792	
+1F9F	 21 AC C0			LD (HL), d16	;3		11795	
+1FA2	 01 05 00			LD BC, d16	;3		11798	
+1FA5	 7E					LD A, (HL)	;2		11800	
+1FA6	 11 40 00			LD DE, d16	;3		11803	
+1FA9	 A7					AND A	;1		11804	
+1FAA	 20 17				JR NZ s8	;3		11807	
+1FAC	 09					ADD HL, BC	;2		11809	
+1FAD	 7E					LD A, (HL)	;2		11811	
+1FAE	 11 00 01			LD DE, d16	;3		11814	
+1FB1	 A7					AND A	;1		11815	
+1FB2	 20 0F				JR NZ s8	;3		11818	
+1FB4	 09					ADD HL, BC	;2		11820	
+1FB5	 7E					LD A, (HL)	;2		11822	
+1FB6	 11 00 03			LD DE, d16	;3		11825	
+1FB9	 A7					AND A	;1		11826	
+1FBA	 20 07				JR NZ s8	;3		11829	
+1FBC	 09					ADD HL, BC	;2		11831	
+1FBD	 11 00 12			LD DE, d16	;3		11834	
+1FC0	 7E					LD A, (HL)	;2		11836	
+1FC1	 A7					AND A	;1		11837	
+1FC2	 C8					RET Z	;5		11842	
+1FC3	 36 00				LD (HL), d8	;3		11845	
+1FC5	 F0 A9				LD A, (a8)	;2		11847	
+1FC7	 47					LD B, A	;1		11848	
+1FC8	 04					INC, B	;1		11849	
+1FC9	 C5					PUSH BC	;4		11853	
+1FCA	 D5					PUSH DE	;4		11857	
+1FCB	 21 A0 C0			LD (HL), d16	;3		11860	
+1FCE	 CD 66 01			CALL a16	;6		11866	
+1FD1	 D1					POP DE	;3		11869	
+1FD2	 C1					POP BC	;3		11872	
+1FD3	 05					DEC, B	;1		11873	
+1FD4	 20 F3				JR NZ s8	;3		11876	
+1FD6	 C9					RET	;4		11880	
+1FD7	 F5					PUSH AF	;4		11884	
+1FD8	 3E 02				LD, A, d8	;2		11886	
+1FDA	 E0 E3				LD (a8), A	;3		11889	
+1FDC	 F1					POP AF	;3		11892	
+1FDD	 21 02 C8			LD (HL), d16	;3		11895	
+1FE0	 0E 12				LD, C, d8	;2		11897	
+1FE2	 11 20 00			LD DE, d16	;3		11900	
+1FE5	 E5					PUSH (HL)	;4		11904	
+1FE6	 06 0A				LD, B, d8	;2		11906	
+1FE8	 22					LD (HL+), A	;2		11908	
+1FE9	 05					DEC, B	;1		11909	
+1FEA	 20 FC				JR NZ s8	;3		11912	
+1FEC	 E1					POP (HL)	;3		11915	
+1FED	 19					ADD HL, DE	;2		11917	
+1FEE	 0D					DEC, C	;1		11918	
+1FEF	 20 F4				JR NZ s8	;3		11921	
+1FF1	 C9					RET	;4		11925	
+1FF2	 21 C2 CB			LD (HL), d16	;3		11928	
+1FF5	 11 16 00			LD DE, d16	;3		11931	
+1FF8	 0E 02				LD, C, d8	;2		11933	
+1FFA	 3E 2F				LD, A, d8	;2		11935	
+1FFC	 06 0A				LD, B, d8	;2		11937	
+1FFE	 22					LD (HL+), A	;2		11939	
+1FFF	 05					DEC, B	;1		11940	
+2000	 20 FC				JR NZ s8	;3		11943	
+2002	 19					ADD HL, DE	;2		11945	
+2003	 0D					DEC, C	;1		11946	
+2004	 20 F6				JR NZ s8	;3		11949	
+2006	 C9					RET	;4		11953	
+2007	 21 00 C2			LD (HL), d16	;3		11956	
+200A	 36 00				LD (HL), d8	;3		11959	
+200C	 2C					INC, L	;1		11960	
+200D	 36 18				LD (HL), d8	;3		11963	
+200F	 2C					INC, L	;1		11964	
+2010	 36 3F				LD (HL), d8	;3		11967	
+2012	 2C					INC, L	;1		11968	
+2013	 FA 13 C2			JP A, a16	;4		11972	
+2016	 77					LD (HL), A	;2		11974	
+2017	 E6 FC				AND d8	;2		11976	
+2019	 4F					LD C, A	;1		11977	
+201A	 F0 E4				LD A, (a8)	;2		11979	
+201C	 A7					AND A	;1		11980	
+201D	 20 05				JR NZ s8	;3		11983	
+201F	 F0 C5				LD A, (a8)	;2		11985	
+2021	 A7					AND A	;1		11986	
+2022	 28 1D				JR Z s8	;3		11989	
+2024	 26 C3				LD, H, d8	;2		11991	
+2026	 F0 B0				LD A, (a8)	;2		11993	
+2028	 6F					LD L, A	;1		11994	
+2029	 5E					LD E, (HL)	;2		11996	
+202A	 23					INC, (HL)	;2		11998	
+202B	 7C					LD A, H	;1		11999	
+202C	 FE C4				CP d8	;2		12001	
+202E	 20 03				JR NZ s8	;3		12004	
+2030	 21 00 C3			LD (HL), d16	;3		12007	
+2033	 7D					LD A, L	;1		12008	
+2034	 E0 B0				LD (a8), A	;3		12011	
+2036	 F0 D3				LD A, (a8)	;2		12013	
+2038	 A7					AND A	;1		12014	
+2039	 28 2A				JR Z s8	;3		12017	
+203B	 F6 80				OR d8	;2		12019	
+203D	 E0 D3				LD (a8), A	;3		12022	
+203F	 18 24				JR s8	;3		12025	
+2041	 26 03				LD, H, d8	;2		12027	
+2043	 F0 04				LD A, (a8)	;2		12029	
+2045	 47					LD B, A	;1		12030	
+2046	 AF					XOR A	;1		12031	
+2047	 05					DEC, B	;1		12032	
+2048	 28 0A				JR Z s8	;3		12035	
+204A	 3C					INC, A	;1		12036	
+204B	 3C					INC, A	;1		12037	
+204C	 3C					INC, A	;1		12038	
+204D	 3C					INC, A	;1		12039	
+204E	 FE 1C				CP d8	;2		12041	
+2050	 28 F4				JR Z s8	;3		12044	
+2052	 18 F3				JR s8	;3		12047	
+2054	 57					LD D, A	;1		12048	
+2055	 F0 AE				LD A, (a8)	;2		12050	
+2057	 5F					LD E, A	;1		12051	
+2058	 25					DEC, H	;1		12052	
+2059	 28 07				JR Z s8	;3		12055	
+205B	 B2					OR D	;1		12056	
+205C	 B1					OR C	;1		12057	
+205D	 E6 FC				AND d8	;2		12059	
+205F	 B9					CP C	;1		12060	
+2060	 28 E1				JR Z s8	;3		12063	
+2062	 7A					LD A, D	;1		12064	
+2063	 E0 AE				LD (a8), A	;3		12067	
+2065	 7B					LD A, E	;1		12068	
+2066	 EA 13 C2			LD a16, A	;4		12072	
+2069	 CD 96 26			CALL a16	;6		12078	
+206C	 F0 9A				LD A, (a8)	;2		12080	
+206E	 E0 99				LD (a8), A	;3		12083	
+2070	 C9					RET	;4		12087	
+2071	 FA C7 C0			JP A, a16	;4		12091	
+2074	 A7					AND A	;1		12092	
+2075	 28 0C				JR Z s8	;3		12095	
+2077	 F0 81				LD A, (a8)	;2		12097	
+2079	 E6 B0				AND d8	;2		12099	
+207B	 FE 80				CP d8	;2		12101	
+207D	 20 25				JR NZ s8	;3		12104	
+207F	 AF					XOR A	;1		12105	
+2080	 EA C7 C0			LD a16, A	;4		12109	
+2083	 F0 A7				LD A, (a8)	;2		12111	
+2085	 A7					AND A	;1		12112	
+2086	 20 29				JR NZ s8	;3		12115	
+2088	 F0 98				LD A, (a8)	;2		12117	
+208A	 A7					AND A	;1		12118	
+208B	 20 24				JR NZ s8	;3		12121	
+208D	 F0 E3				LD A, (a8)	;2		12123	
+208F	 A7					AND A	;1		12124	
+2090	 20 1F				JR NZ s8	;3		12127	
+2092	 3E 03				LD, A, d8	;2		12129	
+2094	 E0 A7				LD (a8), A	;3		12132	
+2096	 21 E5 FF			LD (HL), d16	;3		12135	
+2099	 34					INC (HL)	;3		12138	
+209A	 18 26				JR s8	;3		12141	
+209C	 F0 80				LD A, (a8)	;2		12143	
+209E	 E6 B0				AND d8	;2		12145	
+20A0	 FE 80				CP d8	;2		12147	
+20A2	 28 CD				JR Z s8	;3		12150	
+20A4	 21 E5 FF			LD (HL), d16	;3		12153	
+20A7	 36 00				LD (HL), d8	;3		12156	
+20A9	 F0 99				LD A, (a8)	;2		12158	
+20AB	 A7					AND A	;1		12159	
+20AC	 28 07				JR Z s8	;3		12162	
+20AE	 3D					DEC, A	;1		12163	
+20AF	 E0 99				LD (a8), A	;3		12166	
+20B1	 CD 83 26			CALL a16	;6		12172	
+20B4	 C9					RET	;4		12176	
+20B5	 F0 98				LD A, (a8)	;2		12178	
+20B7	 FE 03				CP d8	;2		12180	
+20B9	 C8					RET Z	;5		12185	
+20BA	 F0 E3				LD A, (a8)	;2		12187	
+20BC	 A7					AND A	;1		12188	
+20BD	 C0					RET NZ	;5		12193	
+20BE	 F0 9A				LD A, (a8)	;2		12195	
+20C0	 E0 99				LD (a8), A	;3		12198	
+20C2	 21 01 C2			LD (HL), d16	;3		12201	
+20C5	 7E					LD A, (HL)	;2		12203	
+20C6	 E0 A0				LD (a8), A	;3		12206	
+20C8	 C6 08				ADD A, d8	;2		12208	
+20CA	 77					LD (HL), A	;2		12210	
+20CB	 CD 83 26			CALL a16	;6		12216	
+20CE	 CD 73 25			CALL a16	;6		12222	
+20D1	 A7					AND A	;1		12223	
+20D2	 C8					RET Z	;5		12228	
+20D3	 F0 A0				LD A, (a8)	;2		12230	
+20D5	 21 01 C2			LD (HL), d16	;3		12233	
+20D8	 77					LD (HL), A	;2		12235	
+20D9	 CD 83 26			CALL a16	;6		12241	
+20DC	 3E 01				LD, A, d8	;2		12243	
+20DE	 E0 98				LD (a8), A	;3		12246	
+20E0	 EA C7 C0			LD a16, A	;4		12250	
+20E3	 F0 E5				LD A, (a8)	;2		12252	
+20E5	 A7					AND A	;1		12253	
+20E6	 28 1B				JR Z s8	;3		12256	
+20E8	 4F					LD C, A	;1		12257	
+20E9	 F0 C0				LD A, (a8)	;2		12259	
+20EB	 FE 37				CP d8	;2		12261	
+20ED	 28 37				JR Z s8	;3		12264	
+20EF	 11 C0 C0			LD DE, d16	;3		12267	
+20F2	 1A					LD A, (DE)	;2		12269	
+20F3	 6F					LD L, A	;1		12270	
+20F4	 13					INC, DE	;2		12272	
+20F5	 1A					LD A, (DE)	;2		12274	
+20F6	 67					LD H, A	;1		12275	
+20F7	 06 00				LD, B, d8	;2		12277	
+20F9	 0D					DEC, C	;1		12278	
+20FA	 09					ADD HL, BC	;2		12280	
+20FB	 7C					LD A, H	;1		12281	
+20FC	 12					LD (DE), A	;2		12283	
+20FD	 7D					LD A, L	;1		12284	
+20FE	 1B					DEC, DE	;2		12286	
+20FF	 12					LD (DE), A	;2		12288	
+2100	 AF					XOR A	;1		12289	
+2101	 E0 E5				LD (a8), A	;3		12292	
+2103	 FA 01 C2			JP A, a16	;4		12296	
+2106	 FE 18				CP d8	;2		12298	
+2108	 C0					RET NZ	;5		12303	
+2109	 FA 02 C2			JP A, a16	;4		12307	
+210C	 FE 3F				CP d8	;2		12309	
+210E	 C0					RET NZ	;5		12314	
+210F	 21 FB FF			LD (HL), d16	;3		12317	
+2112	 7E					LD A, (HL)	;2		12319	
+2113	 FE 01				CP d8	;2		12321	
+2115	 20 0D				JR NZ s8	;3		12324	
+2117	 CD F3 7F			CALL a16	;6		12330	
+211A	 3E 01				LD, A, d8	;2		12332	
+211C	 E0 E1				LD (a8), A	;3		12335	
+211E	 3E 02				LD, A, d8	;2		12337	
+2120	 EA F0 DF			LD a16, A	;4		12341	
+2123	 C9					RET	;4		12345	
+2124	 34					INC (HL)	;3		12348	
+2125	 C9					RET	;4		12352	
+2126	 AF					XOR A	;1		12353	
+2127	 0D					DEC, C	;1		12354	
+2128	 28 04				JR Z s8	;3		12357	
+212A	 3C					INC, A	;1		12358	
+212B	 27					DAA	;1		12359	
+212C	 18 F9				JR s8	;3		12362	
+212E	 5F					LD E, A	;1		12363	
+212F	 16 00				LD, D, d8	;2		12365	
+2131	 21 A0 C0			LD (HL), d16	;3		12368	
+2134	 CD 66 01			CALL a16	;6		12374	
+2137	 3E 01				LD, A, d8	;2		12376	
+2139	 EA CE C0			LD a16, A	;4		12380	
+213C	 18 C2				JR s8	;3		12383	
+213E	 F0 98				LD A, (a8)	;2		12385	
+2140	 FE 02				CP d8	;2		12387	
+2142	 C0					RET NZ	;5		12392	
+2143	 3E 02				LD, A, d8	;2		12394	
+2145	 EA F8 DF			LD a16, A	;4		12398	
+2148	 AF					XOR A	;1		12399	
+2149	 E0 A0				LD (a8), A	;3		12402	
+214B	 11 A3 C0			LD DE, d16	;3		12405	
+214E	 21 42 C8			LD (HL), d16	;3		12408	
+2151	 06 10				LD, B, d8	;2		12410	
+2153	 0E 0A				LD, C, d8	;2		12412	
+2155	 E5					PUSH (HL)	;4		12416	
+2156	 2A					LD A, (HL+)	;2		12418	
+2157	 FE 2F				CP d8	;2		12420	
+2159	 CA D8 21			JP Z a16	;4		12424	
+215C	 0D					DEC, C	;1		12425	
+215D	 20 F7				JR NZ s8	;3		12428	
+215F	 E1					POP (HL)	;3		12431	
+2160	 7C					LD A, H	;1		12432	
+2161	 12					LD (DE), A	;2		12434	
+2162	 13					INC, DE	;2		12436	
+2163	 7D					LD A, L	;1		12437	
+2164	 12					LD (DE), A	;2		12439	
+2165	 13					INC, DE	;2		12441	
+2166	 F0 A0				LD A, (a8)	;2		12443	
+2168	 3C					INC, A	;1		12444	
+2169	 E0 A0				LD (a8), A	;3		12447	
+216B	 D5					PUSH DE	;4		12451	
+216C	 11 20 00			LD DE, d16	;3		12454	
+216F	 19					ADD HL, DE	;2		12456	
+2170	 D1					POP DE	;3		12459	
+2171	 05					DEC, B	;1		12460	
+2172	 20 DF				JR NZ s8	;3		12463	
+2174	 3E 03				LD, A, d8	;2		12465	
+2176	 E0 98				LD (a8), A	;3		12468	
+2178	 3D					DEC, A	;1		12469	
+2179	 E0 A6				LD (a8), A	;3		12472	
+217B	 F0 A0				LD A, (a8)	;2		12474	
+217D	 A7					AND A	;1		12475	
+217E	 C8					RET Z	;5		12480	
+217F	 47					LD B, A	;1		12481	
+2180	 21 9E FF			LD (HL), d16	;3		12484	
+2183	 F0 C0				LD A, (a8)	;2		12486	
+2185	 FE 77				CP d8	;2		12488	
+2187	 28 12				JR Z s8	;3		12491	
+2189	 78					LD A, B	;1		12492	
+218A	 86					ADD A, (HL)	;2		12494	
+218B	 27					DAA	;1		12495	
+218C	 22					LD (HL+), A	;2		12497	
+218D	 3E 00				LD, A, d8	;2		12499	
+218F	 8E					ADC A, (HL)	;2		12501	
+2190	 27					DAA	;1		12502	
+2191	 77					LD (HL), A	;2		12504	
+2192	 30 16				JR NC s8	;3		12507	
+2194	 36 99				LD (HL), d8	;3		12510	
+2196	 2B					DEC, (HL)	;2		12512	
+2197	 36 99				LD (HL), d8	;3		12515	
+2199	 18 0F				JR s8	;3		12518	
+219B	 7E					LD A, (HL)	;2		12520	
+219C	 B7					OR A	;1		12521	
+219D	 90					SUB B	;1		12522	
+219E	 28 3B				JR Z s8	;3		12525	
+21A0	 38 39				JR C s8	;3		12528	
+21A2	 27					DAA	;1		12529	
+21A3	 77					LD (HL), A	;2		12531	
+21A4	 E6 F0				AND d8	;2		12533	
+21A6	 FE 90				CP d8	;2		12535	
+21A8	 28 31				JR Z s8	;3		12538	
+21AA	 78					LD A, B	;1		12539	
+21AB	 0E 06				LD, C, d8	;2		12541	
+21AD	 21 AC C0			LD (HL), d16	;3		12544	
+21B0	 06 00				LD, B, d8	;2		12546	
+21B2	 FE 01				CP d8	;2		12548	
+21B4	 28 19				JR Z s8	;3		12551	
+21B6	 21 B1 C0			LD (HL), d16	;3		12554	
+21B9	 06 01				LD, B, d8	;2		12556	
+21BB	 FE 02				CP d8	;2		12558	
+21BD	 28 10				JR Z s8	;3		12561	
+21BF	 21 B6 C0			LD (HL), d16	;3		12564	
+21C2	 06 02				LD, B, d8	;2		12566	
+21C4	 FE 03				CP d8	;2		12568	
+21C6	 28 07				JR Z s8	;3		12571	
+21C8	 21 BB C0			LD (HL), d16	;3		12574	
+21CB	 06 04				LD, B, d8	;2		12576	
+21CD	 0E 07				LD, C, d8	;2		12578	
+21CF	 34					INC (HL)	;3		12581	
+21D0	 78					LD A, B	;1		12582	
+21D1	 E0 DC				LD (a8), A	;3		12585	
+21D3	 79					LD A, C	;1		12586	
+21D4	 EA E0 DF			LD a16, A	;4		12590	
+21D7	 C9					RET	;4		12594	
+21D8	 E1					POP (HL)	;3		12597	
+21D9	 18 90				JR s8	;3		12600	
+21DB	 AF					XOR A	;1		12601	
+21DC	 E0 9E				LD (a8), A	;3		12604	
+21DE	 18 CA				JR s8	;3		12607	
+21E0	 F0 98				LD A, (a8)	;2		12609	
+21E2	 FE 03				CP d8	;2		12611	
+21E4	 C0					RET NZ	;5		12616	
+21E5	 F0 A6				LD A, (a8)	;2		12618	
+21E7	 A7					AND A	;1		12619	
+21E8	 C0					RET NZ	;5		12624	
+21E9	 11 A3 C0			LD DE, d16	;3		12627	
+21EC	 F0 9C				LD A, (a8)	;2		12629	
+21EE	 CB		
+21F0	 20 3C				JR NZ s8	;3		12632	
+21F2	 1A					LD A, (DE)	;2		12634	
+21F3	 A7					AND A	;1		12635	
+21F4	 28 52				JR Z s8	;3		12638	
+21F6	 D6 30				SUB d8	;2		12640	
+21F8	 67					LD H, A	;1		12641	
+21F9	 13					INC, DE	;2		12643	
+21FA	 1A					LD A, (DE)	;2		12645	
+21FB	 6F					LD L, A	;1		12646	
+21FC	 F0 9C				LD A, (a8)	;2		12648	
+21FE	 FE 06				CP d8	;2		12650	
+2200	 3E 8C				LD, A, d8	;2		12652	
+2202	 20 02				JR NZ s8	;3		12655	
+2204	 3E 2F				LD, A, d8	;2		12657	
+2206	 0E 0A				LD, C, d8	;2		12659	
+2208	 22					LD (HL+), A	;2		12661	
+2209	 0D					DEC, C	;1		12662	
+220A	 20 FC				JR NZ s8	;3		12665	
+220C	 13					INC, DE	;2		12667	
+220D	 1A					LD A, (DE)	;2		12669	
+220E	 A7					AND A	;1		12670	
+220F	 20 E5				JR NZ s8	;3		12673	
+2211	 F0 9C				LD A, (a8)	;2		12675	
+2213	 3C					INC, A	;1		12676	
+2214	 E0 9C				LD (a8), A	;3		12679	
+2216	 FE 07				CP d8	;2		12681	
+2218	 28 05				JR Z s8	;3		12684	
+221A	 3E 0A				LD, A, d8	;2		12686	
+221C	 E0 A6				LD (a8), A	;3		12689	
+221E	 C9					RET	;4		12693	
+221F	 AF					XOR A	;1		12694	
+2220	 E0 9C				LD (a8), A	;3		12697	
+2222	 3E 0D				LD, A, d8	;2		12699	
+2224	 E0 A6				LD (a8), A	;3		12702	
+2226	 3E 01				LD, A, d8	;2		12704	
+2228	 E0 E3				LD (a8), A	;3		12707	
+222A	 AF					XOR A	;1		12708	
+222B	 E0 98				LD (a8), A	;3		12711	
+222D	 C9					RET	;4		12715	
+222E	 1A					LD A, (DE)	;2		12717	
+222F	 67					LD H, A	;1		12718	
+2230	 D6 30				SUB d8	;2		12720	
+2232	 4F					LD C, A	;1		12721	
+2233	 13					INC, DE	;2		12723	
+2234	 1A					LD A, (DE)	;2		12725	
+2235	 6F					LD L, A	;1		12726	
+2236	 06 0A				LD, B, d8	;2		12728	
+2238	 7E					LD A, (HL)	;2		12730	
+2239	 E5					PUSH (HL)	;4		12734	
+223A	 61					LD H, C	;1		12735	
+223B	 77					LD (HL), A	;2		12737	
+223C	 E1					POP (HL)	;3		12740	
+223D	 23					INC, (HL)	;2		12742	
+223E	 05					DEC, B	;1		12743	
+223F	 20 F7				JR NZ s8	;3		12746	
+2241	 13					INC, DE	;2		12748	
+2242	 1A					LD A, (DE)	;2		12750	
+2243	 A7					AND A	;1		12751	
+2244	 20 E8				JR NZ s8	;3		12754	
+2246	 18 C9				JR s8	;3		12757	
+2248	 CD 07 20			CALL a16	;6		12763	
+224B	 18 DD				JR s8	;3		12766	
+224D	 F0 A6				LD A, (a8)	;2		12768	
+224F	 A7					AND A	;1		12769	
+2250	 C0					RET NZ	;5		12774	
+2251	 F0 E3				LD A, (a8)	;2		12776	
+2253	 FE 01				CP d8	;2		12778	
+2255	 C0					RET NZ	;5		12783	
+2256	 11 A3 C0			LD DE, d16	;3		12786	
+2259	 1A					LD A, (DE)	;2		12788	
+225A	 67					LD H, A	;1		12789	
+225B	 13					INC, DE	;2		12791	
+225C	 1A					LD A, (DE)	;2		12793	
+225D	 6F					LD L, A	;1		12794	
+225E	 D5					PUSH DE	;4		12798	
+225F	 E5					PUSH (HL)	;4		12802	
+2260	 01 E0 FF			LD BC, d16	;3		12805	
+2263	 09					ADD HL, BC	;2		12807	
+2264	 D1					POP DE	;3		12810	
+2265	 E5					PUSH (HL)	;4		12814	
+2266	 06 0A				LD, B, d8	;2		12816	
+2268	 2A					LD A, (HL+)	;2		12818	
+2269	 12					LD (DE), A	;2		12820	
+226A	 13					INC, DE	;2		12822	
+226B	 05					DEC, B	;1		12823	
+226C	 20 FA				JR NZ s8	;3		12826	
+226E	 E1					POP (HL)	;3		12829	
+226F	 E5					PUSH (HL)	;4		12833	
+2270	 D1					POP DE	;3		12836	
+2271	 01 E0 FF			LD BC, d16	;3		12839	
+2274	 09					ADD HL, BC	;2		12841	
+2275	 7C					LD A, H	;1		12842	
+2276	 FE C7				CP d8	;2		12844	
+2278	 20 EB				JR NZ s8	;3		12847	
+227A	 D1					POP DE	;3		12850	
+227B	 13					INC, DE	;2		12852	
+227C	 1A					LD A, (DE)	;2		12854	
+227D	 A7					AND A	;1		12855	
+227E	 20 DA				JR NZ s8	;3		12858	
+2280	 21 02 C8			LD (HL), d16	;3		12861	
+2283	 3E 2F				LD, A, d8	;2		12863	
+2285	 06 0A				LD, B, d8	;2		12865	
+2287	 22					LD (HL+), A	;2		12867	
+2288	 05					DEC, B	;1		12868	
+2289	 20 FC				JR NZ s8	;3		12871	
+228B	 CD 93 22			CALL a16	;6		12877	
+228E	 3E 02				LD, A, d8	;2		12879	
+2290	 E0 E3				LD (a8), A	;3		12882	
+2292	 C9					RET	;4		12886	
+2293	 21 A3 C0			LD (HL), d16	;3		12889	
+2296	 AF					XOR A	;1		12890	
+2297	 06 09				LD, B, d8	;2		12892	
+2299	 22					LD (HL+), A	;2		12894	
+229A	 05					DEC, B	;1		12895	
+229B	 20 FC				JR NZ s8	;3		12898	
+229D	 C9					RET	;4		12902	
+229E	 F0 E3				LD A, (a8)	;2		12904	
+22A0	 FE 02				CP d8	;2		12906	
+22A2	 C0					RET NZ	;5		12911	
+22A3	 21 22 9A			LD (HL), d16	;3		12914	
+22A6	 11 22 CA			LD DE, d16	;3		12917	
+22A9	 CD AC 24			CALL a16	;6		12923	
+22AC	 C9					RET	;4		12927	
+22AD	 F0 E3				LD A, (a8)	;2		12929	
+22AF	 FE 03				CP d8	;2		12931	
+22B1	 C0					RET NZ	;5		12936	
+22B2	 21 02 9A			LD (HL), d16	;3		12939	
+22B5	 11 02 CA			LD DE, d16	;3		12942	
+22B8	 CD AC 24			CALL a16	;6		12948	
+22BB	 C9					RET	;4		12952	
+22BC	 F0 E3				LD A, (a8)	;2		12954	
+22BE	 FE 04				CP d8	;2		12956	
+22C0	 C0					RET NZ	;5		12961	
+22C1	 21 E2 99			LD (HL), d16	;3		12964	
+22C4	 11 E2 C9			LD DE, d16	;3		12967	
+22C7	 CD AC 24			CALL a16	;6		12973	
+22CA	 C9					RET	;4		12977	
+22CB	 F0 E3				LD A, (a8)	;2		12979	
+22CD	 FE 05				CP d8	;2		12981	
+22CF	 C0					RET NZ	;5		12986	
+22D0	 21 C2 99			LD (HL), d16	;3		12989	
+22D3	 11 C2 C9			LD DE, d16	;3		12992	
+22D6	 CD AC 24			CALL a16	;6		12998	
+22D9	 C9					RET	;4		13002	
+22DA	 F0 E3				LD A, (a8)	;2		13004	
+22DC	 FE 06				CP d8	;2		13006	
+22DE	 C0					RET NZ	;5		13011	
+22DF	 21 A2 99			LD (HL), d16	;3		13014	
+22E2	 11 A2 C9			LD DE, d16	;3		13017	
+22E5	 CD AC 24			CALL a16	;6		13023	
+22E8	 C9					RET	;4		13027	
+22E9	 F0 E3				LD A, (a8)	;2		13029	
+22EB	 FE 07				CP d8	;2		13031	
+22ED	 C0					RET NZ	;5		13036	
+22EE	 21 82 99			LD (HL), d16	;3		13039	
+22F1	 11 82 C9			LD DE, d16	;3		13042	
+22F4	 CD AC 24			CALL a16	;6		13048	
+22F7	 C9					RET	;4		13052	
+22F8	 F0 E3				LD A, (a8)	;2		13054	
+22FA	 FE 08				CP d8	;2		13056	
+22FC	 C0					RET NZ	;5		13061	
+22FD	 21 62 99			LD (HL), d16	;3		13064	
+2300	 11 62 C9			LD DE, d16	;3		13067	
+2303	 CD AC 24			CALL a16	;6		13073	
+2306	 F0 C5				LD A, (a8)	;2		13075	
+2308	 A7					AND A	;1		13076	
+2309	 F0 E1				LD A, (a8)	;2		13078	
+230B	 20 08				JR NZ s8	;3		13081	
+230D	 A7					AND A	;1		13082	
+230E	 C0					RET NZ	;5		13087	
+230F	 3E 01				LD, A, d8	;2		13089	
+2311	 EA F8 DF			LD a16, A	;4		13093	
+2314	 C9					RET	;4		13097	
+2315	 FE 1A				CP d8	;2		13099	
+2317	 C0					RET NZ	;5		13104	
+2318	 F0 D4				LD A, (a8)	;2		13106	
+231A	 A7					AND A	;1		13107	
+231B	 28 F2				JR Z s8	;3		13110	
+231D	 3E 05				LD, A, d8	;2		13112	
+231F	 EA E0 DF			LD a16, A	;4		13116	
+2322	 C9					RET	;4		13120	
+2323	 F0 E3				LD A, (a8)	;2		13122	
+2325	 FE 09				CP d8	;2		13124	
+2327	 C0					RET NZ	;5		13129	
+2328	 21 42 99			LD (HL), d16	;3		13132	
+232B	 11 42 C9			LD DE, d16	;3		13135	
+232E	 CD AC 24			CALL a16	;6		13141	
+2331	 C9					RET	;4		13145	
+2332	 F0 E3				LD A, (a8)	;2		13147	
+2334	 FE 0A				CP d8	;2		13149	
+2336	 C0					RET NZ	;5		13154	
+2337	 21 22 99			LD (HL), d16	;3		13157	
+233A	 11 22 C9			LD DE, d16	;3		13160	
+233D	 CD AC 24			CALL a16	;6		13166	
+2340	 C9					RET	;4		13170	
+2341	 F0 E3				LD A, (a8)	;2		13172	
+2343	 FE 0B				CP d8	;2		13174	
+2345	 C0					RET NZ	;5		13179	
+2346	 21 02 99			LD (HL), d16	;3		13182	
+2349	 11 02 C9			LD DE, d16	;3		13185	
+234C	 CD AC 24			CALL a16	;6		13191	
+234F	 C9					RET	;4		13195	
+2350	 F0 E3				LD A, (a8)	;2		13197	
+2352	 FE 0C				CP d8	;2		13199	
+2354	 C0					RET NZ	;5		13204	
+2355	 21 E2 98			LD (HL), d16	;3		13207	
+2358	 11 E2 C8			LD DE, d16	;3		13210	
+235B	 CD AC 24			CALL a16	;6		13216	
+235E	 C9					RET	;4		13220	
+235F	 F0 E3				LD A, (a8)	;2		13222	
+2361	 FE 0D				CP d8	;2		13224	
+2363	 C0					RET NZ	;5		13229	
+2364	 21 C2 98			LD (HL), d16	;3		13232	
+2367	 11 C2 C8			LD DE, d16	;3		13235	
+236A	 CD AC 24			CALL a16	;6		13241	
+236D	 C9					RET	;4		13245	
+236E	 F0 E3				LD A, (a8)	;2		13247	
+2370	 FE 0E				CP d8	;2		13249	
+2372	 C0					RET NZ	;5		13254	
+2373	 21 A2 98			LD (HL), d16	;3		13257	
+2376	 11 A2 C8			LD DE, d16	;3		13260	
+2379	 CD AC 24			CALL a16	;6		13266	
+237C	 C9					RET	;4		13270	
+237D	 F0 E3				LD A, (a8)	;2		13272	
+237F	 FE 0F				CP d8	;2		13274	
+2381	 C0					RET NZ	;5		13279	
+2382	 21 82 98			LD (HL), d16	;3		13282	
+2385	 11 82 C8			LD DE, d16	;3		13285	
+2388	 CD AC 24			CALL a16	;6		13291	
+238B	 C9					RET	;4		13295	
+238C	 F0 E3				LD A, (a8)	;2		13297	
+238E	 FE 10				CP d8	;2		13299	
+2390	 C0					RET NZ	;5		13304	
+2391	 21 62 98			LD (HL), d16	;3		13307	
+2394	 11 62 C8			LD DE, d16	;3		13310	
+2397	 CD AC 24			CALL a16	;6		13316	
+239A	 CD 4B 24			CALL a16	;6		13322	
+239D	 C9					RET	;4		13326	
+239E	 F0 E3				LD A, (a8)	;2		13328	
+23A0	 FE 11				CP d8	;2		13330	
+23A2	 C0					RET NZ	;5		13335	
+23A3	 21 42 98			LD (HL), d16	;3		13338	
+23A6	 11 42 C8			LD DE, d16	;3		13341	
+23A9	 CD AC 24			CALL a16	;6		13347	
+23AC	 21 6D 9C			LD (HL), d16	;3		13350	
+23AF	 CD 3B 24			CALL a16	;6		13356	
+23B2	 3E 01				LD, A, d8	;2		13358	
+23B4	 E0 E0				LD (a8), A	;3		13361	
+23B6	 C9					RET	;4		13365	
+23B7	 F0 E3				LD A, (a8)	;2		13367	
+23B9	 FE 12				CP d8	;2		13369	
+23BB	 C0					RET NZ	;5		13374	
+23BC	 21 22 98			LD (HL), d16	;3		13377	
+23BF	 11 22 C8			LD DE, d16	;3		13380	
+23C2	 CD AC 24			CALL a16	;6		13386	
+23C5	 21 6D 98			LD (HL), d16	;3		13389	
+23C8	 CD 3B 24			CALL a16	;6		13395	
+23CB	 C9					RET	;4		13399	
+23CC	 F0 E3				LD A, (a8)	;2		13401	
+23CE	 FE 13				CP d8	;2		13403	
+23D0	 C0					RET NZ	;5		13408	
+23D1	 EA C7 C0			LD a16, A	;4		13412	
+23D4	 21 02 98			LD (HL), d16	;3		13415	
+23D7	 11 02 C8			LD DE, d16	;3		13418	
+23DA	 CD AC 24			CALL a16	;6		13424	
+23DD	 AF					XOR A	;1		13425	
+23DE	 E0 E3				LD (a8), A	;3		13428	
+23E0	 F0 C5				LD A, (a8)	;2		13430	
+23E2	 A7					AND A	;1		13431	
+23E3	 F0 E1				LD A, (a8)	;2		13433	
+23E5	 20 48				JR NZ s8	;3		13436	
+23E7	 A7					AND A	;1		13437	
+23E8	 C0					RET NZ	;5		13442	
+23E9	 21 4E 99			LD (HL), d16	;3		13445	
+23EC	 11 9F FF			LD DE, d16	;3		13448	
+23EF	 0E 02				LD, C, d8	;2		13450	
+23F1	 F0 C0				LD A, (a8)	;2		13452	
+23F3	 FE 37				CP d8	;2		13454	
+23F5	 28 08				JR Z s8	;3		13457	
+23F7	 21 50 99			LD (HL), d16	;3		13460	
+23FA	 11 9E FF			LD DE, d16	;3		13463	
+23FD	 0E 01				LD, C, d8	;2		13465	
+23FF	 CD 3C 2A			CALL a16	;6		13471	
+2402	 F0 C0				LD A, (a8)	;2		13473	
+2404	 FE 37				CP d8	;2		13475	
+2406	 28 23				JR Z s8	;3		13478	
+2408	 F0 9E				LD A, (a8)	;2		13480	
+240A	 A7					AND A	;1		13481	
+240B	 20 1E				JR NZ s8	;3		13484	
+240D	 3E 64				LD, A, d8	;2		13486	
+240F	 E0 A6				LD (a8), A	;3		13489	
+2411	 3E 02				LD, A, d8	;2		13491	
+2413	 EA E8 DF			LD a16, A	;4		13495	
+2416	 F0 C5				LD A, (a8)	;2		13497	
+2418	 A7					AND A	;1		13498	
+2419	 28 03				JR Z s8	;3		13501	
+241B	 E0 D5				LD (a8), A	;3		13504	
+241D	 C9					RET	;4		13508	
+241E	 F0 C3				LD A, (a8)	;2		13510	
+2420	 FE 09				CP d8	;2		13512	
+2422	 3E 05				LD, A, d8	;2		13514	
+2424	 20 02				JR NZ s8	;3		13517	
+2426	 3E 22				LD, A, d8	;2		13519	
+2428	 E0 E1				LD (a8), A	;3		13522	
+242A	 C9					RET	;4		13526	
+242B	 CD 07 20			CALL a16	;6		13532	
+242E	 C9					RET	;4		13536	
+242F	 FE 1A				CP d8	;2		13538	
+2431	 C0					RET NZ	;5		13543	
+2432	 F0 D4				LD A, (a8)	;2		13545	
+2434	 A7					AND A	;1		13546	
+2435	 28 B2				JR Z s8	;3		13549	
+2437	 AF					XOR A	;1		13550	
+2438	 E0 D4				LD (a8), A	;3		13553	
+243A	 C9					RET	;4		13557	
+243B	 F0 E1				LD A, (a8)	;2		13559	
+243D	 A7					AND A	;1		13560	
+243E	 C0					RET NZ	;5		13565	
+243F	 F0 C0				LD A, (a8)	;2		13567	
+2441	 FE 37				CP d8	;2		13569	
+2443	 C0					RET NZ	;5		13574	
+2444	 11 A2 C0			LD DE, d16	;3		13577	
+2447	 CD 36 2A			CALL a16	;6		13583	
+244A	 C9					RET	;4		13587	
+244B	 F0 E1				LD A, (a8)	;2		13589	
+244D	 A7					AND A	;1		13590	
+244E	 C0					RET NZ	;5		13595	
+244F	 F0 C0				LD A, (a8)	;2		13597	
+2451	 FE 37				CP d8	;2		13599	
+2453	 C0					RET NZ	;5		13604	
+2454	 21 A9 FF			LD (HL), d16	;3		13607	
+2457	 7E					LD A, (HL)	;2		13609	
+2458	 FE 14				CP d8	;2		13611	
+245A	 C8					RET Z	;5		13616	
+245B	 CD 9D 24			CALL a16	;6		13622	
+245E	 F0 9F				LD A, (a8)	;2		13624	
+2460	 57					LD D, A	;1		13625	
+2461	 E6 F0				AND d8	;2		13627	
+2463	 C0					RET NZ	;5		13632	
+2464	 7A					LD A, D	;1		13633	
+2465	 E6 0F				AND d8	;2		13635	
+2467	 CB		
+2469	 57					LD D, A	;1		13636	
+246A	 F0 9E				LD A, (a8)	;2		13638	
+246C	 E6 F0				AND d8	;2		13640	
+246E	 CB		
+2470	 B2					OR D	;1		13641	
+2471	 B8					CP B	;1		13642	
+2472	 D8					RET C	;5		13647	
+2473	 C8					RET Z	;5		13652	
+2474	 34					INC (HL)	;3		13655	
+2475	 CD 9D 24			CALL a16	;6		13661	
+2478	 E6 0F				AND d8	;2		13663	
+247A	 4F					LD C, A	;1		13664	
+247B	 21 F1 98			LD (HL), d16	;3		13667	
+247E	 71					LD (HL), C	;2		13669	
+247F	 26 9C				LD, H, d8	;2		13671	
+2481	 71					LD (HL), C	;2		13673	
+2482	 78					LD A, B	;1		13674	
+2483	 E6 F0				AND d8	;2		13676	
+2485	 28 0D				JR Z s8	;3		13679	
+2487	 CB		
+2489	 4F					LD C, A	;1		13680	
+248A	 7D					LD A, L	;1		13681	
+248B	 FE F0				CP d8	;2		13683	
+248D	 28 05				JR Z s8	;3		13686	
+248F	 21 F0 98			LD (HL), d16	;3		13689	
+2492	 18 EA				JR s8	;3		13692	
+2494	 3E 08				LD, A, d8	;2		13694	
+2496	 EA E0 DF			LD a16, A	;4		13698	
+2499	 CD E8 1A			CALL a16	;6		13704	
+249C	 C9					RET	;4		13708	
+249D	 7E					LD A, (HL)	;2		13710	
+249E	 47					LD B, A	;1		13711	
+249F	 A7					AND A	;1		13712	
+24A0	 C8					RET Z	;5		13717	
+24A1	 AF					XOR A	;1		13718	
+24A2	 B7					OR A	;1		13719	
+24A3	 3C					INC, A	;1		13720	
+24A4	 27					DAA	;1		13721	
+24A5	 05					DEC, B	;1		13722	
+24A6	 28 02				JR Z s8	;3		13725	
+24A8	 18 F8				JR s8	;3		13728	
+24AA	 47					LD B, A	;1		13729	
+24AB	 C9					RET	;4		13733	
+24AC	 06 0A				LD, B, d8	;2		13735	
+24AE	 1A					LD A, (DE)	;2		13737	
+24AF	 77					LD (HL), A	;2		13739	
+24B0	 2C					INC, L	;1		13740	
+24B1	 1C					INC, E	;1		13741	
+24B2	 05					DEC, B	;1		13742	
+24B3	 20 F9				JR NZ s8	;3		13745	
+24B5	 F0 E3				LD A, (a8)	;2		13747	
+24B7	 3C					INC, A	;1		13748	
+24B8	 E0 E3				LD (a8), A	;3		13751	
+24BA	 C9					RET	;4		13755	
+24BB	 21 00 C2			LD (HL), d16	;3		13758	
+24BE	 7E					LD A, (HL)	;2		13760	
+24BF	 FE 80				CP d8	;2		13762	
+24C1	 C8					RET Z	;5		13767	
+24C2	 2E 03				LD, L, d8	;2		13769	
+24C4	 7E					LD A, (HL)	;2		13771	
+24C5	 E0 A0				LD (a8), A	;3		13774	
+24C7	 F0 81				LD A, (a8)	;2		13776	
+24C9	 47					LD B, A	;1		13777	
+24CA	 CB		
+24CB	 48					LD C, B	;1		13778	
+24CC	 20 12				JR NZ s8	;3		13781	
+24CE	 CB		
+24D0	 28 37				JR Z s8	;3		13784	
+24D2	 7E					LD A, (HL)	;2		13786	
+24D3	 E6 03				AND d8	;2		13788	
+24D5	 28 03				JR Z s8	;3		13791	
+24D7	 35					DEC (HL)	;3		13794	
+24D8	 18 14				JR s8	;3		13797	
+24DA	 7E					LD A, (HL)	;2		13799	
+24DB	 F6 03				OR d8	;2		13801	
+24DD	 77					LD (HL), A	;2		13803	
+24DE	 18 0E				JR s8	;3		13806	
+24E0	 7E					LD A, (HL)	;2		13808	
+24E1	 E6 03				AND d8	;2		13810	
+24E3	 FE 03				CP d8	;2		13812	
+24E5	 28 03				JR Z s8	;3		13815	
+24E7	 34					INC (HL)	;3		13818	
+24E8	 18 04				JR s8	;3		13821	
+24EA	 7E					LD A, (HL)	;2		13823	
+24EB	 E6 FC				AND d8	;2		13825	
+24ED	 77					LD (HL), A	;2		13827	
+24EE	 3E 03				LD, A, d8	;2		13829	
+24F0	 EA E0 DF			LD a16, A	;4		13833	
+24F3	 CD 83 26			CALL a16	;6		13839	
+24F6	 CD 73 25			CALL a16	;6		13845	
+24F9	 A7					AND A	;1		13846	
+24FA	 28 0D				JR Z s8	;3		13849	
+24FC	 AF					XOR A	;1		13850	
+24FD	 EA E0 DF			LD a16, A	;4		13854	
+2500	 21 03 C2			LD (HL), d16	;3		13857	
+2503	 F0 A0				LD A, (a8)	;2		13859	
+2505	 77					LD (HL), A	;2		13861	
+2506	 CD 83 26			CALL a16	;6		13867	
+2509	 21 02 C2			LD (HL), d16	;3		13870	
+250C	 F0 81				LD A, (a8)	;2		13872	
+250E	 47					LD B, A	;1		13873	
+250F	 F0 80				LD A, (a8)	;2		13875	
+2511	 4F					LD C, A	;1		13876	
+2512	 7E					LD A, (HL)	;2		13878	
+2513	 E0 A0				LD (a8), A	;3		13881	
+2515	 CB		
+2517	 3E 17				LD, A, d8	;2		13883	
+2519	 20 0C				JR NZ s8	;3		13886	
+251B	 CB		
+251D	 28 2D				JR Z s8	;3		13889	
+251F	 F0 AA				LD A, (a8)	;2		13891	
+2521	 3D					DEC, A	;1		13892	
+2522	 E0 AA				LD (a8), A	;3		13895	
+2524	 C0					RET NZ	;5		13900	
+2525	 3E 09				LD, A, d8	;2		13902	
+2527	 E0 AA				LD (a8), A	;3		13905	
+2529	 7E					LD A, (HL)	;2		13907	
+252A	 C6 08				ADD A, d8	;2		13909	
+252C	 77					LD (HL), A	;2		13911	
+252D	 CD 83 26			CALL a16	;6		13917	
+2530	 3E 04				LD, A, d8	;2		13919	
+2532	 EA E0 DF			LD a16, A	;4		13923	
+2535	 CD 73 25			CALL a16	;6		13929	
+2538	 A7					AND A	;1		13930	
+2539	 C8					RET Z	;5		13935	
+253A	 21 02 C2			LD (HL), d16	;3		13938	
+253D	 AF					XOR A	;1		13939	
+253E	 EA E0 DF			LD a16, A	;4		13943	
+2541	 F0 A0				LD A, (a8)	;2		13945	
+2543	 77					LD (HL), A	;2		13947	
+2544	 CD 83 26			CALL a16	;6		13953	
+2547	 3E 01				LD, A, d8	;2		13955	
+2549	 E0 AA				LD (a8), A	;3		13958	
+254B	 C9					RET	;4		13962	
+254C	 CB		
+254D	 68					LD L, B	;1		13963	
+254E	 3E 17				LD, A, d8	;2		13965	
+2550	 20 0C				JR NZ s8	;3		13968	
+2552	 CB		
+2554	 28 F3				JR Z s8	;3		13971	
+2556	 F0 AA				LD A, (a8)	;2		13973	
+2558	 3D					DEC, A	;1		13974	
+2559	 E0 AA				LD (a8), A	;3		13977	
+255B	 C0					RET NZ	;5		13982	
+255C	 3E 09				LD, A, d8	;2		13984	
+255E	 E0 AA				LD (a8), A	;3		13987	
+2560	 7E					LD A, (HL)	;2		13989	
+2561	 D6 08				SUB d8	;2		13991	
+2563	 77					LD (HL), A	;2		13993	
+2564	 3E 04				LD, A, d8	;2		13995	
+2566	 EA E0 DF			LD a16, A	;4		13999	
+2569	 CD 83 26			CALL a16	;6		14005	
+256C	 CD 73 25			CALL a16	;6		14011	
+256F	 A7					AND A	;1		14012	
+2570	 C8					RET Z	;5		14017	
+2571	 18 C7				JR s8	;3		14020	
+2573	 21 10 C0			LD (HL), d16	;3		14023	
+2576	 06 04				LD, B, d8	;2		14025	
+2578	 2A					LD A, (HL+)	;2		14027	
+2579	 E0 B2				LD (a8), A	;3		14030	
+257B	 2A					LD A, (HL+)	;2		14032	
+257C	 A7					AND A	;1		14033	
+257D	 28 17				JR Z s8	;3		14036	
+257F	 E0 B3				LD (a8), A	;3		14039	
+2581	 E5					PUSH (HL)	;4		14043	
+2582	 C5					PUSH BC	;4		14047	
+2583	 CD E3 29			CALL a16	;6		14053	
+2586	 7C					LD A, H	;1		14054	
+2587	 C6 30				ADD A, d8	;2		14056	
+2589	 67					LD H, A	;1		14057	
+258A	 7E					LD A, (HL)	;2		14059	
+258B	 FE 2F				CP d8	;2		14061	
+258D	 20 0B				JR NZ s8	;3		14064	
+258F	 C1					POP BC	;3		14067	
+2590	 E1					POP (HL)	;3		14070	
+2591	 2C					INC, L	;1		14071	
+2592	 2C					INC, L	;1		14072	
+2593	 05					DEC, B	;1		14073	
+2594	 20 E2				JR NZ s8	;3		14076	
+2596	 AF					XOR A	;1		14077	
+2597	 E0 9B				LD (a8), A	;3		14080	
+2599	 C9					RET	;4		14084	
+259A	 C1					POP BC	;3		14087	
+259B	 E1					POP (HL)	;3		14090	
+259C	 3E 01				LD, A, d8	;2		14092	
+259E	 E0 9B				LD (a8), A	;3		14095	
+25A0	 C9					RET	;4		14099	
+25A1	 F0 98				LD A, (a8)	;2		14101	
+25A3	 FE 01				CP d8	;2		14103	
+25A5	 C0					RET NZ	;5		14108	
+25A6	 21 10 C0			LD (HL), d16	;3		14111	
+25A9	 06 04				LD, B, d8	;2		14113	
+25AB	 2A					LD A, (HL+)	;2		14115	
+25AC	 E0 B2				LD (a8), A	;3		14118	
+25AE	 2A					LD A, (HL+)	;2		14120	
+25AF	 A7					AND A	;1		14121	
+25B0	 28 1D				JR Z s8	;3		14124	
+25B2	 E0 B3				LD (a8), A	;3		14127	
+25B4	 E5					PUSH (HL)	;4		14131	
+25B5	 C5					PUSH BC	;4		14135	
+25B6	 CD E3 29			CALL a16	;6		14141	
+25B9	 E5					PUSH (HL)	;4		14145	
+25BA	 D1					POP DE	;3		14148	
+25BB	 C1					POP BC	;3		14151	
+25BC	 E1					POP (HL)	;3		14154	
+25BD	 F0 41				LD A, (a8)	;2		14156	
+25BF	 E6 03				AND d8	;2		14158	
+25C1	 20 FA				JR NZ s8	;3		14161	
+25C3	 7E					LD A, (HL)	;2		14163	
+25C4	 12					LD (DE), A	;2		14165	
+25C5	 7A					LD A, D	;1		14166	
+25C6	 C6 30				ADD A, d8	;2		14168	
+25C8	 57					LD D, A	;1		14169	
+25C9	 2A					LD A, (HL+)	;2		14171	
+25CA	 12					LD (DE), A	;2		14173	
+25CB	 2C					INC, L	;1		14174	
+25CC	 05					DEC, B	;1		14175	
+25CD	 20 DC				JR NZ s8	;3		14178	
+25CF	 3E 02				LD, A, d8	;2		14180	
+25D1	 E0 98				LD (a8), A	;3		14183	
+25D3	 21 00 C2			LD (HL), d16	;3		14186	
+25D6	 36 80				LD (HL), d8	;3		14189	
+25D8	 C9					RET	;4		14193	
+25D9	 FA C6 C0			JP A, a16	;4		14197	
+25DC	 FE 02				CP d8	;2		14199	
+25DE	 28 46				JR Z s8	;3		14202	
+25E0	 D5					PUSH DE	;4		14206	
+25E1	 7E					LD A, (HL)	;2		14208	
+25E2	 B7					OR A	;1		14209	
+25E3	 28 54				JR Z s8	;3		14212	
+25E5	 3D					DEC, A	;1		14213	
+25E6	 22					LD (HL+), A	;2		14215	
+25E7	 7E					LD A, (HL)	;2		14217	
+25E8	 3C					INC, A	;1		14218	
+25E9	 27					DAA	;1		14219	
+25EA	 77					LD (HL), A	;2		14221	
+25EB	 E6 0F				AND d8	;2		14223	
+25ED	 02					LD (BC), A	;2		14225	
+25EE	 0D					DEC, C	;1		14226	
+25EF	 2A					LD A, (HL+)	;2		14228	
+25F0	 CB		
+25F1	 37					SCF	;1		14229	
+25F2	 E6 0F				AND d8	;2		14231	
+25F4	 28 01				JR Z s8	;3		14234	
+25F6	 02					LD (BC), A	;2		14236	
+25F7	 C5					PUSH BC	;4		14240	
+25F8	 F0 C3				LD A, (a8)	;2		14242	
+25FA	 47					LD B, A	;1		14243	
+25FB	 04					INC, B	;1		14244	
+25FC	 E5					PUSH (HL)	;4		14248	
+25FD	 CD 66 01			CALL a16	;6		14254	
+2600	 E1					POP (HL)	;3		14257	
+2601	 05					DEC, B	;1		14258	
+2602	 20 F8				JR NZ s8	;3		14261	
+2604	 C1					POP BC	;3		14264	
+2605	 23					INC, (HL)	;2		14266	
+2606	 23					INC, (HL)	;2		14268	
+2607	 E5					PUSH (HL)	;4		14272	
+2608	 21 23 00			LD (HL), d16	;3		14275	
+260B	 09					ADD HL, BC	;2		14277	
+260C	 D1					POP DE	;3		14280	
+260D	 CD 3A 2A			CALL a16	;6		14286	
+2610	 D1					POP DE	;3		14289	
+2611	 F0 C3				LD A, (a8)	;2		14291	
+2613	 47					LD B, A	;1		14292	
+2614	 04					INC, B	;1		14293	
+2615	 21 A0 C0			LD (HL), d16	;3		14296	
+2618	 E5					PUSH (HL)	;4		14300	
+2619	 CD 66 01			CALL a16	;6		14306	
+261C	 E1					POP (HL)	;3		14309	
+261D	 05					DEC, B	;1		14310	
+261E	 20 F8				JR NZ s8	;3		14313	
+2620	 3E 02				LD, A, d8	;2		14315	
+2622	 EA C6 C0			LD a16, A	;4		14319	
+2625	 C9					RET	;4		14323	
+2626	 11 A2 C0			LD DE, d16	;3		14326	
+2629	 21 25 9A			LD (HL), d16	;3		14329	
+262C	 CD 3A 2A			CALL a16	;6		14335	
+262F	 3E 02				LD, A, d8	;2		14337	
+2631	 EA E0 DF			LD a16, A	;4		14341	
+2634	 AF					XOR A	;1		14342	
+2635	 EA C6 C0			LD a16, A	;4		14346	
+2638	 C9					RET	;4		14350	
+2639	 D1					POP DE	;3		14353	
+263A	 3E 21				LD, A, d8	;2		14355	
+263C	 E0 A6				LD (a8), A	;3		14358	
+263E	 AF					XOR A	;1		14359	
+263F	 EA C6 C0			LD a16, A	;4		14363	
+2642	 FA C5 C0			JP A, a16	;4		14367	
+2645	 3C					INC, A	;1		14368	
+2646	 EA C5 C0			LD a16, A	;4		14372	
+2649	 FE 05				CP d8	;2		14374	
+264B	 C0					RET NZ	;5		14379	
+264C	 3E 04				LD, A, d8	;2		14381	
+264E	 E0 E1				LD (a8), A	;3		14384	
+2650	 C9					RET	;4		14388	
+2651	 21 AC C0			LD (HL), d16	;3		14391	
+2654	 06 1B				LD, B, d8	;2		14393	
+2656	 AF					XOR A	;1		14394	
+2657	 22					LD (HL+), A	;2		14396	
+2658	 05					DEC, B	;1		14397	
+2659	 20 FC				JR NZ s8	;3		14400	
+265B	 21 A0 C0			LD (HL), d16	;3		14403	
+265E	 06 03				LD, B, d8	;2		14405	
+2660	 22					LD (HL+), A	;2		14407	
+2661	 05					DEC, B	;1		14408	
+2662	 20 FC				JR NZ s8	;3		14411	
+2664	 C9					RET	;4		14415	
+2665	 7E					LD A, (HL)	;2		14417	
+2666	 E6 F0				AND d8	;2		14419	
+2668	 CB		
+266A	 12					LD (DE), A	;2		14421	
+266B	 7E					LD A, (HL)	;2		14423	
+266C	 E6 0F				AND d8	;2		14425	
+266E	 1C					INC, E	;1		14426	
+266F	 12					LD (DE), A	;2		14428	
+2670	 C9					RET	;4		14432	
+2671	 3E 02				LD, A, d8	;2		14434	
+2673	 E0 8F				LD (a8), A	;3		14437	
+2675	 AF					XOR A	;1		14438	
+2676	 E0 8E				LD (a8), A	;3		14441	
+2678	 3E C0				LD, A, d8	;2		14443	
+267A	 E0 8D				LD (a8), A	;3		14446	
+267C	 21 00 C2			LD (HL), d16	;3		14449	
+267F	 CD 89 2A			CALL a16	;6		14455	
+2682	 C9					RET	;4		14459	
+2683	 3E 01				LD, A, d8	;2		14461	
+2685	 E0 8F				LD (a8), A	;3		14464	
+2687	 3E 10				LD, A, d8	;2		14466	
+2689	 E0 8E				LD (a8), A	;3		14469	
+268B	 3E C0				LD, A, d8	;2		14471	
+268D	 E0 8D				LD (a8), A	;3		14474	
+268F	 21 00 C2			LD (HL), d16	;3		14477	
+2692	 CD 89 2A			CALL a16	;6		14483	
+2695	 C9					RET	;4		14487	
+2696	 3E 01				LD, A, d8	;2		14489	
+2698	 E0 8F				LD (a8), A	;3		14492	
+269A	 3E 20				LD, A, d8	;2		14494	
+269C	 E0 8E				LD (a8), A	;3		14497	
+269E	 3E C0				LD, A, d8	;2		14499	
+26A0	 E0 8D				LD (a8), A	;3		14502	
+26A2	 21 10 C2			LD (HL), d16	;3		14505	
+26A5	 CD 89 2A			CALL a16	;6		14511	
+26A8	 C9					RET	;4		14515	
+26A9	 06 20				LD, B, d8	;2		14517	
+26AB	 3E 8E				LD, A, d8	;2		14519	
+26AD	 11 20 00			LD DE, d16	;3		14522	
+26B0	 77					LD (HL), A	;2		14524	
+26B1	 19					ADD HL, DE	;2		14526	
+26B2	 05					DEC, B	;1		14527	
+26B3	 20 FB				JR NZ s8	;3		14530	
+26B5	 C9					RET	;4		14534	
+26B6	 1A					LD A, (DE)	;2		14536	
+26B7	 FE FF				CP d8	;2		14538	
+26B9	 C8					RET Z	;5		14543	
+26BA	 22					LD (HL+), A	;2		14545	
+26BB	 13					INC, DE	;2		14547	
+26BC	 18 F8				JR s8	;3		14550	
+26BE	 D9					RETI	;4		14554	
+26BF	 00					NOP	;1		14555	
+26C0	 18 3F				JR s8	;3		14558	
+26C2	 00					NOP	;1		14559	
+26C3	 80					ADD A, B	;1		14560	
+26C4	 00					NOP	;1		14561	
+26C5	 00					NOP	;1		14562	
+26C6	 FF					RST 7	;4		14566	
+26C7	 00					NOP	;1		14567	
+26C8	 80					ADD A, B	;1		14568	
+26C9	 8F					ADC A, A	;1		14569	
+26CA	 00					NOP	;1		14570	
+26CB	 80					ADD A, B	;1		14571	
+26CC	 00					NOP	;1		14572	
+26CD	 00					NOP	;1		14573	
+26CE	 FF					RST 7	;4		14577	
+26CF	 00					NOP	;1		14578	
+26D0	 70					LD (HL), B	;2		14580	
+26D1	 37					SCF	;1		14581	
+26D2	 1C					INC, E	;1		14582	
+26D3	 00					NOP	;1		14583	
+26D4	 00					NOP	;1		14584	
+26D5	 00					NOP	;1		14585	
+26D6	 38 37				JR C s8	;3		14588	
+26D8	 1C					INC, E	;1		14589	
+26D9	 00					NOP	;1		14590	
+26DA	 00					NOP	;1		14591	
+26DB	 00					NOP	;1		14592	
+26DC	 40					LD B, B	;1		14593	
+26DD	 34					INC (HL)	;3		14596	
+26DE	 20 00				JR NZ s8	;3		14599	
+26E0	 00					NOP	;1		14600	
+26E1	 00					NOP	;1		14601	
+26E2	 40					LD B, B	;1		14602	
+26E3	 1C					INC, E	;1		14603	
+26E4	 20 00				JR NZ s8	;3		14606	
+26E6	 00					NOP	;1		14607	
+26E7	 00					NOP	;1		14608	
+26E8	 40					LD B, B	;1		14609	
+26E9	 74					LD (HL), H	;2		14611	
+26EA	 20 00				JR NZ s8	;3		14614	
+26EC	 00					NOP	;1		14615	
+26ED	 00					NOP	;1		14616	
+26EE	 40					LD B, B	;1		14617	
+26EF	 68					LD L, B	;1		14618	
+26F0	 21 00 00			LD (HL), d16	;3		14621	
+26F3	 00					NOP	;1		14622	
+26F4	 78					LD A, B	;1		14623	
+26F5	 68					LD L, B	;1		14624	
+26F6	 21 00 00			LD (HL), d16	;3		14627	
+26F9	 00					NOP	;1		14628	
+26FA	 60					LD H, B	;1		14629	
+26FB	 60					LD H, B	;1		14630	
+26FC	 2A					LD A, (HL+)	;2		14632	
+26FD	 80					ADD A, B	;1		14633	
+26FE	 00					NOP	;1		14634	
+26FF	 00					NOP	;1		14635	
+2700	 60					LD H, B	;1		14636	
+2701	 72					LD (HL), D	;2		14638	
+2702	 2A					LD A, (HL+)	;2		14640	
+2703	 80					ADD A, B	;1		14641	
+2704	 20 00				JR NZ s8	;3		14644	
+2706	 68					LD L, B	;1		14645	
+2707	 38 3E				JR C s8	;3		14648	
+2709	 80					ADD A, B	;1		14649	
+270A	 00					NOP	;1		14650	
+270B	 00					NOP	;1		14651	
+270C	 60					LD H, B	;1		14652	
+270D	 60					LD H, B	;1		14653	
+270E	 36 80				LD (HL), d8	;3		14656	
+2710	 00					NOP	;1		14657	
+2711	 00					NOP	;1		14658	
+2712	 60					LD H, B	;1		14659	
+2713	 72					LD (HL), D	;2		14661	
+2714	 36 80				LD (HL), d8	;3		14664	
+2716	 20 00				JR NZ s8	;3		14667	
+2718	 68					LD L, B	;1		14668	
+2719	 38 32				JR C s8	;3		14671	
+271B	 80					ADD A, B	;1		14672	
+271C	 00					NOP	;1		14673	
+271D	 00					NOP	;1		14674	
+271E	 60					LD H, B	;1		14675	
+271F	 60					LD H, B	;1		14676	
+2720	 2E 80				LD, L, d8	;2		14678	
+2722	 00					NOP	;1		14679	
+2723	 00					NOP	;1		14680	
+2724	 68					LD L, B	;1		14681	
+2725	 38 3C				JR C s8	;3		14684	
+2727	 80					ADD A, B	;1		14685	
+2728	 00					NOP	;1		14686	
+2729	 00					NOP	;1		14687	
+272A	 60					LD H, B	;1		14688	
+272B	 60					LD H, B	;1		14689	
+272C	 3A					LD A, (HL-)	;2		14691	
+272D	 80					ADD A, B	;1		14692	
+272E	 00					NOP	;1		14693	
+272F	 00					NOP	;1		14694	
+2730	 68					LD L, B	;1		14695	
+2731	 38 30				JR C s8	;3		14698	
+2733	 80					ADD A, B	;1		14699	
+2734	 00					NOP	;1		14700	
+2735	 80					ADD A, B	;1		14701	
+2736	 3F					CCF	;1		14702	
+2737	 40					LD B, B	;1		14703	
+2738	 44					LD B, H	;1		14704	
+2739	 00					NOP	;1		14705	
+273A	 00					NOP	;1		14706	
+273B	 80					ADD A, B	;1		14707	
+273C	 3F					CCF	;1		14708	
+273D	 20 4A				JR NZ s8	;3		14711	
+273F	 00					NOP	;1		14712	
+2740	 00					NOP	;1		14713	
+2741	 80					ADD A, B	;1		14714	
+2742	 3F					CCF	;1		14715	
+2743	 30 46				JR NC s8	;3		14718	
+2745	 00					NOP	;1		14719	
+2746	 00					NOP	;1		14720	
+2747	 80					ADD A, B	;1		14721	
+2748	 77					LD (HL), A	;2		14723	
+2749	 20 48				JR NZ s8	;3		14726	
+274B	 00					NOP	;1		14727	
+274C	 00					NOP	;1		14728	
+274D	 80					ADD A, B	;1		14729	
+274E	 87					ADD A, A	;1		14730	
+274F	 48					LD C, B	;1		14731	
+2750	 4C					LD C, H	;1		14732	
+2751	 00					NOP	;1		14733	
+2752	 00					NOP	;1		14734	
+2753	 80					ADD A, B	;1		14735	
+2754	 87					ADD A, A	;1		14736	
+2755	 58					LD E, B	;1		14737	
+2756	 4E					LD C, (HL)	;2		14739	
+2757	 00					NOP	;1		14740	
+2758	 00					NOP	;1		14741	
+2759	 80					ADD A, B	;1		14742	
+275A	 67					LD H, A	;1		14743	
+275B	 4D					LD C, L	;1		14744	
+275C	 50					LD D, B	;1		14745	
+275D	 00					NOP	;1		14746	
+275E	 00					NOP	;1		14747	
+275F	 80					ADD A, B	;1		14748	
+2760	 67					LD H, A	;1		14749	
+2761	 5D					LD E, L	;1		14750	
+2762	 52					LD D, D	;1		14751	
+2763	 00					NOP	;1		14752	
+2764	 00					NOP	;1		14753	
+2765	 80					ADD A, B	;1		14754	
+2766	 8F					ADC A, A	;1		14755	
+2767	 88					ADC A, B	;1		14756	
+2768	 54					LD D, H	;1		14757	
+2769	 00					NOP	;1		14758	
+276A	 00					NOP	;1		14759	
+276B	 80					ADD A, B	;1		14760	
+276C	 8F					ADC A, A	;1		14761	
+276D	 98					SBC A, B	;1		14762	
+276E	 55					LD D, L	;1		14763	
+276F	 00					NOP	;1		14764	
+2770	 00					NOP	;1		14765	
+2771	 00					NOP	;1		14766	
+2772	 5F					LD E, A	;1		14767	
+2773	 57					LD D, A	;1		14768	
+2774	 2C					INC, L	;1		14769	
+2775	 00					NOP	;1		14770	
+2776	 00					NOP	;1		14771	
+2777	 80					ADD A, B	;1		14772	
+2778	 80					ADD A, B	;1		14773	
+2779	 50					LD D, B	;1		14774	
+277A	 34					INC (HL)	;3		14777	
+277B	 00					NOP	;1		14778	
+277C	 00					NOP	;1		14779	
+277D	 80					ADD A, B	;1		14780	
+277E	 80					ADD A, B	;1		14781	
+277F	 60					LD H, B	;1		14782	
+2780	 34					INC (HL)	;3		14785	
+2781	 00					NOP	;1		14786	
+2782	 20 00				JR NZ s8	;3		14789	
+2784	 6F					LD L, A	;1		14790	
+2785	 57					LD D, A	;1		14791	
+2786	 58					LD E, B	;1		14792	
+2787	 00					NOP	;1		14793	
+2788	 00					NOP	;1		14794	
+2789	 80					ADD A, B	;1		14795	
+278A	 80					ADD A, B	;1		14796	
+278B	 55					LD D, L	;1		14797	
+278C	 34					INC (HL)	;3		14800	
+278D	 00					NOP	;1		14801	
+278E	 00					NOP	;1		14802	
+278F	 80					ADD A, B	;1		14803	
+2790	 80					ADD A, B	;1		14804	
+2791	 5B					LD E, E	;1		14805	
+2792	 34					INC (HL)	;3		14808	
+2793	 00					NOP	;1		14809	
+2794	 20 21				JR NZ s8	;3		14812	
+2796	 FF					RST 7	;4		14816	
+2797	 9B					SBC A, E	;1		14817	
+2798	 01 00 04			LD BC, d16	;3		14820	
+279B	 3E 2F				LD, A, d8	;2		14822	
+279D	 32					LD (HL-), A	;2		14824	
+279E	 0B					DEC, BC	;2		14826	
+279F	 78					LD A, B	;1		14827	
+27A0	 B1					OR C	;1		14828	
+27A1	 20 F8				JR NZ s8	;3		14831	
+27A3	 C9					RET	;4		14835	
+27A4	 2A					LD A, (HL+)	;2		14837	
+27A5	 12					LD (DE), A	;2		14839	
+27A6	 13					INC, DE	;2		14841	
+27A7	 0B					DEC, BC	;2		14843	
+27A8	 78					LD A, B	;1		14844	
+27A9	 B1					OR C	;1		14845	
+27AA	 20 F8				JR NZ s8	;3		14848	
+27AC	 C9					RET	;4		14852	
+27AD	 CD C3 27			CALL a16	;6		14858	
+27B0	 01 A0 00			LD BC, d16	;3		14861	
+27B3	 CD A4 27			CALL a16	;6		14867	
+27B6	 21 3F 32			LD (HL), d16	;3		14870	
+27B9	 11 00 83			LD DE, d16	;3		14873	
+27BC	 01 00 0D			LD BC, d16	;3		14876	
+27BF	 CD A4 27			CALL a16	;6		14882	
+27C2	 C9					RET	;4		14886	
+27C3	 21 5F 41			LD (HL), d16	;3		14889	
+27C6	 01 38 01			LD BC, d16	;3		14892	
+27C9	 11 00 80			LD DE, d16	;3		14895	
+27CC	 2A					LD A, (HL+)	;2		14897	
+27CD	 12					LD (DE), A	;2		14899	
+27CE	 13					INC, DE	;2		14901	
+27CF	 12					LD (DE), A	;2		14903	
+27D0	 13					INC, DE	;2		14905	
+27D1	 0B					DEC, BC	;2		14907	
+27D2	 78					LD A, B	;1		14908	
+27D3	 B1					OR C	;1		14909	
+27D4	 20 F6				JR NZ s8	;3		14912	
+27D6	 C9					RET	;4		14916	
+27D7	 CD C3 27			CALL a16	;6		14922	
+27DA	 01 A0 0D			LD BC, d16	;3		14925	
+27DD	 CD A4 27			CALL a16	;6		14931	
+27E0	 C9					RET	;4		14935	
+27E1	 01 00 10			LD BC, d16	;3		14938	
+27E4	 11 00 80			LD DE, d16	;3		14941	
+27E7	 CD A4 27			CALL a16	;6		14947	
+27EA	 C9					RET	;4		14951	
+27EB	 21 00 98			LD (HL), d16	;3		14954	
+27EE	 06 12				LD, B, d8	;2		14956	
+27F0	 E5					PUSH (HL)	;4		14960	
+27F1	 0E 14				LD, C, d8	;2		14962	
+27F3	 1A					LD A, (DE)	;2		14964	
+27F4	 22					LD (HL+), A	;2		14966	
+27F5	 13					INC, DE	;2		14968	
+27F6	 0D					DEC, C	;1		14969	
+27F7	 20 FA				JR NZ s8	;3		14972	
+27F9	 E1					POP (HL)	;3		14975	
+27FA	 D5					PUSH DE	;4		14979	
+27FB	 11 20 00			LD DE, d16	;3		14982	
+27FE	 19					ADD HL, DE	;2		14984	
+27FF	 D1					POP DE	;3		14987	
+2800	 05					DEC, B	;1		14988	
+2801	 20 ED				JR NZ s8	;3		14991	
+2803	 C9					RET	;4		14995	
+2804	 06 0A				LD, B, d8	;2		14997	
+2806	 E5					PUSH (HL)	;4		15001	
+2807	 1A					LD A, (DE)	;2		15003	
+2808	 FE FF				CP d8	;2		15005	
+280A	 28 0E				JR Z s8	;3		15008	
+280C	 22					LD (HL+), A	;2		15010	
+280D	 13					INC, DE	;2		15012	
+280E	 05					DEC, B	;1		15013	
+280F	 20 F6				JR NZ s8	;3		15016	
+2811	 E1					POP (HL)	;3		15019	
+2812	 D5					PUSH DE	;4		15023	
+2813	 11 20 00			LD DE, d16	;3		15026	
+2816	 19					ADD HL, DE	;2		15028	
+2817	 D1					POP DE	;3		15031	
+2818	 18 EA				JR s8	;3		15034	
+281A	 E1					POP (HL)	;3		15037	
+281B	 3E 02				LD, A, d8	;2		15039	
+281D	 E0 E3				LD (a8), A	;3		15042	
+281F	 C9					RET	;4		15046	
+2820	 F0 FF				LD A, (a8)	;2		15048	
+2822	 E0 A1				LD (a8), A	;3		15051	
+2824	 CB		
+2826	 E0 FF				LD (a8), A	;3		15054	
+2828	 F0 44				LD A, (a8)	;2		15056	
+282A	 FE 91				CP d8	;2		15058	
+282C	 20 FA				JR NZ s8	;3		15061	
+282E	 F0 40				LD A, (a8)	;2		15063	
+2830	 E6 7F				AND d8	;2		15065	
+2832	 E0 40				LD (a8), A	;3		15068	
+2834	 F0 A1				LD A, (a8)	;2		15070	
+2836	 E0 FF				LD (a8), A	;3		15073	
+2838	 C9					RET	;4		15077	
+2839	 2F					CPL	;1		15078	
+283A	 2F					CPL	;1		15079	
+283B	 11 12 1D			LD DE, d16	;3		15082	
+283E	 2F					CPL	;1		15083	
+283F	 2F					CPL	;1		15084	
+2840	 2F					CPL	;1		15085	
+2841	 2F					CPL	;1		15086	
+2842	 2F					CPL	;1		15087	
+2843	 29					ADD HL, (HL)	;2		15089	
+2844	 29					ADD HL, (HL)	;2		15091	
+2845	 29					ADD HL, (HL)	;2		15093	
+2846	 2F					CPL	;1		15094	
+2847	 2F					CPL	;1		15095	
+2848	 2F					CPL	;1		15096	
+2849	 2F					CPL	;1		15097	
+284A	 1C					INC, E	;1		15098	
+284B	 1D					DEC, E	;1		15099	
+284C	 0A					LD A, (BC)	;2		15101	
+284D	 1B					DEC, DE	;2		15103	
+284E	 1D					DEC, E	;1		15104	
+284F	 2F					CPL	;1		15105	
+2850	 2F					CPL	;1		15106	
+2851	 2F					CPL	;1		15107	
+2852	 29					ADD HL, (HL)	;2		15109	
+2853	 29					ADD HL, (HL)	;2		15111	
+2854	 29					ADD HL, (HL)	;2		15113	
+2855	 29					ADD HL, (HL)	;2		15115	
+2856	 29					ADD HL, (HL)	;2		15117	
+2857	 2F					CPL	;1		15118	
+2858	 2F					CPL	;1		15119	
+2859	 2F					CPL	;1		15120	
+285A	 2F					CPL	;1		15121	
+285B	 2F					CPL	;1		15122	
+285C	 1D					DEC, E	;1		15123	
+285D	 18 2F				JR s8	;3		15126	
+285F	 2F					CPL	;1		15127	
+2860	 2F					CPL	;1		15128	
+2861	 2F					CPL	;1		15129	
+2862	 2F					CPL	;1		15130	
+2863	 2F					CPL	;1		15131	
+2864	 29					ADD HL, (HL)	;2		15133	
+2865	 29					ADD HL, (HL)	;2		15135	
+2866	 2F					CPL	;1		15136	
+2867	 2F					CPL	;1		15137	
+2868	 2F					CPL	;1		15138	
+2869	 0C					INC, C	;1		15139	
+286A	 18 17				JR s8	;3		15142	
+286C	 1D					DEC, E	;1		15143	
+286D	 12					LD (DE), A	;2		15145	
+286E	 17					RLA	;1		15146	
+286F	 1E 0E				LD, E, d8	;2		15148	
+2871	 29					ADD HL, (HL)	;2		15150	
+2872	 29					ADD HL, (HL)	;2		15152	
+2873	 29					ADD HL, (HL)	;2		15154	
+2874	 29					ADD HL, (HL)	;2		15156	
+2875	 29					ADD HL, (HL)	;2		15158	
+2876	 29					ADD HL, (HL)	;2		15160	
+2877	 29					ADD HL, (HL)	;2		15162	
+2878	 29					ADD HL, (HL)	;2		15164	
+2879	 2F					CPL	;1		15165	
+287A	 2F					CPL	;1		15166	
+287B	 10 0A				STOP	;1		15167	
+287D	 16 0E				LD, D, d8	;2		15169	
+287F	 2F					CPL	;1		15170	
+2880	 2F					CPL	;1		15171	
+2881	 2F					CPL	;1		15172	
+2882	 2F					CPL	;1		15173	
+2883	 29					ADD HL, (HL)	;2		15175	
+2884	 29					ADD HL, (HL)	;2		15177	
+2885	 29					ADD HL, (HL)	;2		15179	
+2886	 29					ADD HL, (HL)	;2		15181	
+2887	 2F					CPL	;1		15182	
+2888	 2F					CPL	;1		15183	
+2889	 1C					INC, E	;1		15184	
+288A	 12					LD (DE), A	;2		15186	
+288B	 17					RLA	;1		15187	
+288C	 10 15				STOP	;1		15188	
+288E	 0E 2F				LD, C, d8	;2		15190	
+2890	 2F					CPL	;1		15191	
+2891	 2F					CPL	;1		15192	
+2892	 2F					CPL	;1		15193	
+2893	 2F					CPL	;1		15194	
+2894	 00					NOP	;1		15195	
+2895	 2F					CPL	;1		15196	
+2896	 26 2F				LD, H, d8	;2		15198	
+2898	 04					INC, B	;1		15199	
+2899	 00					NOP	;1		15200	
+289A	 2F					CPL	;1		15201	
+289B	 2F					CPL	;1		15202	
+289C	 2F					CPL	;1		15203	
+289D	 2F					CPL	;1		15204	
+289E	 2F					CPL	;1		15205	
+289F	 2F					CPL	;1		15206	
+28A0	 2F					CPL	;1		15207	
+28A1	 2F					CPL	;1		15208	
+28A2	 2F					CPL	;1		15209	
+28A3	 2F					CPL	;1		15210	
+28A4	 2F					CPL	;1		15211	
+28A5	 00					NOP	;1		15212	
+28A6	 2F					CPL	;1		15213	
+28A7	 0D					DEC, C	;1		15214	
+28A8	 18 1E				JR s8	;3		15217	
+28AA	 0B					DEC, BC	;2		15219	
+28AB	 15					DEC, D	;1		15220	
+28AC	 0E 2F				LD, C, d8	;2		15222	
+28AE	 2F					CPL	;1		15223	
+28AF	 2F					CPL	;1		15224	
+28B0	 2F					CPL	;1		15225	
+28B1	 2F					CPL	;1		15226	
+28B2	 00					NOP	;1		15227	
+28B3	 2F					CPL	;1		15228	
+28B4	 26 2F				LD, H, d8	;2		15230	
+28B6	 01 00 00			LD BC, d16	;3		15233	
+28B9	 2F					CPL	;1		15234	
+28BA	 2F					CPL	;1		15235	
+28BB	 2F					CPL	;1		15236	
+28BC	 2F					CPL	;1		15237	
+28BD	 2F					CPL	;1		15238	
+28BE	 2F					CPL	;1		15239	
+28BF	 2F					CPL	;1		15240	
+28C0	 2F					CPL	;1		15241	
+28C1	 2F					CPL	;1		15242	
+28C2	 2F					CPL	;1		15243	
+28C3	 00					NOP	;1		15244	
+28C4	 2F					CPL	;1		15245	
+28C5	 1D					DEC, E	;1		15246	
+28C6	 1B					DEC, DE	;2		15248	
+28C7	 12					LD (DE), A	;2		15250	
+28C8	 19					ADD HL, DE	;2		15252	
+28C9	 15					DEC, D	;1		15253	
+28CA	 0E 2F				LD, C, d8	;2		15255	
+28CC	 2F					CPL	;1		15256	
+28CD	 2F					CPL	;1		15257	
+28CE	 2F					CPL	;1		15258	
+28CF	 2F					CPL	;1		15259	
+28D0	 00					NOP	;1		15260	
+28D1	 2F					CPL	;1		15261	
+28D2	 26 2F				LD, H, d8	;2		15263	
+28D4	 03					INC, BC	;2		15265	
+28D5	 00					NOP	;1		15266	
+28D6	 00					NOP	;1		15267	
+28D7	 2F					CPL	;1		15268	
+28D8	 2F					CPL	;1		15269	
+28D9	 2F					CPL	;1		15270	
+28DA	 2F					CPL	;1		15271	
+28DB	 2F					CPL	;1		15272	
+28DC	 2F					CPL	;1		15273	
+28DD	 2F					CPL	;1		15274	
+28DE	 2F					CPL	;1		15275	
+28DF	 2F					CPL	;1		15276	
+28E0	 2F					CPL	;1		15277	
+28E1	 00					NOP	;1		15278	
+28E2	 2F					CPL	;1		15279	
+28E3	 1D					DEC, E	;1		15280	
+28E4	 0E 1D				LD, C, d8	;2		15282	
+28E6	 1B					DEC, DE	;2		15284	
+28E7	 12					LD (DE), A	;2		15286	
+28E8	 1C					INC, E	;1		15287	
+28E9	 2F					CPL	;1		15288	
+28EA	 2F					CPL	;1		15289	
+28EB	 2F					CPL	;1		15290	
+28EC	 2F					CPL	;1		15291	
+28ED	 2F					CPL	;1		15292	
+28EE	 00					NOP	;1		15293	
+28EF	 2F					CPL	;1		15294	
+28F0	 26 2F				LD, H, d8	;2		15296	
+28F2	 01 02 00			LD BC, d16	;3		15299	
+28F5	 00					NOP	;1		15300	
+28F6	 2F					CPL	;1		15301	
+28F7	 2F					CPL	;1		15302	
+28F8	 2F					CPL	;1		15303	
+28F9	 2F					CPL	;1		15304	
+28FA	 2F					CPL	;1		15305	
+28FB	 2F					CPL	;1		15306	
+28FC	 2F					CPL	;1		15307	
+28FD	 2F					CPL	;1		15308	
+28FE	 2F					CPL	;1		15309	
+28FF	 00					NOP	;1		15310	
+2900	 2F					CPL	;1		15311	
+2901	 0D					DEC, C	;1		15312	
+2902	 1B					DEC, DE	;2		15314	
+2903	 18 19				JR s8	;3		15317	
+2905	 1C					INC, E	;1		15318	
+2906	 2F					CPL	;1		15319	
+2907	 2F					CPL	;1		15320	
+2908	 2F					CPL	;1		15321	
+2909	 2F					CPL	;1		15322	
+290A	 2F					CPL	;1		15323	
+290B	 2F					CPL	;1		15324	
+290C	 2F					CPL	;1		15325	
+290D	 2F					CPL	;1		15326	
+290E	 2F					CPL	;1		15327	
+290F	 2F					CPL	;1		15328	
+2910	 2F					CPL	;1		15329	
+2911	 2F					CPL	;1		15330	
+2912	 2F					CPL	;1		15331	
+2913	 00					NOP	;1		15332	
+2914	 2F					CPL	;1		15333	
+2915	 2F					CPL	;1		15334	
+2916	 2F					CPL	;1		15335	
+2917	 2F					CPL	;1		15336	
+2918	 2F					CPL	;1		15337	
+2919	 2F					CPL	;1		15338	
+291A	 2F					CPL	;1		15339	
+291B	 2F					CPL	;1		15340	
+291C	 2F					CPL	;1		15341	
+291D	 2F					CPL	;1		15342	
+291E	 2F					CPL	;1		15343	
+291F	 29					ADD HL, (HL)	;2		15345	
+2920	 29					ADD HL, (HL)	;2		15347	
+2921	 29					ADD HL, (HL)	;2		15349	
+2922	 29					ADD HL, (HL)	;2		15351	
+2923	 29					ADD HL, (HL)	;2		15353	
+2924	 29					ADD HL, (HL)	;2		15355	
+2925	 29					ADD HL, (HL)	;2		15357	
+2926	 29					ADD HL, (HL)	;2		15359	
+2927	 29					ADD HL, (HL)	;2		15361	
+2928	 29					ADD HL, (HL)	;2		15363	
+2929	 1D					DEC, E	;1		15364	
+292A	 11 12 1C			LD DE, d16	;3		15367	
+292D	 2F					CPL	;1		15368	
+292E	 1C					INC, E	;1		15369	
+292F	 1D					DEC, E	;1		15370	
+2930	 0A					LD A, (BC)	;2		15372	
+2931	 10 0E				STOP	;1		15373	
+2933	 2F					CPL	;1		15374	
+2934	 2F					CPL	;1		15375	
+2935	 2F					CPL	;1		15376	
+2936	 2F					CPL	;1		15377	
+2937	 2F					CPL	;1		15378	
+2938	 2F					CPL	;1		15379	
+2939	 2F					CPL	;1		15380	
+293A	 2F					CPL	;1		15381	
+293B	 00					NOP	;1		15382	
+293C	 2F					CPL	;1		15383	
+293D	 FF					RST 7	;4		15387	
+293E	 61					LD H, C	;1		15388	
+293F	 62					LD H, D	;1		15389	
+2940	 62					LD H, D	;1		15390	
+2941	 62					LD H, D	;1		15391	
+2942	 62					LD H, D	;1		15392	
+2943	 62					LD H, D	;1		15393	
+2944	 62					LD H, D	;1		15394	
+2945	 63					LD H, E	;1		15395	
+2946	 64					LD H, H	;1		15396	
+2947	 2F					CPL	;1		15397	
+2948	 2F					CPL	;1		15398	
+2949	 2F					CPL	;1		15399	
+294A	 2F					CPL	;1		15400	
+294B	 2F					CPL	;1		15401	
+294C	 2F					CPL	;1		15402	
+294D	 65					LD H, L	;1		15403	
+294E	 64					LD H, H	;1		15404	
+294F	 2F					CPL	;1		15405	
+2950	 10 0A				STOP	;1		15406	
+2952	 16 0E				LD, D, d8	;2		15408	
+2954	 2F					CPL	;1		15409	
+2955	 65					LD H, L	;1		15410	
+2956	 64					LD H, H	;1		15411	
+2957	 2F					CPL	;1		15412	
+2958	 AD					XOR L	;1		15413	
+2959	 AD					XOR L	;1		15414	
+295A	 AD					XOR L	;1		15415	
+295B	 AD					XOR L	;1		15416	
+295C	 2F					CPL	;1		15417	
+295D	 65					LD H, L	;1		15418	
+295E	 64					LD H, H	;1		15419	
+295F	 2F					CPL	;1		15420	
+2960	 18 1F				JR s8	;3		15423	
+2962	 0E 1B				LD, C, d8	;2		15425	
+2964	 2F					CPL	;1		15426	
+2965	 65					LD H, L	;1		15427	
+2966	 64					LD H, H	;1		15428	
+2967	 2F					CPL	;1		15429	
+2968	 AD					XOR L	;1		15430	
+2969	 AD					XOR L	;1		15431	
+296A	 AD					XOR L	;1		15432	
+296B	 AD					XOR L	;1		15433	
+296C	 2F					CPL	;1		15434	
+296D	 65					LD H, L	;1		15435	
+296E	 66					LD H, (HL)	;2		15437	
+296F	 69					LD L, C	;1		15438	
+2970	 69					LD L, C	;1		15439	
+2971	 69					LD L, C	;1		15440	
+2972	 69					LD L, C	;1		15441	
+2973	 69					LD L, C	;1		15442	
+2974	 69					LD L, C	;1		15443	
+2975	 6A					LD L, D	;1		15444	
+2976	 19					ADD HL, DE	;2		15446	
+2977	 15					DEC, D	;1		15447	
+2978	 0E 0A				LD, C, d8	;2		15449	
+297A	 1C					INC, E	;1		15450	
+297B	 0E 2F				LD, C, d8	;2		15452	
+297D	 2F					CPL	;1		15453	
+297E	 29					ADD HL, (HL)	;2		15455	
+297F	 29					ADD HL, (HL)	;2		15457	
+2980	 29					ADD HL, (HL)	;2		15459	
+2981	 29					ADD HL, (HL)	;2		15461	
+2982	 29					ADD HL, (HL)	;2		15463	
+2983	 29					ADD HL, (HL)	;2		15465	
+2984	 2F					CPL	;1		15466	
+2985	 2F					CPL	;1		15467	
+2986	 2F					CPL	;1		15468	
+2987	 1D					DEC, E	;1		15469	
+2988	 1B					DEC, DE	;2		15471	
+2989	 22					LD (HL+), A	;2		15473	
+298A	 2F					CPL	;1		15474	
+298B	 2F					CPL	;1		15475	
+298C	 2F					CPL	;1		15476	
+298D	 2F					CPL	;1		15477	
+298E	 2F					CPL	;1		15478	
+298F	 29					ADD HL, (HL)	;2		15480	
+2990	 29					ADD HL, (HL)	;2		15482	
+2991	 29					ADD HL, (HL)	;2		15484	
+2992	 2F					CPL	;1		15485	
+2993	 2F					CPL	;1		15486	
+2994	 2F					CPL	;1		15487	
+2995	 2F					CPL	;1		15488	
+2996	 2F					CPL	;1		15489	
+2997	 2F					CPL	;1		15490	
+2998	 0A					LD A, (BC)	;2		15492	
+2999	 10 0A				STOP	;1		15493	
+299B	 12					LD (DE), A	;2		15495	
+299C	 17					RLA	;1		15496	
+299D	 27					DAA	;1		15497	
+299E	 2F					CPL	;1		15498	
+299F	 2F					CPL	;1		15499	
+29A0	 29					ADD HL, (HL)	;2		15501	
+29A1	 29					ADD HL, (HL)	;2		15503	
+29A2	 29					ADD HL, (HL)	;2		15505	
+29A3	 29					ADD HL, (HL)	;2		15507	
+29A4	 29					ADD HL, (HL)	;2		15509	
+29A5	 2F					CPL	;1		15510	
+29A6	 3E 20				LD, A, d8	;2		15512	
+29A8	 E0 00				LD (a8), A	;3		15515	
+29AA	 F0 00				LD A, (a8)	;2		15517	
+29AC	 F0 00				LD A, (a8)	;2		15519	
+29AE	 F0 00				LD A, (a8)	;2		15521	
+29B0	 F0 00				LD A, (a8)	;2		15523	
+29B2	 2F					CPL	;1		15524	
+29B3	 E6 0F				AND d8	;2		15526	
+29B5	 CB		
+29B7	 47					LD B, A	;1		15527	
+29B8	 3E 10				LD, A, d8	;2		15529	
+29BA	 E0 00				LD (a8), A	;3		15532	
+29BC	 F0 00				LD A, (a8)	;2		15534	
+29BE	 F0 00				LD A, (a8)	;2		15536	
+29C0	 F0 00				LD A, (a8)	;2		15538	
+29C2	 F0 00				LD A, (a8)	;2		15540	
+29C4	 F0 00				LD A, (a8)	;2		15542	
+29C6	 F0 00				LD A, (a8)	;2		15544	
+29C8	 F0 00				LD A, (a8)	;2		15546	
+29CA	 F0 00				LD A, (a8)	;2		15548	
+29CC	 F0 00				LD A, (a8)	;2		15550	
+29CE	 F0 00				LD A, (a8)	;2		15552	
+29D0	 2F					CPL	;1		15553	
+29D1	 E6 0F				AND d8	;2		15555	
+29D3	 B0					OR B	;1		15556	
+29D4	 4F					LD C, A	;1		15557	
+29D5	 F0 80				LD A, (a8)	;2		15559	
+29D7	 A9					XOR C	;1		15560	
+29D8	 A1					AND C	;1		15561	
+29D9	 E0 81				LD (a8), A	;3		15564	
+29DB	 79					LD A, C	;1		15565	
+29DC	 E0 80				LD (a8), A	;3		15568	
+29DE	 3E 30				LD, A, d8	;2		15570	
+29E0	 E0 00				LD (a8), A	;3		15573	
+29E2	 C9					RET	;4		15577	
+29E3	 F0 B2				LD A, (a8)	;2		15579	
+29E5	 D6 10				SUB d8	;2		15581	
+29E7	 CB		
+29E9	 CB		
+29EB	 CB		
+29ED	 11 00 00			LD DE, d16	;3		15584	
+29F0	 5F					LD E, A	;1		15585	
+29F1	 21 00 98			LD (HL), d16	;3		15588	
+29F4	 06 20				LD, B, d8	;2		15590	
+29F6	 19					ADD HL, DE	;2		15592	
+29F7	 05					DEC, B	;1		15593	
+29F8	 20 FC				JR NZ s8	;3		15596	
+29FA	 F0 B3				LD A, (a8)	;2		15598	
+29FC	 D6 08				SUB d8	;2		15600	
+29FE	 CB		
+2A00	 CB		
+2A02	 CB		
+2A04	 11 00 00			LD DE, d16	;3		15603	
+2A07	 5F					LD E, A	;1		15604	
+2A08	 19					ADD HL, DE	;2		15606	
+2A09	 7C					LD A, H	;1		15607	
+2A0A	 E0 B5				LD (a8), A	;3		15610	
+2A0C	 7D					LD A, L	;1		15611	
+2A0D	 E0 B4				LD (a8), A	;3		15614	
+2A0F	 C9					RET	;4		15618	
+2A10	 F0 B5				LD A, (a8)	;2		15620	
+2A12	 57					LD D, A	;1		15621	
+2A13	 F0 B4				LD A, (a8)	;2		15623	
+2A15	 5F					LD E, A	;1		15624	
+2A16	 06 04				LD, B, d8	;2		15626	
+2A18	 CB		
+2A1A	 CB		
+2A1C	 05					DEC, B	;1		15627	
+2A1D	 20 F9				JR NZ s8	;3		15630	
+2A1F	 7B					LD A, E	;1		15631	
+2A20	 D6 84				SUB d8	;2		15633	
+2A22	 E6 FE				AND d8	;2		15635	
+2A24	 07					RLCA	;1		15636	
+2A25	 07					RLCA	;1		15637	
+2A26	 C6 08				ADD A, d8	;2		15639	
+2A28	 E0 B2				LD (a8), A	;3		15642	
+2A2A	 F0 B4				LD A, (a8)	;2		15644	
+2A2C	 E6 1F				AND d8	;2		15646	
+2A2E	 17					RLA	;1		15647	
+2A2F	 17					RLA	;1		15648	
+2A30	 17					RLA	;1		15649	
+2A31	 C6 08				ADD A, d8	;2		15651	
+2A33	 E0 B3				LD (a8), A	;3		15654	
+2A35	 C9					RET	;4		15658	
+2A36	 F0 E0				LD A, (a8)	;2		15660	
+2A38	 A7					AND A	;1		15661	
+2A39	 C8					RET Z	;5		15666	
+2A3A	 0E 03				LD, C, d8	;2		15668	
+2A3C	 AF					XOR A	;1		15669	
+2A3D	 E0 E0				LD (a8), A	;3		15672	
+2A3F	 1A					LD A, (DE)	;2		15674	
+2A40	 47					LD B, A	;1		15675	
+2A41	 CB		
+2A42	 37					SCF	;1		15676	
+2A43	 E6 0F				AND d8	;2		15678	
+2A45	 20 28				JR NZ s8	;3		15681	
+2A47	 F0 E0				LD A, (a8)	;2		15683	
+2A49	 A7					AND A	;1		15684	
+2A4A	 3E 00				LD, A, d8	;2		15686	
+2A4C	 20 02				JR NZ s8	;3		15689	
+2A4E	 3E 2F				LD, A, d8	;2		15691	
+2A50	 22					LD (HL+), A	;2		15693	
+2A51	 78					LD A, B	;1		15694	
+2A52	 E6 0F				AND d8	;2		15696	
+2A54	 20 21				JR NZ s8	;3		15699	
+2A56	 F0 E0				LD A, (a8)	;2		15701	
+2A58	 A7					AND A	;1		15702	
+2A59	 3E 00				LD, A, d8	;2		15704	
+2A5B	 20 09				JR NZ s8	;3		15707	
+2A5D	 3E 01				LD, A, d8	;2		15709	
+2A5F	 B9					CP C	;1		15710	
+2A60	 3E 00				LD, A, d8	;2		15712	
+2A62	 28 02				JR Z s8	;3		15715	
+2A64	 3E 2F				LD, A, d8	;2		15717	
+2A66	 22					LD (HL+), A	;2		15719	
+2A67	 1D					DEC, E	;1		15720	
+2A68	 0D					DEC, C	;1		15721	
+2A69	 20 D4				JR NZ s8	;3		15724	
+2A6B	 AF					XOR A	;1		15725	
+2A6C	 E0 E0				LD (a8), A	;3		15728	
+2A6E	 C9					RET	;4		15732	
+2A6F	 F5					PUSH AF	;4		15736	
+2A70	 3E 01				LD, A, d8	;2		15738	
+2A72	 E0 E0				LD (a8), A	;3		15741	
+2A74	 F1					POP AF	;3		15744	
+2A75	 18 D9				JR s8	;3		15747	
+2A77	 F5					PUSH AF	;4		15751	
+2A78	 3E 01				LD, A, d8	;2		15753	
+2A7A	 E0 E0				LD (a8), A	;3		15756	
+2A7C	 F1					POP AF	;3		15759	
+2A7D	 18 E7				JR s8	;3		15762	
+2A7F	 3E C0				LD, A, d8	;2		15764	
+2A81	 E0 46				LD (a8), A	;3		15767	
+2A83	 3E 28				LD, A, d8	;2		15769	
+2A85	 3D					DEC, A	;1		15770	
+2A86	 20 FD				JR NZ s8	;3		15773	
+2A88	 C9					RET	;4		15777	
+2A89	 7C					LD A, H	;1		15778	
+2A8A	 E0 96				LD (a8), A	;3		15781	
+2A8C	 7D					LD A, L	;1		15782	
+2A8D	 E0 97				LD (a8), A	;3		15785	
+2A8F	 7E					LD A, (HL)	;2		15787	
+2A90	 A7					AND A	;1		15788	
+2A91	 28 1D				JR Z s8	;3		15791	
+2A93	 FE 80				CP d8	;2		15793	
+2A95	 28 17				JR Z s8	;3		15796	
+2A97	 F0 96				LD A, (a8)	;2		15798	
+2A99	 67					LD H, A	;1		15799	
+2A9A	 F0 97				LD A, (a8)	;2		15801	
+2A9C	 6F					LD L, A	;1		15802	
+2A9D	 11 10 00			LD DE, d16	;3		15805	
+2AA0	 19					ADD HL, DE	;2		15807	
+2AA1	 F0 8F				LD A, (a8)	;2		15809	
+2AA3	 3D					DEC, A	;1		15810	
+2AA4	 E0 8F				LD (a8), A	;3		15813	
+2AA6	 C8					RET Z	;5		15818	
+2AA7	 18 E0				JR s8	;3		15821	
+2AA9	 AF					XOR A	;1		15822	
+2AAA	 E0 95				LD (a8), A	;3		15825	
+2AAC	 18 E9				JR s8	;3		15828	
+2AAE	 E0 95				LD (a8), A	;3		15831	
+2AB0	 06 07				LD, B, d8	;2		15833	
+2AB2	 11 86 FF			LD DE, d16	;3		15836	
+2AB5	 2A					LD A, (HL+)	;2		15838	
+2AB6	 12					LD (DE), A	;2		15840	
+2AB7	 13					INC, DE	;2		15842	
+2AB8	 05					DEC, B	;1		15843	
+2AB9	 20 FA				JR NZ s8	;3		15846	
+2ABB	 F0 89				LD A, (a8)	;2		15848	
+2ABD	 21 64 2B			LD (HL), d16	;3		15851	
+2AC0	 07					RLCA	;1		15852	
+2AC1	 5F					LD E, A	;1		15853	
+2AC2	 16 00				LD, D, d8	;2		15855	
+2AC4	 19					ADD HL, DE	;2		15857	
+2AC5	 5E					LD E, (HL)	;2		15859	
+2AC6	 23					INC, (HL)	;2		15861	
+2AC7	 56					LD D, (HL)	;2		15863	
+2AC8	 1A					LD A, (DE)	;2		15865	
+2AC9	 6F					LD L, A	;1		15866	
+2ACA	 13					INC, DE	;2		15868	
+2ACB	 1A					LD A, (DE)	;2		15870	
+2ACC	 67					LD H, A	;1		15871	
+2ACD	 13					INC, DE	;2		15873	
+2ACE	 1A					LD A, (DE)	;2		15875	
+2ACF	 E0 90				LD (a8), A	;3		15878	
+2AD1	 13					INC, DE	;2		15880	
+2AD2	 1A					LD A, (DE)	;2		15882	
+2AD3	 E0 91				LD (a8), A	;3		15885	
+2AD5	 5E					LD E, (HL)	;2		15887	
+2AD6	 23					INC, (HL)	;2		15889	
+2AD7	 56					LD D, (HL)	;2		15891	
+2AD8	 23					INC, (HL)	;2		15893	
+2AD9	 F0 8C				LD A, (a8)	;2		15895	
+2ADB	 E0 94				LD (a8), A	;3		15898	
+2ADD	 7E					LD A, (HL)	;2		15900	
+2ADE	 FE FF				CP d8	;2		15902	
+2AE0	 28 C7				JR Z s8	;3		15905	
+2AE2	 FE FD				CP d8	;2		15907	
+2AE4	 20 0E				JR NZ s8	;3		15910	
+2AE6	 F0 8C				LD A, (a8)	;2		15912	
+2AE8	 EE 20				XOR d8	;2		15914	
+2AEA	 E0 94				LD (a8), A	;3		15917	
+2AEC	 23					INC, (HL)	;2		15919	
+2AED	 7E					LD A, (HL)	;2		15921	
+2AEE	 18 08				JR s8	;3		15924	
+2AF0	 13					INC, DE	;2		15926	
+2AF1	 13					INC, DE	;2		15928	
+2AF2	 18 E4				JR s8	;3		15931	
+2AF4	 FE FE				CP d8	;2		15933	
+2AF6	 28 F8				JR Z s8	;3		15936	
+2AF8	 E0 89				LD (a8), A	;3		15939	
+2AFA	 F0 87				LD A, (a8)	;2		15941	
+2AFC	 47					LD B, A	;1		15942	
+2AFD	 1A					LD A, (DE)	;2		15944	
+2AFE	 4F					LD C, A	;1		15945	
+2AFF	 F0 8B				LD A, (a8)	;2		15947	
+2B01	 CB		
+2B03	 20 06				JR NZ s8	;3		15950	
+2B05	 F0 90				LD A, (a8)	;2		15952	
+2B07	 80					ADD A, B	;1		15953	
+2B08	 89					ADC A, C	;1		15954	
+2B09	 18 0A				JR s8	;3		15957	
+2B0B	 78					LD A, B	;1		15958	
+2B0C	 F5					PUSH AF	;4		15962	
+2B0D	 F0 90				LD A, (a8)	;2		15964	
+2B0F	 47					LD B, A	;1		15965	
+2B10	 F1					POP AF	;3		15968	
+2B11	 90					SUB B	;1		15969	
+2B12	 99					SBC A, C	;1		15970	
+2B13	 DE 08				SBC A, d8	;2		15972	
+2B15	 E0 93				LD (a8), A	;3		15975	
+2B17	 F0 88				LD A, (a8)	;2		15977	
+2B19	 47					LD B, A	;1		15978	
+2B1A	 13					INC, DE	;2		15980	
+2B1B	 1A					LD A, (DE)	;2		15982	
+2B1C	 13					INC, DE	;2		15984	
+2B1D	 4F					LD C, A	;1		15985	
+2B1E	 F0 8B				LD A, (a8)	;2		15987	
+2B20	 CB		
+2B22	 20 06				JR NZ s8	;3		15990	
+2B24	 F0 91				LD A, (a8)	;2		15992	
+2B26	 80					ADD A, B	;1		15993	
+2B27	 89					ADC A, C	;1		15994	
+2B28	 18 0A				JR s8	;3		15997	
+2B2A	 78					LD A, B	;1		15998	
+2B2B	 F5					PUSH AF	;4		16002	
+2B2C	 F0 91				LD A, (a8)	;2		16004	
+2B2E	 47					LD B, A	;1		16005	
+2B2F	 F1					POP AF	;3		16008	
+2B30	 90					SUB B	;1		16009	
+2B31	 99					SBC A, C	;1		16010	
+2B32	 DE 08				SBC A, d8	;2		16012	
+2B34	 E0 92				LD (a8), A	;3		16015	
+2B36	 E5					PUSH (HL)	;4		16019	
+2B37	 F0 8D				LD A, (a8)	;2		16021	
+2B39	 67					LD H, A	;1		16022	
+2B3A	 F0 8E				LD A, (a8)	;2		16024	
+2B3C	 6F					LD L, A	;1		16025	
+2B3D	 F0 95				LD A, (a8)	;2		16027	
+2B3F	 A7					AND A	;1		16028	
+2B40	 28 04				JR Z s8	;3		16031	
+2B42	 3E FF				LD, A, d8	;2		16033	
+2B44	 18 02				JR s8	;3		16036	
+2B46	 F0 93				LD A, (a8)	;2		16038	
+2B48	 22					LD (HL+), A	;2		16040	
+2B49	 F0 92				LD A, (a8)	;2		16042	
+2B4B	 22					LD (HL+), A	;2		16044	
+2B4C	 F0 89				LD A, (a8)	;2		16046	
+2B4E	 22					LD (HL+), A	;2		16048	
+2B4F	 F0 94				LD A, (a8)	;2		16050	
+2B51	 47					LD B, A	;1		16051	
+2B52	 F0 8B				LD A, (a8)	;2		16053	
+2B54	 B0					OR B	;1		16054	
+2B55	 47					LD B, A	;1		16055	
+2B56	 F0 8A				LD A, (a8)	;2		16057	
+2B58	 B0					OR B	;1		16058	
+2B59	 22					LD (HL+), A	;2		16060	
+2B5A	 7C					LD A, H	;1		16061	
+2B5B	 E0 8D				LD (a8), A	;3		16064	
+2B5D	 7D					LD A, L	;1		16065	
+2B5E	 E0 8E				LD (a8), A	;3		16068	
+2B60	 E1					POP (HL)	;3		16071	
+2B61	 C3 D8 2A			JP a16	;4		16075	
+2B64	 20 2C				JR NZ s8	;3		16078	
+2B66	 24					INC, H	;1		16079	
+2B67	 2C					INC, L	;1		16080	
+2B68	 28 2C				JR Z s8	;3		16083	
+2B6A	 2C					INC, L	;1		16084	
+2B6B	 2C					INC, L	;1		16085	
+2B6C	 30 2C				JR NC s8	;3		16088	
+2B6E	 34					INC (HL)	;3		16091	
+2B6F	 2C					INC, L	;1		16092	
+2B70	 38 2C				JR C s8	;3		16095	
+2B72	 3C					INC, A	;1		16096	
+2B73	 2C					INC, L	;1		16097	
+2B74	 40					LD B, B	;1		16098	
+2B75	 2C					INC, L	;1		16099	
+2B76	 44					LD B, H	;1		16100	
+2B77	 2C					INC, L	;1		16101	
+2B78	 48					LD C, B	;1		16102	
+2B79	 2C					INC, L	;1		16103	
+2B7A	 4C					LD C, H	;1		16104	
+2B7B	 2C					INC, L	;1		16105	
+2B7C	 50					LD D, B	;1		16106	
+2B7D	 2C					INC, L	;1		16107	
+2B7E	 54					LD D, H	;1		16108	
+2B7F	 2C					INC, L	;1		16109	
+2B80	 58					LD E, B	;1		16110	
+2B81	 2C					INC, L	;1		16111	
+2B82	 5C					LD E, H	;1		16112	
+2B83	 2C					INC, L	;1		16113	
+2B84	 60					LD H, B	;1		16114	
+2B85	 2C					INC, L	;1		16115	
+2B86	 64					LD H, H	;1		16116	
+2B87	 2C					INC, L	;1		16117	
+2B88	 68					LD L, B	;1		16118	
+2B89	 2C					INC, L	;1		16119	
+2B8A	 6C					LD L, H	;1		16120	
+2B8B	 2C					INC, L	;1		16121	
+2B8C	 70					LD (HL), B	;2		16123	
+2B8D	 2C					INC, L	;1		16124	
+2B8E	 74					LD (HL), H	;2		16126	
+2B8F	 2C					INC, L	;1		16127	
+2B90	 78					LD A, B	;1		16128	
+2B91	 2C					INC, L	;1		16129	
+2B92	 7C					LD A, H	;1		16130	
+2B93	 2C					INC, L	;1		16131	
+2B94	 80					ADD A, B	;1		16132	
+2B95	 2C					INC, L	;1		16133	
+2B96	 84					ADD A, H	;1		16134	
+2B97	 2C					INC, L	;1		16135	
+2B98	 88					ADC A, B	;1		16136	
+2B99	 2C					INC, L	;1		16137	
+2B9A	 8C					ADC A, H	;1		16138	
+2B9B	 2C					INC, L	;1		16139	
+2B9C	 90					SUB B	;1		16140	
+2B9D	 2C					INC, L	;1		16141	
+2B9E	 94					SUB H	;1		16142	
+2B9F	 2C					INC, L	;1		16143	
+2BA0	 98					SBC A, B	;1		16144	
+2BA1	 2C					INC, L	;1		16145	
+2BA2	 9C					SBC A, H	;1		16146	
+2BA3	 2C					INC, L	;1		16147	
+2BA4	 A0					AND B	;1		16148	
+2BA5	 2C					INC, L	;1		16149	
+2BA6	 A4					AND H	;1		16150	
+2BA7	 2C					INC, L	;1		16151	
+2BA8	 A8					XOR B	;1		16152	
+2BA9	 2C					INC, L	;1		16153	
+2BAA	 AC					XOR H	;1		16154	
+2BAB	 2C					INC, L	;1		16155	
+2BAC	 B0					OR B	;1		16156	
+2BAD	 2C					INC, L	;1		16157	
+2BAE	 B4					OR H	;1		16158	
+2BAF	 2C					INC, L	;1		16159	
+2BB0	 B8					CP B	;1		16160	
+2BB1	 2C					INC, L	;1		16161	
+2BB2	 BC					CP H	;1		16162	
+2BB3	 2C					INC, L	;1		16163	
+2BB4	 C0					RET NZ	;5		16168	
+2BB5	 2C					INC, L	;1		16169	
+2BB6	 C4 2C C8			CALL NZ, a16	;6		16175	
+2BB9	 2C					INC, L	;1		16176	
+2BBA	 CC 2C C7			CALL Z, a16	;6		16182	
+2BBD	 30 CC				JR NC s8	;3		16185	
+2BBF	 2C					INC, L	;1		16186	
+2BC0	 D0					RET NC	;5		16191	
+2BC1	 2C					INC, L	;1		16192	
+2BC2	 D4 2C D8			CALL NC, a16	;6		16198	
+2BC5	 2C					INC, L	;1		16199	
+2BC6	 DC 2C E0			CALL C, a16	;6		16205	
+2BC9	 2C					INC, L	;1		16206	
+2BCA	 E4		
+2BCB	 2C					INC, L	;1		16207	
+2BCC	 EA 30 EE			LD a16, A	;4		16211	
+2BCF	 30 E8				JR NC s8	;3		16214	
+2BD1	 2C					INC, L	;1		16215	
+2BD2	 EC		
+2BD3	 2C					INC, L	;1		16216	
+2BD4	 F2					LD A, (C)	;2		16218	
+2BD5	 30 F6				JR NC s8	;3		16221	
+2BD7	 30 F0				JR NC s8	;3		16224	
+2BD9	 2C					INC, L	;1		16225	
+2BDA	 F4		
+2BDB	 2C					INC, L	;1		16226	
+2BDC	 F8 2C				LD HL, SP+s8	;3		16229	
+2BDE	 FC		
+2BE0	 00					NOP	;1		16230	
+2BE1	 2D					DEC, L	;1		16231	
+2BE2	 04					INC, B	;1		16232	
+2BE3	 2D					DEC, L	;1		16233	
+2BE4	 FA 30 FE			JP A, a16	;4		16237	
+2BE7	 30 04				JR NC s8	;3		16240	
+2BE9	 2D					DEC, L	;1		16241	
+2BEA	 08 2D 08			LD (a16), SP	;5		16246	
+2BED	 2D					DEC, L	;1		16247	
+2BEE	 0C					INC, C	;1		16248	
+2BEF	 2D					DEC, L	;1		16249	
+2BF0	 10 2D				STOP	;1		16250	
+2BF2	 14					INC, D	;1		16251	
+2BF3	 2D					DEC, L	;1		16252	
+2BF4	 18 2D				JR s8	;3		16255	
+2BF6	 1C					INC, E	;1		16256	
+2BF7	 2D					DEC, L	;1		16257	
+2BF8	 20 2D				JR NZ s8	;3		16260	
+2BFA	 24					INC, H	;1		16261	
+2BFB	 2D					DEC, L	;1		16262	
+2BFC	 28 2D				JR Z s8	;3		16265	
+2BFE	 2C					INC, L	;1		16266	
+2BFF	 2D					DEC, L	;1		16267	
+2C00	 30 2D				JR NC s8	;3		16270	
+2C02	 34					INC (HL)	;3		16273	
+2C03	 2D					DEC, L	;1		16274	
+2C04	 38 2D				JR C s8	;3		16277	
+2C06	 3C					INC, A	;1		16278	
+2C07	 2D					DEC, L	;1		16279	
+2C08	 40					LD B, B	;1		16280	
+2C09	 2D					DEC, L	;1		16281	
+2C0A	 44					LD B, H	;1		16282	
+2C0B	 2D					DEC, L	;1		16283	
+2C0C	 48					LD C, B	;1		16284	
+2C0D	 2D					DEC, L	;1		16285	
+2C0E	 4C					LD C, H	;1		16286	
+2C0F	 2D					DEC, L	;1		16287	
+2C10	 50					LD D, B	;1		16288	
+2C11	 2D					DEC, L	;1		16289	
+2C12	 54					LD D, H	;1		16290	
+2C13	 2D					DEC, L	;1		16291	
+2C14	 0A					LD A, (BC)	;2		16293	
+2C15	 31 0E 31			LD SP, d16	;3		16296	
+2C18	 12					LD (DE), A	;2		16298	
+2C19	 31 12 31			LD SP, d16	;3		16301	
+2C1C	 02					LD (BC), A	;2		16303	
+2C1D	 31 06 31			LD SP, d16	;3		16306	
+2C20	 58					LD E, B	;1		16307	
+2C21	 2D					DEC, L	;1		16308	
+2C22	 EF					RST 5	;4		16312	
+2C23	 F0 68				LD A, (a8)	;2		16314	
+2C25	 2D					DEC, L	;1		16315	
+2C26	 EF					RST 5	;4		16319	
+2C27	 F0 7A				LD A, (a8)	;2		16321	
+2C29	 2D					DEC, L	;1		16322	
+2C2A	 EF					RST 5	;4		16326	
+2C2B	 F0 89				LD A, (a8)	;2		16328	
+2C2D	 2D					DEC, L	;1		16329	
+2C2E	 EF					RST 5	;4		16333	
+2C2F	 F0 9A				LD A, (a8)	;2		16335	
+2C31	 2D					DEC, L	;1		16336	
+2C32	 EF					RST 5	;4		16340	
+2C33	 F0 AC				LD A, (a8)	;2		16342	
+2C35	 2D					DEC, L	;1		16343	
+2C36	 EF					RST 5	;4		16347	
+2C37	 F0 BD				LD A, (a8)	;2		16349	
+2C39	 2D					DEC, L	;1		16350	
+2C3A	 EF					RST 5	;4		16354	
+2C3B	 F0 CB				LD A, (a8)	;2		16356	
+2C3D	 2D					DEC, L	;1		16357	
+2C3E	 EF					RST 5	;4		16361	
+2C3F	 F0 DC				LD A, (a8)	;2		16363	
+2C41	 2D					DEC, L	;1		16364	
+2C42	 EF					RST 5	;4		16368	
+2C43	 F0 EB				LD A, (a8)	;2		16370	
+2C45	 2D					DEC, L	;1		16371	
+2C46	 EF					RST 5	;4		16375	
+2C47	 F0 FC				LD A, (a8)	;2		16377	
+2C49	 2D					DEC, L	;1		16378	
+2C4A	 EF					RST 5	;4		16382	
+2C4B	 F0 0B				LD A, (a8)	;2		16384	
+2C4D	 2E EF				LD, L, d8	;2		16386	
+2C4F	 F0 1C				LD A, (a8)	;2		16388	
+2C51	 2E EF				LD, L, d8	;2		16390	
+2C53	 F0 2E				LD A, (a8)	;2		16392	
+2C55	 2E EF				LD, L, d8	;2		16394	
+2C57	 F0 40				LD A, (a8)	;2		16396	
+2C59	 2E EF				LD, L, d8	;2		16398	
+2C5B	 F0 52				LD A, (a8)	;2		16400	
+2C5D	 2E EF				LD, L, d8	;2		16402	
+2C5F	 F0 64				LD A, (a8)	;2		16404	
+2C61	 2E EF				LD, L, d8	;2		16406	
+2C63	 F0 76				LD A, (a8)	;2		16408	
+2C65	 2E EF				LD, L, d8	;2		16410	
+2C67	 F0 86				LD A, (a8)	;2		16412	
+2C69	 2E EF				LD, L, d8	;2		16414	
+2C6B	 F0 98				LD A, (a8)	;2		16416	
+2C6D	 2E EF				LD, L, d8	;2		16418	
+2C6F	 F0 A8				LD A, (a8)	;2		16420	
+2C71	 2E EF				LD, L, d8	;2		16422	
+2C73	 F0 B9				LD A, (a8)	;2		16424	
+2C75	 2E EF				LD, L, d8	;2		16426	
+2C77	 F0 CA				LD A, (a8)	;2		16428	
+2C79	 2E EF				LD, L, d8	;2		16430	
+2C7B	 F0 DB				LD A, (a8)	;2		16432	
+2C7D	 2E EF				LD, L, d8	;2		16434	
+2C7F	 F0 0B				LD A, (a8)	;2		16436	
+2C81	 2F					CPL	;1		16437	
+2C82	 EF					RST 5	;4		16441	
+2C83	 F0 1C				LD A, (a8)	;2		16443	
+2C85	 2F					CPL	;1		16444	
+2C86	 EF					RST 5	;4		16448	
+2C87	 F0 EC				LD A, (a8)	;2		16450	
+2C89	 2E EF				LD, L, d8	;2		16452	
+2C8B	 F0 FA				LD A, (a8)	;2		16454	
+2C8D	 2E EF				LD, L, d8	;2		16456	
+2C8F	 F0 2D				LD A, (a8)	;2		16458	
+2C91	 2F					CPL	;1		16459	
+2C92	 00					NOP	;1		16460	
+2C93	 E8 36				ADD SP, s8	;4		16464	
+2C95	 2F					CPL	;1		16465	
+2C96	 00					NOP	;1		16466	
+2C97	 E8 3F				ADD SP, s8	;4		16470	
+2C99	 2F					CPL	;1		16471	
+2C9A	 00					NOP	;1		16472	
+2C9B	 E8 48				ADD SP, s8	;4		16476	
+2C9D	 2F					CPL	;1		16477	
+2C9E	 00					NOP	;1		16478	
+2C9F	 E8 51				ADD SP, s8	;4		16482	
+2CA1	 2F					CPL	;1		16483	
+2CA2	 00					NOP	;1		16484	
+2CA3	 00					NOP	;1		16485	
+2CA4	 55					LD D, L	;1		16486	
+2CA5	 2F					CPL	;1		16487	
+2CA6	 00					NOP	;1		16488	
+2CA7	 00					NOP	;1		16489	
+2CA8	 59					LD E, C	;1		16490	
+2CA9	 2F					CPL	;1		16491	
+2CAA	 00					NOP	;1		16492	
+2CAB	 00					NOP	;1		16493	
+2CAC	 5D					LD E, L	;1		16494	
+2CAD	 2F					CPL	;1		16495	
+2CAE	 00					NOP	;1		16496	
+2CAF	 00					NOP	;1		16497	
+2CB0	 61					LD H, C	;1		16498	
+2CB1	 2F					CPL	;1		16499	
+2CB2	 00					NOP	;1		16500	
+2CB3	 00					NOP	;1		16501	
+2CB4	 65					LD H, L	;1		16502	
+2CB5	 2F					CPL	;1		16503	
+2CB6	 00					NOP	;1		16504	
+2CB7	 00					NOP	;1		16505	
+2CB8	 69					LD L, C	;1		16506	
+2CB9	 2F					CPL	;1		16507	
+2CBA	 00					NOP	;1		16508	
+2CBB	 00					NOP	;1		16509	
+2CBC	 6D					LD L, L	;1		16510	
+2CBD	 2F					CPL	;1		16511	
+2CBE	 00					NOP	;1		16512	
+2CBF	 00					NOP	;1		16513	
+2CC0	 71					LD (HL), C	;2		16515	
+2CC1	 2F					CPL	;1		16516	
+2CC2	 00					NOP	;1		16517	
+2CC3	 00					NOP	;1		16518	
+2CC4	 75					LD (HL), L	;2		16520	
+2CC5	 2F					CPL	;1		16521	
+2CC6	 00					NOP	;1		16522	
+2CC7	 00					NOP	;1		16523	
+2CC8	 79					LD A, C	;1		16524	
+2CC9	 2F					CPL	;1		16525	
+2CCA	 F0 F8				LD A, (a8)	;2		16527	
+2CCC	 84					ADD A, H	;1		16528	
+2CCD	 2F					CPL	;1		16529	
+2CCE	 F0 F8				LD A, (a8)	;2		16531	
+2CD0	 8F					ADC A, A	;1		16532	
+2CD1	 2F					CPL	;1		16533	
+2CD2	 F0 F0				LD A, (a8)	;2		16535	
+2CD4	 A3					AND E	;1		16536	
+2CD5	 2F					CPL	;1		16537	
+2CD6	 F0 F0				LD A, (a8)	;2		16539	
+2CD8	 B8					CP B	;1		16540	
+2CD9	 2F					CPL	;1		16541	
+2CDA	 F8 F8				LD HL, SP+s8	;3		16544	
+2CDC	 C1					POP BC	;3		16547	
+2CDD	 2F					CPL	;1		16548	
+2CDE	 F8 F8				LD HL, SP+s8	;3		16551	
+2CE0	 CA 2F F8			JP Z a16	;4		16555	
+2CE3	 F8 D1				LD HL, SP+s8	;3		16558	
+2CE5	 2F					CPL	;1		16559	
+2CE6	 F8 F8				LD HL, SP+s8	;3		16562	
+2CE8	 D8					RET C	;5		16567	
+2CE9	 2F					CPL	;1		16568	
+2CEA	 F0 F8				LD A, (a8)	;2		16570	
+2CEC	 E3		
+2CEE	 F0 F8				LD A, (a8)	;2		16572	
+2CF0	 EE 2F				XOR d8	;2		16574	
+2CF2	 F0 F0				LD A, (a8)	;2		16576	
+2CF4	 03					INC, BC	;2		16578	
+2CF5	 30 F0				JR NC s8	;3		16581	
+2CF7	 F0 19				LD A, (a8)	;2		16583	
+2CF9	 30 F8				JR NC s8	;3		16586	
+2CFB	 F8 22				LD HL, SP+s8	;3		16589	
+2CFD	 30 F8				JR NC s8	;3		16592	
+2CFF	 F8 2B				LD HL, SP+s8	;3		16595	
+2D01	 30 F8				JR NC s8	;3		16598	
+2D03	 F8 32				LD HL, SP+s8	;3		16601	
+2D05	 30 F8				JR NC s8	;3		16604	
+2D07	 F8 39				LD HL, SP+s8	;3		16607	
+2D09	 30 F8				JR NC s8	;3		16610	
+2D0B	 F8 40				LD HL, SP+s8	;3		16613	
+2D0D	 30 F8				JR NC s8	;3		16616	
+2D0F	 F8 47				LD HL, SP+s8	;3		16619	
+2D11	 30 F8				JR NC s8	;3		16622	
+2D13	 F8 4E				LD HL, SP+s8	;3		16625	
+2D15	 30 F8				JR NC s8	;3		16628	
+2D17	 F8 55				LD HL, SP+s8	;3		16631	
+2D19	 30 F8				JR NC s8	;3		16634	
+2D1B	 F8 5C				LD HL, SP+s8	;3		16637	
+2D1D	 30 F8				JR NC s8	;3		16640	
+2D1F	 F8 67				LD HL, SP+s8	;3		16643	
+2D21	 30 F8				JR NC s8	;3		16646	
+2D23	 F8 6E				LD HL, SP+s8	;3		16649	
+2D25	 30 F8				JR NC s8	;3		16652	
+2D27	 F8 75				LD HL, SP+s8	;3		16655	
+2D29	 30 F8				JR NC s8	;3		16658	
+2D2B	 F8 7C				LD HL, SP+s8	;3		16661	
+2D2D	 30 F8				JR NC s8	;3		16664	
+2D2F	 F8 83				LD HL, SP+s8	;3		16667	
+2D31	 30 F8				JR NC s8	;3		16670	
+2D33	 F8 8C				LD HL, SP+s8	;3		16673	
+2D35	 30 F8				JR NC s8	;3		16676	
+2D37	 F8 95				LD HL, SP+s8	;3		16679	
+2D39	 30 F8				JR NC s8	;3		16682	
+2D3B	 F8 9E				LD HL, SP+s8	;3		16685	
+2D3D	 30 F8				JR NC s8	;3		16688	
+2D3F	 F8 A7				LD HL, SP+s8	;3		16691	
+2D41	 30 F8				JR NC s8	;3		16694	
+2D43	 F8 B0				LD HL, SP+s8	;3		16697	
+2D45	 30 F8				JR NC s8	;3		16700	
+2D47	 F8 B9				LD HL, SP+s8	;3		16703	
+2D49	 30 F8				JR NC s8	;3		16706	
+2D4B	 F8 C0				LD HL, SP+s8	;3		16709	
+2D4D	 30 F8				JR NC s8	;3		16712	
+2D4F	 F8 46				LD HL, SP+s8	;3		16715	
+2D51	 31 F0 F0			LD SP, d16	;3		16718	
+2D54	 5D					LD E, L	;1		16719	
+2D55	 31 F8 F8			LD SP, d16	;3		16722	
+2D58	 A9					XOR C	;1		16723	
+2D59	 31 FE FE			LD SP, d16	;3		16726	
+2D5C	 FE FE				CP d8	;2		16728	
+2D5E	 FE FE				CP d8	;2		16730	
+2D60	 FE FE				CP d8	;2		16732	
+2D62	 84					ADD A, H	;1		16733	
+2D63	 84					ADD A, H	;1		16734	
+2D64	 84					ADD A, H	;1		16735	
+2D65	 FE 84				CP d8	;2		16737	
+2D67	 FF					RST 7	;4		16741	
+2D68	 A9					XOR C	;1		16742	
+2D69	 31 FE FE			LD SP, d16	;3		16745	
+2D6C	 FE FE				CP d8	;2		16747	
+2D6E	 FE 84				CP d8	;2		16749	
+2D70	 FE FE				CP d8	;2		16751	
+2D72	 FE 84				CP d8	;2		16753	
+2D74	 FE FE				CP d8	;2		16755	
+2D76	 FE 84				CP d8	;2		16757	
+2D78	 84					ADD A, H	;1		16758	
+2D79	 FF					RST 7	;4		16762	
+2D7A	 A9					XOR C	;1		16763	
+2D7B	 31 FE FE			LD SP, d16	;3		16766	
+2D7E	 FE FE				CP d8	;2		16768	
+2D80	 FE FE				CP d8	;2		16770	
+2D82	 84					ADD A, H	;1		16771	
+2D83	 FE 84				CP d8	;2		16773	
+2D85	 84					ADD A, H	;1		16774	
+2D86	 84					ADD A, H	;1		16775	
+2D87	 FE FF				CP d8	;2		16777	
+2D89	 A9					XOR C	;1		16778	
+2D8A	 31 FE FE			LD SP, d16	;3		16781	
+2D8D	 FE FE				CP d8	;2		16783	
+2D8F	 84					ADD A, H	;1		16784	
+2D90	 84					ADD A, H	;1		16785	
+2D91	 FE FE				CP d8	;2		16787	
+2D93	 FE 84				CP d8	;2		16789	
+2D95	 FE FE				CP d8	;2		16791	
+2D97	 FE 84				CP d8	;2		16793	
+2D99	 FF					RST 7	;4		16797	
+2D9A	 A9					XOR C	;1		16798	
+2D9B	 31 FE FE			LD SP, d16	;3		16801	
+2D9E	 FE FE				CP d8	;2		16803	
+2DA0	 FE FE				CP d8	;2		16805	
+2DA2	 FE FE				CP d8	;2		16807	
+2DA4	 81					ADD A, C	;1		16808	
+2DA5	 81					ADD A, C	;1		16809	
+2DA6	 81					ADD A, C	;1		16810	
+2DA7	 FE FE				CP d8	;2		16812	
+2DA9	 FE 81				CP d8	;2		16814	
+2DAB	 FF					RST 7	;4		16818	
+2DAC	 A9					XOR C	;1		16819	
+2DAD	 31 FE FE			LD SP, d16	;3		16822	
+2DB0	 FE FE				CP d8	;2		16824	
+2DB2	 FE 81				CP d8	;2		16826	
+2DB4	 81					ADD A, C	;1		16827	
+2DB5	 FE FE				CP d8	;2		16829	
+2DB7	 81					ADD A, C	;1		16830	
+2DB8	 FE FE				CP d8	;2		16832	
+2DBA	 FE 81				CP d8	;2		16834	
+2DBC	 FF					RST 7	;4		16838	
+2DBD	 A9					XOR C	;1		16839	
+2DBE	 31 FE FE			LD SP, d16	;3		16842	
+2DC1	 FE FE				CP d8	;2		16844	
+2DC3	 81					ADD A, C	;1		16845	
+2DC4	 FE FE				CP d8	;2		16847	
+2DC6	 FE 81				CP d8	;2		16849	
+2DC8	 81					ADD A, C	;1		16850	
+2DC9	 81					ADD A, C	;1		16851	
+2DCA	 FF					RST 7	;4		16855	
+2DCB	 A9					XOR C	;1		16856	
+2DCC	 31 FE FE			LD SP, d16	;3		16859	
+2DCF	 FE FE				CP d8	;2		16861	
+2DD1	 FE 81				CP d8	;2		16863	
+2DD3	 FE FE				CP d8	;2		16865	
+2DD5	 FE 81				CP d8	;2		16867	
+2DD7	 FE FE				CP d8	;2		16869	
+2DD9	 81					ADD A, C	;1		16870	
+2DDA	 81					ADD A, C	;1		16871	
+2DDB	 FF					RST 7	;4		16875	
+2DDC	 A9					XOR C	;1		16876	
+2DDD	 31 FE FE			LD SP, d16	;3		16879	
+2DE0	 FE FE				CP d8	;2		16881	
+2DE2	 FE FE				CP d8	;2		16883	
+2DE4	 FE FE				CP d8	;2		16885	
+2DE6	 8A					ADC A, D	;1		16886	
+2DE7	 8B					ADC A, E	;1		16887	
+2DE8	 8B					ADC A, E	;1		16888	
+2DE9	 8F					ADC A, A	;1		16889	
+2DEA	 FF					RST 7	;4		16893	
+2DEB	 A9					XOR C	;1		16894	
+2DEC	 31 FE 80			LD SP, d16	;3		16897	
+2DEF	 FE FE				CP d8	;2		16899	
+2DF1	 FE 88				CP d8	;2		16901	
+2DF3	 FE FE				CP d8	;2		16903	
+2DF5	 FE 88				CP d8	;2		16905	
+2DF7	 FE FE				CP d8	;2		16907	
+2DF9	 FE 89				CP d8	;2		16909	
+2DFB	 FF					RST 7	;4		16913	
+2DFC	 A9					XOR C	;1		16914	
+2DFD	 31 FE FE			LD SP, d16	;3		16917	
+2E00	 FE FE				CP d8	;2		16919	
+2E02	 FE FE				CP d8	;2		16921	
+2E04	 FE FE				CP d8	;2		16923	
+2E06	 8A					ADC A, D	;1		16924	
+2E07	 8B					ADC A, E	;1		16925	
+2E08	 8B					ADC A, E	;1		16926	
+2E09	 8F					ADC A, A	;1		16927	
+2E0A	 FF					RST 7	;4		16931	
+2E0B	 A9					XOR C	;1		16932	
+2E0C	 31 FE 80			LD SP, d16	;3		16935	
+2E0F	 FE FE				CP d8	;2		16937	
+2E11	 FE 88				CP d8	;2		16939	
+2E13	 FE FE				CP d8	;2		16941	
+2E15	 FE 88				CP d8	;2		16943	
+2E17	 FE FE				CP d8	;2		16945	
+2E19	 FE 89				CP d8	;2		16947	
+2E1B	 FF					RST 7	;4		16951	
+2E1C	 A9					XOR C	;1		16952	
+2E1D	 31 FE FE			LD SP, d16	;3		16955	
+2E20	 FE FE				CP d8	;2		16957	
+2E22	 FE FE				CP d8	;2		16959	
+2E24	 FE FE				CP d8	;2		16961	
+2E26	 FE 83				CP d8	;2		16963	
+2E28	 83					ADD A, E	;1		16964	
+2E29	 FE FE				CP d8	;2		16966	
+2E2B	 83					ADD A, E	;1		16967	
+2E2C	 83					ADD A, E	;1		16968	
+2E2D	 FF					RST 7	;4		16972	
+2E2E	 A9					XOR C	;1		16973	
+2E2F	 31 FE FE			LD SP, d16	;3		16976	
+2E32	 FE FE				CP d8	;2		16978	
+2E34	 FE FE				CP d8	;2		16980	
+2E36	 FE FE				CP d8	;2		16982	
+2E38	 FE 83				CP d8	;2		16984	
+2E3A	 83					ADD A, E	;1		16985	
+2E3B	 FE FE				CP d8	;2		16987	
+2E3D	 83					ADD A, E	;1		16988	
+2E3E	 83					ADD A, E	;1		16989	
+2E3F	 FF					RST 7	;4		16993	
+2E40	 A9					XOR C	;1		16994	
+2E41	 31 FE FE			LD SP, d16	;3		16997	
+2E44	 FE FE				CP d8	;2		16999	
+2E46	 FE FE				CP d8	;2		17001	
+2E48	 FE FE				CP d8	;2		17003	
+2E4A	 FE 83				CP d8	;2		17005	
+2E4C	 83					ADD A, E	;1		17006	
+2E4D	 FE FE				CP d8	;2		17008	
+2E4F	 83					ADD A, E	;1		17009	
+2E50	 83					ADD A, E	;1		17010	
+2E51	 FF					RST 7	;4		17014	
+2E52	 A9					XOR C	;1		17015	
+2E53	 31 FE FE			LD SP, d16	;3		17018	
+2E56	 FE FE				CP d8	;2		17020	
+2E58	 FE FE				CP d8	;2		17022	
+2E5A	 FE FE				CP d8	;2		17024	
+2E5C	 FE 83				CP d8	;2		17026	
+2E5E	 83					ADD A, E	;1		17027	
+2E5F	 FE FE				CP d8	;2		17029	
+2E61	 83					ADD A, E	;1		17030	
+2E62	 83					ADD A, E	;1		17031	
+2E63	 FF					RST 7	;4		17035	
+2E64	 A9					XOR C	;1		17036	
+2E65	 31 FE FE			LD SP, d16	;3		17039	
+2E68	 FE FE				CP d8	;2		17041	
+2E6A	 FE FE				CP d8	;2		17043	
+2E6C	 FE FE				CP d8	;2		17045	
+2E6E	 82					ADD A, D	;1		17046	
+2E6F	 82					ADD A, D	;1		17047	
+2E70	 FE FE				CP d8	;2		17049	
+2E72	 FE 82				CP d8	;2		17051	
+2E74	 82					ADD A, D	;1		17052	
+2E75	 FF					RST 7	;4		17056	
+2E76	 A9					XOR C	;1		17057	
+2E77	 31 FE FE			LD SP, d16	;3		17060	
+2E7A	 FE FE				CP d8	;2		17062	
+2E7C	 FE 82				CP d8	;2		17064	
+2E7E	 FE FE				CP d8	;2		17066	
+2E80	 82					ADD A, D	;1		17067	
+2E81	 82					ADD A, D	;1		17068	
+2E82	 FE FE				CP d8	;2		17070	
+2E84	 82					ADD A, D	;1		17071	
+2E85	 FF					RST 7	;4		17075	
+2E86	 A9					XOR C	;1		17076	
+2E87	 31 FE FE			LD SP, d16	;3		17079	
+2E8A	 FE FE				CP d8	;2		17081	
+2E8C	 FE FE				CP d8	;2		17083	
+2E8E	 FE FE				CP d8	;2		17085	
+2E90	 82					ADD A, D	;1		17086	
+2E91	 82					ADD A, D	;1		17087	
+2E92	 FE FE				CP d8	;2		17089	
+2E94	 FE 82				CP d8	;2		17091	
+2E96	 82					ADD A, D	;1		17092	
+2E97	 FF					RST 7	;4		17096	
+2E98	 A9					XOR C	;1		17097	
+2E99	 31 FE FE			LD SP, d16	;3		17100	
+2E9C	 FE FE				CP d8	;2		17102	
+2E9E	 FE 82				CP d8	;2		17104	
+2EA0	 FE FE				CP d8	;2		17106	
+2EA2	 82					ADD A, D	;1		17107	
+2EA3	 82					ADD A, D	;1		17108	
+2EA4	 FE FE				CP d8	;2		17110	
+2EA6	 82					ADD A, D	;1		17111	
+2EA7	 FF					RST 7	;4		17115	
+2EA8	 A9					XOR C	;1		17116	
+2EA9	 31 FE FE			LD SP, d16	;3		17119	
+2EAC	 FE FE				CP d8	;2		17121	
+2EAE	 FE FE				CP d8	;2		17123	
+2EB0	 FE FE				CP d8	;2		17125	
+2EB2	 FE 86				CP d8	;2		17127	
+2EB4	 86					ADD A, (HL)	;2		17129	
+2EB5	 FE 86				CP d8	;2		17131	
+2EB7	 86					ADD A, (HL)	;2		17133	
+2EB8	 FF					RST 7	;4		17137	
+2EB9	 A9					XOR C	;1		17138	
+2EBA	 31 FE FE			LD SP, d16	;3		17141	
+2EBD	 FE FE				CP d8	;2		17143	
+2EBF	 86					ADD A, (HL)	;2		17145	
+2EC0	 FE FE				CP d8	;2		17147	
+2EC2	 FE 86				CP d8	;2		17149	
+2EC4	 86					ADD A, (HL)	;2		17151	
+2EC5	 FE FE				CP d8	;2		17153	
+2EC7	 FE 86				CP d8	;2		17155	
+2EC9	 FF					RST 7	;4		17159	
+2ECA	 A9					XOR C	;1		17160	
+2ECB	 31 FE FE			LD SP, d16	;3		17163	
+2ECE	 FE FE				CP d8	;2		17165	
+2ED0	 FE FE				CP d8	;2		17167	
+2ED2	 FE FE				CP d8	;2		17169	
+2ED4	 FE 86				CP d8	;2		17171	
+2ED6	 86					ADD A, (HL)	;2		17173	
+2ED7	 FE 86				CP d8	;2		17175	
+2ED9	 86					ADD A, (HL)	;2		17177	
+2EDA	 FF					RST 7	;4		17181	
+2EDB	 A9					XOR C	;1		17182	
+2EDC	 31 FE FE			LD SP, d16	;3		17185	
+2EDF	 FE FE				CP d8	;2		17187	
+2EE1	 86					ADD A, (HL)	;2		17189	
+2EE2	 FE FE				CP d8	;2		17191	
+2EE4	 FE 86				CP d8	;2		17193	
+2EE6	 86					ADD A, (HL)	;2		17195	
+2EE7	 FE FE				CP d8	;2		17197	
+2EE9	 FE 86				CP d8	;2		17199	
+2EEB	 FF					RST 7	;4		17203	
+2EEC	 A9					XOR C	;1		17204	
+2EED	 31 FE FE			LD SP, d16	;3		17207	
+2EF0	 FE FE				CP d8	;2		17209	
+2EF2	 FE 85				CP d8	;2		17211	
+2EF4	 FE FE				CP d8	;2		17213	
+2EF6	 85					ADD A, L	;1		17214	
+2EF7	 85					ADD A, L	;1		17215	
+2EF8	 85					ADD A, L	;1		17216	
+2EF9	 FF					RST 7	;4		17220	
+2EFA	 A9					XOR C	;1		17221	
+2EFB	 31 FE FE			LD SP, d16	;3		17224	
+2EFE	 FE FE				CP d8	;2		17226	
+2F00	 FE 85				CP d8	;2		17228	
+2F02	 FE FE				CP d8	;2		17230	
+2F04	 85					ADD A, L	;1		17231	
+2F05	 85					ADD A, L	;1		17232	
+2F06	 FE FE				CP d8	;2		17234	
+2F08	 FE 85				CP d8	;2		17236	
+2F0A	 FF					RST 7	;4		17240	
+2F0B	 A9					XOR C	;1		17241	
+2F0C	 31 FE FE			LD SP, d16	;3		17244	
+2F0F	 FE FE				CP d8	;2		17246	
+2F11	 FE FE				CP d8	;2		17248	
+2F13	 FE FE				CP d8	;2		17250	
+2F15	 85					ADD A, L	;1		17251	
+2F16	 85					ADD A, L	;1		17252	
+2F17	 85					ADD A, L	;1		17253	
+2F18	 FE FE				CP d8	;2		17255	
+2F1A	 85					ADD A, L	;1		17256	
+2F1B	 FF					RST 7	;4		17260	
+2F1C	 A9					XOR C	;1		17261	
+2F1D	 31 FE FE			LD SP, d16	;3		17264	
+2F20	 FE FE				CP d8	;2		17266	
+2F22	 FE 85				CP d8	;2		17268	
+2F24	 FE FE				CP d8	;2		17270	
+2F26	 FE 85				CP d8	;2		17272	
+2F28	 85					ADD A, L	;1		17273	
+2F29	 FE FE				CP d8	;2		17275	
+2F2B	 85					ADD A, L	;1		17276	
+2F2C	 FF					RST 7	;4		17280	
+2F2D	 C9					RET	;4		17284	
+2F2E	 31 0A 25			LD SP, d16	;3		17287	
+2F31	 1D					DEC, E	;1		17288	
+2F32	 22					LD (HL+), A	;2		17290	
+2F33	 19					ADD HL, DE	;2		17292	
+2F34	 0E FF				LD, C, d8	;2		17294	
+2F36	 C9					RET	;4		17298	
+2F37	 31 0B 25			LD SP, d16	;3		17301	
+2F3A	 1D					DEC, E	;1		17302	
+2F3B	 22					LD (HL+), A	;2		17304	
+2F3C	 19					ADD HL, DE	;2		17306	
+2F3D	 0E FF				LD, C, d8	;2		17308	
+2F3F	 C9					RET	;4		17312	
+2F40	 31 0C 25			LD SP, d16	;3		17315	
+2F43	 1D					DEC, E	;1		17316	
+2F44	 22					LD (HL+), A	;2		17318	
+2F45	 19					ADD HL, DE	;2		17320	
+2F46	 0E FF				LD, C, d8	;2		17322	
+2F48	 C9					RET	;4		17326	
+2F49	 31 2F 18			LD SP, d16	;3		17329	
+2F4C	 0F					RRCA	;1		17330	
+2F4D	 0F					RRCA	;1		17331	
+2F4E	 2F					CPL	;1		17332	
+2F4F	 2F					CPL	;1		17333	
+2F50	 FF					RST 7	;4		17337	
+2F51	 C9					RET	;4		17341	
+2F52	 31 00 FF			LD SP, d16	;3		17344	
+2F55	 C9					RET	;4		17348	
+2F56	 31 01 FF			LD SP, d16	;3		17351	
+2F59	 C9					RET	;4		17355	
+2F5A	 31 02 FF			LD SP, d16	;3		17358	
+2F5D	 C9					RET	;4		17362	
+2F5E	 31 03 FF			LD SP, d16	;3		17365	
+2F61	 C9					RET	;4		17369	
+2F62	 31 04 FF			LD SP, d16	;3		17372	
+2F65	 C9					RET	;4		17376	
+2F66	 31 05 FF			LD SP, d16	;3		17379	
+2F69	 C9					RET	;4		17383	
+2F6A	 31 06 FF			LD SP, d16	;3		17386	
+2F6D	 C9					RET	;4		17390	
+2F6E	 31 07 FF			LD SP, d16	;3		17393	
+2F71	 C9					RET	;4		17397	
+2F72	 31 08 FF			LD SP, d16	;3		17400	
+2F75	 C9					RET	;4		17404	
+2F76	 31 09 FF			LD SP, d16	;3		17407	
+2F79	 D9					RETI	;4		17411	
+2F7A	 31 2F 01			LD SP, d16	;3		17414	
+2F7D	 2F					CPL	;1		17415	
+2F7E	 11 20 21			LD DE, d16	;3		17418	
+2F81	 30 31				JR NC s8	;3		17421	
+2F83	 FF					RST 7	;4		17425	
+2F84	 D9					RETI	;4		17429	
+2F85	 31 2F 03			LD SP, d16	;3		17432	
+2F88	 12					LD (DE), A	;2		17434	
+2F89	 13					INC, DE	;2		17436	
+2F8A	 22					LD (HL+), A	;2		17438	
+2F8B	 23					INC, (HL)	;2		17440	
+2F8C	 32					LD (HL-), A	;2		17442	
+2F8D	 33					INC, SP	;2		17444	
+2F8E	 FF					RST 7	;4		17448	
+2F8F	 A9					XOR C	;1		17449	
+2F90	 31 2F 05			LD SP, d16	;3		17452	
+2F93	 FD		
+2F96	 2F					CPL	;1		17453	
+2F97	 15					DEC, D	;1		17454	
+2F98	 04					INC, B	;1		17455	
+2F99	 17					RLA	;1		17456	
+2F9A	 24					INC, H	;1		17457	
+2F9B	 25					DEC, H	;1		17458	
+2F9C	 26 27				LD, H, d8	;2		17460	
+2F9E	 34					INC (HL)	;3		17463	
+2F9F	 35					DEC (HL)	;3		17466	
+2FA0	 36 2F				LD (HL), d8	;3		17469	
+2FA2	 FF					RST 7	;4		17473	
+2FA3	 A9					XOR C	;1		17474	
+2FA4	 31 08 37			LD SP, d16	;3		17477	
+2FA7	 FD		
+2FAA	 08 18 19			LD (a16), SP	;5		17482	
+2FAD	 14					INC, D	;1		17483	
+2FAE	 1B					DEC, DE	;2		17485	
+2FAF	 28 29				JR Z s8	;3		17488	
+2FB1	 2A					LD A, (HL+)	;2		17490	
+2FB2	 2B					DEC, (HL)	;2		17492	
+2FB3	 60					LD H, B	;1		17493	
+2FB4	 70					LD (HL), B	;2		17495	
+2FB5	 36 2F				LD (HL), d8	;3		17498	
+2FB7	 FF					RST 7	;4		17502	
+2FB8	 D9					RETI	;4		17506	
+2FB9	 31 B9 FD			LD SP, d16	;3		17509	
+2FBC	 B9					CP C	;1		17510	
+2FBD	 BA					CP D	;1		17511	
+2FBE	 FD		
+2FBF	 BA					CP D	;1		17512	
+2FC0	 FF					RST 7	;4		17516	
+2FC1	 D9					RETI	;4		17520	
+2FC2	 31 82 FD			LD SP, d16	;3		17523	
+2FC5	 82					ADD A, D	;1		17524	
+2FC6	 83					ADD A, E	;1		17525	
+2FC7	 FD		
+2FC8	 83					ADD A, E	;1		17526	
+2FC9	 FF					RST 7	;4		17530	
+2FCA	 D9					RETI	;4		17534	
+2FCB	 31 09 0A			LD SP, d16	;3		17537	
+2FCE	 3A					LD A, (HL-)	;2		17539	
+2FCF	 3B					DEC, SP	;2		17541	
+2FD0	 FF					RST 7	;4		17545	
+2FD1	 D9					RETI	;4		17549	
+2FD2	 31 0B 40			LD SP, d16	;3		17552	
+2FD5	 7C					LD A, H	;1		17553	
+2FD6	 6F					LD L, A	;1		17554	
+2FD7	 FF					RST 7	;4		17558	
+2FD8	 D9					RETI	;4		17562	
+2FD9	 31 2F 0F			LD SP, d16	;3		17565	
+2FDC	 2F					CPL	;1		17566	
+2FDD	 1F					RRA	;1		17567	
+2FDE	 5F					LD E, A	;1		17568	
+2FDF	 2C					INC, L	;1		17569	
+2FE0	 2F					CPL	;1		17570	
+2FE1	 3F					CCF	;1		17571	
+2FE2	 FF					RST 7	;4		17575	
+2FE3	 D9					RETI	;4		17579	
+2FE4	 31 6C 3C			LD SP, d16	;3		17582	
+2FE7	 4B					LD C, E	;1		17583	
+2FE8	 4C					LD C, H	;1		17584	
+2FE9	 5B					LD E, E	;1		17585	
+2FEA	 5C					LD E, H	;1		17586	
+2FEB	 6B					LD L, E	;1		17587	
+2FEC	 2F					CPL	;1		17588	
+2FED	 FF					RST 7	;4		17592	
+2FEE	 A9					XOR C	;1		17593	
+2FEF	 31 2F 4D			LD SP, d16	;3		17596	
+2FF2	 FD		
+2FF5	 2F					CPL	;1		17597	
+2FF6	 5D					LD E, L	;1		17598	
+2FF7	 5E					LD E, (HL)	;2		17600	
+2FF8	 4E					LD C, (HL)	;2		17602	
+2FF9	 5F					LD E, A	;1		17603	
+2FFA	 6D					LD L, L	;1		17604	
+2FFB	 6E					LD L, (HL)	;2		17606	
+2FFC	 2F					CPL	;1		17607	
+2FFD	 2F					CPL	;1		17608	
+2FFE	 7D					LD A, L	;1		17609	
+2FFF	 FD		
+3000	 7D					LD A, L	;1		17610	
+3001	 2F					CPL	;1		17611	
+3002	 FF					RST 7	;4		17615	
+3003	 A9					XOR C	;1		17616	
+3004	 31 08 77			LD SP, d16	;3		17619	
+3007	 FD		
+300A	 08 18 78			LD (a16), SP	;5		17624	
+300D	 43					LD B, E	;1		17625	
+300E	 53					LD D, E	;1		17626	
+300F	 7A					LD A, D	;1		17627	
+3010	 7B					LD A, E	;1		17628	
+3011	 50					LD D, B	;1		17629	
+3012	 2F					CPL	;1		17630	
+3013	 2F					CPL	;1		17631	
+3014	 02					LD (BC), A	;2		17633	
+3015	 FD		
+3016	 7D					LD A, L	;1		17634	
+3017	 2F					CPL	;1		17635	
+3018	 FF					RST 7	;4		17639	
+3019	 D9					RETI	;4		17643	
+301A	 31 B9 FD			LD SP, d16	;3		17646	
+301D	 B9					CP C	;1		17647	
+301E	 BA					CP D	;1		17648	
+301F	 FD		
+3020	 BA					CP D	;1		17649	
+3021	 FF					RST 7	;4		17653	
+3022	 D9					RETI	;4		17657	
+3023	 31 82 FD			LD SP, d16	;3		17660	
+3026	 82					ADD A, D	;1		17661	
+3027	 83					ADD A, E	;1		17662	
+3028	 FD		
+3029	 83					ADD A, E	;1		17663	
+302A	 FF					RST 7	;4		17667	
+302B	 D9					RETI	;4		17671	
+302C	 31 09 0A			LD SP, d16	;3		17674	
+302F	 3A					LD A, (HL-)	;2		17676	
+3030	 3B					DEC, SP	;2		17678	
+3031	 FF					RST 7	;4		17682	
+3032	 D9					RETI	;4		17686	
+3033	 31 0B 40			LD SP, d16	;3		17689	
+3036	 7C					LD A, H	;1		17690	
+3037	 6F					LD L, A	;1		17691	
+3038	 FF					RST 7	;4		17695	
+3039	 D9					RETI	;4		17699	
+303A	 31 DC DD			LD SP, d16	;3		17702	
+303D	 E0 E1				LD (a8), A	;3		17705	
+303F	 FF					RST 7	;4		17709	
+3040	 D9					RETI	;4		17713	
+3041	 31 DE DF			LD SP, d16	;3		17716	
+3044	 E0 E1				LD (a8), A	;3		17719	
+3046	 FF					RST 7	;4		17723	
+3047	 D9					RETI	;4		17727	
+3048	 31 DE E2			LD SP, d16	;3		17730	
+304B	 E0 E4				LD (a8), A	;3		17733	
+304D	 FF					RST 7	;4		17737	
+304E	 D9					RETI	;4		17741	
+304F	 31 DC EE			LD SP, d16	;3		17744	
+3052	 E0 E3				LD (a8), A	;3		17747	
+3054	 FF					RST 7	;4		17751	
+3055	 D9					RETI	;4		17755	
+3056	 31 E5 E6			LD SP, d16	;3		17758	
+3059	 E7					RST 4	;4		17762	
+305A	 E8 FF				ADD SP, s8	;4		17766	
+305C	 D9					RETI	;4		17770	
+305D	 31 FD E6			LD SP, d16	;3		17773	
+3060	 FD		
+3063	 E8 FD				ADD SP, s8	;4		17777	
+3065	 E7					RST 4	;4		17781	
+3066	 FF					RST 7	;4		17785	
+3067	 D9					RETI	;4		17789	
+3068	 31 E9 EA			LD SP, d16	;3		17792	
+306B	 EB		
+306E	 D9					RETI	;4		17796	
+306F	 31 ED EA			LD SP, d16	;3		17799	
+3072	 EB		
+3075	 D9					RETI	;4		17803	
+3076	 31 F2 F4			LD SP, d16	;3		17806	
+3079	 F3					DI	;1		17807	
+307A	 BF					CP A	;1		17808	
+307B	 FF					RST 7	;4		17812	
+307C	 D9					RETI	;4		17816	
+307D	 31 F4 F2			LD SP, d16	;3		17819	
+3080	 BF					CP A	;1		17820	
+3081	 F3					DI	;1		17821	
+3082	 FF					RST 7	;4		17825	
+3083	 D9					RETI	;4		17829	
+3084	 31 C2 FD			LD SP, d16	;3		17832	
+3087	 C2 C3 FD			JP NZ a16	;4		17836	
+308A	 C3 FF D9			JP a16	;4		17840	
+308D	 31 C4 FD			LD SP, d16	;3		17843	
+3090	 C4 C5 FD			CALL NZ, a16	;6		17849	
+3093	 C5					PUSH BC	;4		17853	
+3094	 FF					RST 7	;4		17857	
+3095	 D9					RETI	;4		17861	
+3096	 31 DC FD			LD SP, d16	;3		17864	
+3099	 DC EF FD			CALL C, a16	;6		17870	
+309C	 EF					RST 5	;4		17874	
+309D	 FF					RST 7	;4		17878	
+309E	 D9					RETI	;4		17882	
+309F	 31 F0 FD			LD SP, d16	;3		17885	
+30A2	 F0 F1				LD A, (a8)	;2		17887	
+30A4	 FD		
+30A6	 FF					RST 7	;4		17891	
+30A7	 D9					RETI	;4		17895	
+30A8	 31 DC FD			LD SP, d16	;3		17898	
+30AB	 F0 F1				LD A, (a8)	;2		17900	
+30AD	 FD		
+30AF	 FF					RST 7	;4		17904	
+30B0	 D9					RETI	;4		17908	
+30B1	 31 F0 FD			LD SP, d16	;3		17911	
+30B4	 DC EF FD			CALL C, a16	;6		17917	
+30B7	 F1					POP AF	;3		17920	
+30B8	 FF					RST 7	;4		17924	
+30B9	 D9					RETI	;4		17928	
+30BA	 31 BD BE			LD SP, d16	;3		17931	
+30BD	 BB					CP E	;1		17932	
+30BE	 BC					CP H	;1		17933	
+30BF	 FF					RST 7	;4		17937	
+30C0	 D9					RETI	;4		17941	
+30C1	 31 B9 BA			LD SP, d16	;3		17944	
+30C4	 DA DB FF			JP C a16	;4		17948	
+30C7	 CB		
+30CA	 F0 F5				LD A, (a8)	;2		17950	
+30CC	 31 C0 C1			LD SP, d16	;3		17953	
+30CF	 C5					PUSH BC	;4		17957	
+30D0	 C6 CC				ADD A, d8	;2		17959	
+30D2	 CD 75 76			CALL a16	;6		17965	
+30D5	 A4					AND H	;1		17966	
+30D6	 A5					AND L	;1		17967	
+30D7	 A6					AND (HL)	;2		17969	
+30D8	 A7					AND A	;1		17970	
+30D9	 54					LD D, H	;1		17971	
+30DA	 55					LD D, L	;1		17972	
+30DB	 56					LD D, (HL)	;2		17974	
+30DC	 57					LD D, A	;1		17975	
+30DD	 44					LD B, H	;1		17976	
+30DE	 45					LD B, L	;1		17977	
+30DF	 46					LD B, (HL)	;2		17979	
+30E0	 47					LD B, A	;1		17980	
+30E1	 A0					AND B	;1		17981	
+30E2	 A1					AND C	;1		17982	
+30E3	 A2					AND D	;1		17983	
+30E4	 A3					AND E	;1		17984	
+30E5	 9C					SBC A, H	;1		17985	
+30E6	 9D					SBC A, L	;1		17986	
+30E7	 9E					SBC A, (HL)	;2		17988	
+30E8	 9F					SBC A, A	;1		17989	
+30E9	 FF					RST 7	;4		17993	
+30EA	 16 31				LD, D, d8	;2		17995	
+30EC	 F8 E8				LD HL, SP+s8	;3		17998	
+30EE	 1C					INC, E	;1		17999	
+30EF	 31 F0 E8			LD SP, d16	;3		18002	
+30F2	 25					DEC, H	;1		18003	
+30F3	 31 00 00			LD SP, d16	;3		18006	
+30F6	 2B					DEC, (HL)	;2		18008	
+30F7	 31 00 00			LD SP, d16	;3		18011	
+30FA	 31 31 00			LD SP, d16	;3		18014	
+30FD	 00					NOP	;1		18015	
+30FE	 3A					LD A, (HL-)	;2		18017	
+30FF	 31 00 00			LD SP, d16	;3		18020	
+3102	 9D					SBC A, L	;1		18021	
+3103	 31 00 00			LD SP, d16	;3		18024	
+3106	 A3					AND E	;1		18025	
+3107	 31 00 00			LD SP, d16	;3		18028	
+310A	 64					LD H, H	;1		18029	
+310B	 31 D8 F8			LD SP, d16	;3		18032	
+310E	 7C					LD A, H	;1		18033	
+310F	 31 E8 F8			LD SP, d16	;3		18036	
+3112	 8E					ADC A, (HL)	;2		18038	
+3113	 31 F0 F8			LD SP, d16	;3		18041	
+3116	 2D					DEC, L	;1		18042	
+3117	 32					LD (HL-), A	;2		18044	
+3118	 63					LD H, E	;1		18045	
+3119	 64					LD H, H	;1		18046	
+311A	 65					LD H, L	;1		18047	
+311B	 FF					RST 7	;4		18051	
+311C	 2D					DEC, L	;1		18052	
+311D	 32					LD (HL-), A	;2		18054	
+311E	 63					LD H, E	;1		18055	
+311F	 64					LD H, H	;1		18056	
+3120	 65					LD H, L	;1		18057	
+3121	 66					LD H, (HL)	;2		18059	
+3122	 67					LD H, A	;1		18060	
+3123	 68					LD L, B	;1		18061	
+3124	 FF					RST 7	;4		18065	
+3125	 2D					DEC, L	;1		18066	
+3126	 32					LD (HL-), A	;2		18068	
+3127	 41					LD B, C	;1		18069	
+3128	 41					LD B, C	;1		18070	
+3129	 41					LD B, C	;1		18071	
+312A	 FF					RST 7	;4		18075	
+312B	 2D					DEC, L	;1		18076	
+312C	 32					LD (HL-), A	;2		18078	
+312D	 42					LD B, D	;1		18079	
+312E	 42					LD B, D	;1		18080	
+312F	 42					LD B, D	;1		18081	
+3130	 FF					RST 7	;4		18085	
+3131	 2D					DEC, L	;1		18086	
+3132	 32					LD (HL-), A	;2		18088	
+3133	 52					LD D, D	;1		18089	
+3134	 52					LD D, D	;1		18090	
+3135	 52					LD D, D	;1		18091	
+3136	 62					LD H, D	;1		18092	
+3137	 62					LD H, D	;1		18093	
+3138	 62					LD H, D	;1		18094	
+3139	 FF					RST 7	;4		18098	
+313A	 2D					DEC, L	;1		18099	
+313B	 32					LD (HL-), A	;2		18101	
+313C	 51					LD D, C	;1		18102	
+313D	 51					LD D, C	;1		18103	
+313E	 51					LD D, C	;1		18104	
+313F	 61					LD H, C	;1		18105	
+3140	 61					LD H, C	;1		18106	
+3141	 61					LD H, C	;1		18107	
+3142	 71					LD (HL), C	;2		18109	
+3143	 71					LD (HL), C	;2		18111	
+3144	 71					LD (HL), C	;2		18113	
+3145	 FF					RST 7	;4		18117	
+3146	 A9					XOR C	;1		18118	
+3147	 31 2F 2F			LD SP, d16	;3		18121	
+314A	 2F					CPL	;1		18122	
+314B	 2F					CPL	;1		18123	
+314C	 2F					CPL	;1		18124	
+314D	 2F					CPL	;1		18125	
+314E	 2F					CPL	;1		18126	
+314F	 2F					CPL	;1		18127	
+3150	 63					LD H, E	;1		18128	
+3151	 64					LD H, H	;1		18129	
+3152	 FD		
+3153	 64					LD H, H	;1		18130	
+3154	 FD		
+3155	 63					LD H, E	;1		18131	
+3156	 66					LD H, (HL)	;2		18133	
+3157	 67					LD H, A	;1		18134	
+3158	 FD		
+3159	 67					LD H, A	;1		18135	
+315A	 FD		
+315B	 66					LD H, (HL)	;2		18137	
+315C	 FF					RST 7	;4		18141	
+315D	 D9					RETI	;4		18145	
+315E	 31 2F 2F			LD SP, d16	;3		18148	
+3161	 63					LD H, E	;1		18149	
+3162	 64					LD H, H	;1		18150	
+3163	 FF					RST 7	;4		18154	
+3164	 D9					RETI	;4		18158	
+3165	 31 00 FD			LD SP, d16	;3		18161	
+3168	 00					NOP	;1		18162	
+3169	 10 FD				STOP	;1		18163	
+316B	 10 4F				STOP	;1		18164	
+316D	 FD		
+316F	 80					ADD A, B	;1		18165	
+3170	 FD		
+3171	 80					ADD A, B	;1		18166	
+3172	 80					ADD A, B	;1		18167	
+3173	 FD		
+3174	 80					ADD A, B	;1		18168	
+3175	 81					ADD A, C	;1		18169	
+3176	 FD		
+3177	 81					ADD A, C	;1		18170	
+3178	 97					SUB A	;1		18171	
+3179	 FD		
+317A	 97					SUB A	;1		18172	
+317B	 FF					RST 7	;4		18176	
+317C	 D9					RETI	;4		18180	
+317D	 31 98 FD			LD SP, d16	;3		18183	
+3180	 98					SBC A, B	;1		18184	
+3181	 99					SBC A, C	;1		18185	
+3182	 FD		
+3183	 99					SBC A, C	;1		18186	
+3184	 80					ADD A, B	;1		18187	
+3185	 FD		
+3186	 80					ADD A, B	;1		18188	
+3187	 9A					SBC A, D	;1		18189	
+3188	 FD		
+3189	 9A					SBC A, D	;1		18190	
+318A	 9B					SBC A, E	;1		18191	
+318B	 FD		
+318C	 9B					SBC A, E	;1		18192	
+318D	 FF					RST 7	;4		18196	
+318E	 D9					RETI	;4		18200	
+318F	 31 A8 FD			LD SP, d16	;3		18203	
+3192	 A8					XOR B	;1		18204	
+3193	 A9					XOR C	;1		18205	
+3194	 FD		
+3195	 A9					XOR C	;1		18206	
+3196	 AA					XOR D	;1		18207	
+3197	 FD		
+3198	 AA					XOR D	;1		18208	
+3199	 AB					XOR E	;1		18209	
+319A	 FD		
+319B	 AB					XOR E	;1		18210	
+319C	 FF					RST 7	;4		18214	
+319D	 D9					RETI	;4		18218	
+319E	 31 41 2F			LD SP, d16	;3		18221	
+31A1	 2F					CPL	;1		18222	
+31A2	 FF					RST 7	;4		18226	
+31A3	 D9					RETI	;4		18230	
+31A4	 31 52 2F			LD SP, d16	;3		18233	
+31A7	 62					LD H, D	;1		18234	
+31A8	 FF					RST 7	;4		18238	
+31A9	 00					NOP	;1		18239	
+31AA	 00					NOP	;1		18240	
+31AB	 00					NOP	;1		18241	
+31AC	 08 00 10			LD (a16), SP	;5		18246	
+31AF	 00					NOP	;1		18247	
+31B0	 18 08				JR s8	;3		18250	
+31B2	 00					NOP	;1		18251	
+31B3	 08 08 08			LD (a16), SP	;5		18256	
+31B6	 10 08				STOP	;1		18257	
+31B8	 18 10				JR s8	;3		18260	
+31BA	 00					NOP	;1		18261	
+31BB	 10 08				STOP	;1		18262	
+31BD	 10 10				STOP	;1		18263	
+31BF	 10 18				STOP	;1		18264	
+31C1	 18 00				JR s8	;3		18267	
+31C3	 18 08				JR s8	;3		18270	
+31C5	 18 10				JR s8	;3		18273	
+31C7	 18 18				JR s8	;3		18276	
+31C9	 00					NOP	;1		18277	
+31CA	 00					NOP	;1		18278	
+31CB	 00					NOP	;1		18279	
+31CC	 08 00 10			LD (a16), SP	;5		18284	
+31CF	 00					NOP	;1		18285	
+31D0	 18 00				JR s8	;3		18288	
+31D2	 20 00				JR NZ s8	;3		18291	
+31D4	 28 00				JR Z s8	;3		18294	
+31D6	 30 00				JR NC s8	;3		18297	
+31D8	 38 00				JR C s8	;3		18300	
+31DA	 00					NOP	;1		18301	
+31DB	 00					NOP	;1		18302	
+31DC	 08 08 00			LD (a16), SP	;5		18307	
+31DF	 08 08 10			LD (a16), SP	;5		18312	
+31E2	 00					NOP	;1		18313	
+31E3	 10 08				STOP	;1		18314	
+31E5	 18 00				JR s8	;3		18317	
+31E7	 18 08				JR s8	;3		18320	
+31E9	 20 00				JR NZ s8	;3		18323	
+31EB	 20 08				JR NZ s8	;3		18326	
+31ED	 28 00				JR Z s8	;3		18329	
+31EF	 28 08				JR Z s8	;3		18332	
+31F1	 30 00				JR NC s8	;3		18335	
+31F3	 30 08				JR NC s8	;3		18338	
+31F5	 00					NOP	;1		18339	
+31F6	 08 00 10			LD (a16), SP	;5		18344	
+31F9	 08 08 08			LD (a16), SP	;5		18349	
+31FC	 10 10				STOP	;1		18350	
+31FE	 00					NOP	;1		18351	
+31FF	 10 08				STOP	;1		18352	
+3201	 10 10				STOP	;1		18353	
+3203	 10 18				STOP	;1		18354	
+3205	 18 00				JR s8	;3		18357	
+3207	 18 08				JR s8	;3		18360	
+3209	 18 10				JR s8	;3		18363	
+320B	 18 18				JR s8	;3		18366	
+320D	 20 00				JR NZ s8	;3		18369	
+320F	 20 08				JR NZ s8	;3		18372	
+3211	 20 10				JR NZ s8	;3		18375	
+3213	 20 18				JR NZ s8	;3		18378	
+3215	 28 00				JR Z s8	;3		18381	
+3217	 28 08				JR Z s8	;3		18384	
+3219	 28 10				JR Z s8	;3		18387	
+321B	 28 18				JR Z s8	;3		18390	
+321D	 30 00				JR NC s8	;3		18393	
+321F	 30 08				JR NC s8	;3		18396	
+3221	 30 10				JR NC s8	;3		18399	
+3223	 30 18				JR NC s8	;3		18402	
+3225	 38 00				JR C s8	;3		18405	
+3227	 38 08				JR C s8	;3		18408	
+3229	 38 10				JR C s8	;3		18411	
+322B	 38 18				JR C s8	;3		18414	
+322D	 00					NOP	;1		18415	
+322E	 00					NOP	;1		18416	
+322F	 00					NOP	;1		18417	
+3230	 08 00 10			LD (a16), SP	;5		18422	
+3233	 08 00 08			LD (a16), SP	;5		18427	
+3236	 08 08 10			LD (a16), SP	;5		18432	
+3239	 10 00				STOP	;1		18433	
+323B	 10 08				STOP	;1		18434	
+323D	 10 10				STOP	;1		18435	
+323F	 7F					LD A, A	;1		18436	
+3240	 7F					LD A, A	;1		18437	
+3241	 7F					LD A, A	;1		18438	
+3242	 7F					LD A, A	;1		18439	
+3243	 7F					LD A, A	;1		18440	
+3244	 7F					LD A, A	;1		18441	
+3245	 7F					LD A, A	;1		18442	
+3246	 7F					LD A, A	;1		18443	
+3247	 7F					LD A, A	;1		18444	
+3248	 7F					LD A, A	;1		18445	
+3249	 7C					LD A, H	;1		18446	
+324A	 7C					LD A, H	;1		18447	
+324B	 78					LD A, B	;1		18448	
+324C	 79					LD A, C	;1		18449	
+324D	 78					LD A, B	;1		18450	
+324E	 7B					LD A, E	;1		18451	
+324F	 FF					RST 7	;4		18455	
+3250	 FF					RST 7	;4		18459	
+3251	 FF					RST 7	;4		18463	
+3252	 FF					RST 7	;4		18467	
+3253	 FF					RST 7	;4		18471	
+3254	 FF					RST 7	;4		18475	
+3255	 FF					RST 7	;4		18479	
+3256	 FF					RST 7	;4		18483	
+3257	 FF					RST 7	;4		18487	
+3258	 FF					RST 7	;4		18491	
+3259	 00					NOP	;1		18492	
+325A	 00					NOP	;1		18493	
+325B	 00					NOP	;1		18494	
+325C	 FF					RST 7	;4		18498	
+325D	 00					NOP	;1		18499	
+325E	 00					NOP	;1		18500	
+325F	 FF					RST 7	;4		18504	
+3260	 FF					RST 7	;4		18508	
+3261	 FF					RST 7	;4		18512	
+3262	 FF					RST 7	;4		18516	
+3263	 FF					RST 7	;4		18520	
+3264	 FF					RST 7	;4		18524	
+3265	 FF					RST 7	;4		18528	
+3266	 FF					RST 7	;4		18532	
+3267	 FF					RST 7	;4		18536	
+3268	 FF					RST 7	;4		18540	
+3269	 3F					CCF	;1		18541	
+326A	 3F					CCF	;1		18542	
+326B	 1F					RRA	;1		18543	
+326C	 9F					SBC A, A	;1		18544	
+326D	 1F					RRA	;1		18545	
+326E	 DF					RST 3	;4		18549	
+326F	 78					LD A, B	;1		18550	
+3270	 7B					LD A, E	;1		18551	
+3271	 78					LD A, B	;1		18552	
+3272	 79					LD A, C	;1		18553	
+3273	 7C					LD A, H	;1		18554	
+3274	 7C					LD A, H	;1		18555	
+3275	 7F					LD A, A	;1		18556	
+3276	 7F					LD A, A	;1		18557	
+3277	 7F					LD A, A	;1		18558	
+3278	 7F					LD A, A	;1		18559	
+3279	 7F					LD A, A	;1		18560	
+327A	 7F					LD A, A	;1		18561	
+327B	 7F					LD A, A	;1		18562	
+327C	 7F					LD A, A	;1		18563	
+327D	 7F					LD A, A	;1		18564	
+327E	 7F					LD A, A	;1		18565	
+327F	 00					NOP	;1		18566	
+3280	 00					NOP	;1		18567	
+3281	 00					NOP	;1		18568	
+3282	 FF					RST 7	;4		18572	
+3283	 00					NOP	;1		18573	
+3284	 00					NOP	;1		18574	
+3285	 FF					RST 7	;4		18578	
+3286	 FF					RST 7	;4		18582	
+3287	 FF					RST 7	;4		18586	
+3288	 FF					RST 7	;4		18590	
+3289	 FF					RST 7	;4		18594	
+328A	 FF					RST 7	;4		18598	
+328B	 FF					RST 7	;4		18602	
+328C	 FF					RST 7	;4		18606	
+328D	 FF					RST 7	;4		18610	
+328E	 FF					RST 7	;4		18614	
+328F	 1F					RRA	;1		18615	
+3290	 DF					RST 3	;4		18619	
+3291	 1F					RRA	;1		18620	
+3292	 9F					SBC A, A	;1		18621	
+3293	 3F					CCF	;1		18622	
+3294	 3F					CCF	;1		18623	
+3295	 FF					RST 7	;4		18627	
+3296	 FF					RST 7	;4		18631	
+3297	 FF					RST 7	;4		18635	
+3298	 FF					RST 7	;4		18639	
+3299	 FF					RST 7	;4		18643	
+329A	 FF					RST 7	;4		18647	
+329B	 FF					RST 7	;4		18651	
+329C	 FF					RST 7	;4		18655	
+329D	 FF					RST 7	;4		18659	
+329E	 FF					RST 7	;4		18663	
+329F	 78					LD A, B	;1		18664	
+32A0	 7A					LD A, D	;1		18665	
+32A1	 78					LD A, B	;1		18666	
+32A2	 7A					LD A, D	;1		18667	
+32A3	 78					LD A, B	;1		18668	
+32A4	 7A					LD A, D	;1		18669	
+32A5	 78					LD A, B	;1		18670	
+32A6	 7A					LD A, D	;1		18671	
+32A7	 78					LD A, B	;1		18672	
+32A8	 7A					LD A, D	;1		18673	
+32A9	 78					LD A, B	;1		18674	
+32AA	 7A					LD A, D	;1		18675	
+32AB	 78					LD A, B	;1		18676	
+32AC	 7A					LD A, D	;1		18677	
+32AD	 78					LD A, B	;1		18678	
+32AE	 7A					LD A, D	;1		18679	
+32AF	 1F					RRA	;1		18680	
+32B0	 5F					LD E, A	;1		18681	
+32B1	 1F					RRA	;1		18682	
+32B2	 5F					LD E, A	;1		18683	
+32B3	 1F					RRA	;1		18684	
+32B4	 5F					LD E, A	;1		18685	
+32B5	 1F					RRA	;1		18686	
+32B6	 5F					LD E, A	;1		18687	
+32B7	 1F					RRA	;1		18688	
+32B8	 5F					LD E, A	;1		18689	
+32B9	 1F					RRA	;1		18690	
+32BA	 5F					LD E, A	;1		18691	
+32BB	 1F					RRA	;1		18692	
+32BC	 5F					LD E, A	;1		18693	
+32BD	 1F					RRA	;1		18694	
+32BE	 5F					LD E, A	;1		18695	
+32BF	 FF					RST 7	;4		18699	
+32C0	 FF					RST 7	;4		18703	
+32C1	 FF					RST 7	;4		18707	
+32C2	 FF					RST 7	;4		18711	
+32C3	 FF					RST 7	;4		18715	
+32C4	 FF					RST 7	;4		18719	
+32C5	 FF					RST 7	;4		18723	
+32C6	 F8 F8				LD HL, SP+s8	;3		18726	
+32C8	 F0 F2				LD A, (a8)	;2		18728	
+32CA	 E1					POP (HL)	;3		18731	
+32CB	 F5					PUSH AF	;4		18735	
+32CC	 E3		
+32CD	 F2					LD A, (C)	;2		18737	
+32CE	 E6 FF				AND d8	;2		18739	
+32D0	 FF					RST 7	;4		18743	
+32D1	 FF					RST 7	;4		18747	
+32D2	 FF					RST 7	;4		18751	
+32D3	 FF					RST 7	;4		18755	
+32D4	 FF					RST 7	;4		18759	
+32D5	 FF					RST 7	;4		18763	
+32D6	 00					NOP	;1		18764	
+32D7	 00					NOP	;1		18765	
+32D8	 00					NOP	;1		18766	
+32D9	 00					NOP	;1		18767	
+32DA	 FF					RST 7	;4		18771	
+32DB	 FF					RST 7	;4		18775	
+32DC	 FF					RST 7	;4		18779	
+32DD	 00					NOP	;1		18780	
+32DE	 00					NOP	;1		18781	
+32DF	 FF					RST 7	;4		18785	
+32E0	 FF					RST 7	;4		18789	
+32E1	 FF					RST 7	;4		18793	
+32E2	 FF					RST 7	;4		18797	
+32E3	 FF					RST 7	;4		18801	
+32E4	 FF					RST 7	;4		18805	
+32E5	 FF					RST 7	;4		18809	
+32E6	 1F					RRA	;1		18810	
+32E7	 1F					RRA	;1		18811	
+32E8	 0F					RRCA	;1		18812	
+32E9	 4F					LD C, A	;1		18813	
+32EA	 87					ADD A, A	;1		18814	
+32EB	 AF					XOR A	;1		18815	
+32EC	 C7					RST 0	;4		18819	
+32ED	 4F					LD C, A	;1		18820	
+32EE	 67					LD H, A	;1		18821	
+32EF	 F2					LD A, (C)	;2		18823	
+32F0	 E6 F2				AND d8	;2		18825	
+32F2	 E6 F2				AND d8	;2		18827	
+32F4	 E6 F2				AND d8	;2		18829	
+32F6	 E6 F2				AND d8	;2		18831	
+32F8	 E6 F2				AND d8	;2		18833	
+32FA	 E6 F2				AND d8	;2		18835	
+32FC	 E6 F2				AND d8	;2		18837	
+32FE	 E6 4F				AND d8	;2		18839	
+3300	 67					LD H, A	;1		18840	
+3301	 4F					LD C, A	;1		18841	
+3302	 67					LD H, A	;1		18842	
+3303	 4F					LD C, A	;1		18843	
+3304	 67					LD H, A	;1		18844	
+3305	 4F					LD C, A	;1		18845	
+3306	 67					LD H, A	;1		18846	
+3307	 4F					LD C, A	;1		18847	
+3308	 67					LD H, A	;1		18848	
+3309	 4F					LD C, A	;1		18849	
+330A	 67					LD H, A	;1		18850	
+330B	 4F					LD C, A	;1		18851	
+330C	 67					LD H, A	;1		18852	
+330D	 4F					LD C, A	;1		18853	
+330E	 67					LD H, A	;1		18854	
+330F	 F2					LD A, (C)	;2		18856	
+3310	 E6 F5				AND d8	;2		18858	
+3312	 E3		
+3314	 E1					POP (HL)	;3		18861	
+3315	 F8 F0				LD HL, SP+s8	;3		18864	
+3317	 FF					RST 7	;4		18868	
+3318	 F8 FF				LD HL, SP+s8	;3		18871	
+331A	 FF					RST 7	;4		18875	
+331B	 FF					RST 7	;4		18879	
+331C	 FF					RST 7	;4		18883	
+331D	 FF					RST 7	;4		18887	
+331E	 FF					RST 7	;4		18891	
+331F	 00					NOP	;1		18892	
+3320	 00					NOP	;1		18893	
+3321	 FF					RST 7	;4		18897	
+3322	 FF					RST 7	;4		18901	
+3323	 00					NOP	;1		18902	
+3324	 FF					RST 7	;4		18906	
+3325	 00					NOP	;1		18907	
+3326	 00					NOP	;1		18908	
+3327	 FF					RST 7	;4		18912	
+3328	 00					NOP	;1		18913	
+3329	 FF					RST 7	;4		18917	
+332A	 FF					RST 7	;4		18921	
+332B	 FF					RST 7	;4		18925	
+332C	 FF					RST 7	;4		18929	
+332D	 FF					RST 7	;4		18933	
+332E	 FF					RST 7	;4		18937	
+332F	 4F					LD C, A	;1		18938	
+3330	 67					LD H, A	;1		18939	
+3331	 AF					XOR A	;1		18940	
+3332	 C7					RST 0	;4		18944	
+3333	 4F					LD C, A	;1		18945	
+3334	 87					ADD A, A	;1		18946	
+3335	 1F					RRA	;1		18947	
+3336	 0F					RRCA	;1		18948	
+3337	 FF					RST 7	;4		18952	
+3338	 1F					RRA	;1		18953	
+3339	 FF					RST 7	;4		18957	
+333A	 FF					RST 7	;4		18961	
+333B	 FF					RST 7	;4		18965	
+333C	 FF					RST 7	;4		18969	
+333D	 FF					RST 7	;4		18973	
+333E	 FF					RST 7	;4		18977	
+333F	 78					LD A, B	;1		18978	
+3340	 7B					LD A, E	;1		18979	
+3341	 78					LD A, B	;1		18980	
+3342	 79					LD A, C	;1		18981	
+3343	 7C					LD A, H	;1		18982	
+3344	 7C					LD A, H	;1		18983	
+3345	 7F					LD A, A	;1		18984	
+3346	 7F					LD A, A	;1		18985	
+3347	 7F					LD A, A	;1		18986	
+3348	 7F					LD A, A	;1		18987	
+3349	 7C					LD A, H	;1		18988	
+334A	 7C					LD A, H	;1		18989	
+334B	 78					LD A, B	;1		18990	
+334C	 79					LD A, C	;1		18991	
+334D	 78					LD A, B	;1		18992	
+334E	 7B					LD A, E	;1		18993	
+334F	 1F					RRA	;1		18994	
+3350	 DF					RST 3	;4		18998	
+3351	 1F					RRA	;1		18999	
+3352	 9F					SBC A, A	;1		19000	
+3353	 3F					CCF	;1		19001	
+3354	 3F					CCF	;1		19002	
+3355	 FF					RST 7	;4		19006	
+3356	 FF					RST 7	;4		19010	
+3357	 FF					RST 7	;4		19014	
+3358	 FF					RST 7	;4		19018	
+3359	 3F					CCF	;1		19019	
+335A	 3F					CCF	;1		19020	
+335B	 1F					RRA	;1		19021	
+335C	 9F					SBC A, A	;1		19022	
+335D	 1F					RRA	;1		19023	
+335E	 DF					RST 3	;4		19027	
+335F	 00					NOP	;1		19028	
+3360	 00					NOP	;1		19029	
+3361	 00					NOP	;1		19030	
+3362	 FF					RST 7	;4		19034	
+3363	 00					NOP	;1		19035	
+3364	 00					NOP	;1		19036	
+3365	 FF					RST 7	;4		19040	
+3366	 FF					RST 7	;4		19044	
+3367	 FF					RST 7	;4		19048	
+3368	 FF					RST 7	;4		19052	
+3369	 00					NOP	;1		19053	
+336A	 00					NOP	;1		19054	
+336B	 00					NOP	;1		19055	
+336C	 FF					RST 7	;4		19059	
+336D	 00					NOP	;1		19060	
+336E	 00					NOP	;1		19061	
+336F	 00					NOP	;1		19062	
+3370	 00					NOP	;1		19063	
+3371	 00					NOP	;1		19064	
+3372	 7F					LD A, A	;1		19065	
+3373	 00					NOP	;1		19066	
+3374	 00					NOP	;1		19067	
+3375	 7F					LD A, A	;1		19068	
+3376	 7F					LD A, A	;1		19069	
+3377	 7F					LD A, A	;1		19070	
+3378	 7F					LD A, A	;1		19071	
+3379	 7F					LD A, A	;1		19072	
+337A	 7F					LD A, A	;1		19073	
+337B	 7F					LD A, A	;1		19074	
+337C	 7F					LD A, A	;1		19075	
+337D	 7F					LD A, A	;1		19076	
+337E	 7F					LD A, A	;1		19077	
+337F	 78					LD A, B	;1		19078	
+3380	 7A					LD A, D	;1		19079	
+3381	 78					LD A, B	;1		19080	
+3382	 7A					LD A, D	;1		19081	
+3383	 78					LD A, B	;1		19082	
+3384	 7A					LD A, D	;1		19083	
+3385	 78					LD A, B	;1		19084	
+3386	 7A					LD A, D	;1		19085	
+3387	 78					LD A, B	;1		19086	
+3388	 7A					LD A, D	;1		19087	
+3389	 00					NOP	;1		19088	
+338A	 02					LD (BC), A	;2		19090	
+338B	 00					NOP	;1		19091	
+338C	 7A					LD A, D	;1		19092	
+338D	 00					NOP	;1		19093	
+338E	 7A					LD A, D	;1		19094	
+338F	 1F					RRA	;1		19095	
+3390	 5F					LD E, A	;1		19096	
+3391	 1F					RRA	;1		19097	
+3392	 5F					LD E, A	;1		19098	
+3393	 1F					RRA	;1		19099	
+3394	 5F					LD E, A	;1		19100	
+3395	 1F					RRA	;1		19101	
+3396	 5F					LD E, A	;1		19102	
+3397	 1F					RRA	;1		19103	
+3398	 5F					LD E, A	;1		19104	
+3399	 00					NOP	;1		19105	
+339A	 40					LD B, B	;1		19106	
+339B	 00					NOP	;1		19107	
+339C	 5F					LD E, A	;1		19108	
+339D	 00					NOP	;1		19109	
+339E	 5F					LD E, A	;1		19110	
+339F	 00					NOP	;1		19111	
+33A0	 00					NOP	;1		19112	
+33A1	 00					NOP	;1		19113	
+33A2	 FF					RST 7	;4		19117	
+33A3	 00					NOP	;1		19118	
+33A4	 00					NOP	;1		19119	
+33A5	 00					NOP	;1		19120	
+33A6	 FF					RST 7	;4		19124	
+33A7	 00					NOP	;1		19125	
+33A8	 FF					RST 7	;4		19129	
+33A9	 00					NOP	;1		19130	
+33AA	 00					NOP	;1		19131	
+33AB	 00					NOP	;1		19132	
+33AC	 FF					RST 7	;4		19136	
+33AD	 00					NOP	;1		19137	
+33AE	 00					NOP	;1		19138	
+33AF	 00					NOP	;1		19139	
+33B0	 00					NOP	;1		19140	
+33B1	 00					NOP	;1		19141	
+33B2	 00					NOP	;1		19142	
+33B3	 3F					CCF	;1		19143	
+33B4	 3F					CCF	;1		19144	
+33B5	 3F					CCF	;1		19145	
+33B6	 3F					CCF	;1		19146	
+33B7	 30 30				JR NC s8	;3		19149	
+33B9	 30 30				JR NC s8	;3		19152	
+33BB	 33					INC, SP	;2		19154	
+33BC	 32					LD (HL-), A	;2		19156	
+33BD	 33					INC, SP	;2		19158	
+33BE	 30 00				JR NC s8	;3		19161	
+33C0	 00					NOP	;1		19162	
+33C1	 00					NOP	;1		19163	
+33C2	 00					NOP	;1		19164	
+33C3	 FF					RST 7	;4		19168	
+33C4	 FF					RST 7	;4		19172	
+33C5	 FF					RST 7	;4		19176	
+33C6	 FF					RST 7	;4		19180	
+33C7	 00					NOP	;1		19181	
+33C8	 00					NOP	;1		19182	
+33C9	 00					NOP	;1		19183	
+33CA	 00					NOP	;1		19184	
+33CB	 FF					RST 7	;4		19188	
+33CC	 02					LD (BC), A	;2		19190	
+33CD	 FF					RST 7	;4		19194	
+33CE	 20 00				JR NZ s8	;3		19197	
+33D0	 00					NOP	;1		19198	
+33D1	 00					NOP	;1		19199	
+33D2	 00					NOP	;1		19200	
+33D3	 FC		
+33D4	 FC		
+33D5	 FC		
+33D6	 FC		
+33D7	 0C					INC, C	;1		19201	
+33D8	 0C					INC, C	;1		19202	
+33D9	 0C					INC, C	;1		19203	
+33DA	 0C					INC, C	;1		19204	
+33DB	 CC 0C CC			CALL Z, a16	;6		19210	
+33DE	 0C					INC, C	;1		19211	
+33DF	 33					INC, SP	;2		19213	
+33E0	 30 33				JR NC s8	;3		19216	
+33E2	 30 33				JR NC s8	;3		19219	
+33E4	 30 33				JR NC s8	;3		19222	
+33E6	 30 33				JR NC s8	;3		19225	
+33E8	 30 33				JR NC s8	;3		19228	
+33EA	 30 33				JR NC s8	;3		19231	
+33EC	 32					LD (HL-), A	;2		19233	
+33ED	 33					INC, SP	;2		19235	
+33EE	 30 CC				JR NC s8	;3		19238	
+33F0	 0C					INC, C	;1		19239	
+33F1	 CC 4C CC			CALL Z, a16	;6		19245	
+33F4	 0C					INC, C	;1		19246	
+33F5	 CC 0C CC			CALL Z, a16	;6		19252	
+33F8	 0C					INC, C	;1		19253	
+33F9	 CC 8C CC			CALL Z, a16	;6		19259	
+33FC	 0C					INC, C	;1		19260	
+33FD	 CC 0C 33			CALL Z, a16	;6		19266	
+3400	 30 33				JR NC s8	;3		19269	
+3402	 30 30				JR NC s8	;3		19272	
+3404	 30 30				JR NC s8	;3		19275	
+3406	 30 3F				JR NC s8	;3		19278	
+3408	 3F					CCF	;1		19279	
+3409	 3F					CCF	;1		19280	
+340A	 3F					CCF	;1		19281	
+340B	 00					NOP	;1		19282	
+340C	 00					NOP	;1		19283	
+340D	 00					NOP	;1		19284	
+340E	 00					NOP	;1		19285	
+340F	 FF					RST 7	;4		19289	
+3410	 04					INC, B	;1		19290	
+3411	 FF					RST 7	;4		19294	
+3412	 40					LD B, B	;1		19295	
+3413	 00					NOP	;1		19296	
+3414	 00					NOP	;1		19297	
+3415	 00					NOP	;1		19298	
+3416	 00					NOP	;1		19299	
+3417	 FF					RST 7	;4		19303	
+3418	 FF					RST 7	;4		19307	
+3419	 FF					RST 7	;4		19311	
+341A	 FF					RST 7	;4		19315	
+341B	 00					NOP	;1		19316	
+341C	 00					NOP	;1		19317	
+341D	 00					NOP	;1		19318	
+341E	 00					NOP	;1		19319	
+341F	 CC 0C CC			CALL Z, a16	;6		19325	
+3422	 4C					LD C, H	;1		19326	
+3423	 0C					INC, C	;1		19327	
+3424	 0C					INC, C	;1		19328	
+3425	 0C					INC, C	;1		19329	
+3426	 0C					INC, C	;1		19330	
+3427	 FC		
+3428	 FC		
+3429	 FC		
+342A	 FC		
+342B	 00					NOP	;1		19331	
+342C	 00					NOP	;1		19332	
+342D	 00					NOP	;1		19333	
+342E	 00					NOP	;1		19334	
+342F	 00					NOP	;1		19335	
+3430	 00					NOP	;1		19336	
+3431	 FF					RST 7	;4		19340	
+3432	 FF					RST 7	;4		19344	
+3433	 FF					RST 7	;4		19348	
+3434	 00					NOP	;1		19349	
+3435	 FF					RST 7	;4		19353	
+3436	 02					LD (BC), A	;2		19355	
+3437	 FF					RST 7	;4		19359	
+3438	 20 FF				JR NZ s8	;3		19362	
+343A	 00					NOP	;1		19363	
+343B	 FF					RST 7	;4		19367	
+343C	 04					INC, B	;1		19368	
+343D	 FF					RST 7	;4		19372	
+343E	 00					NOP	;1		19373	
+343F	 FF					RST 7	;4		19377	
+3440	 00					NOP	;1		19378	
+3441	 FF					RST 7	;4		19382	
+3442	 02					LD (BC), A	;2		19384	
+3443	 FF					RST 7	;4		19388	
+3444	 40					LD B, B	;1		19389	
+3445	 FF					RST 7	;4		19393	
+3446	 00					NOP	;1		19394	
+3447	 FF					RST 7	;4		19398	
+3448	 08 FF 01			LD (a16), SP	;5		19403	
+344B	 FF					RST 7	;4		19407	
+344C	 43					LD B, E	;1		19408	
+344D	 FF					RST 7	;4		19412	
+344E	 07					RLCA	;1		19413	
+344F	 FF					RST 7	;4		19417	
+3450	 04					INC, B	;1		19418	
+3451	 FF					RST 7	;4		19422	
+3452	 40					LD B, B	;1		19423	
+3453	 FF					RST 7	;4		19427	
+3454	 02					LD (BC), A	;2		19429	
+3455	 FF					RST 7	;4		19433	
+3456	 00					NOP	;1		19434	
+3457	 FF					RST 7	;4		19438	
+3458	 00					NOP	;1		19439	
+3459	 FF					RST 7	;4		19443	
+345A	 FF					RST 7	;4		19447	
+345B	 FF					RST 7	;4		19451	
+345C	 FF					RST 7	;4		19455	
+345D	 00					NOP	;1		19456	
+345E	 00					NOP	;1		19457	
+345F	 FF					RST 7	;4		19461	
+3460	 00					NOP	;1		19462	
+3461	 FF					RST 7	;4		19466	
+3462	 40					LD B, B	;1		19467	
+3463	 FF					RST 7	;4		19471	
+3464	 02					LD (BC), A	;2		19473	
+3465	 FF					RST 7	;4		19477	
+3466	 00					NOP	;1		19478	
+3467	 FF					RST 7	;4		19482	
+3468	 10 FF				STOP	;1		19483	
+346A	 80					ADD A, B	;1		19484	
+346B	 FF					RST 7	;4		19488	
+346C	 C2 FF E0			JP NZ a16	;4		19492	
+346F	 FE 06				CP d8	;2		19494	
+3471	 FE 46				CP d8	;2		19496	
+3473	 FE 06				CP d8	;2		19498	
+3475	 FE 06				CP d8	;2		19500	
+3477	 FE 16				CP d8	;2		19502	
+3479	 FE 86				CP d8	;2		19504	
+347B	 FE 06				CP d8	;2		19506	
+347D	 FE 06				CP d8	;2		19508	
+347F	 7F					LD A, A	;1		19509	
+3480	 64					LD H, H	;1		19510	
+3481	 7F					LD A, A	;1		19511	
+3482	 60					LD H, B	;1		19512	
+3483	 7F					LD A, A	;1		19513	
+3484	 62					LD H, D	;1		19514	
+3485	 7F					LD A, A	;1		19515	
+3486	 60					LD H, B	;1		19516	
+3487	 7F					LD A, A	;1		19517	
+3488	 60					LD H, B	;1		19518	
+3489	 7F					LD A, A	;1		19519	
+348A	 68					LD L, B	;1		19520	
+348B	 7F					LD A, A	;1		19521	
+348C	 62					LD H, D	;1		19522	
+348D	 7F					LD A, A	;1		19523	
+348E	 60					LD H, B	;1		19524	
+348F	 FF					RST 7	;4		19528	
+3490	 02					LD (BC), A	;2		19530	
+3491	 FF					RST 7	;4		19534	
+3492	 40					LD B, B	;1		19535	
+3493	 FF					RST 7	;4		19539	
+3494	 00					NOP	;1		19540	
+3495	 FF					RST 7	;4		19544	
+3496	 00					NOP	;1		19545	
+3497	 FF					RST 7	;4		19549	
+3498	 08 FF 80			LD (a16), SP	;5		19554	
+349B	 FF					RST 7	;4		19558	
+349C	 1F					RRA	;1		19559	
+349D	 F0 10				LD A, (a8)	;2		19561	
+349F	 FF					RST 7	;4		19565	
+34A0	 02					LD (BC), A	;2		19567	
+34A1	 FF					RST 7	;4		19571	
+34A2	 20 FF				JR NZ s8	;3		19574	
+34A4	 00					NOP	;1		19575	
+34A5	 FF					RST 7	;4		19579	
+34A6	 00					NOP	;1		19580	
+34A7	 FF					RST 7	;4		19584	
+34A8	 04					INC, B	;1		19585	
+34A9	 FF					RST 7	;4		19589	
+34AA	 00					NOP	;1		19590	
+34AB	 FF					RST 7	;4		19594	
+34AC	 FF					RST 7	;4		19598	
+34AD	 00					NOP	;1		19599	
+34AE	 00					NOP	;1		19600	
+34AF	 FF					RST 7	;4		19604	
+34B0	 07					RLCA	;1		19605	
+34B1	 FF					RST 7	;4		19609	
+34B2	 13					INC, DE	;2		19611	
+34B3	 FF					RST 7	;4		19615	
+34B4	 01 FF 00			LD BC, d16	;3		19618	
+34B7	 FF					RST 7	;4		19622	
+34B8	 40					LD B, B	;1		19623	
+34B9	 FF					RST 7	;4		19627	
+34BA	 00					NOP	;1		19628	
+34BB	 FF					RST 7	;4		19632	
+34BC	 FF					RST 7	;4		19636	
+34BD	 08 08 00			LD (a16), SP	;5		19641	
+34C0	 00					NOP	;1		19642	
+34C1	 FF					RST 7	;4		19646	
+34C2	 FF					RST 7	;4		19650	
+34C3	 FF					RST 7	;4		19654	
+34C4	 FF					RST 7	;4		19658	
+34C5	 FF					RST 7	;4		19662	
+34C6	 00					NOP	;1		19663	
+34C7	 FF					RST 7	;4		19667	
+34C8	 02					LD (BC), A	;2		19669	
+34C9	 FF					RST 7	;4		19673	
+34CA	 20 FF				JR NZ s8	;3		19676	
+34CC	 FF					RST 7	;4		19680	
+34CD	 00					NOP	;1		19681	
+34CE	 00					NOP	;1		19682	
+34CF	 FF					RST 7	;4		19686	
+34D0	 E0 FF				LD (a8), A	;3		19689	
+34D2	 C8					RET Z	;5		19694	
+34D3	 FF					RST 7	;4		19698	
+34D4	 80					ADD A, B	;1		19699	
+34D5	 FF					RST 7	;4		19703	
+34D6	 00					NOP	;1		19704	
+34D7	 FF					RST 7	;4		19708	
+34D8	 02					LD (BC), A	;2		19710	
+34D9	 FF					RST 7	;4		19714	
+34DA	 00					NOP	;1		19715	
+34DB	 FF					RST 7	;4		19719	
+34DC	 FF					RST 7	;4		19723	
+34DD	 08 08 FF			LD (a16), SP	;5		19728	
+34E0	 00					NOP	;1		19729	
+34E1	 FF					RST 7	;4		19733	
+34E2	 02					LD (BC), A	;2		19735	
+34E3	 FF					RST 7	;4		19739	
+34E4	 40					LD B, B	;1		19740	
+34E5	 FF					RST 7	;4		19744	
+34E6	 00					NOP	;1		19745	
+34E7	 FF					RST 7	;4		19749	
+34E8	 02					LD (BC), A	;2		19751	
+34E9	 FF					RST 7	;4		19755	
+34EA	 00					NOP	;1		19756	
+34EB	 FF					RST 7	;4		19760	
+34EC	 F8 0F				LD HL, SP+s8	;3		19763	
+34EE	 08 F0 10			LD (a16), SP	;5		19768	
+34F1	 F0 10				LD A, (a8)	;2		19770	
+34F3	 F0 10				LD A, (a8)	;2		19772	
+34F5	 F0 50				LD A, (a8)	;2		19774	
+34F7	 F0 10				LD A, (a8)	;2		19776	
+34F9	 F0 10				LD A, (a8)	;2		19778	
+34FB	 F0 10				LD A, (a8)	;2		19780	
+34FD	 F0 10				LD A, (a8)	;2		19782	
+34FF	 0F					RRCA	;1		19783	
+3500	 08 0F 0A			LD (a16), SP	;5		19788	
+3503	 0F					RRCA	;1		19789	
+3504	 08 0F 08			LD (a16), SP	;5		19794	
+3507	 0F					RRCA	;1		19795	
+3508	 08 0F 08			LD (a16), SP	;5		19800	
+350B	 0F					RRCA	;1		19801	
+350C	 09					ADD HL, BC	;2		19803	
+350D	 0F					RRCA	;1		19804	
+350E	 08 00 00			LD (a16), SP	;5		19809	
+3511	 00					NOP	;1		19810	
+3512	 7F					LD A, A	;1		19811	
+3513	 00					NOP	;1		19812	
+3514	 00					NOP	;1		19813	
+3515	 7F					LD A, A	;1		19814	
+3516	 7F					LD A, A	;1		19815	
+3517	 7F					LD A, A	;1		19816	
+3518	 7F					LD A, A	;1		19817	
+3519	 7C					LD A, H	;1		19818	
+351A	 7C					LD A, H	;1		19819	
+351B	 78					LD A, B	;1		19820	
+351C	 79					LD A, C	;1		19821	
+351D	 78					LD A, B	;1		19822	
+351E	 7B					LD A, E	;1		19823	
+351F	 00					NOP	;1		19824	
+3520	 00					NOP	;1		19825	
+3521	 00					NOP	;1		19826	
+3522	 FF					RST 7	;4		19830	
+3523	 00					NOP	;1		19831	
+3524	 00					NOP	;1		19832	
+3525	 FF					RST 7	;4		19836	
+3526	 FF					RST 7	;4		19840	
+3527	 FF					RST 7	;4		19844	
+3528	 FF					RST 7	;4		19848	
+3529	 3F					CCF	;1		19849	
+352A	 3F					CCF	;1		19850	
+352B	 1F					RRA	;1		19851	
+352C	 9F					SBC A, A	;1		19852	
+352D	 1F					RRA	;1		19853	
+352E	 DF					RST 3	;4		19857	
+352F	 7F					LD A, A	;1		19858	
+3530	 7F					LD A, A	;1		19859	
+3531	 7F					LD A, A	;1		19860	
+3532	 7F					LD A, A	;1		19861	
+3533	 7F					LD A, A	;1		19862	
+3534	 7F					LD A, A	;1		19863	
+3535	 7F					LD A, A	;1		19864	
+3536	 7F					LD A, A	;1		19865	
+3537	 7F					LD A, A	;1		19866	
+3538	 7F					LD A, A	;1		19867	
+3539	 00					NOP	;1		19868	
+353A	 00					NOP	;1		19869	
+353B	 00					NOP	;1		19870	
+353C	 7F					LD A, A	;1		19871	
+353D	 00					NOP	;1		19872	
+353E	 00					NOP	;1		19873	
+353F	 00					NOP	;1		19874	
+3540	 00					NOP	;1		19875	
+3541	 00					NOP	;1		19876	
+3542	 00					NOP	;1		19877	
+3543	 00					NOP	;1		19878	
+3544	 00					NOP	;1		19879	
+3545	 AA					XOR D	;1		19880	
+3546	 AA					XOR D	;1		19881	
+3547	 00					NOP	;1		19882	
+3548	 00					NOP	;1		19883	
+3549	 00					NOP	;1		19884	
+354A	 00					NOP	;1		19885	
+354B	 00					NOP	;1		19886	
+354C	 00					NOP	;1		19887	
+354D	 00					NOP	;1		19888	
+354E	 00					NOP	;1		19889	
+354F	 00					NOP	;1		19890	
+3550	 00					NOP	;1		19891	
+3551	 00					NOP	;1		19892	
+3552	 00					NOP	;1		19893	
+3553	 0F					RRCA	;1		19894	
+3554	 0F					RRCA	;1		19895	
+3555	 1F					RRA	;1		19896	
+3556	 1F					RRA	;1		19897	
+3557	 38 38				JR C s8	;3		19900	
+3559	 33					INC, SP	;2		19902	
+355A	 30 36				JR NC s8	;3		19905	
+355C	 30 34				JR NC s8	;3		19908	
+355E	 30 00				JR NC s8	;3		19911	
+3560	 00					NOP	;1		19912	
+3561	 00					NOP	;1		19913	
+3562	 00					NOP	;1		19914	
+3563	 FF					RST 7	;4		19918	
+3564	 FF					RST 7	;4		19922	
+3565	 FF					RST 7	;4		19926	
+3566	 FF					RST 7	;4		19930	
+3567	 00					NOP	;1		19931	
+3568	 00					NOP	;1		19932	
+3569	 FF					RST 7	;4		19936	
+356A	 00					NOP	;1		19937	
+356B	 00					NOP	;1		19938	
+356C	 00					NOP	;1		19939	
+356D	 00					NOP	;1		19940	
+356E	 00					NOP	;1		19941	
+356F	 00					NOP	;1		19942	
+3570	 00					NOP	;1		19943	
+3571	 00					NOP	;1		19944	
+3572	 00					NOP	;1		19945	
+3573	 F0 F0				LD A, (a8)	;2		19947	
+3575	 F8 F8				LD HL, SP+s8	;3		19950	
+3577	 1C					INC, E	;1		19951	
+3578	 1C					INC, E	;1		19952	
+3579	 CC 0C 6C			CALL Z, a16	;6		19958	
+357C	 0C					INC, C	;1		19959	
+357D	 2C					INC, L	;1		19960	
+357E	 0C					INC, C	;1		19961	
+357F	 34					INC (HL)	;3		19964	
+3580	 30 34				JR NC s8	;3		19967	
+3582	 30 34				JR NC s8	;3		19970	
+3584	 30 34				JR NC s8	;3		19973	
+3586	 30 34				JR NC s8	;3		19976	
+3588	 30 34				JR NC s8	;3		19979	
+358A	 30 34				JR NC s8	;3		19982	
+358C	 30 34				JR NC s8	;3		19985	
+358E	 30 2C				JR NC s8	;3		19988	
+3590	 0C					INC, C	;1		19989	
+3591	 2C					INC, L	;1		19990	
+3592	 0C					INC, C	;1		19991	
+3593	 2C					INC, L	;1		19992	
+3594	 0C					INC, C	;1		19993	
+3595	 2C					INC, L	;1		19994	
+3596	 0C					INC, C	;1		19995	
+3597	 2C					INC, L	;1		19996	
+3598	 0C					INC, C	;1		19997	
+3599	 2C					INC, L	;1		19998	
+359A	 0C					INC, C	;1		19999	
+359B	 2C					INC, L	;1		20000	
+359C	 0C					INC, C	;1		20001	
+359D	 2C					INC, L	;1		20002	
+359E	 0C					INC, C	;1		20003	
+359F	 34					INC (HL)	;3		20006	
+35A0	 30 36				JR NC s8	;3		20009	
+35A2	 30 33				JR NC s8	;3		20012	
+35A4	 30 38				JR NC s8	;3		20015	
+35A6	 38 1F				JR C s8	;3		20018	
+35A8	 1F					RRA	;1		20019	
+35A9	 0F					RRCA	;1		20020	
+35AA	 0F					RRCA	;1		20021	
+35AB	 00					NOP	;1		20022	
+35AC	 00					NOP	;1		20023	
+35AD	 00					NOP	;1		20024	
+35AE	 00					NOP	;1		20025	
+35AF	 00					NOP	;1		20026	
+35B0	 7B					LD A, E	;1		20027	
+35B1	 00					NOP	;1		20028	
+35B2	 79					LD A, C	;1		20029	
+35B3	 00					NOP	;1		20030	
+35B4	 7C					LD A, H	;1		20031	
+35B5	 00					NOP	;1		20032	
+35B6	 7F					LD A, A	;1		20033	
+35B7	 00					NOP	;1		20034	
+35B8	 7F					LD A, A	;1		20035	
+35B9	 00					NOP	;1		20036	
+35BA	 00					NOP	;1		20037	
+35BB	 00					NOP	;1		20038	
+35BC	 7F					LD A, A	;1		20039	
+35BD	 00					NOP	;1		20040	
+35BE	 00					NOP	;1		20041	
+35BF	 00					NOP	;1		20042	
+35C0	 DF					RST 3	;4		20046	
+35C1	 00					NOP	;1		20047	
+35C2	 9F					SBC A, A	;1		20048	
+35C3	 00					NOP	;1		20049	
+35C4	 3F					CCF	;1		20050	
+35C5	 00					NOP	;1		20051	
+35C6	 FF					RST 7	;4		20055	
+35C7	 00					NOP	;1		20056	
+35C8	 FF					RST 7	;4		20060	
+35C9	 00					NOP	;1		20061	
+35CA	 00					NOP	;1		20062	
+35CB	 00					NOP	;1		20063	
+35CC	 FF					RST 7	;4		20067	
+35CD	 00					NOP	;1		20068	
+35CE	 00					NOP	;1		20069	
+35CF	 00					NOP	;1		20070	
+35D0	 00					NOP	;1		20071	
+35D1	 00					NOP	;1		20072	
+35D2	 00					NOP	;1		20073	
+35D3	 FF					RST 7	;4		20077	
+35D4	 00					NOP	;1		20078	
+35D5	 00					NOP	;1		20079	
+35D6	 00					NOP	;1		20080	
+35D7	 FF					RST 7	;4		20084	
+35D8	 FF					RST 7	;4		20088	
+35D9	 FF					RST 7	;4		20092	
+35DA	 FF					RST 7	;4		20096	
+35DB	 00					NOP	;1		20097	
+35DC	 00					NOP	;1		20098	
+35DD	 00					NOP	;1		20099	
+35DE	 00					NOP	;1		20100	
+35DF	 2C					INC, L	;1		20101	
+35E0	 0C					INC, C	;1		20102	
+35E1	 6C					LD L, H	;1		20103	
+35E2	 0C					INC, C	;1		20104	
+35E3	 CC 0C 1C			CALL Z, a16	;6		20110	
+35E6	 1C					INC, E	;1		20111	
+35E7	 F8 F8				LD HL, SP+s8	;3		20114	
+35E9	 F0 F0				LD A, (a8)	;2		20116	
+35EB	 00					NOP	;1		20117	
+35EC	 00					NOP	;1		20118	
+35ED	 00					NOP	;1		20119	
+35EE	 00					NOP	;1		20120	
+35EF	 08 08 FF			LD (a16), SP	;5		20125	
+35F2	 FF					RST 7	;4		20129	
+35F3	 FF					RST 7	;4		20133	
+35F4	 02					LD (BC), A	;2		20135	
+35F5	 FF					RST 7	;4		20139	
+35F6	 00					NOP	;1		20140	
+35F7	 FF					RST 7	;4		20144	
+35F8	 20 FF				JR NZ s8	;3		20147	
+35FA	 00					NOP	;1		20148	
+35FB	 FF					RST 7	;4		20152	
+35FC	 02					LD (BC), A	;2		20154	
+35FD	 FF					RST 7	;4		20158	
+35FE	 00					NOP	;1		20159	
+35FF	 00					NOP	;1		20160	
+3600	 00					NOP	;1		20161	
+3601	 FF					RST 7	;4		20165	
+3602	 FF					RST 7	;4		20169	
+3603	 FF					RST 7	;4		20173	
+3604	 FF					RST 7	;4		20177	
+3605	 FF					RST 7	;4		20181	
+3606	 00					NOP	;1		20182	
+3607	 FF					RST 7	;4		20186	
+3608	 02					LD (BC), A	;2		20188	
+3609	 FF					RST 7	;4		20192	
+360A	 20 FF				JR NZ s8	;3		20195	
+360C	 FF					RST 7	;4		20199	
+360D	 08 08 FF			LD (a16), SP	;5		20204	
+3610	 07					RLCA	;1		20205	
+3611	 FF					RST 7	;4		20209	
+3612	 13					INC, DE	;2		20211	
+3613	 FF					RST 7	;4		20215	
+3614	 01 FF 00			LD BC, d16	;3		20218	
+3617	 FF					RST 7	;4		20222	
+3618	 40					LD B, B	;1		20223	
+3619	 FF					RST 7	;4		20227	
+361A	 00					NOP	;1		20228	
+361B	 FF					RST 7	;4		20232	
+361C	 FF					RST 7	;4		20236	
+361D	 00					NOP	;1		20237	
+361E	 00					NOP	;1		20238	
+361F	 FF					RST 7	;4		20242	
+3620	 E0 FF				LD (a8), A	;3		20245	
+3622	 C8					RET Z	;5		20250	
+3623	 FF					RST 7	;4		20254	
+3624	 80					ADD A, B	;1		20255	
+3625	 FF					RST 7	;4		20259	
+3626	 00					NOP	;1		20260	
+3627	 FF					RST 7	;4		20264	
+3628	 02					LD (BC), A	;2		20266	
+3629	 FF					RST 7	;4		20270	
+362A	 00					NOP	;1		20271	
+362B	 FF					RST 7	;4		20275	
+362C	 FF					RST 7	;4		20279	
+362D	 00					NOP	;1		20280	
+362E	 00					NOP	;1		20281	
+362F	 08 08 08			LD (a16), SP	;5		20286	
+3632	 08 08 08			LD (a16), SP	;5		20291	
+3635	 08 08 08			LD (a16), SP	;5		20296	
+3638	 08 08 08			LD (a16), SP	;5		20301	
+363B	 08 08 08			LD (a16), SP	;5		20306	
+363E	 08 FF 00			LD (a16), SP	;5		20311	
+3641	 FF					RST 7	;4		20315	
+3642	 02					LD (BC), A	;2		20317	
+3643	 FF					RST 7	;4		20321	
+3644	 00					NOP	;1		20322	
+3645	 FF					RST 7	;4		20326	
+3646	 20 FF				JR NZ s8	;3		20329	
+3648	 02					LD (BC), A	;2		20331	
+3649	 FF					RST 7	;4		20335	
+364A	 00					NOP	;1		20336	
+364B	 FF					RST 7	;4		20340	
+364C	 FF					RST 7	;4		20344	
+364D	 08 08 F0			LD (a16), SP	;5		20349	
+3650	 10 FF				STOP	;1		20350	
+3652	 1F					RRA	;1		20351	
+3653	 F0 1F				LD A, (a8)	;2		20353	
+3655	 F0 1F				LD A, (a8)	;2		20355	
+3657	 F0 1F				LD A, (a8)	;2		20357	
+3659	 F0 1F				LD A, (a8)	;2		20359	
+365B	 FF					RST 7	;4		20363	
+365C	 5F					LD E, A	;1		20364	
+365D	 F0 10				LD A, (a8)	;2		20366	
+365F	 00					NOP	;1		20367	
+3660	 00					NOP	;1		20368	
+3661	 FF					RST 7	;4		20372	
+3662	 FF					RST 7	;4		20376	
+3663	 00					NOP	;1		20377	
+3664	 FF					RST 7	;4		20381	
+3665	 00					NOP	;1		20382	
+3666	 FF					RST 7	;4		20386	
+3667	 00					NOP	;1		20387	
+3668	 FF					RST 7	;4		20391	
+3669	 00					NOP	;1		20392	
+366A	 FF					RST 7	;4		20396	
+366B	 FF					RST 7	;4		20400	
+366C	 FF					RST 7	;4		20404	
+366D	 00					NOP	;1		20405	
+366E	 00					NOP	;1		20406	
+366F	 08 08 FF			LD (a16), SP	;5		20411	
+3672	 FF					RST 7	;4		20415	
+3673	 00					NOP	;1		20416	
+3674	 FF					RST 7	;4		20420	
+3675	 00					NOP	;1		20421	
+3676	 FF					RST 7	;4		20425	
+3677	 00					NOP	;1		20426	
+3678	 FF					RST 7	;4		20430	
+3679	 00					NOP	;1		20431	
+367A	 FF					RST 7	;4		20435	
+367B	 FF					RST 7	;4		20439	
+367C	 FF					RST 7	;4		20443	
+367D	 08 08 0F			LD (a16), SP	;5		20448	
+3680	 08 FF F8			LD (a16), SP	;5		20453	
+3683	 0F					RRCA	;1		20454	
+3684	 F8 0F				LD HL, SP+s8	;3		20457	
+3686	 F8 0F				LD HL, SP+s8	;3		20460	
+3688	 F8 0F				LD HL, SP+s8	;3		20463	
+368A	 F8 FF				LD HL, SP+s8	;3		20466	
+368C	 FA 0F 08			JP A, a16	;4		20470	
+368F	 FF					RST 7	;4		20474	
+3690	 07					RLCA	;1		20475	
+3691	 FF					RST 7	;4		20479	
+3692	 43					LD B, E	;1		20480	
+3693	 FF					RST 7	;4		20484	
+3694	 01 FF 00			LD BC, d16	;3		20487	
+3697	 FF					RST 7	;4		20491	
+3698	 00					NOP	;1		20492	
+3699	 FF					RST 7	;4		20496	
+369A	 80					ADD A, B	;1		20497	
+369B	 FF					RST 7	;4		20501	
+369C	 1F					RRA	;1		20502	
+369D	 F0 10				LD A, (a8)	;2		20504	
+369F	 FF					RST 7	;4		20508	
+36A0	 E0 FF				LD (a8), A	;3		20511	
+36A2	 C2 FF 80			JP NZ a16	;4		20515	
+36A5	 FF					RST 7	;4		20519	
+36A6	 00					NOP	;1		20520	
+36A7	 FF					RST 7	;4		20524	
+36A8	 22					LD (HL+), A	;2		20526	
+36A9	 FF					RST 7	;4		20530	
+36AA	 00					NOP	;1		20531	
+36AB	 FF					RST 7	;4		20535	
+36AC	 F8 0F				LD HL, SP+s8	;3		20538	
+36AE	 08 00 00			LD (a16), SP	;5		20543	
+36B1	 00					NOP	;1		20544	
+36B2	 00					NOP	;1		20545	
+36B3	 00					NOP	;1		20546	
+36B4	 00					NOP	;1		20547	
+36B5	 3C					INC, A	;1		20548	
+36B6	 00					NOP	;1		20549	
+36B7	 3C					INC, A	;1		20550	
+36B8	 00					NOP	;1		20551	
+36B9	 00					NOP	;1		20552	
+36BA	 00					NOP	;1		20553	
+36BB	 00					NOP	;1		20554	
+36BC	 00					NOP	;1		20555	
+36BD	 00					NOP	;1		20556	
+36BE	 00					NOP	;1		20557	
+36BF	 00					NOP	;1		20558	
+36C0	 00					NOP	;1		20559	
+36C1	 3C					INC, A	;1		20560	
+36C2	 00					NOP	;1		20561	
+36C3	 4E					LD C, (HL)	;2		20563	
+36C4	 00					NOP	;1		20564	
+36C5	 4E					LD C, (HL)	;2		20566	
+36C6	 00					NOP	;1		20567	
+36C7	 7E					LD A, (HL)	;2		20569	
+36C8	 00					NOP	;1		20570	
+36C9	 4E					LD C, (HL)	;2		20572	
+36CA	 00					NOP	;1		20573	
+36CB	 4E					LD C, (HL)	;2		20575	
+36CC	 00					NOP	;1		20576	
+36CD	 00					NOP	;1		20577	
+36CE	 00					NOP	;1		20578	
+36CF	 00					NOP	;1		20579	
+36D0	 00					NOP	;1		20580	
+36D1	 7C					LD A, H	;1		20581	
+36D2	 00					NOP	;1		20582	
+36D3	 66					LD H, (HL)	;2		20584	
+36D4	 00					NOP	;1		20585	
+36D5	 7C					LD A, H	;1		20586	
+36D6	 00					NOP	;1		20587	
+36D7	 66					LD H, (HL)	;2		20589	
+36D8	 00					NOP	;1		20590	
+36D9	 66					LD H, (HL)	;2		20592	
+36DA	 00					NOP	;1		20593	
+36DB	 7C					LD A, H	;1		20594	
+36DC	 00					NOP	;1		20595	
+36DD	 00					NOP	;1		20596	
+36DE	 00					NOP	;1		20597	
+36DF	 00					NOP	;1		20598	
+36E0	 00					NOP	;1		20599	
+36E1	 3C					INC, A	;1		20600	
+36E2	 00					NOP	;1		20601	
+36E3	 66					LD H, (HL)	;2		20603	
+36E4	 00					NOP	;1		20604	
+36E5	 60					LD H, B	;1		20605	
+36E6	 00					NOP	;1		20606	
+36E7	 60					LD H, B	;1		20607	
+36E8	 00					NOP	;1		20608	
+36E9	 66					LD H, (HL)	;2		20610	
+36EA	 00					NOP	;1		20611	
+36EB	 3C					INC, A	;1		20612	
+36EC	 00					NOP	;1		20613	
+36ED	 00					NOP	;1		20614	
+36EE	 00					NOP	;1		20615	
+36EF	 DD		
+36F0	 44					LD B, H	;1		20616	
+36F1	 FF					RST 7	;4		20620	
+36F2	 44					LD B, H	;1		20621	
+36F3	 FF					RST 7	;4		20625	
+36F4	 FF					RST 7	;4		20629	
+36F5	 77					LD (HL), A	;2		20631	
+36F6	 11 FF 11			LD DE, d16	;3		20634	
+36F9	 FF					RST 7	;4		20638	
+36FA	 FF					RST 7	;4		20642	
+36FB	 DD		
+36FC	 44					LD B, H	;1		20643	
+36FD	 FF					RST 7	;4		20647	
+36FE	 44					LD B, H	;1		20648	
+36FF	 FF					RST 7	;4		20652	
+3700	 FF					RST 7	;4		20656	
+3701	 77					LD (HL), A	;2		20658	
+3702	 11 FF 11			LD DE, d16	;3		20661	
+3705	 FF					RST 7	;4		20665	
+3706	 FF					RST 7	;4		20669	
+3707	 DD		
+3708	 44					LD B, H	;1		20670	
+3709	 FF					RST 7	;4		20674	
+370A	 44					LD B, H	;1		20675	
+370B	 FF					RST 7	;4		20679	
+370C	 FF					RST 7	;4		20683	
+370D	 77					LD (HL), A	;2		20685	
+370E	 11 FF 11			LD DE, d16	;3		20688	
+3711	 FF					RST 7	;4		20692	
+3712	 FF					RST 7	;4		20696	
+3713	 DD		
+3714	 44					LD B, H	;1		20697	
+3715	 FF					RST 7	;4		20701	
+3716	 44					LD B, H	;1		20702	
+3717	 FF					RST 7	;4		20706	
+3718	 FF					RST 7	;4		20710	
+3719	 77					LD (HL), A	;2		20712	
+371A	 11 FF 11			LD DE, d16	;3		20715	
+371D	 FF					RST 7	;4		20719	
+371E	 FF					RST 7	;4		20723	
+371F	 00					NOP	;1		20724	
+3720	 00					NOP	;1		20725	
+3721	 7E					LD A, (HL)	;2		20727	
+3722	 00					NOP	;1		20728	
+3723	 18 00				JR s8	;3		20731	
+3725	 18 00				JR s8	;3		20734	
+3727	 18 00				JR s8	;3		20737	
+3729	 18 00				JR s8	;3		20740	
+372B	 18 00				JR s8	;3		20743	
+372D	 00					NOP	;1		20744	
+372E	 00					NOP	;1		20745	
+372F	 00					NOP	;1		20746	
+3730	 00					NOP	;1		20747	
+3731	 66					LD H, (HL)	;2		20749	
+3732	 00					NOP	;1		20750	
+3733	 66					LD H, (HL)	;2		20752	
+3734	 00					NOP	;1		20753	
+3735	 3C					INC, A	;1		20754	
+3736	 00					NOP	;1		20755	
+3737	 18 00				JR s8	;3		20758	
+3739	 18 00				JR s8	;3		20761	
+373B	 18 00				JR s8	;3		20764	
+373D	 00					NOP	;1		20765	
+373E	 00					NOP	;1		20766	
+373F	 FF					RST 7	;4		20770	
+3740	 FF					RST 7	;4		20774	
+3741	 F7					RST 6	;4		20778	
+3742	 89					ADC A, C	;1		20779	
+3743	 DD		
+3744	 A3					AND E	;1		20780	
+3745	 FF					RST 7	;4		20784	
+3746	 81					ADD A, C	;1		20785	
+3747	 B7					OR A	;1		20786	
+3748	 C9					RET	;4		20790	
+3749	 FD		
+374A	 83					ADD A, E	;1		20791	
+374B	 D7					RST 2	;4		20795	
+374C	 A9					XOR C	;1		20796	
+374D	 FF					RST 7	;4		20800	
+374E	 81					ADD A, C	;1		20801	
+374F	 FF					RST 7	;4		20805	
+3750	 FF					RST 7	;4		20809	
+3751	 FF					RST 7	;4		20813	
+3752	 81					ADD A, C	;1		20814	
+3753	 FF					RST 7	;4		20818	
+3754	 BD					CP L	;1		20819	
+3755	 E7					RST 4	;4		20823	
+3756	 A5					AND L	;1		20824	
+3757	 E7					RST 4	;4		20828	
+3758	 A5					AND L	;1		20829	
+3759	 FF					RST 7	;4		20833	
+375A	 BD					CP L	;1		20834	
+375B	 FF					RST 7	;4		20838	
+375C	 81					ADD A, C	;1		20839	
+375D	 FF					RST 7	;4		20843	
+375E	 FF					RST 7	;4		20847	
+375F	 FF					RST 7	;4		20851	
+3760	 FF					RST 7	;4		20855	
+3761	 FF					RST 7	;4		20859	
+3762	 81					ADD A, C	;1		20860	
+3763	 FF					RST 7	;4		20864	
+3764	 81					ADD A, C	;1		20865	
+3765	 FF					RST 7	;4		20869	
+3766	 99					SBC A, C	;1		20870	
+3767	 FF					RST 7	;4		20874	
+3768	 99					SBC A, C	;1		20875	
+3769	 FF					RST 7	;4		20879	
+376A	 81					ADD A, C	;1		20880	
+376B	 FF					RST 7	;4		20884	
+376C	 81					ADD A, C	;1		20885	
+376D	 FF					RST 7	;4		20889	
+376E	 FF					RST 7	;4		20893	
+376F	 FF					RST 7	;4		20897	
+3770	 FF					RST 7	;4		20901	
+3771	 81					ADD A, C	;1		20902	
+3772	 81					ADD A, C	;1		20903	
+3773	 BD					CP L	;1		20904	
+3774	 BD					CP L	;1		20905	
+3775	 BD					CP L	;1		20906	
+3776	 BD					CP L	;1		20907	
+3777	 BD					CP L	;1		20908	
+3778	 BD					CP L	;1		20909	
+3779	 BD					CP L	;1		20910	
+377A	 BD					CP L	;1		20911	
+377B	 81					ADD A, C	;1		20912	
+377C	 81					ADD A, C	;1		20913	
+377D	 FF					RST 7	;4		20917	
+377E	 FF					RST 7	;4		20921	
+377F	 FF					RST 7	;4		20925	
+3780	 FF					RST 7	;4		20929	
+3781	 81					ADD A, C	;1		20930	
+3782	 FF					RST 7	;4		20934	
+3783	 81					ADD A, C	;1		20935	
+3784	 FF					RST 7	;4		20939	
+3785	 81					ADD A, C	;1		20940	
+3786	 FF					RST 7	;4		20944	
+3787	 81					ADD A, C	;1		20945	
+3788	 FF					RST 7	;4		20949	
+3789	 81					ADD A, C	;1		20950	
+378A	 FF					RST 7	;4		20954	
+378B	 81					ADD A, C	;1		20955	
+378C	 FF					RST 7	;4		20959	
+378D	 FF					RST 7	;4		20963	
+378E	 FF					RST 7	;4		20967	
+378F	 FF					RST 7	;4		20971	
+3790	 FF					RST 7	;4		20975	
+3791	 FF					RST 7	;4		20979	
+3792	 81					ADD A, C	;1		20980	
+3793	 C3 81 DF			JP a16	;4		20984	
+3796	 85					ADD A, L	;1		20985	
+3797	 DF					RST 3	;4		20989	
+3798	 85					ADD A, L	;1		20990	
+3799	 FF					RST 7	;4		20994	
+379A	 BD					CP L	;1		20995	
+379B	 FF					RST 7	;4		20999	
+379C	 81					ADD A, C	;1		21000	
+379D	 FF					RST 7	;4		21004	
+379E	 FF					RST 7	;4		21008	
+379F	 FF					RST 7	;4		21012	
+37A0	 FF					RST 7	;4		21016	
+37A1	 81					ADD A, C	;1		21017	
+37A2	 FF					RST 7	;4		21021	
+37A3	 BD					CP L	;1		21022	
+37A4	 FF					RST 7	;4		21026	
+37A5	 A5					AND L	;1		21027	
+37A6	 E7					RST 4	;4		21031	
+37A7	 A5					AND L	;1		21032	
+37A8	 E7					RST 4	;4		21036	
+37A9	 BD					CP L	;1		21037	
+37AA	 FF					RST 7	;4		21041	
+37AB	 81					ADD A, C	;1		21042	
+37AC	 FF					RST 7	;4		21046	
+37AD	 FF					RST 7	;4		21050	
+37AE	 FF					RST 7	;4		21054	
+37AF	 FF					RST 7	;4		21058	
+37B0	 FF					RST 7	;4		21062	
+37B1	 81					ADD A, C	;1		21063	
+37B2	 81					ADD A, C	;1		21064	
+37B3	 BD					CP L	;1		21065	
+37B4	 83					ADD A, E	;1		21066	
+37B5	 BD					CP L	;1		21067	
+37B6	 83					ADD A, E	;1		21068	
+37B7	 BD					CP L	;1		21069	
+37B8	 83					ADD A, E	;1		21070	
+37B9	 BD					CP L	;1		21071	
+37BA	 83					ADD A, E	;1		21072	
+37BB	 81					ADD A, C	;1		21073	
+37BC	 FF					RST 7	;4		21077	
+37BD	 FF					RST 7	;4		21081	
+37BE	 FF					RST 7	;4		21085	
+37BF	 ED		
+37C0	 93					SUB E	;1		21086	
+37C1	 BF					CP A	;1		21087	
+37C2	 C1					POP BC	;3		21090	
+37C3	 F5					PUSH AF	;4		21094	
+37C4	 8B					ADC A, E	;1		21095	
+37C5	 DF					RST 3	;4		21099	
+37C6	 A1					AND C	;1		21100	
+37C7	 FD		
+37C8	 83					ADD A, E	;1		21101	
+37C9	 AF					XOR A	;1		21102	
+37CA	 D1					POP DE	;3		21105	
+37CB	 FB					EI	;1		21106	
+37CC	 85					ADD A, L	;1		21107	
+37CD	 DF					RST 3	;4		21111	
+37CE	 A1					AND C	;1		21112	
+37CF	 FD		
+37D0	 83					ADD A, E	;1		21113	
+37D1	 EF					RST 5	;4		21117	
+37D2	 91					SUB C	;1		21118	
+37D3	 BB					CP E	;1		21119	
+37D4	 C5					PUSH BC	;4		21123	
+37D5	 EF					RST 5	;4		21127	
+37D6	 91					SUB C	;1		21128	
+37D7	 BD					CP L	;1		21129	
+37D8	 C3 F7 89			JP a16	;4		21133	
+37DB	 DF					RST 3	;4		21137	
+37DC	 A1					AND C	;1		21138	
+37DD	 FF					RST 7	;4		21142	
+37DE	 FF					RST 7	;4		21146	
+37DF	 FF					RST 7	;4		21150	
+37E0	 FF					RST 7	;4		21154	
+37E1	 DB		
+37E2	 A4					AND H	;1		21155	
+37E3	 FF					RST 7	;4		21159	
+37E4	 80					ADD A, B	;1		21160	
+37E5	 B5					OR L	;1		21161	
+37E6	 CA FF 80			JP Z a16	;4		21165	
+37E9	 DD		
+37EC	 88					ADC A, B	;1		21166	
+37ED	 FF					RST 7	;4		21170	
+37EE	 FF					RST 7	;4		21174	
+37EF	 FF					RST 7	;4		21178	
+37F0	 FF					RST 7	;4		21182	
+37F1	 57					LD D, A	;1		21183	
+37F2	 A8					XOR B	;1		21184	
+37F3	 FD		
+37F4	 02					LD (BC), A	;2		21186	
+37F5	 DF					RST 3	;4		21190	
+37F6	 20 7B				JR NZ s8	;3		21193	
+37F8	 84					ADD A, H	;1		21194	
+37F9	 EE 11				XOR d8	;2		21196	
+37FB	 BB					CP E	;1		21197	
+37FC	 44					LD B, H	;1		21198	
+37FD	 FF					RST 7	;4		21202	
+37FE	 FF					RST 7	;4		21206	
+37FF	 FF					RST 7	;4		21210	
+3800	 00					NOP	;1		21211	
+3801	 FF					RST 7	;4		21215	
+3802	 00					NOP	;1		21216	
+3803	 FF					RST 7	;4		21220	
+3804	 00					NOP	;1		21221	
+3805	 FF					RST 7	;4		21225	
+3806	 00					NOP	;1		21226	
+3807	 FF					RST 7	;4		21230	
+3808	 00					NOP	;1		21231	
+3809	 FF					RST 7	;4		21235	
+380A	 00					NOP	;1		21236	
+380B	 FF					RST 7	;4		21240	
+380C	 00					NOP	;1		21241	
+380D	 FF					RST 7	;4		21245	
+380E	 00					NOP	;1		21246	
+380F	 00					NOP	;1		21247	
+3810	 FF					RST 7	;4		21251	
+3811	 00					NOP	;1		21252	
+3812	 FF					RST 7	;4		21256	
+3813	 00					NOP	;1		21257	
+3814	 FF					RST 7	;4		21261	
+3815	 00					NOP	;1		21262	
+3816	 FF					RST 7	;4		21266	
+3817	 00					NOP	;1		21267	
+3818	 FF					RST 7	;4		21271	
+3819	 00					NOP	;1		21272	
+381A	 FF					RST 7	;4		21276	
+381B	 00					NOP	;1		21277	
+381C	 FF					RST 7	;4		21281	
+381D	 00					NOP	;1		21282	
+381E	 FF					RST 7	;4		21286	
+381F	 FF					RST 7	;4		21290	
+3820	 FF					RST 7	;4		21294	
+3821	 FF					RST 7	;4		21298	
+3822	 FF					RST 7	;4		21302	
+3823	 FF					RST 7	;4		21306	
+3824	 FF					RST 7	;4		21310	
+3825	 FF					RST 7	;4		21314	
+3826	 FF					RST 7	;4		21318	
+3827	 FF					RST 7	;4		21322	
+3828	 FF					RST 7	;4		21326	
+3829	 FF					RST 7	;4		21330	
+382A	 FF					RST 7	;4		21334	
+382B	 FF					RST 7	;4		21338	
+382C	 FF					RST 7	;4		21342	
+382D	 FF					RST 7	;4		21346	
+382E	 FF					RST 7	;4		21350	
+382F	 FF					RST 7	;4		21354	
+3830	 FF					RST 7	;4		21358	
+3831	 77					LD (HL), A	;2		21360	
+3832	 89					ADC A, C	;1		21361	
+3833	 DF					RST 3	;4		21365	
+3834	 21 FB 05			LD (HL), d16	;3		21368	
+3837	 AF					XOR A	;1		21369	
+3838	 51					LD D, C	;1		21370	
+3839	 FD		
+383A	 03					INC, BC	;2		21372	
+383B	 D7					RST 2	;4		21376	
+383C	 29					ADD HL, (HL)	;2		21378	
+383D	 FF					RST 7	;4		21382	
+383E	 FF					RST 7	;4		21386	
+383F	 00					NOP	;1		21387	
+3840	 00					NOP	;1		21388	
+3841	 3C					INC, A	;1		21389	
+3842	 00					NOP	;1		21390	
+3843	 66					LD H, (HL)	;2		21392	
+3844	 00					NOP	;1		21393	
+3845	 66					LD H, (HL)	;2		21395	
+3846	 00					NOP	;1		21396	
+3847	 66					LD H, (HL)	;2		21398	
+3848	 00					NOP	;1		21399	
+3849	 66					LD H, (HL)	;2		21401	
+384A	 00					NOP	;1		21402	
+384B	 3C					INC, A	;1		21403	
+384C	 00					NOP	;1		21404	
+384D	 00					NOP	;1		21405	
+384E	 00					NOP	;1		21406	
+384F	 00					NOP	;1		21407	
+3850	 00					NOP	;1		21408	
+3851	 18 00				JR s8	;3		21411	
+3853	 38 00				JR C s8	;3		21414	
+3855	 18 00				JR s8	;3		21417	
+3857	 18 00				JR s8	;3		21420	
+3859	 18 00				JR s8	;3		21423	
+385B	 3C					INC, A	;1		21424	
+385C	 00					NOP	;1		21425	
+385D	 00					NOP	;1		21426	
+385E	 00					NOP	;1		21427	
+385F	 00					NOP	;1		21428	
+3860	 00					NOP	;1		21429	
+3861	 3C					INC, A	;1		21430	
+3862	 00					NOP	;1		21431	
+3863	 4E					LD C, (HL)	;2		21433	
+3864	 00					NOP	;1		21434	
+3865	 0E 00				LD, C, d8	;2		21436	
+3867	 3C					INC, A	;1		21437	
+3868	 00					NOP	;1		21438	
+3869	 70					LD (HL), B	;2		21440	
+386A	 00					NOP	;1		21441	
+386B	 7E					LD A, (HL)	;2		21443	
+386C	 00					NOP	;1		21444	
+386D	 00					NOP	;1		21445	
+386E	 00					NOP	;1		21446	
+386F	 00					NOP	;1		21447	
+3870	 00					NOP	;1		21448	
+3871	 7C					LD A, H	;1		21449	
+3872	 00					NOP	;1		21450	
+3873	 0E 00				LD, C, d8	;2		21452	
+3875	 3C					INC, A	;1		21453	
+3876	 00					NOP	;1		21454	
+3877	 0E 00				LD, C, d8	;2		21456	
+3879	 0E 00				LD, C, d8	;2		21458	
+387B	 7C					LD A, H	;1		21459	
+387C	 00					NOP	;1		21460	
+387D	 00					NOP	;1		21461	
+387E	 00					NOP	;1		21462	
+387F	 00					NOP	;1		21463	
+3880	 00					NOP	;1		21464	
+3881	 3C					INC, A	;1		21465	
+3882	 00					NOP	;1		21466	
+3883	 6C					LD L, H	;1		21467	
+3884	 00					NOP	;1		21468	
+3885	 4C					LD C, H	;1		21469	
+3886	 00					NOP	;1		21470	
+3887	 4E					LD C, (HL)	;2		21472	
+3888	 00					NOP	;1		21473	
+3889	 7E					LD A, (HL)	;2		21475	
+388A	 00					NOP	;1		21476	
+388B	 0C					INC, C	;1		21477	
+388C	 00					NOP	;1		21478	
+388D	 00					NOP	;1		21479	
+388E	 00					NOP	;1		21480	
+388F	 00					NOP	;1		21481	
+3890	 00					NOP	;1		21482	
+3891	 7C					LD A, H	;1		21483	
+3892	 00					NOP	;1		21484	
+3893	 60					LD H, B	;1		21485	
+3894	 00					NOP	;1		21486	
+3895	 7C					LD A, H	;1		21487	
+3896	 00					NOP	;1		21488	
+3897	 0E 00				LD, C, d8	;2		21490	
+3899	 4E					LD C, (HL)	;2		21492	
+389A	 00					NOP	;1		21493	
+389B	 3C					INC, A	;1		21494	
+389C	 00					NOP	;1		21495	
+389D	 00					NOP	;1		21496	
+389E	 00					NOP	;1		21497	
+389F	 00					NOP	;1		21498	
+38A0	 00					NOP	;1		21499	
+38A1	 3C					INC, A	;1		21500	
+38A2	 00					NOP	;1		21501	
+38A3	 60					LD H, B	;1		21502	
+38A4	 00					NOP	;1		21503	
+38A5	 7C					LD A, H	;1		21504	
+38A6	 00					NOP	;1		21505	
+38A7	 66					LD H, (HL)	;2		21507	
+38A8	 00					NOP	;1		21508	
+38A9	 66					LD H, (HL)	;2		21510	
+38AA	 00					NOP	;1		21511	
+38AB	 3C					INC, A	;1		21512	
+38AC	 00					NOP	;1		21513	
+38AD	 00					NOP	;1		21514	
+38AE	 00					NOP	;1		21515	
+38AF	 00					NOP	;1		21516	
+38B0	 00					NOP	;1		21517	
+38B1	 7E					LD A, (HL)	;2		21519	
+38B2	 00					NOP	;1		21520	
+38B3	 06 00				LD, B, d8	;2		21522	
+38B5	 0C					INC, C	;1		21523	
+38B6	 00					NOP	;1		21524	
+38B7	 18 00				JR s8	;3		21527	
+38B9	 38 00				JR C s8	;3		21530	
+38BB	 38 00				JR C s8	;3		21533	
+38BD	 00					NOP	;1		21534	
+38BE	 00					NOP	;1		21535	
+38BF	 00					NOP	;1		21536	
+38C0	 00					NOP	;1		21537	
+38C1	 3C					INC, A	;1		21538	
+38C2	 00					NOP	;1		21539	
+38C3	 4E					LD C, (HL)	;2		21541	
+38C4	 00					NOP	;1		21542	
+38C5	 3C					INC, A	;1		21543	
+38C6	 00					NOP	;1		21544	
+38C7	 4E					LD C, (HL)	;2		21546	
+38C8	 00					NOP	;1		21547	
+38C9	 4E					LD C, (HL)	;2		21549	
+38CA	 00					NOP	;1		21550	
+38CB	 3C					INC, A	;1		21551	
+38CC	 00					NOP	;1		21552	
+38CD	 00					NOP	;1		21553	
+38CE	 00					NOP	;1		21554	
+38CF	 00					NOP	;1		21555	
+38D0	 00					NOP	;1		21556	
+38D1	 3C					INC, A	;1		21557	
+38D2	 00					NOP	;1		21558	
+38D3	 4E					LD C, (HL)	;2		21560	
+38D4	 00					NOP	;1		21561	
+38D5	 4E					LD C, (HL)	;2		21563	
+38D6	 00					NOP	;1		21564	
+38D7	 3E 00				LD, A, d8	;2		21566	
+38D9	 0E 00				LD, C, d8	;2		21568	
+38DB	 3C					INC, A	;1		21569	
+38DC	 00					NOP	;1		21570	
+38DD	 00					NOP	;1		21571	
+38DE	 00					NOP	;1		21572	
+38DF	 00					NOP	;1		21573	
+38E0	 00					NOP	;1		21574	
+38E1	 7C					LD A, H	;1		21575	
+38E2	 00					NOP	;1		21576	
+38E3	 66					LD H, (HL)	;2		21578	
+38E4	 00					NOP	;1		21579	
+38E5	 66					LD H, (HL)	;2		21581	
+38E6	 00					NOP	;1		21582	
+38E7	 7C					LD A, H	;1		21583	
+38E8	 00					NOP	;1		21584	
+38E9	 60					LD H, B	;1		21585	
+38EA	 00					NOP	;1		21586	
+38EB	 60					LD H, B	;1		21587	
+38EC	 00					NOP	;1		21588	
+38ED	 00					NOP	;1		21589	
+38EE	 00					NOP	;1		21590	
+38EF	 00					NOP	;1		21591	
+38F0	 00					NOP	;1		21592	
+38F1	 7E					LD A, (HL)	;2		21594	
+38F2	 00					NOP	;1		21595	
+38F3	 60					LD H, B	;1		21596	
+38F4	 00					NOP	;1		21597	
+38F5	 7C					LD A, H	;1		21598	
+38F6	 00					NOP	;1		21599	
+38F7	 60					LD H, B	;1		21600	
+38F8	 00					NOP	;1		21601	
+38F9	 60					LD H, B	;1		21602	
+38FA	 00					NOP	;1		21603	
+38FB	 7E					LD A, (HL)	;2		21605	
+38FC	 00					NOP	;1		21606	
+38FD	 00					NOP	;1		21607	
+38FE	 00					NOP	;1		21608	
+38FF	 00					NOP	;1		21609	
+3900	 00					NOP	;1		21610	
+3901	 7E					LD A, (HL)	;2		21612	
+3902	 00					NOP	;1		21613	
+3903	 60					LD H, B	;1		21614	
+3904	 00					NOP	;1		21615	
+3905	 60					LD H, B	;1		21616	
+3906	 00					NOP	;1		21617	
+3907	 7C					LD A, H	;1		21618	
+3908	 00					NOP	;1		21619	
+3909	 60					LD H, B	;1		21620	
+390A	 00					NOP	;1		21621	
+390B	 60					LD H, B	;1		21622	
+390C	 00					NOP	;1		21623	
+390D	 00					NOP	;1		21624	
+390E	 00					NOP	;1		21625	
+390F	 00					NOP	;1		21626	
+3910	 00					NOP	;1		21627	
+3911	 3C					INC, A	;1		21628	
+3912	 00					NOP	;1		21629	
+3913	 66					LD H, (HL)	;2		21631	
+3914	 00					NOP	;1		21632	
+3915	 66					LD H, (HL)	;2		21634	
+3916	 00					NOP	;1		21635	
+3917	 66					LD H, (HL)	;2		21637	
+3918	 00					NOP	;1		21638	
+3919	 66					LD H, (HL)	;2		21640	
+391A	 00					NOP	;1		21641	
+391B	 3C					INC, A	;1		21642	
+391C	 00					NOP	;1		21643	
+391D	 00					NOP	;1		21644	
+391E	 00					NOP	;1		21645	
+391F	 00					NOP	;1		21646	
+3920	 00					NOP	;1		21647	
+3921	 3C					INC, A	;1		21648	
+3922	 00					NOP	;1		21649	
+3923	 66					LD H, (HL)	;2		21651	
+3924	 00					NOP	;1		21652	
+3925	 60					LD H, B	;1		21653	
+3926	 00					NOP	;1		21654	
+3927	 6E					LD L, (HL)	;2		21656	
+3928	 00					NOP	;1		21657	
+3929	 66					LD H, (HL)	;2		21659	
+392A	 00					NOP	;1		21660	
+392B	 3E 00				LD, A, d8	;2		21662	
+392D	 00					NOP	;1		21663	
+392E	 00					NOP	;1		21664	
+392F	 00					NOP	;1		21665	
+3930	 00					NOP	;1		21666	
+3931	 46					LD B, (HL)	;2		21668	
+3932	 00					NOP	;1		21669	
+3933	 6E					LD L, (HL)	;2		21671	
+3934	 00					NOP	;1		21672	
+3935	 7E					LD A, (HL)	;2		21674	
+3936	 00					NOP	;1		21675	
+3937	 56					LD D, (HL)	;2		21677	
+3938	 00					NOP	;1		21678	
+3939	 46					LD B, (HL)	;2		21680	
+393A	 00					NOP	;1		21681	
+393B	 46					LD B, (HL)	;2		21683	
+393C	 00					NOP	;1		21684	
+393D	 00					NOP	;1		21685	
+393E	 00					NOP	;1		21686	
+393F	 00					NOP	;1		21687	
+3940	 00					NOP	;1		21688	
+3941	 46					LD B, (HL)	;2		21690	
+3942	 00					NOP	;1		21691	
+3943	 46					LD B, (HL)	;2		21693	
+3944	 00					NOP	;1		21694	
+3945	 46					LD B, (HL)	;2		21696	
+3946	 00					NOP	;1		21697	
+3947	 46					LD B, (HL)	;2		21699	
+3948	 00					NOP	;1		21700	
+3949	 4E					LD C, (HL)	;2		21702	
+394A	 00					NOP	;1		21703	
+394B	 3C					INC, A	;1		21704	
+394C	 00					NOP	;1		21705	
+394D	 00					NOP	;1		21706	
+394E	 00					NOP	;1		21707	
+394F	 00					NOP	;1		21708	
+3950	 00					NOP	;1		21709	
+3951	 3C					INC, A	;1		21710	
+3952	 00					NOP	;1		21711	
+3953	 60					LD H, B	;1		21712	
+3954	 00					NOP	;1		21713	
+3955	 3C					INC, A	;1		21714	
+3956	 00					NOP	;1		21715	
+3957	 0E 00				LD, C, d8	;2		21717	
+3959	 4E					LD C, (HL)	;2		21719	
+395A	 00					NOP	;1		21720	
+395B	 3C					INC, A	;1		21721	
+395C	 00					NOP	;1		21722	
+395D	 00					NOP	;1		21723	
+395E	 00					NOP	;1		21724	
+395F	 00					NOP	;1		21725	
+3960	 00					NOP	;1		21726	
+3961	 3C					INC, A	;1		21727	
+3962	 00					NOP	;1		21728	
+3963	 18 00				JR s8	;3		21731	
+3965	 18 00				JR s8	;3		21734	
+3967	 18 00				JR s8	;3		21737	
+3969	 18 00				JR s8	;3		21740	
+396B	 3C					INC, A	;1		21741	
+396C	 00					NOP	;1		21742	
+396D	 00					NOP	;1		21743	
+396E	 00					NOP	;1		21744	
+396F	 00					NOP	;1		21745	
+3970	 00					NOP	;1		21746	
+3971	 60					LD H, B	;1		21747	
+3972	 00					NOP	;1		21748	
+3973	 60					LD H, B	;1		21749	
+3974	 00					NOP	;1		21750	
+3975	 60					LD H, B	;1		21751	
+3976	 00					NOP	;1		21752	
+3977	 60					LD H, B	;1		21753	
+3978	 00					NOP	;1		21754	
+3979	 60					LD H, B	;1		21755	
+397A	 00					NOP	;1		21756	
+397B	 7E					LD A, (HL)	;2		21758	
+397C	 00					NOP	;1		21759	
+397D	 00					NOP	;1		21760	
+397E	 00					NOP	;1		21761	
+397F	 00					NOP	;1		21762	
+3980	 00					NOP	;1		21763	
+3981	 46					LD B, (HL)	;2		21765	
+3982	 00					NOP	;1		21766	
+3983	 46					LD B, (HL)	;2		21768	
+3984	 00					NOP	;1		21769	
+3985	 46					LD B, (HL)	;2		21771	
+3986	 00					NOP	;1		21772	
+3987	 46					LD B, (HL)	;2		21774	
+3988	 00					NOP	;1		21775	
+3989	 2C					INC, L	;1		21776	
+398A	 00					NOP	;1		21777	
+398B	 18 00				JR s8	;3		21780	
+398D	 00					NOP	;1		21781	
+398E	 00					NOP	;1		21782	
+398F	 00					NOP	;1		21783	
+3990	 00					NOP	;1		21784	
+3991	 7C					LD A, H	;1		21785	
+3992	 00					NOP	;1		21786	
+3993	 66					LD H, (HL)	;2		21788	
+3994	 00					NOP	;1		21789	
+3995	 66					LD H, (HL)	;2		21791	
+3996	 00					NOP	;1		21792	
+3997	 7C					LD A, H	;1		21793	
+3998	 00					NOP	;1		21794	
+3999	 68					LD L, B	;1		21795	
+399A	 00					NOP	;1		21796	
+399B	 66					LD H, (HL)	;2		21798	
+399C	 00					NOP	;1		21799	
+399D	 00					NOP	;1		21800	
+399E	 00					NOP	;1		21801	
+399F	 00					NOP	;1		21802	
+39A0	 00					NOP	;1		21803	
+39A1	 46					LD B, (HL)	;2		21805	
+39A2	 00					NOP	;1		21806	
+39A3	 66					LD H, (HL)	;2		21808	
+39A4	 00					NOP	;1		21809	
+39A5	 76					HALT	;1		21810	
+39A6	 00					NOP	;1		21811	
+39A7	 5E					LD E, (HL)	;2		21813	
+39A8	 00					NOP	;1		21814	
+39A9	 4E					LD C, (HL)	;2		21816	
+39AA	 00					NOP	;1		21817	
+39AB	 46					LD B, (HL)	;2		21819	
+39AC	 00					NOP	;1		21820	
+39AD	 00					NOP	;1		21821	
+39AE	 00					NOP	;1		21822	
+39AF	 00					NOP	;1		21823	
+39B0	 00					NOP	;1		21824	
+39B1	 7C					LD A, H	;1		21825	
+39B2	 00					NOP	;1		21826	
+39B3	 4E					LD C, (HL)	;2		21828	
+39B4	 00					NOP	;1		21829	
+39B5	 4E					LD C, (HL)	;2		21831	
+39B6	 00					NOP	;1		21832	
+39B7	 4E					LD C, (HL)	;2		21834	
+39B8	 00					NOP	;1		21835	
+39B9	 4E					LD C, (HL)	;2		21837	
+39BA	 00					NOP	;1		21838	
+39BB	 7C					LD A, H	;1		21839	
+39BC	 00					NOP	;1		21840	
+39BD	 00					NOP	;1		21841	
+39BE	 00					NOP	;1		21842	
+39BF	 FF					RST 7	;4		21846	
+39C0	 FF					RST 7	;4		21850	
+39C1	 FF					RST 7	;4		21854	
+39C2	 00					NOP	;1		21855	
+39C3	 FF					RST 7	;4		21859	
+39C4	 00					NOP	;1		21860	
+39C5	 FF					RST 7	;4		21864	
+39C6	 00					NOP	;1		21865	
+39C7	 FF					RST 7	;4		21869	
+39C8	 10 FF				STOP	;1		21870	
+39CA	 80					ADD A, B	;1		21871	
+39CB	 FF					RST 7	;4		21875	
+39CC	 02					LD (BC), A	;2		21877	
+39CD	 FF					RST 7	;4		21881	
+39CE	 00					NOP	;1		21882	
+39CF	 00					NOP	;1		21883	
+39D0	 00					NOP	;1		21884	
+39D1	 FF					RST 7	;4		21888	
+39D2	 FF					RST 7	;4		21892	
+39D3	 FF					RST 7	;4		21896	
+39D4	 FF					RST 7	;4		21900	
+39D5	 FF					RST 7	;4		21904	
+39D6	 00					NOP	;1		21905	
+39D7	 FF					RST 7	;4		21909	
+39D8	 02					LD (BC), A	;2		21911	
+39D9	 FF					RST 7	;4		21915	
+39DA	 20 FF				JR NZ s8	;3		21918	
+39DC	 FF					RST 7	;4		21922	
+39DD	 80					ADD A, B	;1		21923	
+39DE	 80					ADD A, B	;1		21924	
+39DF	 80					ADD A, B	;1		21925	
+39E0	 80					ADD A, B	;1		21926	
+39E1	 80					ADD A, B	;1		21927	
+39E2	 80					ADD A, B	;1		21928	
+39E3	 80					ADD A, B	;1		21929	
+39E4	 80					ADD A, B	;1		21930	
+39E5	 80					ADD A, B	;1		21931	
+39E6	 80					ADD A, B	;1		21932	
+39E7	 80					ADD A, B	;1		21933	
+39E8	 80					ADD A, B	;1		21934	
+39E9	 80					ADD A, B	;1		21935	
+39EA	 80					ADD A, B	;1		21936	
+39EB	 80					ADD A, B	;1		21937	
+39EC	 80					ADD A, B	;1		21938	
+39ED	 80					ADD A, B	;1		21939	
+39EE	 80					ADD A, B	;1		21940	
+39EF	 80					ADD A, B	;1		21941	
+39F0	 80					ADD A, B	;1		21942	
+39F1	 FF					RST 7	;4		21946	
+39F2	 FF					RST 7	;4		21950	
+39F3	 00					NOP	;1		21951	
+39F4	 FF					RST 7	;4		21955	
+39F5	 00					NOP	;1		21956	
+39F6	 FF					RST 7	;4		21960	
+39F7	 00					NOP	;1		21961	
+39F8	 FF					RST 7	;4		21965	
+39F9	 00					NOP	;1		21966	
+39FA	 FF					RST 7	;4		21970	
+39FB	 FF					RST 7	;4		21974	
+39FC	 FF					RST 7	;4		21978	
+39FD	 80					ADD A, B	;1		21979	
+39FE	 80					ADD A, B	;1		21980	
+39FF	 80					ADD A, B	;1		21981	
+3A00	 80					ADD A, B	;1		21982	
+3A01	 FF					RST 7	;4		21986	
+3A02	 FF					RST 7	;4		21990	
+3A03	 FF					RST 7	;4		21994	
+3A04	 00					NOP	;1		21995	
+3A05	 FF					RST 7	;4		21999	
+3A06	 02					LD (BC), A	;2		22001	
+3A07	 FF					RST 7	;4		22005	
+3A08	 20 FF				JR NZ s8	;3		22008	
+3A0A	 00					NOP	;1		22009	
+3A0B	 FF					RST 7	;4		22013	
+3A0C	 00					NOP	;1		22014	
+3A0D	 FF					RST 7	;4		22018	
+3A0E	 00					NOP	;1		22019	
+3A0F	 FF					RST 7	;4		22023	
+3A10	 00					NOP	;1		22024	
+3A11	 00					NOP	;1		22025	
+3A12	 00					NOP	;1		22026	
+3A13	 00					NOP	;1		22027	
+3A14	 00					NOP	;1		22028	
+3A15	 00					NOP	;1		22029	
+3A16	 00					NOP	;1		22030	
+3A17	 00					NOP	;1		22031	
+3A18	 00					NOP	;1		22032	
+3A19	 00					NOP	;1		22033	
+3A1A	 00					NOP	;1		22034	
+3A1B	 00					NOP	;1		22035	
+3A1C	 00					NOP	;1		22036	
+3A1D	 00					NOP	;1		22037	
+3A1E	 00					NOP	;1		22038	
+3A1F	 07					RLCA	;1		22039	
+3A20	 07					RLCA	;1		22040	
+3A21	 18 1F				JR s8	;3		22043	
+3A23	 21 3E 47			LD (HL), d16	;3		22046	
+3A26	 7F					LD A, A	;1		22047	
+3A27	 5F					LD E, A	;1		22048	
+3A28	 7F					LD A, A	;1		22049	
+3A29	 39					ADD HL, SP	;2		22051	
+3A2A	 30 7B				JR NC s8	;3		22054	
+3A2C	 62					LD H, D	;1		22055	
+3A2D	 FB					EI	;1		22056	
+3A2E	 B2					OR D	;1		22057	
+3A2F	 FF					RST 7	;4		22061	
+3A30	 A0					AND B	;1		22062	
+3A31	 FF					RST 7	;4		22066	
+3A32	 C2 7F 54			JP NZ a16	;4		22070	
+3A35	 7F					LD A, A	;1		22071	
+3A36	 5C					LD E, H	;1		22072	
+3A37	 3F					CCF	;1		22073	
+3A38	 2E 7F				LD, L, d8	;2		22075	
+3A3A	 63					LD H, E	;1		22076	
+3A3B	 BF					CP A	;1		22077	
+3A3C	 F8 37				LD HL, SP+s8	;3		22080	
+3A3E	 FF					RST 7	;4		22084	
+3A3F	 01 01 01			LD BC, d16	;3		22087	
+3A42	 01 01 01			LD BC, d16	;3		22090	
+3A45	 01 01 01			LD BC, d16	;3		22093	
+3A48	 01 01 01			LD BC, d16	;3		22096	
+3A4B	 01 01 83			LD BC, d16	;3		22099	
+3A4E	 83					ADD A, E	;1		22100	
+3A4F	 01 01 01			LD BC, d16	;3		22103	
+3A52	 01 01 01			LD BC, d16	;3		22106	
+3A55	 01 01 01			LD BC, d16	;3		22109	
+3A58	 01 01 01			LD BC, d16	;3		22112	
+3A5B	 01 01 FF			LD BC, d16	;3		22115	
+3A5E	 FF					RST 7	;4		22119	
+3A5F	 FF					RST 7	;4		22123	
+3A60	 FF					RST 7	;4		22127	
+3A61	 01 01 01			LD BC, d16	;3		22130	
+3A64	 01 01 01			LD BC, d16	;3		22133	
+3A67	 01 01 01			LD BC, d16	;3		22136	
+3A6A	 01 01 01			LD BC, d16	;3		22139	
+3A6D	 83					ADD A, E	;1		22140	
+3A6E	 83					ADD A, E	;1		22141	
+3A6F	 FF					RST 7	;4		22145	
+3A70	 FF					RST 7	;4		22149	
+3A71	 D9					RETI	;4		22153	
+3A72	 87					ADD A, A	;1		22154	
+3A73	 D9					RETI	;4		22158	
+3A74	 87					ADD A, A	;1		22159	
+3A75	 D9					RETI	;4		22163	
+3A76	 87					ADD A, A	;1		22164	
+3A77	 D9					RETI	;4		22168	
+3A78	 87					ADD A, A	;1		22169	
+3A79	 D9					RETI	;4		22173	
+3A7A	 87					ADD A, A	;1		22174	
+3A7B	 D9					RETI	;4		22178	
+3A7C	 87					ADD A, A	;1		22179	
+3A7D	 D9					RETI	;4		22183	
+3A7E	 87					ADD A, A	;1		22184	
+3A7F	 D9					RETI	;4		22188	
+3A80	 87					ADD A, A	;1		22189	
+3A81	 D9					RETI	;4		22193	
+3A82	 87					ADD A, A	;1		22194	
+3A83	 D9					RETI	;4		22198	
+3A84	 87					ADD A, A	;1		22199	
+3A85	 D9					RETI	;4		22203	
+3A86	 87					ADD A, A	;1		22204	
+3A87	 D9					RETI	;4		22208	
+3A88	 87					ADD A, A	;1		22209	
+3A89	 D9					RETI	;4		22213	
+3A8A	 87					ADD A, A	;1		22214	
+3A8B	 D9					RETI	;4		22218	
+3A8C	 87					ADD A, A	;1		22219	
+3A8D	 FF					RST 7	;4		22223	
+3A8E	 FF					RST 7	;4		22227	
+3A8F	 D9					RETI	;4		22231	
+3A90	 87					ADD A, A	;1		22232	
+3A91	 D9					RETI	;4		22236	
+3A92	 87					ADD A, A	;1		22237	
+3A93	 D9					RETI	;4		22241	
+3A94	 87					ADD A, A	;1		22242	
+3A95	 D9					RETI	;4		22246	
+3A96	 87					ADD A, A	;1		22247	
+3A97	 D9					RETI	;4		22251	
+3A98	 87					ADD A, A	;1		22252	
+3A99	 D9					RETI	;4		22256	
+3A9A	 87					ADD A, A	;1		22257	
+3A9B	 D9					RETI	;4		22261	
+3A9C	 87					ADD A, A	;1		22262	
+3A9D	 D9					RETI	;4		22266	
+3A9E	 87					ADD A, A	;1		22267	
+3A9F	 00					NOP	;1		22268	
+3AA0	 38 00				JR C s8	;3		22271	
+3AA2	 38 00				JR C s8	;3		22274	
+3AA4	 38 00				JR C s8	;3		22277	
+3AA6	 38 00				JR C s8	;3		22280	
+3AA8	 38 00				JR C s8	;3		22283	
+3AAA	 38 00				JR C s8	;3		22286	
+3AAC	 38 00				JR C s8	;3		22289	
+3AAE	 38 7C				JR C s8	;3		22292	
+3AB0	 00					NOP	;1		22293	
+3AB1	 7C					LD A, H	;1		22294	
+3AB2	 00					NOP	;1		22295	
+3AB3	 7C					LD A, H	;1		22296	
+3AB4	 00					NOP	;1		22297	
+3AB5	 7C					LD A, H	;1		22298	
+3AB6	 00					NOP	;1		22299	
+3AB7	 7C					LD A, H	;1		22300	
+3AB8	 00					NOP	;1		22301	
+3AB9	 7C					LD A, H	;1		22302	
+3ABA	 00					NOP	;1		22303	
+3ABB	 7F					LD A, A	;1		22304	
+3ABC	 00					NOP	;1		22305	
+3ABD	 FF					RST 7	;4		22309	
+3ABE	 00					NOP	;1		22310	
+3ABF	 00					NOP	;1		22311	
+3AC0	 00					NOP	;1		22312	
+3AC1	 00					NOP	;1		22313	
+3AC2	 00					NOP	;1		22314	
+3AC3	 08 00 08			LD (a16), SP	;5		22319	
+3AC6	 00					NOP	;1		22320	
+3AC7	 08 00 08			LD (a16), SP	;5		22325	
+3ACA	 00					NOP	;1		22326	
+3ACB	 1C					INC, E	;1		22327	
+3ACC	 00					NOP	;1		22328	
+3ACD	 1C					INC, E	;1		22329	
+3ACE	 00					NOP	;1		22330	
+3ACF	 00					NOP	;1		22331	
+3AD0	 00					NOP	;1		22332	
+3AD1	 00					NOP	;1		22333	
+3AD2	 0E 01				LD, C, d8	;2		22335	
+3AD4	 1D					DEC, E	;1		22336	
+3AD5	 1E 06				LD, E, d8	;2		22338	
+3AD7	 2A					LD A, (HL+)	;2		22340	
+3AD8	 2A					LD A, (HL+)	;2		22342	
+3AD9	 27					DAA	;1		22343	
+3ADA	 27					DAA	;1		22344	
+3ADB	 10 13				STOP	;1		22345	
+3ADD	 0C					INC, C	;1		22346	
+3ADE	 0D					DEC, C	;1		22347	
+3ADF	 00					NOP	;1		22348	
+3AE0	 00					NOP	;1		22349	
+3AE1	 C0					RET NZ	;5		22354	
+3AE2	 C0					RET NZ	;5		22359	
+3AE3	 20 20				JR NZ s8	;3		22362	
+3AE5	 10 D0				STOP	;1		22363	
+3AE7	 D0					RET NC	;5		22368	
+3AE8	 10 F0				STOP	;1		22369	
+3AEA	 30 C8				JR NC s8	;3		22372	
+3AEC	 E8 08				ADD SP, s8	;4		22376	
+3AEE	 E8 04				ADD SP, s8	;4		22380	
+3AF0	 07					RLCA	;1		22381	
+3AF1	 03					INC, BC	;2		22383	
+3AF2	 03					INC, BC	;2		22385	
+3AF3	 0C					INC, C	;1		22386	
+3AF4	 0C					INC, C	;1		22387	
+3AF5	 10 10				STOP	;1		22388	
+3AF7	 35					DEC (HL)	;3		22391	
+3AF8	 20 2A				JR NZ s8	;3		22394	
+3AFA	 20 3F				JR NZ s8	;3		22397	
+3AFC	 3F					CCF	;1		22398	
+3AFD	 0C					INC, C	;1		22399	
+3AFE	 0C					INC, C	;1		22400	
+3AFF	 28 E8				JR Z s8	;3		22403	
+3B01	 D8					RET C	;5		22408	
+3B02	 C0					RET NZ	;5		22413	
+3B03	 40					LD B, B	;1		22414	
+3B04	 40					LD B, B	;1		22415	
+3B05	 20 20				JR NZ s8	;3		22418	
+3B07	 50					LD D, B	;1		22419	
+3B08	 10 B0				STOP	;1		22420	
+3B0A	 10 F0				STOP	;1		22421	
+3B0C	 F0 C0				LD A, (a8)	;2		22423	
+3B0E	 C0					RET NZ	;5		22428	
+3B0F	 00					NOP	;1		22429	
+3B10	 E0 01				LD (a8), A	;3		22432	
+3B12	 71					LD (HL), C	;2		22434	
+3B13	 32					LD (HL-), A	;2		22436	
+3B14	 42					LD B, D	;1		22437	
+3B15	 34					INC (HL)	;3		22440	
+3B16	 35					DEC (HL)	;3		22443	
+3B17	 55					LD D, L	;1		22444	
+3B18	 54					LD D, H	;1		22445	
+3B19	 4F					LD C, A	;1		22446	
+3B1A	 4E					LD C, (HL)	;2		22448	
+3B1B	 21 27 18			LD (HL), d16	;3		22451	
+3B1E	 1B					DEC, DE	;2		22453	
+3B1F	 00					NOP	;1		22454	
+3B20	 00					NOP	;1		22455	
+3B21	 80					ADD A, B	;1		22456	
+3B22	 80					ADD A, B	;1		22457	
+3B23	 40					LD B, B	;1		22458	
+3B24	 40					LD B, B	;1		22459	
+3B25	 20 A0				JR NZ s8	;3		22462	
+3B27	 A0					AND B	;1		22463	
+3B28	 20 E0				JR NZ s8	;3		22466	
+3B2A	 60					LD H, B	;1		22467	
+3B2B	 90					SUB B	;1		22468	
+3B2C	 F0 08				LD A, (a8)	;2		22470	
+3B2E	 C8					RET Z	;5		22475	
+3B2F	 B8					CP B	;1		22476	
+3B30	 B8					CP B	;1		22477	
+3B31	 84					ADD A, H	;1		22478	
+3B32	 84					ADD A, H	;1		22479	
+3B33	 84					ADD A, H	;1		22480	
+3B34	 84					ADD A, H	;1		22481	
+3B35	 FC		
+3B36	 FC		
+3B37	 92					SUB D	;1		22482	
+3B38	 92					SUB D	;1		22483	
+3B39	 92					SUB D	;1		22484	
+3B3A	 92					SUB D	;1		22485	
+3B3B	 6C					LD L, H	;1		22486	
+3B3C	 6C					LD L, H	;1		22487	
+3B3D	 EE EE				XOR d8	;2		22489	
+3B3F	 07					RLCA	;1		22490	
+3B40	 07					RLCA	;1		22491	
+3B41	 1F					RRA	;1		22492	
+3B42	 18 3E				JR s8	;3		22495	
+3B44	 20 7F				JR NZ s8	;3		22498	
+3B46	 4F					LD C, A	;1		22499	
+3B47	 7F					LD A, A	;1		22500	
+3B48	 5F					LD E, A	;1		22501	
+3B49	 70					LD (HL), B	;2		22503	
+3B4A	 70					LD (HL), B	;2		22505	
+3B4B	 A2					AND D	;1		22506	
+3B4C	 A2					AND D	;1		22507	
+3B4D	 B0					OR B	;1		22508	
+3B4E	 B0					OR B	;1		22509	
+3B4F	 B4					OR H	;1		22510	
+3B50	 B4					OR H	;1		22511	
+3B51	 64					LD H, H	;1		22512	
+3B52	 64					LD H, H	;1		22513	
+3B53	 3C					INC, A	;1		22514	
+3B54	 3C					INC, A	;1		22515	
+3B55	 2E 2E				LD, L, d8	;2		22517	
+3B57	 27					DAA	;1		22518	
+3B58	 27					DAA	;1		22519	
+3B59	 10 10				STOP	;1		22520	
+3B5B	 6C					LD L, H	;1		22521	
+3B5C	 7C					LD A, H	;1		22522	
+3B5D	 CF					RST 1	;4		22526	
+3B5E	 B3					OR E	;1		22527	
+3B5F	 03					INC, BC	;2		22529	
+3B60	 03					INC, BC	;2		22531	
+3B61	 03					INC, BC	;2		22533	
+3B62	 03					INC, BC	;2		22535	
+3B63	 03					INC, BC	;2		22537	
+3B64	 02					LD (BC), A	;2		22539	
+3B65	 07					RLCA	;1		22540	
+3B66	 06 09				LD, B, d8	;2		22542	
+3B68	 09					ADD HL, BC	;2		22544	
+3B69	 16 17				LD, D, d8	;2		22546	
+3B6B	 12					LD (DE), A	;2		22548	
+3B6C	 11 0E 0F			LD DE, d16	;3		22551	
+3B6F	 08 09 08			LD (a16), SP	;5		22556	
+3B72	 08 0F 0F			LD (a16), SP	;5		22561	
+3B75	 08 08 09			LD (a16), SP	;5		22566	
+3B78	 09					ADD HL, BC	;2		22568	
+3B79	 0A					LD A, (BC)	;2		22570	
+3B7A	 0A					LD A, (BC)	;2		22572	
+3B7B	 06 06				LD, B, d8	;2		22574	
+3B7D	 0E 0E				LD, C, d8	;2		22576	
+3B7F	 03					INC, BC	;2		22578	
+3B80	 03					INC, BC	;2		22580	
+3B81	 03					INC, BC	;2		22582	
+3B82	 03					INC, BC	;2		22584	
+3B83	 03					INC, BC	;2		22586	
+3B84	 02					LD (BC), A	;2		22588	
+3B85	 1F					RRA	;1		22589	
+3B86	 1E 21				LD, E, d8	;2		22591	
+3B88	 21 4A 55			LD (HL), d16	;3		22594	
+3B8B	 4A					LD C, D	;1		22595	
+3B8C	 75					LD (HL), L	;2		22597	
+3B8D	 0A					LD A, (BC)	;2		22599	
+3B8E	 35					DEC (HL)	;3		22602	
+3B8F	 0A					LD A, (BC)	;2		22604	
+3B90	 15					DEC, D	;1		22605	
+3B91	 08 08 0F			LD (a16), SP	;5		22610	
+3B94	 0F					RRCA	;1		22611	
+3B95	 08 08 09			LD (a16), SP	;5		22616	
+3B98	 09					ADD HL, BC	;2		22618	
+3B99	 0A					LD A, (BC)	;2		22620	
+3B9A	 0A					LD A, (BC)	;2		22622	
+3B9B	 06 06				LD, B, d8	;2		22624	
+3B9D	 0E 0E				LD, C, d8	;2		22626	
+3B9F	 00					NOP	;1		22627	
+3BA0	 00					NOP	;1		22628	
+3BA1	 66					LD H, (HL)	;2		22630	
+3BA2	 00					NOP	;1		22631	
+3BA3	 6C					LD L, H	;1		22632	
+3BA4	 00					NOP	;1		22633	
+3BA5	 78					LD A, B	;1		22634	
+3BA6	 00					NOP	;1		22635	
+3BA7	 78					LD A, B	;1		22636	
+3BA8	 00					NOP	;1		22637	
+3BA9	 6C					LD L, H	;1		22638	
+3BAA	 00					NOP	;1		22639	
+3BAB	 66					LD H, (HL)	;2		22641	
+3BAC	 00					NOP	;1		22642	
+3BAD	 00					NOP	;1		22643	
+3BAE	 00					NOP	;1		22644	
+3BAF	 00					NOP	;1		22645	
+3BB0	 00					NOP	;1		22646	
+3BB1	 46					LD B, (HL)	;2		22648	
+3BB2	 00					NOP	;1		22649	
+3BB3	 2C					INC, L	;1		22650	
+3BB4	 00					NOP	;1		22651	
+3BB5	 18 00				JR s8	;3		22654	
+3BB7	 38 00				JR C s8	;3		22657	
+3BB9	 64					LD H, H	;1		22658	
+3BBA	 00					NOP	;1		22659	
+3BBB	 42					LD B, D	;1		22660	
+3BBC	 00					NOP	;1		22661	
+3BBD	 00					NOP	;1		22662	
+3BBE	 00					NOP	;1		22663	
+3BBF	 FD		
+3BC0	 FD		
+3BC1	 FD		
+3BC2	 FD		
+3BC3	 FD		
+3BC4	 FD		
+3BC5	 FD		
+3BC6	 FD		
+3BC7	 FD		
+3BC8	 FD		
+3BC9	 FD		
+3BCA	 FD		
+3BCB	 FD		
+3BCC	 FD		
+3BCD	 FD		
+3BCE	 FD		
+3BCF	 F8 00				LD HL, SP+s8	;3		22666	
+3BD1	 E0 00				LD (a8), A	;3		22669	
+3BD3	 C0					RET NZ	;5		22674	
+3BD4	 00					NOP	;1		22675	
+3BD5	 80					ADD A, B	;1		22676	
+3BD6	 00					NOP	;1		22677	
+3BD7	 80					ADD A, B	;1		22678	
+3BD8	 00					NOP	;1		22679	
+3BD9	 00					NOP	;1		22680	
+3BDA	 00					NOP	;1		22681	
+3BDB	 00					NOP	;1		22682	
+3BDC	 00					NOP	;1		22683	
+3BDD	 00					NOP	;1		22684	
+3BDE	 00					NOP	;1		22685	
+3BDF	 7F					LD A, A	;1		22686	
+3BE0	 00					NOP	;1		22687	
+3BE1	 1F					RRA	;1		22688	
+3BE2	 00					NOP	;1		22689	
+3BE3	 0F					RRCA	;1		22690	
+3BE4	 00					NOP	;1		22691	
+3BE5	 07					RLCA	;1		22692	
+3BE6	 00					NOP	;1		22693	
+3BE7	 07					RLCA	;1		22694	
+3BE8	 00					NOP	;1		22695	
+3BE9	 03					INC, BC	;2		22697	
+3BEA	 00					NOP	;1		22698	
+3BEB	 03					INC, BC	;2		22700	
+3BEC	 00					NOP	;1		22701	
+3BED	 03					INC, BC	;2		22703	
+3BEE	 00					NOP	;1		22704	
+3BEF	 00					NOP	;1		22705	
+3BF0	 00					NOP	;1		22706	
+3BF1	 80					ADD A, B	;1		22707	
+3BF2	 00					NOP	;1		22708	
+3BF3	 80					ADD A, B	;1		22709	
+3BF4	 00					NOP	;1		22710	
+3BF5	 C0					RET NZ	;5		22715	
+3BF6	 00					NOP	;1		22716	
+3BF7	 E0 00				LD (a8), A	;3		22719	
+3BF9	 F8 00				LD HL, SP+s8	;3		22722	
+3BFB	 FF					RST 7	;4		22726	
+3BFC	 00					NOP	;1		22727	
+3BFD	 FF					RST 7	;4		22731	
+3BFE	 00					NOP	;1		22732	
+3BFF	 03					INC, BC	;2		22734	
+3C00	 00					NOP	;1		22735	
+3C01	 07					RLCA	;1		22736	
+3C02	 00					NOP	;1		22737	
+3C03	 07					RLCA	;1		22738	
+3C04	 00					NOP	;1		22739	
+3C05	 0F					RRCA	;1		22740	
+3C06	 00					NOP	;1		22741	
+3C07	 1F					RRA	;1		22742	
+3C08	 00					NOP	;1		22743	
+3C09	 7F					LD A, A	;1		22744	
+3C0A	 00					NOP	;1		22745	
+3C0B	 FF					RST 7	;4		22749	
+3C0C	 00					NOP	;1		22750	
+3C0D	 FF					RST 7	;4		22754	
+3C0E	 00					NOP	;1		22755	
+3C0F	 FF					RST 7	;4		22759	
+3C10	 FF					RST 7	;4		22763	
+3C11	 FF					RST 7	;4		22767	
+3C12	 FF					RST 7	;4		22771	
+3C13	 00					NOP	;1		22772	
+3C14	 FF					RST 7	;4		22776	
+3C15	 FF					RST 7	;4		22780	
+3C16	 FF					RST 7	;4		22784	
+3C17	 00					NOP	;1		22785	
+3C18	 FF					RST 7	;4		22789	
+3C19	 FF					RST 7	;4		22793	
+3C1A	 00					NOP	;1		22794	
+3C1B	 00					NOP	;1		22795	
+3C1C	 FF					RST 7	;4		22799	
+3C1D	 FF					RST 7	;4		22803	
+3C1E	 00					NOP	;1		22804	
+3C1F	 FF					RST 7	;4		22808	
+3C20	 00					NOP	;1		22809	
+3C21	 FF					RST 7	;4		22813	
+3C22	 00					NOP	;1		22814	
+3C23	 FF					RST 7	;4		22818	
+3C24	 01 FE 02			LD BC, d16	;3		22821	
+3C27	 FE 02				CP d8	;2		22823	
+3C29	 FC		
+3C2B	 FC		
+3C2D	 FC		
+3C2F	 FF					RST 7	;4		22827	
+3C30	 02					LD (BC), A	;2		22829	
+3C31	 FF					RST 7	;4		22833	
+3C32	 01 FF 01			LD BC, d16	;3		22836	
+3C35	 01 01 FF			LD BC, d16	;3		22839	
+3C38	 01 01 01			LD BC, d16	;3		22842	
+3C3B	 FF					RST 7	;4		22846	
+3C3C	 01 01 01			LD BC, d16	;3		22849	
+3C3F	 02					LD (BC), A	;2		22851	
+3C40	 02					LD (BC), A	;2		22853	
+3C41	 02					LD (BC), A	;2		22855	
+3C42	 02					LD (BC), A	;2		22857	
+3C43	 03					INC, BC	;2		22859	
+3C44	 03					INC, BC	;2		22861	
+3C45	 04					INC, B	;1		22862	
+3C46	 05					DEC, B	;1		22863	
+3C47	 08 09 11			LD (a16), SP	;5		22868	
+3C4A	 12					LD (DE), A	;2		22870	
+3C4B	 21 26 43			LD (HL), d16	;3		22873	
+3C4E	 4C					LD C, H	;1		22874	
+3C4F	 00					NOP	;1		22875	
+3C50	 00					NOP	;1		22876	
+3C51	 01 01 02			LD BC, d16	;3		22879	
+3C54	 02					LD (BC), A	;2		22881	
+3C55	 04					INC, B	;1		22882	
+3C56	 04					INC, B	;1		22883	
+3C57	 08 09 10			LD (a16), SP	;5		22888	
+3C5A	 13					INC, DE	;2		22890	
+3C5B	 20 27				JR NZ s8	;3		22893	
+3C5D	 20 2F				JR NZ s8	;3		22896	
+3C5F	 87					ADD A, A	;1		22897	
+3C60	 98					SBC A, B	;1		22898	
+3C61	 06 39				LD, B, d8	;2		22900	
+3C63	 0E 71				LD, C, d8	;2		22902	
+3C65	 1E E1				LD, E, d8	;2		22904	
+3C67	 3C					INC, A	;1		22905	
+3C68	 C3 3C C3			JP a16	;4		22909	
+3C6B	 78					LD A, B	;1		22910	
+3C6C	 87					ADD A, A	;1		22911	
+3C6D	 78					LD A, B	;1		22912	
+3C6E	 87					ADD A, A	;1		22913	
+3C6F	 40					LD B, B	;1		22914	
+3C70	 4F					LD C, A	;1		22915	
+3C71	 40					LD B, B	;1		22916	
+3C72	 4F					LD C, A	;1		22917	
+3C73	 80					ADD A, B	;1		22918	
+3C74	 9F					SBC A, A	;1		22919	
+3C75	 80					ADD A, B	;1		22920	
+3C76	 9F					SBC A, A	;1		22921	
+3C77	 80					ADD A, B	;1		22922	
+3C78	 9F					SBC A, A	;1		22923	
+3C79	 80					ADD A, B	;1		22924	
+3C7A	 9F					SBC A, A	;1		22925	
+3C7B	 80					ADD A, B	;1		22926	
+3C7C	 9F					SBC A, A	;1		22927	
+3C7D	 80					ADD A, B	;1		22928	
+3C7E	 9F					SBC A, A	;1		22929	
+3C7F	 F8 07				LD HL, SP+s8	;3		22932	
+3C81	 F0 0F				LD A, (a8)	;2		22934	
+3C83	 F0 0F				LD A, (a8)	;2		22936	
+3C85	 F0 0F				LD A, (a8)	;2		22938	
+3C87	 F0 0F				LD A, (a8)	;2		22940	
+3C89	 F0 0F				LD A, (a8)	;2		22942	
+3C8B	 F0 0F				LD A, (a8)	;2		22944	
+3C8D	 F8 07				LD HL, SP+s8	;3		22947	
+3C8F	 40					LD B, B	;1		22948	
+3C90	 5F					LD E, A	;1		22949	
+3C91	 40					LD B, B	;1		22950	
+3C92	 4F					LD C, A	;1		22951	
+3C93	 20 2F				JR NZ s8	;3		22954	
+3C95	 20 27				JR NZ s8	;3		22957	
+3C97	 10 11				STOP	;1		22958	
+3C99	 0F					RRCA	;1		22959	
+3C9A	 0F					RRCA	;1		22960	
+3C9B	 04					INC, B	;1		22961	
+3C9C	 04					INC, B	;1		22962	
+3C9D	 07					RLCA	;1		22963	
+3C9E	 07					RLCA	;1		22964	
+3C9F	 78					LD A, B	;1		22965	
+3CA0	 87					ADD A, A	;1		22966	
+3CA1	 7C					LD A, H	;1		22967	
+3CA2	 83					ADD A, E	;1		22968	
+3CA3	 3C					INC, A	;1		22969	
+3CA4	 C3 1E E1			JP a16	;4		22973	
+3CA7	 0F					RRCA	;1		22974	
+3CA8	 F0 FF				LD A, (a8)	;2		22976	
+3CAA	 FF					RST 7	;4		22980	
+3CAB	 FF					RST 7	;4		22984	
+3CAC	 00					NOP	;1		22985	
+3CAD	 FF					RST 7	;4		22989	
+3CAE	 FF					RST 7	;4		22993	
+3CAF	 FF					RST 7	;4		22997	
+3CB0	 00					NOP	;1		22998	
+3CB1	 FF					RST 7	;4		23002	
+3CB2	 00					NOP	;1		23003	
+3CB3	 FF					RST 7	;4		23007	
+3CB4	 00					NOP	;1		23008	
+3CB5	 00					NOP	;1		23009	
+3CB6	 00					NOP	;1		23010	
+3CB7	 FF					RST 7	;4		23014	
+3CB8	 00					NOP	;1		23015	
+3CB9	 00					NOP	;1		23016	
+3CBA	 00					NOP	;1		23017	
+3CBB	 FF					RST 7	;4		23021	
+3CBC	 00					NOP	;1		23022	
+3CBD	 00					NOP	;1		23023	
+3CBE	 00					NOP	;1		23024	
+3CBF	 02					LD (BC), A	;2		23026	
+3CC0	 00					NOP	;1		23027	
+3CC1	 02					LD (BC), A	;2		23029	
+3CC2	 00					NOP	;1		23030	
+3CC3	 02					LD (BC), A	;2		23032	
+3CC4	 00					NOP	;1		23033	
+3CC5	 02					LD (BC), A	;2		23035	
+3CC6	 00					NOP	;1		23036	
+3CC7	 02					LD (BC), A	;2		23038	
+3CC8	 00					NOP	;1		23039	
+3CC9	 02					LD (BC), A	;2		23041	
+3CCA	 00					NOP	;1		23042	
+3CCB	 02					LD (BC), A	;2		23044	
+3CCC	 00					NOP	;1		23045	
+3CCD	 02					LD (BC), A	;2		23047	
+3CCE	 00					NOP	;1		23048	
+3CCF	 10 00				STOP	;1		23049	
+3CD1	 38 00				JR C s8	;3		23052	
+3CD3	 7C					LD A, H	;1		23053	
+3CD4	 00					NOP	;1		23054	
+3CD5	 FE 00				CP d8	;2		23056	
+3CD7	 FE 00				CP d8	;2		23058	
+3CD9	 FE 00				CP d8	;2		23060	
+3CDB	 7C					LD A, H	;1		23061	
+3CDC	 00					NOP	;1		23062	
+3CDD	 00					NOP	;1		23063	
+3CDE	 00					NOP	;1		23064	
+3CDF	 02					LD (BC), A	;2		23066	
+3CE0	 03					INC, BC	;2		23068	
+3CE1	 01 01 02			LD BC, d16	;3		23071	
+3CE4	 02					LD (BC), A	;2		23073	
+3CE5	 04					INC, B	;1		23074	
+3CE6	 04					INC, B	;1		23075	
+3CE7	 0D					DEC, C	;1		23076	
+3CE8	 08 0A 08			LD (a16), SP	;5		23081	
+3CEB	 0F					RRCA	;1		23082	
+3CEC	 0F					RRCA	;1		23083	
+3CED	 03					INC, BC	;2		23085	
+3CEE	 03					INC, BC	;2		23087	
+3CEF	 28 E8				JR Z s8	;3		23090	
+3CF1	 F0 D0				LD A, (a8)	;2		23092	
+3CF3	 30 30				JR NC s8	;3		23095	
+3CF5	 08 08 54			LD (a16), SP	;5		23100	
+3CF8	 04					INC, B	;1		23101	
+3CF9	 AC					XOR H	;1		23102	
+3CFA	 04					INC, B	;1		23103	
+3CFB	 FC		
+3CFC	 FC		
+3CFD	 30 30				JR NC s8	;3		23106	
+3CFF	 00					NOP	;1		23107	
+3D00	 00					NOP	;1		23108	
+3D01	 03					INC, BC	;2		23110	
+3D02	 03					INC, BC	;2		23112	
+3D03	 03					INC, BC	;2		23114	
+3D04	 03					INC, BC	;2		23116	
+3D05	 03					INC, BC	;2		23118	
+3D06	 02					LD (BC), A	;2		23120	
+3D07	 07					RLCA	;1		23121	
+3D08	 06 09				LD, B, d8	;2		23123	
+3D0A	 09					ADD HL, BC	;2		23125	
+3D0B	 08 08 0B			LD (a16), SP	;5		23130	
+3D0E	 0B					DEC, BC	;2		23132	
+3D0F	 00					NOP	;1		23133	
+3D10	 00					NOP	;1		23134	
+3D11	 C0					RET NZ	;5		23139	
+3D12	 C0					RET NZ	;5		23144	
+3D13	 C4 C4 E8			CALL NZ, a16	;6		23150	
+3D16	 68					LD L, B	;1		23151	
+3D17	 90					SUB B	;1		23152	
+3D18	 F0 A8				LD A, (a8)	;2		23154	
+3D1A	 F8 48				LD HL, SP+s8	;3		23157	
+3D1C	 78					LD A, B	;1		23158	
+3D1D	 F8 B8				LD HL, SP+s8	;3		23161	
+3D1F	 00					NOP	;1		23162	
+3D20	 00					NOP	;1		23163	
+3D21	 07					RLCA	;1		23164	
+3D22	 07					RLCA	;1		23165	
+3D23	 07					RLCA	;1		23166	
+3D24	 07					RLCA	;1		23167	
+3D25	 07					RLCA	;1		23168	
+3D26	 04					INC, B	;1		23169	
+3D27	 07					RLCA	;1		23170	
+3D28	 04					INC, B	;1		23171	
+3D29	 0B					DEC, BC	;2		23173	
+3D2A	 0B					DEC, BC	;2		23175	
+3D2B	 10 10				STOP	;1		23176	
+3D2D	 17					RLA	;1		23177	
+3D2E	 17					RLA	;1		23178	
+3D2F	 00					NOP	;1		23179	
+3D30	 00					NOP	;1		23180	
+3D31	 80					ADD A, B	;1		23181	
+3D32	 80					ADD A, B	;1		23182	
+3D33	 80					ADD A, B	;1		23183	
+3D34	 80					ADD A, B	;1		23184	
+3D35	 E0 E0				LD (a8), A	;3		23187	
+3D37	 90					SUB B	;1		23188	
+3D38	 F0 A8				LD A, (a8)	;2		23190	
+3D3A	 F8 48				LD HL, SP+s8	;3		23193	
+3D3C	 78					LD A, B	;1		23194	
+3D3D	 B8					CP B	;1		23195	
+3D3E	 B8					CP B	;1		23196	
+3D3F	 08 08 0F			LD (a16), SP	;5		23201	
+3D42	 0F					RRCA	;1		23202	
+3D43	 08 08 0F			LD (a16), SP	;5		23207	
+3D46	 0F					RRCA	;1		23208	
+3D47	 09					ADD HL, BC	;2		23210	
+3D48	 09					ADD HL, BC	;2		23212	
+3D49	 09					ADD HL, BC	;2		23214	
+3D4A	 09					ADD HL, BC	;2		23216	
+3D4B	 06 06				LD, B, d8	;2		23218	
+3D4D	 0E 0E				LD, C, d8	;2		23220	
+3D4F	 E4		
+3D51	 22					LD (HL+), A	;2		23222	
+3D52	 22					LD (HL+), A	;2		23224	
+3D53	 20 20				JR NZ s8	;3		23227	
+3D55	 E0 E0				LD (a8), A	;3		23230	
+3D57	 20 20				JR NZ s8	;3		23233	
+3D59	 20 20				JR NZ s8	;3		23236	
+3D5B	 C0					RET NZ	;5		23241	
+3D5C	 C0					RET NZ	;5		23246	
+3D5D	 E0 E0				LD (a8), A	;3		23249	
+3D5F	 18 18				JR s8	;3		23252	
+3D61	 98					SBC A, B	;1		23253	
+3D62	 98					SBC A, B	;1		23254	
+3D63	 98					SBC A, B	;1		23255	
+3D64	 98					SBC A, B	;1		23256	
+3D65	 F8 F8				LD HL, SP+s8	;3		23259	
+3D67	 9C					SBC A, H	;1		23260	
+3D68	 98					SBC A, B	;1		23261	
+3D69	 3C					INC, A	;1		23262	
+3D6A	 3C					INC, A	;1		23263	
+3D6B	 3C					INC, A	;1		23264	
+3D6C	 3C					INC, A	;1		23265	
+3D6D	 7E					LD A, (HL)	;2		23267	
+3D6E	 7E					LD A, (HL)	;2		23269	
+3D6F	 7F					LD A, A	;1		23270	
+3D70	 00					NOP	;1		23271	
+3D71	 FE FE				CP d8	;2		23273	
+3D73	 7E					LD A, (HL)	;2		23275	
+3D74	 7E					LD A, (HL)	;2		23277	
+3D75	 FE DA				CP d8	;2		23279	
+3D77	 7E					LD A, (HL)	;2		23281	
+3D78	 5A					LD E, D	;1		23282	
+3D79	 7E					LD A, (HL)	;2		23284	
+3D7A	 7E					LD A, (HL)	;2		23286	
+3D7B	 FC		
+3D7C	 FC		
+3D7D	 F8 F8				LD HL, SP+s8	;3		23289	
+3D7F	 FE 0E				CP d8	;2		23291	
+3D81	 FE FE				CP d8	;2		23293	
+3D83	 7E					LD A, (HL)	;2		23295	
+3D84	 7E					LD A, (HL)	;2		23297	
+3D85	 FE DA				CP d8	;2		23299	
+3D87	 7E					LD A, (HL)	;2		23301	
+3D88	 5A					LD E, D	;1		23302	
+3D89	 7E					LD A, (HL)	;2		23304	
+3D8A	 7E					LD A, (HL)	;2		23306	
+3D8B	 FC		
+3D8C	 FC		
+3D8D	 F8 F8				LD HL, SP+s8	;3		23309	
+3D8F	 80					ADD A, B	;1		23310	
+3D90	 80					ADD A, B	;1		23311	
+3D91	 83					ADD A, E	;1		23312	
+3D92	 83					ADD A, E	;1		23313	
+3D93	 83					ADD A, E	;1		23314	
+3D94	 83					ADD A, E	;1		23315	
+3D95	 C3 02 EF			JP a16	;4		23319	
+3D98	 2E 97				LD, L, d8	;2		23321	
+3D9A	 97					SUB A	;1		23322	
+3D9B	 47					LD B, A	;1		23323	
+3D9C	 44					LD B, H	;1		23324	
+3D9D	 24					INC, H	;1		23325	
+3D9E	 24					INC, H	;1		23326	
+3D9F	 00					NOP	;1		23327	
+3DA0	 00					NOP	;1		23328	
+3DA1	 C0					RET NZ	;5		23333	
+3DA2	 C0					RET NZ	;5		23338	
+3DA3	 C0					RET NZ	;5		23343	
+3DA4	 C0					RET NZ	;5		23348	
+3DA5	 C0					RET NZ	;5		23353	
+3DA6	 40					LD B, B	;1		23354	
+3DA7	 E0 60				LD (a8), A	;3		23357	
+3DA9	 F8 F8				LD HL, SP+s8	;3		23360	
+3DAB	 E4		
+3DAD	 34					INC (HL)	;3		23363	
+3DAE	 34					INC (HL)	;3		23366	
+3DAF	 17					RLA	;1		23367	
+3DB0	 14					INC, D	;1		23368	
+3DB1	 17					RLA	;1		23369	
+3DB2	 14					INC, D	;1		23370	
+3DB3	 17					RLA	;1		23371	
+3DB4	 14					INC, D	;1		23372	
+3DB5	 1C					INC, E	;1		23373	
+3DB6	 1F					RRA	;1		23374	
+3DB7	 17					RLA	;1		23375	
+3DB8	 17					RLA	;1		23376	
+3DB9	 0F					RRCA	;1		23377	
+3DBA	 0F					RRCA	;1		23378	
+3DBB	 1E 1E				LD, E, d8	;2		23380	
+3DBD	 00					NOP	;1		23381	
+3DBE	 00					NOP	;1		23382	
+3DBF	 F4		
+3DC0	 24					INC, H	;1		23383	
+3DC1	 F8 28				LD HL, SP+s8	;3		23386	
+3DC3	 E8 28				ADD SP, s8	;4		23390	
+3DC5	 38 F8				JR C s8	;3		23393	
+3DC7	 E8 E8				ADD SP, s8	;4		23397	
+3DC9	 90					SUB B	;1		23398	
+3DCA	 90					SUB B	;1		23399	
+3DCB	 70					LD (HL), B	;2		23401	
+3DCC	 70					LD (HL), B	;2		23403	
+3DCD	 78					LD A, B	;1		23404	
+3DCE	 78					LD A, B	;1		23405	
+3DCF	 03					INC, BC	;2		23407	
+3DD0	 03					INC, BC	;2		23409	
+3DD1	 03					INC, BC	;2		23411	
+3DD2	 03					INC, BC	;2		23413	
+3DD3	 03					INC, BC	;2		23415	
+3DD4	 02					LD (BC), A	;2		23417	
+3DD5	 0F					RRCA	;1		23418	
+3DD6	 0E 11				LD, C, d8	;2		23420	
+3DD8	 11 37 37			LD DE, d16	;3		23423	
+3DDB	 71					LD (HL), C	;2		23425	
+3DDC	 52					LD D, D	;1		23426	
+3DDD	 7D					LD A, L	;1		23427	
+3DDE	 4E					LD C, (HL)	;2		23429	
+3DDF	 C0					RET NZ	;5		23434	
+3DE0	 C0					RET NZ	;5		23439	
+3DE1	 C0					RET NZ	;5		23444	
+3DE2	 C0					RET NZ	;5		23449	
+3DE3	 C0					RET NZ	;5		23454	
+3DE4	 40					LD B, B	;1		23455	
+3DE5	 C0					RET NZ	;5		23460	
+3DE6	 40					LD B, B	;1		23461	
+3DE7	 A0					AND B	;1		23462	
+3DE8	 A0					AND B	;1		23463	
+3DE9	 10 10				STOP	;1		23464	
+3DEB	 FF					RST 7	;4		23468	
+3DEC	 FF					RST 7	;4		23472	
+3DED	 CF					RST 1	;4		23476	
+3DEE	 33					INC, SP	;2		23478	
+3DEF	 7F					LD A, A	;1		23479	
+3DF0	 40					LD B, B	;1		23480	
+3DF1	 3F					CCF	;1		23481	
+3DF2	 3F					CCF	;1		23482	
+3DF3	 08 08 0F			LD (a16), SP	;5		23487	
+3DF6	 0F					RRCA	;1		23488	
+3DF7	 09					ADD HL, BC	;2		23490	
+3DF8	 09					ADD HL, BC	;2		23492	
+3DF9	 09					ADD HL, BC	;2		23494	
+3DFA	 09					ADD HL, BC	;2		23496	
+3DFB	 06 06				LD, B, d8	;2		23498	
+3DFD	 0E 0E				LD, C, d8	;2		23500	
+3DFF	 FC		
+3E01	 20 20				JR NZ s8	;3		23503	
+3E03	 20 20				JR NZ s8	;3		23506	
+3E05	 E0 E0				LD (a8), A	;3		23509	
+3E07	 20 20				JR NZ s8	;3		23512	
+3E09	 20 20				JR NZ s8	;3		23515	
+3E0B	 C0					RET NZ	;5		23520	
+3E0C	 C0					RET NZ	;5		23525	
+3E0D	 E0 E0				LD (a8), A	;3		23528	
+3E0F	 03					INC, BC	;2		23530	
+3E10	 03					INC, BC	;2		23532	
+3E11	 03					INC, BC	;2		23534	
+3E12	 03					INC, BC	;2		23536	
+3E13	 03					INC, BC	;2		23538	
+3E14	 02					LD (BC), A	;2		23540	
+3E15	 07					RLCA	;1		23541	
+3E16	 06 09				LD, B, d8	;2		23543	
+3E18	 09					ADD HL, BC	;2		23545	
+3E19	 33					INC, SP	;2		23547	
+3E1A	 33					INC, SP	;2		23549	
+3E1B	 77					LD (HL), A	;2		23551	
+3E1C	 54					LD D, H	;1		23552	
+3E1D	 73					LD (HL), E	;2		23554	
+3E1E	 4C					LD C, H	;1		23555	
+3E1F	 18 18				JR s8	;3		23558	
+3E21	 D8					RET C	;5		23563	
+3E22	 D8					RET C	;5		23568	
+3E23	 D8					RET C	;5		23573	
+3E24	 D8					RET C	;5		23578	
+3E25	 F8 78				LD HL, SP+s8	;3		23581	
+3E27	 DC 58 BC			CALL C, a16	;6		23587	
+3E2A	 BC					CP H	;1		23588	
+3E2B	 3C					INC, A	;1		23589	
+3E2C	 3C					INC, A	;1		23590	
+3E2D	 7E					LD A, (HL)	;2		23592	
+3E2E	 7E					LD A, (HL)	;2		23594	
+3E2F	 09					ADD HL, BC	;2		23596	
+3E30	 0E 07				LD, C, d8	;2		23598	
+3E32	 07					RLCA	;1		23599	
+3E33	 08 0F 08			LD (a16), SP	;5		23604	
+3E36	 0F					RRCA	;1		23605	
+3E37	 09					ADD HL, BC	;2		23607	
+3E38	 0F					RRCA	;1		23608	
+3E39	 0A					LD A, (BC)	;2		23610	
+3E3A	 0E 06				LD, C, d8	;2		23612	
+3E3C	 06 0E				LD, B, d8	;2		23614	
+3E3E	 0E 00				LD, C, d8	;2		23616	
+3E40	 00					NOP	;1		23617	
+3E41	 03					INC, BC	;2		23619	
+3E42	 03					INC, BC	;2		23621	
+3E43	 03					INC, BC	;2		23623	
+3E44	 03					INC, BC	;2		23625	
+3E45	 03					INC, BC	;2		23627	
+3E46	 02					LD (BC), A	;2		23629	
+3E47	 FF					RST 7	;4		23633	
+3E48	 7E					LD A, (HL)	;2		23635	
+3E49	 C9					RET	;4		23639	
+3E4A	 3F					CCF	;1		23640	
+3E4B	 78					LD A, B	;1		23641	
+3E4C	 7F					LD A, A	;1		23642	
+3E4D	 09					ADD HL, BC	;2		23644	
+3E4E	 0F					RRCA	;1		23645	
+3E4F	 04					INC, B	;1		23646	
+3E50	 04					INC, B	;1		23647	
+3E51	 07					RLCA	;1		23648	
+3E52	 07					RLCA	;1		23649	
+3E53	 B8					CP B	;1		23650	
+3E54	 BF					CP A	;1		23651	
+3E55	 C0					RET NZ	;5		23656	
+3E56	 FF					RST 7	;4		23660	
+3E57	 FF					RST 7	;4		23664	
+3E58	 FF					RST 7	;4		23668	
+3E59	 00					NOP	;1		23669	
+3E5A	 00					NOP	;1		23670	
+3E5B	 00					NOP	;1		23671	
+3E5C	 00					NOP	;1		23672	
+3E5D	 00					NOP	;1		23673	
+3E5E	 00					NOP	;1		23674	
+3E5F	 00					NOP	;1		23675	
+3E60	 00					NOP	;1		23676	
+3E61	 78					LD A, B	;1		23677	
+3E62	 78					LD A, B	;1		23678	
+3E63	 78					LD A, B	;1		23679	
+3E64	 78					LD A, B	;1		23680	
+3E65	 7B					LD A, E	;1		23681	
+3E66	 48					LD C, B	;1		23682	
+3E67	 60					LD H, B	;1		23683	
+3E68	 5F					LD E, A	;1		23684	
+3E69	 B6					OR (HL)	;2		23686	
+3E6A	 B0					OR B	;1		23687	
+3E6B	 84					ADD A, H	;1		23688	
+3E6C	 84					ADD A, H	;1		23689	
+3E6D	 B8					CP B	;1		23690	
+3E6E	 B8					CP B	;1		23691	
+3E6F	 84					ADD A, H	;1		23692	
+3E70	 84					ADD A, H	;1		23693	
+3E71	 84					ADD A, H	;1		23694	
+3E72	 84					ADD A, H	;1		23695	
+3E73	 84					ADD A, H	;1		23696	
+3E74	 84					ADD A, H	;1		23697	
+3E75	 FA FA 92			JP A, a16	;4		23701	
+3E78	 92					SUB D	;1		23702	
+3E79	 9E					SBC A, (HL)	;2		23704	
+3E7A	 9E					SBC A, (HL)	;2		23706	
+3E7B	 67					LD H, A	;1		23707	
+3E7C	 67					LD H, A	;1		23708	
+3E7D	 E0 E0				LD (a8), A	;3		23711	
+3E7F	 00					NOP	;1		23712	
+3E80	 00					NOP	;1		23713	
+3E81	 00					NOP	;1		23714	
+3E82	 00					NOP	;1		23715	
+3E83	 78					LD A, B	;1		23716	
+3E84	 78					LD A, B	;1		23717	
+3E85	 78					LD A, B	;1		23718	
+3E86	 78					LD A, B	;1		23719	
+3E87	 78					LD A, B	;1		23720	
+3E88	 48					LD C, B	;1		23721	
+3E89	 40					LD B, B	;1		23722	
+3E8A	 7E					LD A, (HL)	;2		23724	
+3E8B	 B4					OR H	;1		23725	
+3E8C	 B0					OR B	;1		23726	
+3E8D	 84					ADD A, H	;1		23727	
+3E8E	 84					ADD A, H	;1		23728	
+3E8F	 2A					LD A, (HL+)	;2		23730	
+3E90	 7B					LD A, E	;1		23731	
+3E91	 2F					CPL	;1		23732	
+3E92	 2F					CPL	;1		23733	
+3E93	 2F					CPL	;1		23734	
+3E94	 2F					CPL	;1		23735	
+3E95	 2F					CPL	;1		23736	
+3E96	 2F					CPL	;1		23737	
+3E97	 2F					CPL	;1		23738	
+3E98	 2F					CPL	;1		23739	
+3E99	 2F					CPL	;1		23740	
+3E9A	 2F					CPL	;1		23741	
+3E9B	 7B					LD A, E	;1		23742	
+3E9C	 30 31				JR NC s8	;3		23745	
+3E9E	 31 31 31			LD SP, d16	;3		23748	
+3EA1	 31 32 2A			LD SP, d16	;3		23751	
+3EA4	 7C					LD A, H	;1		23752	
+3EA5	 2F					CPL	;1		23753	
+3EA6	 2F					CPL	;1		23754	
+3EA7	 2F					CPL	;1		23755	
+3EA8	 2F					CPL	;1		23756	
+3EA9	 2F					CPL	;1		23757	
+3EAA	 2F					CPL	;1		23758	
+3EAB	 2F					CPL	;1		23759	
+3EAC	 2F					CPL	;1		23760	
+3EAD	 2F					CPL	;1		23761	
+3EAE	 2F					CPL	;1		23762	
+3EAF	 7C					LD A, H	;1		23763	
+3EB0	 44					LD B, H	;1		23764	
+3EB1	 1C					INC, E	;1		23765	
+3EB2	 0C					INC, C	;1		23766	
+3EB3	 18 1B				JR s8	;3		23769	
+3EB5	 0E 45				LD, C, d8	;2		23771	
+3EB7	 2A					LD A, (HL+)	;2		23773	
+3EB8	 7D					LD A, L	;1		23774	
+3EB9	 2F					CPL	;1		23775	
+3EBA	 2F					CPL	;1		23776	
+3EBB	 2F					CPL	;1		23777	
+3EBC	 2F					CPL	;1		23778	
+3EBD	 2F					CPL	;1		23779	
+3EBE	 2F					CPL	;1		23780	
+3EBF	 2F					CPL	;1		23781	
+3EC0	 2F					CPL	;1		23782	
+3EC1	 2F					CPL	;1		23783	
+3EC2	 2F					CPL	;1		23784	
+3EC3	 7D					LD A, L	;1		23785	
+3EC4	 67					LD H, A	;1		23786	
+3EC5	 46					LD B, (HL)	;2		23788	
+3EC6	 46					LD B, (HL)	;2		23790	
+3EC7	 46					LD B, (HL)	;2		23792	
+3EC8	 46					LD B, (HL)	;2		23794	
+3EC9	 46					LD B, (HL)	;2		23796	
+3ECA	 68					LD L, B	;1		23797	
+3ECB	 2A					LD A, (HL+)	;2		23799	
+3ECC	 7B					LD A, E	;1		23800	
+3ECD	 2F					CPL	;1		23801	
+3ECE	 2F					CPL	;1		23802	
+3ECF	 2F					CPL	;1		23803	
+3ED0	 2F					CPL	;1		23804	
+3ED1	 2F					CPL	;1		23805	
+3ED2	 2F					CPL	;1		23806	
+3ED3	 2F					CPL	;1		23807	
+3ED4	 2F					CPL	;1		23808	
+3ED5	 2F					CPL	;1		23809	
+3ED6	 2F					CPL	;1		23810	
+3ED7	 7B					LD A, E	;1		23811	
+3ED8	 2F					CPL	;1		23812	
+3ED9	 2F					CPL	;1		23813	
+3EDA	 2F					CPL	;1		23814	
+3EDB	 2F					CPL	;1		23815	
+3EDC	 2F					CPL	;1		23816	
+3EDD	 00					NOP	;1		23817	
+3EDE	 2F					CPL	;1		23818	
+3EDF	 2A					LD A, (HL+)	;2		23820	
+3EE0	 7C					LD A, H	;1		23821	
+3EE1	 2F					CPL	;1		23822	
+3EE2	 2F					CPL	;1		23823	
+3EE3	 2F					CPL	;1		23824	
+3EE4	 2F					CPL	;1		23825	
+3EE5	 2F					CPL	;1		23826	
+3EE6	 2F					CPL	;1		23827	
+3EE7	 2F					CPL	;1		23828	
+3EE8	 2F					CPL	;1		23829	
+3EE9	 2F					CPL	;1		23830	
+3EEA	 2F					CPL	;1		23831	
+3EEB	 7C					LD A, H	;1		23832	
+3EEC	 43					LD B, E	;1		23833	
+3EED	 34					INC (HL)	;3		23836	
+3EEE	 34					INC (HL)	;3		23839	
+3EEF	 34					INC (HL)	;3		23842	
+3EF0	 34					INC (HL)	;3		23845	
+3EF1	 34					INC (HL)	;3		23848	
+3EF2	 34					INC (HL)	;3		23851	
+3EF3	 2A					LD A, (HL+)	;2		23853	
+3EF4	 7D					LD A, L	;1		23854	
+3EF5	 2F					CPL	;1		23855	
+3EF6	 2F					CPL	;1		23856	
+3EF7	 2F					CPL	;1		23857	
+3EF8	 2F					CPL	;1		23858	
+3EF9	 2F					CPL	;1		23859	
+3EFA	 2F					CPL	;1		23860	
+3EFB	 2F					CPL	;1		23861	
+3EFC	 2F					CPL	;1		23862	
+3EFD	 2F					CPL	;1		23863	
+3EFE	 2F					CPL	;1		23864	
+3EFF	 7D					LD A, L	;1		23865	
+3F00	 30 31				JR NC s8	;3		23868	
+3F02	 31 31 31			LD SP, d16	;3		23871	
+3F05	 31 32 2A			LD SP, d16	;3		23874	
+3F08	 7B					LD A, E	;1		23875	
+3F09	 2F					CPL	;1		23876	
+3F0A	 2F					CPL	;1		23877	
+3F0B	 2F					CPL	;1		23878	
+3F0C	 2F					CPL	;1		23879	
+3F0D	 2F					CPL	;1		23880	
+3F0E	 2F					CPL	;1		23881	
+3F0F	 2F					CPL	;1		23882	
+3F10	 2F					CPL	;1		23883	
+3F11	 2F					CPL	;1		23884	
+3F12	 2F					CPL	;1		23885	
+3F13	 7B					LD A, E	;1		23886	
+3F14	 36 15				LD (HL), d8	;3		23889	
+3F16	 0E 1F				LD, C, d8	;2		23891	
+3F18	 0E 15				LD, C, d8	;2		23893	
+3F1A	 37					SCF	;1		23894	
+3F1B	 2A					LD A, (HL+)	;2		23896	
+3F1C	 7C					LD A, H	;1		23897	
+3F1D	 2F					CPL	;1		23898	
+3F1E	 2F					CPL	;1		23899	
+3F1F	 2F					CPL	;1		23900	
+3F20	 2F					CPL	;1		23901	
+3F21	 2F					CPL	;1		23902	
+3F22	 2F					CPL	;1		23903	
+3F23	 2F					CPL	;1		23904	
+3F24	 2F					CPL	;1		23905	
+3F25	 2F					CPL	;1		23906	
+3F26	 2F					CPL	;1		23907	
+3F27	 7C					LD A, H	;1		23908	
+3F28	 36 2F				LD (HL), d8	;3		23911	
+3F2A	 2F					CPL	;1		23912	
+3F2B	 2F					CPL	;1		23913	
+3F2C	 2F					CPL	;1		23914	
+3F2D	 2F					CPL	;1		23915	
+3F2E	 37					SCF	;1		23916	
+3F2F	 2A					LD A, (HL+)	;2		23918	
+3F30	 7D					LD A, L	;1		23919	
+3F31	 2F					CPL	;1		23920	
+3F32	 2F					CPL	;1		23921	
+3F33	 2F					CPL	;1		23922	
+3F34	 2F					CPL	;1		23923	
+3F35	 2F					CPL	;1		23924	
+3F36	 2F					CPL	;1		23925	
+3F37	 2F					CPL	;1		23926	
+3F38	 2F					CPL	;1		23927	
+3F39	 2F					CPL	;1		23928	
+3F3A	 2F					CPL	;1		23929	
+3F3B	 7D					LD A, L	;1		23930	
+3F3C	 40					LD B, B	;1		23931	
+3F3D	 42					LD B, D	;1		23932	
+3F3E	 42					LD B, D	;1		23933	
+3F3F	 42					LD B, D	;1		23934	
+3F40	 42					LD B, D	;1		23935	
+3F41	 42					LD B, D	;1		23936	
+3F42	 41					LD B, C	;1		23937	
+3F43	 2A					LD A, (HL+)	;2		23939	
+3F44	 7B					LD A, E	;1		23940	
+3F45	 2F					CPL	;1		23941	
+3F46	 2F					CPL	;1		23942	
+3F47	 2F					CPL	;1		23943	
+3F48	 2F					CPL	;1		23944	
+3F49	 2F					CPL	;1		23945	
+3F4A	 2F					CPL	;1		23946	
+3F4B	 2F					CPL	;1		23947	
+3F4C	 2F					CPL	;1		23948	
+3F4D	 2F					CPL	;1		23949	
+3F4E	 2F					CPL	;1		23950	
+3F4F	 7B					LD A, E	;1		23951	
+3F50	 36 15				LD (HL), d8	;3		23954	
+3F52	 12					LD (DE), A	;2		23956	
+3F53	 17					RLA	;1		23957	
+3F54	 0E 1C				LD, C, d8	;2		23959	
+3F56	 37					SCF	;1		23960	
+3F57	 2A					LD A, (HL+)	;2		23962	
+3F58	 7C					LD A, H	;1		23963	
+3F59	 2F					CPL	;1		23964	
+3F5A	 2F					CPL	;1		23965	
+3F5B	 2F					CPL	;1		23966	
+3F5C	 2F					CPL	;1		23967	
+3F5D	 2F					CPL	;1		23968	
+3F5E	 2F					CPL	;1		23969	
+3F5F	 2F					CPL	;1		23970	
+3F60	 2F					CPL	;1		23971	
+3F61	 2F					CPL	;1		23972	
+3F62	 2F					CPL	;1		23973	
+3F63	 7C					LD A, H	;1		23974	
+3F64	 36 2F				LD (HL), d8	;3		23977	
+3F66	 2F					CPL	;1		23978	
+3F67	 2F					CPL	;1		23979	
+3F68	 2F					CPL	;1		23980	
+3F69	 2F					CPL	;1		23981	
+3F6A	 37					SCF	;1		23982	
+3F6B	 2A					LD A, (HL+)	;2		23984	
+3F6C	 7D					LD A, L	;1		23985	
+3F6D	 2F					CPL	;1		23986	
+3F6E	 2F					CPL	;1		23987	
+3F6F	 2F					CPL	;1		23988	
+3F70	 2F					CPL	;1		23989	
+3F71	 2F					CPL	;1		23990	
+3F72	 2F					CPL	;1		23991	
+3F73	 2F					CPL	;1		23992	
+3F74	 2F					CPL	;1		23993	
+3F75	 2F					CPL	;1		23994	
+3F76	 2F					CPL	;1		23995	
+3F77	 7D					LD A, L	;1		23996	
+3F78	 33					INC, SP	;2		23998	
+3F79	 34					INC (HL)	;3		24001	
+3F7A	 34					INC (HL)	;3		24004	
+3F7B	 34					INC (HL)	;3		24007	
+3F7C	 34					INC (HL)	;3		24010	
+3F7D	 34					INC (HL)	;3		24013	
+3F7E	 35					DEC (HL)	;3		24016	
+3F7F	 2A					LD A, (HL+)	;2		24018	
+3F80	 7B					LD A, E	;1		24019	
+3F81	 2F					CPL	;1		24020	
+3F82	 2F					CPL	;1		24021	
+3F83	 2F					CPL	;1		24022	
+3F84	 2F					CPL	;1		24023	
+3F85	 2F					CPL	;1		24024	
+3F86	 2F					CPL	;1		24025	
+3F87	 2F					CPL	;1		24026	
+3F88	 2F					CPL	;1		24027	
+3F89	 2F					CPL	;1		24028	
+3F8A	 2F					CPL	;1		24029	
+3F8B	 7B					LD A, E	;1		24030	
+3F8C	 2B					DEC, (HL)	;2		24032	
+3F8D	 38 39				JR C s8	;3		24035	
+3F8F	 39					ADD HL, SP	;2		24037	
+3F90	 39					ADD HL, SP	;2		24039	
+3F91	 39					ADD HL, SP	;2		24041	
+3F92	 3A					LD A, (HL-)	;2		24043	
+3F93	 2A					LD A, (HL+)	;2		24045	
+3F94	 7C					LD A, H	;1		24046	
+3F95	 2F					CPL	;1		24047	
+3F96	 2F					CPL	;1		24048	
+3F97	 2F					CPL	;1		24049	
+3F98	 2F					CPL	;1		24050	
+3F99	 2F					CPL	;1		24051	
+3F9A	 2F					CPL	;1		24052	
+3F9B	 2F					CPL	;1		24053	
+3F9C	 2F					CPL	;1		24054	
+3F9D	 2F					CPL	;1		24055	
+3F9E	 2F					CPL	;1		24056	
+3F9F	 7C					LD A, H	;1		24057	
+3FA0	 2B					DEC, (HL)	;2		24059	
+3FA1	 3B					DEC, SP	;2		24061	
+3FA2	 2F					CPL	;1		24062	
+3FA3	 2F					CPL	;1		24063	
+3FA4	 2F					CPL	;1		24064	
+3FA5	 2F					CPL	;1		24065	
+3FA6	 3C					INC, A	;1		24066	
+3FA7	 2A					LD A, (HL+)	;2		24068	
+3FA8	 7D					LD A, L	;1		24069	
+3FA9	 2F					CPL	;1		24070	
+3FAA	 2F					CPL	;1		24071	
+3FAB	 2F					CPL	;1		24072	
+3FAC	 2F					CPL	;1		24073	
+3FAD	 2F					CPL	;1		24074	
+3FAE	 2F					CPL	;1		24075	
+3FAF	 2F					CPL	;1		24076	
+3FB0	 2F					CPL	;1		24077	
+3FB1	 2F					CPL	;1		24078	
+3FB2	 2F					CPL	;1		24079	
+3FB3	 7D					LD A, L	;1		24080	
+3FB4	 2B					DEC, (HL)	;2		24082	
+3FB5	 3B					DEC, SP	;2		24084	
+3FB6	 2F					CPL	;1		24085	
+3FB7	 2F					CPL	;1		24086	
+3FB8	 2F					CPL	;1		24087	
+3FB9	 2F					CPL	;1		24088	
+3FBA	 3C					INC, A	;1		24089	
+3FBB	 2A					LD A, (HL+)	;2		24091	
+3FBC	 7B					LD A, E	;1		24092	
+3FBD	 2F					CPL	;1		24093	
+3FBE	 2F					CPL	;1		24094	
+3FBF	 2F					CPL	;1		24095	
+3FC0	 2F					CPL	;1		24096	
+3FC1	 2F					CPL	;1		24097	
+3FC2	 2F					CPL	;1		24098	
+3FC3	 2F					CPL	;1		24099	
+3FC4	 2F					CPL	;1		24100	
+3FC5	 2F					CPL	;1		24101	
+3FC6	 2F					CPL	;1		24102	
+3FC7	 7B					LD A, E	;1		24103	
+3FC8	 2B					DEC, (HL)	;2		24105	
+3FC9	 3B					DEC, SP	;2		24107	
+3FCA	 2F					CPL	;1		24108	
+3FCB	 2F					CPL	;1		24109	
+3FCC	 2F					CPL	;1		24110	
+3FCD	 2F					CPL	;1		24111	
+3FCE	 3C					INC, A	;1		24112	
+3FCF	 2A					LD A, (HL+)	;2		24114	
+3FD0	 7C					LD A, H	;1		24115	
+3FD1	 2F					CPL	;1		24116	
+3FD2	 2F					CPL	;1		24117	
+3FD3	 2F					CPL	;1		24118	
+3FD4	 2F					CPL	;1		24119	
+3FD5	 2F					CPL	;1		24120	
+3FD6	 2F					CPL	;1		24121	
+3FD7	 2F					CPL	;1		24122	
+3FD8	 2F					CPL	;1		24123	
+3FD9	 2F					CPL	;1		24124	
+3FDA	 2F					CPL	;1		24125	
+3FDB	 7C					LD A, H	;1		24126	
+3FDC	 2B					DEC, (HL)	;2		24128	
+3FDD	 3B					DEC, SP	;2		24130	
+3FDE	 2F					CPL	;1		24131	
+3FDF	 2F					CPL	;1		24132	
+3FE0	 2F					CPL	;1		24133	
+3FE1	 2F					CPL	;1		24134	
+3FE2	 3C					INC, A	;1		24135	
+3FE3	 2A					LD A, (HL+)	;2		24137	
+3FE4	 7D					LD A, L	;1		24138	
+3FE5	 2F					CPL	;1		24139	
+3FE6	 2F					CPL	;1		24140	
+3FE7	 2F					CPL	;1		24141	
+3FE8	 2F					CPL	;1		24142	
+3FE9	 2F					CPL	;1		24143	
+3FEA	 2F					CPL	;1		24144	
+3FEB	 2F					CPL	;1		24145	
+3FEC	 2F					CPL	;1		24146	
+3FED	 2F					CPL	;1		24147	
+3FEE	 2F					CPL	;1		24148	
+3FEF	 7D					LD A, L	;1		24149	
+3FF0	 2B					DEC, (HL)	;2		24151	
+3FF1	 3D					DEC, A	;1		24152	
+3FF2	 3E 3E				LD, A, d8	;2		24154	
+3FF4	 3E 3E				LD, A, d8	;2		24156	
+3FF6	 3F					CCF	;1		24157	
+3FF7	 2A					LD A, (HL+)	;2		24159	
+3FF8	 7B					LD A, E	;1		24160	
+3FF9	 2F					CPL	;1		24161	
+3FFA	 2F					CPL	;1		24162	
+3FFB	 2F					CPL	;1		24163	
+3FFC	 2F					CPL	;1		24164	
+3FFD	 2F					CPL	;1		24165	
+3FFE	 2F					CPL	;1		24166	
+3FFF	 2F					CPL	;1		24167	
+4000	 2F					CPL	;1		24168	
+4001	 2F					CPL	;1		24169	
+4002	 2F					CPL	;1		24170	
+4003	 7B					LD A, E	;1		24171	
+4004	 30 31				JR NC s8	;3		24174	
+4006	 31 31 31			LD SP, d16	;3		24177	
+4009	 31 32 2A			LD SP, d16	;3		24180	
+400C	 7C					LD A, H	;1		24181	
+400D	 2F					CPL	;1		24182	
+400E	 2F					CPL	;1		24183	
+400F	 2F					CPL	;1		24184	
+4010	 2F					CPL	;1		24185	
+4011	 2F					CPL	;1		24186	
+4012	 2F					CPL	;1		24187	
+4013	 2F					CPL	;1		24188	
+4014	 2F					CPL	;1		24189	
+4015	 2F					CPL	;1		24190	
+4016	 2F					CPL	;1		24191	
+4017	 7C					LD A, H	;1		24192	
+4018	 36 15				LD (HL), d8	;3		24195	
+401A	 0E 1F				LD, C, d8	;2		24197	
+401C	 0E 15				LD, C, d8	;2		24199	
+401E	 37					SCF	;1		24200	
+401F	 2A					LD A, (HL+)	;2		24202	
+4020	 7D					LD A, L	;1		24203	
+4021	 2F					CPL	;1		24204	
+4022	 2F					CPL	;1		24205	
+4023	 2F					CPL	;1		24206	
+4024	 2F					CPL	;1		24207	
+4025	 2F					CPL	;1		24208	
+4026	 2F					CPL	;1		24209	
+4027	 2F					CPL	;1		24210	
+4028	 2F					CPL	;1		24211	
+4029	 2F					CPL	;1		24212	
+402A	 2F					CPL	;1		24213	
+402B	 7D					LD A, L	;1		24214	
+402C	 36 2F				LD (HL), d8	;3		24217	
+402E	 2F					CPL	;1		24218	
+402F	 2F					CPL	;1		24219	
+4030	 2F					CPL	;1		24220	
+4031	 2F					CPL	;1		24221	
+4032	 37					SCF	;1		24222	
+4033	 2A					LD A, (HL+)	;2		24224	
+4034	 7B					LD A, E	;1		24225	
+4035	 2F					CPL	;1		24226	
+4036	 2F					CPL	;1		24227	
+4037	 2F					CPL	;1		24228	
+4038	 2F					CPL	;1		24229	
+4039	 2F					CPL	;1		24230	
+403A	 2F					CPL	;1		24231	
+403B	 2F					CPL	;1		24232	
+403C	 2F					CPL	;1		24233	
+403D	 2F					CPL	;1		24234	
+403E	 2F					CPL	;1		24235	
+403F	 7B					LD A, E	;1		24236	
+4040	 40					LD B, B	;1		24237	
+4041	 42					LD B, D	;1		24238	
+4042	 42					LD B, D	;1		24239	
+4043	 42					LD B, D	;1		24240	
+4044	 42					LD B, D	;1		24241	
+4045	 42					LD B, D	;1		24242	
+4046	 41					LD B, C	;1		24243	
+4047	 2A					LD A, (HL+)	;2		24245	
+4048	 7C					LD A, H	;1		24246	
+4049	 2F					CPL	;1		24247	
+404A	 2F					CPL	;1		24248	
+404B	 2F					CPL	;1		24249	
+404C	 2F					CPL	;1		24250	
+404D	 2F					CPL	;1		24251	
+404E	 2F					CPL	;1		24252	
+404F	 2F					CPL	;1		24253	
+4050	 2F					CPL	;1		24254	
+4051	 2F					CPL	;1		24255	
+4052	 2F					CPL	;1		24256	
+4053	 7C					LD A, H	;1		24257	
+4054	 36 11				LD (HL), d8	;3		24260	
+4056	 12					LD (DE), A	;2		24262	
+4057	 10 11				STOP	;1		24263	
+4059	 2F					CPL	;1		24264	
+405A	 37					SCF	;1		24265	
+405B	 2A					LD A, (HL+)	;2		24267	
+405C	 7D					LD A, L	;1		24268	
+405D	 2F					CPL	;1		24269	
+405E	 2F					CPL	;1		24270	
+405F	 2F					CPL	;1		24271	
+4060	 2F					CPL	;1		24272	
+4061	 2F					CPL	;1		24273	
+4062	 2F					CPL	;1		24274	
+4063	 2F					CPL	;1		24275	
+4064	 2F					CPL	;1		24276	
+4065	 2F					CPL	;1		24277	
+4066	 2F					CPL	;1		24278	
+4067	 7D					LD A, L	;1		24279	
+4068	 36 2F				LD (HL), d8	;3		24282	
+406A	 2F					CPL	;1		24283	
+406B	 2F					CPL	;1		24284	
+406C	 2F					CPL	;1		24285	
+406D	 2F					CPL	;1		24286	
+406E	 37					SCF	;1		24287	
+406F	 2A					LD A, (HL+)	;2		24289	
+4070	 7B					LD A, E	;1		24290	
+4071	 2F					CPL	;1		24291	
+4072	 2F					CPL	;1		24292	
+4073	 2F					CPL	;1		24293	
+4074	 2F					CPL	;1		24294	
+4075	 2F					CPL	;1		24295	
+4076	 2F					CPL	;1		24296	
+4077	 2F					CPL	;1		24297	
+4078	 2F					CPL	;1		24298	
+4079	 2F					CPL	;1		24299	
+407A	 2F					CPL	;1		24300	
+407B	 7B					LD A, E	;1		24301	
+407C	 33					INC, SP	;2		24303	
+407D	 34					INC (HL)	;3		24306	
+407E	 34					INC (HL)	;3		24309	
+407F	 34					INC (HL)	;3		24312	
+4080	 34					INC (HL)	;3		24315	
+4081	 34					INC (HL)	;3		24318	
+4082	 35					DEC (HL)	;3		24321	
+4083	 2A					LD A, (HL+)	;2		24323	
+4084	 7C					LD A, H	;1		24324	
+4085	 2F					CPL	;1		24325	
+4086	 2F					CPL	;1		24326	
+4087	 2F					CPL	;1		24327	
+4088	 2F					CPL	;1		24328	
+4089	 2F					CPL	;1		24329	
+408A	 2F					CPL	;1		24330	
+408B	 2F					CPL	;1		24331	
+408C	 2F					CPL	;1		24332	
+408D	 2F					CPL	;1		24333	
+408E	 2F					CPL	;1		24334	
+408F	 7C					LD A, H	;1		24335	
+4090	 2B					DEC, (HL)	;2		24337	
+4091	 8E					ADC A, (HL)	;2		24339	
+4092	 8E					ADC A, (HL)	;2		24341	
+4093	 8E					ADC A, (HL)	;2		24343	
+4094	 8E					ADC A, (HL)	;2		24345	
+4095	 8E					ADC A, (HL)	;2		24347	
+4096	 8E					ADC A, (HL)	;2		24349	
+4097	 2A					LD A, (HL+)	;2		24351	
+4098	 7D					LD A, L	;1		24352	
+4099	 2F					CPL	;1		24353	
+409A	 2F					CPL	;1		24354	
+409B	 2F					CPL	;1		24355	
+409C	 2F					CPL	;1		24356	
+409D	 2F					CPL	;1		24357	
+409E	 2F					CPL	;1		24358	
+409F	 2F					CPL	;1		24359	
+40A0	 2F					CPL	;1		24360	
+40A1	 2F					CPL	;1		24361	
+40A2	 2F					CPL	;1		24362	
+40A3	 7D					LD A, L	;1		24363	
+40A4	 30 31				JR NC s8	;3		24366	
+40A6	 31 31 31			LD SP, d16	;3		24369	
+40A9	 31 32 2A			LD SP, d16	;3		24372	
+40AC	 7B					LD A, E	;1		24373	
+40AD	 2F					CPL	;1		24374	
+40AE	 2F					CPL	;1		24375	
+40AF	 2F					CPL	;1		24376	
+40B0	 2F					CPL	;1		24377	
+40B1	 2F					CPL	;1		24378	
+40B2	 2F					CPL	;1		24379	
+40B3	 2F					CPL	;1		24380	
+40B4	 2F					CPL	;1		24381	
+40B5	 2F					CPL	;1		24382	
+40B6	 2F					CPL	;1		24383	
+40B7	 7B					LD A, E	;1		24384	
+40B8	 36 15				LD (HL), d8	;3		24387	
+40BA	 12					LD (DE), A	;2		24389	
+40BB	 17					RLA	;1		24390	
+40BC	 0E 1C				LD, C, d8	;2		24392	
+40BE	 37					SCF	;1		24393	
+40BF	 2A					LD A, (HL+)	;2		24395	
+40C0	 7C					LD A, H	;1		24396	
+40C1	 2F					CPL	;1		24397	
+40C2	 2F					CPL	;1		24398	
+40C3	 2F					CPL	;1		24399	
+40C4	 2F					CPL	;1		24400	
+40C5	 2F					CPL	;1		24401	
+40C6	 2F					CPL	;1		24402	
+40C7	 2F					CPL	;1		24403	
+40C8	 2F					CPL	;1		24404	
+40C9	 2F					CPL	;1		24405	
+40CA	 2F					CPL	;1		24406	
+40CB	 7C					LD A, H	;1		24407	
+40CC	 36 2F				LD (HL), d8	;3		24410	
+40CE	 2F					CPL	;1		24411	
+40CF	 02					LD (BC), A	;2		24413	
+40D0	 05					DEC, B	;1		24414	
+40D1	 2F					CPL	;1		24415	
+40D2	 37					SCF	;1		24416	
+40D3	 2A					LD A, (HL+)	;2		24418	
+40D4	 7D					LD A, L	;1		24419	
+40D5	 2F					CPL	;1		24420	
+40D6	 2F					CPL	;1		24421	
+40D7	 2F					CPL	;1		24422	
+40D8	 2F					CPL	;1		24423	
+40D9	 2F					CPL	;1		24424	
+40DA	 2F					CPL	;1		24425	
+40DB	 2F					CPL	;1		24426	
+40DC	 2F					CPL	;1		24427	
+40DD	 2F					CPL	;1		24428	
+40DE	 2F					CPL	;1		24429	
+40DF	 7D					LD A, L	;1		24430	
+40E0	 33					INC, SP	;2		24432	
+40E1	 34					INC (HL)	;3		24435	
+40E2	 34					INC (HL)	;3		24438	
+40E3	 34					INC (HL)	;3		24441	
+40E4	 34					INC (HL)	;3		24444	
+40E5	 34					INC (HL)	;3		24447	
+40E6	 35					DEC (HL)	;3		24450	
+40E7	 2A					LD A, (HL+)	;2		24452	
+40E8	 7B					LD A, E	;1		24453	
+40E9	 2F					CPL	;1		24454	
+40EA	 2F					CPL	;1		24455	
+40EB	 2F					CPL	;1		24456	
+40EC	 2F					CPL	;1		24457	
+40ED	 2F					CPL	;1		24458	
+40EE	 2F					CPL	;1		24459	
+40EF	 2F					CPL	;1		24460	
+40F0	 2F					CPL	;1		24461	
+40F1	 2F					CPL	;1		24462	
+40F2	 2F					CPL	;1		24463	
+40F3	 7B					LD A, E	;1		24464	
+40F4	 2B					DEC, (HL)	;2		24466	
+40F5	 38 39				JR C s8	;3		24469	
+40F7	 39					ADD HL, SP	;2		24471	
+40F8	 39					ADD HL, SP	;2		24473	
+40F9	 39					ADD HL, SP	;2		24475	
+40FA	 3A					LD A, (HL-)	;2		24477	
+40FB	 2A					LD A, (HL+)	;2		24479	
+40FC	 7C					LD A, H	;1		24480	
+40FD	 2F					CPL	;1		24481	
+40FE	 2F					CPL	;1		24482	
+40FF	 2F					CPL	;1		24483	
+4100	 2F					CPL	;1		24484	
+4101	 2F					CPL	;1		24485	
+4102	 2F					CPL	;1		24486	
+4103	 2F					CPL	;1		24487	
+4104	 2F					CPL	;1		24488	
+4105	 2F					CPL	;1		24489	
+4106	 2F					CPL	;1		24490	
+4107	 7C					LD A, H	;1		24491	
+4108	 2B					DEC, (HL)	;2		24493	
+4109	 3B					DEC, SP	;2		24495	
+410A	 2F					CPL	;1		24496	
+410B	 2F					CPL	;1		24497	
+410C	 2F					CPL	;1		24498	
+410D	 2F					CPL	;1		24499	
+410E	 3C					INC, A	;1		24500	
+410F	 2A					LD A, (HL+)	;2		24502	
+4110	 7D					LD A, L	;1		24503	
+4111	 2F					CPL	;1		24504	
+4112	 2F					CPL	;1		24505	
+4113	 2F					CPL	;1		24506	
+4114	 2F					CPL	;1		24507	
+4115	 2F					CPL	;1		24508	
+4116	 2F					CPL	;1		24509	
+4117	 2F					CPL	;1		24510	
+4118	 2F					CPL	;1		24511	
+4119	 2F					CPL	;1		24512	
+411A	 2F					CPL	;1		24513	
+411B	 7D					LD A, L	;1		24514	
+411C	 2B					DEC, (HL)	;2		24516	
+411D	 3B					DEC, SP	;2		24518	
+411E	 2F					CPL	;1		24519	
+411F	 2F					CPL	;1		24520	
+4120	 2F					CPL	;1		24521	
+4121	 2F					CPL	;1		24522	
+4122	 3C					INC, A	;1		24523	
+4123	 2A					LD A, (HL+)	;2		24525	
+4124	 7B					LD A, E	;1		24526	
+4125	 2F					CPL	;1		24527	
+4126	 2F					CPL	;1		24528	
+4127	 2F					CPL	;1		24529	
+4128	 2F					CPL	;1		24530	
+4129	 2F					CPL	;1		24531	
+412A	 2F					CPL	;1		24532	
+412B	 2F					CPL	;1		24533	
+412C	 2F					CPL	;1		24534	
+412D	 2F					CPL	;1		24535	
+412E	 2F					CPL	;1		24536	
+412F	 7B					LD A, E	;1		24537	
+4130	 2B					DEC, (HL)	;2		24539	
+4131	 3B					DEC, SP	;2		24541	
+4132	 2F					CPL	;1		24542	
+4133	 2F					CPL	;1		24543	
+4134	 2F					CPL	;1		24544	
+4135	 2F					CPL	;1		24545	
+4136	 3C					INC, A	;1		24546	
+4137	 2A					LD A, (HL+)	;2		24548	
+4138	 7C					LD A, H	;1		24549	
+4139	 2F					CPL	;1		24550	
+413A	 2F					CPL	;1		24551	
+413B	 2F					CPL	;1		24552	
+413C	 2F					CPL	;1		24553	
+413D	 2F					CPL	;1		24554	
+413E	 2F					CPL	;1		24555	
+413F	 2F					CPL	;1		24556	
+4140	 2F					CPL	;1		24557	
+4141	 2F					CPL	;1		24558	
+4142	 2F					CPL	;1		24559	
+4143	 7C					LD A, H	;1		24560	
+4144	 2B					DEC, (HL)	;2		24562	
+4145	 3B					DEC, SP	;2		24564	
+4146	 2F					CPL	;1		24565	
+4147	 2F					CPL	;1		24566	
+4148	 2F					CPL	;1		24567	
+4149	 2F					CPL	;1		24568	
+414A	 3C					INC, A	;1		24569	
+414B	 2A					LD A, (HL+)	;2		24571	
+414C	 7D					LD A, L	;1		24572	
+414D	 2F					CPL	;1		24573	
+414E	 2F					CPL	;1		24574	
+414F	 2F					CPL	;1		24575	
+4150	 2F					CPL	;1		24576	
+4151	 2F					CPL	;1		24577	
+4152	 2F					CPL	;1		24578	
+4153	 2F					CPL	;1		24579	
+4154	 2F					CPL	;1		24580	
+4155	 2F					CPL	;1		24581	
+4156	 2F					CPL	;1		24582	
+4157	 7D					LD A, L	;1		24583	
+4158	 2B					DEC, (HL)	;2		24585	
+4159	 3D					DEC, A	;1		24586	
+415A	 3E 3E				LD, A, d8	;2		24588	
+415C	 3E 3E				LD, A, d8	;2		24590	
+415E	 3F					CCF	;1		24591	
+415F	 00					NOP	;1		24592	
+4160	 3C					INC, A	;1		24593	
+4161	 66					LD H, (HL)	;2		24595	
+4162	 66					LD H, (HL)	;2		24597	
+4163	 66					LD H, (HL)	;2		24599	
+4164	 66					LD H, (HL)	;2		24601	
+4165	 3C					INC, A	;1		24602	
+4166	 00					NOP	;1		24603	
+4167	 00					NOP	;1		24604	
+4168	 18 38				JR s8	;3		24607	
+416A	 18 18				JR s8	;3		24610	
+416C	 18 3C				JR s8	;3		24613	
+416E	 00					NOP	;1		24614	
+416F	 00					NOP	;1		24615	
+4170	 3C					INC, A	;1		24616	
+4171	 4E					LD C, (HL)	;2		24618	
+4172	 0E 3C				LD, C, d8	;2		24620	
+4174	 70					LD (HL), B	;2		24622	
+4175	 7E					LD A, (HL)	;2		24624	
+4176	 00					NOP	;1		24625	
+4177	 00					NOP	;1		24626	
+4178	 7C					LD A, H	;1		24627	
+4179	 0E 3C				LD, C, d8	;2		24629	
+417B	 0E 0E				LD, C, d8	;2		24631	
+417D	 7C					LD A, H	;1		24632	
+417E	 00					NOP	;1		24633	
+417F	 00					NOP	;1		24634	
+4180	 3C					INC, A	;1		24635	
+4181	 6C					LD L, H	;1		24636	
+4182	 4C					LD C, H	;1		24637	
+4183	 4E					LD C, (HL)	;2		24639	
+4184	 7E					LD A, (HL)	;2		24641	
+4185	 0C					INC, C	;1		24642	
+4186	 00					NOP	;1		24643	
+4187	 00					NOP	;1		24644	
+4188	 7C					LD A, H	;1		24645	
+4189	 60					LD H, B	;1		24646	
+418A	 7C					LD A, H	;1		24647	
+418B	 0E 4E				LD, C, d8	;2		24649	
+418D	 3C					INC, A	;1		24650	
+418E	 00					NOP	;1		24651	
+418F	 00					NOP	;1		24652	
+4190	 3C					INC, A	;1		24653	
+4191	 60					LD H, B	;1		24654	
+4192	 7C					LD A, H	;1		24655	
+4193	 66					LD H, (HL)	;2		24657	
+4194	 66					LD H, (HL)	;2		24659	
+4195	 3C					INC, A	;1		24660	
+4196	 00					NOP	;1		24661	
+4197	 00					NOP	;1		24662	
+4198	 7E					LD A, (HL)	;2		24664	
+4199	 06 0C				LD, B, d8	;2		24666	
+419B	 18 38				JR s8	;3		24669	
+419D	 38 00				JR C s8	;3		24672	
+419F	 00					NOP	;1		24673	
+41A0	 3C					INC, A	;1		24674	
+41A1	 4E					LD C, (HL)	;2		24676	
+41A2	 3C					INC, A	;1		24677	
+41A3	 4E					LD C, (HL)	;2		24679	
+41A4	 4E					LD C, (HL)	;2		24681	
+41A5	 3C					INC, A	;1		24682	
+41A6	 00					NOP	;1		24683	
+41A7	 00					NOP	;1		24684	
+41A8	 3C					INC, A	;1		24685	
+41A9	 4E					LD C, (HL)	;2		24687	
+41AA	 4E					LD C, (HL)	;2		24689	
+41AB	 3E 0E				LD, A, d8	;2		24691	
+41AD	 3C					INC, A	;1		24692	
+41AE	 00					NOP	;1		24693	
+41AF	 00					NOP	;1		24694	
+41B0	 3C					INC, A	;1		24695	
+41B1	 4E					LD C, (HL)	;2		24697	
+41B2	 4E					LD C, (HL)	;2		24699	
+41B3	 7E					LD A, (HL)	;2		24701	
+41B4	 4E					LD C, (HL)	;2		24703	
+41B5	 4E					LD C, (HL)	;2		24705	
+41B6	 00					NOP	;1		24706	
+41B7	 00					NOP	;1		24707	
+41B8	 7C					LD A, H	;1		24708	
+41B9	 66					LD H, (HL)	;2		24710	
+41BA	 7C					LD A, H	;1		24711	
+41BB	 66					LD H, (HL)	;2		24713	
+41BC	 66					LD H, (HL)	;2		24715	
+41BD	 7C					LD A, H	;1		24716	
+41BE	 00					NOP	;1		24717	
+41BF	 00					NOP	;1		24718	
+41C0	 3C					INC, A	;1		24719	
+41C1	 66					LD H, (HL)	;2		24721	
+41C2	 60					LD H, B	;1		24722	
+41C3	 60					LD H, B	;1		24723	
+41C4	 66					LD H, (HL)	;2		24725	
+41C5	 3C					INC, A	;1		24726	
+41C6	 00					NOP	;1		24727	
+41C7	 00					NOP	;1		24728	
+41C8	 7C					LD A, H	;1		24729	
+41C9	 4E					LD C, (HL)	;2		24731	
+41CA	 4E					LD C, (HL)	;2		24733	
+41CB	 4E					LD C, (HL)	;2		24735	
+41CC	 4E					LD C, (HL)	;2		24737	
+41CD	 7C					LD A, H	;1		24738	
+41CE	 00					NOP	;1		24739	
+41CF	 00					NOP	;1		24740	
+41D0	 7E					LD A, (HL)	;2		24742	
+41D1	 60					LD H, B	;1		24743	
+41D2	 7C					LD A, H	;1		24744	
+41D3	 60					LD H, B	;1		24745	
+41D4	 60					LD H, B	;1		24746	
+41D5	 7E					LD A, (HL)	;2		24748	
+41D6	 00					NOP	;1		24749	
+41D7	 00					NOP	;1		24750	
+41D8	 7E					LD A, (HL)	;2		24752	
+41D9	 60					LD H, B	;1		24753	
+41DA	 60					LD H, B	;1		24754	
+41DB	 7C					LD A, H	;1		24755	
+41DC	 60					LD H, B	;1		24756	
+41DD	 60					LD H, B	;1		24757	
+41DE	 00					NOP	;1		24758	
+41DF	 00					NOP	;1		24759	
+41E0	 3C					INC, A	;1		24760	
+41E1	 66					LD H, (HL)	;2		24762	
+41E2	 60					LD H, B	;1		24763	
+41E3	 6E					LD L, (HL)	;2		24765	
+41E4	 66					LD H, (HL)	;2		24767	
+41E5	 3E 00				LD, A, d8	;2		24769	
+41E7	 00					NOP	;1		24770	
+41E8	 46					LD B, (HL)	;2		24772	
+41E9	 46					LD B, (HL)	;2		24774	
+41EA	 7E					LD A, (HL)	;2		24776	
+41EB	 46					LD B, (HL)	;2		24778	
+41EC	 46					LD B, (HL)	;2		24780	
+41ED	 46					LD B, (HL)	;2		24782	
+41EE	 00					NOP	;1		24783	
+41EF	 00					NOP	;1		24784	
+41F0	 3C					INC, A	;1		24785	
+41F1	 18 18				JR s8	;3		24788	
+41F3	 18 18				JR s8	;3		24791	
+41F5	 3C					INC, A	;1		24792	
+41F6	 00					NOP	;1		24793	
+41F7	 00					NOP	;1		24794	
+41F8	 1E 0C				LD, E, d8	;2		24796	
+41FA	 0C					INC, C	;1		24797	
+41FB	 6C					LD L, H	;1		24798	
+41FC	 6C					LD L, H	;1		24799	
+41FD	 38 00				JR C s8	;3		24802	
+41FF	 00					NOP	;1		24803	
+4200	 66					LD H, (HL)	;2		24805	
+4201	 6C					LD L, H	;1		24806	
+4202	 78					LD A, B	;1		24807	
+4203	 78					LD A, B	;1		24808	
+4204	 6C					LD L, H	;1		24809	
+4205	 66					LD H, (HL)	;2		24811	
+4206	 00					NOP	;1		24812	
+4207	 00					NOP	;1		24813	
+4208	 60					LD H, B	;1		24814	
+4209	 60					LD H, B	;1		24815	
+420A	 60					LD H, B	;1		24816	
+420B	 60					LD H, B	;1		24817	
+420C	 60					LD H, B	;1		24818	
+420D	 7E					LD A, (HL)	;2		24820	
+420E	 00					NOP	;1		24821	
+420F	 00					NOP	;1		24822	
+4210	 46					LD B, (HL)	;2		24824	
+4211	 6E					LD L, (HL)	;2		24826	
+4212	 7E					LD A, (HL)	;2		24828	
+4213	 56					LD D, (HL)	;2		24830	
+4214	 46					LD B, (HL)	;2		24832	
+4215	 46					LD B, (HL)	;2		24834	
+4216	 00					NOP	;1		24835	
+4217	 00					NOP	;1		24836	
+4218	 46					LD B, (HL)	;2		24838	
+4219	 66					LD H, (HL)	;2		24840	
+421A	 76					HALT	;1		24841	
+421B	 5E					LD E, (HL)	;2		24843	
+421C	 4E					LD C, (HL)	;2		24845	
+421D	 46					LD B, (HL)	;2		24847	
+421E	 00					NOP	;1		24848	
+421F	 00					NOP	;1		24849	
+4220	 3C					INC, A	;1		24850	
+4221	 66					LD H, (HL)	;2		24852	
+4222	 66					LD H, (HL)	;2		24854	
+4223	 66					LD H, (HL)	;2		24856	
+4224	 66					LD H, (HL)	;2		24858	
+4225	 3C					INC, A	;1		24859	
+4226	 00					NOP	;1		24860	
+4227	 00					NOP	;1		24861	
+4228	 7C					LD A, H	;1		24862	
+4229	 66					LD H, (HL)	;2		24864	
+422A	 66					LD H, (HL)	;2		24866	
+422B	 7C					LD A, H	;1		24867	
+422C	 60					LD H, B	;1		24868	
+422D	 60					LD H, B	;1		24869	
+422E	 00					NOP	;1		24870	
+422F	 00					NOP	;1		24871	
+4230	 3C					INC, A	;1		24872	
+4231	 62					LD H, D	;1		24873	
+4232	 62					LD H, D	;1		24874	
+4233	 6A					LD L, D	;1		24875	
+4234	 64					LD H, H	;1		24876	
+4235	 3A					LD A, (HL-)	;2		24878	
+4236	 00					NOP	;1		24879	
+4237	 00					NOP	;1		24880	
+4238	 7C					LD A, H	;1		24881	
+4239	 66					LD H, (HL)	;2		24883	
+423A	 66					LD H, (HL)	;2		24885	
+423B	 7C					LD A, H	;1		24886	
+423C	 68					LD L, B	;1		24887	
+423D	 66					LD H, (HL)	;2		24889	
+423E	 00					NOP	;1		24890	
+423F	 00					NOP	;1		24891	
+4240	 3C					INC, A	;1		24892	
+4241	 60					LD H, B	;1		24893	
+4242	 3C					INC, A	;1		24894	
+4243	 0E 4E				LD, C, d8	;2		24896	
+4245	 3C					INC, A	;1		24897	
+4246	 00					NOP	;1		24898	
+4247	 00					NOP	;1		24899	
+4248	 7E					LD A, (HL)	;2		24901	
+4249	 18 18				JR s8	;3		24904	
+424B	 18 18				JR s8	;3		24907	
+424D	 18 00				JR s8	;3		24910	
+424F	 00					NOP	;1		24911	
+4250	 46					LD B, (HL)	;2		24913	
+4251	 46					LD B, (HL)	;2		24915	
+4252	 46					LD B, (HL)	;2		24917	
+4253	 46					LD B, (HL)	;2		24919	
+4254	 4E					LD C, (HL)	;2		24921	
+4255	 3C					INC, A	;1		24922	
+4256	 00					NOP	;1		24923	
+4257	 00					NOP	;1		24924	
+4258	 46					LD B, (HL)	;2		24926	
+4259	 46					LD B, (HL)	;2		24928	
+425A	 46					LD B, (HL)	;2		24930	
+425B	 46					LD B, (HL)	;2		24932	
+425C	 2C					INC, L	;1		24933	
+425D	 18 00				JR s8	;3		24936	
+425F	 00					NOP	;1		24937	
+4260	 46					LD B, (HL)	;2		24939	
+4261	 46					LD B, (HL)	;2		24941	
+4262	 56					LD D, (HL)	;2		24943	
+4263	 7E					LD A, (HL)	;2		24945	
+4264	 6E					LD L, (HL)	;2		24947	
+4265	 46					LD B, (HL)	;2		24949	
+4266	 00					NOP	;1		24950	
+4267	 00					NOP	;1		24951	
+4268	 46					LD B, (HL)	;2		24953	
+4269	 2C					INC, L	;1		24954	
+426A	 18 38				JR s8	;3		24957	
+426C	 64					LD H, H	;1		24958	
+426D	 42					LD B, D	;1		24959	
+426E	 00					NOP	;1		24960	
+426F	 00					NOP	;1		24961	
+4270	 66					LD H, (HL)	;2		24963	
+4271	 66					LD H, (HL)	;2		24965	
+4272	 3C					INC, A	;1		24966	
+4273	 18 18				JR s8	;3		24969	
+4275	 18 00				JR s8	;3		24972	
+4277	 00					NOP	;1		24973	
+4278	 7E					LD A, (HL)	;2		24975	
+4279	 0E 1C				LD, C, d8	;2		24977	
+427B	 38 70				JR C s8	;3		24980	
+427D	 7E					LD A, (HL)	;2		24982	
+427E	 00					NOP	;1		24983	
+427F	 00					NOP	;1		24984	
+4280	 00					NOP	;1		24985	
+4281	 00					NOP	;1		24986	
+4282	 00					NOP	;1		24987	
+4283	 00					NOP	;1		24988	
+4284	 60					LD H, B	;1		24989	
+4285	 60					LD H, B	;1		24990	
+4286	 00					NOP	;1		24991	
+4287	 00					NOP	;1		24992	
+4288	 00					NOP	;1		24993	
+4289	 00					NOP	;1		24994	
+428A	 3C					INC, A	;1		24995	
+428B	 3C					INC, A	;1		24996	
+428C	 00					NOP	;1		24997	
+428D	 00					NOP	;1		24998	
+428E	 00					NOP	;1		24999	
+428F	 00					NOP	;1		25000	
+4290	 00					NOP	;1		25001	
+4291	 22					LD (HL+), A	;2		25003	
+4292	 14					INC, D	;1		25004	
+4293	 08 14 22			LD (a16), SP	;5		25009	
+4296	 00					NOP	;1		25010	
+4297	 00					NOP	;1		25011	
+4298	 00					NOP	;1		25012	
+4299	 36 36				LD (HL), d8	;3		25015	
+429B	 5F					LD E, A	;1		25016	
+429C	 49					LD C, C	;1		25017	
+429D	 5F					LD E, A	;1		25018	
+429E	 41					LD B, C	;1		25019	
+429F	 7F					LD A, A	;1		25020	
+42A0	 41					LD B, C	;1		25021	
+42A1	 3E 22				LD, A, d8	;2		25023	
+42A3	 1C					INC, E	;1		25024	
+42A4	 14					INC, D	;1		25025	
+42A5	 08 08 FF			LD (a16), SP	;5		25030	
+42A8	 FF					RST 7	;4		25034	
+42A9	 FF					RST 7	;4		25038	
+42AA	 81					ADD A, C	;1		25039	
+42AB	 C1					POP BC	;3		25042	
+42AC	 BF					CP A	;1		25043	
+42AD	 C1					POP BC	;3		25046	
+42AE	 BF					CP A	;1		25047	
+42AF	 C1					POP BC	;3		25050	
+42B0	 BF					CP A	;1		25051	
+42B1	 C1					POP BC	;3		25054	
+42B2	 BF					CP A	;1		25055	
+42B3	 81					ADD A, C	;1		25056	
+42B4	 FF					RST 7	;4		25060	
+42B5	 FF					RST 7	;4		25064	
+42B6	 FF					RST 7	;4		25068	
+42B7	 AA					XOR D	;1		25069	
+42B8	 AA					XOR D	;1		25070	
+42B9	 00					NOP	;1		25071	
+42BA	 00					NOP	;1		25072	
+42BB	 00					NOP	;1		25073	
+42BC	 00					NOP	;1		25074	
+42BD	 00					NOP	;1		25075	
+42BE	 00					NOP	;1		25076	
+42BF	 00					NOP	;1		25077	
+42C0	 00					NOP	;1		25078	
+42C1	 00					NOP	;1		25079	
+42C2	 00					NOP	;1		25080	
+42C3	 00					NOP	;1		25081	
+42C4	 00					NOP	;1		25082	
+42C5	 00					NOP	;1		25083	
+42C6	 00					NOP	;1		25084	
+42C7	 FE FE				CP d8	;2		25086	
+42C9	 FE FE				CP d8	;2		25088	
+42CB	 FE FE				CP d8	;2		25090	
+42CD	 FE FE				CP d8	;2		25092	
+42CF	 FE FE				CP d8	;2		25094	
+42D1	 FE FE				CP d8	;2		25096	
+42D3	 FE FE				CP d8	;2		25098	
+42D5	 FE FE				CP d8	;2		25100	
+42D7	 7F					LD A, A	;1		25101	
+42D8	 7F					LD A, A	;1		25102	
+42D9	 7F					LD A, A	;1		25103	
+42DA	 7F					LD A, A	;1		25104	
+42DB	 7F					LD A, A	;1		25105	
+42DC	 7F					LD A, A	;1		25106	
+42DD	 7F					LD A, A	;1		25107	
+42DE	 7F					LD A, A	;1		25108	
+42DF	 7F					LD A, A	;1		25109	
+42E0	 7F					LD A, A	;1		25110	
+42E1	 7F					LD A, A	;1		25111	
+42E2	 7F					LD A, A	;1		25112	
+42E3	 7F					LD A, A	;1		25113	
+42E4	 7F					LD A, A	;1		25114	
+42E5	 7F					LD A, A	;1		25115	
+42E6	 7F					LD A, A	;1		25116	
+42E7	 FF					RST 7	;4		25120	
+42E8	 00					NOP	;1		25121	
+42E9	 FF					RST 7	;4		25125	
+42EA	 40					LD B, B	;1		25126	
+42EB	 FF					RST 7	;4		25130	
+42EC	 02					LD (BC), A	;2		25132	
+42ED	 FF					RST 7	;4		25136	
+42EE	 00					NOP	;1		25137	
+42EF	 FF					RST 7	;4		25141	
+42F0	 10 FF				STOP	;1		25142	
+42F2	 80					ADD A, B	;1		25143	
+42F3	 FF					RST 7	;4		25147	
+42F4	 02					LD (BC), A	;2		25149	
+42F5	 FF					RST 7	;4		25153	
+42F6	 00					NOP	;1		25154	
+42F7	 F0 10				LD A, (a8)	;2		25156	
+42F9	 FF					RST 7	;4		25160	
+42FA	 1F					RRA	;1		25161	
+42FB	 FF					RST 7	;4		25165	
+42FC	 00					NOP	;1		25166	
+42FD	 FF					RST 7	;4		25170	
+42FE	 40					LD B, B	;1		25171	
+42FF	 FF					RST 7	;4		25175	
+4300	 00					NOP	;1		25176	
+4301	 FF					RST 7	;4		25180	
+4302	 02					LD (BC), A	;2		25182	
+4303	 FF					RST 7	;4		25186	
+4304	 40					LD B, B	;1		25187	
+4305	 FF					RST 7	;4		25191	
+4306	 00					NOP	;1		25192	
+4307	 0F					RRCA	;1		25193	
+4308	 08 FF F8			LD (a16), SP	;5		25198	
+430B	 FF					RST 7	;4		25202	
+430C	 00					NOP	;1		25203	
+430D	 FF					RST 7	;4		25207	
+430E	 02					LD (BC), A	;2		25209	
+430F	 FF					RST 7	;4		25213	
+4310	 00					NOP	;1		25214	
+4311	 FF					RST 7	;4		25218	
+4312	 40					LD B, B	;1		25219	
+4313	 FF					RST 7	;4		25223	
+4314	 02					LD (BC), A	;2		25225	
+4315	 FF					RST 7	;4		25229	
+4316	 00					NOP	;1		25230	
+4317	 00					NOP	;1		25231	
+4318	 00					NOP	;1		25232	
+4319	 00					NOP	;1		25233	
+431A	 00					NOP	;1		25234	
+431B	 00					NOP	;1		25235	
+431C	 00					NOP	;1		25236	
+431D	 00					NOP	;1		25237	
+431E	 00					NOP	;1		25238	
+431F	 00					NOP	;1		25239	
+4320	 00					NOP	;1		25240	
+4321	 00					NOP	;1		25241	
+4322	 00					NOP	;1		25242	
+4323	 00					NOP	;1		25243	
+4324	 00					NOP	;1		25244	
+4325	 00					NOP	;1		25245	
+4326	 00					NOP	;1		25246	
+4327	 00					NOP	;1		25247	
+4328	 00					NOP	;1		25248	
+4329	 00					NOP	;1		25249	
+432A	 00					NOP	;1		25250	
+432B	 18 18				JR s8	;3		25253	
+432D	 38 38				JR C s8	;3		25256	
+432F	 18 18				JR s8	;3		25259	
+4331	 18 18				JR s8	;3		25262	
+4333	 18 18				JR s8	;3		25265	
+4335	 3C					INC, A	;1		25266	
+4336	 3C					INC, A	;1		25267	
+4337	 00					NOP	;1		25268	
+4338	 00					NOP	;1		25269	
+4339	 00					NOP	;1		25270	
+433A	 00					NOP	;1		25271	
+433B	 3C					INC, A	;1		25272	
+433C	 3C					INC, A	;1		25273	
+433D	 4E					LD C, (HL)	;2		25275	
+433E	 4E					LD C, (HL)	;2		25277	
+433F	 4E					LD C, (HL)	;2		25279	
+4340	 4E					LD C, (HL)	;2		25281	
+4341	 3E 3E				LD, A, d8	;2		25283	
+4343	 0E 0E				LD, C, d8	;2		25285	
+4345	 3C					INC, A	;1		25286	
+4346	 3C					INC, A	;1		25287	
+4347	 00					NOP	;1		25288	
+4348	 00					NOP	;1		25289	
+4349	 00					NOP	;1		25290	
+434A	 00					NOP	;1		25291	
+434B	 3C					INC, A	;1		25292	
+434C	 3C					INC, A	;1		25293	
+434D	 4E					LD C, (HL)	;2		25295	
+434E	 4E					LD C, (HL)	;2		25297	
+434F	 3C					INC, A	;1		25298	
+4350	 3C					INC, A	;1		25299	
+4351	 4E					LD C, (HL)	;2		25301	
+4352	 4E					LD C, (HL)	;2		25303	
+4353	 4E					LD C, (HL)	;2		25305	
+4354	 4E					LD C, (HL)	;2		25307	
+4355	 3C					INC, A	;1		25308	
+4356	 3C					INC, A	;1		25309	
+4357	 00					NOP	;1		25310	
+4358	 00					NOP	;1		25311	
+4359	 38 38				JR C s8	;3		25314	
+435B	 44					LD B, H	;1		25315	
+435C	 44					LD B, H	;1		25316	
+435D	 BA					CP D	;1		25317	
+435E	 BA					CP D	;1		25318	
+435F	 A2					AND D	;1		25319	
+4360	 A2					AND D	;1		25320	
+4361	 BA					CP D	;1		25321	
+4362	 BA					CP D	;1		25322	
+4363	 44					LD B, H	;1		25323	
+4364	 44					LD B, H	;1		25324	
+4365	 38 38				JR C s8	;3		25327	
+4367	 C6 C6				ADD A, d8	;2		25329	
+4369	 E6 E6				AND d8	;2		25331	
+436B	 E6 E6				AND d8	;2		25333	
+436D	 D6 D6				SUB d8	;2		25335	
+436F	 D6 D6				SUB d8	;2		25337	
+4371	 CE CE				ADC A, d8	;2		25339	
+4373	 CE CE				ADC A, d8	;2		25341	
+4375	 C6 C6				ADD A, d8	;2		25343	
+4377	 C0					RET NZ	;5		25348	
+4378	 C0					RET NZ	;5		25353	
+4379	 C0					RET NZ	;5		25358	
+437A	 C0					RET NZ	;5		25363	
+437B	 00					NOP	;1		25364	
+437C	 00					NOP	;1		25365	
+437D	 DB		
+437E	 DB		
+437F	 DD		
+4380	 DD		
+4381	 D9					RETI	;4		25369	
+4382	 D9					RETI	;4		25373	
+4383	 D9					RETI	;4		25377	
+4384	 D9					RETI	;4		25381	
+4385	 D9					RETI	;4		25385	
+4386	 D9					RETI	;4		25389	
+4387	 00					NOP	;1		25390	
+4388	 00					NOP	;1		25391	
+4389	 30 30				JR NC s8	;3		25394	
+438B	 78					LD A, B	;1		25395	
+438C	 78					LD A, B	;1		25396	
+438D	 33					INC, SP	;2		25398	
+438E	 33					INC, SP	;2		25400	
+438F	 B6					OR (HL)	;2		25402	
+4390	 B6					OR (HL)	;2		25404	
+4391	 B7					OR A	;1		25405	
+4392	 B7					OR A	;1		25406	
+4393	 B6					OR (HL)	;2		25408	
+4394	 B6					OR (HL)	;2		25410	
+4395	 B3					OR E	;1		25411	
+4396	 B3					OR E	;1		25412	
+4397	 00					NOP	;1		25413	
+4398	 00					NOP	;1		25414	
+4399	 00					NOP	;1		25415	
+439A	 00					NOP	;1		25416	
+439B	 00					NOP	;1		25417	
+439C	 00					NOP	;1		25418	
+439D	 CD CD 6E			CALL a16	;6		25424	
+43A0	 6E					LD L, (HL)	;2		25426	
+43A1	 EC		
+43A2	 EC		
+43A3	 0C					INC, C	;1		25427	
+43A4	 0C					INC, C	;1		25428	
+43A5	 EC		
+43A6	 EC		
+43A7	 01 01 01			LD BC, d16	;3		25431	
+43AA	 01 01 01			LD BC, d16	;3		25434	
+43AD	 8F					ADC A, A	;1		25435	
+43AE	 8F					ADC A, A	;1		25436	
+43AF	 D9					RETI	;4		25440	
+43B0	 D9					RETI	;4		25444	
+43B1	 D9					RETI	;4		25448	
+43B2	 D9					RETI	;4		25452	
+43B3	 D9					RETI	;4		25456	
+43B4	 D9					RETI	;4		25460	
+43B5	 CF					RST 1	;4		25464	
+43B6	 CF					RST 1	;4		25468	
+43B7	 80					ADD A, B	;1		25469	
+43B8	 80					ADD A, B	;1		25470	
+43B9	 80					ADD A, B	;1		25471	
+43BA	 80					ADD A, B	;1		25472	
+43BB	 80					ADD A, B	;1		25473	
+43BC	 80					ADD A, B	;1		25474	
+43BD	 9E					SBC A, (HL)	;2		25476	
+43BE	 9E					SBC A, (HL)	;2		25478	
+43BF	 B3					OR E	;1		25479	
+43C0	 B3					OR E	;1		25480	
+43C1	 B3					OR E	;1		25481	
+43C2	 B3					OR E	;1		25482	
+43C3	 B3					OR E	;1		25483	
+43C4	 B3					OR E	;1		25484	
+43C5	 9E					SBC A, (HL)	;2		25486	
+43C6	 9E					SBC A, (HL)	;2		25488	
+43C7	 FF					RST 7	;4		25492	
+43C8	 00					NOP	;1		25493	
+43C9	 FF					RST 7	;4		25497	
+43CA	 00					NOP	;1		25498	
+43CB	 FF					RST 7	;4		25502	
+43CC	 00					NOP	;1		25503	
+43CD	 EF					RST 5	;4		25507	
+43CE	 00					NOP	;1		25508	
+43CF	 FF					RST 7	;4		25512	
+43D0	 00					NOP	;1		25513	
+43D1	 FF					RST 7	;4		25517	
+43D2	 00					NOP	;1		25518	
+43D3	 FF					RST 7	;4		25522	
+43D4	 00					NOP	;1		25523	
+43D5	 FF					RST 7	;4		25527	
+43D6	 00					NOP	;1		25528	
+43D7	 FF					RST 7	;4		25532	
+43D8	 00					NOP	;1		25533	
+43D9	 FF					RST 7	;4		25537	
+43DA	 00					NOP	;1		25538	
+43DB	 FF					RST 7	;4		25542	
+43DC	 00					NOP	;1		25543	
+43DD	 E7					RST 4	;4		25547	
+43DE	 00					NOP	;1		25548	
+43DF	 E7					RST 4	;4		25552	
+43E0	 00					NOP	;1		25553	
+43E1	 FF					RST 7	;4		25557	
+43E2	 00					NOP	;1		25558	
+43E3	 FF					RST 7	;4		25562	
+43E4	 00					NOP	;1		25563	
+43E5	 FF					RST 7	;4		25567	
+43E6	 00					NOP	;1		25568	
+43E7	 00					NOP	;1		25569	
+43E8	 FF					RST 7	;4		25573	
+43E9	 FF					RST 7	;4		25577	
+43EA	 FF					RST 7	;4		25581	
+43EB	 00					NOP	;1		25582	
+43EC	 FF					RST 7	;4		25586	
+43ED	 00					NOP	;1		25587	
+43EE	 FF					RST 7	;4		25591	
+43EF	 FF					RST 7	;4		25595	
+43F0	 00					NOP	;1		25596	
+43F1	 00					NOP	;1		25597	
+43F2	 FF					RST 7	;4		25601	
+43F3	 FF					RST 7	;4		25605	
+43F4	 00					NOP	;1		25606	
+43F5	 FF					RST 7	;4		25610	
+43F6	 00					NOP	;1		25611	
+43F7	 00					NOP	;1		25612	
+43F8	 FF					RST 7	;4		25616	
+43F9	 FF					RST 7	;4		25620	
+43FA	 FF					RST 7	;4		25624	
+43FB	 01 FF 02			LD BC, d16	;3		25627	
+43FE	 FE FE				CP d8	;2		25629	
+4400	 02					LD (BC), A	;2		25631	
+4401	 04					INC, B	;1		25632	
+4402	 FC		
+4403	 FC		
+4404	 04					INC, B	;1		25633	
+4405	 FC		
+4406	 04					INC, B	;1		25634	
+4407	 00					NOP	;1		25635	
+4408	 FF					RST 7	;4		25639	
+4409	 FF					RST 7	;4		25643	
+440A	 FF					RST 7	;4		25647	
+440B	 80					ADD A, B	;1		25648	
+440C	 FF					RST 7	;4		25652	
+440D	 40					LD B, B	;1		25653	
+440E	 7F					LD A, A	;1		25654	
+440F	 FF					RST 7	;4		25658	
+4410	 40					LD B, B	;1		25659	
+4411	 E0 3F				LD (a8), A	;3		25662	
+4413	 FF					RST 7	;4		25666	
+4414	 20 BF				JR NZ s8	;3		25669	
+4416	 60					LD H, B	;1		25670	
+4417	 FF					RST 7	;4		25674	
+4418	 00					NOP	;1		25675	
+4419	 FF					RST 7	;4		25679	
+441A	 00					NOP	;1		25680	
+441B	 FF					RST 7	;4		25684	
+441C	 01 FE 02			LD BC, d16	;3		25687	
+441F	 FE 02				CP d8	;2		25689	
+4421	 FC		
+4423	 FC		
+4425	 FC		
+4427	 FF					RST 7	;4		25693	
+4428	 00					NOP	;1		25694	
+4429	 FF					RST 7	;4		25698	
+442A	 00					NOP	;1		25699	
+442B	 FF					RST 7	;4		25703	
+442C	 80					ADD A, B	;1		25704	
+442D	 7F					LD A, A	;1		25705	
+442E	 40					LD B, B	;1		25706	
+442F	 FF					RST 7	;4		25710	
+4430	 40					LD B, B	;1		25711	
+4431	 FF					RST 7	;4		25715	
+4432	 20 FF				JR NZ s8	;3		25718	
+4434	 20 BF				JR NZ s8	;3		25721	
+4436	 60					LD H, B	;1		25722	
+4437	 FF					RST 7	;4		25726	
+4438	 FF					RST 7	;4		25730	
+4439	 FF					RST 7	;4		25734	
+443A	 FF					RST 7	;4		25738	
+443B	 FF					RST 7	;4		25742	
+443C	 FF					RST 7	;4		25746	
+443D	 FF					RST 7	;4		25750	
+443E	 FF					RST 7	;4		25754	
+443F	 FF					RST 7	;4		25758	
+4440	 FF					RST 7	;4		25762	
+4441	 FF					RST 7	;4		25766	
+4442	 FF					RST 7	;4		25770	
+4443	 00					NOP	;1		25771	
+4444	 00					NOP	;1		25772	
+4445	 00					NOP	;1		25773	
+4446	 00					NOP	;1		25774	
+4447	 FF					RST 7	;4		25778	
+4448	 02					LD (BC), A	;2		25780	
+4449	 FF					RST 7	;4		25784	
+444A	 01 FF 01			LD BC, d16	;3		25787	
+444D	 FF					RST 7	;4		25791	
+444E	 01 FF 01			LD BC, d16	;3		25794	
+4451	 FF					RST 7	;4		25798	
+4452	 01 FF 01			LD BC, d16	;3		25801	
+4455	 FF					RST 7	;4		25805	
+4456	 01 7F C0			LD BC, d16	;3		25808	
+4459	 FF					RST 7	;4		25812	
+445A	 80					ADD A, B	;1		25813	
+445B	 FF					RST 7	;4		25817	
+445C	 80					ADD A, B	;1		25818	
+445D	 FF					RST 7	;4		25822	
+445E	 80					ADD A, B	;1		25823	
+445F	 FF					RST 7	;4		25827	
+4460	 80					ADD A, B	;1		25828	
+4461	 FF					RST 7	;4		25832	
+4462	 80					ADD A, B	;1		25833	
+4463	 FF					RST 7	;4		25837	
+4464	 80					ADD A, B	;1		25838	
+4465	 FF					RST 7	;4		25842	
+4466	 80					ADD A, B	;1		25843	
+4467	 FE 02				CP d8	;2		25845	
+4469	 FE 02				CP d8	;2		25847	
+446B	 FF					RST 7	;4		25851	
+446C	 03					INC, BC	;2		25853	
+446D	 FC		
+446E	 05					DEC, B	;1		25854	
+446F	 F8 09				LD HL, SP+s8	;3		25857	
+4471	 F1					POP AF	;3		25860	
+4472	 12					LD (DE), A	;2		25862	
+4473	 E1					POP (HL)	;3		25865	
+4474	 26 C3				LD, H, d8	;2		25867	
+4476	 4C					LD C, H	;1		25868	
+4477	 7F					LD A, A	;1		25869	
+4478	 C0					RET NZ	;5		25874	
+4479	 7F					LD A, A	;1		25875	
+447A	 C0					RET NZ	;5		25880	
+447B	 FF					RST 7	;4		25884	
+447C	 C0					RET NZ	;5		25889	
+447D	 BF					CP A	;1		25890	
+447E	 60					LD H, B	;1		25891	
+447F	 9F					SBC A, A	;1		25892	
+4480	 70					LD (HL), B	;2		25894	
+4481	 AF					XOR A	;1		25895	
+4482	 58					LD E, B	;1		25896	
+4483	 27					DAA	;1		25897	
+4484	 DC 33 CE			CALL C, a16	;6		25903	
+4487	 FF					RST 7	;4		25907	
+4488	 00					NOP	;1		25908	
+4489	 FF					RST 7	;4		25912	
+448A	 01 FE 02			LD BC, d16	;3		25915	
+448D	 FC		
+4490	 09					ADD HL, BC	;2		25917	
+4491	 F0 13				LD A, (a8)	;2		25919	
+4493	 E0 27				LD (a8), A	;3		25922	
+4495	 E0 2F				LD (a8), A	;3		25925	
+4497	 87					ADD A, A	;1		25926	
+4498	 98					SBC A, B	;1		25927	
+4499	 06 39				LD, B, d8	;2		25929	
+449B	 0E 71				LD, C, d8	;2		25931	
+449D	 1E E1				LD, E, d8	;2		25933	
+449F	 3C					INC, A	;1		25934	
+44A0	 C3 3C C3			JP a16	;4		25938	
+44A3	 78					LD A, B	;1		25939	
+44A4	 87					ADD A, A	;1		25940	
+44A5	 78					LD A, B	;1		25941	
+44A6	 87					ADD A, A	;1		25942	
+44A7	 35					DEC (HL)	;3		25945	
+44A8	 CB		
+44A9	 32					LD (HL-), A	;2		25947	
+44AA	 CD 3A C5			CALL a16	;6		25953	
+44AD	 79					LD A, C	;1		25954	
+44AE	 86					ADD A, (HL)	;2		25956	
+44AF	 78					LD A, B	;1		25957	
+44B0	 87					ADD A, A	;1		25958	
+44B1	 78					LD A, B	;1		25959	
+44B2	 87					ADD A, A	;1		25960	
+44B3	 7C					LD A, H	;1		25961	
+44B4	 83					ADD A, E	;1		25962	
+44B5	 7C					LD A, H	;1		25963	
+44B6	 83					ADD A, E	;1		25964	
+44B7	 FF					RST 7	;4		25968	
+44B8	 00					NOP	;1		25969	
+44B9	 FF					RST 7	;4		25973	
+44BA	 80					ADD A, B	;1		25974	
+44BB	 7F					LD A, A	;1		25975	
+44BC	 C0					RET NZ	;5		25980	
+44BD	 3F					CCF	;1		25981	
+44BE	 E0 9F				LD (a8), A	;3		25984	
+44C0	 70					LD (HL), B	;2		25986	
+44C1	 4F					LD C, A	;1		25987	
+44C2	 B8					CP B	;1		25988	
+44C3	 67					LD H, A	;1		25989	
+44C4	 9C					SBC A, H	;1		25990	
+44C5	 37					SCF	;1		25991	
+44C6	 CC C0 4F			CALL Z, a16	;6		25997	
+44C9	 C0					RET NZ	;5		26002	
+44CA	 4F					LD C, A	;1		26003	
+44CB	 80					ADD A, B	;1		26004	
+44CC	 9F					SBC A, A	;1		26005	
+44CD	 80					ADD A, B	;1		26006	
+44CE	 9F					SBC A, A	;1		26007	
+44CF	 80					ADD A, B	;1		26008	
+44D0	 9F					SBC A, A	;1		26009	
+44D1	 80					ADD A, B	;1		26010	
+44D2	 9F					SBC A, A	;1		26011	
+44D3	 80					ADD A, B	;1		26012	
+44D4	 9F					SBC A, A	;1		26013	
+44D5	 80					ADD A, B	;1		26014	
+44D6	 9F					SBC A, A	;1		26015	
+44D7	 F8 07				LD HL, SP+s8	;3		26018	
+44D9	 F0 0F				LD A, (a8)	;2		26020	
+44DB	 F0 0F				LD A, (a8)	;2		26022	
+44DD	 F0 0F				LD A, (a8)	;2		26024	
+44DF	 F0 0F				LD A, (a8)	;2		26026	
+44E1	 F0 0F				LD A, (a8)	;2		26028	
+44E3	 F0 0F				LD A, (a8)	;2		26030	
+44E5	 F8 07				LD HL, SP+s8	;3		26033	
+44E7	 7C					LD A, H	;1		26034	
+44E8	 83					ADD A, E	;1		26035	
+44E9	 7E					LD A, (HL)	;2		26037	
+44EA	 81					ADD A, C	;1		26038	
+44EB	 7E					LD A, (HL)	;2		26040	
+44EC	 81					ADD A, C	;1		26041	
+44ED	 3E C1				LD, A, d8	;2		26043	
+44EF	 3F					CCF	;1		26044	
+44F0	 C0					RET NZ	;5		26049	
+44F1	 1F					RRA	;1		26050	
+44F2	 E0 1F				LD (a8), A	;3		26053	
+44F4	 E0 1F				LD (a8), A	;3		26056	
+44F6	 E0 33				LD (a8), A	;3		26059	
+44F8	 CE 1B				ADC A, d8	;2		26061	
+44FA	 E6 09				AND d8	;2		26063	
+44FC	 F7					RST 6	;4		26067	
+44FD	 0D					DEC, C	;1		26068	
+44FE	 F3					DI	;1		26069	
+44FF	 0D					DEC, C	;1		26070	
+4500	 F3					DI	;1		26071	
+4501	 0D					DEC, C	;1		26072	
+4502	 F3					DI	;1		26073	
+4503	 0D					DEC, C	;1		26074	
+4504	 F3					DI	;1		26075	
+4505	 09					ADD HL, BC	;2		26077	
+4506	 F7					RST 6	;4		26081	
+4507	 C0					RET NZ	;5		26086	
+4508	 5F					LD E, A	;1		26087	
+4509	 C0					RET NZ	;5		26092	
+450A	 4F					LD C, A	;1		26093	
+450B	 E0 2F				LD (a8), A	;3		26096	
+450D	 E0 27				LD (a8), A	;3		26099	
+450F	 F0 11				LD A, (a8)	;2		26101	
+4511	 BF					CP A	;1		26102	
+4512	 4F					LD C, A	;1		26103	
+4513	 0C					INC, C	;1		26104	
+4514	 F4		
+4515	 07					RLCA	;1		26105	
+4516	 FF					RST 7	;4		26109	
+4517	 78					LD A, B	;1		26110	
+4518	 87					ADD A, A	;1		26111	
+4519	 7C					LD A, H	;1		26112	
+451A	 83					ADD A, E	;1		26113	
+451B	 3C					INC, A	;1		26114	
+451C	 C3 1E E1			JP a16	;4		26118	
+451F	 0F					RRCA	;1		26119	
+4520	 F0 FF				LD A, (a8)	;2		26121	
+4522	 FF					RST 7	;4		26125	
+4523	 FF					RST 7	;4		26129	
+4524	 00					NOP	;1		26130	
+4525	 FF					RST 7	;4		26134	
+4526	 FF					RST 7	;4		26138	
+4527	 0F					RRCA	;1		26139	
+4528	 F0 0F				LD A, (a8)	;2		26141	
+452A	 F0 0E				LD A, (a8)	;2		26143	
+452C	 F1					POP AF	;3		26146	
+452D	 0E F1				LD, C, d8	;2		26148	
+452F	 06 F9				LD, B, d8	;2		26150	
+4531	 FF					RST 7	;4		26154	
+4532	 FF					RST 7	;4		26158	
+4533	 C5					PUSH BC	;4		26162	
+4534	 3F					CCF	;1		26163	
+4535	 FF					RST 7	;4		26167	
+4536	 FF					RST 7	;4		26171	
+4537	 1B					DEC, DE	;2		26173	
+4538	 E6 13				AND d8	;2		26175	
+453A	 EE 37				XOR d8	;2		26177	
+453C	 CC 27 DC			CALL Z, a16	;6		26183	
+453F	 4F					LD C, A	;1		26184	
+4540	 B8					CP B	;1		26185	
+4541	 FC		
+4542	 F3					DI	;1		26186	
+4543	 FC		
+4544	 A3					AND E	;1		26187	
+4545	 E0 FF				LD (a8), A	;3		26190	
+4547	 FE 02				CP d8	;2		26192	
+4549	 FE 02				CP d8	;2		26194	
+454B	 BF					CP A	;1		26195	
+454C	 43					LD B, E	;1		26196	
+454D	 1C					INC, E	;1		26197	
+454E	 E5					PUSH (HL)	;4		26201	
+454F	 B8					CP B	;1		26202	
+4550	 49					LD C, C	;1		26203	
+4551	 B1					OR C	;1		26204	
+4552	 52					LD D, D	;1		26205	
+4553	 A1					AND C	;1		26206	
+4554	 66					LD H, (HL)	;2		26208	
+4555	 43					LD B, E	;1		26209	
+4556	 CC FF 00			CALL Z, a16	;6		26215	
+4559	 FF					RST 7	;4		26219	
+455A	 00					NOP	;1		26220	
+455B	 FF					RST 7	;4		26224	
+455C	 00					NOP	;1		26225	
+455D	 FF					RST 7	;4		26229	
+455E	 00					NOP	;1		26230	
+455F	 FF					RST 7	;4		26234	
+4560	 00					NOP	;1		26235	
+4561	 FF					RST 7	;4		26239	
+4562	 00					NOP	;1		26240	
+4563	 EF					RST 5	;4		26244	
+4564	 10 C7				STOP	;1		26245	
+4566	 38 FF				JR C s8	;3		26248	
+4568	 00					NOP	;1		26249	
+4569	 FB					EI	;1		26250	
+456A	 04					INC, B	;1		26251	
+456B	 FB					EI	;1		26252	
+456C	 04					INC, B	;1		26253	
+456D	 FB					EI	;1		26254	
+456E	 04					INC, B	;1		26255	
+456F	 FB					EI	;1		26256	
+4570	 04					INC, B	;1		26257	
+4571	 F1					POP AF	;3		26260	
+4572	 0E F1				LD, C, d8	;2		26262	
+4574	 0E F1				LD, C, d8	;2		26264	
+4576	 0E 83				LD, C, d8	;2		26266	
+4578	 7C					LD A, H	;1		26267	
+4579	 01 FE 01			LD BC, d16	;3		26270	
+457C	 FE 01				CP d8	;2		26272	
+457E	 FE 83				CP d8	;2		26274	
+4580	 7C					LD A, H	;1		26275	
+4581	 FF					RST 7	;4		26279	
+4582	 00					NOP	;1		26280	
+4583	 83					ADD A, E	;1		26281	
+4584	 7C					LD A, H	;1		26282	
+4585	 83					ADD A, E	;1		26283	
+4586	 7C					LD A, H	;1		26284	
+4587	 F1					POP AF	;3		26287	
+4588	 0E E0				LD, C, d8	;2		26289	
+458A	 1F					RRA	;1		26290	
+458B	 E0 1F				LD (a8), A	;3		26293	
+458D	 E0 1F				LD (a8), A	;3		26296	
+458F	 E0 1F				LD (a8), A	;3		26299	
+4591	 E0 1F				LD (a8), A	;3		26302	
+4593	 80					ADD A, B	;1		26303	
+4594	 7F					LD A, A	;1		26304	
+4595	 80					ADD A, B	;1		26305	
+4596	 7F					LD A, A	;1		26306	
+4597	 F7					RST 6	;4		26310	
+4598	 08 EB 14			LD (a16), SP	;5		26315	
+459B	 F7					RST 6	;4		26319	
+459C	 08 F7 08			LD (a16), SP	;5		26324	
+459F	 E3		
+45A2	 1C					INC, E	;1		26325	
+45A3	 63					LD H, E	;1		26326	
+45A4	 9C					SBC A, H	;1		26327	
+45A5	 01 FE 00			LD BC, d16	;3		26330	
+45A8	 00					NOP	;1		26331	
+45A9	 60					LD H, B	;1		26332	
+45AA	 60					LD H, B	;1		26333	
+45AB	 70					LD (HL), B	;2		26335	
+45AC	 70					LD (HL), B	;2		26337	
+45AD	 78					LD A, B	;1		26338	
+45AE	 78					LD A, B	;1		26339	
+45AF	 78					LD A, B	;1		26340	
+45B0	 78					LD A, B	;1		26341	
+45B1	 70					LD (HL), B	;2		26343	
+45B2	 70					LD (HL), B	;2		26345	
+45B3	 60					LD H, B	;1		26346	
+45B4	 60					LD H, B	;1		26347	
+45B5	 00					NOP	;1		26348	
+45B6	 00					NOP	;1		26349	
+45B7	 00					NOP	;1		26350	
+45B8	 00					NOP	;1		26351	
+45B9	 30 30				JR NC s8	;3		26354	
+45BB	 70					LD (HL), B	;2		26356	
+45BC	 70					LD (HL), B	;2		26358	
+45BD	 30 30				JR NC s8	;3		26361	
+45BF	 30 30				JR NC s8	;3		26364	
+45C1	 30 30				JR NC s8	;3		26367	
+45C3	 78					LD A, B	;1		26368	
+45C4	 78					LD A, B	;1		26369	
+45C5	 00					NOP	;1		26370	
+45C6	 00					NOP	;1		26371	
+45C7	 E0 E0				LD (a8), A	;3		26374	
+45C9	 F0 E0				LD A, (a8)	;2		26376	
+45CB	 FB					EI	;1		26377	
+45CC	 E0 FC				LD (a8), A	;3		26380	
+45CE	 E0 FC				LD (a8), A	;3		26383	
+45D0	 E1					POP (HL)	;3		26386	
+45D1	 FC		
+45D2	 E1					POP (HL)	;3		26389	
+45D3	 FC		
+45D4	 E1					POP (HL)	;3		26392	
+45D5	 FC		
+45D6	 E1					POP (HL)	;3		26395	
+45D7	 00					NOP	;1		26396	
+45D8	 00					NOP	;1		26397	
+45D9	 00					NOP	;1		26398	
+45DA	 00					NOP	;1		26399	
+45DB	 FF					RST 7	;4		26403	
+45DC	 00					NOP	;1		26404	
+45DD	 00					NOP	;1		26405	
+45DE	 00					NOP	;1		26406	
+45DF	 00					NOP	;1		26407	
+45E0	 FF					RST 7	;4		26411	
+45E1	 00					NOP	;1		26412	
+45E2	 00					NOP	;1		26413	
+45E3	 00					NOP	;1		26414	
+45E4	 00					NOP	;1		26415	
+45E5	 00					NOP	;1		26416	
+45E6	 00					NOP	;1		26417	
+45E7	 07					RLCA	;1		26418	
+45E8	 07					RLCA	;1		26419	
+45E9	 0F					RRCA	;1		26420	
+45EA	 07					RLCA	;1		26421	
+45EB	 DF					RST 3	;4		26425	
+45EC	 07					RLCA	;1		26426	
+45ED	 3F					CCF	;1		26427	
+45EE	 07					RLCA	;1		26428	
+45EF	 3F					CCF	;1		26429	
+45F0	 87					ADD A, A	;1		26430	
+45F1	 3F					CCF	;1		26431	
+45F2	 87					ADD A, A	;1		26432	
+45F3	 3F					CCF	;1		26433	
+45F4	 87					ADD A, A	;1		26434	
+45F5	 3F					CCF	;1		26435	
+45F6	 87					ADD A, A	;1		26436	
+45F7	 FC		
+45F8	 E1					POP (HL)	;3		26439	
+45F9	 FC		
+45FA	 E1					POP (HL)	;3		26442	
+45FB	 FC		
+45FC	 E1					POP (HL)	;3		26445	
+45FD	 FC		
+45FE	 E1					POP (HL)	;3		26448	
+45FF	 FC		
+4600	 E1					POP (HL)	;3		26451	
+4601	 FC		
+4602	 E1					POP (HL)	;3		26454	
+4603	 FC		
+4604	 E1					POP (HL)	;3		26457	
+4605	 FC		
+4606	 E1					POP (HL)	;3		26460	
+4607	 3F					CCF	;1		26461	
+4608	 87					ADD A, A	;1		26462	
+4609	 3F					CCF	;1		26463	
+460A	 87					ADD A, A	;1		26464	
+460B	 3F					CCF	;1		26465	
+460C	 87					ADD A, A	;1		26466	
+460D	 3F					CCF	;1		26467	
+460E	 87					ADD A, A	;1		26468	
+460F	 3F					CCF	;1		26469	
+4610	 87					ADD A, A	;1		26470	
+4611	 3F					CCF	;1		26471	
+4612	 87					ADD A, A	;1		26472	
+4613	 3F					CCF	;1		26473	
+4614	 87					ADD A, A	;1		26474	
+4615	 3F					CCF	;1		26475	
+4616	 87					ADD A, A	;1		26476	
+4617	 FC		
+4618	 E1					POP (HL)	;3		26479	
+4619	 FC		
+461A	 E1					POP (HL)	;3		26482	
+461B	 FC		
+461C	 E1					POP (HL)	;3		26485	
+461D	 FC		
+461E	 E1					POP (HL)	;3		26488	
+461F	 FC		
+4620	 E0 FF				LD (a8), A	;3		26491	
+4622	 E7					RST 4	;4		26495	
+4623	 FF					RST 7	;4		26499	
+4624	 EF					RST 5	;4		26503	
+4625	 E0 FF				LD (a8), A	;3		26506	
+4627	 00					NOP	;1		26507	
+4628	 00					NOP	;1		26508	
+4629	 00					NOP	;1		26509	
+462A	 00					NOP	;1		26510	
+462B	 00					NOP	;1		26511	
+462C	 00					NOP	;1		26512	
+462D	 00					NOP	;1		26513	
+462E	 FF					RST 7	;4		26517	
+462F	 00					NOP	;1		26518	
+4630	 00					NOP	;1		26519	
+4631	 FF					RST 7	;4		26523	
+4632	 FF					RST 7	;4		26527	
+4633	 FF					RST 7	;4		26531	
+4634	 FF					RST 7	;4		26535	
+4635	 00					NOP	;1		26536	
+4636	 FF					RST 7	;4		26540	
+4637	 3F					CCF	;1		26541	
+4638	 87					ADD A, A	;1		26542	
+4639	 3F					CCF	;1		26543	
+463A	 87					ADD A, A	;1		26544	
+463B	 3F					CCF	;1		26545	
+463C	 87					ADD A, A	;1		26546	
+463D	 3F					CCF	;1		26547	
+463E	 87					ADD A, A	;1		26548	
+463F	 3F					CCF	;1		26549	
+4640	 07					RLCA	;1		26550	
+4641	 FF					RST 7	;4		26554	
+4642	 E7					RST 4	;4		26558	
+4643	 FF					RST 7	;4		26562	
+4644	 F7					RST 6	;4		26566	
+4645	 07					RLCA	;1		26567	
+4646	 FF					RST 7	;4		26571	
+4647	 F8 00				LD HL, SP+s8	;3		26574	
+4649	 E0 00				LD (a8), A	;3		26577	
+464B	 C0					RET NZ	;5		26582	
+464C	 00					NOP	;1		26583	
+464D	 80					ADD A, B	;1		26584	
+464E	 00					NOP	;1		26585	
+464F	 80					ADD A, B	;1		26586	
+4650	 00					NOP	;1		26587	
+4651	 00					NOP	;1		26588	
+4652	 00					NOP	;1		26589	
+4653	 00					NOP	;1		26590	
+4654	 00					NOP	;1		26591	
+4655	 00					NOP	;1		26592	
+4656	 00					NOP	;1		26593	
+4657	 7F					LD A, A	;1		26594	
+4658	 00					NOP	;1		26595	
+4659	 1F					RRA	;1		26596	
+465A	 00					NOP	;1		26597	
+465B	 0F					RRCA	;1		26598	
+465C	 00					NOP	;1		26599	
+465D	 07					RLCA	;1		26600	
+465E	 00					NOP	;1		26601	
+465F	 07					RLCA	;1		26602	
+4660	 00					NOP	;1		26603	
+4661	 03					INC, BC	;2		26605	
+4662	 00					NOP	;1		26606	
+4663	 03					INC, BC	;2		26608	
+4664	 00					NOP	;1		26609	
+4665	 03					INC, BC	;2		26611	
+4666	 00					NOP	;1		26612	
+4667	 00					NOP	;1		26613	
+4668	 00					NOP	;1		26614	
+4669	 80					ADD A, B	;1		26615	
+466A	 00					NOP	;1		26616	
+466B	 80					ADD A, B	;1		26617	
+466C	 00					NOP	;1		26618	
+466D	 C0					RET NZ	;5		26623	
+466E	 00					NOP	;1		26624	
+466F	 E0 00				LD (a8), A	;3		26627	
+4671	 F8 00				LD HL, SP+s8	;3		26630	
+4673	 FF					RST 7	;4		26634	
+4674	 00					NOP	;1		26635	
+4675	 FF					RST 7	;4		26639	
+4676	 00					NOP	;1		26640	
+4677	 03					INC, BC	;2		26642	
+4678	 00					NOP	;1		26643	
+4679	 07					RLCA	;1		26644	
+467A	 00					NOP	;1		26645	
+467B	 07					RLCA	;1		26646	
+467C	 00					NOP	;1		26647	
+467D	 0F					RRCA	;1		26648	
+467E	 00					NOP	;1		26649	
+467F	 1F					RRA	;1		26650	
+4680	 00					NOP	;1		26651	
+4681	 7F					LD A, A	;1		26652	
+4682	 00					NOP	;1		26653	
+4683	 FF					RST 7	;4		26657	
+4684	 00					NOP	;1		26658	
+4685	 FF					RST 7	;4		26662	
+4686	 00					NOP	;1		26663	
+4687	 01 01 01			LD BC, d16	;3		26666	
+468A	 01 81 81			LD BC, d16	;3		26669	
+468D	 C1					POP BC	;3		26672	
+468E	 C1					POP BC	;3		26675	
+468F	 C1					POP BC	;3		26678	
+4690	 C1					POP BC	;3		26681	
+4691	 E1					POP (HL)	;3		26684	
+4692	 E1					POP (HL)	;3		26687	
+4693	 F1					POP AF	;3		26690	
+4694	 F1					POP AF	;3		26693	
+4695	 F9					LD SP, HL	;2		26695	
+4696	 F9					LD SP, HL	;2		26697	
+4697	 FE FE				CP d8	;2		26699	
+4699	 FE FE				CP d8	;2		26701	
+469B	 FE FE				CP d8	;2		26703	
+469D	 FE FE				CP d8	;2		26705	
+469F	 FE FE				CP d8	;2		26707	
+46A1	 FE FE				CP d8	;2		26709	
+46A3	 FE FE				CP d8	;2		26711	
+46A5	 FE FE				CP d8	;2		26713	
+46A7	 7E					LD A, (HL)	;2		26715	
+46A8	 7E					LD A, (HL)	;2		26717	
+46A9	 7F					LD A, A	;1		26718	
+46AA	 7F					LD A, A	;1		26719	
+46AB	 7F					LD A, A	;1		26720	
+46AC	 7F					LD A, A	;1		26721	
+46AD	 7F					LD A, A	;1		26722	
+46AE	 7F					LD A, A	;1		26723	
+46AF	 7F					LD A, A	;1		26724	
+46B0	 7F					LD A, A	;1		26725	
+46B1	 7F					LD A, A	;1		26726	
+46B2	 7F					LD A, A	;1		26727	
+46B3	 7F					LD A, A	;1		26728	
+46B4	 7F					LD A, A	;1		26729	
+46B5	 7F					LD A, A	;1		26730	
+46B6	 7F					LD A, A	;1		26731	
+46B7	 7F					LD A, A	;1		26732	
+46B8	 7F					LD A, A	;1		26733	
+46B9	 3F					CCF	;1		26734	
+46BA	 3F					CCF	;1		26735	
+46BB	 9F					SBC A, A	;1		26736	
+46BC	 9F					SBC A, A	;1		26737	
+46BD	 8F					ADC A, A	;1		26738	
+46BE	 8F					ADC A, A	;1		26739	
+46BF	 CF					RST 1	;4		26743	
+46C0	 CF					RST 1	;4		26747	
+46C1	 E7					RST 4	;4		26751	
+46C2	 E7					RST 4	;4		26755	
+46C3	 F3					DI	;1		26756	
+46C4	 F3					DI	;1		26757	
+46C5	 F7					RST 6	;4		26761	
+46C6	 F7					RST 6	;4		26765	
+46C7	 E0 E0				LD (a8), A	;3		26768	
+46C9	 E0 E0				LD (a8), A	;3		26771	
+46CB	 E0 E0				LD (a8), A	;3		26774	
+46CD	 E0 E0				LD (a8), A	;3		26777	
+46CF	 E0 E0				LD (a8), A	;3		26780	
+46D1	 C0					RET NZ	;5		26785	
+46D2	 C0					RET NZ	;5		26790	
+46D3	 C0					RET NZ	;5		26795	
+46D4	 C0					RET NZ	;5		26800	
+46D5	 80					ADD A, B	;1		26801	
+46D6	 80					ADD A, B	;1		26802	
+46D7	 F0 F0				LD A, (a8)	;2		26804	
+46D9	 F0 F0				LD A, (a8)	;2		26806	
+46DB	 F0 F0				LD A, (a8)	;2		26808	
+46DD	 F0 F0				LD A, (a8)	;2		26810	
+46DF	 F0 F0				LD A, (a8)	;2		26812	
+46E1	 F0 F0				LD A, (a8)	;2		26814	
+46E3	 F0 F0				LD A, (a8)	;2		26816	
+46E5	 F0 F0				LD A, (a8)	;2		26818	
+46E7	 00					NOP	;1		26819	
+46E8	 00					NOP	;1		26820	
+46E9	 7C					LD A, H	;1		26821	
+46EA	 7C					LD A, H	;1		26822	
+46EB	 47					LD B, A	;1		26823	
+46EC	 47					LD B, A	;1		26824	
+46ED	 41					LD B, C	;1		26825	
+46EE	 41					LD B, C	;1		26826	
+46EF	 40					LD B, B	;1		26827	
+46F0	 40					LD B, B	;1		26828	
+46F1	 40					LD B, B	;1		26829	
+46F2	 40					LD B, B	;1		26830	
+46F3	 40					LD B, B	;1		26831	
+46F4	 40					LD B, B	;1		26832	
+46F5	 7F					LD A, A	;1		26833	
+46F6	 40					LD B, B	;1		26834	
+46F7	 00					NOP	;1		26835	
+46F8	 00					NOP	;1		26836	
+46F9	 01 01 01			LD BC, d16	;3		26839	
+46FC	 01 81 81			LD BC, d16	;3		26842	
+46FF	 C1					POP BC	;3		26845	
+4700	 C1					POP BC	;3		26848	
+4701	 41					LD B, C	;1		26849	
+4702	 41					LD B, C	;1		26850	
+4703	 61					LD H, C	;1		26851	
+4704	 61					LD H, C	;1		26852	
+4705	 E1					POP (HL)	;3		26855	
+4706	 61					LD H, C	;1		26856	
+4707	 00					NOP	;1		26857	
+4708	 00					NOP	;1		26858	
+4709	 FE FE				CP d8	;2		26860	
+470B	 06 06				LD, B, d8	;2		26862	
+470D	 06 06				LD, B, d8	;2		26864	
+470F	 06 06				LD, B, d8	;2		26866	
+4711	 06 06				LD, B, d8	;2		26868	
+4713	 06 06				LD, B, d8	;2		26870	
+4715	 FE 06				CP d8	;2		26872	
+4717	 00					NOP	;1		26873	
+4718	 00					NOP	;1		26874	
+4719	 1B					DEC, DE	;2		26876	
+471A	 1B					DEC, DE	;2		26878	
+471B	 32					LD (HL-), A	;2		26880	
+471C	 32					LD (HL-), A	;2		26882	
+471D	 59					LD E, C	;1		26883	
+471E	 59					LD E, C	;1		26884	
+471F	 4C					LD C, H	;1		26885	
+4720	 4C					LD C, H	;1		26886	
+4721	 8C					ADC A, H	;1		26887	
+4722	 8C					ADC A, H	;1		26888	
+4723	 86					ADD A, (HL)	;2		26890	
+4724	 86					ADD A, (HL)	;2		26892	
+4725	 FF					RST 7	;4		26896	
+4726	 83					ADD A, E	;1		26897	
+4727	 00					NOP	;1		26898	
+4728	 00					NOP	;1		26899	
+4729	 FF					RST 7	;4		26903	
+472A	 FF					RST 7	;4		26907	
+472B	 01 01 01			LD BC, d16	;3		26910	
+472E	 01 81 81			LD BC, d16	;3		26913	
+4731	 41					LD B, C	;1		26914	
+4732	 41					LD B, C	;1		26915	
+4733	 41					LD B, C	;1		26916	
+4734	 41					LD B, C	;1		26917	
+4735	 3F					CCF	;1		26918	
+4736	 21 00 00			LD (HL), d16	;3		26921	
+4739	 BE					CP (HL)	;2		26923	
+473A	 BE					CP (HL)	;2		26925	
+473B	 88					ADC A, B	;1		26926	
+473C	 88					ADC A, B	;1		26927	
+473D	 88					ADC A, B	;1		26928	
+473E	 88					ADC A, B	;1		26929	
+473F	 88					ADC A, B	;1		26930	
+4740	 88					ADC A, B	;1		26931	
+4741	 88					ADC A, B	;1		26932	
+4742	 88					ADC A, B	;1		26933	
+4743	 80					ADD A, B	;1		26934	
+4744	 80					ADD A, B	;1		26935	
+4745	 80					ADD A, B	;1		26936	
+4746	 80					ADD A, B	;1		26937	
+4747	 00					NOP	;1		26938	
+4748	 00					NOP	;1		26939	
+4749	 88					ADC A, B	;1		26940	
+474A	 88					ADC A, B	;1		26941	
+474B	 D8					RET C	;5		26946	
+474C	 D8					RET C	;5		26951	
+474D	 A8					XOR B	;1		26952	
+474E	 A8					XOR B	;1		26953	
+474F	 88					ADC A, B	;1		26954	
+4750	 88					ADC A, B	;1		26955	
+4751	 88					ADC A, B	;1		26956	
+4752	 88					ADC A, B	;1		26957	
+4753	 00					NOP	;1		26958	
+4754	 00					NOP	;1		26959	
+4755	 00					NOP	;1		26960	
+4756	 00					NOP	;1		26961	
+4757	 7F					LD A, A	;1		26962	
+4758	 40					LD B, B	;1		26963	
+4759	 7F					LD A, A	;1		26964	
+475A	 40					LD B, B	;1		26965	
+475B	 7F					LD A, A	;1		26966	
+475C	 40					LD B, B	;1		26967	
+475D	 7F					LD A, A	;1		26968	
+475E	 40					LD B, B	;1		26969	
+475F	 7F					LD A, A	;1		26970	
+4760	 40					LD B, B	;1		26971	
+4761	 7F					LD A, A	;1		26972	
+4762	 40					LD B, B	;1		26973	
+4763	 7F					LD A, A	;1		26974	
+4764	 40					LD B, B	;1		26975	
+4765	 47					LD B, A	;1		26976	
+4766	 7F					LD A, A	;1		26977	
+4767	 E1					POP (HL)	;3		26980	
+4768	 61					LD H, C	;1		26981	
+4769	 E1					POP (HL)	;3		26984	
+476A	 61					LD H, C	;1		26985	
+476B	 E1					POP (HL)	;3		26988	
+476C	 61					LD H, C	;1		26989	
+476D	 E1					POP (HL)	;3		26992	
+476E	 61					LD H, C	;1		26993	
+476F	 E1					POP (HL)	;3		26996	
+4770	 61					LD H, C	;1		26997	
+4771	 C1					POP BC	;3		27000	
+4772	 C1					POP BC	;3		27003	
+4773	 C1					POP BC	;3		27006	
+4774	 C1					POP BC	;3		27009	
+4775	 81					ADD A, C	;1		27010	
+4776	 81					ADD A, C	;1		27011	
+4777	 FE 06				CP d8	;2		27013	
+4779	 FE 06				CP d8	;2		27015	
+477B	 FE 06				CP d8	;2		27017	
+477D	 FE 06				CP d8	;2		27019	
+477F	 FE 06				CP d8	;2		27021	
+4781	 FE 06				CP d8	;2		27023	
+4783	 FE 06				CP d8	;2		27025	
+4785	 06 FE				LD, B, d8	;2		27027	
+4787	 FF					RST 7	;4		27031	
+4788	 83					ADD A, E	;1		27032	
+4789	 FF					RST 7	;4		27036	
+478A	 81					ADD A, C	;1		27037	
+478B	 7F					LD A, A	;1		27038	
+478C	 40					LD B, B	;1		27039	
+478D	 7F					LD A, A	;1		27040	
+478E	 40					LD B, B	;1		27041	
+478F	 7F					LD A, A	;1		27042	
+4790	 40					LD B, B	;1		27043	
+4791	 3F					CCF	;1		27044	
+4792	 20 3F				JR NZ s8	;3		27047	
+4794	 20 10				JR NZ s8	;3		27050	
+4796	 1F					RRA	;1		27051	
+4797	 1F					RRA	;1		27052	
+4798	 11 9F 91			LD DE, d16	;3		27055	
+479B	 CF					RST 1	;4		27059	
+479C	 C9					RET	;4		27063	
+479D	 C7					RST 0	;4		27067	
+479E	 C5					PUSH BC	;4		27071	
+479F	 E3		
+47A0	 63					LD H, E	;1		27072	
+47A1	 F3					DI	;1		27073	
+47A2	 33					INC, SP	;2		27075	
+47A3	 F9					LD SP, HL	;2		27077	
+47A4	 19					ADD HL, DE	;2		27079	
+47A5	 08 F8 80			LD (a16), SP	;5		27084	
+47A8	 80					ADD A, B	;1		27085	
+47A9	 80					ADD A, B	;1		27086	
+47AA	 80					ADD A, B	;1		27087	
+47AB	 80					ADD A, B	;1		27088	
+47AC	 80					ADD A, B	;1		27089	
+47AD	 80					ADD A, B	;1		27090	
+47AE	 80					ADD A, B	;1		27091	
+47AF	 80					ADD A, B	;1		27092	
+47B0	 80					ADD A, B	;1		27093	
+47B1	 80					ADD A, B	;1		27094	
+47B2	 80					ADD A, B	;1		27095	
+47B3	 80					ADD A, B	;1		27096	
+47B4	 80					ADD A, B	;1		27097	
+47B5	 80					ADD A, B	;1		27098	
+47B6	 80					ADD A, B	;1		27099	
+47B7	 5F					LD E, A	;1		27100	
+47B8	 7F					LD A, A	;1		27101	
+47B9	 78					LD A, B	;1		27102	
+47BA	 78					LD A, B	;1		27103	
+47BB	 60					LD H, B	;1		27104	
+47BC	 60					LD H, B	;1		27105	
+47BD	 50					LD D, B	;1		27106	
+47BE	 70					LD (HL), B	;2		27108	
+47BF	 50					LD D, B	;1		27109	
+47C0	 70					LD (HL), B	;2		27111	
+47C1	 48					LD C, B	;1		27112	
+47C2	 78					LD A, B	;1		27113	
+47C3	 44					LD B, H	;1		27114	
+47C4	 7C					LD A, H	;1		27115	
+47C5	 7E					LD A, (HL)	;2		27117	
+47C6	 7E					LD A, (HL)	;2		27119	
+47C7	 01 01 01			LD BC, d16	;3		27122	
+47CA	 01 01 01			LD BC, d16	;3		27125	
+47CD	 01 01 01			LD BC, d16	;3		27128	
+47D0	 01 01 01			LD BC, d16	;3		27131	
+47D3	 01 01 01			LD BC, d16	;3		27134	
+47D6	 01 06 FE			LD BC, d16	;3		27137	
+47D9	 06 FE				LD, B, d8	;2		27139	
+47DB	 06 FE				LD, B, d8	;2		27141	
+47DD	 06 FE				LD, B, d8	;2		27143	
+47DF	 06 FE				LD, B, d8	;2		27145	
+47E1	 06 FE				LD, B, d8	;2		27147	
+47E3	 06 FE				LD, B, d8	;2		27149	
+47E5	 FE FE				CP d8	;2		27151	
+47E7	 08 0F 44			LD (a16), SP	;5		27156	
+47EA	 47					LD B, A	;1		27157	
+47EB	 64					LD H, H	;1		27158	
+47EC	 67					LD H, A	;1		27159	
+47ED	 72					LD (HL), D	;2		27161	
+47EE	 73					LD (HL), E	;2		27163	
+47EF	 51					LD D, C	;1		27164	
+47F0	 71					LD (HL), C	;2		27166	
+47F1	 59					LD E, C	;1		27167	
+47F2	 79					LD A, C	;1		27168	
+47F3	 4C					LD C, H	;1		27169	
+47F4	 7C					LD A, H	;1		27170	
+47F5	 7E					LD A, (HL)	;2		27172	
+47F6	 7E					LD A, (HL)	;2		27174	
+47F7	 0C					INC, C	;1		27175	
+47F8	 FC		
+47F9	 06 FE				LD, B, d8	;2		27177	
+47FB	 03					INC, BC	;2		27179	
+47FC	 FF					RST 7	;4		27183	
+47FD	 01 FF 01			LD BC, d16	;3		27186	
+4800	 FF					RST 7	;4		27190	
+4801	 00					NOP	;1		27191	
+4802	 FF					RST 7	;4		27195	
+4803	 80					ADD A, B	;1		27196	
+4804	 FF					RST 7	;4		27200	
+4805	 7F					LD A, A	;1		27201	
+4806	 7F					LD A, A	;1		27202	
+4807	 00					NOP	;1		27203	
+4808	 00					NOP	;1		27204	
+4809	 00					NOP	;1		27205	
+480A	 00					NOP	;1		27206	
+480B	 00					NOP	;1		27207	
+480C	 00					NOP	;1		27208	
+480D	 80					ADD A, B	;1		27209	
+480E	 80					ADD A, B	;1		27210	
+480F	 80					ADD A, B	;1		27211	
+4810	 80					ADD A, B	;1		27212	
+4811	 C0					RET NZ	;5		27217	
+4812	 C0					RET NZ	;5		27222	
+4813	 C0					RET NZ	;5		27227	
+4814	 C0					RET NZ	;5		27232	
+4815	 E0 E0				LD (a8), A	;3		27235	
+4817	 7E					LD A, (HL)	;2		27237	
+4818	 7E					LD A, (HL)	;2		27239	
+4819	 7F					LD A, A	;1		27240	
+481A	 7F					LD A, A	;1		27241	
+481B	 7F					LD A, A	;1		27242	
+481C	 7F					LD A, A	;1		27243	
+481D	 7F					LD A, A	;1		27244	
+481E	 7F					LD A, A	;1		27245	
+481F	 7F					LD A, A	;1		27246	
+4820	 7F					LD A, A	;1		27247	
+4821	 7F					LD A, A	;1		27248	
+4822	 7F					LD A, A	;1		27249	
+4823	 7F					LD A, A	;1		27250	
+4824	 7F					LD A, A	;1		27251	
+4825	 7F					LD A, A	;1		27252	
+4826	 7F					LD A, A	;1		27253	
+4827	 00					NOP	;1		27254	
+4828	 00					NOP	;1		27255	
+4829	 03					INC, BC	;2		27257	
+482A	 03					INC, BC	;2		27259	
+482B	 02					LD (BC), A	;2		27261	
+482C	 02					LD (BC), A	;2		27263	
+482D	 02					LD (BC), A	;2		27265	
+482E	 02					LD (BC), A	;2		27267	
+482F	 02					LD (BC), A	;2		27269	
+4830	 02					LD (BC), A	;2		27271	
+4831	 02					LD (BC), A	;2		27273	
+4832	 02					LD (BC), A	;2		27275	
+4833	 02					LD (BC), A	;2		27277	
+4834	 02					LD (BC), A	;2		27279	
+4835	 03					INC, BC	;2		27281	
+4836	 02					LD (BC), A	;2		27283	
+4837	 00					NOP	;1		27284	
+4838	 00					NOP	;1		27285	
+4839	 FB					EI	;1		27286	
+483A	 FB					EI	;1		27287	
+483B	 0A					LD A, (BC)	;2		27289	
+483C	 0A					LD A, (BC)	;2		27291	
+483D	 12					LD (DE), A	;2		27293	
+483E	 12					LD (DE), A	;2		27295	
+483F	 22					LD (HL+), A	;2		27297	
+4840	 22					LD (HL+), A	;2		27299	
+4841	 22					LD (HL+), A	;2		27301	
+4842	 22					LD (HL+), A	;2		27303	
+4843	 42					LD B, D	;1		27304	
+4844	 42					LD B, D	;1		27305	
+4845	 C3 42 00			JP a16	;4		27309	
+4848	 00					NOP	;1		27310	
+4849	 FD		
+484A	 FD		
+484B	 0D					DEC, C	;1		27311	
+484C	 0D					DEC, C	;1		27312	
+484D	 0C					INC, C	;1		27313	
+484E	 0C					INC, C	;1		27314	
+484F	 0C					INC, C	;1		27315	
+4850	 0C					INC, C	;1		27316	
+4851	 0C					INC, C	;1		27317	
+4852	 0C					INC, C	;1		27318	
+4853	 0C					INC, C	;1		27319	
+4854	 0C					INC, C	;1		27320	
+4855	 FC		
+4856	 0C					INC, C	;1		27321	
+4857	 00					NOP	;1		27322	
+4858	 00					NOP	;1		27323	
+4859	 FC		
+485A	 FC		
+485B	 0C					INC, C	;1		27324	
+485C	 0C					INC, C	;1		27325	
+485D	 8C					ADC A, H	;1		27326	
+485E	 8C					ADC A, H	;1		27327	
+485F	 4C					LD C, H	;1		27328	
+4860	 4C					LD C, H	;1		27329	
+4861	 4C					LD C, H	;1		27330	
+4862	 4C					LD C, H	;1		27331	
+4863	 2C					INC, L	;1		27332	
+4864	 2C					INC, L	;1		27333	
+4865	 3C					INC, A	;1		27334	
+4866	 2C					INC, L	;1		27335	
+4867	 03					INC, BC	;2		27337	
+4868	 02					LD (BC), A	;2		27339	
+4869	 03					INC, BC	;2		27341	
+486A	 02					LD (BC), A	;2		27343	
+486B	 03					INC, BC	;2		27345	
+486C	 03					INC, BC	;2		27347	
+486D	 03					INC, BC	;2		27349	
+486E	 03					INC, BC	;2		27351	
+486F	 02					LD (BC), A	;2		27353	
+4870	 02					LD (BC), A	;2		27355	
+4871	 00					NOP	;1		27356	
+4872	 00					NOP	;1		27357	
+4873	 00					NOP	;1		27358	
+4874	 00					NOP	;1		27359	
+4875	 00					NOP	;1		27360	
+4876	 00					NOP	;1		27361	
+4877	 83					ADD A, E	;1		27362	
+4878	 82					ADD A, D	;1		27363	
+4879	 83					ADD A, E	;1		27364	
+487A	 82					ADD A, D	;1		27365	
+487B	 03					INC, BC	;2		27367	
+487C	 02					LD (BC), A	;2		27369	
+487D	 03					INC, BC	;2		27371	
+487E	 02					LD (BC), A	;2		27373	
+487F	 03					INC, BC	;2		27375	
+4880	 02					LD (BC), A	;2		27377	
+4881	 03					INC, BC	;2		27379	
+4882	 02					LD (BC), A	;2		27381	
+4883	 03					INC, BC	;2		27383	
+4884	 02					LD (BC), A	;2		27385	
+4885	 02					LD (BC), A	;2		27387	
+4886	 03					INC, BC	;2		27389	
+4887	 FC		
+4888	 0C					INC, C	;1		27390	
+4889	 FC		
+488A	 0C					INC, C	;1		27391	
+488B	 FC		
+488C	 0C					INC, C	;1		27392	
+488D	 FC		
+488E	 0C					INC, C	;1		27393	
+488F	 FC		
+4890	 0C					INC, C	;1		27394	
+4891	 FC		
+4892	 0C					INC, C	;1		27395	
+4893	 FC		
+4894	 0C					INC, C	;1		27396	
+4895	 0C					INC, C	;1		27397	
+4896	 FC		
+4897	 1C					INC, E	;1		27398	
+4898	 1C					INC, E	;1		27399	
+4899	 1C					INC, E	;1		27400	
+489A	 1C					INC, E	;1		27401	
+489B	 0C					INC, C	;1		27402	
+489C	 0C					INC, C	;1		27403	
+489D	 0C					INC, C	;1		27404	
+489E	 0C					INC, C	;1		27405	
+489F	 04					INC, B	;1		27406	
+48A0	 04					INC, B	;1		27407	
+48A1	 00					NOP	;1		27408	
+48A2	 00					NOP	;1		27409	
+48A3	 00					NOP	;1		27410	
+48A4	 00					NOP	;1		27411	
+48A5	 00					NOP	;1		27412	
+48A6	 00					NOP	;1		27413	
+48A7	 02					LD (BC), A	;2		27415	
+48A8	 03					INC, BC	;2		27417	
+48A9	 02					LD (BC), A	;2		27419	
+48AA	 03					INC, BC	;2		27421	
+48AB	 02					LD (BC), A	;2		27423	
+48AC	 03					INC, BC	;2		27425	
+48AD	 02					LD (BC), A	;2		27427	
+48AE	 03					INC, BC	;2		27429	
+48AF	 02					LD (BC), A	;2		27431	
+48B0	 03					INC, BC	;2		27433	
+48B1	 02					LD (BC), A	;2		27435	
+48B2	 03					INC, BC	;2		27437	
+48B3	 02					LD (BC), A	;2		27439	
+48B4	 03					INC, BC	;2		27441	
+48B5	 03					INC, BC	;2		27443	
+48B6	 03					INC, BC	;2		27445	
+48B7	 0C					INC, C	;1		27446	
+48B8	 FC		
+48B9	 0C					INC, C	;1		27447	
+48BA	 FC		
+48BB	 0C					INC, C	;1		27448	
+48BC	 FC		
+48BD	 0C					INC, C	;1		27449	
+48BE	 FC		
+48BF	 0C					INC, C	;1		27450	
+48C0	 FC		
+48C1	 0C					INC, C	;1		27451	
+48C2	 FC		
+48C3	 0C					INC, C	;1		27452	
+48C4	 FC		
+48C5	 FC		
+48C6	 FC		
+48C7	 03					INC, BC	;2		27454	
+48C8	 03					INC, BC	;2		27456	
+48C9	 03					INC, BC	;2		27458	
+48CA	 03					INC, BC	;2		27460	
+48CB	 03					INC, BC	;2		27462	
+48CC	 03					INC, BC	;2		27464	
+48CD	 03					INC, BC	;2		27466	
+48CE	 03					INC, BC	;2		27468	
+48CF	 03					INC, BC	;2		27470	
+48D0	 03					INC, BC	;2		27472	
+48D1	 03					INC, BC	;2		27474	
+48D2	 03					INC, BC	;2		27476	
+48D3	 03					INC, BC	;2		27478	
+48D4	 03					INC, BC	;2		27480	
+48D5	 03					INC, BC	;2		27482	
+48D6	 03					INC, BC	;2		27484	
+48D7	 FC		
+48D8	 FC		
+48D9	 FC		
+48DA	 FC		
+48DB	 FC		
+48DC	 FC		
+48DD	 FC		
+48DE	 FC		
+48DF	 FC		
+48E0	 FC		
+48E1	 FC		
+48E2	 FC		
+48E3	 FC		
+48E4	 FC		
+48E5	 FC		
+48E6	 FC		
+48E7	 FF					RST 7	;4		27488	
+48E8	 00					NOP	;1		27489	
+48E9	 FF					RST 7	;4		27493	
+48EA	 00					NOP	;1		27494	
+48EB	 FF					RST 7	;4		27498	
+48EC	 00					NOP	;1		27499	
+48ED	 FF					RST 7	;4		27503	
+48EE	 00					NOP	;1		27504	
+48EF	 FF					RST 7	;4		27508	
+48F0	 00					NOP	;1		27509	
+48F1	 FF					RST 7	;4		27513	
+48F2	 00					NOP	;1		27514	
+48F3	 FF					RST 7	;4		27518	
+48F4	 00					NOP	;1		27519	
+48F5	 FF					RST 7	;4		27523	
+48F6	 00					NOP	;1		27524	
+48F7	 00					NOP	;1		27525	
+48F8	 FF					RST 7	;4		27529	
+48F9	 00					NOP	;1		27530	
+48FA	 FF					RST 7	;4		27534	
+48FB	 00					NOP	;1		27535	
+48FC	 FF					RST 7	;4		27539	
+48FD	 00					NOP	;1		27540	
+48FE	 FF					RST 7	;4		27544	
+48FF	 00					NOP	;1		27545	
+4900	 FF					RST 7	;4		27549	
+4901	 00					NOP	;1		27550	
+4902	 FF					RST 7	;4		27554	
+4903	 00					NOP	;1		27555	
+4904	 FF					RST 7	;4		27559	
+4905	 00					NOP	;1		27560	
+4906	 FF					RST 7	;4		27564	
+4907	 FF					RST 7	;4		27568	
+4908	 FF					RST 7	;4		27572	
+4909	 FF					RST 7	;4		27576	
+490A	 FF					RST 7	;4		27580	
+490B	 FF					RST 7	;4		27584	
+490C	 FF					RST 7	;4		27588	
+490D	 FF					RST 7	;4		27592	
+490E	 FF					RST 7	;4		27596	
+490F	 FF					RST 7	;4		27600	
+4910	 FF					RST 7	;4		27604	
+4911	 FF					RST 7	;4		27608	
+4912	 FF					RST 7	;4		27612	
+4913	 FF					RST 7	;4		27616	
+4914	 FF					RST 7	;4		27620	
+4915	 FF					RST 7	;4		27624	
+4916	 FF					RST 7	;4		27628	
+4917	 00					NOP	;1		27629	
+4918	 00					NOP	;1		27630	
+4919	 01 01 03			LD BC, d16	;3		27633	
+491C	 03					INC, BC	;2		27635	
+491D	 07					RLCA	;1		27636	
+491E	 07					RLCA	;1		27637	
+491F	 0F					RRCA	;1		27638	
+4920	 0F					RRCA	;1		27639	
+4921	 1F					RRA	;1		27640	
+4922	 1F					RRA	;1		27641	
+4923	 3F					CCF	;1		27642	
+4924	 3F					CCF	;1		27643	
+4925	 7F					LD A, A	;1		27644	
+4926	 7F					LD A, A	;1		27645	
+4927	 00					NOP	;1		27646	
+4928	 00					NOP	;1		27647	
+4929	 FF					RST 7	;4		27651	
+492A	 FF					RST 7	;4		27655	
+492B	 83					ADD A, E	;1		27656	
+492C	 83					ADD A, E	;1		27657	
+492D	 83					ADD A, E	;1		27658	
+492E	 83					ADD A, E	;1		27659	
+492F	 83					ADD A, E	;1		27660	
+4930	 83					ADD A, E	;1		27661	
+4931	 83					ADD A, E	;1		27662	
+4932	 83					ADD A, E	;1		27663	
+4933	 83					ADD A, E	;1		27664	
+4934	 83					ADD A, E	;1		27665	
+4935	 FF					RST 7	;4		27669	
+4936	 83					ADD A, E	;1		27670	
+4937	 00					NOP	;1		27671	
+4938	 00					NOP	;1		27672	
+4939	 7F					LD A, A	;1		27673	
+493A	 7F					LD A, A	;1		27674	
+493B	 20 20				JR NZ s8	;3		27677	
+493D	 10 10				STOP	;1		27678	
+493F	 08 08 04			LD (a16), SP	;5		27683	
+4942	 04					INC, B	;1		27684	
+4943	 02					LD (BC), A	;2		27686	
+4944	 02					LD (BC), A	;2		27688	
+4945	 01 01 00			LD BC, d16	;3		27691	
+4948	 00					NOP	;1		27692	
+4949	 F3					DI	;1		27693	
+494A	 F3					DI	;1		27694	
+494B	 32					LD (HL-), A	;2		27696	
+494C	 32					LD (HL-), A	;2		27698	
+494D	 32					LD (HL-), A	;2		27700	
+494E	 32					LD (HL-), A	;2		27702	
+494F	 32					LD (HL-), A	;2		27704	
+4950	 32					LD (HL-), A	;2		27706	
+4951	 32					LD (HL-), A	;2		27708	
+4952	 32					LD (HL-), A	;2		27710	
+4953	 32					LD (HL-), A	;2		27712	
+4954	 32					LD (HL-), A	;2		27714	
+4955	 F3					DI	;1		27715	
+4956	 32					LD (HL-), A	;2		27717	
+4957	 FF					RST 7	;4		27721	
+4958	 83					ADD A, E	;1		27722	
+4959	 FF					RST 7	;4		27726	
+495A	 83					ADD A, E	;1		27727	
+495B	 FF					RST 7	;4		27731	
+495C	 83					ADD A, E	;1		27732	
+495D	 FF					RST 7	;4		27736	
+495E	 83					ADD A, E	;1		27737	
+495F	 FF					RST 7	;4		27741	
+4960	 83					ADD A, E	;1		27742	
+4961	 FF					RST 7	;4		27746	
+4962	 83					ADD A, E	;1		27747	
+4963	 FF					RST 7	;4		27751	
+4964	 83					ADD A, E	;1		27752	
+4965	 83					ADD A, E	;1		27753	
+4966	 FF					RST 7	;4		27757	
+4967	 00					NOP	;1		27758	
+4968	 00					NOP	;1		27759	
+4969	 00					NOP	;1		27760	
+496A	 00					NOP	;1		27761	
+496B	 01 01 03			LD BC, d16	;3		27764	
+496E	 03					INC, BC	;2		27766	
+496F	 07					RLCA	;1		27767	
+4970	 07					RLCA	;1		27768	
+4971	 0F					RRCA	;1		27769	
+4972	 0B					DEC, BC	;2		27771	
+4973	 1F					RRA	;1		27772	
+4974	 13					INC, DE	;2		27774	
+4975	 23					INC, (HL)	;2		27776	
+4976	 3F					CCF	;1		27777	
+4977	 F3					DI	;1		27778	
+4978	 B2					OR D	;1		27779	
+4979	 73					LD (HL), E	;2		27781	
+497A	 72					LD (HL), D	;2		27783	
+497B	 33					INC, SP	;2		27785	
+497C	 33					INC, SP	;2		27787	
+497D	 13					INC, DE	;2		27789	
+497E	 13					INC, DE	;2		27791	
+497F	 02					LD (BC), A	;2		27793	
+4980	 02					LD (BC), A	;2		27795	
+4981	 00					NOP	;1		27796	
+4982	 00					NOP	;1		27797	
+4983	 00					NOP	;1		27798	
+4984	 00					NOP	;1		27799	
+4985	 00					NOP	;1		27800	
+4986	 00					NOP	;1		27801	
+4987	 83					ADD A, E	;1		27802	
+4988	 FF					RST 7	;4		27806	
+4989	 83					ADD A, E	;1		27807	
+498A	 FF					RST 7	;4		27811	
+498B	 83					ADD A, E	;1		27812	
+498C	 FF					RST 7	;4		27816	
+498D	 83					ADD A, E	;1		27817	
+498E	 FF					RST 7	;4		27821	
+498F	 83					ADD A, E	;1		27822	
+4990	 FF					RST 7	;4		27826	
+4991	 83					ADD A, E	;1		27827	
+4992	 FF					RST 7	;4		27831	
+4993	 83					ADD A, E	;1		27832	
+4994	 FF					RST 7	;4		27836	
+4995	 FF					RST 7	;4		27840	
+4996	 FF					RST 7	;4		27844	
+4997	 43					LD B, E	;1		27845	
+4998	 7F					LD A, A	;1		27846	
+4999	 23					INC, (HL)	;2		27848	
+499A	 3F					CCF	;1		27849	
+499B	 13					INC, DE	;2		27851	
+499C	 1F					RRA	;1		27852	
+499D	 0B					DEC, BC	;2		27854	
+499E	 0F					RRCA	;1		27855	
+499F	 07					RLCA	;1		27856	
+49A0	 07					RLCA	;1		27857	
+49A1	 03					INC, BC	;2		27859	
+49A2	 03					INC, BC	;2		27861	
+49A3	 01 01 00			LD BC, d16	;3		27864	
+49A6	 00					NOP	;1		27865	
+49A7	 00					NOP	;1		27866	
+49A8	 00					NOP	;1		27867	
+49A9	 00					NOP	;1		27868	
+49AA	 00					NOP	;1		27869	
+49AB	 00					NOP	;1		27870	
+49AC	 00					NOP	;1		27871	
+49AD	 00					NOP	;1		27872	
+49AE	 00					NOP	;1		27873	
+49AF	 00					NOP	;1		27874	
+49B0	 00					NOP	;1		27875	
+49B1	 10 10				STOP	;1		27876	
+49B3	 30 30				JR NC s8	;3		27879	
+49B5	 70					LD (HL), B	;2		27881	
+49B6	 70					LD (HL), B	;2		27883	
+49B7	 00					NOP	;1		27884	
+49B8	 00					NOP	;1		27885	
+49B9	 78					LD A, B	;1		27886	
+49BA	 78					LD A, B	;1		27887	
+49BB	 9C					SBC A, H	;1		27888	
+49BC	 9C					SBC A, H	;1		27889	
+49BD	 1C					INC, E	;1		27890	
+49BE	 1C					INC, E	;1		27891	
+49BF	 78					LD A, B	;1		27892	
+49C0	 78					LD A, B	;1		27893	
+49C1	 E0 E0				LD (a8), A	;3		27896	
+49C3	 FC		
+49C5	 00					NOP	;1		27897	
+49C6	 00					NOP	;1		27898	
+49C7	 FF					RST 7	;4		27902	
+49C8	 00					NOP	;1		27903	
+49C9	 00					NOP	;1		27904	
+49CA	 00					NOP	;1		27905	
+49CB	 00					NOP	;1		27906	
+49CC	 00					NOP	;1		27907	
+49CD	 00					NOP	;1		27908	
+49CE	 00					NOP	;1		27909	
+49CF	 00					NOP	;1		27910	
+49D0	 00					NOP	;1		27911	
+49D1	 00					NOP	;1		27912	
+49D2	 00					NOP	;1		27913	
+49D3	 00					NOP	;1		27914	
+49D4	 00					NOP	;1		27915	
+49D5	 00					NOP	;1		27916	
+49D6	 00					NOP	;1		27917	
+49D7	 1B					DEC, DE	;2		27919	
+49D8	 1B					DEC, DE	;2		27921	
+49D9	 1B					DEC, DE	;2		27923	
+49DA	 1B					DEC, DE	;2		27925	
+49DB	 09					ADD HL, BC	;2		27927	
+49DC	 09					ADD HL, BC	;2		27929	
+49DD	 00					NOP	;1		27930	
+49DE	 00					NOP	;1		27931	
+49DF	 00					NOP	;1		27932	
+49E0	 00					NOP	;1		27933	
+49E1	 00					NOP	;1		27934	
+49E2	 00					NOP	;1		27935	
+49E3	 00					NOP	;1		27936	
+49E4	 00					NOP	;1		27937	
+49E5	 00					NOP	;1		27938	
+49E6	 00					NOP	;1		27939	
+49E7	 00					NOP	;1		27940	
+49E8	 00					NOP	;1		27941	
+49E9	 00					NOP	;1		27942	
+49EA	 00					NOP	;1		27943	
+49EB	 00					NOP	;1		27944	
+49EC	 00					NOP	;1		27945	
+49ED	 00					NOP	;1		27946	
+49EE	 00					NOP	;1		27947	
+49EF	 60					LD H, B	;1		27948	
+49F0	 60					LD H, B	;1		27949	
+49F1	 60					LD H, B	;1		27950	
+49F2	 60					LD H, B	;1		27951	
+49F3	 20 20				JR NZ s8	;3		27954	
+49F5	 00					NOP	;1		27955	
+49F6	 00					NOP	;1		27956	
+49F7	 1B					DEC, DE	;2		27958	
+49F8	 1B					DEC, DE	;2		27960	
+49F9	 1B					DEC, DE	;2		27962	
+49FA	 1B					DEC, DE	;2		27964	
+49FB	 09					ADD HL, BC	;2		27966	
+49FC	 09					ADD HL, BC	;2		27968	
+49FD	 00					NOP	;1		27969	
+49FE	 00					NOP	;1		27970	
+49FF	 00					NOP	;1		27971	
+4A00	 00					NOP	;1		27972	
+4A01	 60					LD H, B	;1		27973	
+4A02	 60					LD H, B	;1		27974	
+4A03	 60					LD H, B	;1		27975	
+4A04	 60					LD H, B	;1		27976	
+4A05	 00					NOP	;1		27977	
+4A06	 00					NOP	;1		27978	
+4A07	 2F					CPL	;1		27979	
+4A08	 2F					CPL	;1		27980	
+4A09	 2F					CPL	;1		27981	
+4A0A	 2F					CPL	;1		27982	
+4A0B	 2F					CPL	;1		27983	
+4A0C	 2F					CPL	;1		27984	
+4A0D	 2F					CPL	;1		27985	
+4A0E	 2F					CPL	;1		27986	
+4A0F	 2F					CPL	;1		27987	
+4A10	 2F					CPL	;1		27988	
+4A11	 2F					CPL	;1		27989	
+4A12	 2F					CPL	;1		27990	
+4A13	 2F					CPL	;1		27991	
+4A14	 2F					CPL	;1		27992	
+4A15	 2F					CPL	;1		27993	
+4A16	 2F					CPL	;1		27994	
+4A17	 2F					CPL	;1		27995	
+4A18	 2F					CPL	;1		27996	
+4A19	 2F					CPL	;1		27997	
+4A1A	 2F					CPL	;1		27998	
+4A1B	 9B					SBC A, E	;1		27999	
+4A1C	 1D					DEC, E	;1		28000	
+4A1D	 16 2F				LD, D, d8	;2		28002	
+4A1F	 0A					LD A, (BC)	;2		28004	
+4A20	 17					RLA	;1		28005	
+4A21	 0D					DEC, C	;1		28006	
+4A22	 2F					CPL	;1		28007	
+4A23	 33					INC, SP	;2		28009	
+4A24	 01 09 08			LD BC, d16	;3		28012	
+4A27	 07					RLCA	;1		28013	
+4A28	 2F					CPL	;1		28014	
+4A29	 0E 15				LD, C, d8	;2		28016	
+4A2B	 18 1B				JR s8	;3		28019	
+4A2D	 10 9C				STOP	;1		28020	
+4A2F	 2F					CPL	;1		28021	
+4A30	 1D					DEC, E	;1		28022	
+4A31	 0E 1D				LD, C, d8	;2		28024	
+4A33	 1B					DEC, DE	;2		28026	
+4A34	 12					LD (DE), A	;2		28028	
+4A35	 1C					INC, E	;1		28029	
+4A36	 2F					CPL	;1		28030	
+4A37	 15					DEC, D	;1		28031	
+4A38	 12					LD (DE), A	;2		28033	
+4A39	 0C					INC, C	;1		28034	
+4A3A	 0E 17				LD, C, d8	;2		28036	
+4A3C	 1C					INC, E	;1		28037	
+4A3D	 0E 0D				LD, C, d8	;2		28039	
+4A3F	 2F					CPL	;1		28040	
+4A40	 1D					DEC, E	;1		28041	
+4A41	 18 2F				JR s8	;3		28044	
+4A43	 2F					CPL	;1		28045	
+4A44	 2F					CPL	;1		28046	
+4A45	 2F					CPL	;1		28047	
+4A46	 2F					CPL	;1		28048	
+4A47	 0B					DEC, BC	;2		28050	
+4A48	 1E 15				LD, E, d8	;2		28052	
+4A4A	 15					DEC, D	;1		28053	
+4A4B	 0E 1D				LD, C, d8	;2		28055	
+4A4D	 25					DEC, H	;1		28056	
+4A4E	 19					ADD HL, DE	;2		28058	
+4A4F	 1B					DEC, DE	;2		28060	
+4A50	 18 18				JR s8	;3		28063	
+4A52	 0F					RRCA	;1		28064	
+4A53	 2F					CPL	;1		28065	
+4A54	 2F					CPL	;1		28066	
+4A55	 2F					CPL	;1		28067	
+4A56	 2F					CPL	;1		28068	
+4A57	 2F					CPL	;1		28069	
+4A58	 2F					CPL	;1		28070	
+4A59	 2F					CPL	;1		28071	
+4A5A	 2F					CPL	;1		28072	
+4A5B	 1C					INC, E	;1		28073	
+4A5C	 18 0F				JR s8	;3		28076	
+4A5E	 1D					DEC, E	;1		28077	
+4A5F	 20 0A				JR NZ s8	;3		28080	
+4A61	 1B					DEC, DE	;2		28082	
+4A62	 0E 2F				LD, C, d8	;2		28084	
+4A64	 0A					LD A, (BC)	;2		28086	
+4A65	 17					RLA	;1		28087	
+4A66	 0D					DEC, C	;1		28088	
+4A67	 2F					CPL	;1		28089	
+4A68	 2F					CPL	;1		28090	
+4A69	 2F					CPL	;1		28091	
+4A6A	 2F					CPL	;1		28092	
+4A6B	 2F					CPL	;1		28093	
+4A6C	 2F					CPL	;1		28094	
+4A6D	 2F					CPL	;1		28095	
+4A6E	 1C					INC, E	;1		28096	
+4A6F	 1E 0B				LD, E, d8	;2		28098	
+4A71	 25					DEC, H	;1		28099	
+4A72	 15					DEC, D	;1		28100	
+4A73	 12					LD (DE), A	;2		28102	
+4A74	 0C					INC, C	;1		28103	
+4A75	 0E 17				LD, C, d8	;2		28105	
+4A77	 1C					INC, E	;1		28106	
+4A78	 0E 0D				LD, C, d8	;2		28108	
+4A7A	 2F					CPL	;1		28109	
+4A7B	 1D					DEC, E	;1		28110	
+4A7C	 18 2F				JR s8	;3		28113	
+4A7E	 2F					CPL	;1		28114	
+4A7F	 2F					CPL	;1		28115	
+4A80	 2F					CPL	;1		28116	
+4A81	 2F					CPL	;1		28117	
+4A82	 2F					CPL	;1		28118	
+4A83	 2F					CPL	;1		28119	
+4A84	 2F					CPL	;1		28120	
+4A85	 17					RLA	;1		28121	
+4A86	 12					LD (DE), A	;2		28123	
+4A87	 17					RLA	;1		28124	
+4A88	 1D					DEC, E	;1		28125	
+4A89	 0E 17				LD, C, d8	;2		28127	
+4A8B	 0D					DEC, C	;1		28128	
+4A8C	 18 24				JR s8	;3		28131	
+4A8E	 2F					CPL	;1		28132	
+4A8F	 2F					CPL	;1		28133	
+4A90	 2F					CPL	;1		28134	
+4A91	 2F					CPL	;1		28135	
+4A92	 2F					CPL	;1		28136	
+4A93	 2F					CPL	;1		28137	
+4A94	 2F					CPL	;1		28138	
+4A95	 2F					CPL	;1		28139	
+4A96	 2F					CPL	;1		28140	
+4A97	 2F					CPL	;1		28141	
+4A98	 2F					CPL	;1		28142	
+4A99	 2F					CPL	;1		28143	
+4A9A	 2F					CPL	;1		28144	
+4A9B	 2F					CPL	;1		28145	
+4A9C	 2F					CPL	;1		28146	
+4A9D	 2F					CPL	;1		28147	
+4A9E	 2F					CPL	;1		28148	
+4A9F	 2F					CPL	;1		28149	
+4AA0	 2F					CPL	;1		28150	
+4AA1	 2F					CPL	;1		28151	
+4AA2	 2F					CPL	;1		28152	
+4AA3	 2F					CPL	;1		28153	
+4AA4	 2F					CPL	;1		28154	
+4AA5	 2F					CPL	;1		28155	
+4AA6	 2F					CPL	;1		28156	
+4AA7	 2F					CPL	;1		28157	
+4AA8	 33					INC, SP	;2		28159	
+4AA9	 01 09 08			LD BC, d16	;3		28162	
+4AAC	 09					ADD HL, BC	;2		28164	
+4AAD	 2F					CPL	;1		28165	
+4AAE	 0B					DEC, BC	;2		28167	
+4AAF	 1E 15				LD, E, d8	;2		28169	
+4AB1	 15					DEC, D	;1		28170	
+4AB2	 0E 1D				LD, C, d8	;2		28172	
+4AB4	 25					DEC, H	;1		28173	
+4AB5	 19					ADD HL, DE	;2		28175	
+4AB6	 1B					DEC, DE	;2		28177	
+4AB7	 18 18				JR s8	;3		28180	
+4AB9	 0F					RRCA	;1		28181	
+4ABA	 2F					CPL	;1		28182	
+4ABB	 2F					CPL	;1		28183	
+4ABC	 2F					CPL	;1		28184	
+4ABD	 2F					CPL	;1		28185	
+4ABE	 2F					CPL	;1		28186	
+4ABF	 2F					CPL	;1		28187	
+4AC0	 2F					CPL	;1		28188	
+4AC1	 1C					INC, E	;1		28189	
+4AC2	 18 0F				JR s8	;3		28192	
+4AC4	 1D					DEC, E	;1		28193	
+4AC5	 20 0A				JR NZ s8	;3		28196	
+4AC7	 1B					DEC, DE	;2		28198	
+4AC8	 0E 24				LD, C, d8	;2		28200	
+4ACA	 2F					CPL	;1		28201	
+4ACB	 2F					CPL	;1		28202	
+4ACC	 2F					CPL	;1		28203	
+4ACD	 2F					CPL	;1		28204	
+4ACE	 2F					CPL	;1		28205	
+4ACF	 2F					CPL	;1		28206	
+4AD0	 2F					CPL	;1		28207	
+4AD1	 2F					CPL	;1		28208	
+4AD2	 33					INC, SP	;2		28210	
+4AD3	 30 31				JR NC s8	;3		28213	
+4AD5	 32					LD (HL-), A	;2		28215	
+4AD6	 31 2F 34			LD SP, d16	;3		28218	
+4AD9	 35					DEC (HL)	;3		28221	
+4ADA	 36 37				LD (HL), d8	;3		28224	
+4ADC	 38 39				JR C s8	;3		28227	
+4ADE	 2F					CPL	;1		28228	
+4ADF	 2F					CPL	;1		28229	
+4AE0	 2F					CPL	;1		28230	
+4AE1	 2F					CPL	;1		28231	
+4AE2	 2F					CPL	;1		28232	
+4AE3	 2F					CPL	;1		28233	
+4AE4	 2F					CPL	;1		28234	
+4AE5	 2F					CPL	;1		28235	
+4AE6	 2F					CPL	;1		28236	
+4AE7	 2F					CPL	;1		28237	
+4AE8	 2F					CPL	;1		28238	
+4AE9	 2F					CPL	;1		28239	
+4AEA	 2F					CPL	;1		28240	
+4AEB	 2F					CPL	;1		28241	
+4AEC	 2F					CPL	;1		28242	
+4AED	 2F					CPL	;1		28243	
+4AEE	 2F					CPL	;1		28244	
+4AEF	 2F					CPL	;1		28245	
+4AF0	 2F					CPL	;1		28246	
+4AF1	 2F					CPL	;1		28247	
+4AF2	 2F					CPL	;1		28248	
+4AF3	 2F					CPL	;1		28249	
+4AF4	 2F					CPL	;1		28250	
+4AF5	 2F					CPL	;1		28251	
+4AF6	 2F					CPL	;1		28252	
+4AF7	 0A					LD A, (BC)	;2		28254	
+4AF8	 15					DEC, D	;1		28255	
+4AF9	 15					DEC, D	;1		28256	
+4AFA	 2F					CPL	;1		28257	
+4AFB	 1B					DEC, DE	;2		28259	
+4AFC	 12					LD (DE), A	;2		28261	
+4AFD	 10 11				STOP	;1		28262	
+4AFF	 1D					DEC, E	;1		28263	
+4B00	 1C					INC, E	;1		28264	
+4B01	 2F					CPL	;1		28265	
+4B02	 1B					DEC, DE	;2		28267	
+4B03	 0E 1C				LD, C, d8	;2		28269	
+4B05	 0E 1B				LD, C, d8	;2		28271	
+4B07	 1F					RRA	;1		28272	
+4B08	 0E 0D				LD, C, d8	;2		28274	
+4B0A	 24					INC, H	;1		28275	
+4B0B	 2F					CPL	;1		28276	
+4B0C	 2F					CPL	;1		28277	
+4B0D	 2F					CPL	;1		28278	
+4B0E	 2F					CPL	;1		28279	
+4B0F	 2F					CPL	;1		28280	
+4B10	 2F					CPL	;1		28281	
+4B11	 2F					CPL	;1		28282	
+4B12	 2F					CPL	;1		28283	
+4B13	 2F					CPL	;1		28284	
+4B14	 2F					CPL	;1		28285	
+4B15	 2F					CPL	;1		28286	
+4B16	 2F					CPL	;1		28287	
+4B17	 2F					CPL	;1		28288	
+4B18	 2F					CPL	;1		28289	
+4B19	 2F					CPL	;1		28290	
+4B1A	 2F					CPL	;1		28291	
+4B1B	 2F					CPL	;1		28292	
+4B1C	 2F					CPL	;1		28293	
+4B1D	 2F					CPL	;1		28294	
+4B1E	 2F					CPL	;1		28295	
+4B1F	 2F					CPL	;1		28296	
+4B20	 2F					CPL	;1		28297	
+4B21	 18 1B				JR s8	;3		28300	
+4B23	 12					LD (DE), A	;2		28302	
+4B24	 10 12				STOP	;1		28303	
+4B26	 17					RLA	;1		28304	
+4B27	 0A					LD A, (BC)	;2		28306	
+4B28	 15					DEC, D	;1		28307	
+4B29	 2F					CPL	;1		28308	
+4B2A	 0C					INC, C	;1		28309	
+4B2B	 18 17				JR s8	;3		28312	
+4B2D	 0C					INC, C	;1		28313	
+4B2E	 0E 19				LD, C, d8	;2		28315	
+4B30	 1D					DEC, E	;1		28316	
+4B31	 9C					SBC A, H	;1		28317	
+4B32	 2F					CPL	;1		28318	
+4B33	 2F					CPL	;1		28319	
+4B34	 0D					DEC, C	;1		28320	
+4B35	 0E 1C				LD, C, d8	;2		28322	
+4B37	 12					LD (DE), A	;2		28324	
+4B38	 10 17				STOP	;1		28325	
+4B3A	 2F					CPL	;1		28326	
+4B3B	 0A					LD A, (BC)	;2		28328	
+4B3C	 17					RLA	;1		28329	
+4B3D	 0D					DEC, C	;1		28330	
+4B3E	 2F					CPL	;1		28331	
+4B3F	 19					ADD HL, DE	;2		28333	
+4B40	 1B					DEC, DE	;2		28335	
+4B41	 18 10				JR s8	;3		28338	
+4B43	 1B					DEC, DE	;2		28340	
+4B44	 0A					LD A, (BC)	;2		28342	
+4B45	 16 2F				LD, D, d8	;2		28344	
+4B47	 0B					DEC, BC	;2		28346	
+4B48	 22					LD (HL+), A	;2		28348	
+4B49	 2F					CPL	;1		28349	
+4B4A	 0A					LD A, (BC)	;2		28351	
+4B4B	 15					DEC, D	;1		28352	
+4B4C	 0E 21				LD, C, d8	;2		28354	
+4B4E	 0E 22				LD, C, d8	;2		28356	
+4B50	 2F					CPL	;1		28357	
+4B51	 19					ADD HL, DE	;2		28359	
+4B52	 0A					LD A, (BC)	;2		28361	
+4B53	 23					INC, (HL)	;2		28363	
+4B54	 11 12 1D			LD DE, d16	;3		28366	
+4B57	 17					RLA	;1		28367	
+4B58	 18 1F				JR s8	;3		28370	
+4B5A	 9D					SBC A, L	;1		28371	
+4B5B	 2F					CPL	;1		28372	
+4B5C	 2F					CPL	;1		28373	
+4B5D	 2F					CPL	;1		28374	
+4B5E	 2F					CPL	;1		28375	
+4B5F	 2F					CPL	;1		28376	
+4B60	 2F					CPL	;1		28377	
+4B61	 2F					CPL	;1		28378	
+4B62	 2F					CPL	;1		28379	
+4B63	 2F					CPL	;1		28380	
+4B64	 2F					CPL	;1		28381	
+4B65	 2F					CPL	;1		28382	
+4B66	 2F					CPL	;1		28383	
+4B67	 2F					CPL	;1		28384	
+4B68	 2F					CPL	;1		28385	
+4B69	 2F					CPL	;1		28386	
+4B6A	 2F					CPL	;1		28387	
+4B6B	 2F					CPL	;1		28388	
+4B6C	 2F					CPL	;1		28389	
+4B6D	 2F					CPL	;1		28390	
+4B6E	 2F					CPL	;1		28391	
+4B6F	 8E					ADC A, (HL)	;2		28393	
+4B70	 8E					ADC A, (HL)	;2		28395	
+4B71	 8E					ADC A, (HL)	;2		28397	
+4B72	 8E					ADC A, (HL)	;2		28399	
+4B73	 8E					ADC A, (HL)	;2		28401	
+4B74	 8E					ADC A, (HL)	;2		28403	
+4B75	 8E					ADC A, (HL)	;2		28405	
+4B76	 8E					ADC A, (HL)	;2		28407	
+4B77	 8E					ADC A, (HL)	;2		28409	
+4B78	 8E					ADC A, (HL)	;2		28411	
+4B79	 8E					ADC A, (HL)	;2		28413	
+4B7A	 8E					ADC A, (HL)	;2		28415	
+4B7B	 8E					ADC A, (HL)	;2		28417	
+4B7C	 8E					ADC A, (HL)	;2		28419	
+4B7D	 8E					ADC A, (HL)	;2		28421	
+4B7E	 8E					ADC A, (HL)	;2		28423	
+4B7F	 8E					ADC A, (HL)	;2		28425	
+4B80	 8E					ADC A, (HL)	;2		28427	
+4B81	 8E					ADC A, (HL)	;2		28429	
+4B82	 8E					ADC A, (HL)	;2		28431	
+4B83	 5A					LD E, D	;1		28432	
+4B84	 5B					LD E, E	;1		28433	
+4B85	 5B					LD E, E	;1		28434	
+4B86	 5B					LD E, E	;1		28435	
+4B87	 5B					LD E, E	;1		28436	
+4B88	 5B					LD E, E	;1		28437	
+4B89	 5B					LD E, E	;1		28438	
+4B8A	 5B					LD E, E	;1		28439	
+4B8B	 5B					LD E, E	;1		28440	
+4B8C	 5B					LD E, E	;1		28441	
+4B8D	 5B					LD E, E	;1		28442	
+4B8E	 5B					LD E, E	;1		28443	
+4B8F	 5B					LD E, E	;1		28444	
+4B90	 5B					LD E, E	;1		28445	
+4B91	 5B					LD E, E	;1		28446	
+4B92	 5B					LD E, E	;1		28447	
+4B93	 5B					LD E, E	;1		28448	
+4B94	 5B					LD E, E	;1		28449	
+4B95	 5B					LD E, E	;1		28450	
+4B96	 5C					LD E, H	;1		28451	
+4B97	 5D					LD E, L	;1		28452	
+4B98	 80					ADD A, B	;1		28453	
+4B99	 81					ADD A, C	;1		28454	
+4B9A	 82					ADD A, D	;1		28455	
+4B9B	 83					ADD A, E	;1		28456	
+4B9C	 90					SUB B	;1		28457	
+4B9D	 91					SUB C	;1		28458	
+4B9E	 92					SUB D	;1		28459	
+4B9F	 81					ADD A, C	;1		28460	
+4BA0	 82					ADD A, D	;1		28461	
+4BA1	 83					ADD A, E	;1		28462	
+4BA2	 90					SUB B	;1		28463	
+4BA3	 6C					LD L, H	;1		28464	
+4BA4	 6D					LD L, L	;1		28465	
+4BA5	 6E					LD L, (HL)	;2		28467	
+4BA6	 6F					LD L, A	;1		28468	
+4BA7	 70					LD (HL), B	;2		28470	
+4BA8	 71					LD (HL), C	;2		28472	
+4BA9	 72					LD (HL), D	;2		28474	
+4BAA	 5E					LD E, (HL)	;2		28476	
+4BAB	 5D					LD E, L	;1		28477	
+4BAC	 84					ADD A, H	;1		28478	
+4BAD	 85					ADD A, L	;1		28479	
+4BAE	 86					ADD A, (HL)	;2		28481	
+4BAF	 87					ADD A, A	;1		28482	
+4BB0	 93					SUB E	;1		28483	
+4BB1	 94					SUB H	;1		28484	
+4BB2	 95					SUB L	;1		28485	
+4BB3	 85					ADD A, L	;1		28486	
+4BB4	 86					ADD A, (HL)	;2		28488	
+4BB5	 87					ADD A, A	;1		28489	
+4BB6	 93					SUB E	;1		28490	
+4BB7	 73					LD (HL), E	;2		28492	
+4BB8	 74					LD (HL), H	;2		28494	
+4BB9	 75					LD (HL), L	;2		28496	
+4BBA	 76					HALT	;1		28497	
+4BBB	 77					LD (HL), A	;2		28499	
+4BBC	 78					LD A, B	;1		28500	
+4BBD	 2F					CPL	;1		28501	
+4BBE	 5E					LD E, (HL)	;2		28503	
+4BBF	 5D					LD E, L	;1		28504	
+4BC0	 2F					CPL	;1		28505	
+4BC1	 88					ADC A, B	;1		28506	
+4BC2	 89					ADC A, C	;1		28507	
+4BC3	 2F					CPL	;1		28508	
+4BC4	 96					SUB (HL)	;2		28510	
+4BC5	 97					SUB A	;1		28511	
+4BC6	 98					SBC A, B	;1		28512	
+4BC7	 88					ADC A, B	;1		28513	
+4BC8	 89					ADC A, C	;1		28514	
+4BC9	 2F					CPL	;1		28515	
+4BCA	 96					SUB (HL)	;2		28517	
+4BCB	 79					LD A, C	;1		28518	
+4BCC	 7A					LD A, D	;1		28519	
+4BCD	 7B					LD A, E	;1		28520	
+4BCE	 7C					LD A, H	;1		28521	
+4BCF	 7D					LD A, L	;1		28522	
+4BD0	 7E					LD A, (HL)	;2		28524	
+4BD1	 2F					CPL	;1		28525	
+4BD2	 5E					LD E, (HL)	;2		28527	
+4BD3	 5D					LD E, L	;1		28528	
+4BD4	 2F					CPL	;1		28529	
+4BD5	 8A					ADC A, D	;1		28530	
+4BD6	 8B					ADC A, E	;1		28531	
+4BD7	 2F					CPL	;1		28532	
+4BD8	 8E					ADC A, (HL)	;2		28534	
+4BD9	 8F					ADC A, A	;1		28535	
+4BDA	 6B					LD L, E	;1		28536	
+4BDB	 8A					ADC A, D	;1		28537	
+4BDC	 8B					ADC A, E	;1		28538	
+4BDD	 2F					CPL	;1		28539	
+4BDE	 8E					ADC A, (HL)	;2		28541	
+4BDF	 7F					LD A, A	;1		28542	
+4BE0	 66					LD H, (HL)	;2		28544	
+4BE1	 67					LD H, A	;1		28545	
+4BE2	 68					LD L, B	;1		28546	
+4BE3	 69					LD L, C	;1		28547	
+4BE4	 6A					LD L, D	;1		28548	
+4BE5	 2F					CPL	;1		28549	
+4BE6	 5E					LD E, (HL)	;2		28551	
+4BE7	 5F					LD E, A	;1		28552	
+4BE8	 60					LD H, B	;1		28553	
+4BE9	 60					LD H, B	;1		28554	
+4BEA	 60					LD H, B	;1		28555	
+4BEB	 60					LD H, B	;1		28556	
+4BEC	 60					LD H, B	;1		28557	
+4BED	 60					LD H, B	;1		28558	
+4BEE	 60					LD H, B	;1		28559	
+4BEF	 60					LD H, B	;1		28560	
+4BF0	 60					LD H, B	;1		28561	
+4BF1	 60					LD H, B	;1		28562	
+4BF2	 60					LD H, B	;1		28563	
+4BF3	 60					LD H, B	;1		28564	
+4BF4	 60					LD H, B	;1		28565	
+4BF5	 60					LD H, B	;1		28566	
+4BF6	 60					LD H, B	;1		28567	
+4BF7	 60					LD H, B	;1		28568	
+4BF8	 60					LD H, B	;1		28569	
+4BF9	 60					LD H, B	;1		28570	
+4BFA	 61					LD H, C	;1		28571	
+4BFB	 8E					ADC A, (HL)	;2		28573	
+4BFC	 3C					INC, A	;1		28574	
+4BFD	 3C					INC, A	;1		28575	
+4BFE	 3C					INC, A	;1		28576	
+4BFF	 3C					INC, A	;1		28577	
+4C00	 3C					INC, A	;1		28578	
+4C01	 3C					INC, A	;1		28579	
+4C02	 3C					INC, A	;1		28580	
+4C03	 3C					INC, A	;1		28581	
+4C04	 3C					INC, A	;1		28582	
+4C05	 3C					INC, A	;1		28583	
+4C06	 3C					INC, A	;1		28584	
+4C07	 3C					INC, A	;1		28585	
+4C08	 3C					INC, A	;1		28586	
+4C09	 3D					DEC, A	;1		28587	
+4C0A	 3E 3C				LD, A, d8	;2		28589	
+4C0C	 3C					INC, A	;1		28590	
+4C0D	 3C					INC, A	;1		28591	
+4C0E	 8E					ADC A, (HL)	;2		28593	
+4C0F	 8E					ADC A, (HL)	;2		28595	
+4C10	 8C					ADC A, H	;1		28596	
+4C11	 8C					ADC A, H	;1		28597	
+4C12	 62					LD H, D	;1		28598	
+4C13	 63					LD H, E	;1		28599	
+4C14	 8C					ADC A, H	;1		28600	
+4C15	 8C					ADC A, H	;1		28601	
+4C16	 3A					LD A, (HL-)	;2		28603	
+4C17	 8C					ADC A, H	;1		28604	
+4C18	 8C					ADC A, H	;1		28605	
+4C19	 8C					ADC A, H	;1		28606	
+4C1A	 8C					ADC A, H	;1		28607	
+4C1B	 8C					ADC A, H	;1		28608	
+4C1C	 3A					LD A, (HL-)	;2		28610	
+4C1D	 42					LD B, D	;1		28611	
+4C1E	 43					LD B, E	;1		28612	
+4C1F	 3B					DEC, SP	;2		28614	
+4C20	 8C					ADC A, H	;1		28615	
+4C21	 8C					ADC A, H	;1		28616	
+4C22	 8E					ADC A, (HL)	;2		28618	
+4C23	 8E					ADC A, (HL)	;2		28620	
+4C24	 3A					LD A, (HL-)	;2		28622	
+4C25	 8C					ADC A, H	;1		28623	
+4C26	 64					LD H, H	;1		28624	
+4C27	 65					LD H, L	;1		28625	
+4C28	 8C					ADC A, H	;1		28626	
+4C29	 8C					ADC A, H	;1		28627	
+4C2A	 8C					ADC A, H	;1		28628	
+4C2B	 8C					ADC A, H	;1		28629	
+4C2C	 3B					DEC, SP	;2		28631	
+4C2D	 8C					ADC A, H	;1		28632	
+4C2E	 8C					ADC A, H	;1		28633	
+4C2F	 8C					ADC A, H	;1		28634	
+4C30	 8C					ADC A, H	;1		28635	
+4C31	 44					LD B, H	;1		28636	
+4C32	 45					LD B, L	;1		28637	
+4C33	 8C					ADC A, H	;1		28638	
+4C34	 8C					ADC A, H	;1		28639	
+4C35	 8C					ADC A, H	;1		28640	
+4C36	 8E					ADC A, (HL)	;2		28642	
+4C37	 8E					ADC A, (HL)	;2		28644	
+4C38	 8C					ADC A, H	;1		28645	
+4C39	 8C					ADC A, H	;1		28646	
+4C3A	 8C					ADC A, H	;1		28647	
+4C3B	 8C					ADC A, H	;1		28648	
+4C3C	 8C					ADC A, H	;1		28649	
+4C3D	 8C					ADC A, H	;1		28650	
+4C3E	 8C					ADC A, H	;1		28651	
+4C3F	 8C					ADC A, H	;1		28652	
+4C40	 8C					ADC A, H	;1		28653	
+4C41	 8C					ADC A, H	;1		28654	
+4C42	 8C					ADC A, H	;1		28655	
+4C43	 8C					ADC A, H	;1		28656	
+4C44	 46					LD B, (HL)	;2		28658	
+4C45	 47					LD B, A	;1		28659	
+4C46	 48					LD C, B	;1		28660	
+4C47	 49					LD C, C	;1		28661	
+4C48	 3F					CCF	;1		28662	
+4C49	 40					LD B, B	;1		28663	
+4C4A	 8E					ADC A, (HL)	;2		28665	
+4C4B	 8E					ADC A, (HL)	;2		28667	
+4C4C	 8C					ADC A, H	;1		28668	
+4C4D	 8C					ADC A, H	;1		28669	
+4C4E	 8C					ADC A, H	;1		28670	
+4C4F	 8C					ADC A, H	;1		28671	
+4C50	 3A					LD A, (HL-)	;2		28673	
+4C51	 8C					ADC A, H	;1		28674	
+4C52	 8C					ADC A, H	;1		28675	
+4C53	 8C					ADC A, H	;1		28676	
+4C54	 8C					ADC A, H	;1		28677	
+4C55	 53					LD D, E	;1		28678	
+4C56	 54					LD D, H	;1		28679	
+4C57	 8C					ADC A, H	;1		28680	
+4C58	 4A					LD C, D	;1		28681	
+4C59	 4B					LD C, E	;1		28682	
+4C5A	 4C					LD C, H	;1		28683	
+4C5B	 4D					LD C, L	;1		28684	
+4C5C	 42					LD B, D	;1		28685	
+4C5D	 43					LD B, E	;1		28686	
+4C5E	 8E					ADC A, (HL)	;2		28688	
+4C5F	 8E					ADC A, (HL)	;2		28690	
+4C60	 8C					ADC A, H	;1		28691	
+4C61	 8C					ADC A, H	;1		28692	
+4C62	 8C					ADC A, H	;1		28693	
+4C63	 8C					ADC A, H	;1		28694	
+4C64	 8C					ADC A, H	;1		28695	
+4C65	 8C					ADC A, H	;1		28696	
+4C66	 8C					ADC A, H	;1		28697	
+4C67	 8C					ADC A, H	;1		28698	
+4C68	 54					LD D, H	;1		28699	
+4C69	 55					LD D, L	;1		28700	
+4C6A	 56					LD D, (HL)	;2		28702	
+4C6B	 57					LD D, A	;1		28703	
+4C6C	 4E					LD C, (HL)	;2		28705	
+4C6D	 4F					LD C, A	;1		28706	
+4C6E	 50					LD D, B	;1		28707	
+4C6F	 51					LD D, C	;1		28708	
+4C70	 52					LD D, D	;1		28709	
+4C71	 45					LD B, L	;1		28710	
+4C72	 8E					ADC A, (HL)	;2		28712	
+4C73	 41					LD B, C	;1		28713	
+4C74	 41					LD B, C	;1		28714	
+4C75	 41					LD B, C	;1		28715	
+4C76	 41					LD B, C	;1		28716	
+4C77	 41					LD B, C	;1		28717	
+4C78	 41					LD B, C	;1		28718	
+4C79	 41					LD B, C	;1		28719	
+4C7A	 41					LD B, C	;1		28720	
+4C7B	 41					LD B, C	;1		28721	
+4C7C	 41					LD B, C	;1		28722	
+4C7D	 41					LD B, C	;1		28723	
+4C7E	 41					LD B, C	;1		28724	
+4C7F	 41					LD B, C	;1		28725	
+4C80	 41					LD B, C	;1		28726	
+4C81	 41					LD B, C	;1		28727	
+4C82	 41					LD B, C	;1		28728	
+4C83	 41					LD B, C	;1		28729	
+4C84	 41					LD B, C	;1		28730	
+4C85	 41					LD B, C	;1		28731	
+4C86	 41					LD B, C	;1		28732	
+4C87	 2F					CPL	;1		28733	
+4C88	 2F					CPL	;1		28734	
+4C89	 59					LD E, C	;1		28735	
+4C8A	 19					ADD HL, DE	;2		28737	
+4C8B	 15					DEC, D	;1		28738	
+4C8C	 0A					LD A, (BC)	;2		28740	
+4C8D	 22					LD (HL+), A	;2		28742	
+4C8E	 0E 1B				LD, C, d8	;2		28744	
+4C90	 2F					CPL	;1		28745	
+4C91	 2F					CPL	;1		28746	
+4C92	 2F					CPL	;1		28747	
+4C93	 99					SBC A, C	;1		28748	
+4C94	 19					ADD HL, DE	;2		28750	
+4C95	 15					DEC, D	;1		28751	
+4C96	 0A					LD A, (BC)	;2		28753	
+4C97	 22					LD (HL+), A	;2		28755	
+4C98	 0E 1B				LD, C, d8	;2		28757	
+4C9A	 2F					CPL	;1		28758	
+4C9B	 2F					CPL	;1		28759	
+4C9C	 2F					CPL	;1		28760	
+4C9D	 9A					SBC A, D	;1		28761	
+4C9E	 9A					SBC A, D	;1		28762	
+4C9F	 9A					SBC A, D	;1		28763	
+4CA0	 9A					SBC A, D	;1		28764	
+4CA1	 9A					SBC A, D	;1		28765	
+4CA2	 9A					SBC A, D	;1		28766	
+4CA3	 9A					SBC A, D	;1		28767	
+4CA4	 2F					CPL	;1		28768	
+4CA5	 2F					CPL	;1		28769	
+4CA6	 2F					CPL	;1		28770	
+4CA7	 9A					SBC A, D	;1		28771	
+4CA8	 9A					SBC A, D	;1		28772	
+4CA9	 9A					SBC A, D	;1		28773	
+4CAA	 9A					SBC A, D	;1		28774	
+4CAB	 9A					SBC A, D	;1		28775	
+4CAC	 9A					SBC A, D	;1		28776	
+4CAD	 9A					SBC A, D	;1		28777	
+4CAE	 2F					CPL	;1		28778	
+4CAF	 2F					CPL	;1		28779	
+4CB0	 2F					CPL	;1		28780	
+4CB1	 2F					CPL	;1		28781	
+4CB2	 2F					CPL	;1		28782	
+4CB3	 33					INC, SP	;2		28784	
+4CB4	 30 31				JR NC s8	;3		28787	
+4CB6	 32					LD (HL-), A	;2		28789	
+4CB7	 31 2F 34			LD SP, d16	;3		28792	
+4CBA	 35					DEC (HL)	;3		28795	
+4CBB	 36 37				LD (HL), d8	;3		28798	
+4CBD	 38 39				JR C s8	;3		28801	
+4CBF	 2F					CPL	;1		28802	
+4CC0	 2F					CPL	;1		28803	
+4CC1	 2F					CPL	;1		28804	
+4CC2	 2F					CPL	;1		28805	
+4CC3	 2F					CPL	;1		28806	
+4CC4	 2F					CPL	;1		28807	
+4CC5	 2F					CPL	;1		28808	
+4CC6	 2F					CPL	;1		28809	
+4CC7	 2F					CPL	;1		28810	
+4CC8	 2F					CPL	;1		28811	
+4CC9	 2F					CPL	;1		28812	
+4CCA	 2F					CPL	;1		28813	
+4CCB	 2F					CPL	;1		28814	
+4CCC	 2F					CPL	;1		28815	
+4CCD	 2F					CPL	;1		28816	
+4CCE	 2F					CPL	;1		28817	
+4CCF	 2F					CPL	;1		28818	
+4CD0	 2F					CPL	;1		28819	
+4CD1	 2F					CPL	;1		28820	
+4CD2	 2F					CPL	;1		28821	
+4CD3	 2F					CPL	;1		28822	
+4CD4	 2F					CPL	;1		28823	
+4CD5	 2F					CPL	;1		28824	
+4CD6	 2F					CPL	;1		28825	
+4CD7	 47					LD B, A	;1		28826	
+4CD8	 48					LD C, B	;1		28827	
+4CD9	 48					LD C, B	;1		28828	
+4CDA	 48					LD C, B	;1		28829	
+4CDB	 48					LD C, B	;1		28830	
+4CDC	 48					LD C, B	;1		28831	
+4CDD	 48					LD C, B	;1		28832	
+4CDE	 48					LD C, B	;1		28833	
+4CDF	 48					LD C, B	;1		28834	
+4CE0	 48					LD C, B	;1		28835	
+4CE1	 48					LD C, B	;1		28836	
+4CE2	 48					LD C, B	;1		28837	
+4CE3	 48					LD C, B	;1		28838	
+4CE4	 48					LD C, B	;1		28839	
+4CE5	 48					LD C, B	;1		28840	
+4CE6	 48					LD C, B	;1		28841	
+4CE7	 48					LD C, B	;1		28842	
+4CE8	 48					LD C, B	;1		28843	
+4CE9	 48					LD C, B	;1		28844	
+4CEA	 49					LD C, C	;1		28845	
+4CEB	 4A					LD C, D	;1		28846	
+4CEC	 2C					INC, L	;1		28847	
+4CED	 2C					INC, L	;1		28848	
+4CEE	 2C					INC, L	;1		28849	
+4CEF	 2C					INC, L	;1		28850	
+4CF0	 2C					INC, L	;1		28851	
+4CF1	 2C					INC, L	;1		28852	
+4CF2	 2C					INC, L	;1		28853	
+4CF3	 2C					INC, L	;1		28854	
+4CF4	 2C					INC, L	;1		28855	
+4CF5	 2C					INC, L	;1		28856	
+4CF6	 2C					INC, L	;1		28857	
+4CF7	 2C					INC, L	;1		28858	
+4CF8	 2C					INC, L	;1		28859	
+4CF9	 2C					INC, L	;1		28860	
+4CFA	 2C					INC, L	;1		28861	
+4CFB	 2C					INC, L	;1		28862	
+4CFC	 2C					INC, L	;1		28863	
+4CFD	 2C					INC, L	;1		28864	
+4CFE	 4B					LD C, E	;1		28865	
+4CFF	 4A					LD C, D	;1		28866	
+4D00	 2C					INC, L	;1		28867	
+4D01	 2C					INC, L	;1		28868	
+4D02	 2C					INC, L	;1		28869	
+4D03	 50					LD D, B	;1		28870	
+4D04	 51					LD D, C	;1		28871	
+4D05	 51					LD D, C	;1		28872	
+4D06	 51					LD D, C	;1		28873	
+4D07	 51					LD D, C	;1		28874	
+4D08	 51					LD D, C	;1		28875	
+4D09	 51					LD D, C	;1		28876	
+4D0A	 51					LD D, C	;1		28877	
+4D0B	 51					LD D, C	;1		28878	
+4D0C	 51					LD D, C	;1		28879	
+4D0D	 52					LD D, D	;1		28880	
+4D0E	 2C					INC, L	;1		28881	
+4D0F	 2C					INC, L	;1		28882	
+4D10	 2C					INC, L	;1		28883	
+4D11	 2C					INC, L	;1		28884	
+4D12	 4B					LD C, E	;1		28885	
+4D13	 4A					LD C, D	;1		28886	
+4D14	 2C					INC, L	;1		28887	
+4D15	 2C					INC, L	;1		28888	
+4D16	 2C					INC, L	;1		28889	
+4D17	 53					LD D, E	;1		28890	
+4D18	 10 0A				STOP	;1		28891	
+4D1A	 16 0E				LD, D, d8	;2		28893	
+4D1C	 2F					CPL	;1		28894	
+4D1D	 1D					DEC, E	;1		28895	
+4D1E	 22					LD (HL+), A	;2		28897	
+4D1F	 19					ADD HL, DE	;2		28899	
+4D20	 0E 54				LD, C, d8	;2		28901	
+4D22	 2C					INC, L	;1		28902	
+4D23	 2C					INC, L	;1		28903	
+4D24	 2C					INC, L	;1		28904	
+4D25	 2C					INC, L	;1		28905	
+4D26	 4B					LD C, E	;1		28906	
+4D27	 4A					LD C, D	;1		28907	
+4D28	 2C					INC, L	;1		28908	
+4D29	 55					LD D, L	;1		28909	
+4D2A	 56					LD D, (HL)	;2		28911	
+4D2B	 6D					LD L, L	;1		28912	
+4D2C	 58					LD E, B	;1		28913	
+4D2D	 58					LD E, B	;1		28914	
+4D2E	 58					LD E, B	;1		28915	
+4D2F	 58					LD E, B	;1		28916	
+4D30	 58					LD E, B	;1		28917	
+4D31	 A9					XOR C	;1		28918	
+4D32	 58					LD E, B	;1		28919	
+4D33	 58					LD E, B	;1		28920	
+4D34	 58					LD E, B	;1		28921	
+4D35	 6E					LD L, (HL)	;2		28923	
+4D36	 56					LD D, (HL)	;2		28925	
+4D37	 56					LD D, (HL)	;2		28927	
+4D38	 5A					LD E, D	;1		28928	
+4D39	 2C					INC, L	;1		28929	
+4D3A	 4B					LD C, E	;1		28930	
+4D3B	 4A					LD C, D	;1		28931	
+4D3C	 2C					INC, L	;1		28932	
+4D3D	 5B					LD E, E	;1		28933	
+4D3E	 78					LD A, B	;1		28934	
+4D3F	 77					LD (HL), A	;2		28936	
+4D40	 7E					LD A, (HL)	;2		28938	
+4D41	 7F					LD A, A	;1		28939	
+4D42	 9A					SBC A, D	;1		28940	
+4D43	 9B					SBC A, E	;1		28941	
+4D44	 2F					CPL	;1		28942	
+4D45	 AA					XOR D	;1		28943	
+4D46	 79					LD A, C	;1		28944	
+4D47	 77					LD (HL), A	;2		28946	
+4D48	 7E					LD A, (HL)	;2		28948	
+4D49	 7F					LD A, A	;1		28949	
+4D4A	 9A					SBC A, D	;1		28950	
+4D4B	 9B					SBC A, E	;1		28951	
+4D4C	 5C					LD E, H	;1		28952	
+4D4D	 2C					INC, L	;1		28953	
+4D4E	 4B					LD C, E	;1		28954	
+4D4F	 4A					LD C, D	;1		28955	
+4D50	 2C					INC, L	;1		28956	
+4D51	 2D					DEC, L	;1		28957	
+4D52	 4F					LD C, A	;1		28958	
+4D53	 4F					LD C, A	;1		28959	
+4D54	 4F					LD C, A	;1		28960	
+4D55	 4F					LD C, A	;1		28961	
+4D56	 4F					LD C, A	;1		28962	
+4D57	 4F					LD C, A	;1		28963	
+4D58	 4F					LD C, A	;1		28964	
+4D59	 AC					XOR H	;1		28965	
+4D5A	 4F					LD C, A	;1		28966	
+4D5B	 4F					LD C, A	;1		28967	
+4D5C	 4F					LD C, A	;1		28968	
+4D5D	 4F					LD C, A	;1		28969	
+4D5E	 4F					LD C, A	;1		28970	
+4D5F	 4F					LD C, A	;1		28971	
+4D60	 2E 2C				LD, L, d8	;2		28973	
+4D62	 4B					LD C, E	;1		28974	
+4D63	 4A					LD C, D	;1		28975	
+4D64	 2C					INC, L	;1		28976	
+4D65	 2C					INC, L	;1		28977	
+4D66	 2C					INC, L	;1		28978	
+4D67	 2C					INC, L	;1		28979	
+4D68	 2C					INC, L	;1		28980	
+4D69	 2C					INC, L	;1		28981	
+4D6A	 2C					INC, L	;1		28982	
+4D6B	 2C					INC, L	;1		28983	
+4D6C	 2C					INC, L	;1		28984	
+4D6D	 2C					INC, L	;1		28985	
+4D6E	 2C					INC, L	;1		28986	
+4D6F	 2C					INC, L	;1		28987	
+4D70	 2C					INC, L	;1		28988	
+4D71	 2C					INC, L	;1		28989	
+4D72	 2C					INC, L	;1		28990	
+4D73	 2C					INC, L	;1		28991	
+4D74	 2C					INC, L	;1		28992	
+4D75	 2C					INC, L	;1		28993	
+4D76	 4B					LD C, E	;1		28994	
+4D77	 4A					LD C, D	;1		28995	
+4D78	 2C					INC, L	;1		28996	
+4D79	 2C					INC, L	;1		28997	
+4D7A	 2C					INC, L	;1		28998	
+4D7B	 2C					INC, L	;1		28999	
+4D7C	 2C					INC, L	;1		29000	
+4D7D	 2C					INC, L	;1		29001	
+4D7E	 2C					INC, L	;1		29002	
+4D7F	 2C					INC, L	;1		29003	
+4D80	 2C					INC, L	;1		29004	
+4D81	 2C					INC, L	;1		29005	
+4D82	 2C					INC, L	;1		29006	
+4D83	 2C					INC, L	;1		29007	
+4D84	 2C					INC, L	;1		29008	
+4D85	 2C					INC, L	;1		29009	
+4D86	 2C					INC, L	;1		29010	
+4D87	 2C					INC, L	;1		29011	
+4D88	 2C					INC, L	;1		29012	
+4D89	 2C					INC, L	;1		29013	
+4D8A	 4B					LD C, E	;1		29014	
+4D8B	 4A					LD C, D	;1		29015	
+4D8C	 2C					INC, L	;1		29016	
+4D8D	 2C					INC, L	;1		29017	
+4D8E	 2C					INC, L	;1		29018	
+4D8F	 50					LD D, B	;1		29019	
+4D90	 51					LD D, C	;1		29020	
+4D91	 51					LD D, C	;1		29021	
+4D92	 51					LD D, C	;1		29022	
+4D93	 51					LD D, C	;1		29023	
+4D94	 51					LD D, C	;1		29024	
+4D95	 51					LD D, C	;1		29025	
+4D96	 51					LD D, C	;1		29026	
+4D97	 51					LD D, C	;1		29027	
+4D98	 51					LD D, C	;1		29028	
+4D99	 51					LD D, C	;1		29029	
+4D9A	 52					LD D, D	;1		29030	
+4D9B	 2C					INC, L	;1		29031	
+4D9C	 2C					INC, L	;1		29032	
+4D9D	 2C					INC, L	;1		29033	
+4D9E	 4B					LD C, E	;1		29034	
+4D9F	 4A					LD C, D	;1		29035	
+4DA0	 2C					INC, L	;1		29036	
+4DA1	 2C					INC, L	;1		29037	
+4DA2	 2C					INC, L	;1		29038	
+4DA3	 53					LD D, E	;1		29039	
+4DA4	 16 1E				LD, D, d8	;2		29041	
+4DA6	 1C					INC, E	;1		29042	
+4DA7	 12					LD (DE), A	;2		29044	
+4DA8	 0C					INC, C	;1		29045	
+4DA9	 2F					CPL	;1		29046	
+4DAA	 1D					DEC, E	;1		29047	
+4DAB	 22					LD (HL+), A	;2		29049	
+4DAC	 19					ADD HL, DE	;2		29051	
+4DAD	 0E 54				LD, C, d8	;2		29053	
+4DAF	 2C					INC, L	;1		29054	
+4DB0	 2C					INC, L	;1		29055	
+4DB1	 2C					INC, L	;1		29056	
+4DB2	 4B					LD C, E	;1		29057	
+4DB3	 4A					LD C, D	;1		29058	
+4DB4	 2C					INC, L	;1		29059	
+4DB5	 55					LD D, L	;1		29060	
+4DB6	 56					LD D, (HL)	;2		29062	
+4DB7	 6D					LD L, L	;1		29063	
+4DB8	 58					LD E, B	;1		29064	
+4DB9	 58					LD E, B	;1		29065	
+4DBA	 58					LD E, B	;1		29066	
+4DBB	 58					LD E, B	;1		29067	
+4DBC	 58					LD E, B	;1		29068	
+4DBD	 A9					XOR C	;1		29069	
+4DBE	 58					LD E, B	;1		29070	
+4DBF	 58					LD E, B	;1		29071	
+4DC0	 58					LD E, B	;1		29072	
+4DC1	 58					LD E, B	;1		29073	
+4DC2	 6E					LD L, (HL)	;2		29075	
+4DC3	 56					LD D, (HL)	;2		29077	
+4DC4	 5A					LD E, D	;1		29078	
+4DC5	 2C					INC, L	;1		29079	
+4DC6	 4B					LD C, E	;1		29080	
+4DC7	 4A					LD C, D	;1		29081	
+4DC8	 2C					INC, L	;1		29082	
+4DC9	 5B					LD E, E	;1		29083	
+4DCA	 78					LD A, B	;1		29084	
+4DCB	 77					LD (HL), A	;2		29086	
+4DCC	 7E					LD A, (HL)	;2		29088	
+4DCD	 7F					LD A, A	;1		29089	
+4DCE	 9A					SBC A, D	;1		29090	
+4DCF	 9B					SBC A, E	;1		29091	
+4DD0	 2F					CPL	;1		29092	
+4DD1	 AA					XOR D	;1		29093	
+4DD2	 79					LD A, C	;1		29094	
+4DD3	 77					LD (HL), A	;2		29096	
+4DD4	 7E					LD A, (HL)	;2		29098	
+4DD5	 7F					LD A, A	;1		29099	
+4DD6	 9A					SBC A, D	;1		29100	
+4DD7	 9B					SBC A, E	;1		29101	
+4DD8	 5C					LD E, H	;1		29102	
+4DD9	 2C					INC, L	;1		29103	
+4DDA	 4B					LD C, E	;1		29104	
+4DDB	 4A					LD C, D	;1		29105	
+4DDC	 2C					INC, L	;1		29106	
+4DDD	 71					LD (HL), C	;2		29108	
+4DDE	 72					LD (HL), D	;2		29110	
+4DDF	 72					LD (HL), D	;2		29112	
+4DE0	 72					LD (HL), D	;2		29114	
+4DE1	 72					LD (HL), D	;2		29116	
+4DE2	 72					LD (HL), D	;2		29118	
+4DE3	 72					LD (HL), D	;2		29120	
+4DE4	 72					LD (HL), D	;2		29122	
+4DE5	 AB					XOR E	;1		29123	
+4DE6	 72					LD (HL), D	;2		29125	
+4DE7	 72					LD (HL), D	;2		29127	
+4DE8	 72					LD (HL), D	;2		29129	
+4DE9	 72					LD (HL), D	;2		29131	
+4DEA	 72					LD (HL), D	;2		29133	
+4DEB	 72					LD (HL), D	;2		29135	
+4DEC	 74					LD (HL), H	;2		29137	
+4DED	 2C					INC, L	;1		29138	
+4DEE	 4B					LD C, E	;1		29139	
+4DEF	 4A					LD C, D	;1		29140	
+4DF0	 2C					INC, L	;1		29141	
+4DF1	 5B					LD E, E	;1		29142	
+4DF2	 7A					LD A, D	;1		29143	
+4DF3	 77					LD (HL), A	;2		29145	
+4DF4	 7E					LD A, (HL)	;2		29147	
+4DF5	 7F					LD A, A	;1		29148	
+4DF6	 9A					SBC A, D	;1		29149	
+4DF7	 9B					SBC A, E	;1		29150	
+4DF8	 2F					CPL	;1		29151	
+4DF9	 AA					XOR D	;1		29152	
+4DFA	 2F					CPL	;1		29153	
+4DFB	 9D					SBC A, L	;1		29154	
+4DFC	 9C					SBC A, H	;1		29155	
+4DFD	 9C					SBC A, H	;1		29156	
+4DFE	 2F					CPL	;1		29157	
+4DFF	 2F					CPL	;1		29158	
+4E00	 5C					LD E, H	;1		29159	
+4E01	 2C					INC, L	;1		29160	
+4E02	 4B					LD C, E	;1		29161	
+4E03	 4A					LD C, D	;1		29162	
+4E04	 2C					INC, L	;1		29163	
+4E05	 2D					DEC, L	;1		29164	
+4E06	 4F					LD C, A	;1		29165	
+4E07	 4F					LD C, A	;1		29166	
+4E08	 4F					LD C, A	;1		29167	
+4E09	 4F					LD C, A	;1		29168	
+4E0A	 4F					LD C, A	;1		29169	
+4E0B	 4F					LD C, A	;1		29170	
+4E0C	 4F					LD C, A	;1		29171	
+4E0D	 AC					XOR H	;1		29172	
+4E0E	 4F					LD C, A	;1		29173	
+4E0F	 4F					LD C, A	;1		29174	
+4E10	 4F					LD C, A	;1		29175	
+4E11	 4F					LD C, A	;1		29176	
+4E12	 4F					LD C, A	;1		29177	
+4E13	 4F					LD C, A	;1		29178	
+4E14	 2E 2C				LD, L, d8	;2		29180	
+4E16	 4B					LD C, E	;1		29181	
+4E17	 4A					LD C, D	;1		29182	
+4E18	 2C					INC, L	;1		29183	
+4E19	 2C					INC, L	;1		29184	
+4E1A	 2C					INC, L	;1		29185	
+4E1B	 2C					INC, L	;1		29186	
+4E1C	 2C					INC, L	;1		29187	
+4E1D	 2C					INC, L	;1		29188	
+4E1E	 2C					INC, L	;1		29189	
+4E1F	 2C					INC, L	;1		29190	
+4E20	 2C					INC, L	;1		29191	
+4E21	 2C					INC, L	;1		29192	
+4E22	 2C					INC, L	;1		29193	
+4E23	 2C					INC, L	;1		29194	
+4E24	 2C					INC, L	;1		29195	
+4E25	 2C					INC, L	;1		29196	
+4E26	 2C					INC, L	;1		29197	
+4E27	 2C					INC, L	;1		29198	
+4E28	 2C					INC, L	;1		29199	
+4E29	 2C					INC, L	;1		29200	
+4E2A	 4B					LD C, E	;1		29201	
+4E2B	 4C					LD C, H	;1		29202	
+4E2C	 4D					LD C, L	;1		29203	
+4E2D	 4D					LD C, L	;1		29204	
+4E2E	 4D					LD C, L	;1		29205	
+4E2F	 4D					LD C, L	;1		29206	
+4E30	 4D					LD C, L	;1		29207	
+4E31	 4D					LD C, L	;1		29208	
+4E32	 4D					LD C, L	;1		29209	
+4E33	 4D					LD C, L	;1		29210	
+4E34	 4D					LD C, L	;1		29211	
+4E35	 4D					LD C, L	;1		29212	
+4E36	 4D					LD C, L	;1		29213	
+4E37	 4D					LD C, L	;1		29214	
+4E38	 4D					LD C, L	;1		29215	
+4E39	 4D					LD C, L	;1		29216	
+4E3A	 4D					LD C, L	;1		29217	
+4E3B	 4D					LD C, L	;1		29218	
+4E3C	 4D					LD C, L	;1		29219	
+4E3D	 4D					LD C, L	;1		29220	
+4E3E	 4E					LD C, (HL)	;2		29222	
+4E3F	 47					LD B, A	;1		29223	
+4E40	 48					LD C, B	;1		29224	
+4E41	 48					LD C, B	;1		29225	
+4E42	 48					LD C, B	;1		29226	
+4E43	 48					LD C, B	;1		29227	
+4E44	 48					LD C, B	;1		29228	
+4E45	 48					LD C, B	;1		29229	
+4E46	 48					LD C, B	;1		29230	
+4E47	 48					LD C, B	;1		29231	
+4E48	 48					LD C, B	;1		29232	
+4E49	 48					LD C, B	;1		29233	
+4E4A	 48					LD C, B	;1		29234	
+4E4B	 48					LD C, B	;1		29235	
+4E4C	 48					LD C, B	;1		29236	
+4E4D	 48					LD C, B	;1		29237	
+4E4E	 48					LD C, B	;1		29238	
+4E4F	 48					LD C, B	;1		29239	
+4E50	 48					LD C, B	;1		29240	
+4E51	 48					LD C, B	;1		29241	
+4E52	 49					LD C, C	;1		29242	
+4E53	 4A					LD C, D	;1		29243	
+4E54	 2F					CPL	;1		29244	
+4E55	 0A					LD A, (BC)	;2		29246	
+4E56	 25					DEC, H	;1		29247	
+4E57	 1D					DEC, E	;1		29248	
+4E58	 22					LD (HL+), A	;2		29250	
+4E59	 19					ADD HL, DE	;2		29252	
+4E5A	 0E 2F				LD, C, d8	;2		29254	
+4E5C	 2C					INC, L	;1		29255	
+4E5D	 2C					INC, L	;1		29256	
+4E5E	 2C					INC, L	;1		29257	
+4E5F	 2C					INC, L	;1		29258	
+4E60	 2C					INC, L	;1		29259	
+4E61	 2C					INC, L	;1		29260	
+4E62	 2C					INC, L	;1		29261	
+4E63	 2C					INC, L	;1		29262	
+4E64	 2C					INC, L	;1		29263	
+4E65	 2C					INC, L	;1		29264	
+4E66	 4B					LD C, E	;1		29265	
+4E67	 4A					LD C, D	;1		29266	
+4E68	 2C					INC, L	;1		29267	
+4E69	 2C					INC, L	;1		29268	
+4E6A	 2C					INC, L	;1		29269	
+4E6B	 2C					INC, L	;1		29270	
+4E6C	 2C					INC, L	;1		29271	
+4E6D	 2C					INC, L	;1		29272	
+4E6E	 2C					INC, L	;1		29273	
+4E6F	 2C					INC, L	;1		29274	
+4E70	 2C					INC, L	;1		29275	
+4E71	 2C					INC, L	;1		29276	
+4E72	 2C					INC, L	;1		29277	
+4E73	 2C					INC, L	;1		29278	
+4E74	 2C					INC, L	;1		29279	
+4E75	 2C					INC, L	;1		29280	
+4E76	 2C					INC, L	;1		29281	
+4E77	 2C					INC, L	;1		29282	
+4E78	 2C					INC, L	;1		29283	
+4E79	 2C					INC, L	;1		29284	
+4E7A	 4B					LD C, E	;1		29285	
+4E7B	 4A					LD C, D	;1		29286	
+4E7C	 2C					INC, L	;1		29287	
+4E7D	 2C					INC, L	;1		29288	
+4E7E	 2C					INC, L	;1		29289	
+4E7F	 2C					INC, L	;1		29290	
+4E80	 2C					INC, L	;1		29291	
+4E81	 50					LD D, B	;1		29292	
+4E82	 51					LD D, C	;1		29293	
+4E83	 51					LD D, C	;1		29294	
+4E84	 51					LD D, C	;1		29295	
+4E85	 51					LD D, C	;1		29296	
+4E86	 51					LD D, C	;1		29297	
+4E87	 52					LD D, D	;1		29298	
+4E88	 2C					INC, L	;1		29299	
+4E89	 2C					INC, L	;1		29300	
+4E8A	 2C					INC, L	;1		29301	
+4E8B	 2C					INC, L	;1		29302	
+4E8C	 2C					INC, L	;1		29303	
+4E8D	 2C					INC, L	;1		29304	
+4E8E	 4B					LD C, E	;1		29305	
+4E8F	 4A					LD C, D	;1		29306	
+4E90	 2C					INC, L	;1		29307	
+4E91	 2C					INC, L	;1		29308	
+4E92	 2C					INC, L	;1		29309	
+4E93	 2C					INC, L	;1		29310	
+4E94	 2C					INC, L	;1		29311	
+4E95	 53					LD D, E	;1		29312	
+4E96	 15					DEC, D	;1		29313	
+4E97	 0E 1F				LD, C, d8	;2		29315	
+4E99	 0E 15				LD, C, d8	;2		29317	
+4E9B	 54					LD D, H	;1		29318	
+4E9C	 2C					INC, L	;1		29319	
+4E9D	 2C					INC, L	;1		29320	
+4E9E	 2C					INC, L	;1		29321	
+4E9F	 2C					INC, L	;1		29322	
+4EA0	 2C					INC, L	;1		29323	
+4EA1	 2C					INC, L	;1		29324	
+4EA2	 4B					LD C, E	;1		29325	
+4EA3	 4A					LD C, D	;1		29326	
+4EA4	 2C					INC, L	;1		29327	
+4EA5	 2C					INC, L	;1		29328	
+4EA6	 2C					INC, L	;1		29329	
+4EA7	 55					LD D, L	;1		29330	
+4EA8	 56					LD D, (HL)	;2		29332	
+4EA9	 57					LD D, A	;1		29333	
+4EAA	 58					LD E, B	;1		29334	
+4EAB	 6C					LD L, H	;1		29335	
+4EAC	 58					LD E, B	;1		29336	
+4EAD	 6C					LD L, H	;1		29337	
+4EAE	 58					LD E, B	;1		29338	
+4EAF	 59					LD E, C	;1		29339	
+4EB0	 56					LD D, (HL)	;2		29341	
+4EB1	 5A					LD E, D	;1		29342	
+4EB2	 2C					INC, L	;1		29343	
+4EB3	 2C					INC, L	;1		29344	
+4EB4	 2C					INC, L	;1		29345	
+4EB5	 2C					INC, L	;1		29346	
+4EB6	 4B					LD C, E	;1		29347	
+4EB7	 4A					LD C, D	;1		29348	
+4EB8	 2C					INC, L	;1		29349	
+4EB9	 2C					INC, L	;1		29350	
+4EBA	 2C					INC, L	;1		29351	
+4EBB	 5B					LD E, E	;1		29352	
+4EBC	 90					SUB B	;1		29353	
+4EBD	 6F					LD L, A	;1		29354	
+4EBE	 91					SUB C	;1		29355	
+4EBF	 6F					LD L, A	;1		29356	
+4EC0	 92					SUB D	;1		29357	
+4EC1	 6F					LD L, A	;1		29358	
+4EC2	 93					SUB E	;1		29359	
+4EC3	 6F					LD L, A	;1		29360	
+4EC4	 94					SUB H	;1		29361	
+4EC5	 5C					LD E, H	;1		29362	
+4EC6	 2C					INC, L	;1		29363	
+4EC7	 2C					INC, L	;1		29364	
+4EC8	 2C					INC, L	;1		29365	
+4EC9	 2C					INC, L	;1		29366	
+4ECA	 4B					LD C, E	;1		29367	
+4ECB	 4A					LD C, D	;1		29368	
+4ECC	 2C					INC, L	;1		29369	
+4ECD	 2C					INC, L	;1		29370	
+4ECE	 2C					INC, L	;1		29371	
+4ECF	 71					LD (HL), C	;2		29373	
+4ED0	 72					LD (HL), D	;2		29375	
+4ED1	 73					LD (HL), E	;2		29377	
+4ED2	 72					LD (HL), D	;2		29379	
+4ED3	 73					LD (HL), E	;2		29381	
+4ED4	 72					LD (HL), D	;2		29383	
+4ED5	 73					LD (HL), E	;2		29385	
+4ED6	 72					LD (HL), D	;2		29387	
+4ED7	 73					LD (HL), E	;2		29389	
+4ED8	 72					LD (HL), D	;2		29391	
+4ED9	 74					LD (HL), H	;2		29393	
+4EDA	 2C					INC, L	;1		29394	
+4EDB	 2C					INC, L	;1		29395	
+4EDC	 2C					INC, L	;1		29396	
+4EDD	 2C					INC, L	;1		29397	
+4EDE	 4B					LD C, E	;1		29398	
+4EDF	 4A					LD C, D	;1		29399	
+4EE0	 2C					INC, L	;1		29400	
+4EE1	 2C					INC, L	;1		29401	
+4EE2	 2C					INC, L	;1		29402	
+4EE3	 5B					LD E, E	;1		29403	
+4EE4	 95					SUB L	;1		29404	
+4EE5	 6F					LD L, A	;1		29405	
+4EE6	 96					SUB (HL)	;2		29407	
+4EE7	 6F					LD L, A	;1		29408	
+4EE8	 97					SUB A	;1		29409	
+4EE9	 6F					LD L, A	;1		29410	
+4EEA	 98					SBC A, B	;1		29411	
+4EEB	 6F					LD L, A	;1		29412	
+4EEC	 99					SBC A, C	;1		29413	
+4EED	 5C					LD E, H	;1		29414	
+4EEE	 2C					INC, L	;1		29415	
+4EEF	 2C					INC, L	;1		29416	
+4EF0	 2C					INC, L	;1		29417	
+4EF1	 2C					INC, L	;1		29418	
+4EF2	 4B					LD C, E	;1		29419	
+4EF3	 4A					LD C, D	;1		29420	
+4EF4	 2C					INC, L	;1		29421	
+4EF5	 2C					INC, L	;1		29422	
+4EF6	 2C					INC, L	;1		29423	
+4EF7	 2D					DEC, L	;1		29424	
+4EF8	 4F					LD C, A	;1		29425	
+4EF9	 6B					LD L, E	;1		29426	
+4EFA	 4F					LD C, A	;1		29427	
+4EFB	 6B					LD L, E	;1		29428	
+4EFC	 4F					LD C, A	;1		29429	
+4EFD	 6B					LD L, E	;1		29430	
+4EFE	 4F					LD C, A	;1		29431	
+4EFF	 6B					LD L, E	;1		29432	
+4F00	 4F					LD C, A	;1		29433	
+4F01	 2E 2C				LD, L, d8	;2		29435	
+4F03	 2C					INC, L	;1		29436	
+4F04	 2C					INC, L	;1		29437	
+4F05	 2C					INC, L	;1		29438	
+4F06	 4B					LD C, E	;1		29439	
+4F07	 4A					LD C, D	;1		29440	
+4F08	 2C					INC, L	;1		29441	
+4F09	 2C					INC, L	;1		29442	
+4F0A	 2C					INC, L	;1		29443	
+4F0B	 50					LD D, B	;1		29444	
+4F0C	 51					LD D, C	;1		29445	
+4F0D	 51					LD D, C	;1		29446	
+4F0E	 51					LD D, C	;1		29447	
+4F0F	 51					LD D, C	;1		29448	
+4F10	 51					LD D, C	;1		29449	
+4F11	 51					LD D, C	;1		29450	
+4F12	 51					LD D, C	;1		29451	
+4F13	 51					LD D, C	;1		29452	
+4F14	 51					LD D, C	;1		29453	
+4F15	 52					LD D, D	;1		29454	
+4F16	 2C					INC, L	;1		29455	
+4F17	 2C					INC, L	;1		29456	
+4F18	 2C					INC, L	;1		29457	
+4F19	 2C					INC, L	;1		29458	
+4F1A	 4B					LD C, E	;1		29459	
+4F1B	 4A					LD C, D	;1		29460	
+4F1C	 2C					INC, L	;1		29461	
+4F1D	 2C					INC, L	;1		29462	
+4F1E	 2C					INC, L	;1		29463	
+4F1F	 53					LD D, E	;1		29464	
+4F20	 1D					DEC, E	;1		29465	
+4F21	 18 19				JR s8	;3		29468	
+4F23	 25					DEC, H	;1		29469	
+4F24	 1C					INC, E	;1		29470	
+4F25	 0C					INC, C	;1		29471	
+4F26	 18 1B				JR s8	;3		29474	
+4F28	 0E 54				LD, C, d8	;2		29476	
+4F2A	 2C					INC, L	;1		29477	
+4F2B	 2C					INC, L	;1		29478	
+4F2C	 2C					INC, L	;1		29479	
+4F2D	 2C					INC, L	;1		29480	
+4F2E	 4B					LD C, E	;1		29481	
+4F2F	 4A					LD C, D	;1		29482	
+4F30	 55					LD D, L	;1		29483	
+4F31	 56					LD D, (HL)	;2		29485	
+4F32	 70					LD (HL), B	;2		29487	
+4F33	 6D					LD L, L	;1		29488	
+4F34	 58					LD E, B	;1		29489	
+4F35	 58					LD E, B	;1		29490	
+4F36	 58					LD E, B	;1		29491	
+4F37	 58					LD E, B	;1		29492	
+4F38	 58					LD E, B	;1		29493	
+4F39	 58					LD E, B	;1		29494	
+4F3A	 58					LD E, B	;1		29495	
+4F3B	 58					LD E, B	;1		29496	
+4F3C	 58					LD E, B	;1		29497	
+4F3D	 6E					LD L, (HL)	;2		29499	
+4F3E	 56					LD D, (HL)	;2		29501	
+4F3F	 56					LD D, (HL)	;2		29503	
+4F40	 56					LD D, (HL)	;2		29505	
+4F41	 5A					LD E, D	;1		29506	
+4F42	 4B					LD C, E	;1		29507	
+4F43	 4A					LD C, D	;1		29508	
+4F44	 5B					LD E, E	;1		29509	
+4F45	 01 6F 60			LD BC, d16	;3		29512	
+4F48	 60					LD H, B	;1		29513	
+4F49	 60					LD H, B	;1		29514	
+4F4A	 60					LD H, B	;1		29515	
+4F4B	 60					LD H, B	;1		29516	
+4F4C	 60					LD H, B	;1		29517	
+4F4D	 2F					CPL	;1		29518	
+4F4E	 2F					CPL	;1		29519	
+4F4F	 60					LD H, B	;1		29520	
+4F50	 60					LD H, B	;1		29521	
+4F51	 60					LD H, B	;1		29522	
+4F52	 60					LD H, B	;1		29523	
+4F53	 60					LD H, B	;1		29524	
+4F54	 60					LD H, B	;1		29525	
+4F55	 5C					LD E, H	;1		29526	
+4F56	 4B					LD C, E	;1		29527	
+4F57	 4A					LD C, D	;1		29528	
+4F58	 5B					LD E, E	;1		29529	
+4F59	 02					LD (BC), A	;2		29531	
+4F5A	 6F					LD L, A	;1		29532	
+4F5B	 60					LD H, B	;1		29533	
+4F5C	 60					LD H, B	;1		29534	
+4F5D	 60					LD H, B	;1		29535	
+4F5E	 60					LD H, B	;1		29536	
+4F5F	 60					LD H, B	;1		29537	
+4F60	 60					LD H, B	;1		29538	
+4F61	 2F					CPL	;1		29539	
+4F62	 2F					CPL	;1		29540	
+4F63	 60					LD H, B	;1		29541	
+4F64	 60					LD H, B	;1		29542	
+4F65	 60					LD H, B	;1		29543	
+4F66	 60					LD H, B	;1		29544	
+4F67	 60					LD H, B	;1		29545	
+4F68	 60					LD H, B	;1		29546	
+4F69	 5C					LD E, H	;1		29547	
+4F6A	 4B					LD C, E	;1		29548	
+4F6B	 4A					LD C, D	;1		29549	
+4F6C	 5B					LD E, E	;1		29550	
+4F6D	 03					INC, BC	;2		29552	
+4F6E	 6F					LD L, A	;1		29553	
+4F6F	 60					LD H, B	;1		29554	
+4F70	 60					LD H, B	;1		29555	
+4F71	 60					LD H, B	;1		29556	
+4F72	 60					LD H, B	;1		29557	
+4F73	 60					LD H, B	;1		29558	
+4F74	 60					LD H, B	;1		29559	
+4F75	 2F					CPL	;1		29560	
+4F76	 2F					CPL	;1		29561	
+4F77	 60					LD H, B	;1		29562	
+4F78	 60					LD H, B	;1		29563	
+4F79	 60					LD H, B	;1		29564	
+4F7A	 60					LD H, B	;1		29565	
+4F7B	 60					LD H, B	;1		29566	
+4F7C	 60					LD H, B	;1		29567	
+4F7D	 5C					LD E, H	;1		29568	
+4F7E	 4B					LD C, E	;1		29569	
+4F7F	 4A					LD C, D	;1		29570	
+4F80	 2D					DEC, L	;1		29571	
+4F81	 4F					LD C, A	;1		29572	
+4F82	 6B					LD L, E	;1		29573	
+4F83	 4F					LD C, A	;1		29574	
+4F84	 4F					LD C, A	;1		29575	
+4F85	 4F					LD C, A	;1		29576	
+4F86	 4F					LD C, A	;1		29577	
+4F87	 4F					LD C, A	;1		29578	
+4F88	 4F					LD C, A	;1		29579	
+4F89	 4F					LD C, A	;1		29580	
+4F8A	 4F					LD C, A	;1		29581	
+4F8B	 4F					LD C, A	;1		29582	
+4F8C	 4F					LD C, A	;1		29583	
+4F8D	 4F					LD C, A	;1		29584	
+4F8E	 4F					LD C, A	;1		29585	
+4F8F	 4F					LD C, A	;1		29586	
+4F90	 4F					LD C, A	;1		29587	
+4F91	 2E 4B				LD, L, d8	;2		29589	
+4F93	 4C					LD C, H	;1		29590	
+4F94	 4D					LD C, L	;1		29591	
+4F95	 4D					LD C, L	;1		29592	
+4F96	 4D					LD C, L	;1		29593	
+4F97	 4D					LD C, L	;1		29594	
+4F98	 4D					LD C, L	;1		29595	
+4F99	 4D					LD C, L	;1		29596	
+4F9A	 4D					LD C, L	;1		29597	
+4F9B	 4D					LD C, L	;1		29598	
+4F9C	 4D					LD C, L	;1		29599	
+4F9D	 4D					LD C, L	;1		29600	
+4F9E	 4D					LD C, L	;1		29601	
+4F9F	 4D					LD C, L	;1		29602	
+4FA0	 4D					LD C, L	;1		29603	
+4FA1	 4D					LD C, L	;1		29604	
+4FA2	 4D					LD C, L	;1		29605	
+4FA3	 4D					LD C, L	;1		29606	
+4FA4	 4D					LD C, L	;1		29607	
+4FA5	 4D					LD C, L	;1		29608	
+4FA6	 4E					LD C, (HL)	;2		29610	
+4FA7	 47					LD B, A	;1		29611	
+4FA8	 48					LD C, B	;1		29612	
+4FA9	 48					LD C, B	;1		29613	
+4FAA	 48					LD C, B	;1		29614	
+4FAB	 48					LD C, B	;1		29615	
+4FAC	 48					LD C, B	;1		29616	
+4FAD	 48					LD C, B	;1		29617	
+4FAE	 48					LD C, B	;1		29618	
+4FAF	 48					LD C, B	;1		29619	
+4FB0	 48					LD C, B	;1		29620	
+4FB1	 48					LD C, B	;1		29621	
+4FB2	 48					LD C, B	;1		29622	
+4FB3	 48					LD C, B	;1		29623	
+4FB4	 48					LD C, B	;1		29624	
+4FB5	 48					LD C, B	;1		29625	
+4FB6	 48					LD C, B	;1		29626	
+4FB7	 48					LD C, B	;1		29627	
+4FB8	 48					LD C, B	;1		29628	
+4FB9	 48					LD C, B	;1		29629	
+4FBA	 49					LD C, C	;1		29630	
+4FBB	 4A					LD C, D	;1		29631	
+4FBC	 2F					CPL	;1		29632	
+4FBD	 0B					DEC, BC	;2		29634	
+4FBE	 25					DEC, H	;1		29635	
+4FBF	 1D					DEC, E	;1		29636	
+4FC0	 22					LD (HL+), A	;2		29638	
+4FC1	 19					ADD HL, DE	;2		29640	
+4FC2	 0E 2F				LD, C, d8	;2		29642	
+4FC4	 2C					INC, L	;1		29643	
+4FC5	 2C					INC, L	;1		29644	
+4FC6	 2C					INC, L	;1		29645	
+4FC7	 2C					INC, L	;1		29646	
+4FC8	 2C					INC, L	;1		29647	
+4FC9	 2C					INC, L	;1		29648	
+4FCA	 2C					INC, L	;1		29649	
+4FCB	 2C					INC, L	;1		29650	
+4FCC	 2C					INC, L	;1		29651	
+4FCD	 2C					INC, L	;1		29652	
+4FCE	 4B					LD C, E	;1		29653	
+4FCF	 4A					LD C, D	;1		29654	
+4FD0	 2C					INC, L	;1		29655	
+4FD1	 2C					INC, L	;1		29656	
+4FD2	 2C					INC, L	;1		29657	
+4FD3	 2C					INC, L	;1		29658	
+4FD4	 2C					INC, L	;1		29659	
+4FD5	 2C					INC, L	;1		29660	
+4FD6	 2C					INC, L	;1		29661	
+4FD7	 2C					INC, L	;1		29662	
+4FD8	 2C					INC, L	;1		29663	
+4FD9	 2C					INC, L	;1		29664	
+4FDA	 2C					INC, L	;1		29665	
+4FDB	 2C					INC, L	;1		29666	
+4FDC	 2C					INC, L	;1		29667	
+4FDD	 2C					INC, L	;1		29668	
+4FDE	 2C					INC, L	;1		29669	
+4FDF	 2C					INC, L	;1		29670	
+4FE0	 2C					INC, L	;1		29671	
+4FE1	 2C					INC, L	;1		29672	
+4FE2	 4B					LD C, E	;1		29673	
+4FE3	 4A					LD C, D	;1		29674	
+4FE4	 2C					INC, L	;1		29675	
+4FE5	 2C					INC, L	;1		29676	
+4FE6	 50					LD D, B	;1		29677	
+4FE7	 51					LD D, C	;1		29678	
+4FE8	 51					LD D, C	;1		29679	
+4FE9	 51					LD D, C	;1		29680	
+4FEA	 51					LD D, C	;1		29681	
+4FEB	 51					LD D, C	;1		29682	
+4FEC	 52					LD D, D	;1		29683	
+4FED	 2C					INC, L	;1		29684	
+4FEE	 2C					INC, L	;1		29685	
+4FEF	 50					LD D, B	;1		29686	
+4FF0	 51					LD D, C	;1		29687	
+4FF1	 51					LD D, C	;1		29688	
+4FF2	 51					LD D, C	;1		29689	
+4FF3	 51					LD D, C	;1		29690	
+4FF4	 52					LD D, D	;1		29691	
+4FF5	 2C					INC, L	;1		29692	
+4FF6	 4B					LD C, E	;1		29693	
+4FF7	 4A					LD C, D	;1		29694	
+4FF8	 2C					INC, L	;1		29695	
+4FF9	 2C					INC, L	;1		29696	
+4FFA	 53					LD D, E	;1		29697	
+4FFB	 15					DEC, D	;1		29698	
+4FFC	 0E 1F				LD, C, d8	;2		29700	
+4FFE	 0E 15				LD, C, d8	;2		29702	
+5000	 54					LD D, H	;1		29703	
+5001	 2C					INC, L	;1		29704	
+5002	 2C					INC, L	;1		29705	
+5003	 53					LD D, E	;1		29706	
+5004	 11 12 10			LD DE, d16	;3		29709	
+5007	 11 54 2C			LD DE, d16	;3		29712	
+500A	 4B					LD C, E	;1		29713	
+500B	 4A					LD C, D	;1		29714	
+500C	 55					LD D, L	;1		29715	
+500D	 56					LD D, (HL)	;2		29717	
+500E	 57					LD D, A	;1		29718	
+500F	 58					LD E, B	;1		29719	
+5010	 6C					LD L, H	;1		29720	
+5011	 58					LD E, B	;1		29721	
+5012	 6C					LD L, H	;1		29722	
+5013	 58					LD E, B	;1		29723	
+5014	 59					LD E, C	;1		29724	
+5015	 56					LD D, (HL)	;2		29726	
+5016	 5A					LD E, D	;1		29727	
+5017	 75					LD (HL), L	;2		29729	
+5018	 58					LD E, B	;1		29730	
+5019	 6C					LD L, H	;1		29731	
+501A	 58					LD E, B	;1		29732	
+501B	 6C					LD L, H	;1		29733	
+501C	 6E					LD L, (HL)	;2		29735	
+501D	 5A					LD E, D	;1		29736	
+501E	 4B					LD C, E	;1		29737	
+501F	 4A					LD C, D	;1		29738	
+5020	 5B					LD E, E	;1		29739	
+5021	 90					SUB B	;1		29740	
+5022	 6F					LD L, A	;1		29741	
+5023	 91					SUB C	;1		29742	
+5024	 6F					LD L, A	;1		29743	
+5025	 92					SUB D	;1		29744	
+5026	 6F					LD L, A	;1		29745	
+5027	 93					SUB E	;1		29746	
+5028	 6F					LD L, A	;1		29747	
+5029	 94					SUB H	;1		29748	
+502A	 5C					LD E, H	;1		29749	
+502B	 5B					LD E, E	;1		29750	
+502C	 90					SUB B	;1		29751	
+502D	 6F					LD L, A	;1		29752	
+502E	 91					SUB C	;1		29753	
+502F	 6F					LD L, A	;1		29754	
+5030	 92					SUB D	;1		29755	
+5031	 5C					LD E, H	;1		29756	
+5032	 4B					LD C, E	;1		29757	
+5033	 4A					LD C, D	;1		29758	
+5034	 71					LD (HL), C	;2		29760	
+5035	 72					LD (HL), D	;2		29762	
+5036	 73					LD (HL), E	;2		29764	
+5037	 72					LD (HL), D	;2		29766	
+5038	 73					LD (HL), E	;2		29768	
+5039	 72					LD (HL), D	;2		29770	
+503A	 73					LD (HL), E	;2		29772	
+503B	 72					LD (HL), D	;2		29774	
+503C	 73					LD (HL), E	;2		29776	
+503D	 72					LD (HL), D	;2		29778	
+503E	 74					LD (HL), H	;2		29780	
+503F	 71					LD (HL), C	;2		29782	
+5040	 72					LD (HL), D	;2		29784	
+5041	 73					LD (HL), E	;2		29786	
+5042	 72					LD (HL), D	;2		29788	
+5043	 73					LD (HL), E	;2		29790	
+5044	 72					LD (HL), D	;2		29792	
+5045	 74					LD (HL), H	;2		29794	
+5046	 4B					LD C, E	;1		29795	
+5047	 4A					LD C, D	;1		29796	
+5048	 5B					LD E, E	;1		29797	
+5049	 95					SUB L	;1		29798	
+504A	 6F					LD L, A	;1		29799	
+504B	 96					SUB (HL)	;2		29801	
+504C	 6F					LD L, A	;1		29802	
+504D	 97					SUB A	;1		29803	
+504E	 6F					LD L, A	;1		29804	
+504F	 98					SBC A, B	;1		29805	
+5050	 6F					LD L, A	;1		29806	
+5051	 99					SBC A, C	;1		29807	
+5052	 5C					LD E, H	;1		29808	
+5053	 5B					LD E, E	;1		29809	
+5054	 93					SUB E	;1		29810	
+5055	 6F					LD L, A	;1		29811	
+5056	 94					SUB H	;1		29812	
+5057	 6F					LD L, A	;1		29813	
+5058	 95					SUB L	;1		29814	
+5059	 5C					LD E, H	;1		29815	
+505A	 4B					LD C, E	;1		29816	
+505B	 4A					LD C, D	;1		29817	
+505C	 2D					DEC, L	;1		29818	
+505D	 4F					LD C, A	;1		29819	
+505E	 6B					LD L, E	;1		29820	
+505F	 4F					LD C, A	;1		29821	
+5060	 6B					LD L, E	;1		29822	
+5061	 4F					LD C, A	;1		29823	
+5062	 6B					LD L, E	;1		29824	
+5063	 4F					LD C, A	;1		29825	
+5064	 6B					LD L, E	;1		29826	
+5065	 4F					LD C, A	;1		29827	
+5066	 2E 2D				LD, L, d8	;2		29829	
+5068	 4F					LD C, A	;1		29830	
+5069	 6B					LD L, E	;1		29831	
+506A	 4F					LD C, A	;1		29832	
+506B	 6B					LD L, E	;1		29833	
+506C	 4F					LD C, A	;1		29834	
+506D	 2E 4B				LD, L, d8	;2		29836	
+506F	 4A					LD C, D	;1		29837	
+5070	 2C					INC, L	;1		29838	
+5071	 2C					INC, L	;1		29839	
+5072	 2C					INC, L	;1		29840	
+5073	 50					LD D, B	;1		29841	
+5074	 51					LD D, C	;1		29842	
+5075	 51					LD D, C	;1		29843	
+5076	 51					LD D, C	;1		29844	
+5077	 51					LD D, C	;1		29845	
+5078	 51					LD D, C	;1		29846	
+5079	 51					LD D, C	;1		29847	
+507A	 51					LD D, C	;1		29848	
+507B	 51					LD D, C	;1		29849	
+507C	 51					LD D, C	;1		29850	
+507D	 52					LD D, D	;1		29851	
+507E	 2C					INC, L	;1		29852	
+507F	 2C					INC, L	;1		29853	
+5080	 2C					INC, L	;1		29854	
+5081	 2C					INC, L	;1		29855	
+5082	 4B					LD C, E	;1		29856	
+5083	 4A					LD C, D	;1		29857	
+5084	 2C					INC, L	;1		29858	
+5085	 2C					INC, L	;1		29859	
+5086	 2C					INC, L	;1		29860	
+5087	 53					LD D, E	;1		29861	
+5088	 1D					DEC, E	;1		29862	
+5089	 18 19				JR s8	;3		29865	
+508B	 25					DEC, H	;1		29866	
+508C	 1C					INC, E	;1		29867	
+508D	 0C					INC, C	;1		29868	
+508E	 18 1B				JR s8	;3		29871	
+5090	 0E 54				LD, C, d8	;2		29873	
+5092	 2C					INC, L	;1		29874	
+5093	 2C					INC, L	;1		29875	
+5094	 2C					INC, L	;1		29876	
+5095	 2C					INC, L	;1		29877	
+5096	 4B					LD C, E	;1		29878	
+5097	 4A					LD C, D	;1		29879	
+5098	 55					LD D, L	;1		29880	
+5099	 56					LD D, (HL)	;2		29882	
+509A	 70					LD (HL), B	;2		29884	
+509B	 6D					LD L, L	;1		29885	
+509C	 58					LD E, B	;1		29886	
+509D	 58					LD E, B	;1		29887	
+509E	 58					LD E, B	;1		29888	
+509F	 58					LD E, B	;1		29889	
+50A0	 58					LD E, B	;1		29890	
+50A1	 58					LD E, B	;1		29891	
+50A2	 58					LD E, B	;1		29892	
+50A3	 58					LD E, B	;1		29893	
+50A4	 58					LD E, B	;1		29894	
+50A5	 6E					LD L, (HL)	;2		29896	
+50A6	 56					LD D, (HL)	;2		29898	
+50A7	 56					LD D, (HL)	;2		29900	
+50A8	 56					LD D, (HL)	;2		29902	
+50A9	 5A					LD E, D	;1		29903	
+50AA	 4B					LD C, E	;1		29904	
+50AB	 4A					LD C, D	;1		29905	
+50AC	 5B					LD E, E	;1		29906	
+50AD	 01 6F 60			LD BC, d16	;3		29909	
+50B0	 60					LD H, B	;1		29910	
+50B1	 60					LD H, B	;1		29911	
+50B2	 60					LD H, B	;1		29912	
+50B3	 60					LD H, B	;1		29913	
+50B4	 60					LD H, B	;1		29914	
+50B5	 2F					CPL	;1		29915	
+50B6	 2F					CPL	;1		29916	
+50B7	 60					LD H, B	;1		29917	
+50B8	 60					LD H, B	;1		29918	
+50B9	 60					LD H, B	;1		29919	
+50BA	 60					LD H, B	;1		29920	
+50BB	 60					LD H, B	;1		29921	
+50BC	 60					LD H, B	;1		29922	
+50BD	 5C					LD E, H	;1		29923	
+50BE	 4B					LD C, E	;1		29924	
+50BF	 4A					LD C, D	;1		29925	
+50C0	 5B					LD E, E	;1		29926	
+50C1	 02					LD (BC), A	;2		29928	
+50C2	 6F					LD L, A	;1		29929	
+50C3	 60					LD H, B	;1		29930	
+50C4	 60					LD H, B	;1		29931	
+50C5	 60					LD H, B	;1		29932	
+50C6	 60					LD H, B	;1		29933	
+50C7	 60					LD H, B	;1		29934	
+50C8	 60					LD H, B	;1		29935	
+50C9	 2F					CPL	;1		29936	
+50CA	 2F					CPL	;1		29937	
+50CB	 60					LD H, B	;1		29938	
+50CC	 60					LD H, B	;1		29939	
+50CD	 60					LD H, B	;1		29940	
+50CE	 60					LD H, B	;1		29941	
+50CF	 60					LD H, B	;1		29942	
+50D0	 60					LD H, B	;1		29943	
+50D1	 5C					LD E, H	;1		29944	
+50D2	 4B					LD C, E	;1		29945	
+50D3	 4A					LD C, D	;1		29946	
+50D4	 5B					LD E, E	;1		29947	
+50D5	 03					INC, BC	;2		29949	
+50D6	 6F					LD L, A	;1		29950	
+50D7	 60					LD H, B	;1		29951	
+50D8	 60					LD H, B	;1		29952	
+50D9	 60					LD H, B	;1		29953	
+50DA	 60					LD H, B	;1		29954	
+50DB	 60					LD H, B	;1		29955	
+50DC	 60					LD H, B	;1		29956	
+50DD	 2F					CPL	;1		29957	
+50DE	 2F					CPL	;1		29958	
+50DF	 60					LD H, B	;1		29959	
+50E0	 60					LD H, B	;1		29960	
+50E1	 60					LD H, B	;1		29961	
+50E2	 60					LD H, B	;1		29962	
+50E3	 60					LD H, B	;1		29963	
+50E4	 60					LD H, B	;1		29964	
+50E5	 5C					LD E, H	;1		29965	
+50E6	 4B					LD C, E	;1		29966	
+50E7	 4A					LD C, D	;1		29967	
+50E8	 2D					DEC, L	;1		29968	
+50E9	 4F					LD C, A	;1		29969	
+50EA	 6B					LD L, E	;1		29970	
+50EB	 4F					LD C, A	;1		29971	
+50EC	 4F					LD C, A	;1		29972	
+50ED	 4F					LD C, A	;1		29973	
+50EE	 4F					LD C, A	;1		29974	
+50EF	 4F					LD C, A	;1		29975	
+50F0	 4F					LD C, A	;1		29976	
+50F1	 4F					LD C, A	;1		29977	
+50F2	 4F					LD C, A	;1		29978	
+50F3	 4F					LD C, A	;1		29979	
+50F4	 4F					LD C, A	;1		29980	
+50F5	 4F					LD C, A	;1		29981	
+50F6	 4F					LD C, A	;1		29982	
+50F7	 4F					LD C, A	;1		29983	
+50F8	 4F					LD C, A	;1		29984	
+50F9	 2E 4B				LD, L, d8	;2		29986	
+50FB	 4C					LD C, H	;1		29987	
+50FC	 4D					LD C, L	;1		29988	
+50FD	 4D					LD C, L	;1		29989	
+50FE	 4D					LD C, L	;1		29990	
+50FF	 4D					LD C, L	;1		29991	
+5100	 4D					LD C, L	;1		29992	
+5101	 4D					LD C, L	;1		29993	
+5102	 4D					LD C, L	;1		29994	
+5103	 4D					LD C, L	;1		29995	
+5104	 4D					LD C, L	;1		29996	
+5105	 4D					LD C, L	;1		29997	
+5106	 4D					LD C, L	;1		29998	
+5107	 4D					LD C, L	;1		29999	
+5108	 4D					LD C, L	;1		30000	
+5109	 4D					LD C, L	;1		30001	
+510A	 4D					LD C, L	;1		30002	
+510B	 4D					LD C, L	;1		30003	
+510C	 4D					LD C, L	;1		30004	
+510D	 4D					LD C, L	;1		30005	
+510E	 4E					LD C, (HL)	;2		30007	
+510F	 CD CD CD			CALL a16	;6		30013	
+5112	 CD CD CD			CALL a16	;6		30019	
+5115	 CD CD CD			CALL a16	;6		30025	
+5118	 CD 8C C9			CALL a16	;6		30031	
+511B	 CA 8C 8C			JP Z a16	;4		30035	
+511E	 8C					ADC A, H	;1		30036	
+511F	 8C					ADC A, H	;1		30037	
+5120	 8C					ADC A, H	;1		30038	
+5121	 8C					ADC A, H	;1		30039	
+5122	 8C					ADC A, H	;1		30040	
+5123	 8C					ADC A, H	;1		30041	
+5124	 CB		
+5125	 CC 8C 8C			CALL Z, a16	;6		30047	
+5128	 8C					ADC A, H	;1		30048	
+5129	 8C					ADC A, H	;1		30049	
+512A	 8C					ADC A, H	;1		30050	
+512B	 8C					ADC A, H	;1		30051	
+512C	 CE D7				ADC A, d8	;2		30053	
+512E	 D7					RST 2	;4		30057	
+512F	 D7					RST 2	;4		30061	
+5130	 D7					RST 2	;4		30065	
+5131	 D7					RST 2	;4		30069	
+5132	 D7					RST 2	;4		30073	
+5133	 D7					RST 2	;4		30077	
+5134	 D7					RST 2	;4		30081	
+5135	 D7					RST 2	;4		30085	
+5136	 CF					RST 1	;4		30089	
+5137	 2F					CPL	;1		30090	
+5138	 2F					CPL	;1		30091	
+5139	 2F					CPL	;1		30092	
+513A	 2F					CPL	;1		30093	
+513B	 2F					CPL	;1		30094	
+513C	 2F					CPL	;1		30095	
+513D	 2F					CPL	;1		30096	
+513E	 2F					CPL	;1		30097	
+513F	 2F					CPL	;1		30098	
+5140	 D0					RET NC	;5		30103	
+5141	 2F					CPL	;1		30104	
+5142	 2F					CPL	;1		30105	
+5143	 2F					CPL	;1		30106	
+5144	 2F					CPL	;1		30107	
+5145	 2F					CPL	;1		30108	
+5146	 2F					CPL	;1		30109	
+5147	 2F					CPL	;1		30110	
+5148	 2F					CPL	;1		30111	
+5149	 D1					POP DE	;3		30114	
+514A	 D2 2F 2F			JP NC a16	;4		30118	
+514D	 2F					CPL	;1		30119	
+514E	 2F					CPL	;1		30120	
+514F	 2F					CPL	;1		30121	
+5150	 2F					CPL	;1		30122	
+5151	 2F					CPL	;1		30123	
+5152	 2F					CPL	;1		30124	
+5153	 D3		
+5154	 D4 7C 7C			CALL NC, a16	;6		30130	
+5157	 7C					LD A, H	;1		30131	
+5158	 7C					LD A, H	;1		30132	
+5159	 7C					LD A, H	;1		30133	
+515A	 7C					LD A, H	;1		30134	
+515B	 2F					CPL	;1		30135	
+515C	 2F					CPL	;1		30136	
+515D	 D5					PUSH DE	;4		30140	
+515E	 D6 7D				SUB d8	;2		30142	
+5160	 7D					LD A, L	;1		30143	
+5161	 7D					LD A, L	;1		30144	
+5162	 7D					LD A, L	;1		30145	
+5163	 2F					CPL	;1		30146	
+5164	 2F					CPL	;1		30147	
+5165	 2F					CPL	;1		30148	
+5166	 2F					CPL	;1		30149	
+5167	 D8					RET C	;5		30154	
+5168	 2F					CPL	;1		30155	
+5169	 7B					LD A, E	;1		30156	
+516A	 7B					LD A, E	;1		30157	
+516B	 7B					LD A, E	;1		30158	
+516C	 7B					LD A, E	;1		30159	
+516D	 2F					CPL	;1		30160	
+516E	 2F					CPL	;1		30161	
+516F	 2F					CPL	;1		30162	
+5170	 2F					CPL	;1		30163	
+5171	 D8					RET C	;5		30168	
+5172	 2F					CPL	;1		30169	
+5173	 7C					LD A, H	;1		30170	
+5174	 7C					LD A, H	;1		30171	
+5175	 7C					LD A, H	;1		30172	
+5176	 7C					LD A, H	;1		30173	
+5177	 2F					CPL	;1		30174	
+5178	 2F					CPL	;1		30175	
+5179	 2F					CPL	;1		30176	
+517A	 2F					CPL	;1		30177	
+517B	 D8					RET C	;5		30182	
+517C	 2F					CPL	;1		30183	
+517D	 2F					CPL	;1		30184	
+517E	 2F					CPL	;1		30185	
+517F	 2F					CPL	;1		30186	
+5180	 2F					CPL	;1		30187	
+5181	 2F					CPL	;1		30188	
+5182	 2F					CPL	;1		30189	
+5183	 2F					CPL	;1		30190	
+5184	 2F					CPL	;1		30191	
+5185	 D8					RET C	;5		30196	
+5186	 2F					CPL	;1		30197	
+5187	 2F					CPL	;1		30198	
+5188	 2F					CPL	;1		30199	
+5189	 2F					CPL	;1		30200	
+518A	 2F					CPL	;1		30201	
+518B	 2F					CPL	;1		30202	
+518C	 2F					CPL	;1		30203	
+518D	 7C					LD A, H	;1		30204	
+518E	 7C					LD A, H	;1		30205	
+518F	 7C					LD A, H	;1		30206	
+5190	 7C					LD A, H	;1		30207	
+5191	 2F					CPL	;1		30208	
+5192	 2F					CPL	;1		30209	
+5193	 2F					CPL	;1		30210	
+5194	 2F					CPL	;1		30211	
+5195	 2F					CPL	;1		30212	
+5196	 2F					CPL	;1		30213	
+5197	 2F					CPL	;1		30214	
+5198	 2F					CPL	;1		30215	
+5199	 2F					CPL	;1		30216	
+519A	 7C					LD A, H	;1		30217	
+519B	 7D					LD A, L	;1		30218	
+519C	 7D					LD A, L	;1		30219	
+519D	 2F					CPL	;1		30220	
+519E	 2F					CPL	;1		30221	
+519F	 2F					CPL	;1		30222	
+51A0	 2F					CPL	;1		30223	
+51A1	 2F					CPL	;1		30224	
+51A2	 2F					CPL	;1		30225	
+51A3	 2F					CPL	;1		30226	
+51A4	 7D					LD A, L	;1		30227	
+51A5	 2F					CPL	;1		30228	
+51A6	 2F					CPL	;1		30229	
+51A7	 2F					CPL	;1		30230	
+51A8	 D9					RETI	;4		30234	
+51A9	 2F					CPL	;1		30235	
+51AA	 2F					CPL	;1		30236	
+51AB	 2F					CPL	;1		30237	
+51AC	 2F					CPL	;1		30238	
+51AD	 2F					CPL	;1		30239	
+51AE	 7B					LD A, E	;1		30240	
+51AF	 B7					OR A	;1		30241	
+51B0	 B8					CP B	;1		30242	
+51B1	 D9					RETI	;4		30246	
+51B2	 B7					OR A	;1		30247	
+51B3	 2F					CPL	;1		30248	
+51B4	 7C					LD A, H	;1		30249	
+51B5	 7C					LD A, H	;1		30250	
+51B6	 7C					LD A, H	;1		30251	
+51B7	 7C					LD A, H	;1		30252	
+51B8	 7C					LD A, H	;1		30253	
+51B9	 7D					LD A, L	;1		30254	
+51BA	 7D					LD A, L	;1		30255	
+51BB	 7D					LD A, L	;1		30256	
+51BC	 7D					LD A, L	;1		30257	
+51BD	 7D					LD A, L	;1		30258	
+51BE	 7D					LD A, L	;1		30259	
+51BF	 7D					LD A, L	;1		30260	
+51C0	 7D					LD A, L	;1		30261	
+51C1	 7D					LD A, L	;1		30262	
+51C2	 7D					LD A, L	;1		30263	
+51C3	 FF					RST 7	;4		30267	
+51C4	 4A					LD C, D	;1		30268	
+51C5	 4A					LD C, D	;1		30269	
+51C6	 4A					LD C, D	;1		30270	
+51C7	 4A					LD C, D	;1		30271	
+51C8	 4A					LD C, D	;1		30272	
+51C9	 4A					LD C, D	;1		30273	
+51CA	 59					LD E, C	;1		30274	
+51CB	 69					LD L, C	;1		30275	
+51CC	 69					LD L, C	;1		30276	
+51CD	 69					LD L, C	;1		30277	
+51CE	 69					LD L, C	;1		30278	
+51CF	 69					LD L, C	;1		30279	
+51D0	 69					LD L, C	;1		30280	
+51D1	 49					LD C, C	;1		30281	
+51D2	 4A					LD C, D	;1		30282	
+51D3	 4A					LD C, D	;1		30283	
+51D4	 4A					LD C, D	;1		30284	
+51D5	 4A					LD C, D	;1		30285	
+51D6	 4A					LD C, D	;1		30286	
+51D7	 4A					LD C, D	;1		30287	
+51D8	 5A					LD E, D	;1		30288	
+51D9	 5A					LD E, D	;1		30289	
+51DA	 5A					LD E, D	;1		30290	
+51DB	 5A					LD E, D	;1		30291	
+51DC	 5A					LD E, D	;1		30292	
+51DD	 5A					LD E, D	;1		30293	
+51DE	 85					ADD A, L	;1		30294	
+51DF	 85					ADD A, L	;1		30295	
+51E0	 85					ADD A, L	;1		30296	
+51E1	 85					ADD A, L	;1		30297	
+51E2	 85					ADD A, L	;1		30298	
+51E3	 85					ADD A, L	;1		30299	
+51E4	 85					ADD A, L	;1		30300	
+51E5	 85					ADD A, L	;1		30301	
+51E6	 5A					LD E, D	;1		30302	
+51E7	 5A					LD E, D	;1		30303	
+51E8	 38 39				JR C s8	;3		30306	
+51EA	 38 5A				JR C s8	;3		30309	
+51EC	 6A					LD L, D	;1		30310	
+51ED	 6A					LD L, D	;1		30311	
+51EE	 6A					LD L, D	;1		30312	
+51EF	 6A					LD L, D	;1		30313	
+51F0	 6A					LD L, D	;1		30314	
+51F1	 6A					LD L, D	;1		30315	
+51F2	 6A					LD L, D	;1		30316	
+51F3	 6A					LD L, D	;1		30317	
+51F4	 6A					LD L, D	;1		30318	
+51F5	 6A					LD L, D	;1		30319	
+51F6	 6A					LD L, D	;1		30320	
+51F7	 6A					LD L, D	;1		30321	
+51F8	 6A					LD L, D	;1		30322	
+51F9	 6A					LD L, D	;1		30323	
+51FA	 6A					LD L, D	;1		30324	
+51FB	 6A					LD L, D	;1		30325	
+51FC	 6A					LD L, D	;1		30326	
+51FD	 6A					LD L, D	;1		30327	
+51FE	 6A					LD L, D	;1		30328	
+51FF	 6A					LD L, D	;1		30329	
+5200	 07					RLCA	;1		30330	
+5201	 07					RLCA	;1		30331	
+5202	 07					RLCA	;1		30332	
+5203	 07					RLCA	;1		30333	
+5204	 07					RLCA	;1		30334	
+5205	 07					RLCA	;1		30335	
+5206	 07					RLCA	;1		30336	
+5207	 07					RLCA	;1		30337	
+5208	 07					RLCA	;1		30338	
+5209	 07					RLCA	;1		30339	
+520A	 07					RLCA	;1		30340	
+520B	 07					RLCA	;1		30341	
+520C	 07					RLCA	;1		30342	
+520D	 07					RLCA	;1		30343	
+520E	 07					RLCA	;1		30344	
+520F	 07					RLCA	;1		30345	
+5210	 07					RLCA	;1		30346	
+5211	 07					RLCA	;1		30347	
+5212	 07					RLCA	;1		30348	
+5213	 07					RLCA	;1		30349	
+5214	 47					LD B, A	;1		30350	
+5215	 48					LD C, B	;1		30351	
+5216	 48					LD C, B	;1		30352	
+5217	 48					LD C, B	;1		30353	
+5218	 48					LD C, B	;1		30354	
+5219	 48					LD C, B	;1		30355	
+521A	 48					LD C, B	;1		30356	
+521B	 48					LD C, B	;1		30357	
+521C	 48					LD C, B	;1		30358	
+521D	 48					LD C, B	;1		30359	
+521E	 48					LD C, B	;1		30360	
+521F	 48					LD C, B	;1		30361	
+5220	 48					LD C, B	;1		30362	
+5221	 48					LD C, B	;1		30363	
+5222	 48					LD C, B	;1		30364	
+5223	 48					LD C, B	;1		30365	
+5224	 48					LD C, B	;1		30366	
+5225	 48					LD C, B	;1		30367	
+5226	 48					LD C, B	;1		30368	
+5227	 49					LD C, C	;1		30369	
+5228	 4A					LD C, D	;1		30370	
+5229	 2C					INC, L	;1		30371	
+522A	 2C					INC, L	;1		30372	
+522B	 2C					INC, L	;1		30373	
+522C	 2C					INC, L	;1		30374	
+522D	 2C					INC, L	;1		30375	
+522E	 2C					INC, L	;1		30376	
+522F	 2C					INC, L	;1		30377	
+5230	 2C					INC, L	;1		30378	
+5231	 2C					INC, L	;1		30379	
+5232	 2C					INC, L	;1		30380	
+5233	 2C					INC, L	;1		30381	
+5234	 2C					INC, L	;1		30382	
+5235	 2C					INC, L	;1		30383	
+5236	 2C					INC, L	;1		30384	
+5237	 2C					INC, L	;1		30385	
+5238	 2C					INC, L	;1		30386	
+5239	 2C					INC, L	;1		30387	
+523A	 2C					INC, L	;1		30388	
+523B	 4B					LD C, E	;1		30389	
+523C	 4A					LD C, D	;1		30390	
+523D	 2C					INC, L	;1		30391	
+523E	 2C					INC, L	;1		30392	
+523F	 16 0A				LD, D, d8	;2		30394	
+5241	 1B					DEC, DE	;2		30396	
+5242	 12					LD (DE), A	;2		30398	
+5243	 18 2F				JR s8	;3		30401	
+5245	 1F					RRA	;1		30402	
+5246	 1C					INC, E	;1		30403	
+5247	 24					INC, H	;1		30404	
+5248	 15					DEC, D	;1		30405	
+5249	 1E 12				LD, E, d8	;2		30407	
+524B	 10 12				STOP	;1		30408	
+524D	 2C					INC, L	;1		30409	
+524E	 2C					INC, L	;1		30410	
+524F	 4B					LD C, E	;1		30411	
+5250	 4A					LD C, D	;1		30412	
+5251	 2C					INC, L	;1		30413	
+5252	 2C					INC, L	;1		30414	
+5253	 2C					INC, L	;1		30415	
+5254	 2C					INC, L	;1		30416	
+5255	 2C					INC, L	;1		30417	
+5256	 2C					INC, L	;1		30418	
+5257	 2C					INC, L	;1		30419	
+5258	 2C					INC, L	;1		30420	
+5259	 2C					INC, L	;1		30421	
+525A	 50					LD D, B	;1		30422	
+525B	 51					LD D, C	;1		30423	
+525C	 51					LD D, C	;1		30424	
+525D	 51					LD D, C	;1		30425	
+525E	 51					LD D, C	;1		30426	
+525F	 52					LD D, D	;1		30427	
+5260	 2C					INC, L	;1		30428	
+5261	 2C					INC, L	;1		30429	
+5262	 2C					INC, L	;1		30430	
+5263	 4B					LD C, E	;1		30431	
+5264	 4A					LD C, D	;1		30432	
+5265	 2C					INC, L	;1		30433	
+5266	 2C					INC, L	;1		30434	
+5267	 2C					INC, L	;1		30435	
+5268	 2C					INC, L	;1		30436	
+5269	 2C					INC, L	;1		30437	
+526A	 2C					INC, L	;1		30438	
+526B	 2C					INC, L	;1		30439	
+526C	 2C					INC, L	;1		30440	
+526D	 2C					INC, L	;1		30441	
+526E	 53					LD D, E	;1		30442	
+526F	 11 12 10			LD DE, d16	;3		30445	
+5272	 11 54 2C			LD DE, d16	;3		30448	
+5275	 2C					INC, L	;1		30449	
+5276	 2C					INC, L	;1		30450	
+5277	 4B					LD C, E	;1		30451	
+5278	 4A					LD C, D	;1		30452	
+5279	 2C					INC, L	;1		30453	
+527A	 2C					INC, L	;1		30454	
+527B	 55					LD D, L	;1		30455	
+527C	 56					LD D, (HL)	;2		30457	
+527D	 56					LD D, (HL)	;2		30459	
+527E	 5A					LD E, D	;1		30460	
+527F	 2C					INC, L	;1		30461	
+5280	 2C					INC, L	;1		30462	
+5281	 2C					INC, L	;1		30463	
+5282	 75					LD (HL), L	;2		30465	
+5283	 58					LD E, B	;1		30466	
+5284	 6C					LD L, H	;1		30467	
+5285	 58					LD E, B	;1		30468	
+5286	 6C					LD L, H	;1		30469	
+5287	 6E					LD L, (HL)	;2		30471	
+5288	 5A					LD E, D	;1		30472	
+5289	 2C					INC, L	;1		30473	
+528A	 2C					INC, L	;1		30474	
+528B	 4B					LD C, E	;1		30475	
+528C	 4A					LD C, D	;1		30476	
+528D	 2C					INC, L	;1		30477	
+528E	 2C					INC, L	;1		30478	
+528F	 5B					LD E, E	;1		30479	
+5290	 2F					CPL	;1		30480	
+5291	 2F					CPL	;1		30481	
+5292	 5C					LD E, H	;1		30482	
+5293	 2C					INC, L	;1		30483	
+5294	 2C					INC, L	;1		30484	
+5295	 2C					INC, L	;1		30485	
+5296	 5B					LD E, E	;1		30486	
+5297	 90					SUB B	;1		30487	
+5298	 6F					LD L, A	;1		30488	
+5299	 91					SUB C	;1		30489	
+529A	 6F					LD L, A	;1		30490	
+529B	 92					SUB D	;1		30491	
+529C	 5C					LD E, H	;1		30492	
+529D	 2C					INC, L	;1		30493	
+529E	 2C					INC, L	;1		30494	
+529F	 4B					LD C, E	;1		30495	
+52A0	 4A					LD C, D	;1		30496	
+52A1	 2C					INC, L	;1		30497	
+52A2	 2C					INC, L	;1		30498	
+52A3	 5B					LD E, E	;1		30499	
+52A4	 2F					CPL	;1		30500	
+52A5	 2F					CPL	;1		30501	
+52A6	 5C					LD E, H	;1		30502	
+52A7	 2C					INC, L	;1		30503	
+52A8	 2C					INC, L	;1		30504	
+52A9	 2C					INC, L	;1		30505	
+52AA	 71					LD (HL), C	;2		30507	
+52AB	 72					LD (HL), D	;2		30509	
+52AC	 73					LD (HL), E	;2		30511	
+52AD	 72					LD (HL), D	;2		30513	
+52AE	 73					LD (HL), E	;2		30515	
+52AF	 72					LD (HL), D	;2		30517	
+52B0	 74					LD (HL), H	;2		30519	
+52B1	 2C					INC, L	;1		30520	
+52B2	 2C					INC, L	;1		30521	
+52B3	 4B					LD C, E	;1		30522	
+52B4	 4A					LD C, D	;1		30523	
+52B5	 2C					INC, L	;1		30524	
+52B6	 2C					INC, L	;1		30525	
+52B7	 2D					DEC, L	;1		30526	
+52B8	 4F					LD C, A	;1		30527	
+52B9	 4F					LD C, A	;1		30528	
+52BA	 2E 2C				LD, L, d8	;2		30530	
+52BC	 2C					INC, L	;1		30531	
+52BD	 2C					INC, L	;1		30532	
+52BE	 5B					LD E, E	;1		30533	
+52BF	 93					SUB E	;1		30534	
+52C0	 6F					LD L, A	;1		30535	
+52C1	 94					SUB H	;1		30536	
+52C2	 6F					LD L, A	;1		30537	
+52C3	 95					SUB L	;1		30538	
+52C4	 5C					LD E, H	;1		30539	
+52C5	 2C					INC, L	;1		30540	
+52C6	 2C					INC, L	;1		30541	
+52C7	 4B					LD C, E	;1		30542	
+52C8	 4A					LD C, D	;1		30543	
+52C9	 2C					INC, L	;1		30544	
+52CA	 2C					INC, L	;1		30545	
+52CB	 16 0A				LD, D, d8	;2		30547	
+52CD	 1B					DEC, DE	;2		30549	
+52CE	 12					LD (DE), A	;2		30551	
+52CF	 18 2C				JR s8	;3		30554	
+52D1	 2C					INC, L	;1		30555	
+52D2	 2D					DEC, L	;1		30556	
+52D3	 4F					LD C, A	;1		30557	
+52D4	 6B					LD L, E	;1		30558	
+52D5	 4F					LD C, A	;1		30559	
+52D6	 6B					LD L, E	;1		30560	
+52D7	 4F					LD C, A	;1		30561	
+52D8	 2E 2C				LD, L, d8	;2		30563	
+52DA	 2C					INC, L	;1		30564	
+52DB	 4B					LD C, E	;1		30565	
+52DC	 4A					LD C, D	;1		30566	
+52DD	 2C					INC, L	;1		30567	
+52DE	 2C					INC, L	;1		30568	
+52DF	 2C					INC, L	;1		30569	
+52E0	 2C					INC, L	;1		30570	
+52E1	 2C					INC, L	;1		30571	
+52E2	 2C					INC, L	;1		30572	
+52E3	 2C					INC, L	;1		30573	
+52E4	 2C					INC, L	;1		30574	
+52E5	 2C					INC, L	;1		30575	
+52E6	 50					LD D, B	;1		30576	
+52E7	 51					LD D, C	;1		30577	
+52E8	 51					LD D, C	;1		30578	
+52E9	 51					LD D, C	;1		30579	
+52EA	 51					LD D, C	;1		30580	
+52EB	 52					LD D, D	;1		30581	
+52EC	 2C					INC, L	;1		30582	
+52ED	 2C					INC, L	;1		30583	
+52EE	 2C					INC, L	;1		30584	
+52EF	 4B					LD C, E	;1		30585	
+52F0	 4A					LD C, D	;1		30586	
+52F1	 2C					INC, L	;1		30587	
+52F2	 2C					INC, L	;1		30588	
+52F3	 2C					INC, L	;1		30589	
+52F4	 2C					INC, L	;1		30590	
+52F5	 2C					INC, L	;1		30591	
+52F6	 2C					INC, L	;1		30592	
+52F7	 2C					INC, L	;1		30593	
+52F8	 2C					INC, L	;1		30594	
+52F9	 2C					INC, L	;1		30595	
+52FA	 53					LD D, E	;1		30596	
+52FB	 11 12 10			LD DE, d16	;3		30599	
+52FE	 11 54 2C			LD DE, d16	;3		30602	
+5301	 2C					INC, L	;1		30603	
+5302	 2C					INC, L	;1		30604	
+5303	 4B					LD C, E	;1		30605	
+5304	 4A					LD C, D	;1		30606	
+5305	 2C					INC, L	;1		30607	
+5306	 2C					INC, L	;1		30608	
+5307	 55					LD D, L	;1		30609	
+5308	 56					LD D, (HL)	;2		30611	
+5309	 56					LD D, (HL)	;2		30613	
+530A	 5A					LD E, D	;1		30614	
+530B	 2C					INC, L	;1		30615	
+530C	 2C					INC, L	;1		30616	
+530D	 2C					INC, L	;1		30617	
+530E	 75					LD (HL), L	;2		30619	
+530F	 58					LD E, B	;1		30620	
+5310	 6C					LD L, H	;1		30621	
+5311	 58					LD E, B	;1		30622	
+5312	 6C					LD L, H	;1		30623	
+5313	 6E					LD L, (HL)	;2		30625	
+5314	 5A					LD E, D	;1		30626	
+5315	 2C					INC, L	;1		30627	
+5316	 2C					INC, L	;1		30628	
+5317	 4B					LD C, E	;1		30629	
+5318	 4A					LD C, D	;1		30630	
+5319	 2C					INC, L	;1		30631	
+531A	 2C					INC, L	;1		30632	
+531B	 5B					LD E, E	;1		30633	
+531C	 2F					CPL	;1		30634	
+531D	 2F					CPL	;1		30635	
+531E	 5C					LD E, H	;1		30636	
+531F	 2C					INC, L	;1		30637	
+5320	 2C					INC, L	;1		30638	
+5321	 2C					INC, L	;1		30639	
+5322	 5B					LD E, E	;1		30640	
+5323	 90					SUB B	;1		30641	
+5324	 6F					LD L, A	;1		30642	
+5325	 91					SUB C	;1		30643	
+5326	 6F					LD L, A	;1		30644	
+5327	 92					SUB D	;1		30645	
+5328	 5C					LD E, H	;1		30646	
+5329	 2C					INC, L	;1		30647	
+532A	 2C					INC, L	;1		30648	
+532B	 4B					LD C, E	;1		30649	
+532C	 4A					LD C, D	;1		30650	
+532D	 2C					INC, L	;1		30651	
+532E	 2C					INC, L	;1		30652	
+532F	 5B					LD E, E	;1		30653	
+5330	 2F					CPL	;1		30654	
+5331	 2F					CPL	;1		30655	
+5332	 5C					LD E, H	;1		30656	
+5333	 2C					INC, L	;1		30657	
+5334	 2C					INC, L	;1		30658	
+5335	 2C					INC, L	;1		30659	
+5336	 71					LD (HL), C	;2		30661	
+5337	 72					LD (HL), D	;2		30663	
+5338	 73					LD (HL), E	;2		30665	
+5339	 72					LD (HL), D	;2		30667	
+533A	 73					LD (HL), E	;2		30669	
+533B	 72					LD (HL), D	;2		30671	
+533C	 74					LD (HL), H	;2		30673	
+533D	 2C					INC, L	;1		30674	
+533E	 2C					INC, L	;1		30675	
+533F	 4B					LD C, E	;1		30676	
+5340	 4A					LD C, D	;1		30677	
+5341	 2C					INC, L	;1		30678	
+5342	 2C					INC, L	;1		30679	
+5343	 2D					DEC, L	;1		30680	
+5344	 4F					LD C, A	;1		30681	
+5345	 4F					LD C, A	;1		30682	
+5346	 2E 2C				LD, L, d8	;2		30684	
+5348	 2C					INC, L	;1		30685	
+5349	 2C					INC, L	;1		30686	
+534A	 5B					LD E, E	;1		30687	
+534B	 93					SUB E	;1		30688	
+534C	 6F					LD L, A	;1		30689	
+534D	 94					SUB H	;1		30690	
+534E	 6F					LD L, A	;1		30691	
+534F	 95					SUB L	;1		30692	
+5350	 5C					LD E, H	;1		30693	
+5351	 2C					INC, L	;1		30694	
+5352	 2C					INC, L	;1		30695	
+5353	 4B					LD C, E	;1		30696	
+5354	 4A					LD C, D	;1		30697	
+5355	 2C					INC, L	;1		30698	
+5356	 2C					INC, L	;1		30699	
+5357	 15					DEC, D	;1		30700	
+5358	 1E 12				LD, E, d8	;2		30702	
+535A	 10 12				STOP	;1		30703	
+535C	 2C					INC, L	;1		30704	
+535D	 2C					INC, L	;1		30705	
+535E	 2D					DEC, L	;1		30706	
+535F	 4F					LD C, A	;1		30707	
+5360	 6B					LD L, E	;1		30708	
+5361	 4F					LD C, A	;1		30709	
+5362	 6B					LD L, E	;1		30710	
+5363	 4F					LD C, A	;1		30711	
+5364	 2E 2C				LD, L, d8	;2		30713	
+5366	 2C					INC, L	;1		30714	
+5367	 4B					LD C, E	;1		30715	
+5368	 4C					LD C, H	;1		30716	
+5369	 4D					LD C, L	;1		30717	
+536A	 4D					LD C, L	;1		30718	
+536B	 4D					LD C, L	;1		30719	
+536C	 4D					LD C, L	;1		30720	
+536D	 4D					LD C, L	;1		30721	
+536E	 4D					LD C, L	;1		30722	
+536F	 4D					LD C, L	;1		30723	
+5370	 4D					LD C, L	;1		30724	
+5371	 4D					LD C, L	;1		30725	
+5372	 4D					LD C, L	;1		30726	
+5373	 4D					LD C, L	;1		30727	
+5374	 4D					LD C, L	;1		30728	
+5375	 4D					LD C, L	;1		30729	
+5376	 4D					LD C, L	;1		30730	
+5377	 4D					LD C, L	;1		30731	
+5378	 4D					LD C, L	;1		30732	
+5379	 4D					LD C, L	;1		30733	
+537A	 4D					LD C, L	;1		30734	
+537B	 4E					LD C, (HL)	;2		30736	
+537C	 8E					ADC A, (HL)	;2		30738	
+537D	 B2					OR D	;1		30739	
+537E	 2F					CPL	;1		30740	
+537F	 2F					CPL	;1		30741	
+5380	 2F					CPL	;1		30742	
+5381	 2F					CPL	;1		30743	
+5382	 2F					CPL	;1		30744	
+5383	 2F					CPL	;1		30745	
+5384	 2F					CPL	;1		30746	
+5385	 2F					CPL	;1		30747	
+5386	 2F					CPL	;1		30748	
+5387	 2F					CPL	;1		30749	
+5388	 B3					OR E	;1		30750	
+5389	 30 31				JR NC s8	;3		30753	
+538B	 31 31 31			LD SP, d16	;3		30756	
+538E	 31 32 8E			LD SP, d16	;3		30759	
+5391	 B0					OR B	;1		30760	
+5392	 2F					CPL	;1		30761	
+5393	 2F					CPL	;1		30762	
+5394	 2F					CPL	;1		30763	
+5395	 2F					CPL	;1		30764	
+5396	 2F					CPL	;1		30765	
+5397	 2F					CPL	;1		30766	
+5398	 2F					CPL	;1		30767	
+5399	 2F					CPL	;1		30768	
+539A	 2F					CPL	;1		30769	
+539B	 2F					CPL	;1		30770	
+539C	 B5					OR L	;1		30771	
+539D	 36 2F				LD (HL), d8	;3		30774	
+539F	 2F					CPL	;1		30775	
+53A0	 2F					CPL	;1		30776	
+53A1	 2F					CPL	;1		30777	
+53A2	 2F					CPL	;1		30778	
+53A3	 37					SCF	;1		30779	
+53A4	 8E					ADC A, (HL)	;2		30781	
+53A5	 B0					OR B	;1		30782	
+53A6	 2F					CPL	;1		30783	
+53A7	 2F					CPL	;1		30784	
+53A8	 2F					CPL	;1		30785	
+53A9	 2F					CPL	;1		30786	
+53AA	 2F					CPL	;1		30787	
+53AB	 2F					CPL	;1		30788	
+53AC	 2F					CPL	;1		30789	
+53AD	 2F					CPL	;1		30790	
+53AE	 2F					CPL	;1		30791	
+53AF	 2F					CPL	;1		30792	
+53B0	 B5					OR L	;1		30793	
+53B1	 36 2F				LD (HL), d8	;3		30796	
+53B3	 2F					CPL	;1		30797	
+53B4	 2F					CPL	;1		30798	
+53B5	 2F					CPL	;1		30799	
+53B6	 2F					CPL	;1		30800	
+53B7	 37					SCF	;1		30801	
+53B8	 8E					ADC A, (HL)	;2		30803	
+53B9	 B0					OR B	;1		30804	
+53BA	 2F					CPL	;1		30805	
+53BB	 2F					CPL	;1		30806	
+53BC	 2F					CPL	;1		30807	
+53BD	 2F					CPL	;1		30808	
+53BE	 2F					CPL	;1		30809	
+53BF	 2F					CPL	;1		30810	
+53C0	 2F					CPL	;1		30811	
+53C1	 2F					CPL	;1		30812	
+53C2	 2F					CPL	;1		30813	
+53C3	 2F					CPL	;1		30814	
+53C4	 B5					OR L	;1		30815	
+53C5	 40					LD B, B	;1		30816	
+53C6	 42					LD B, D	;1		30817	
+53C7	 42					LD B, D	;1		30818	
+53C8	 42					LD B, D	;1		30819	
+53C9	 42					LD B, D	;1		30820	
+53CA	 42					LD B, D	;1		30821	
+53CB	 41					LD B, C	;1		30822	
+53CC	 8E					ADC A, (HL)	;2		30824	
+53CD	 B0					OR B	;1		30825	
+53CE	 2F					CPL	;1		30826	
+53CF	 2F					CPL	;1		30827	
+53D0	 2F					CPL	;1		30828	
+53D1	 2F					CPL	;1		30829	
+53D2	 2F					CPL	;1		30830	
+53D3	 2F					CPL	;1		30831	
+53D4	 2F					CPL	;1		30832	
+53D5	 2F					CPL	;1		30833	
+53D6	 2F					CPL	;1		30834	
+53D7	 2F					CPL	;1		30835	
+53D8	 B5					OR L	;1		30836	
+53D9	 36 11				LD (HL), d8	;3		30839	
+53DB	 12					LD (DE), A	;2		30841	
+53DC	 10 11				STOP	;1		30842	
+53DE	 2F					CPL	;1		30843	
+53DF	 37					SCF	;1		30844	
+53E0	 8E					ADC A, (HL)	;2		30846	
+53E1	 B0					OR B	;1		30847	
+53E2	 2F					CPL	;1		30848	
+53E3	 2F					CPL	;1		30849	
+53E4	 2F					CPL	;1		30850	
+53E5	 2F					CPL	;1		30851	
+53E6	 2F					CPL	;1		30852	
+53E7	 2F					CPL	;1		30853	
+53E8	 2F					CPL	;1		30854	
+53E9	 2F					CPL	;1		30855	
+53EA	 2F					CPL	;1		30856	
+53EB	 2F					CPL	;1		30857	
+53EC	 B5					OR L	;1		30858	
+53ED	 36 2F				LD (HL), d8	;3		30861	
+53EF	 2F					CPL	;1		30862	
+53F0	 2F					CPL	;1		30863	
+53F1	 2F					CPL	;1		30864	
+53F2	 2F					CPL	;1		30865	
+53F3	 37					SCF	;1		30866	
+53F4	 8E					ADC A, (HL)	;2		30868	
+53F5	 B0					OR B	;1		30869	
+53F6	 2F					CPL	;1		30870	
+53F7	 2F					CPL	;1		30871	
+53F8	 2F					CPL	;1		30872	
+53F9	 2F					CPL	;1		30873	
+53FA	 2F					CPL	;1		30874	
+53FB	 2F					CPL	;1		30875	
+53FC	 2F					CPL	;1		30876	
+53FD	 2F					CPL	;1		30877	
+53FE	 2F					CPL	;1		30878	
+53FF	 2F					CPL	;1		30879	
+5400	 B5					OR L	;1		30880	
+5401	 33					INC, SP	;2		30882	
+5402	 34					INC (HL)	;3		30885	
+5403	 34					INC (HL)	;3		30888	
+5404	 34					INC (HL)	;3		30891	
+5405	 34					INC (HL)	;3		30894	
+5406	 34					INC (HL)	;3		30897	
+5407	 35					DEC (HL)	;3		30900	
+5408	 8E					ADC A, (HL)	;2		30902	
+5409	 B0					OR B	;1		30903	
+540A	 2F					CPL	;1		30904	
+540B	 2F					CPL	;1		30905	
+540C	 2F					CPL	;1		30906	
+540D	 2F					CPL	;1		30907	
+540E	 2F					CPL	;1		30908	
+540F	 2F					CPL	;1		30909	
+5410	 2F					CPL	;1		30910	
+5411	 2F					CPL	;1		30911	
+5412	 2F					CPL	;1		30912	
+5413	 2F					CPL	;1		30913	
+5414	 B5					OR L	;1		30914	
+5415	 2B					DEC, (HL)	;2		30916	
+5416	 8E					ADC A, (HL)	;2		30918	
+5417	 8E					ADC A, (HL)	;2		30920	
+5418	 8E					ADC A, (HL)	;2		30922	
+5419	 8E					ADC A, (HL)	;2		30924	
+541A	 8E					ADC A, (HL)	;2		30926	
+541B	 8E					ADC A, (HL)	;2		30928	
+541C	 8E					ADC A, (HL)	;2		30930	
+541D	 B0					OR B	;1		30931	
+541E	 2F					CPL	;1		30932	
+541F	 2F					CPL	;1		30933	
+5420	 2F					CPL	;1		30934	
+5421	 2F					CPL	;1		30935	
+5422	 2F					CPL	;1		30936	
+5423	 2F					CPL	;1		30937	
+5424	 2F					CPL	;1		30938	
+5425	 2F					CPL	;1		30939	
+5426	 2F					CPL	;1		30940	
+5427	 2F					CPL	;1		30941	
+5428	 B5					OR L	;1		30942	
+5429	 30 31				JR NC s8	;3		30945	
+542B	 31 31 31			LD SP, d16	;3		30948	
+542E	 31 32 8E			LD SP, d16	;3		30951	
+5431	 B0					OR B	;1		30952	
+5432	 2F					CPL	;1		30953	
+5433	 2F					CPL	;1		30954	
+5434	 2F					CPL	;1		30955	
+5435	 2F					CPL	;1		30956	
+5436	 2F					CPL	;1		30957	
+5437	 2F					CPL	;1		30958	
+5438	 2F					CPL	;1		30959	
+5439	 2F					CPL	;1		30960	
+543A	 2F					CPL	;1		30961	
+543B	 2F					CPL	;1		30962	
+543C	 B5					OR L	;1		30963	
+543D	 36 15				LD (HL), d8	;3		30966	
+543F	 12					LD (DE), A	;2		30968	
+5440	 17					RLA	;1		30969	
+5441	 0E 1C				LD, C, d8	;2		30971	
+5443	 37					SCF	;1		30972	
+5444	 8E					ADC A, (HL)	;2		30974	
+5445	 B0					OR B	;1		30975	
+5446	 2F					CPL	;1		30976	
+5447	 2F					CPL	;1		30977	
+5448	 2F					CPL	;1		30978	
+5449	 2F					CPL	;1		30979	
+544A	 2F					CPL	;1		30980	
+544B	 2F					CPL	;1		30981	
+544C	 2F					CPL	;1		30982	
+544D	 2F					CPL	;1		30983	
+544E	 2F					CPL	;1		30984	
+544F	 2F					CPL	;1		30985	
+5450	 B5					OR L	;1		30986	
+5451	 36 2F				LD (HL), d8	;3		30989	
+5453	 2F					CPL	;1		30990	
+5454	 2F					CPL	;1		30991	
+5455	 2F					CPL	;1		30992	
+5456	 2F					CPL	;1		30993	
+5457	 37					SCF	;1		30994	
+5458	 8E					ADC A, (HL)	;2		30996	
+5459	 B0					OR B	;1		30997	
+545A	 2F					CPL	;1		30998	
+545B	 2F					CPL	;1		30999	
+545C	 2F					CPL	;1		31000	
+545D	 2F					CPL	;1		31001	
+545E	 2F					CPL	;1		31002	
+545F	 2F					CPL	;1		31003	
+5460	 2F					CPL	;1		31004	
+5461	 2F					CPL	;1		31005	
+5462	 2F					CPL	;1		31006	
+5463	 2F					CPL	;1		31007	
+5464	 B5					OR L	;1		31008	
+5465	 33					INC, SP	;2		31010	
+5466	 34					INC (HL)	;3		31013	
+5467	 34					INC (HL)	;3		31016	
+5468	 34					INC (HL)	;3		31019	
+5469	 34					INC (HL)	;3		31022	
+546A	 34					INC (HL)	;3		31025	
+546B	 35					DEC (HL)	;3		31028	
+546C	 8E					ADC A, (HL)	;2		31030	
+546D	 B0					OR B	;1		31031	
+546E	 2F					CPL	;1		31032	
+546F	 2F					CPL	;1		31033	
+5470	 2F					CPL	;1		31034	
+5471	 2F					CPL	;1		31035	
+5472	 2F					CPL	;1		31036	
+5473	 2F					CPL	;1		31037	
+5474	 2F					CPL	;1		31038	
+5475	 2F					CPL	;1		31039	
+5476	 2F					CPL	;1		31040	
+5477	 2F					CPL	;1		31041	
+5478	 B5					OR L	;1		31042	
+5479	 2B					DEC, (HL)	;2		31044	
+547A	 38 39				JR C s8	;3		31047	
+547C	 39					ADD HL, SP	;2		31049	
+547D	 39					ADD HL, SP	;2		31051	
+547E	 39					ADD HL, SP	;2		31053	
+547F	 3A					LD A, (HL-)	;2		31055	
+5480	 8E					ADC A, (HL)	;2		31057	
+5481	 B0					OR B	;1		31058	
+5482	 2F					CPL	;1		31059	
+5483	 2F					CPL	;1		31060	
+5484	 2F					CPL	;1		31061	
+5485	 2F					CPL	;1		31062	
+5486	 2F					CPL	;1		31063	
+5487	 2F					CPL	;1		31064	
+5488	 2F					CPL	;1		31065	
+5489	 2F					CPL	;1		31066	
+548A	 2F					CPL	;1		31067	
+548B	 2F					CPL	;1		31068	
+548C	 B5					OR L	;1		31069	
+548D	 2B					DEC, (HL)	;2		31071	
+548E	 3B					DEC, SP	;2		31073	
+548F	 2F					CPL	;1		31074	
+5490	 2F					CPL	;1		31075	
+5491	 2F					CPL	;1		31076	
+5492	 2F					CPL	;1		31077	
+5493	 3C					INC, A	;1		31078	
+5494	 8E					ADC A, (HL)	;2		31080	
+5495	 B0					OR B	;1		31081	
+5496	 2F					CPL	;1		31082	
+5497	 2F					CPL	;1		31083	
+5498	 2F					CPL	;1		31084	
+5499	 2F					CPL	;1		31085	
+549A	 2F					CPL	;1		31086	
+549B	 2F					CPL	;1		31087	
+549C	 2F					CPL	;1		31088	
+549D	 2F					CPL	;1		31089	
+549E	 2F					CPL	;1		31090	
+549F	 2F					CPL	;1		31091	
+54A0	 B5					OR L	;1		31092	
+54A1	 2B					DEC, (HL)	;2		31094	
+54A2	 3B					DEC, SP	;2		31096	
+54A3	 2F					CPL	;1		31097	
+54A4	 2F					CPL	;1		31098	
+54A5	 2F					CPL	;1		31099	
+54A6	 2F					CPL	;1		31100	
+54A7	 3C					INC, A	;1		31101	
+54A8	 8E					ADC A, (HL)	;2		31103	
+54A9	 B0					OR B	;1		31104	
+54AA	 2F					CPL	;1		31105	
+54AB	 2F					CPL	;1		31106	
+54AC	 2F					CPL	;1		31107	
+54AD	 2F					CPL	;1		31108	
+54AE	 2F					CPL	;1		31109	
+54AF	 2F					CPL	;1		31110	
+54B0	 2F					CPL	;1		31111	
+54B1	 2F					CPL	;1		31112	
+54B2	 2F					CPL	;1		31113	
+54B3	 2F					CPL	;1		31114	
+54B4	 B5					OR L	;1		31115	
+54B5	 2B					DEC, (HL)	;2		31117	
+54B6	 3B					DEC, SP	;2		31119	
+54B7	 2F					CPL	;1		31120	
+54B8	 2F					CPL	;1		31121	
+54B9	 2F					CPL	;1		31122	
+54BA	 2F					CPL	;1		31123	
+54BB	 3C					INC, A	;1		31124	
+54BC	 8E					ADC A, (HL)	;2		31126	
+54BD	 B0					OR B	;1		31127	
+54BE	 2F					CPL	;1		31128	
+54BF	 2F					CPL	;1		31129	
+54C0	 2F					CPL	;1		31130	
+54C1	 2F					CPL	;1		31131	
+54C2	 2F					CPL	;1		31132	
+54C3	 2F					CPL	;1		31133	
+54C4	 2F					CPL	;1		31134	
+54C5	 2F					CPL	;1		31135	
+54C6	 2F					CPL	;1		31136	
+54C7	 2F					CPL	;1		31137	
+54C8	 B5					OR L	;1		31138	
+54C9	 2B					DEC, (HL)	;2		31140	
+54CA	 3B					DEC, SP	;2		31142	
+54CB	 2F					CPL	;1		31143	
+54CC	 2F					CPL	;1		31144	
+54CD	 2F					CPL	;1		31145	
+54CE	 2F					CPL	;1		31146	
+54CF	 3C					INC, A	;1		31147	
+54D0	 8E					ADC A, (HL)	;2		31149	
+54D1	 B1					OR C	;1		31150	
+54D2	 2F					CPL	;1		31151	
+54D3	 2F					CPL	;1		31152	
+54D4	 2F					CPL	;1		31153	
+54D5	 2F					CPL	;1		31154	
+54D6	 2F					CPL	;1		31155	
+54D7	 2F					CPL	;1		31156	
+54D8	 2F					CPL	;1		31157	
+54D9	 2F					CPL	;1		31158	
+54DA	 2F					CPL	;1		31159	
+54DB	 2F					CPL	;1		31160	
+54DC	 B4					OR H	;1		31161	
+54DD	 2B					DEC, (HL)	;2		31163	
+54DE	 3D					DEC, A	;1		31164	
+54DF	 3E 3E				LD, A, d8	;2		31166	
+54E1	 3E 3E				LD, A, d8	;2		31168	
+54E3	 3F					CCF	;1		31169	
+54E4	 07					RLCA	;1		31170	
+54E5	 07					RLCA	;1		31171	
+54E6	 07					RLCA	;1		31172	
+54E7	 07					RLCA	;1		31173	
+54E8	 07					RLCA	;1		31174	
+54E9	 07					RLCA	;1		31175	
+54EA	 84					ADD A, H	;1		31176	
+54EB	 87					ADD A, A	;1		31177	
+54EC	 87					ADD A, A	;1		31178	
+54ED	 8C					ADC A, H	;1		31179	
+54EE	 87					ADD A, A	;1		31180	
+54EF	 87					ADD A, A	;1		31181	
+54F0	 8C					ADC A, H	;1		31182	
+54F1	 87					ADD A, A	;1		31183	
+54F2	 87					ADD A, A	;1		31184	
+54F3	 8C					ADC A, H	;1		31185	
+54F4	 87					ADD A, A	;1		31186	
+54F5	 87					ADD A, A	;1		31187	
+54F6	 86					ADD A, (HL)	;2		31189	
+54F7	 07					RLCA	;1		31190	
+54F8	 07					RLCA	;1		31191	
+54F9	 1E 1E				LD, E, d8	;2		31193	
+54FB	 1E 1E				LD, E, d8	;2		31195	
+54FD	 1E 79				LD, E, d8	;2		31197	
+54FF	 2F					CPL	;1		31198	
+5500	 2F					CPL	;1		31199	
+5501	 8D					ADC A, L	;1		31200	
+5502	 2F					CPL	;1		31201	
+5503	 2F					CPL	;1		31202	
+5504	 8D					ADC A, L	;1		31203	
+5505	 2F					CPL	;1		31204	
+5506	 2F					CPL	;1		31205	
+5507	 8D					ADC A, L	;1		31206	
+5508	 2F					CPL	;1		31207	
+5509	 2F					CPL	;1		31208	
+550A	 88					ADC A, B	;1		31209	
+550B	 07					RLCA	;1		31210	
+550C	 07					RLCA	;1		31211	
+550D	 B4					OR H	;1		31212	
+550E	 B5					OR L	;1		31213	
+550F	 BB					CP E	;1		31214	
+5510	 2E BC				LD, L, d8	;2		31216	
+5512	 79					LD A, C	;1		31217	
+5513	 2F					CPL	;1		31218	
+5514	 2F					CPL	;1		31219	
+5515	 8D					ADC A, L	;1		31220	
+5516	 2F					CPL	;1		31221	
+5517	 2F					CPL	;1		31222	
+5518	 8D					ADC A, L	;1		31223	
+5519	 2F					CPL	;1		31224	
+551A	 2F					CPL	;1		31225	
+551B	 8D					ADC A, L	;1		31226	
+551C	 2F					CPL	;1		31227	
+551D	 2F					CPL	;1		31228	
+551E	 88					ADC A, B	;1		31229	
+551F	 07					RLCA	;1		31230	
+5520	 07					RLCA	;1		31231	
+5521	 BF					CP A	;1		31232	
+5522	 BF					CP A	;1		31233	
+5523	 BF					CP A	;1		31234	
+5524	 BF					CP A	;1		31235	
+5525	 BF					CP A	;1		31236	
+5526	 89					ADC A, C	;1		31237	
+5527	 8A					ADC A, D	;1		31238	
+5528	 8A					ADC A, D	;1		31239	
+5529	 8E					ADC A, (HL)	;2		31241	
+552A	 8A					ADC A, D	;1		31242	
+552B	 8A					ADC A, D	;1		31243	
+552C	 8E					ADC A, (HL)	;2		31245	
+552D	 8A					ADC A, D	;1		31246	
+552E	 8A					ADC A, D	;1		31247	
+552F	 8E					ADC A, (HL)	;2		31249	
+5530	 8A					ADC A, D	;1		31250	
+5531	 8A					ADC A, D	;1		31251	
+5532	 8B					ADC A, E	;1		31252	
+5533	 07					RLCA	;1		31253	
+5534	 06 06				LD, B, d8	;2		31255	
+5536	 06 06				LD, B, d8	;2		31257	
+5538	 06 06				LD, B, d8	;2		31259	
+553A	 06 06				LD, B, d8	;2		31261	
+553C	 06 06				LD, B, d8	;2		31263	
+553E	 06 06				LD, B, d8	;2		31265	
+5540	 06 06				LD, B, d8	;2		31267	
+5542	 06 06				LD, B, d8	;2		31269	
+5544	 06 06				LD, B, d8	;2		31271	
+5546	 06 06				LD, B, d8	;2		31273	
+5548	 16 16				LD, D, d8	;2		31275	
+554A	 16 16				LD, D, d8	;2		31277	
+554C	 16 16				LD, D, d8	;2		31279	
+554E	 16 16				LD, D, d8	;2		31281	
+5550	 16 16				LD, D, d8	;2		31283	
+5552	 16 16				LD, D, d8	;2		31285	
+5554	 16 16				LD, D, d8	;2		31287	
+5556	 16 16				LD, D, d8	;2		31289	
+5558	 16 16				LD, D, d8	;2		31291	
+555A	 16 16				LD, D, d8	;2		31293	
+555C	 07					RLCA	;1		31294	
+555D	 07					RLCA	;1		31295	
+555E	 07					RLCA	;1		31296	
+555F	 07					RLCA	;1		31297	
+5560	 07					RLCA	;1		31298	
+5561	 07					RLCA	;1		31299	
+5562	 84					ADD A, H	;1		31300	
+5563	 87					ADD A, A	;1		31301	
+5564	 87					ADD A, A	;1		31302	
+5565	 8C					ADC A, H	;1		31303	
+5566	 87					ADD A, A	;1		31304	
+5567	 87					ADD A, A	;1		31305	
+5568	 8C					ADC A, H	;1		31306	
+5569	 87					ADD A, A	;1		31307	
+556A	 87					ADD A, A	;1		31308	
+556B	 8C					ADC A, H	;1		31309	
+556C	 87					ADD A, A	;1		31310	
+556D	 87					ADD A, A	;1		31311	
+556E	 86					ADD A, (HL)	;2		31313	
+556F	 07					RLCA	;1		31314	
+5570	 07					RLCA	;1		31315	
+5571	 1E 1E				LD, E, d8	;2		31317	
+5573	 1E 1E				LD, E, d8	;2		31319	
+5575	 1E 79				LD, E, d8	;2		31321	
+5577	 2F					CPL	;1		31322	
+5578	 2F					CPL	;1		31323	
+5579	 8D					ADC A, L	;1		31324	
+557A	 2F					CPL	;1		31325	
+557B	 2F					CPL	;1		31326	
+557C	 8D					ADC A, L	;1		31327	
+557D	 2F					CPL	;1		31328	
+557E	 2F					CPL	;1		31329	
+557F	 8D					ADC A, L	;1		31330	
+5580	 2F					CPL	;1		31331	
+5581	 2F					CPL	;1		31332	
+5582	 88					ADC A, B	;1		31333	
+5583	 07					RLCA	;1		31334	
+5584	 07					RLCA	;1		31335	
+5585	 BD					CP L	;1		31336	
+5586	 B2					OR D	;1		31337	
+5587	 2E BE				LD, L, d8	;2		31339	
+5589	 2E 79				LD, L, d8	;2		31341	
+558B	 2F					CPL	;1		31342	
+558C	 2F					CPL	;1		31343	
+558D	 8D					ADC A, L	;1		31344	
+558E	 2F					CPL	;1		31345	
+558F	 2F					CPL	;1		31346	
+5590	 8D					ADC A, L	;1		31347	
+5591	 2F					CPL	;1		31348	
+5592	 2F					CPL	;1		31349	
+5593	 8D					ADC A, L	;1		31350	
+5594	 2F					CPL	;1		31351	
+5595	 2F					CPL	;1		31352	
+5596	 88					ADC A, B	;1		31353	
+5597	 07					RLCA	;1		31354	
+5598	 07					RLCA	;1		31355	
+5599	 BF					CP A	;1		31356	
+559A	 BF					CP A	;1		31357	
+559B	 BF					CP A	;1		31358	
+559C	 BF					CP A	;1		31359	
+559D	 BF					CP A	;1		31360	
+559E	 89					ADC A, C	;1		31361	
+559F	 8A					ADC A, D	;1		31362	
+55A0	 8A					ADC A, D	;1		31363	
+55A1	 8E					ADC A, (HL)	;2		31365	
+55A2	 8A					ADC A, D	;1		31366	
+55A3	 8A					ADC A, D	;1		31367	
+55A4	 8E					ADC A, (HL)	;2		31369	
+55A5	 8A					ADC A, D	;1		31370	
+55A6	 8A					ADC A, D	;1		31371	
+55A7	 8E					ADC A, (HL)	;2		31373	
+55A8	 8A					ADC A, D	;1		31374	
+55A9	 8A					ADC A, D	;1		31375	
+55AA	 8B					ADC A, E	;1		31376	
+55AB	 07					RLCA	;1		31377	
+55AC	 01 01 01			LD BC, d16	;3		31380	
+55AF	 01 01 01			LD BC, d16	;3		31383	
+55B2	 02					LD (BC), A	;2		31385	
+55B3	 02					LD (BC), A	;2		31387	
+55B4	 03					INC, BC	;2		31389	
+55B5	 03					INC, BC	;2		31391	
+55B6	 01 01 01			LD BC, d16	;3		31394	
+55B9	 01 02 02			LD BC, d16	;3		31397	
+55BC	 00					NOP	;1		31398	
+55BD	 00					NOP	;1		31399	
+55BE	 00					NOP	;1		31400	
+55BF	 00					NOP	;1		31401	
+55C0	 00					NOP	;1		31402	
+55C1	 00					NOP	;1		31403	
+55C2	 00					NOP	;1		31404	
+55C3	 00					NOP	;1		31405	
+55C4	 07					RLCA	;1		31406	
+55C5	 07					RLCA	;1		31407	
+55C6	 18 1F				JR s8	;3		31410	
+55C8	 21 3E 47			LD (HL), d16	;3		31413	
+55CB	 7F					LD A, A	;1		31414	
+55CC	 F2					LD A, (C)	;2		31416	
+55CD	 FE 12				CP d8	;2		31418	
+55CF	 1E 12				LD, E, d8	;2		31420	
+55D1	 1E 12				LD, E, d8	;2		31422	
+55D3	 1E 7E				LD, E, d8	;2		31424	
+55D5	 7E					LD A, (HL)	;2		31426	
+55D6	 FF					RST 7	;4		31430	
+55D7	 83					ADD A, E	;1		31431	
+55D8	 FF					RST 7	;4		31435	
+55D9	 81					ADD A, C	;1		31436	
+55DA	 FF					RST 7	;4		31440	
+55DB	 FF					RST 7	;4		31444	
+55DC	 00					NOP	;1		31445	
+55DD	 00					NOP	;1		31446	
+55DE	 00					NOP	;1		31447	
+55DF	 00					NOP	;1		31448	
+55E0	 00					NOP	;1		31449	
+55E1	 00					NOP	;1		31450	
+55E2	 00					NOP	;1		31451	
+55E3	 00					NOP	;1		31452	
+55E4	 07					RLCA	;1		31453	
+55E5	 07					RLCA	;1		31454	
+55E6	 18 1F				JR s8	;3		31457	
+55E8	 21 3E 47			LD (HL), d16	;3		31460	
+55EB	 7F					LD A, A	;1		31461	
+55EC	 04					INC, B	;1		31462	
+55ED	 FC		
+55EE	 02					LD (BC), A	;2		31464	
+55EF	 FE 02				CP d8	;2		31466	
+55F1	 FE 07				CP d8	;2		31468	
+55F3	 FD		
+55F5	 FD		
+55F7	 FF					RST 7	;4		31472	
+55F8	 FF					RST 7	;4		31476	
+55F9	 FF					RST 7	;4		31480	
+55FA	 FF					RST 7	;4		31484	
+55FB	 FA 00 00			JP A, a16	;4		31488	
+55FE	 00					NOP	;1		31489	
+55FF	 00					NOP	;1		31490	
+5600	 00					NOP	;1		31491	
+5601	 00					NOP	;1		31492	
+5602	 00					NOP	;1		31493	
+5603	 00					NOP	;1		31494	
+5604	 00					NOP	;1		31495	
+5605	 00					NOP	;1		31496	
+5606	 00					NOP	;1		31497	
+5607	 00					NOP	;1		31498	
+5608	 07					RLCA	;1		31499	
+5609	 07					RLCA	;1		31500	
+560A	 18 1F				JR s8	;3		31503	
+560C	 FF					RST 7	;4		31507	
+560D	 FF					RST 7	;4		31511	
+560E	 77					LD (HL), A	;2		31513	
+560F	 11 FF 11			LD DE, d16	;3		31516	
+5612	 FF					RST 7	;4		31520	
+5613	 FF					RST 7	;4		31524	
+5614	 DD		
+5615	 44					LD B, H	;1		31525	
+5616	 FF					RST 7	;4		31529	
+5617	 44					LD B, H	;1		31530	
+5618	 FF					RST 7	;4		31534	
+5619	 FF					RST 7	;4		31538	
+561A	 77					LD (HL), A	;2		31540	
+561B	 11 FF FF			LD DE, d16	;3		31543	
+561E	 FF					RST 7	;4		31547	
+561F	 FF					RST 7	;4		31551	
+5620	 FF					RST 7	;4		31555	
+5621	 FF					RST 7	;4		31559	
+5622	 FF					RST 7	;4		31563	
+5623	 FF					RST 7	;4		31567	
+5624	 FF					RST 7	;4		31571	
+5625	 FF					RST 7	;4		31575	
+5626	 FF					RST 7	;4		31579	
+5627	 FF					RST 7	;4		31583	
+5628	 FF					RST 7	;4		31587	
+5629	 FF					RST 7	;4		31591	
+562A	 FF					RST 7	;4		31595	
+562B	 FF					RST 7	;4		31599	
+562C	 00					NOP	;1		31600	
+562D	 00					NOP	;1		31601	
+562E	 03					INC, BC	;2		31603	
+562F	 03					INC, BC	;2		31605	
+5630	 05					DEC, B	;1		31606	
+5631	 04					INC, B	;1		31607	
+5632	 03					INC, BC	;2		31609	
+5633	 03					INC, BC	;2		31611	
+5634	 00					NOP	;1		31612	
+5635	 00					NOP	;1		31613	
+5636	 18 18				JR s8	;3		31616	
+5638	 2C					INC, L	;1		31617	
+5639	 24					INC, H	;1		31618	
+563A	 1A					LD A, (DE)	;2		31620	
+563B	 1A					LD A, (DE)	;2		31622	
+563C	 08 08 40			LD (a16), SP	;5		31627	
+563F	 40					LD B, B	;1		31628	
+5640	 07					RLCA	;1		31629	
+5641	 07					RLCA	;1		31630	
+5642	 18 1F				JR s8	;3		31633	
+5644	 A0					AND B	;1		31634	
+5645	 BF					CP A	;1		31635	
+5646	 3B					DEC, SP	;2		31637	
+5647	 3F					CCF	;1		31638	
+5648	 7C					LD A, H	;1		31639	
+5649	 44					LD B, H	;1		31640	
+564A	 7C					LD A, H	;1		31641	
+564B	 44					LD B, H	;1		31642	
+564C	 10 10				STOP	;1		31643	
+564E	 02					LD (BC), A	;2		31645	
+564F	 02					LD (BC), A	;2		31647	
+5650	 E0 E0				LD (a8), A	;3		31650	
+5652	 18 F8				JR s8	;3		31653	
+5654	 05					DEC, B	;1		31654	
+5655	 FD		
+5656	 8C					ADC A, H	;1		31655	
+5657	 FC		
+5658	 78					LD A, B	;1		31656	
+5659	 48					LD C, B	;1		31657	
+565A	 6C					LD L, H	;1		31658	
+565B	 74					LD (HL), H	;2		31660	
+565C	 00					NOP	;1		31661	
+565D	 00					NOP	;1		31662	
+565E	 07					RLCA	;1		31663	
+565F	 07					RLCA	;1		31664	
+5660	 18 1F				JR s8	;3		31667	
+5662	 20 3F				JR NZ s8	;3		31670	
+5664	 30 3F				JR NC s8	;3		31673	
+5666	 1F					RRA	;1		31674	
+5667	 1D					DEC, E	;1		31675	
+5668	 3E 22				LD, A, d8	;2		31677	
+566A	 3E 22				LD, A, d8	;2		31679	
+566C	 80					ADD A, B	;1		31680	
+566D	 80					ADD A, B	;1		31681	
+566E	 80					ADD A, B	;1		31682	
+566F	 80					ADD A, B	;1		31683	
+5670	 80					ADD A, B	;1		31684	
+5671	 80					ADD A, B	;1		31685	
+5672	 80					ADD A, B	;1		31686	
+5673	 80					ADD A, B	;1		31687	
+5674	 00					NOP	;1		31688	
+5675	 00					NOP	;1		31689	
+5676	 C0					RET NZ	;5		31694	
+5677	 C0					RET NZ	;5		31699	
+5678	 E0 E0				LD (a8), A	;3		31702	
+567A	 E0 E0				LD (a8), A	;3		31705	
+567C	 00					NOP	;1		31706	
+567D	 00					NOP	;1		31707	
+567E	 7C					LD A, H	;1		31708	
+567F	 7C					LD A, H	;1		31709	
+5680	 66					LD H, (HL)	;2		31711	
+5681	 66					LD H, (HL)	;2		31713	
+5682	 66					LD H, (HL)	;2		31715	
+5683	 66					LD H, (HL)	;2		31717	
+5684	 7C					LD A, H	;1		31718	
+5685	 7C					LD A, H	;1		31719	
+5686	 60					LD H, B	;1		31720	
+5687	 60					LD H, B	;1		31721	
+5688	 60					LD H, B	;1		31722	
+5689	 60					LD H, B	;1		31723	
+568A	 00					NOP	;1		31724	
+568B	 00					NOP	;1		31725	
+568C	 00					NOP	;1		31726	
+568D	 00					NOP	;1		31727	
+568E	 3C					INC, A	;1		31728	
+568F	 3C					INC, A	;1		31729	
+5690	 60					LD H, B	;1		31730	
+5691	 60					LD H, B	;1		31731	
+5692	 3C					INC, A	;1		31732	
+5693	 3C					INC, A	;1		31733	
+5694	 0E 0E				LD, C, d8	;2		31735	
+5696	 4E					LD C, (HL)	;2		31737	
+5697	 4E					LD C, (HL)	;2		31739	
+5698	 3C					INC, A	;1		31740	
+5699	 3C					INC, A	;1		31741	
+569A	 00					NOP	;1		31742	
+569B	 00					NOP	;1		31743	
+569C	 07					RLCA	;1		31744	
+569D	 07					RLCA	;1		31745	
+569E	 1F					RRA	;1		31746	
+569F	 18 3E				JR s8	;3		31749	
+56A1	 20 7F				JR NZ s8	;3		31752	
+56A3	 4F					LD C, A	;1		31753	
+56A4	 7F					LD A, A	;1		31754	
+56A5	 5F					LD E, A	;1		31755	
+56A6	 70					LD (HL), B	;2		31757	
+56A7	 70					LD (HL), B	;2		31759	
+56A8	 A2					AND D	;1		31760	
+56A9	 A2					AND D	;1		31761	
+56AA	 B0					OR B	;1		31762	
+56AB	 B0					OR B	;1		31763	
+56AC	 04					INC, B	;1		31764	
+56AD	 04					INC, B	;1		31765	
+56AE	 07					RLCA	;1		31766	
+56AF	 04					INC, B	;1		31767	
+56B0	 04					INC, B	;1		31768	
+56B1	 04					INC, B	;1		31769	
+56B2	 04					INC, B	;1		31770	
+56B3	 0D					DEC, C	;1		31771	
+56B4	 04					INC, B	;1		31772	
+56B5	 0D					DEC, C	;1		31773	
+56B6	 04					INC, B	;1		31774	
+56B7	 04					INC, B	;1		31775	
+56B8	 04					INC, B	;1		31776	
+56B9	 04					INC, B	;1		31777	
+56BA	 03					INC, BC	;2		31779	
+56BB	 02					LD (BC), A	;2		31781	
+56BC	 5F					LD E, A	;1		31782	
+56BD	 7F					LD A, A	;1		31783	
+56BE	 39					ADD HL, SP	;2		31785	
+56BF	 30 7B				JR NC s8	;3		31788	
+56C1	 62					LD H, D	;1		31789	
+56C2	 FB					EI	;1		31790	
+56C3	 B2					OR D	;1		31791	
+56C4	 FF					RST 7	;4		31795	
+56C5	 A0					AND B	;1		31796	
+56C6	 FF					RST 7	;4		31800	
+56C7	 C2 7F 54			JP NZ a16	;4		31804	
+56CA	 7F					LD A, A	;1		31805	
+56CB	 5C					LD E, H	;1		31806	
+56CC	 00					NOP	;1		31807	
+56CD	 00					NOP	;1		31808	
+56CE	 00					NOP	;1		31809	
+56CF	 00					NOP	;1		31810	
+56D0	 00					NOP	;1		31811	
+56D1	 00					NOP	;1		31812	
+56D2	 03					INC, BC	;2		31814	
+56D3	 03					INC, BC	;2		31816	
+56D4	 04					INC, B	;1		31817	
+56D5	 04					INC, B	;1		31818	
+56D6	 08 08 09			LD (a16), SP	;5		31823	
+56D9	 09					ADD HL, BC	;2		31825	
+56DA	 04					INC, B	;1		31826	
+56DB	 04					INC, B	;1		31827	
+56DC	 5F					LD E, A	;1		31828	
+56DD	 7F					LD A, A	;1		31829	
+56DE	 39					ADD HL, SP	;2		31831	
+56DF	 30 7B				JR NC s8	;3		31834	
+56E1	 62					LD H, D	;1		31835	
+56E2	 FB					EI	;1		31836	
+56E3	 B2					OR D	;1		31837	
+56E4	 FF					RST 7	;4		31841	
+56E5	 A0					AND B	;1		31842	
+56E6	 FF					RST 7	;4		31846	
+56E7	 C2 7F 54			JP NZ a16	;4		31850	
+56EA	 7F					LD A, A	;1		31851	
+56EB	 5C					LD E, H	;1		31852	
+56EC	 18 F8				JR s8	;3		31855	
+56EE	 04					INC, B	;1		31856	
+56EF	 FC		
+56F0	 02					LD (BC), A	;2		31858	
+56F1	 FE 02				CP d8	;2		31860	
+56F3	 FE 07				CP d8	;2		31862	
+56F5	 FD		
+56F7	 FD		
+56F9	 FF					RST 7	;4		31866	
+56FA	 FF					RST 7	;4		31870	
+56FB	 FA 20 3F			JP A, a16	;4		31874	
+56FE	 40					LD B, B	;1		31875	
+56FF	 7F					LD A, A	;1		31876	
+5700	 40					LD B, B	;1		31877	
+5701	 7F					LD A, A	;1		31878	
+5702	 E0 BF				LD (a8), A	;3		31881	
+5704	 E0 BF				LD (a8), A	;3		31884	
+5706	 F8 FF				LD HL, SP+s8	;3		31887	
+5708	 7F					LD A, A	;1		31888	
+5709	 7F					LD A, A	;1		31889	
+570A	 7F					LD A, A	;1		31890	
+570B	 5F					LD E, A	;1		31891	
+570C	 FF					RST 7	;4		31895	
+570D	 11 FF FF			LD DE, d16	;3		31898	
+5710	 DD		
+5713	 44					LD B, H	;1		31899	
+5714	 FF					RST 7	;4		31903	
+5715	 FF					RST 7	;4		31907	
+5716	 77					LD (HL), A	;2		31909	
+5717	 11 FF 11			LD DE, d16	;3		31912	
+571A	 FF					RST 7	;4		31916	
+571B	 FF					RST 7	;4		31920	
+571C	 00					NOP	;1		31921	
+571D	 00					NOP	;1		31922	
+571E	 00					NOP	;1		31923	
+571F	 00					NOP	;1		31924	
+5720	 00					NOP	;1		31925	
+5721	 00					NOP	;1		31926	
+5722	 00					NOP	;1		31927	
+5723	 00					NOP	;1		31928	
+5724	 00					NOP	;1		31929	
+5725	 00					NOP	;1		31930	
+5726	 00					NOP	;1		31931	
+5727	 00					NOP	;1		31932	
+5728	 80					ADD A, B	;1		31933	
+5729	 80					ADD A, B	;1		31934	
+572A	 C0					RET NZ	;5		31939	
+572B	 40					LD B, B	;1		31940	
+572C	 00					NOP	;1		31941	
+572D	 00					NOP	;1		31942	
+572E	 00					NOP	;1		31943	
+572F	 00					NOP	;1		31944	
+5730	 00					NOP	;1		31945	
+5731	 00					NOP	;1		31946	
+5732	 04					INC, B	;1		31947	
+5733	 04					INC, B	;1		31948	
+5734	 08 08 1C			LD (a16), SP	;5		31953	
+5737	 14					INC, D	;1		31954	
+5738	 14					INC, D	;1		31955	
+5739	 14					INC, D	;1		31956	
+573A	 08 08 18			LD (a16), SP	;5		31961	
+573D	 1F					RRA	;1		31962	
+573E	 20 3F				JR NZ s8	;3		31965	
+5740	 40					LD B, B	;1		31966	
+5741	 7F					LD A, A	;1		31967	
+5742	 40					LD B, B	;1		31968	
+5743	 7F					LD A, A	;1		31969	
+5744	 E0 BF				LD (a8), A	;3		31972	
+5746	 E0 BF				LD (a8), A	;3		31975	
+5748	 7F					LD A, A	;1		31976	
+5749	 7F					LD A, A	;1		31977	
+574A	 7F					LD A, A	;1		31978	
+574B	 5F					LD E, A	;1		31979	
+574C	 DD		
+574D	 44					LD B, H	;1		31980	
+574E	 FF					RST 7	;4		31984	
+574F	 44					LD B, H	;1		31985	
+5750	 FF					RST 7	;4		31989	
+5751	 FF					RST 7	;4		31993	
+5752	 77					LD (HL), A	;2		31995	
+5753	 11 FF 11			LD DE, d16	;3		31998	
+5756	 FF					RST 7	;4		32002	
+5757	 FF					RST 7	;4		32006	
+5758	 DD		
+5759	 44					LD B, H	;1		32007	
+575A	 FF					RST 7	;4		32011	
+575B	 44					LD B, H	;1		32012	
+575C	 00					NOP	;1		32013	
+575D	 00					NOP	;1		32014	
+575E	 00					NOP	;1		32015	
+575F	 00					NOP	;1		32016	
+5760	 00					NOP	;1		32017	
+5761	 00					NOP	;1		32018	
+5762	 20 20				JR NZ s8	;3		32021	
+5764	 10 10				STOP	;1		32022	
+5766	 38 28				JR C s8	;3		32025	
+5768	 28 28				JR Z s8	;3		32028	
+576A	 90					SUB B	;1		32029	
+576B	 90					SUB B	;1		32030	
+576C	 00					NOP	;1		32031	
+576D	 00					NOP	;1		32032	
+576E	 46					LD B, (HL)	;2		32034	
+576F	 46					LD B, (HL)	;2		32036	
+5770	 46					LD B, (HL)	;2		32038	
+5771	 46					LD B, (HL)	;2		32040	
+5772	 7E					LD A, (HL)	;2		32042	
+5773	 7E					LD A, (HL)	;2		32044	
+5774	 46					LD B, (HL)	;2		32046	
+5775	 46					LD B, (HL)	;2		32048	
+5776	 46					LD B, (HL)	;2		32050	
+5777	 46					LD B, (HL)	;2		32052	
+5778	 46					LD B, (HL)	;2		32054	
+5779	 46					LD B, (HL)	;2		32056	
+577A	 00					NOP	;1		32057	
+577B	 00					NOP	;1		32058	
+577C	 00					NOP	;1		32059	
+577D	 00					NOP	;1		32060	
+577E	 7E					LD A, (HL)	;2		32062	
+577F	 7E					LD A, (HL)	;2		32064	
+5780	 18 18				JR s8	;3		32067	
+5782	 18 18				JR s8	;3		32070	
+5784	 18 18				JR s8	;3		32073	
+5786	 18 18				JR s8	;3		32076	
+5788	 18 18				JR s8	;3		32079	
+578A	 00					NOP	;1		32080	
+578B	 00					NOP	;1		32081	
+578C	 FF					RST 7	;4		32085	
+578D	 FF					RST 7	;4		32089	
+578E	 FF					RST 7	;4		32093	
+578F	 FF					RST 7	;4		32097	
+5790	 FF					RST 7	;4		32101	
+5791	 FF					RST 7	;4		32105	
+5792	 FF					RST 7	;4		32109	
+5793	 FF					RST 7	;4		32113	
+5794	 FF					RST 7	;4		32117	
+5795	 FF					RST 7	;4		32121	
+5796	 FF					RST 7	;4		32125	
+5797	 FF					RST 7	;4		32129	
+5798	 00					NOP	;1		32130	
+5799	 00					NOP	;1		32131	
+579A	 00					NOP	;1		32132	
+579B	 EE B4				XOR d8	;2		32134	
+579D	 B4					OR H	;1		32135	
+579E	 64					LD H, H	;1		32136	
+579F	 64					LD H, H	;1		32137	
+57A0	 3C					INC, A	;1		32138	
+57A1	 3C					INC, A	;1		32139	
+57A2	 2E 2E				LD, L, d8	;2		32141	
+57A4	 27					DAA	;1		32142	
+57A5	 27					DAA	;1		32143	
+57A6	 70					LD (HL), B	;2		32145	
+57A7	 70					LD (HL), B	;2		32147	
+57A8	 FC		
+57A9	 9C					SBC A, H	;1		32148	
+57AA	 F7					RST 6	;4		32152	
+57AB	 9F					SBC A, A	;1		32153	
+57AC	 00					NOP	;1		32154	
+57AD	 00					NOP	;1		32155	
+57AE	 00					NOP	;1		32156	
+57AF	 00					NOP	;1		32157	
+57B0	 00					NOP	;1		32158	
+57B1	 00					NOP	;1		32159	
+57B2	 01 01 01			LD BC, d16	;3		32162	
+57B5	 01 02 02			LD BC, d16	;3		32165	
+57B8	 02					LD (BC), A	;2		32167	
+57B9	 02					LD (BC), A	;2		32169	
+57BA	 02					LD (BC), A	;2		32171	
+57BB	 02					LD (BC), A	;2		32173	
+57BC	 3F					CCF	;1		32174	
+57BD	 2E 7F				LD, L, d8	;2		32176	
+57BF	 63					LD H, E	;1		32177	
+57C0	 FF					RST 7	;4		32181	
+57C1	 98					SBC A, B	;1		32182	
+57C2	 F7					RST 6	;4		32186	
+57C3	 1F					RRA	;1		32187	
+57C4	 F7					RST 6	;4		32191	
+57C5	 1C					INC, E	;1		32192	
+57C6	 F7					RST 6	;4		32196	
+57C7	 D7					RST 2	;4		32200	
+57C8	 34					INC (HL)	;3		32203	
+57C9	 3F					CCF	;1		32204	
+57CA	 AC					XOR H	;1		32205	
+57CB	 BF					CP A	;1		32206	
+57CC	 03					INC, BC	;2		32208	
+57CD	 03					INC, BC	;2		32210	
+57CE	 01 01 01			LD BC, d16	;3		32213	
+57D1	 01 00 00			LD BC, d16	;3		32216	
+57D4	 00					NOP	;1		32217	
+57D5	 00					NOP	;1		32218	
+57D6	 06 06				LD, B, d8	;2		32220	
+57D8	 05					DEC, B	;1		32221	
+57D9	 05					DEC, B	;1		32222	
+57DA	 07					RLCA	;1		32223	
+57DB	 07					RLCA	;1		32224	
+57DC	 FF					RST 7	;4		32228	
+57DD	 AE					XOR (HL)	;2		32230	
+57DE	 FF					RST 7	;4		32234	
+57DF	 23					INC, (HL)	;2		32236	
+57E0	 FF					RST 7	;4		32240	
+57E1	 18 F7				JR s8	;3		32243	
+57E3	 9F					SBC A, A	;1		32244	
+57E4	 F7					RST 6	;4		32248	
+57E5	 9C					SBC A, H	;1		32249	
+57E6	 77					LD (HL), A	;2		32251	
+57E7	 57					LD D, A	;1		32252	
+57E8	 34					INC (HL)	;3		32255	
+57E9	 3F					CCF	;1		32256	
+57EA	 6C					LD L, H	;1		32257	
+57EB	 7F					LD A, A	;1		32258	
+57EC	 00					NOP	;1		32259	
+57ED	 00					NOP	;1		32260	
+57EE	 00					NOP	;1		32261	
+57EF	 00					NOP	;1		32262	
+57F0	 00					NOP	;1		32263	
+57F1	 00					NOP	;1		32264	
+57F2	 01 01 01			LD BC, d16	;3		32267	
+57F5	 01 02 02			LD BC, d16	;3		32270	
+57F8	 02					LD (BC), A	;2		32272	
+57F9	 02					LD (BC), A	;2		32274	
+57FA	 02					LD (BC), A	;2		32276	
+57FB	 02					LD (BC), A	;2		32278	
+57FC	 3F					CCF	;1		32279	
+57FD	 2F					CPL	;1		32280	
+57FE	 7F					LD A, A	;1		32281	
+57FF	 7C					LD A, H	;1		32282	
+5800	 F7					RST 6	;4		32286	
+5801	 9C					SBC A, H	;1		32287	
+5802	 F3					DI	;1		32288	
+5803	 1F					RRA	;1		32289	
+5804	 F0 1F				LD A, (a8)	;2		32291	
+5806	 F0 DF				LD A, (a8)	;2		32293	
+5808	 30 3F				JR NC s8	;3		32296	
+580A	 A0					AND B	;1		32297	
+580B	 BF					CP A	;1		32298	
+580C	 FF					RST 7	;4		32302	
+580D	 F4		
+580E	 FF					RST 7	;4		32306	
+580F	 3E EF				LD, A, d8	;2		32308	
+5811	 38 CF				JR C s8	;3		32311	
+5813	 F8 0F				LD HL, SP+s8	;3		32314	
+5815	 FB					EI	;1		32315	
+5816	 0E FA				LD, C, d8	;2		32317	
+5818	 0C					INC, C	;1		32318	
+5819	 FC		
+581A	 04					INC, B	;1		32319	
+581B	 FC		
+581C	 E0 20				LD (a8), A	;3		32322	
+581E	 E0 20				LD (a8), A	;3		32325	
+5820	 E0 20				LD (a8), A	;3		32328	
+5822	 C0					RET NZ	;5		32333	
+5823	 40					LD B, B	;1		32334	
+5824	 80					ADD A, B	;1		32335	
+5825	 80					ADD A, B	;1		32336	
+5826	 00					NOP	;1		32337	
+5827	 00					NOP	;1		32338	
+5828	 00					NOP	;1		32339	
+5829	 00					NOP	;1		32340	
+582A	 00					NOP	;1		32341	
+582B	 00					NOP	;1		32342	
+582C	 00					NOP	;1		32343	
+582D	 00					NOP	;1		32344	
+582E	 00					NOP	;1		32345	
+582F	 00					NOP	;1		32346	
+5830	 00					NOP	;1		32347	
+5831	 00					NOP	;1		32348	
+5832	 00					NOP	;1		32349	
+5833	 00					NOP	;1		32350	
+5834	 01 01 01			LD BC, d16	;3		32353	
+5837	 01 02 02			LD BC, d16	;3		32356	
+583A	 02					LD (BC), A	;2		32358	
+583B	 02					LD (BC), A	;2		32360	
+583C	 3F					CCF	;1		32361	
+583D	 2F					CPL	;1		32362	
+583E	 3F					CCF	;1		32363	
+583F	 3C					INC, A	;1		32364	
+5840	 77					LD (HL), A	;2		32366	
+5841	 5C					LD E, H	;1		32367	
+5842	 F3					DI	;1		32368	
+5843	 9F					SBC A, A	;1		32369	
+5844	 F0 1F				LD A, (a8)	;2		32371	
+5846	 F0 1F				LD A, (a8)	;2		32373	
+5848	 F0 FF				LD A, (a8)	;2		32375	
+584A	 20 3F				JR NZ s8	;3		32378	
+584C	 FF					RST 7	;4		32382	
+584D	 F4		
+584E	 FF					RST 7	;4		32386	
+584F	 3E EF				LD, A, d8	;2		32388	
+5851	 38 CF				JR C s8	;3		32391	
+5853	 F9					LD SP, HL	;2		32393	
+5854	 0E FA				LD, C, d8	;2		32395	
+5856	 0E FA				LD, C, d8	;2		32397	
+5858	 0C					INC, C	;1		32398	
+5859	 FC		
+585A	 04					INC, B	;1		32399	
+585B	 FC		
+585C	 C0					RET NZ	;5		32404	
+585D	 40					LD B, B	;1		32405	
+585E	 C0					RET NZ	;5		32410	
+585F	 40					LD B, B	;1		32411	
+5860	 C0					RET NZ	;5		32416	
+5861	 40					LD B, B	;1		32417	
+5862	 80					ADD A, B	;1		32418	
+5863	 80					ADD A, B	;1		32419	
+5864	 00					NOP	;1		32420	
+5865	 00					NOP	;1		32421	
+5866	 00					NOP	;1		32422	
+5867	 00					NOP	;1		32423	
+5868	 00					NOP	;1		32424	
+5869	 00					NOP	;1		32425	
+586A	 00					NOP	;1		32426	
+586B	 00					NOP	;1		32427	
+586C	 F7					RST 6	;4		32431	
+586D	 1C					INC, E	;1		32432	
+586E	 F7					RST 6	;4		32436	
+586F	 34					INC (HL)	;3		32439	
+5870	 F7					RST 6	;4		32443	
+5871	 BF					CP A	;1		32444	
+5872	 6C					LD L, H	;1		32445	
+5873	 7F					LD A, A	;1		32446	
+5874	 10 1F				STOP	;1		32447	
+5876	 50					LD D, B	;1		32448	
+5877	 5F					LD E, A	;1		32449	
+5878	 32					LD (HL-), A	;2		32451	
+5879	 3F					CCF	;1		32452	
+587A	 F1					POP AF	;3		32455	
+587B	 FF					RST 7	;4		32459	
+587C	 00					NOP	;1		32460	
+587D	 00					NOP	;1		32461	
+587E	 46					LD B, (HL)	;2		32463	
+587F	 46					LD B, (HL)	;2		32465	
+5880	 46					LD B, (HL)	;2		32467	
+5881	 46					LD B, (HL)	;2		32469	
+5882	 56					LD D, (HL)	;2		32471	
+5883	 56					LD D, (HL)	;2		32473	
+5884	 7E					LD A, (HL)	;2		32475	
+5885	 7E					LD A, (HL)	;2		32477	
+5886	 6E					LD L, (HL)	;2		32479	
+5887	 6E					LD L, (HL)	;2		32481	
+5888	 46					LD B, (HL)	;2		32483	
+5889	 46					LD B, (HL)	;2		32485	
+588A	 00					NOP	;1		32486	
+588B	 00					NOP	;1		32487	
+588C	 00					NOP	;1		32488	
+588D	 00					NOP	;1		32489	
+588E	 3C					INC, A	;1		32490	
+588F	 3C					INC, A	;1		32491	
+5890	 18 18				JR s8	;3		32494	
+5892	 18 18				JR s8	;3		32497	
+5894	 18 18				JR s8	;3		32500	
+5896	 18 18				JR s8	;3		32503	
+5898	 3C					INC, A	;1		32504	
+5899	 3C					INC, A	;1		32505	
+589A	 00					NOP	;1		32506	
+589B	 00					NOP	;1		32507	
+589C	 00					NOP	;1		32508	
+589D	 00					NOP	;1		32509	
+589E	 00					NOP	;1		32510	
+589F	 00					NOP	;1		32511	
+58A0	 00					NOP	;1		32512	
+58A1	 00					NOP	;1		32513	
+58A2	 00					NOP	;1		32514	
+58A3	 00					NOP	;1		32515	
+58A4	 00					NOP	;1		32516	
+58A5	 00					NOP	;1		32517	
+58A6	 00					NOP	;1		32518	
+58A7	 00					NOP	;1		32519	
+58A8	 00					NOP	;1		32520	
+58A9	 00					NOP	;1		32521	
+58AA	 00					NOP	;1		32522	
+58AB	 00					NOP	;1		32523	
+58AC	 02					LD (BC), A	;2		32525	
+58AD	 02					LD (BC), A	;2		32527	
+58AE	 01 01 00			LD BC, d16	;3		32530	
+58B1	 00					NOP	;1		32531	
+58B2	 00					NOP	;1		32532	
+58B3	 00					NOP	;1		32533	
+58B4	 00					NOP	;1		32534	
+58B5	 00					NOP	;1		32535	
+58B6	 00					NOP	;1		32536	
+58B7	 00					NOP	;1		32537	
+58B8	 00					NOP	;1		32538	
+58B9	 00					NOP	;1		32539	
+58BA	 00					NOP	;1		32540	
+58BB	 00					NOP	;1		32541	
+58BC	 40					LD B, B	;1		32542	
+58BD	 7F					LD A, A	;1		32543	
+58BE	 C0					RET NZ	;5		32548	
+58BF	 FF					RST 7	;4		32552	
+58C0	 20 3F				JR NZ s8	;3		32555	
+58C2	 22					LD (HL+), A	;2		32557	
+58C3	 3F					CCF	;1		32558	
+58C4	 11 1F 72			LD DE, d16	;3		32561	
+58C7	 7E					LD A, (HL)	;2		32563	
+58C8	 BF					CP A	;1		32564	
+58C9	 BF					CP A	;1		32565	
+58CA	 FF					RST 7	;4		32569	
+58CB	 FF					RST 7	;4		32573	
+58CC	 07					RLCA	;1		32574	
+58CD	 07					RLCA	;1		32575	
+58CE	 06 07				LD, B, d8	;2		32577	
+58D0	 06 07				LD, B, d8	;2		32579	
+58D2	 06 07				LD, B, d8	;2		32581	
+58D4	 07					RLCA	;1		32582	
+58D5	 07					RLCA	;1		32583	
+58D6	 00					NOP	;1		32584	
+58D7	 00					NOP	;1		32585	
+58D8	 00					NOP	;1		32586	
+58D9	 00					NOP	;1		32587	
+58DA	 00					NOP	;1		32588	
+58DB	 00					NOP	;1		32589	
+58DC	 C0					RET NZ	;5		32594	
+58DD	 FF					RST 7	;4		32598	
+58DE	 00					NOP	;1		32599	
+58DF	 FF					RST 7	;4		32603	
+58E0	 00					NOP	;1		32604	
+58E1	 FF					RST 7	;4		32608	
+58E2	 02					LD (BC), A	;2		32610	
+58E3	 FF					RST 7	;4		32614	
+58E4	 FF					RST 7	;4		32618	
+58E5	 FF					RST 7	;4		32622	
+58E6	 00					NOP	;1		32623	
+58E7	 00					NOP	;1		32624	
+58E8	 00					NOP	;1		32625	
+58E9	 00					NOP	;1		32626	
+58EA	 00					NOP	;1		32627	
+58EB	 00					NOP	;1		32628	
+58EC	 02					LD (BC), A	;2		32630	
+58ED	 02					LD (BC), A	;2		32632	
+58EE	 01 01 00			LD BC, d16	;3		32635	
+58F1	 00					NOP	;1		32636	
+58F2	 00					NOP	;1		32637	
+58F3	 00					NOP	;1		32638	
+58F4	 00					NOP	;1		32639	
+58F5	 00					NOP	;1		32640	
+58F6	 00					NOP	;1		32641	
+58F7	 00					NOP	;1		32642	
+58F8	 00					NOP	;1		32643	
+58F9	 00					NOP	;1		32644	
+58FA	 00					NOP	;1		32645	
+58FB	 00					NOP	;1		32646	
+58FC	 40					LD B, B	;1		32647	
+58FD	 7F					LD A, A	;1		32648	
+58FE	 C0					RET NZ	;5		32653	
+58FF	 FF					RST 7	;4		32657	
+5900	 20 3F				JR NZ s8	;3		32660	
+5902	 20 3F				JR NZ s8	;3		32663	
+5904	 11 1F 72			LD DE, d16	;3		32666	
+5907	 7E					LD A, (HL)	;2		32668	
+5908	 FF					RST 7	;4		32672	
+5909	 FF					RST 7	;4		32676	
+590A	 FF					RST 7	;4		32680	
+590B	 FF					RST 7	;4		32684	
+590C	 02					LD (BC), A	;2		32686	
+590D	 FE 02				CP d8	;2		32688	
+590F	 FE 04				CP d8	;2		32690	
+5911	 FC		
+5913	 FC		
+5915	 F8 4E				LD HL, SP+s8	;3		32693	
+5917	 7E					LD A, (HL)	;2		32695	
+5918	 FF					RST 7	;4		32699	
+5919	 FF					RST 7	;4		32703	
+591A	 FF					RST 7	;4		32707	
+591B	 FF					RST 7	;4		32711	
+591C	 00					NOP	;1		32712	
+591D	 00					NOP	;1		32713	
+591E	 00					NOP	;1		32714	
+591F	 00					NOP	;1		32715	
+5920	 80					ADD A, B	;1		32716	
+5921	 80					ADD A, B	;1		32717	
+5922	 40					LD B, B	;1		32718	
+5923	 40					LD B, B	;1		32719	
+5924	 00					NOP	;1		32720	
+5925	 00					NOP	;1		32721	
+5926	 00					NOP	;1		32722	
+5927	 00					NOP	;1		32723	
+5928	 00					NOP	;1		32724	
+5929	 00					NOP	;1		32725	
+592A	 07					RLCA	;1		32726	
+592B	 07					RLCA	;1		32727	
+592C	 00					NOP	;1		32728	
+592D	 00					NOP	;1		32729	
+592E	 00					NOP	;1		32730	
+592F	 00					NOP	;1		32731	
+5930	 FF					RST 7	;4		32735	
+5931	 00					NOP	;1		32736	
+5932	 FD		
+5933	 02					LD (BC), A	;2		32738	
+5934	 CD 32 09			CALL a16	;6		32744	
+5937	 F6 08				OR d8	;2		32746	
+5939	 F7					RST 6	;4		32750	
+593A	 00					NOP	;1		32751	
+593B	 FF					RST 7	;4		32755	
+593C	 00					NOP	;1		32756	
+593D	 00					NOP	;1		32757	
+593E	 00					NOP	;1		32758	
+593F	 00					NOP	;1		32759	
+5940	 FF					RST 7	;4		32763	
+5941	 00					NOP	;1		32764	
+5942	 FF					RST 7	;4		32768	
+5943	 00					NOP	;1		32769	
+5944	 FF					RST 7	;4		32773	
+5945	 00					NOP	;1		32774	
+5946	 FC		
+5947	 03					INC, BC	;2		32776	
+5948	 CC 33 08			CALL Z, a16	;6		32782	
+594B	 F7					RST 6	;4		32786	
+594C	 7C					LD A, H	;1		32787	
+594D	 44					LD B, H	;1		32788	
+594E	 3F					CCF	;1		32789	
+594F	 3F					CCF	;1		32790	
+5950	 10 1F				STOP	;1		32791	
+5952	 10 1F				STOP	;1		32792	
+5954	 12					LD (DE), A	;2		32794	
+5955	 1F					RRA	;1		32795	
+5956	 19					ADD HL, DE	;2		32797	
+5957	 1F					RRA	;1		32798	
+5958	 3F					CCF	;1		32799	
+5959	 3F					CCF	;1		32800	
+595A	 3E 3E				LD, A, d8	;2		32802	
+595C	 CE F2				ADC A, d8	;2		32804	
+595E	 8E					ADC A, (HL)	;2		32806	
+595F	 DA 09 F9			JP C a16	;4		32810	
+5962	 09					ADD HL, BC	;2		32812	
+5963	 F9					LD SP, HL	;2		32814	
+5964	 4E					LD C, (HL)	;2		32816	
+5965	 FE 98				CP d8	;2		32818	
+5967	 F8 FC				LD HL, SP+s8	;3		32821	
+5969	 FC		
+596B	 7C					LD A, H	;1		32822	
+596C	 07					RLCA	;1		32823	
+596D	 07					RLCA	;1		32824	
+596E	 1F					RRA	;1		32825	
+596F	 18 3E				JR s8	;3		32828	
+5971	 20 7F				JR NZ s8	;3		32831	
+5973	 4F					LD C, A	;1		32832	
+5974	 7F					LD A, A	;1		32833	
+5975	 5F					LD E, A	;1		32834	
+5976	 70					LD (HL), B	;2		32836	
+5977	 70					LD (HL), B	;2		32838	
+5978	 A2					AND D	;1		32839	
+5979	 A2					AND D	;1		32840	
+597A	 B0					OR B	;1		32841	
+597B	 B0					OR B	;1		32842	
+597C	 00					NOP	;1		32843	
+597D	 00					NOP	;1		32844	
+597E	 46					LD B, (HL)	;2		32846	
+597F	 46					LD B, (HL)	;2		32848	
+5980	 66					LD H, (HL)	;2		32850	
+5981	 66					LD H, (HL)	;2		32852	
+5982	 76					HALT	;1		32853	
+5983	 76					HALT	;1		32854	
+5984	 5E					LD E, (HL)	;2		32856	
+5985	 5E					LD E, (HL)	;2		32858	
+5986	 4E					LD C, (HL)	;2		32860	
+5987	 4E					LD C, (HL)	;2		32862	
+5988	 46					LD B, (HL)	;2		32864	
+5989	 46					LD B, (HL)	;2		32866	
+598A	 00					NOP	;1		32867	
+598B	 00					NOP	;1		32868	
+598C	 00					NOP	;1		32869	
+598D	 00					NOP	;1		32870	
+598E	 18 18				JR s8	;3		32873	
+5990	 18 18				JR s8	;3		32876	
+5992	 18 18				JR s8	;3		32879	
+5994	 18 18				JR s8	;3		32882	
+5996	 00					NOP	;1		32883	
+5997	 00					NOP	;1		32884	
+5998	 18 18				JR s8	;3		32887	
+599A	 00					NOP	;1		32888	
+599B	 00					NOP	;1		32889	
+599C	 12					LD (DE), A	;2		32891	
+599D	 1E 12				LD, E, d8	;2		32893	
+599F	 1E 12				LD, E, d8	;2		32895	
+59A1	 1E 12				LD, E, d8	;2		32897	
+59A3	 1E 7E				LD, E, d8	;2		32899	
+59A5	 7E					LD A, (HL)	;2		32901	
+59A6	 BF					CP A	;1		32902	
+59A7	 83					ADD A, E	;1		32903	
+59A8	 FF					RST 7	;4		32907	
+59A9	 81					ADD A, C	;1		32908	
+59AA	 FF					RST 7	;4		32912	
+59AB	 FF					RST 7	;4		32916	
+59AC	 00					NOP	;1		32917	
+59AD	 00					NOP	;1		32918	
+59AE	 E0 E0				LD (a8), A	;3		32921	
+59B0	 18 F8				JR s8	;3		32924	
+59B2	 04					INC, B	;1		32925	
+59B3	 FC		
+59B4	 0C					INC, C	;1		32926	
+59B5	 FC		
+59B6	 F8 C8				LD HL, SP+s8	;3		32929	
+59B8	 2C					INC, L	;1		32930	
+59B9	 34					INC (HL)	;3		32933	
+59BA	 2E 32				LD, L, d8	;2		32935	
+59BC	 00					NOP	;1		32936	
+59BD	 00					NOP	;1		32937	
+59BE	 46					LD B, (HL)	;2		32939	
+59BF	 46					LD B, (HL)	;2		32941	
+59C0	 46					LD B, (HL)	;2		32943	
+59C1	 46					LD B, (HL)	;2		32945	
+59C2	 46					LD B, (HL)	;2		32947	
+59C3	 46					LD B, (HL)	;2		32949	
+59C4	 46					LD B, (HL)	;2		32951	
+59C5	 46					LD B, (HL)	;2		32953	
+59C6	 2C					INC, L	;1		32954	
+59C7	 2C					INC, L	;1		32955	
+59C8	 18 18				JR s8	;3		32958	
+59CA	 00					NOP	;1		32959	
+59CB	 00					NOP	;1		32960	
+59CC	 00					NOP	;1		32961	
+59CD	 00					NOP	;1		32962	
+59CE	 36 36				LD (HL), d8	;3		32965	
+59D0	 5F					LD E, A	;1		32966	
+59D1	 49					LD C, C	;1		32967	
+59D2	 5F					LD E, A	;1		32968	
+59D3	 41					LD B, C	;1		32969	
+59D4	 7F					LD A, A	;1		32970	
+59D5	 41					LD B, C	;1		32971	
+59D6	 3E 22				LD, A, d8	;2		32973	
+59D8	 1C					INC, E	;1		32974	
+59D9	 14					INC, D	;1		32975	
+59DA	 08 08 FE			LD (a16), SP	;5		32980	
+59DD	 02					LD (BC), A	;2		32982	
+59DE	 FD		
+59DF	 05					DEC, B	;1		32983	
+59E0	 FD		
+59E1	 05					DEC, B	;1		32984	
+59E2	 FF					RST 7	;4		32988	
+59E3	 1F					RRA	;1		32989	
+59E4	 FF					RST 7	;4		32993	
+59E5	 FC		
+59E6	 FF					RST 7	;4		32997	
+59E7	 FE EF				CP d8	;2		32999	
+59E9	 38 EF				JR C s8	;3		33002	
+59EB	 39					ADD HL, SP	;2		33004	
+59EC	 00					NOP	;1		33005	
+59ED	 04					INC, B	;1		33006	
+59EE	 00					NOP	;1		33007	
+59EF	 04					INC, B	;1		33008	
+59F0	 00					NOP	;1		33009	
+59F1	 04					INC, B	;1		33010	
+59F2	 01 05 01			LD BC, d16	;3		33013	
+59F5	 05					DEC, B	;1		33014	
+59F6	 03					INC, BC	;2		33016	
+59F7	 07					RLCA	;1		33017	
+59F8	 06 06				LD, B, d8	;2		33019	
+59FA	 0C					INC, C	;1		33020	
+59FB	 0C					INC, C	;1		33021	
+59FC	 CA C0 C8			JP Z a16	;4		33025	
+59FF	 C0					RET NZ	;5		33030	
+5A00	 CA C0 88			JP Z a16	;4		33034	
+5A03	 80					ADD A, B	;1		33035	
+5A04	 88					ADC A, B	;1		33036	
+5A05	 87					ADD A, A	;1		33037	
+5A06	 08 00 0A			LD (a16), SP	;5		33042	
+5A09	 00					NOP	;1		33043	
+5A0A	 08 00 6F			LD (a16), SP	;5		33048	
+5A0D	 13					INC, DE	;2		33050	
+5A0E	 2F					CPL	;1		33051	
+5A0F	 13					INC, DE	;2		33053	
+5A10	 6F					LD L, A	;1		33054	
+5A11	 13					INC, DE	;2		33056	
+5A12	 2F					CPL	;1		33057	
+5A13	 11 2D D1			LD DE, d16	;3		33060	
+5A16	 2C					INC, L	;1		33061	
+5A17	 10 6C				STOP	;1		33062	
+5A19	 10 2C				STOP	;1		33063	
+5A1B	 10 A0				STOP	;1		33064	
+5A1D	 20 A0				JR NZ s8	;3		33067	
+5A1F	 20 A0				JR NZ s8	;3		33070	
+5A21	 20 A0				JR NZ s8	;3		33073	
+5A23	 A0					AND B	;1		33074	
+5A24	 A0					AND B	;1		33075	
+5A25	 A0					AND B	;1		33076	
+5A26	 E0 E0				LD (a8), A	;3		33079	
+5A28	 60					LD H, B	;1		33080	
+5A29	 60					LD H, B	;1		33081	
+5A2A	 30 30				JR NC s8	;3		33084	
+5A2C	 08 A8 08			LD (a16), SP	;5		33089	
+5A2F	 18 08				JR s8	;3		33092	
+5A31	 A8					XOR B	;1		33093	
+5A32	 08 48 08			LD (a16), SP	;5		33098	
+5A35	 A8					XOR B	;1		33099	
+5A36	 08 18 08			LD (a16), SP	;5		33104	
+5A39	 A8					XOR B	;1		33105	
+5A3A	 08 48 00			LD (a16), SP	;5		33110	
+5A3D	 FE 00				CP d8	;2		33112	
+5A3F	 FF					RST 7	;4		33116	
+5A40	 7F					LD A, A	;1		33117	
+5A41	 FF					RST 7	;4		33121	
+5A42	 7F					LD A, A	;1		33122	
+5A43	 C1					POP BC	;3		33125	
+5A44	 7F					LD A, A	;1		33126	
+5A45	 C1					POP BC	;3		33129	
+5A46	 7F					LD A, A	;1		33130	
+5A47	 EB		
+5A48	 7F					LD A, A	;1		33131	
+5A49	 C1					POP BC	;3		33134	
+5A4A	 01 FF 00			LD BC, d16	;3		33137	
+5A4D	 00					NOP	;1		33138	
+5A4E	 00					NOP	;1		33139	
+5A4F	 00					NOP	;1		33140	
+5A50	 00					NOP	;1		33141	
+5A51	 00					NOP	;1		33142	
+5A52	 FF					RST 7	;4		33146	
+5A53	 00					NOP	;1		33147	
+5A54	 00					NOP	;1		33148	
+5A55	 00					NOP	;1		33149	
+5A56	 FF					RST 7	;4		33153	
+5A57	 00					NOP	;1		33154	
+5A58	 00					NOP	;1		33155	
+5A59	 00					NOP	;1		33156	
+5A5A	 FF					RST 7	;4		33160	
+5A5B	 00					NOP	;1		33161	
+5A5C	 10 10				STOP	;1		33162	
+5A5E	 0B					DEC, BC	;2		33164	
+5A5F	 0B					DEC, BC	;2		33166	
+5A60	 07					RLCA	;1		33167	
+5A61	 04					INC, B	;1		33168	
+5A62	 07					RLCA	;1		33169	
+5A63	 04					INC, B	;1		33170	
+5A64	 03					INC, BC	;2		33172	
+5A65	 02					LD (BC), A	;2		33174	
+5A66	 01 01 00			LD BC, d16	;3		33177	
+5A69	 00					NOP	;1		33178	
+5A6A	 00					NOP	;1		33179	
+5A6B	 00					NOP	;1		33180	
+5A6C	 B4					OR H	;1		33181	
+5A6D	 B4					OR H	;1		33182	
+5A6E	 E4		
+5A6F	 E4		
+5A70	 BC					CP H	;1		33183	
+5A71	 BC					CP H	;1		33184	
+5A72	 EE 6E				XOR d8	;2		33186	
+5A74	 E7					RST 4	;4		33190	
+5A75	 27					DAA	;1		33191	
+5A76	 F0 10				LD A, (a8)	;2		33193	
+5A78	 FC		
+5A7A	 77					LD (HL), A	;2		33195	
+5A7B	 5F					LD E, A	;1		33196	
+5A7C	 00					NOP	;1		33197	
+5A7D	 00					NOP	;1		33198	
+5A7E	 00					NOP	;1		33199	
+5A7F	 00					NOP	;1		33200	
+5A80	 07					RLCA	;1		33201	
+5A81	 07					RLCA	;1		33202	
+5A82	 1F					RRA	;1		33203	
+5A83	 18 3F				JR s8	;3		33206	
+5A85	 20 7F				JR NZ s8	;3		33209	
+5A87	 40					LD B, B	;1		33210	
+5A88	 7F					LD A, A	;1		33211	
+5A89	 40					LD B, B	;1		33212	
+5A8A	 7F					LD A, A	;1		33213	
+5A8B	 40					LD B, B	;1		33214	
+5A8C	 00					NOP	;1		33215	
+5A8D	 00					NOP	;1		33216	
+5A8E	 00					NOP	;1		33217	
+5A8F	 00					NOP	;1		33218	
+5A90	 00					NOP	;1		33219	
+5A91	 00					NOP	;1		33220	
+5A92	 80					ADD A, B	;1		33221	
+5A93	 80					ADD A, B	;1		33222	
+5A94	 C0					RET NZ	;5		33227	
+5A95	 40					LD B, B	;1		33228	
+5A96	 C0					RET NZ	;5		33233	
+5A97	 40					LD B, B	;1		33234	
+5A98	 C0					RET NZ	;5		33239	
+5A99	 40					LD B, B	;1		33240	
+5A9A	 80					ADD A, B	;1		33241	
+5A9B	 80					ADD A, B	;1		33242	
+5A9C	 02					LD (BC), A	;2		33244	
+5A9D	 03					INC, BC	;2		33246	
+5A9E	 05					DEC, B	;1		33247	
+5A9F	 04					INC, B	;1		33248	
+5AA0	 07					RLCA	;1		33249	
+5AA1	 04					INC, B	;1		33250	
+5AA2	 04					INC, B	;1		33251	
+5AA3	 07					RLCA	;1		33252	
+5AA4	 04					INC, B	;1		33253	
+5AA5	 07					RLCA	;1		33254	
+5AA6	 04					INC, B	;1		33255	
+5AA7	 06 04				LD, B, d8	;2		33257	
+5AA9	 05					DEC, B	;1		33258	
+5AAA	 04					INC, B	;1		33259	
+5AAB	 07					RLCA	;1		33260	
+5AAC	 CE FA				ADC A, d8	;2		33262	
+5AAE	 0C					INC, C	;1		33263	
+5AAF	 FC		
+5AB0	 08 F8 08			LD (a16), SP	;5		33268	
+5AB3	 F8 08				LD HL, SP+s8	;3		33271	
+5AB5	 F8 08				LD HL, SP+s8	;3		33274	
+5AB7	 F8 08				LD HL, SP+s8	;3		33277	
+5AB9	 F8 88				LD HL, SP+s8	;3		33280	
+5ABB	 F8 00				LD HL, SP+s8	;3		33283	
+5ABD	 3C					INC, A	;1		33284	
+5ABE	 00					NOP	;1		33285	
+5ABF	 7E					LD A, (HL)	;2		33287	
+5AC0	 10 67				STOP	;1		33288	
+5AC2	 24					INC, H	;1		33289	
+5AC3	 C3 24 C3			JP a16	;4		33293	
+5AC6	 24					INC, H	;1		33294	
+5AC7	 C3 24 C3			JP a16	;4		33298	
+5ACA	 34					INC (HL)	;3		33301	
+5ACB	 C3 00 3C			JP a16	;4		33305	
+5ACE	 00					NOP	;1		33306	
+5ACF	 66					LD H, (HL)	;2		33308	
+5AD0	 00					NOP	;1		33309	
+5AD1	 E7					RST 4	;4		33313	
+5AD2	 2C					INC, L	;1		33314	
+5AD3	 C3 3C C3			JP a16	;4		33318	
+5AD6	 3C					INC, A	;1		33319	
+5AD7	 C3 3C 42			JP a16	;4		33323	
+5ADA	 18 66				JR s8	;3		33326	
+5ADC	 00					NOP	;1		33327	
+5ADD	 00					NOP	;1		33328	
+5ADE	 00					NOP	;1		33329	
+5ADF	 00					NOP	;1		33330	
+5AE0	 00					NOP	;1		33331	
+5AE1	 00					NOP	;1		33332	
+5AE2	 20 20				JR NZ s8	;3		33335	
+5AE4	 90					SUB B	;1		33336	
+5AE5	 90					SUB B	;1		33337	
+5AE6	 B8					CP B	;1		33338	
+5AE7	 A8					XOR B	;1		33339	
+5AE8	 A8					XOR B	;1		33340	
+5AE9	 A8					XOR B	;1		33341	
+5AEA	 10 10				STOP	;1		33342	
+5AEC	 0A					LD A, (BC)	;2		33344	
+5AED	 10 06				STOP	;1		33345	
+5AEF	 08 02 04			LD (a16), SP	;5		33350	
+5AF2	 00					NOP	;1		33351	
+5AF3	 04					INC, B	;1		33352	
+5AF4	 00					NOP	;1		33353	
+5AF5	 04					INC, B	;1		33354	
+5AF6	 00					NOP	;1		33355	
+5AF7	 04					INC, B	;1		33356	
+5AF8	 00					NOP	;1		33357	
+5AF9	 04					INC, B	;1		33358	
+5AFA	 00					NOP	;1		33359	
+5AFB	 04					INC, B	;1		33360	
+5AFC	 17					RLA	;1		33361	
+5AFD	 50					LD D, B	;1		33362	
+5AFE	 28 60				JR Z s8	;3		33365	
+5B00	 2A					LD A, (HL+)	;2		33367	
+5B01	 60					LD H, B	;1		33368	
+5B02	 28 60				JR Z s8	;3		33371	
+5B04	 2A					LD A, (HL+)	;2		33373	
+5B05	 60					LD H, B	;1		33374	
+5B06	 28 60				JR Z s8	;3		33377	
+5B08	 28 67				JR Z s8	;3		33380	
+5B0A	 68					LD L, B	;1		33381	
+5B0B	 60					LD H, B	;1		33382	
+5B0C	 DE 2B				SBC A, d8	;2		33384	
+5B0E	 2E 17				LD, L, d8	;2		33386	
+5B10	 6E					LD L, (HL)	;2		33388	
+5B11	 17					RLA	;1		33389	
+5B12	 2E 17				LD, L, d8	;2		33391	
+5B14	 6E					LD L, (HL)	;2		33393	
+5B15	 17					RLA	;1		33394	
+5B16	 2E 17				LD, L, d8	;2		33396	
+5B18	 2E D7				LD, L, d8	;2		33398	
+5B1A	 2E 17				LD, L, d8	;2		33400	
+5B1C	 98					SBC A, B	;1		33401	
+5B1D	 48					LD C, B	;1		33402	
+5B1E	 B0					OR B	;1		33403	
+5B1F	 50					LD D, B	;1		33404	
+5B20	 A0					AND B	;1		33405	
+5B21	 60					LD H, B	;1		33406	
+5B22	 A0					AND B	;1		33407	
+5B23	 20 A0				JR NZ s8	;3		33410	
+5B25	 20 A0				JR NZ s8	;3		33413	
+5B27	 20 A0				JR NZ s8	;3		33416	
+5B29	 20 A0				JR NZ s8	;3		33419	
+5B2B	 20 08				JR NZ s8	;3		33422	
+5B2D	 A8					XOR B	;1		33423	
+5B2E	 08 18 08			LD (a16), SP	;5		33428	
+5B31	 A8					XOR B	;1		33429	
+5B32	 08 48 08			LD (a16), SP	;5		33434	
+5B35	 B8					CP B	;1		33435	
+5B36	 08 3F 08			LD (a16), SP	;5		33440	
+5B39	 BF					CP A	;1		33441	
+5B3A	 09					ADD HL, BC	;2		33443	
+5B3B	 7F					LD A, A	;1		33444	
+5B3C	 00					NOP	;1		33445	
+5B3D	 7F					LD A, A	;1		33446	
+5B3E	 00					NOP	;1		33447	
+5B3F	 FF					RST 7	;4		33451	
+5B40	 7E					LD A, (HL)	;2		33453	
+5B41	 FF					RST 7	;4		33457	
+5B42	 7E					LD A, (HL)	;2		33459	
+5B43	 C1					POP BC	;3		33462	
+5B44	 7E					LD A, (HL)	;2		33464	
+5B45	 C1					POP BC	;3		33467	
+5B46	 7E					LD A, (HL)	;2		33469	
+5B47	 EB		
+5B48	 7E					LD A, (HL)	;2		33471	
+5B49	 C1					POP BC	;3		33474	
+5B4A	 00					NOP	;1		33475	
+5B4B	 FF					RST 7	;4		33479	
+5B4C	 00					NOP	;1		33480	
+5B4D	 00					NOP	;1		33481	
+5B4E	 00					NOP	;1		33482	
+5B4F	 00					NOP	;1		33483	
+5B50	 FF					RST 7	;4		33487	
+5B51	 00					NOP	;1		33488	
+5B52	 FF					RST 7	;4		33492	
+5B53	 00					NOP	;1		33493	
+5B54	 FF					RST 7	;4		33497	
+5B55	 00					NOP	;1		33498	
+5B56	 FF					RST 7	;4		33502	
+5B57	 00					NOP	;1		33503	
+5B58	 FF					RST 7	;4		33507	
+5B59	 00					NOP	;1		33508	
+5B5A	 FF					RST 7	;4		33512	
+5B5B	 00					NOP	;1		33513	
+5B5C	 00					NOP	;1		33514	
+5B5D	 00					NOP	;1		33515	
+5B5E	 38 38				JR C s8	;3		33518	
+5B60	 34					INC (HL)	;3		33521	
+5B61	 24					INC, H	;1		33522	
+5B62	 3C					INC, A	;1		33523	
+5B63	 24					INC, H	;1		33524	
+5B64	 3F					CCF	;1		33525	
+5B65	 27					DAA	;1		33526	
+5B66	 3C					INC, A	;1		33527	
+5B67	 27					DAA	;1		33528	
+5B68	 3C					INC, A	;1		33529	
+5B69	 27					DAA	;1		33530	
+5B6A	 3F					CCF	;1		33531	
+5B6B	 2F					CPL	;1		33532	
+5B6C	 37					SCF	;1		33533	
+5B6D	 3C					INC, A	;1		33534	
+5B6E	 17					RLA	;1		33535	
+5B6F	 14					INC, D	;1		33536	
+5B70	 17					RLA	;1		33537	
+5B71	 1F					RRA	;1		33538	
+5B72	 1C					INC, E	;1		33539	
+5B73	 1F					RRA	;1		33540	
+5B74	 F0 FF				LD A, (a8)	;2		33542	
+5B76	 00					NOP	;1		33543	
+5B77	 FF					RST 7	;4		33547	
+5B78	 02					LD (BC), A	;2		33549	
+5B79	 FF					RST 7	;4		33553	
+5B7A	 FF					RST 7	;4		33557	
+5B7B	 FF					RST 7	;4		33561	
+5B7C	 BF					CP A	;1		33562	
+5B7D	 A0					AND B	;1		33563	
+5B7E	 BF					CP A	;1		33564	
+5B7F	 A0					AND B	;1		33565	
+5B80	 BF					CP A	;1		33566	
+5B81	 B8					CP B	;1		33567	
+5B82	 7F					LD A, A	;1		33568	
+5B83	 7F					LD A, A	;1		33569	
+5B84	 2F					CPL	;1		33570	
+5B85	 2F					CPL	;1		33571	
+5B86	 7F					LD A, A	;1		33572	
+5B87	 7F					LD A, A	;1		33573	
+5B88	 F7					RST 6	;4		33577	
+5B89	 9C					SBC A, H	;1		33578	
+5B8A	 F7					RST 6	;4		33582	
+5B8B	 9C					SBC A, H	;1		33583	
+5B8C	 FD		
+5B8D	 05					DEC, B	;1		33584	
+5B8E	 FD		
+5B8F	 05					DEC, B	;1		33585	
+5B90	 FD		
+5B91	 1D					DEC, E	;1		33586	
+5B92	 FF					RST 7	;4		33590	
+5B93	 FF					RST 7	;4		33594	
+5B94	 F7					RST 6	;4		33598	
+5B95	 F4		
+5B96	 FF					RST 7	;4		33602	
+5B97	 FE EF				CP d8	;2		33604	
+5B99	 38 EF				JR C s8	;3		33607	
+5B9B	 38 01				JR C s8	;3		33610	
+5B9D	 01 01 01			LD BC, d16	;3		33613	
+5BA0	 01 01 02			LD BC, d16	;3		33616	
+5BA3	 02					LD (BC), A	;2		33618	
+5BA4	 02					LD (BC), A	;2		33620	
+5BA5	 02					LD (BC), A	;2		33622	
+5BA6	 02					LD (BC), A	;2		33624	
+5BA7	 02					LD (BC), A	;2		33626	
+5BA8	 01 01 00			LD BC, d16	;3		33629	
+5BAB	 00					NOP	;1		33630	
+5BAC	 02					LD (BC), A	;2		33632	
+5BAD	 02					LD (BC), A	;2		33634	
+5BAE	 02					LD (BC), A	;2		33636	
+5BAF	 02					LD (BC), A	;2		33638	
+5BB0	 01 01 00			LD BC, d16	;3		33641	
+5BB3	 00					NOP	;1		33642	
+5BB4	 00					NOP	;1		33643	
+5BB5	 00					NOP	;1		33644	
+5BB6	 00					NOP	;1		33645	
+5BB7	 00					NOP	;1		33646	
+5BB8	 00					NOP	;1		33647	
+5BB9	 00					NOP	;1		33648	
+5BBA	 00					NOP	;1		33649	
+5BBB	 00					NOP	;1		33650	
+5BBC	 34					INC (HL)	;3		33653	
+5BBD	 C3 3C 43			JP a16	;4		33657	
+5BC0	 3C					INC, A	;1		33658	
+5BC1	 43					LD B, E	;1		33659	
+5BC2	 18 66				JR s8	;3		33662	
+5BC4	 18 66				JR s8	;3		33665	
+5BC6	 08 76 08			LD (a16), SP	;5		33670	
+5BC9	 36 08				LD (HL), d8	;3		33673	
+5BCB	 34					INC (HL)	;3		33676	
+5BCC	 18 26				JR s8	;3		33679	
+5BCE	 18 24				JR s8	;3		33682	
+5BD0	 18 24				JR s8	;3		33685	
+5BD2	 08 34 00			LD (a16), SP	;5		33690	
+5BD5	 18 00				JR s8	;3		33693	
+5BD7	 08 00 08			LD (a16), SP	;5		33698	
+5BDA	 00					NOP	;1		33699	
+5BDB	 08 00 00			LD (a16), SP	;5		33704	
+5BDE	 0F					RRCA	;1		33705	
+5BDF	 0F					RRCA	;1		33706	
+5BE0	 1F					RRA	;1		33707	
+5BE1	 10 3C				STOP	;1		33708	
+5BE3	 20 70				JR NZ s8	;3		33711	
+5BE5	 40					LD B, B	;1		33712	
+5BE6	 73					LD (HL), E	;2		33714	
+5BE7	 43					LD B, E	;1		33715	
+5BE8	 67					LD H, A	;1		33716	
+5BE9	 4C					LD C, H	;1		33717	
+5BEA	 3F					CCF	;1		33718	
+5BEB	 28 00				JR Z s8	;3		33721	
+5BED	 00					NOP	;1		33722	
+5BEE	 80					ADD A, B	;1		33723	
+5BEF	 80					ADD A, B	;1		33724	
+5BF0	 DC 5C 3E			CALL C, a16	;6		33730	
+5BF3	 22					LD (HL+), A	;2		33732	
+5BF4	 32					LD (HL-), A	;2		33734	
+5BF5	 E2					LD (C), A	;2		33736	
+5BF6	 B1					OR C	;1		33737	
+5BF7	 C1					POP BC	;3		33740	
+5BF8	 C3 4B 27			JP a16	;4		33744	
+5BFB	 7C					LD A, H	;1		33745	
+5BFC	 00					NOP	;1		33746	
+5BFD	 00					NOP	;1		33747	
+5BFE	 00					NOP	;1		33748	
+5BFF	 00					NOP	;1		33749	
+5C00	 00					NOP	;1		33750	
+5C01	 00					NOP	;1		33751	
+5C02	 00					NOP	;1		33752	
+5C03	 00					NOP	;1		33753	
+5C04	 E0 E0				LD (a8), A	;3		33756	
+5C06	 D0					RET NC	;5		33761	
+5C07	 10 D0				STOP	;1		33762	
+5C09	 D0					RET NC	;5		33767	
+5C0A	 E0 20				LD (a8), A	;3		33770	
+5C0C	 5C					LD E, H	;1		33771	
+5C0D	 50					LD D, B	;1		33772	
+5C0E	 7C					LD A, H	;1		33773	
+5C0F	 50					LD D, B	;1		33774	
+5C10	 39					ADD HL, SP	;2		33776	
+5C11	 30 7C				JR NC s8	;3		33779	
+5C13	 4C					LD C, H	;1		33780	
+5C14	 EE 82				XOR d8	;2		33782	
+5C16	 C0					RET NZ	;5		33787	
+5C17	 84					ADD A, H	;1		33788	
+5C18	 60					LD H, B	;1		33789	
+5C19	 43					LD B, E	;1		33790	
+5C1A	 31 26 1F			LD SP, d16	;3		33793	
+5C1D	 3C					INC, A	;1		33794	
+5C1E	 BB					CP E	;1		33795	
+5C1F	 62					LD H, D	;1		33796	
+5C20	 F1					POP AF	;3		33799	
+5C21	 41					LD B, C	;1		33800	
+5C22	 61					LD H, C	;1		33801	
+5C23	 41					LD B, C	;1		33802	
+5C24	 C3 03 F7			JP a16	;4		33806	
+5C27	 04					INC, B	;1		33807	
+5C28	 EE 08				XOR d8	;2		33809	
+5C2A	 9C					SBC A, H	;1		33810	
+5C2B	 60					LD H, B	;1		33811	
+5C2C	 90					SUB B	;1		33812	
+5C2D	 10 08				STOP	;1		33813	
+5C2F	 08 18 18			LD (a16), SP	;5		33818	
+5C32	 3C					INC, A	;1		33819	
+5C33	 64					LD H, H	;1		33820	
+5C34	 F2					LD A, (C)	;2		33822	
+5C35	 C2 E3 60			JP NZ a16	;4		33826	
+5C38	 39					ADD HL, SP	;2		33828	
+5C39	 20 F2				JR NZ s8	;3		33831	
+5C3B	 00					NOP	;1		33832	
+5C3C	 00					NOP	;1		33833	
+5C3D	 FF					RST 7	;4		33837	
+5C3E	 00					NOP	;1		33838	
+5C3F	 FF					RST 7	;4		33842	
+5C40	 FF					RST 7	;4		33846	
+5C41	 FF					RST 7	;4		33850	
+5C42	 FF					RST 7	;4		33854	
+5C43	 00					NOP	;1		33855	
+5C44	 FF					RST 7	;4		33859	
+5C45	 00					NOP	;1		33860	
+5C46	 FF					RST 7	;4		33864	
+5C47	 00					NOP	;1		33865	
+5C48	 00					NOP	;1		33866	
+5C49	 FF					RST 7	;4		33870	
+5C4A	 00					NOP	;1		33871	
+5C4B	 FF					RST 7	;4		33875	
+5C4C	 FF					RST 7	;4		33879	
+5C4D	 FF					RST 7	;4		33883	
+5C4E	 FF					RST 7	;4		33887	
+5C4F	 00					NOP	;1		33888	
+5C50	 FF					RST 7	;4		33892	
+5C51	 FF					RST 7	;4		33896	
+5C52	 00					NOP	;1		33897	
+5C53	 FF					RST 7	;4		33901	
+5C54	 00					NOP	;1		33902	
+5C55	 FF					RST 7	;4		33906	
+5C56	 FF					RST 7	;4		33910	
+5C57	 FF					RST 7	;4		33914	
+5C58	 FF					RST 7	;4		33918	
+5C59	 FF					RST 7	;4		33922	
+5C5A	 FF					RST 7	;4		33926	
+5C5B	 FF					RST 7	;4		33930	
+5C5C	 38 38				JR C s8	;3		33933	
+5C5E	 00					NOP	;1		33934	
+5C5F	 00					NOP	;1		33935	
+5C60	 00					NOP	;1		33936	
+5C61	 00					NOP	;1		33937	
+5C62	 00					NOP	;1		33938	
+5C63	 00					NOP	;1		33939	
+5C64	 00					NOP	;1		33940	
+5C65	 00					NOP	;1		33941	
+5C66	 00					NOP	;1		33942	
+5C67	 00					NOP	;1		33943	
+5C68	 00					NOP	;1		33944	
+5C69	 00					NOP	;1		33945	
+5C6A	 00					NOP	;1		33946	
+5C6B	 00					NOP	;1		33947	
+5C6C	 00					NOP	;1		33948	
+5C6D	 00					NOP	;1		33949	
+5C6E	 00					NOP	;1		33950	
+5C6F	 00					NOP	;1		33951	
+5C70	 00					NOP	;1		33952	
+5C71	 00					NOP	;1		33953	
+5C72	 00					NOP	;1		33954	
+5C73	 00					NOP	;1		33955	
+5C74	 0E 0E				LD, C, d8	;2		33957	
+5C76	 11 11 11			LD DE, d16	;3		33960	
+5C79	 11 12 12			LD DE, d16	;3		33963	
+5C7C	 F3					DI	;1		33964	
+5C7D	 1F					RRA	;1		33965	
+5C7E	 F0 3F				LD A, (a8)	;2		33967	
+5C80	 F0 BF				LD A, (a8)	;2		33969	
+5C82	 60					LD H, B	;1		33970	
+5C83	 7F					LD A, A	;1		33971	
+5C84	 10 1F				STOP	;1		33972	
+5C86	 50					LD D, B	;1		33973	
+5C87	 5F					LD E, A	;1		33974	
+5C88	 30 3F				JR NC s8	;3		33977	
+5C8A	 F1					POP AF	;3		33980	
+5C8B	 FF					RST 7	;4		33984	
+5C8C	 CF					RST 1	;4		33988	
+5C8D	 FB					EI	;1		33989	
+5C8E	 0C					INC, C	;1		33990	
+5C8F	 FC		
+5C90	 08 F8 08			LD (a16), SP	;5		33995	
+5C93	 F8 08				LD HL, SP+s8	;3		33998	
+5C95	 F8 08				LD HL, SP+s8	;3		34001	
+5C97	 F8 08				LD HL, SP+s8	;3		34004	
+5C99	 F8 88				LD HL, SP+s8	;3		34007	
+5C9B	 F8 4E				LD HL, SP+s8	;3		34010	
+5C9D	 7A					LD A, D	;1		34011	
+5C9E	 C9					RET	;4		34015	
+5C9F	 D9					RETI	;4		34019	
+5CA0	 09					ADD HL, BC	;2		34021	
+5CA1	 F9					LD SP, HL	;2		34023	
+5CA2	 0E FE				LD, C, d8	;2		34025	
+5CA4	 48					LD C, B	;1		34026	
+5CA5	 F8 98				LD HL, SP+s8	;3		34029	
+5CA7	 F8 FC				LD HL, SP+s8	;3		34032	
+5CA9	 FC		
+5CAB	 7C					LD A, H	;1		34033	
+5CAC	 A0					AND B	;1		34034	
+5CAD	 BF					CP A	;1		34035	
+5CAE	 40					LD B, B	;1		34036	
+5CAF	 7F					LD A, A	;1		34037	
+5CB0	 E0 FF				LD (a8), A	;3		34040	
+5CB2	 20 3F				JR NZ s8	;3		34043	
+5CB4	 11 1F 72			LD DE, d16	;3		34046	
+5CB7	 7E					LD A, (HL)	;2		34048	
+5CB8	 FF					RST 7	;4		34052	
+5CB9	 FF					RST 7	;4		34056	
+5CBA	 FF					RST 7	;4		34060	
+5CBB	 FF					RST 7	;4		34064	
+5CBC	 00					NOP	;1		34065	
+5CBD	 3C					INC, A	;1		34066	
+5CBE	 00					NOP	;1		34067	
+5CBF	 1C					INC, E	;1		34068	
+5CC0	 00					NOP	;1		34069	
+5CC1	 1C					INC, E	;1		34070	
+5CC2	 00					NOP	;1		34071	
+5CC3	 18 00				JR s8	;3		34074	
+5CC5	 08 00 00			LD (a16), SP	;5		34079	
+5CC8	 00					NOP	;1		34080	
+5CC9	 00					NOP	;1		34081	
+5CCA	 00					NOP	;1		34082	
+5CCB	 00					NOP	;1		34083	
+5CCC	 00					NOP	;1		34084	
+5CCD	 FF					RST 7	;4		34088	
+5CCE	 00					NOP	;1		34089	
+5CCF	 AB					XOR E	;1		34090	
+5CD0	 00					NOP	;1		34091	
+5CD1	 55					LD D, L	;1		34092	
+5CD2	 00					NOP	;1		34093	
+5CD3	 FF					RST 7	;4		34097	
+5CD4	 00					NOP	;1		34098	
+5CD5	 00					NOP	;1		34099	
+5CD6	 00					NOP	;1		34100	
+5CD7	 00					NOP	;1		34101	
+5CD8	 00					NOP	;1		34102	
+5CD9	 00					NOP	;1		34103	
+5CDA	 00					NOP	;1		34104	
+5CDB	 00					NOP	;1		34105	
+5CDC	 00					NOP	;1		34106	
+5CDD	 15					DEC, D	;1		34107	
+5CDE	 00					NOP	;1		34108	
+5CDF	 18 00				JR s8	;3		34111	
+5CE1	 15					DEC, D	;1		34112	
+5CE2	 00					NOP	;1		34113	
+5CE3	 12					LD (DE), A	;2		34115	
+5CE4	 00					NOP	;1		34116	
+5CE5	 15					DEC, D	;1		34117	
+5CE6	 00					NOP	;1		34118	
+5CE7	 18 00				JR s8	;3		34121	
+5CE9	 15					DEC, D	;1		34122	
+5CEA	 00					NOP	;1		34123	
+5CEB	 12					LD (DE), A	;2		34125	
+5CEC	 40					LD B, B	;1		34126	
+5CED	 40					LD B, B	;1		34127	
+5CEE	 40					LD B, B	;1		34128	
+5CEF	 C0					RET NZ	;5		34133	
+5CF0	 40					LD B, B	;1		34134	
+5CF1	 40					LD B, B	;1		34135	
+5CF2	 40					LD B, B	;1		34136	
+5CF3	 40					LD B, B	;1		34137	
+5CF4	 40					LD B, B	;1		34138	
+5CF5	 40					LD B, B	;1		34139	
+5CF6	 40					LD B, B	;1		34140	
+5CF7	 C0					RET NZ	;5		34145	
+5CF8	 40					LD B, B	;1		34146	
+5CF9	 40					LD B, B	;1		34147	
+5CFA	 40					LD B, B	;1		34148	
+5CFB	 40					LD B, B	;1		34149	
+5CFC	 0E 32				LD, C, d8	;2		34151	
+5CFE	 0E 32				LD, C, d8	;2		34153	
+5D00	 0E 32				LD, C, d8	;2		34155	
+5D02	 0E 32				LD, C, d8	;2		34157	
+5D04	 0F					RRCA	;1		34158	
+5D05	 33					INC, SP	;2		34160	
+5D06	 8F					ADC A, A	;1		34161	
+5D07	 B3					OR E	;1		34162	
+5D08	 CE F3				ADC A, d8	;2		34164	
+5D0A	 EE 73				XOR d8	;2		34166	
+5D0C	 00					NOP	;1		34167	
+5D0D	 00					NOP	;1		34168	
+5D0E	 00					NOP	;1		34169	
+5D0F	 00					NOP	;1		34170	
+5D10	 00					NOP	;1		34171	
+5D11	 00					NOP	;1		34172	
+5D12	 00					NOP	;1		34173	
+5D13	 00					NOP	;1		34174	
+5D14	 00					NOP	;1		34175	
+5D15	 00					NOP	;1		34176	
+5D16	 00					NOP	;1		34177	
+5D17	 00					NOP	;1		34178	
+5D18	 80					ADD A, B	;1		34179	
+5D19	 80					ADD A, B	;1		34180	
+5D1A	 C0					RET NZ	;5		34185	
+5D1B	 40					LD B, B	;1		34186	
+5D1C	 00					NOP	;1		34187	
+5D1D	 00					NOP	;1		34188	
+5D1E	 00					NOP	;1		34189	
+5D1F	 00					NOP	;1		34190	
+5D20	 80					ADD A, B	;1		34191	
+5D21	 80					ADD A, B	;1		34192	
+5D22	 47					LD B, A	;1		34193	
+5D23	 47					LD B, A	;1		34194	
+5D24	 1F					RRA	;1		34195	
+5D25	 18 3F				JR s8	;3		34198	
+5D27	 20 7F				JR NZ s8	;3		34201	
+5D29	 40					LD B, B	;1		34202	
+5D2A	 7F					LD A, A	;1		34203	
+5D2B	 40					LD B, B	;1		34204	
+5D2C	 7F					LD A, A	;1		34205	
+5D2D	 40					LD B, B	;1		34206	
+5D2E	 BF					CP A	;1		34207	
+5D2F	 A0					AND B	;1		34208	
+5D30	 BF					CP A	;1		34209	
+5D31	 A0					AND B	;1		34210	
+5D32	 BF					CP A	;1		34211	
+5D33	 B8					CP B	;1		34212	
+5D34	 7F					LD A, A	;1		34213	
+5D35	 7F					LD A, A	;1		34214	
+5D36	 3F					CCF	;1		34215	
+5D37	 3F					CCF	;1		34216	
+5D38	 77					LD (HL), A	;2		34218	
+5D39	 7C					LD A, H	;1		34219	
+5D3A	 F7					RST 6	;4		34223	
+5D3B	 9C					SBC A, H	;1		34224	
+5D3C	 F2					LD A, (C)	;2		34226	
+5D3D	 E6 F2				AND d8	;2		34228	
+5D3F	 E6 F2				AND d8	;2		34230	
+5D41	 E6 F2				AND d8	;2		34232	
+5D43	 E6 F2				AND d8	;2		34234	
+5D45	 E6 F2				AND d8	;2		34236	
+5D47	 E6 F2				AND d8	;2		34238	
+5D49	 E6 F2				AND d8	;2		34240	
+5D4B	 E6 00				AND d8	;2		34242	
+5D4D	 00					NOP	;1		34243	
+5D4E	 01 01 01			LD BC, d16	;3		34246	
+5D51	 01 01 01			LD BC, d16	;3		34249	
+5D54	 02					LD (BC), A	;2		34251	
+5D55	 02					LD (BC), A	;2		34253	
+5D56	 02					LD (BC), A	;2		34255	
+5D57	 02					LD (BC), A	;2		34257	
+5D58	 02					LD (BC), A	;2		34259	
+5D59	 02					LD (BC), A	;2		34261	
+5D5A	 01 01 F3			LD BC, d16	;3		34264	
+5D5D	 9F					SBC A, A	;1		34265	
+5D5E	 F0 1F				LD A, (a8)	;2		34267	
+5D60	 F0 3F				LD A, (a8)	;2		34269	
+5D62	 E0 BF				LD (a8), A	;3		34272	
+5D64	 70					LD (HL), B	;2		34274	
+5D65	 7F					LD A, A	;1		34275	
+5D66	 10 1F				STOP	;1		34276	
+5D68	 50					LD D, B	;1		34277	
+5D69	 5F					LD E, A	;1		34278	
+5D6A	 31 3F 3E			LD SP, d16	;3		34281	
+5D6D	 22					LD (HL+), A	;2		34283	
+5D6E	 1F					RRA	;1		34284	
+5D6F	 1F					RRA	;1		34285	
+5D70	 10 1F				STOP	;1		34286	
+5D72	 10 1F				STOP	;1		34287	
+5D74	 12					LD (DE), A	;2		34289	
+5D75	 1F					RRA	;1		34290	
+5D76	 19					ADD HL, DE	;2		34292	
+5D77	 1F					RRA	;1		34293	
+5D78	 3F					CCF	;1		34294	
+5D79	 3F					CCF	;1		34295	
+5D7A	 3E 3E				LD, A, d8	;2		34297	
+5D7C	 12					LD (DE), A	;2		34299	
+5D7D	 1E 12				LD, E, d8	;2		34301	
+5D7F	 1E 12				LD, E, d8	;2		34303	
+5D81	 1E 12				LD, E, d8	;2		34305	
+5D83	 1E 7E				LD, E, d8	;2		34307	
+5D85	 7E					LD A, (HL)	;2		34309	
+5D86	 FF					RST 7	;4		34313	
+5D87	 83					ADD A, E	;1		34314	
+5D88	 FF					RST 7	;4		34318	
+5D89	 81					ADD A, C	;1		34319	
+5D8A	 FF					RST 7	;4		34323	
+5D8B	 FF					RST 7	;4		34327	
+5D8C	 01 01 01			LD BC, d16	;3		34330	
+5D8F	 01 01 01			LD BC, d16	;3		34333	
+5D92	 02					LD (BC), A	;2		34335	
+5D93	 02					LD (BC), A	;2		34337	
+5D94	 02					LD (BC), A	;2		34339	
+5D95	 02					LD (BC), A	;2		34341	
+5D96	 02					LD (BC), A	;2		34343	
+5D97	 02					LD (BC), A	;2		34345	
+5D98	 01 01 00			LD BC, d16	;3		34348	
+5D9B	 00					NOP	;1		34349	
+5D9C	 60					LD H, B	;1		34350	
+5D9D	 E0 80				LD (a8), A	;3		34353	
+5D9F	 80					ADD A, B	;1		34354	
+5DA0	 80					ADD A, B	;1		34355	
+5DA1	 80					ADD A, B	;1		34356	
+5DA2	 80					ADD A, B	;1		34357	
+5DA3	 80					ADD A, B	;1		34358	
+5DA4	 80					ADD A, B	;1		34359	
+5DA5	 80					ADD A, B	;1		34360	
+5DA6	 80					ADD A, B	;1		34361	
+5DA7	 80					ADD A, B	;1		34362	
+5DA8	 80					ADD A, B	;1		34363	
+5DA9	 80					ADD A, B	;1		34364	
+5DAA	 80					ADD A, B	;1		34365	
+5DAB	 80					ADD A, B	;1		34366	
+5DAC	 07					RLCA	;1		34367	
+5DAD	 04					INC, B	;1		34368	
+5DAE	 07					RLCA	;1		34369	
+5DAF	 04					INC, B	;1		34370	
+5DB0	 07					RLCA	;1		34371	
+5DB1	 04					INC, B	;1		34372	
+5DB2	 07					RLCA	;1		34373	
+5DB3	 04					INC, B	;1		34374	
+5DB4	 07					RLCA	;1		34375	
+5DB5	 04					INC, B	;1		34376	
+5DB6	 07					RLCA	;1		34377	
+5DB7	 04					INC, B	;1		34378	
+5DB8	 07					RLCA	;1		34379	
+5DB9	 04					INC, B	;1		34380	
+5DBA	 07					RLCA	;1		34381	
+5DBB	 04					INC, B	;1		34382	
+5DBC	 0B					DEC, BC	;2		34384	
+5DBD	 09					ADD HL, BC	;2		34386	
+5DBE	 0B					DEC, BC	;2		34388	
+5DBF	 0A					LD A, (BC)	;2		34390	
+5DC0	 0F					RRCA	;1		34391	
+5DC1	 0A					LD A, (BC)	;2		34393	
+5DC2	 17					RLA	;1		34394	
+5DC3	 12					LD (DE), A	;2		34396	
+5DC4	 17					RLA	;1		34397	
+5DC5	 1C					INC, E	;1		34398	
+5DC6	 14					INC, D	;1		34399	
+5DC7	 17					RLA	;1		34400	
+5DC8	 17					RLA	;1		34401	
+5DC9	 14					INC, D	;1		34402	
+5DCA	 2F					CPL	;1		34403	
+5DCB	 24					INC, H	;1		34404	
+5DCC	 00					NOP	;1		34405	
+5DCD	 00					NOP	;1		34406	
+5DCE	 70					LD (HL), B	;2		34408	
+5DCF	 70					LD (HL), B	;2		34410	
+5DD0	 8F					ADC A, A	;1		34411	
+5DD1	 8F					ADC A, A	;1		34412	
+5DD2	 98					SBC A, B	;1		34413	
+5DD3	 9F					SBC A, A	;1		34414	
+5DD4	 E0 FF				LD (a8), A	;3		34417	
+5DD6	 F0 9F				LD A, (a8)	;2		34419	
+5DD8	 78					LD A, B	;1		34420	
+5DD9	 57					LD D, A	;1		34421	
+5DDA	 7F					LD A, A	;1		34422	
+5DDB	 4C					LD C, H	;1		34423	
+5DDC	 3B					DEC, SP	;2		34425	
+5DDD	 2F					CPL	;1		34426	
+5DDE	 D0					RET NC	;5		34431	
+5DDF	 DF					RST 3	;4		34435	
+5DE0	 F0 FF				LD A, (a8)	;2		34437	
+5DE2	 C0					RET NZ	;5		34442	
+5DE3	 FF					RST 7	;4		34446	
+5DE4	 C0					RET NZ	;5		34451	
+5DE5	 FF					RST 7	;4		34455	
+5DE6	 FF					RST 7	;4		34459	
+5DE7	 FF					RST 7	;4		34463	
+5DE8	 00					NOP	;1		34464	
+5DE9	 00					NOP	;1		34465	
+5DEA	 00					NOP	;1		34466	
+5DEB	 00					NOP	;1		34467	
+5DEC	 FF					RST 7	;4		34471	
+5DED	 FF					RST 7	;4		34475	
+5DEE	 FF					RST 7	;4		34479	
+5DEF	 FF					RST 7	;4		34483	
+5DF0	 FF					RST 7	;4		34487	
+5DF1	 FF					RST 7	;4		34491	
+5DF2	 FF					RST 7	;4		34495	
+5DF3	 F8 F8				LD HL, SP+s8	;3		34498	
+5DF5	 F0 F2				LD A, (a8)	;2		34500	
+5DF7	 E1					POP (HL)	;3		34503	
+5DF8	 F5					PUSH AF	;4		34507	
+5DF9	 E3		
+5DFA	 F2					LD A, (C)	;2		34509	
+5DFB	 E6 FF				AND d8	;2		34511	
+5DFD	 FF					RST 7	;4		34515	
+5DFE	 FF					RST 7	;4		34519	
+5DFF	 81					ADD A, C	;1		34520	
+5E00	 C3 81 DF			JP a16	;4		34524	
+5E03	 85					ADD A, L	;1		34525	
+5E04	 DF					RST 3	;4		34529	
+5E05	 85					ADD A, L	;1		34530	
+5E06	 FF					RST 7	;4		34534	
+5E07	 BD					CP L	;1		34535	
+5E08	 FF					RST 7	;4		34539	
+5E09	 81					ADD A, C	;1		34540	
+5E0A	 FF					RST 7	;4		34544	
+5E0B	 FF					RST 7	;4		34548	
+5E0C	 FF					RST 7	;4		34552	
+5E0D	 FF					RST 7	;4		34556	
+5E0E	 FF					RST 7	;4		34560	
+5E0F	 FF					RST 7	;4		34564	
+5E10	 FF					RST 7	;4		34568	
+5E11	 FF					RST 7	;4		34572	
+5E12	 FF					RST 7	;4		34576	
+5E13	 1F					RRA	;1		34577	
+5E14	 1F					RRA	;1		34578	
+5E15	 0F					RRCA	;1		34579	
+5E16	 4F					LD C, A	;1		34580	
+5E17	 87					ADD A, A	;1		34581	
+5E18	 AF					XOR A	;1		34582	
+5E19	 C7					RST 0	;4		34586	
+5E1A	 4F					LD C, A	;1		34587	
+5E1B	 67					LD H, A	;1		34588	
+5E1C	 FF					RST 7	;4		34592	
+5E1D	 FF					RST 7	;4		34596	
+5E1E	 FF					RST 7	;4		34600	
+5E1F	 FF					RST 7	;4		34604	
+5E20	 FF					RST 7	;4		34608	
+5E21	 FF					RST 7	;4		34612	
+5E22	 FF					RST 7	;4		34616	
+5E23	 00					NOP	;1		34617	
+5E24	 00					NOP	;1		34618	
+5E25	 00					NOP	;1		34619	
+5E26	 00					NOP	;1		34620	
+5E27	 FF					RST 7	;4		34624	
+5E28	 FF					RST 7	;4		34628	
+5E29	 FF					RST 7	;4		34632	
+5E2A	 00					NOP	;1		34633	
+5E2B	 00					NOP	;1		34634	
+5E2C	 4F					LD C, A	;1		34635	
+5E2D	 67					LD H, A	;1		34636	
+5E2E	 4F					LD C, A	;1		34637	
+5E2F	 67					LD H, A	;1		34638	
+5E30	 4F					LD C, A	;1		34639	
+5E31	 67					LD H, A	;1		34640	
+5E32	 4F					LD C, A	;1		34641	
+5E33	 67					LD H, A	;1		34642	
+5E34	 4F					LD C, A	;1		34643	
+5E35	 67					LD H, A	;1		34644	
+5E36	 4F					LD C, A	;1		34645	
+5E37	 67					LD H, A	;1		34646	
+5E38	 4F					LD C, A	;1		34647	
+5E39	 67					LD H, A	;1		34648	
+5E3A	 4F					LD C, A	;1		34649	
+5E3B	 67					LD H, A	;1		34650	
+5E3C	 F2					LD A, (C)	;2		34652	
+5E3D	 E6 F5				AND d8	;2		34654	
+5E3F	 E3		
+5E41	 E1					POP (HL)	;3		34657	
+5E42	 F8 F0				LD HL, SP+s8	;3		34660	
+5E44	 FF					RST 7	;4		34664	
+5E45	 F8 FF				LD HL, SP+s8	;3		34667	
+5E47	 FF					RST 7	;4		34671	
+5E48	 FF					RST 7	;4		34675	
+5E49	 FF					RST 7	;4		34679	
+5E4A	 FF					RST 7	;4		34683	
+5E4B	 FF					RST 7	;4		34687	
+5E4C	 00					NOP	;1		34688	
+5E4D	 00					NOP	;1		34689	
+5E4E	 FF					RST 7	;4		34693	
+5E4F	 FF					RST 7	;4		34697	
+5E50	 00					NOP	;1		34698	
+5E51	 FF					RST 7	;4		34702	
+5E52	 00					NOP	;1		34703	
+5E53	 00					NOP	;1		34704	
+5E54	 FF					RST 7	;4		34708	
+5E55	 00					NOP	;1		34709	
+5E56	 FF					RST 7	;4		34713	
+5E57	 FF					RST 7	;4		34717	
+5E58	 FF					RST 7	;4		34721	
+5E59	 FF					RST 7	;4		34725	
+5E5A	 FF					RST 7	;4		34729	
+5E5B	 FF					RST 7	;4		34733	
+5E5C	 4F					LD C, A	;1		34734	
+5E5D	 67					LD H, A	;1		34735	
+5E5E	 AF					XOR A	;1		34736	
+5E5F	 C7					RST 0	;4		34740	
+5E60	 4F					LD C, A	;1		34741	
+5E61	 87					ADD A, A	;1		34742	
+5E62	 1F					RRA	;1		34743	
+5E63	 0F					RRCA	;1		34744	
+5E64	 FF					RST 7	;4		34748	
+5E65	 1F					RRA	;1		34749	
+5E66	 FF					RST 7	;4		34753	
+5E67	 FF					RST 7	;4		34757	
+5E68	 FF					RST 7	;4		34761	
+5E69	 FF					RST 7	;4		34765	
+5E6A	 FF					RST 7	;4		34769	
+5E6B	 FF					RST 7	;4		34773	
+5E6C	 FF					RST 7	;4		34777	
+5E6D	 FF					RST 7	;4		34781	
+5E6E	 FF					RST 7	;4		34785	
+5E6F	 FF					RST 7	;4		34789	
+5E70	 FF					RST 7	;4		34793	
+5E71	 FF					RST 7	;4		34797	
+5E72	 FF					RST 7	;4		34801	
+5E73	 00					NOP	;1		34802	
+5E74	 00					NOP	;1		34803	
+5E75	 00					NOP	;1		34804	
+5E76	 00					NOP	;1		34805	
+5E77	 EF					RST 5	;4		34809	
+5E78	 E7					RST 4	;4		34813	
+5E79	 CF					RST 1	;4		34817	
+5E7A	 24					INC, H	;1		34818	
+5E7B	 0C					INC, C	;1		34819	
+5E7C	 24					INC, H	;1		34820	
+5E7D	 0C					INC, C	;1		34821	
+5E7E	 24					INC, H	;1		34822	
+5E7F	 0C					INC, C	;1		34823	
+5E80	 24					INC, H	;1		34824	
+5E81	 0C					INC, C	;1		34825	
+5E82	 24					INC, H	;1		34826	
+5E83	 0C					INC, C	;1		34827	
+5E84	 24					INC, H	;1		34828	
+5E85	 0C					INC, C	;1		34829	
+5E86	 24					INC, H	;1		34830	
+5E87	 0C					INC, C	;1		34831	
+5E88	 24					INC, H	;1		34832	
+5E89	 0C					INC, C	;1		34833	
+5E8A	 24					INC, H	;1		34834	
+5E8B	 0C					INC, C	;1		34835	
+5E8C	 24					INC, H	;1		34836	
+5E8D	 0C					INC, C	;1		34837	
+5E8E	 E7					RST 4	;4		34841	
+5E8F	 CF					RST 1	;4		34845	
+5E90	 00					NOP	;1		34846	
+5E91	 EF					RST 5	;4		34850	
+5E92	 00					NOP	;1		34851	
+5E93	 00					NOP	;1		34852	
+5E94	 FF					RST 7	;4		34856	
+5E95	 00					NOP	;1		34857	
+5E96	 FF					RST 7	;4		34861	
+5E97	 FF					RST 7	;4		34865	
+5E98	 FF					RST 7	;4		34869	
+5E99	 FF					RST 7	;4		34873	
+5E9A	 FF					RST 7	;4		34877	
+5E9B	 FF					RST 7	;4		34881	
+5E9C	 07					RLCA	;1		34882	
+5E9D	 07					RLCA	;1		34883	
+5E9E	 18 1F				JR s8	;3		34886	
+5EA0	 21 3E 47			LD (HL), d16	;3		34889	
+5EA3	 7F					LD A, A	;1		34890	
+5EA4	 5F					LD E, A	;1		34891	
+5EA5	 7F					LD A, A	;1		34892	
+5EA6	 39					ADD HL, SP	;2		34894	
+5EA7	 30 7B				JR NC s8	;3		34897	
+5EA9	 62					LD H, D	;1		34898	
+5EAA	 FB					EI	;1		34899	
+5EAB	 B2					OR D	;1		34900	
+5EAC	 E0 E0				LD (a8), A	;3		34903	
+5EAE	 18 F8				JR s8	;3		34906	
+5EB0	 84					ADD A, H	;1		34907	
+5EB1	 7C					LD A, H	;1		34908	
+5EB2	 E2					LD (C), A	;2		34910	
+5EB3	 FE FA				CP d8	;2		34912	
+5EB5	 FE 9C				CP d8	;2		34914	
+5EB7	 0C					INC, C	;1		34915	
+5EB8	 DE 46				SBC A, d8	;2		34917	
+5EBA	 DF					RST 3	;4		34921	
+5EBB	 4D					LD C, L	;1		34922	
+5EBC	 FF					RST 7	;4		34926	
+5EBD	 A0					AND B	;1		34927	
+5EBE	 FF					RST 7	;4		34931	
+5EBF	 C2 7F 54			JP NZ a16	;4		34935	
+5EC2	 7F					LD A, A	;1		34936	
+5EC3	 5C					LD E, H	;1		34937	
+5EC4	 3F					CCF	;1		34938	
+5EC5	 2E 3F				LD, L, d8	;2		34940	
+5EC7	 23					INC, (HL)	;2		34942	
+5EC8	 1F					RRA	;1		34943	
+5EC9	 18 07				JR s8	;3		34946	
+5ECB	 07					RLCA	;1		34947	
+5ECC	 FF					RST 7	;4		34951	
+5ECD	 05					DEC, B	;1		34952	
+5ECE	 FF					RST 7	;4		34956	
+5ECF	 43					LD B, E	;1		34957	
+5ED0	 FE 2A				CP d8	;2		34959	
+5ED2	 FE 3A				CP d8	;2		34961	
+5ED4	 FC		
+5ED6	 FC		
+5ED8	 F8 18				LD HL, SP+s8	;3		34964	
+5EDA	 E0 E0				LD (a8), A	;3		34967	
+5EDC	 07					RLCA	;1		34968	
+5EDD	 07					RLCA	;1		34969	
+5EDE	 1F					RRA	;1		34970	
+5EDF	 18 3E				JR s8	;3		34973	
+5EE1	 20 7F				JR NZ s8	;3		34976	
+5EE3	 4F					LD C, A	;1		34977	
+5EE4	 7F					LD A, A	;1		34978	
+5EE5	 5F					LD E, A	;1		34979	
+5EE6	 70					LD (HL), B	;2		34981	
+5EE7	 70					LD (HL), B	;2		34983	
+5EE8	 A2					AND D	;1		34984	
+5EE9	 A2					AND D	;1		34985	
+5EEA	 B0					OR B	;1		34986	
+5EEB	 B0					OR B	;1		34987	
+5EEC	 E0 E0				LD (a8), A	;3		34990	
+5EEE	 F8 18				LD HL, SP+s8	;3		34993	
+5EF0	 7C					LD A, H	;1		34994	
+5EF1	 04					INC, B	;1		34995	
+5EF2	 FE F2				CP d8	;2		34997	
+5EF4	 FE FA				CP d8	;2		34999	
+5EF6	 0E 0E				LD, C, d8	;2		35001	
+5EF8	 45					LD B, L	;1		35002	
+5EF9	 45					LD B, L	;1		35003	
+5EFA	 0D					DEC, C	;1		35004	
+5EFB	 0D					DEC, C	;1		35005	
+5EFC	 B4					OR H	;1		35006	
+5EFD	 B4					OR H	;1		35007	
+5EFE	 64					LD H, H	;1		35008	
+5EFF	 64					LD H, H	;1		35009	
+5F00	 3C					INC, A	;1		35010	
+5F01	 3C					INC, A	;1		35011	
+5F02	 2E 2E				LD, L, d8	;2		35013	
+5F04	 27					DAA	;1		35014	
+5F05	 27					DAA	;1		35015	
+5F06	 10 10				STOP	;1		35016	
+5F08	 0C					INC, C	;1		35017	
+5F09	 0C					INC, C	;1		35018	
+5F0A	 03					INC, BC	;2		35020	
+5F0B	 03					INC, BC	;2		35022	
+5F0C	 2D					DEC, L	;1		35023	
+5F0D	 2D					DEC, L	;1		35024	
+5F0E	 26 26				LD, H, d8	;2		35026	
+5F10	 3C					INC, A	;1		35027	
+5F11	 3C					INC, A	;1		35028	
+5F12	 74					LD (HL), H	;2		35030	
+5F13	 74					LD (HL), H	;2		35032	
+5F14	 E4		
+5F15	 E4		
+5F16	 08 08 30			LD (a16), SP	;5		35037	
+5F19	 30 C0				JR NC s8	;3		35040	
+5F1B	 C0					RET NZ	;5		35045	
+5F1C	 2F					CPL	;1		35046	
+5F1D	 24					INC, H	;1		35047	
+5F1E	 2F					CPL	;1		35048	
+5F1F	 24					INC, H	;1		35049	
+5F20	 2F					CPL	;1		35050	
+5F21	 24					INC, H	;1		35051	
+5F22	 2F					CPL	;1		35052	
+5F23	 24					INC, H	;1		35053	
+5F24	 67					LD H, A	;1		35054	
+5F25	 7C					LD A, H	;1		35055	
+5F26	 BC					CP H	;1		35056	
+5F27	 A7					AND A	;1		35057	
+5F28	 FF					RST 7	;4		35061	
+5F29	 E4		
+5F2A	 1B					DEC, DE	;2		35063	
+5F2B	 1B					DEC, DE	;2		35065	
+5F2C	 00					NOP	;1		35066	
+5F2D	 00					NOP	;1		35067	
+5F2E	 00					NOP	;1		35068	
+5F2F	 00					NOP	;1		35069	
+5F30	 01 01 01			LD BC, d16	;3		35072	
+5F33	 01 03 03			LD BC, d16	;3		35075	
+5F36	 03					INC, BC	;2		35077	
+5F37	 03					INC, BC	;2		35079	
+5F38	 03					INC, BC	;2		35081	
+5F39	 02					LD (BC), A	;2		35083	
+5F3A	 07					RLCA	;1		35084	
+5F3B	 04					INC, B	;1		35085	
+5F3C	 04					INC, B	;1		35086	
+5F3D	 07					RLCA	;1		35087	
+5F3E	 07					RLCA	;1		35088	
+5F3F	 04					INC, B	;1		35089	
+5F40	 07					RLCA	;1		35090	
+5F41	 04					INC, B	;1		35091	
+5F42	 04					INC, B	;1		35092	
+5F43	 04					INC, B	;1		35093	
+5F44	 06 06				LD, B, d8	;2		35095	
+5F46	 05					DEC, B	;1		35096	
+5F47	 05					DEC, B	;1		35097	
+5F48	 05					DEC, B	;1		35098	
+5F49	 05					DEC, B	;1		35099	
+5F4A	 06 06				LD, B, d8	;2		35101	
+5F4C	 07					RLCA	;1		35102	
+5F4D	 04					INC, B	;1		35103	
+5F4E	 07					RLCA	;1		35104	
+5F4F	 04					INC, B	;1		35105	
+5F50	 04					INC, B	;1		35106	
+5F51	 07					RLCA	;1		35107	
+5F52	 04					INC, B	;1		35108	
+5F53	 04					INC, B	;1		35109	
+5F54	 04					INC, B	;1		35110	
+5F55	 04					INC, B	;1		35111	
+5F56	 07					RLCA	;1		35112	
+5F57	 07					RLCA	;1		35113	
+5F58	 07					RLCA	;1		35114	
+5F59	 07					RLCA	;1		35115	
+5F5A	 06 06				LD, B, d8	;2		35117	
+5F5C	 06 06				LD, B, d8	;2		35119	
+5F5E	 06 06				LD, B, d8	;2		35121	
+5F60	 04					INC, B	;1		35122	
+5F61	 04					INC, B	;1		35123	
+5F62	 07					RLCA	;1		35124	
+5F63	 07					RLCA	;1		35125	
+5F64	 05					DEC, B	;1		35126	
+5F65	 05					DEC, B	;1		35127	
+5F66	 03					INC, BC	;2		35129	
+5F67	 03					INC, BC	;2		35131	
+5F68	 05					DEC, B	;1		35132	
+5F69	 05					DEC, B	;1		35133	
+5F6A	 0E 0E				LD, C, d8	;2		35135	
+5F6C	 0F					RRCA	;1		35136	
+5F6D	 1F					RRA	;1		35137	
+5F6E	 01 10 01			LD BC, d16	;3		35140	
+5F71	 10 01				STOP	;1		35141	
+5F73	 10 01				STOP	;1		35142	
+5F75	 08 01 07			LD (a16), SP	;5		35147	
+5F78	 04					INC, B	;1		35148	
+5F79	 09					ADD HL, BC	;2		35150	
+5F7A	 00					NOP	;1		35151	
+5F7B	 0F					RRCA	;1		35152	
+5F7C	 08 01 F8			LD (a16), SP	;5		35157	
+5F7F	 F1					POP AF	;3		35160	
+5F80	 4E					LD C, (HL)	;2		35162	
+5F81	 C1					POP BC	;3		35165	
+5F82	 02					LD (BC), A	;2		35167	
+5F83	 C7					RST 0	;4		35171	
+5F84	 8C					ADC A, H	;1		35172	
+5F85	 BD					CP L	;1		35173	
+5F86	 84					ADD A, H	;1		35174	
+5F87	 AD					XOR L	;1		35175	
+5F88	 62					LD H, D	;1		35176	
+5F89	 CF					RST 1	;4		35180	
+5F8A	 7E					LD A, (HL)	;2		35182	
+5F8B	 FE EC				CP d8	;2		35184	
+5F8D	 90					SUB B	;1		35185	
+5F8E	 EF					RST 5	;4		35189	
+5F8F	 9F					SBC A, A	;1		35190	
+5F90	 FA F7 DA			JP A, a16	;4		35194	
+5F93	 E7					RST 4	;4		35198	
+5F94	 BD					CP L	;1		35199	
+5F95	 BD					CP L	;1		35200	
+5F96	 B5					OR L	;1		35201	
+5F97	 AD					XOR L	;1		35202	
+5F98	 D2 EF 7F			JP NC a16	;4		35206	
+5F9B	 7F					LD A, A	;1		35207	
+5F9C	 F8 F8				LD HL, SP+s8	;3		35210	
+5F9E	 18 E8				JR s8	;3		35213	
+5FA0	 38 88				JR C s8	;3		35216	
+5FA2	 B8					CP B	;1		35217	
+5FA3	 08 B0 10			LD (a16), SP	;5		35222	
+5FA6	 E0 E0				LD (a8), A	;3		35225	
+5FA8	 D0					RET NC	;5		35230	
+5FA9	 30 F0				JR NC s8	;3		35233	
+5FAB	 F0 18				LD A, (a8)	;2		35235	
+5FAD	 18 30				JR s8	;3		35238	
+5FAF	 30 60				JR NC s8	;3		35241	
+5FB1	 60					LD H, B	;1		35242	
+5FB2	 C0					RET NZ	;5		35247	
+5FB3	 C0					RET NZ	;5		35252	
+5FB4	 C0					RET NZ	;5		35257	
+5FB5	 C0					RET NZ	;5		35262	
+5FB6	 FF					RST 7	;4		35266	
+5FB7	 FF					RST 7	;4		35270	
+5FB8	 83					ADD A, E	;1		35271	
+5FB9	 83					ADD A, E	;1		35272	
+5FBA	 60					LD H, B	;1		35273	
+5FBB	 62					LD H, D	;1		35274	
+5FBC	 0A					LD A, (BC)	;2		35276	
+5FBD	 00					NOP	;1		35277	
+5FBE	 08 00 08			LD (a16), SP	;5		35282	
+5FC1	 07					RLCA	;1		35283	
+5FC2	 08 00 08			LD (a16), SP	;5		35288	
+5FC5	 01 F8 F1			LD BC, d16	;3		35291	
+5FC8	 F8 F1				LD HL, SP+s8	;3		35294	
+5FCA	 08 01 6C			LD (a16), SP	;5		35299	
+5FCD	 10 2C				STOP	;1		35300	
+5FCF	 10 2C				STOP	;1		35301	
+5FD1	 D1					POP DE	;3		35304	
+5FD2	 2C					INC, L	;1		35305	
+5FD3	 11 AC 90			LD DE, d16	;3		35308	
+5FD6	 EF					RST 5	;4		35312	
+5FD7	 9F					SBC A, A	;1		35313	
+5FD8	 EF					RST 5	;4		35317	
+5FD9	 9F					SBC A, A	;1		35318	
+5FDA	 EC		
+5FDB	 90					SUB B	;1		35319	
+5FDC	 18 18				JR s8	;3		35322	
+5FDE	 0C					INC, C	;1		35323	
+5FDF	 0C					INC, C	;1		35324	
+5FE0	 06 C6				LD, B, d8	;2		35326	
+5FE2	 03					INC, BC	;2		35328	
+5FE3	 C3 03 03			JP a16	;4		35332	
+5FE6	 FF					RST 7	;4		35336	
+5FE7	 FF					RST 7	;4		35340	
+5FE8	 C1					POP BC	;3		35343	
+5FE9	 C1					POP BC	;3		35346	
+5FEA	 06 46				LD, B, d8	;2		35348	
+5FEC	 00					NOP	;1		35349	
+5FED	 04					INC, B	;1		35350	
+5FEE	 00					NOP	;1		35351	
+5FEF	 0C					INC, C	;1		35352	
+5FF0	 02					LD (BC), A	;2		35354	
+5FF1	 10 02				STOP	;1		35355	
+5FF3	 10 02				STOP	;1		35356	
+5FF5	 10 02				STOP	;1		35357	
+5FF7	 10 02				STOP	;1		35358	
+5FF9	 10 02				STOP	;1		35359	
+5FFB	 10 0C				STOP	;1		35360	
+5FFD	 4C					LD C, H	;1		35361	
+5FFE	 0C					INC, C	;1		35362	
+5FFF	 4C					LD C, H	;1		35363	
+6000	 09					ADD HL, BC	;2		35365	
+6001	 49					LD C, C	;1		35366	
+6002	 0B					DEC, BC	;2		35368	
+6003	 4B					LD C, E	;1		35369	
+6004	 0A					LD A, (BC)	;2		35371	
+6005	 4A					LD C, D	;1		35372	
+6006	 10 50				STOP	;1		35373	
+6008	 12					LD (DE), A	;2		35375	
+6009	 52					LD D, D	;1		35376	
+600A	 10 50				STOP	;1		35377	
+600C	 7E					LD A, (HL)	;2		35379	
+600D	 33					INC, SP	;2		35381	
+600E	 7E					LD A, (HL)	;2		35383	
+600F	 33					INC, SP	;2		35385	
+6010	 BE					CP (HL)	;2		35387	
+6011	 93					SUB E	;1		35388	
+6012	 FE D3				CP d8	;2		35390	
+6014	 7E					LD A, (HL)	;2		35392	
+6015	 53					LD D, E	;1		35393	
+6016	 3E 0B				LD, A, d8	;2		35395	
+6018	 7E					LD A, (HL)	;2		35397	
+6019	 4B					LD C, E	;1		35398	
+601A	 3E 0B				LD, A, d8	;2		35400	
+601C	 A0					AND B	;1		35401	
+601D	 20 90				JR NZ s8	;3		35404	
+601F	 30 98				JR NC s8	;3		35407	
+6021	 48					LD C, B	;1		35408	
+6022	 98					SBC A, B	;1		35409	
+6023	 48					LD C, B	;1		35410	
+6024	 98					SBC A, B	;1		35411	
+6025	 48					LD C, B	;1		35412	
+6026	 98					SBC A, B	;1		35413	
+6027	 48					LD C, B	;1		35414	
+6028	 98					SBC A, B	;1		35415	
+6029	 48					LD C, B	;1		35416	
+602A	 98					SBC A, B	;1		35417	
+602B	 48					LD C, B	;1		35418	
+602C	 00					NOP	;1		35419	
+602D	 00					NOP	;1		35420	
+602E	 00					NOP	;1		35421	
+602F	 00					NOP	;1		35422	
+6030	 00					NOP	;1		35423	
+6031	 00					NOP	;1		35424	
+6032	 00					NOP	;1		35425	
+6033	 00					NOP	;1		35426	
+6034	 01 01 01			LD BC, d16	;3		35429	
+6037	 01 02 02			LD BC, d16	;3		35432	
+603A	 02					LD (BC), A	;2		35434	
+603B	 02					LD (BC), A	;2		35436	
+603C	 02					LD (BC), A	;2		35438	
+603D	 02					LD (BC), A	;2		35440	
+603E	 02					LD (BC), A	;2		35442	
+603F	 02					LD (BC), A	;2		35444	
+6040	 02					LD (BC), A	;2		35446	
+6041	 02					LD (BC), A	;2		35448	
+6042	 00					NOP	;1		35449	
+6043	 01 02 02			LD BC, d16	;3		35452	
+6046	 02					LD (BC), A	;2		35454	
+6047	 02					LD (BC), A	;2		35456	
+6048	 02					LD (BC), A	;2		35458	
+6049	 02					LD (BC), A	;2		35460	
+604A	 02					LD (BC), A	;2		35462	
+604B	 03					INC, BC	;2		35464	
+604C	 02					LD (BC), A	;2		35466	
+604D	 03					INC, BC	;2		35468	
+604E	 02					LD (BC), A	;2		35470	
+604F	 02					LD (BC), A	;2		35472	
+6050	 02					LD (BC), A	;2		35474	
+6051	 02					LD (BC), A	;2		35476	
+6052	 02					LD (BC), A	;2		35478	
+6053	 03					INC, BC	;2		35480	
+6054	 02					LD (BC), A	;2		35482	
+6055	 02					LD (BC), A	;2		35484	
+6056	 06 06				LD, B, d8	;2		35486	
+6058	 0E 0A				LD, C, d8	;2		35488	
+605A	 0E 0A				LD, C, d8	;2		35490	
+605C	 0B					DEC, BC	;2		35492	
+605D	 0A					LD A, (BC)	;2		35494	
+605E	 0B					DEC, BC	;2		35496	
+605F	 0A					LD A, (BC)	;2		35498	
+6060	 0F					RRCA	;1		35499	
+6061	 0A					LD A, (BC)	;2		35501	
+6062	 0A					LD A, (BC)	;2		35503	
+6063	 0A					LD A, (BC)	;2		35505	
+6064	 06 06				LD, B, d8	;2		35507	
+6066	 0A					LD A, (BC)	;2		35509	
+6067	 0A					LD A, (BC)	;2		35511	
+6068	 1A					LD A, (DE)	;2		35513	
+6069	 12					LD (DE), A	;2		35515	
+606A	 1F					RRA	;1		35516	
+606B	 1F					RRA	;1		35517	
+606C	 00					NOP	;1		35518	
+606D	 00					NOP	;1		35519	
+606E	 00					NOP	;1		35520	
+606F	 00					NOP	;1		35521	
+6070	 1F					RRA	;1		35522	
+6071	 1F					RRA	;1		35523	
+6072	 3F					CCF	;1		35524	
+6073	 20 7F				JR NZ s8	;3		35527	
+6075	 47					LD B, A	;1		35528	
+6076	 7C					LD A, H	;1		35529	
+6077	 4C					LD C, H	;1		35530	
+6078	 7C					LD A, H	;1		35531	
+6079	 4C					LD C, H	;1		35532	
+607A	 7C					LD A, H	;1		35533	
+607B	 4C					LD C, H	;1		35534	
+607C	 00					NOP	;1		35535	
+607D	 00					NOP	;1		35536	
+607E	 00					NOP	;1		35537	
+607F	 00					NOP	;1		35538	
+6080	 E0 E0				LD (a8), A	;3		35541	
+6082	 F0 30				LD A, (a8)	;2		35543	
+6084	 F8 18				LD HL, SP+s8	;3		35546	
+6086	 F8 98				LD HL, SP+s8	;3		35549	
+6088	 F8 98				LD HL, SP+s8	;3		35552	
+608A	 F8 98				LD HL, SP+s8	;3		35555	
+608C	 7F					LD A, A	;1		35556	
+608D	 4F					LD C, A	;1		35557	
+608E	 7F					LD A, A	;1		35558	
+608F	 40					LD B, B	;1		35559	
+6090	 7F					LD A, A	;1		35560	
+6091	 4F					LD C, A	;1		35561	
+6092	 7C					LD A, H	;1		35562	
+6093	 4C					LD C, H	;1		35563	
+6094	 7C					LD A, H	;1		35564	
+6095	 4C					LD C, H	;1		35565	
+6096	 7C					LD A, H	;1		35566	
+6097	 7C					LD A, H	;1		35567	
+6098	 00					NOP	;1		35568	
+6099	 00					NOP	;1		35569	
+609A	 00					NOP	;1		35570	
+609B	 00					NOP	;1		35571	
+609C	 F8 98				LD HL, SP+s8	;3		35574	
+609E	 F8 18				LD HL, SP+s8	;3		35577	
+60A0	 F8 98				LD HL, SP+s8	;3		35580	
+60A2	 F8 98				LD HL, SP+s8	;3		35583	
+60A4	 F8 98				LD HL, SP+s8	;3		35586	
+60A6	 F8 F8				LD HL, SP+s8	;3		35589	
+60A8	 00					NOP	;1		35590	
+60A9	 00					NOP	;1		35591	
+60AA	 00					NOP	;1		35592	
+60AB	 00					NOP	;1		35593	
+60AC	 00					NOP	;1		35594	
+60AD	 00					NOP	;1		35595	
+60AE	 7C					LD A, H	;1		35596	
+60AF	 7C					LD A, H	;1		35597	
+60B0	 4E					LD C, (HL)	;2		35599	
+60B1	 4E					LD C, (HL)	;2		35601	
+60B2	 4E					LD C, (HL)	;2		35603	
+60B3	 4E					LD C, (HL)	;2		35605	
+60B4	 4E					LD C, (HL)	;2		35607	
+60B5	 4E					LD C, (HL)	;2		35609	
+60B6	 4E					LD C, (HL)	;2		35611	
+60B7	 4E					LD C, (HL)	;2		35613	
+60B8	 7C					LD A, H	;1		35614	
+60B9	 7C					LD A, H	;1		35615	
+60BA	 00					NOP	;1		35616	
+60BB	 00					NOP	;1		35617	
+60BC	 00					NOP	;1		35618	
+60BD	 00					NOP	;1		35619	
+60BE	 7E					LD A, (HL)	;2		35621	
+60BF	 7E					LD A, (HL)	;2		35623	
+60C0	 60					LD H, B	;1		35624	
+60C1	 60					LD H, B	;1		35625	
+60C2	 7C					LD A, H	;1		35626	
+60C3	 7C					LD A, H	;1		35627	
+60C4	 60					LD H, B	;1		35628	
+60C5	 60					LD H, B	;1		35629	
+60C6	 60					LD H, B	;1		35630	
+60C7	 60					LD H, B	;1		35631	
+60C8	 7E					LD A, (HL)	;2		35633	
+60C9	 7E					LD A, (HL)	;2		35635	
+60CA	 00					NOP	;1		35636	
+60CB	 00					NOP	;1		35637	
+60CC	 00					NOP	;1		35638	
+60CD	 00					NOP	;1		35639	
+60CE	 46					LD B, (HL)	;2		35641	
+60CF	 46					LD B, (HL)	;2		35643	
+60D0	 46					LD B, (HL)	;2		35645	
+60D1	 46					LD B, (HL)	;2		35647	
+60D2	 46					LD B, (HL)	;2		35649	
+60D3	 46					LD B, (HL)	;2		35651	
+60D4	 46					LD B, (HL)	;2		35653	
+60D5	 46					LD B, (HL)	;2		35655	
+60D6	 4E					LD C, (HL)	;2		35657	
+60D7	 4E					LD C, (HL)	;2		35659	
+60D8	 3C					INC, A	;1		35660	
+60D9	 3C					INC, A	;1		35661	
+60DA	 00					NOP	;1		35662	
+60DB	 00					NOP	;1		35663	
+60DC	 00					NOP	;1		35664	
+60DD	 00					NOP	;1		35665	
+60DE	 3C					INC, A	;1		35666	
+60DF	 3C					INC, A	;1		35667	
+60E0	 66					LD H, (HL)	;2		35669	
+60E1	 66					LD H, (HL)	;2		35671	
+60E2	 60					LD H, B	;1		35672	
+60E3	 60					LD H, B	;1		35673	
+60E4	 60					LD H, B	;1		35674	
+60E5	 60					LD H, B	;1		35675	
+60E6	 66					LD H, (HL)	;2		35677	
+60E7	 66					LD H, (HL)	;2		35679	
+60E8	 3C					INC, A	;1		35680	
+60E9	 3C					INC, A	;1		35681	
+60EA	 00					NOP	;1		35682	
+60EB	 00					NOP	;1		35683	
+60EC	 00					NOP	;1		35684	
+60ED	 00					NOP	;1		35685	
+60EE	 46					LD B, (HL)	;2		35687	
+60EF	 46					LD B, (HL)	;2		35689	
+60F0	 6E					LD L, (HL)	;2		35691	
+60F1	 6E					LD L, (HL)	;2		35693	
+60F2	 7E					LD A, (HL)	;2		35695	
+60F3	 7E					LD A, (HL)	;2		35697	
+60F4	 56					LD D, (HL)	;2		35699	
+60F5	 56					LD D, (HL)	;2		35701	
+60F6	 46					LD B, (HL)	;2		35703	
+60F7	 46					LD B, (HL)	;2		35705	
+60F8	 46					LD B, (HL)	;2		35707	
+60F9	 46					LD B, (HL)	;2		35709	
+60FA	 00					NOP	;1		35710	
+60FB	 00					NOP	;1		35711	
+60FC	 00					NOP	;1		35712	
+60FD	 00					NOP	;1		35713	
+60FE	 3C					INC, A	;1		35714	
+60FF	 3C					INC, A	;1		35715	
+6100	 4E					LD C, (HL)	;2		35717	
+6101	 4E					LD C, (HL)	;2		35719	
+6102	 4E					LD C, (HL)	;2		35721	
+6103	 4E					LD C, (HL)	;2		35723	
+6104	 7E					LD A, (HL)	;2		35725	
+6105	 7E					LD A, (HL)	;2		35727	
+6106	 4E					LD C, (HL)	;2		35729	
+6107	 4E					LD C, (HL)	;2		35731	
+6108	 4E					LD C, (HL)	;2		35733	
+6109	 4E					LD C, (HL)	;2		35735	
+610A	 00					NOP	;1		35736	
+610B	 00					NOP	;1		35737	
+610C	 FF					RST 7	;4		35741	
+610D	 00					NOP	;1		35742	
+610E	 00					NOP	;1		35743	
+610F	 00					NOP	;1		35744	
+6110	 00					NOP	;1		35745	
+6111	 00					NOP	;1		35746	
+6112	 00					NOP	;1		35747	
+6113	 00					NOP	;1		35748	
+6114	 00					NOP	;1		35749	
+6115	 00					NOP	;1		35750	
+6116	 00					NOP	;1		35751	
+6117	 00					NOP	;1		35752	
+6118	 00					NOP	;1		35753	
+6119	 00					NOP	;1		35754	
+611A	 00					NOP	;1		35755	
+611B	 00					NOP	;1		35756	
+611C	 00					NOP	;1		35757	
+611D	 00					NOP	;1		35758	
+611E	 00					NOP	;1		35759	
+611F	 00					NOP	;1		35760	
+6120	 00					NOP	;1		35761	
+6121	 00					NOP	;1		35762	
+6122	 00					NOP	;1		35763	
+6123	 00					NOP	;1		35764	
+6124	 01 01 FF			LD BC, d16	;3		35767	
+6127	 01 01 FF			LD BC, d16	;3		35770	
+612A	 FF					RST 7	;4		35774	
+612B	 FF					RST 7	;4		35778	
+612C	 00					NOP	;1		35779	
+612D	 00					NOP	;1		35780	
+612E	 00					NOP	;1		35781	
+612F	 00					NOP	;1		35782	
+6130	 00					NOP	;1		35783	
+6131	 00					NOP	;1		35784	
+6132	 00					NOP	;1		35785	
+6133	 00					NOP	;1		35786	
+6134	 F0 F0				LD A, (a8)	;2		35788	
+6136	 F0 B0				LD A, (a8)	;2		35790	
+6138	 F0 B0				LD A, (a8)	;2		35792	
+613A	 F0 F0				LD A, (a8)	;2		35794	
+613C	 00					NOP	;1		35795	
+613D	 00					NOP	;1		35796	
+613E	 00					NOP	;1		35797	
+613F	 00					NOP	;1		35798	
+6140	 07					RLCA	;1		35799	
+6141	 07					RLCA	;1		35800	
+6142	 18 1F				JR s8	;3		35803	
+6144	 20 3F				JR NZ s8	;3		35806	
+6146	 30 3F				JR NC s8	;3		35809	
+6148	 18 17				JR s8	;3		35812	
+614A	 3F					CCF	;1		35813	
+614B	 2C					INC, L	;1		35814	
+614C	 7B					LD A, E	;1		35815	
+614D	 4F					LD C, A	;1		35816	
+614E	 70					LD (HL), B	;2		35818	
+614F	 5F					LD E, A	;1		35819	
+6150	 90					SUB B	;1		35820	
+6151	 9F					SBC A, A	;1		35821	
+6152	 90					SUB B	;1		35822	
+6153	 9F					SBC A, A	;1		35823	
+6154	 70					LD (HL), B	;2		35825	
+6155	 7F					LD A, A	;1		35826	
+6156	 11 1F 3E			LD DE, d16	;3		35829	
+6159	 3E 3E				LD, A, d8	;2		35831	
+615B	 3E 00				LD, A, d8	;2		35833	
+615D	 00					NOP	;1		35834	
+615E	 7C					LD A, H	;1		35835	
+615F	 7C					LD A, H	;1		35836	
+6160	 66					LD H, (HL)	;2		35838	
+6161	 66					LD H, (HL)	;2		35840	
+6162	 66					LD H, (HL)	;2		35842	
+6163	 66					LD H, (HL)	;2		35844	
+6164	 7C					LD A, H	;1		35845	
+6165	 7C					LD A, H	;1		35846	
+6166	 68					LD L, B	;1		35847	
+6167	 68					LD L, B	;1		35848	
+6168	 66					LD H, (HL)	;2		35850	
+6169	 66					LD H, (HL)	;2		35852	
+616A	 00					NOP	;1		35853	
+616B	 00					NOP	;1		35854	
+616C	 00					NOP	;1		35855	
+616D	 00					NOP	;1		35856	
+616E	 3C					INC, A	;1		35857	
+616F	 3C					INC, A	;1		35858	
+6170	 66					LD H, (HL)	;2		35860	
+6171	 66					LD H, (HL)	;2		35862	
+6172	 66					LD H, (HL)	;2		35864	
+6173	 66					LD H, (HL)	;2		35866	
+6174	 66					LD H, (HL)	;2		35868	
+6175	 66					LD H, (HL)	;2		35870	
+6176	 66					LD H, (HL)	;2		35872	
+6177	 66					LD H, (HL)	;2		35874	
+6178	 3C					INC, A	;1		35875	
+6179	 3C					INC, A	;1		35876	
+617A	 00					NOP	;1		35877	
+617B	 00					NOP	;1		35878	
+617C	 00					NOP	;1		35879	
+617D	 00					NOP	;1		35880	
+617E	 60					LD H, B	;1		35881	
+617F	 60					LD H, B	;1		35882	
+6180	 60					LD H, B	;1		35883	
+6181	 60					LD H, B	;1		35884	
+6182	 60					LD H, B	;1		35885	
+6183	 60					LD H, B	;1		35886	
+6184	 60					LD H, B	;1		35887	
+6185	 60					LD H, B	;1		35888	
+6186	 60					LD H, B	;1		35889	
+6187	 60					LD H, B	;1		35890	
+6188	 7E					LD A, (HL)	;2		35892	
+6189	 7E					LD A, (HL)	;2		35894	
+618A	 00					NOP	;1		35895	
+618B	 00					NOP	;1		35896	
+618C	 00					NOP	;1		35897	
+618D	 00					NOP	;1		35898	
+618E	 3C					INC, A	;1		35899	
+618F	 3C					INC, A	;1		35900	
+6190	 66					LD H, (HL)	;2		35902	
+6191	 66					LD H, (HL)	;2		35904	
+6192	 60					LD H, B	;1		35905	
+6193	 60					LD H, B	;1		35906	
+6194	 6E					LD L, (HL)	;2		35908	
+6195	 6E					LD L, (HL)	;2		35910	
+6196	 66					LD H, (HL)	;2		35912	
+6197	 66					LD H, (HL)	;2		35914	
+6198	 3E 3E				LD, A, d8	;2		35916	
+619A	 00					NOP	;1		35917	
+619B	 00					NOP	;1		35918	
+619C	 00					NOP	;1		35919	
+619D	 EE 00				XOR d8	;2		35921	
+619F	 00					NOP	;1		35922	
+61A0	 FF					RST 7	;4		35926	
+61A1	 FF					RST 7	;4		35930	
+61A2	 FF					RST 7	;4		35934	
+61A3	 FF					RST 7	;4		35938	
+61A4	 FF					RST 7	;4		35942	
+61A5	 FF					RST 7	;4		35946	
+61A6	 FF					RST 7	;4		35950	
+61A7	 FF					RST 7	;4		35954	
+61A8	 FF					RST 7	;4		35958	
+61A9	 FF					RST 7	;4		35962	
+61AA	 FF					RST 7	;4		35966	
+61AB	 FF					RST 7	;4		35970	
+61AC	 00					NOP	;1		35971	
+61AD	 01 00 02			LD BC, d16	;3		35974	
+61B0	 00					NOP	;1		35975	
+61B1	 02					LD (BC), A	;2		35977	
+61B2	 00					NOP	;1		35978	
+61B3	 04					INC, B	;1		35979	
+61B4	 00					NOP	;1		35980	
+61B5	 08 00 08			LD (a16), SP	;5		35985	
+61B8	 00					NOP	;1		35986	
+61B9	 10 00				STOP	;1		35987	
+61BB	 10 80				STOP	;1		35988	
+61BD	 80					ADD A, B	;1		35989	
+61BE	 C0					RET NZ	;5		35994	
+61BF	 40					LD B, B	;1		35995	
+61C0	 C0					RET NZ	;5		36000	
+61C1	 40					LD B, B	;1		36001	
+61C2	 E0 20				LD (a8), A	;3		36004	
+61C4	 30 50				JR NC s8	;3		36007	
+61C6	 30 50				JR NC s8	;3		36010	
+61C8	 38 48				JR C s8	;3		36013	
+61CA	 18 28				JR s8	;3		36016	
+61CC	 00					NOP	;1		36017	
+61CD	 00					NOP	;1		36018	
+61CE	 00					NOP	;1		36019	
+61CF	 00					NOP	;1		36020	
+61D0	 00					NOP	;1		36021	
+61D1	 00					NOP	;1		36022	
+61D2	 00					NOP	;1		36023	
+61D3	 00					NOP	;1		36024	
+61D4	 00					NOP	;1		36025	
+61D5	 03					INC, BC	;2		36027	
+61D6	 00					NOP	;1		36028	
+61D7	 03					INC, BC	;2		36030	
+61D8	 00					NOP	;1		36031	
+61D9	 02					LD (BC), A	;2		36033	
+61DA	 00					NOP	;1		36034	
+61DB	 02					LD (BC), A	;2		36036	
+61DC	 00					NOP	;1		36037	
+61DD	 00					NOP	;1		36038	
+61DE	 00					NOP	;1		36039	
+61DF	 00					NOP	;1		36040	
+61E0	 00					NOP	;1		36041	
+61E1	 00					NOP	;1		36042	
+61E2	 00					NOP	;1		36043	
+61E3	 00					NOP	;1		36044	
+61E4	 08 F8 08			LD (a16), SP	;5		36049	
+61E7	 18 08				JR s8	;3		36052	
+61E9	 A8					XOR B	;1		36053	
+61EA	 08 48 00			LD (a16), SP	;5		36058	
+61ED	 80					ADD A, B	;1		36059	
+61EE	 00					NOP	;1		36060	
+61EF	 80					ADD A, B	;1		36061	
+61F0	 00					NOP	;1		36062	
+61F1	 80					ADD A, B	;1		36063	
+61F2	 00					NOP	;1		36064	
+61F3	 80					ADD A, B	;1		36065	
+61F4	 00					NOP	;1		36066	
+61F5	 00					NOP	;1		36067	
+61F6	 00					NOP	;1		36068	
+61F7	 00					NOP	;1		36069	
+61F8	 00					NOP	;1		36070	
+61F9	 00					NOP	;1		36071	
+61FA	 00					NOP	;1		36072	
+61FB	 00					NOP	;1		36073	
+61FC	 00					NOP	;1		36074	
+61FD	 20 00				JR NZ s8	;3		36077	
+61FF	 20 00				JR NZ s8	;3		36080	
+6201	 20 1F				JR NZ s8	;3		36083	
+6203	 20 00				JR NZ s8	;3		36086	
+6205	 40					LD B, B	;1		36087	
+6206	 00					NOP	;1		36088	
+6207	 40					LD B, B	;1		36089	
+6208	 00					NOP	;1		36090	
+6209	 40					LD B, B	;1		36091	
+620A	 00					NOP	;1		36092	
+620B	 40					LD B, B	;1		36093	
+620C	 1C					INC, E	;1		36094	
+620D	 24					INC, H	;1		36095	
+620E	 0C					INC, C	;1		36096	
+620F	 34					INC (HL)	;3		36099	
+6210	 0C					INC, C	;1		36100	
+6211	 34					INC (HL)	;3		36103	
+6212	 04					INC, B	;1		36104	
+6213	 FC		
+6214	 0E 32				LD, C, d8	;2		36106	
+6216	 0E 32				LD, C, d8	;2		36108	
+6218	 0E 32				LD, C, d8	;2		36110	
+621A	 0E 32				LD, C, d8	;2		36112	
+621C	 00					NOP	;1		36113	
+621D	 00					NOP	;1		36114	
+621E	 00					NOP	;1		36115	
+621F	 00					NOP	;1		36116	
+6220	 00					NOP	;1		36117	
+6221	 00					NOP	;1		36118	
+6222	 00					NOP	;1		36119	
+6223	 00					NOP	;1		36120	
+6224	 00					NOP	;1		36121	
+6225	 00					NOP	;1		36122	
+6226	 00					NOP	;1		36123	
+6227	 00					NOP	;1		36124	
+6228	 00					NOP	;1		36125	
+6229	 00					NOP	;1		36126	
+622A	 00					NOP	;1		36127	
+622B	 00					NOP	;1		36128	
+622C	 00					NOP	;1		36129	
+622D	 00					NOP	;1		36130	
+622E	 00					NOP	;1		36131	
+622F	 00					NOP	;1		36132	
+6230	 00					NOP	;1		36133	
+6231	 00					NOP	;1		36134	
+6232	 00					NOP	;1		36135	
+6233	 00					NOP	;1		36136	
+6234	 00					NOP	;1		36137	
+6235	 1F					RRA	;1		36138	
+6236	 00					NOP	;1		36139	
+6237	 18 00				JR s8	;3		36142	
+6239	 15					DEC, D	;1		36143	
+623A	 00					NOP	;1		36144	
+623B	 12					LD (DE), A	;2		36146	
+623C	 00					NOP	;1		36147	
+623D	 00					NOP	;1		36148	
+623E	 00					NOP	;1		36149	
+623F	 00					NOP	;1		36150	
+6240	 00					NOP	;1		36151	
+6241	 00					NOP	;1		36152	
+6242	 00					NOP	;1		36153	
+6243	 00					NOP	;1		36154	
+6244	 40					LD B, B	;1		36155	
+6245	 C0					RET NZ	;5		36160	
+6246	 40					LD B, B	;1		36161	
+6247	 C0					RET NZ	;5		36166	
+6248	 40					LD B, B	;1		36167	
+6249	 40					LD B, B	;1		36168	
+624A	 40					LD B, B	;1		36169	
+624B	 40					LD B, B	;1		36170	
+624C	 00					NOP	;1		36171	
+624D	 02					LD (BC), A	;2		36173	
+624E	 00					NOP	;1		36174	
+624F	 03					INC, BC	;2		36176	
+6250	 00					NOP	;1		36177	
+6251	 02					LD (BC), A	;2		36179	
+6252	 00					NOP	;1		36180	
+6253	 02					LD (BC), A	;2		36182	
+6254	 00					NOP	;1		36183	
+6255	 02					LD (BC), A	;2		36185	
+6256	 00					NOP	;1		36186	
+6257	 03					INC, BC	;2		36188	
+6258	 00					NOP	;1		36189	
+6259	 02					LD (BC), A	;2		36191	
+625A	 00					NOP	;1		36192	
+625B	 02					LD (BC), A	;2		36194	
+625C	 08 AF 08			LD (a16), SP	;5		36199	
+625F	 1A					LD A, (DE)	;2		36201	
+6260	 08 AD 08			LD (a16), SP	;5		36206	
+6263	 4F					LD C, A	;1		36207	
+6264	 08 A8 08			LD (a16), SP	;5		36212	
+6267	 18 08				JR s8	;3		36215	
+6269	 A8					XOR B	;1		36216	
+626A	 08 48 00			LD (a16), SP	;5		36221	
+626D	 00					NOP	;1		36222	
+626E	 00					NOP	;1		36223	
+626F	 00					NOP	;1		36224	
+6270	 00					NOP	;1		36225	
+6271	 00					NOP	;1		36226	
+6272	 00					NOP	;1		36227	
+6273	 00					NOP	;1		36228	
+6274	 00					NOP	;1		36229	
+6275	 00					NOP	;1		36230	
+6276	 00					NOP	;1		36231	
+6277	 00					NOP	;1		36232	
+6278	 00					NOP	;1		36233	
+6279	 01 00 02			LD BC, d16	;3		36236	
+627C	 00					NOP	;1		36237	
+627D	 40					LD B, B	;1		36238	
+627E	 15					DEC, D	;1		36239	
+627F	 40					LD B, B	;1		36240	
+6280	 15					DEC, D	;1		36241	
+6281	 40					LD B, B	;1		36242	
+6282	 15					DEC, D	;1		36243	
+6283	 40					LD B, B	;1		36244	
+6284	 15					DEC, D	;1		36245	
+6285	 C0					RET NZ	;5		36250	
+6286	 15					DEC, D	;1		36251	
+6287	 C1					POP BC	;3		36254	
+6288	 17					RLA	;1		36255	
+6289	 43					LD B, E	;1		36256	
+628A	 16 46				LD, D, d8	;2		36258	
+628C	 24					INC, H	;1		36259	
+628D	 0C					INC, C	;1		36260	
+628E	 34					INC (HL)	;3		36263	
+628F	 0C					INC, C	;1		36264	
+6290	 34					INC (HL)	;3		36267	
+6291	 04					INC, B	;1		36268	
+6292	 FC		
+6293	 0E 32				LD, C, d8	;2		36270	
+6295	 0E 32				LD, C, d8	;2		36272	
+6297	 0E 32				LD, C, d8	;2		36274	
+6299	 0E 32				LD, C, d8	;2		36276	
+629B	 00					NOP	;1		36277	
+629C	 00					NOP	;1		36278	
+629D	 00					NOP	;1		36279	
+629E	 00					NOP	;1		36280	
+629F	 00					NOP	;1		36281	
+62A0	 00					NOP	;1		36282	
+62A1	 00					NOP	;1		36283	
+62A2	 00					NOP	;1		36284	
+62A3	 00					NOP	;1		36285	
+62A4	 00					NOP	;1		36286	
+62A5	 00					NOP	;1		36287	
+62A6	 00					NOP	;1		36288	
+62A7	 00					NOP	;1		36289	
+62A8	 00					NOP	;1		36290	
+62A9	 00					NOP	;1		36291	
+62AA	 00					NOP	;1		36292	
+62AB	 00					NOP	;1		36293	
+62AC	 00					NOP	;1		36294	
+62AD	 00					NOP	;1		36295	
+62AE	 00					NOP	;1		36296	
+62AF	 00					NOP	;1		36297	
+62B0	 00					NOP	;1		36298	
+62B1	 2A					LD A, (HL+)	;2		36300	
+62B2	 20 01				JR NZ s8	;3		36303	
+62B4	 00					NOP	;1		36304	
+62B5	 1D					DEC, E	;1		36305	
+62B6	 01 09 00			LD BC, d16	;3		36308	
+62B9	 07					RLCA	;1		36309	
+62BA	 01 0B 00			LD BC, d16	;3		36312	
+62BD	 03					INC, BC	;2		36314	
+62BE	 20 04				JR NZ s8	;3		36317	
+62C0	 00					NOP	;1		36318	
+62C1	 20 20				JR NZ s8	;3		36321	
+62C3	 06 00				LD, B, d8	;2		36323	
+62C5	 0A					LD A, (BC)	;2		36325	
+62C6	 80					ADD A, B	;1		36326	
+62C7	 17					RLA	;1		36327	
+62C8	 00					NOP	;1		36328	
+62C9	 06 01				LD, B, d8	;2		36330	
+62CB	 06 00				LD, B, d8	;2		36332	
+62CD	 04					INC, B	;1		36333	
+62CE	 01 05 00			LD BC, d16	;3		36336	
+62D1	 1E 80				LD, E, d8	;2		36338	
+62D3	 0B					DEC, BC	;2		36340	
+62D4	 00					NOP	;1		36341	
+62D5	 06 80				LD, B, d8	;2		36343	
+62D7	 1C					INC, E	;1		36344	
+62D8	 00					NOP	;1		36345	
+62D9	 0A					LD A, (BC)	;2		36347	
+62DA	 10 08				STOP	;1		36348	
+62DC	 11 04 01			LD DE, d16	;3		36351	
+62DF	 02					LD (BC), A	;2		36353	
+62E0	 00					NOP	;1		36354	
+62E1	 04					INC, B	;1		36355	
+62E2	 01 06 00			LD BC, d16	;3		36358	
+62E5	 00					NOP	;1		36359	
+62E6	 10 06				STOP	;1		36360	
+62E8	 00					NOP	;1		36361	
+62E9	 04					INC, B	;1		36362	
+62EA	 10 05				STOP	;1		36363	
+62EC	 00					NOP	;1		36364	
+62ED	 1A					LD A, (DE)	;2		36366	
+62EE	 80					ADD A, B	;1		36367	
+62EF	 24					INC, H	;1		36368	
+62F0	 00					NOP	;1		36369	
+62F1	 15					DEC, D	;1		36370	
+62F2	 01 07 00			LD BC, d16	;3		36373	
+62F5	 20 10				JR NZ s8	;3		36376	
+62F7	 04					INC, B	;1		36377	
+62F8	 00					NOP	;1		36378	
+62F9	 05					DEC, B	;1		36379	
+62FA	 10 03				STOP	;1		36380	
+62FC	 00					NOP	;1		36381	
+62FD	 0D					DEC, C	;1		36382	
+62FE	 10 06				STOP	;1		36383	
+6300	 00					NOP	;1		36384	
+6301	 03					INC, BC	;2		36386	
+6302	 10 05				STOP	;1		36387	
+6304	 00					NOP	;1		36388	
+6305	 25					DEC, H	;1		36389	
+6306	 80					ADD A, B	;1		36390	
+6307	 15					DEC, D	;1		36391	
+6308	 00					NOP	;1		36392	
+6309	 1B					DEC, DE	;2		36394	
+630A	 10 04				STOP	;1		36395	
+630C	 00					NOP	;1		36396	
+630D	 13					INC, DE	;2		36398	
+630E	 80					ADD A, B	;1		36399	
+630F	 03					INC, BC	;2		36401	
+6310	 00					NOP	;1		36402	
+6311	 1C					INC, E	;1		36403	
+6312	 80					ADD A, B	;1		36404	
+6313	 19					ADD HL, DE	;2		36406	
+6314	 00					NOP	;1		36407	
+6315	 1A					LD A, (DE)	;2		36409	
+6316	 01 06 00			LD BC, d16	;3		36412	
+6319	 0A					LD A, (BC)	;2		36414	
+631A	 20 01				JR NZ s8	;3		36417	
+631C	 00					NOP	;1		36418	
+631D	 09					ADD HL, BC	;2		36420	
+631E	 20 02				JR NZ s8	;3		36423	
+6320	 00					NOP	;1		36424	
+6321	 14					INC, D	;1		36425	
+6322	 10 03				STOP	;1		36426	
+6324	 00					NOP	;1		36427	
+6325	 0E 80				LD, C, d8	;2		36429	
+6327	 16 00				LD, D, d8	;2		36431	
+6329	 0A					LD A, (BC)	;2		36433	
+632A	 10 0A				STOP	;1		36434	
+632C	 11 06 10			LD DE, d16	;3		36437	
+632F	 16 00				LD, D, d8	;2		36439	
+6331	 13					INC, DE	;2		36441	
+6332	 80					ADD A, B	;1		36442	
+6333	 25					DEC, H	;1		36443	
+6334	 00					NOP	;1		36444	
+6335	 1C					INC, E	;1		36445	
+6336	 01 06 00			LD BC, d16	;3		36448	
+6339	 03					INC, BC	;2		36450	
+633A	 20 02				JR NZ s8	;3		36453	
+633C	 00					NOP	;1		36454	
+633D	 0E 20				LD, C, d8	;2		36456	
+633F	 03					INC, BC	;2		36458	
+6340	 00					NOP	;1		36459	
+6341	 04					INC, B	;1		36460	
+6342	 20 02				JR NZ s8	;3		36463	
+6344	 00					NOP	;1		36464	
+6345	 03					INC, BC	;2		36466	
+6346	 20 05				JR NZ s8	;3		36469	
+6348	 00					NOP	;1		36470	
+6349	 0D					DEC, C	;1		36471	
+634A	 80					ADD A, B	;1		36472	
+634B	 21 00 13			LD (HL), d16	;3		36475	
+634E	 01 07 00			LD BC, d16	;3		36478	
+6351	 05					DEC, B	;1		36479	
+6352	 01 06 00			LD BC, d16	;3		36482	
+6355	 04					INC, B	;1		36483	
+6356	 01 05 00			LD BC, d16	;3		36486	
+6359	 06 20				LD, B, d8	;2		36488	
+635B	 03					INC, BC	;2		36490	
+635C	 00					NOP	;1		36491	
+635D	 05					DEC, B	;1		36492	
+635E	 20 02				JR NZ s8	;3		36495	
+6360	 00					NOP	;1		36496	
+6361	 1C					INC, E	;1		36497	
+6362	 20 03				JR NZ s8	;3		36500	
+6364	 00					NOP	;1		36501	
+6365	 0E 80				LD, C, d8	;2		36503	
+6367	 12					LD (DE), A	;2		36505	
+6368	 00					NOP	;1		36506	
+6369	 0C					INC, C	;1		36507	
+636A	 10 04				STOP	;1		36508	
+636C	 00					NOP	;1		36509	
+636D	 02					LD (BC), A	;2		36511	
+636E	 01 08 00			LD BC, d16	;3		36514	
+6371	 10 01				STOP	;1		36515	
+6373	 08 00 1E			LD (a16), SP	;5		36520	
+6376	 80					ADD A, B	;1		36521	
+6377	 19					ADD HL, DE	;2		36523	
+6378	 00					NOP	;1		36524	
+6379	 10 10				STOP	;1		36525	
+637B	 03					INC, BC	;2		36527	
+637C	 00					NOP	;1		36528	
+637D	 04					INC, B	;1		36529	
+637E	 10 05				STOP	;1		36530	
+6380	 00					NOP	;1		36531	
+6381	 24					INC, H	;1		36532	
+6382	 80					ADD A, B	;1		36533	
+6383	 1C					INC, E	;1		36534	
+6384	 00					NOP	;1		36535	
+6385	 05					DEC, B	;1		36536	
+6386	 01 05 00			LD BC, d16	;3		36539	
+6389	 11 20 03			LD DE, d16	;3		36542	
+638C	 00					NOP	;1		36543	
+638D	 12					LD (DE), A	;2		36545	
+638E	 80					ADD A, B	;1		36546	
+638F	 20 00				JR NZ s8	;3		36549	
+6391	 0A					LD A, (BC)	;2		36551	
+6392	 10 01				STOP	;1		36552	
+6394	 11 06 01			LD DE, d16	;3		36555	
+6397	 00					NOP	;1		36556	
+6398	 00					NOP	;1		36557	
+6399	 04					INC, B	;1		36558	
+639A	 10 04				STOP	;1		36559	
+639C	 00					NOP	;1		36560	
+639D	 04					INC, B	;1		36561	
+639E	 10 03				STOP	;1		36562	
+63A0	 00					NOP	;1		36563	
+63A1	 02					LD (BC), A	;2		36565	
+63A2	 10 19				STOP	;1		36566	
+63A4	 00					NOP	;1		36567	
+63A5	 04					INC, B	;1		36568	
+63A6	 10 07				STOP	;1		36569	
+63A8	 00					NOP	;1		36570	
+63A9	 0A					LD A, (BC)	;2		36572	
+63AA	 00					NOP	;1		36573	
+63AB	 00					NOP	;1		36574	
+63AC	 00					NOP	;1		36575	
+63AD	 00					NOP	;1		36576	
+63AE	 00					NOP	;1		36577	
+63AF	 00					NOP	;1		36578	
+63B0	 00					NOP	;1		36579	
+63B1	 4D					LD C, L	;1		36580	
+63B2	 20 08				JR NZ s8	;3		36583	
+63B4	 21 06 20			LD (HL), d16	;3		36586	
+63B7	 0B					DEC, BC	;2		36588	
+63B8	 00					NOP	;1		36589	
+63B9	 07					RLCA	;1		36590	
+63BA	 20 06				JR NZ s8	;3		36593	
+63BC	 00					NOP	;1		36594	
+63BD	 64					LD H, H	;1		36595	
+63BE	 10 00				STOP	;1		36596	
+63C0	 11 06 10			LD DE, d16	;3		36599	
+63C3	 05					DEC, B	;1		36600	
+63C4	 00					NOP	;1		36601	
+63C5	 2F					CPL	;1		36602	
+63C6	 80					ADD A, B	;1		36603	
+63C7	 16 00				LD, D, d8	;2		36605	
+63C9	 17					RLA	;1		36606	
+63CA	 20 05				JR NZ s8	;3		36609	
+63CC	 00					NOP	;1		36610	
+63CD	 06 20				LD, B, d8	;2		36612	
+63CF	 06 00				LD, B, d8	;2		36614	
+63D1	 10 80				STOP	;1		36615	
+63D3	 18 00				JR s8	;3		36618	
+63D5	 34					INC (HL)	;3		36621	
+63D6	 01 05 00			LD BC, d16	;3		36624	
+63D9	 01 10 0E			LD BC, d16	;3		36627	
+63DC	 11 06 10			LD DE, d16	;3		36630	
+63DF	 20 00				JR NZ s8	;3		36633	
+63E1	 0A					LD A, (BC)	;2		36635	
+63E2	 80					ADD A, B	;1		36636	
+63E3	 0A					LD A, (BC)	;2		36638	
+63E4	 00					NOP	;1		36639	
+63E5	 2B					DEC, (HL)	;2		36641	
+63E6	 20 06				JR NZ s8	;3		36644	
+63E8	 00					NOP	;1		36645	
+63E9	 06 20				LD, B, d8	;2		36647	
+63EB	 05					DEC, B	;1		36648	
+63EC	 00					NOP	;1		36649	
+63ED	 05					DEC, B	;1		36650	
+63EE	 20 06				JR NZ s8	;3		36653	
+63F0	 00					NOP	;1		36654	
+63F1	 0A					LD A, (BC)	;2		36656	
+63F2	 80					ADD A, B	;1		36657	
+63F3	 0C					INC, C	;1		36658	
+63F4	 00					NOP	;1		36659	
+63F5	 0A					LD A, (BC)	;2		36661	
+63F6	 01 07 00			LD BC, d16	;3		36664	
+63F9	 02					LD (BC), A	;2		36666	
+63FA	 10 0B				STOP	;1		36667	
+63FC	 00					NOP	;1		36668	
+63FD	 05					DEC, B	;1		36669	
+63FE	 10 04				STOP	;1		36670	
+6400	 00					NOP	;1		36671	
+6401	 0D					DEC, C	;1		36672	
+6402	 80					ADD A, B	;1		36673	
+6403	 1C					INC, E	;1		36674	
+6404	 00					NOP	;1		36675	
+6405	 75					LD (HL), L	;2		36677	
+6406	 01 06 00			LD BC, d16	;3		36680	
+6409	 0E 80				LD, C, d8	;2		36682	
+640B	 1F					RRA	;1		36683	
+640C	 00					NOP	;1		36684	
+640D	 1A					LD A, (DE)	;2		36686	
+640E	 01 06 00			LD BC, d16	;3		36689	
+6411	 00					NOP	;1		36690	
+6412	 10 07				STOP	;1		36691	
+6414	 00					NOP	;1		36692	
+6415	 05					DEC, B	;1		36693	
+6416	 10 06				STOP	;1		36694	
+6418	 00					NOP	;1		36695	
+6419	 04					INC, B	;1		36696	
+641A	 10 08				STOP	;1		36697	
+641C	 00					NOP	;1		36698	
+641D	 03					INC, BC	;2		36700	
+641E	 10 08				STOP	;1		36701	
+6420	 00					NOP	;1		36702	
+6421	 0C					INC, C	;1		36703	
+6422	 80					ADD A, B	;1		36704	
+6423	 0F					RRCA	;1		36705	
+6424	 00					NOP	;1		36706	
+6425	 0A					LD A, (BC)	;2		36708	
+6426	 01 07 00			LD BC, d16	;3		36711	
+6429	 00					NOP	;1		36712	
+642A	 10 3D				STOP	;1		36713	
+642C	 00					NOP	;1		36714	
+642D	 05					DEC, B	;1		36715	
+642E	 80					ADD A, B	;1		36716	
+642F	 1F					RRA	;1		36717	
+6430	 00					NOP	;1		36718	
+6431	 00					NOP	;1		36719	
+6432	 00					NOP	;1		36720	
+6433	 00					NOP	;1		36721	
+6434	 00					NOP	;1		36722	
+6435	 00					NOP	;1		36723	
+6436	 00					NOP	;1		36724	
+6437	 00					NOP	;1		36725	
+6438	 00					NOP	;1		36726	
+6439	 00					NOP	;1		36727	
+643A	 00					NOP	;1		36728	
+643B	 00					NOP	;1		36729	
+643C	 00					NOP	;1		36730	
+643D	 00					NOP	;1		36731	
+643E	 00					NOP	;1		36732	
+643F	 00					NOP	;1		36733	
+6440	 00					NOP	;1		36734	
+6441	 00					NOP	;1		36735	
+6442	 00					NOP	;1		36736	
+6443	 00					NOP	;1		36737	
+6444	 00					NOP	;1		36738	
+6445	 00					NOP	;1		36739	
+6446	 00					NOP	;1		36740	
+6447	 00					NOP	;1		36741	
+6448	 00					NOP	;1		36742	
+6449	 00					NOP	;1		36743	
+644A	 00					NOP	;1		36744	
+644B	 00					NOP	;1		36745	
+644C	 00					NOP	;1		36746	
+644D	 00					NOP	;1		36747	
+644E	 00					NOP	;1		36748	
+644F	 00					NOP	;1		36749	
+6450	 10 18				STOP	;1		36750	
+6452	 00					NOP	;1		36751	
+6453	 04					INC, B	;1		36752	
+6454	 08 00 04			LD (a16), SP	;5		36757	
+6457	 08 08 00			LD (a16), SP	;5		36762	
+645A	 04					INC, B	;1		36763	
+645B	 14					INC, D	;1		36764	
+645C	 10 08				STOP	;1		36765	
+645E	 10 10				STOP	;1		36766	
+6460	 14					INC, D	;1		36767	
+6461	 18 14				JR s8	;3		36770	
+6463	 00					NOP	;1		36771	
+6464	 0C					INC, C	;1		36772	
+6465	 04					INC, B	;1		36773	
+6466	 18 00				JR s8	;3		36776	
+6468	 14					INC, D	;1		36777	
+6469	 14					INC, D	;1		36778	
+646A	 08 04 04			LD (a16), SP	;5		36783	
+646D	 0C					INC, C	;1		36784	
+646E	 00					NOP	;1		36785	
+646F	 18 04				JR s8	;3		36788	
+6471	 00					NOP	;1		36789	
+6472	 08 0C 0C			LD (a16), SP	;5		36794	
+6475	 18 00				JR s8	;3		36797	
+6477	 0C					INC, C	;1		36798	
+6478	 08 00 18			LD (a16), SP	;5		36803	
+647B	 10 14				STOP	;1		36804	
+647D	 14					INC, D	;1		36805	
+647E	 18 08				JR s8	;3		36808	
+6480	 AA					XOR D	;1		36809	
+6481	 65					LD H, L	;1		36810	
+6482	 C6 65				ADD A, d8	;2		36812	
+6484	 FC		
+6486	 28 66				JR Z s8	;3		36815	
+6488	 34					INC (HL)	;3		36818	
+6489	 67					LD H, A	;1		36819	
+648A	 AF					XOR A	;1		36820	
+648B	 66					LD H, (HL)	;2		36822	
+648C	 F1					POP AF	;3		36825	
+648D	 65					LD H, L	;1		36826	
+648E	 54					LD D, H	;1		36827	
+648F	 66					LD H, (HL)	;2		36829	
+6490	 B2					OR D	;1		36830	
+6491	 65					LD H, L	;1		36831	
+6492	 CE 65				ADC A, d8	;2		36833	
+6494	 14					INC, D	;1		36834	
+6495	 67					LD H, A	;1		36835	
+6496	 CE 65				ADC A, d8	;2		36837	
+6498	 CE 65				ADC A, d8	;2		36839	
+649A	 C3 66 F7			JP a16	;4		36843	
+649D	 65					LD H, L	;1		36844	
+649E	 60					LD H, B	;1		36845	
+649F	 66					LD H, (HL)	;2		36847	
+64A0	 D4 67 DC			CALL NC, a16	;6		36853	
+64A3	 67					LD H, A	;1		36854	
+64A4	 9D					SBC A, L	;1		36855	
+64A5	 67					LD H, A	;1		36856	
+64A6	 A5					AND L	;1		36857	
+64A7	 67					LD H, A	;1		36858	
+64A8	 E4		
+64A9	 67					LD H, A	;1		36859	
+64AA	 E4		
+64AB	 67					LD H, A	;1		36860	
+64AC	 E4		
+64AD	 67					LD H, A	;1		36861	
+64AE	 AD					XOR L	;1		36862	
+64AF	 67					LD H, A	;1		36863	
+64B0	 3F					CCF	;1		36864	
+64B1	 6F					LD L, A	;1		36865	
+64B2	 4A					LD C, D	;1		36866	
+64B3	 6F					LD L, A	;1		36867	
+64B4	 55					LD D, L	;1		36868	
+64B5	 6F					LD L, A	;1		36869	
+64B6	 60					LD H, B	;1		36870	
+64B7	 6F					LD L, A	;1		36871	
+64B8	 6B					LD L, E	;1		36872	
+64B9	 6F					LD L, A	;1		36873	
+64BA	 76					HALT	;1		36874	
+64BB	 6F					LD L, A	;1		36875	
+64BC	 81					ADD A, C	;1		36876	
+64BD	 6F					LD L, A	;1		36877	
+64BE	 8C					ADC A, H	;1		36878	
+64BF	 6F					LD L, A	;1		36879	
+64C0	 97					SUB A	;1		36880	
+64C1	 6F					LD L, A	;1		36881	
+64C2	 A2					AND D	;1		36882	
+64C3	 6F					LD L, A	;1		36883	
+64C4	 AD					XOR L	;1		36884	
+64C5	 6F					LD L, A	;1		36885	
+64C6	 B8					CP B	;1		36886	
+64C7	 6F					LD L, A	;1		36887	
+64C8	 C3 6F CE			JP a16	;4		36891	
+64CB	 6F					LD L, A	;1		36892	
+64CC	 D9					RETI	;4		36896	
+64CD	 6F					LD L, A	;1		36897	
+64CE	 E4		
+64CF	 6F					LD L, A	;1		36898	
+64D0	 EF					RST 5	;4		36902	
+64D1	 6F					LD L, A	;1		36903	
+64D2	 C9					RET	;4		36907	
+64D3	 F5					PUSH AF	;4		36911	
+64D4	 C5					PUSH BC	;4		36915	
+64D5	 D5					PUSH DE	;4		36919	
+64D6	 E5					PUSH (HL)	;4		36923	
+64D7	 FA 7F DF			JP A, a16	;4		36927	
+64DA	 FE 01				CP d8	;2		36929	
+64DC	 28 46				JR Z s8	;3		36932	
+64DE	 FE 02				CP d8	;2		36934	
+64E0	 28 7B				JR Z s8	;3		36937	
+64E2	 FA 7E DF			JP A, a16	;4		36941	
+64E5	 A7					AND A	;1		36942	
+64E6	 20 7B				JR NZ s8	;3		36945	
+64E8	 F0 E4				LD A, (a8)	;2		36947	
+64EA	 A7					AND A	;1		36948	
+64EB	 28 0D				JR Z s8	;3		36951	
+64ED	 AF					XOR A	;1		36952	
+64EE	 EA E0 DF			LD a16, A	;4		36956	
+64F1	 EA E8 DF			LD a16, A	;4		36960	
+64F4	 EA F0 DF			LD a16, A	;4		36964	
+64F7	 EA F8 DF			LD a16, A	;4		36968	
+64FA	 CD D2 64			CALL a16	;6		36974	
+64FD	 CD DD 69			CALL a16	;6		36980	
+6500	 CD FD 69			CALL a16	;6		36986	
+6503	 CD 3C 68			CALL a16	;6		36992	
+6506	 CD 21 6A			CALL a16	;6		36998	
+6509	 CD 44 6C			CALL a16	;6		37004	
+650C	 CD 65 6A			CALL a16	;6		37010	
+650F	 AF					XOR A	;1		37011	
+6510	 EA E0 DF			LD a16, A	;4		37015	
+6513	 EA E8 DF			LD a16, A	;4		37019	
+6516	 EA F0 DF			LD a16, A	;4		37023	
+6519	 EA F8 DF			LD a16, A	;4		37027	
+651C	 EA 7F DF			LD a16, A	;4		37031	
+651F	 E1					POP (HL)	;3		37034	
+6520	 D1					POP DE	;3		37037	
+6521	 C1					POP BC	;3		37040	
+6522	 F1					POP AF	;3		37043	
+6523	 C9					RET	;4		37047	
+6524	 CD C7 69			CALL a16	;6		37053	
+6527	 AF					XOR A	;1		37054	
+6528	 EA E1 DF			LD a16, A	;4		37058	
+652B	 EA F1 DF			LD a16, A	;4		37062	
+652E	 EA F9 DF			LD a16, A	;4		37066	
+6531	 21 BF DF			LD (HL), d16	;3		37069	
+6534	 CB		
+6537	 9F					SBC A, A	;1		37070	
+6538	 DF					RST 3	;4		37074	
+6539	 CB		
+653A	 BE					CP (HL)	;2		37076	
+653B	 21 AF DF			LD (HL), d16	;3		37079	
+653E	 CB		
+6541	 CF					RST 1	;4		37083	
+6542	 DF					RST 3	;4		37087	
+6543	 CB		
+6544	 BE					CP (HL)	;2		37089	
+6545	 21 E9 6E			LD (HL), d16	;3		37092	
+6548	 CD 98 69			CALL a16	;6		37098	
+654B	 3E 30				LD, A, d8	;2		37100	
+654D	 EA 7E DF			LD a16, A	;4		37104	
+6550	 21 7B 65			LD (HL), d16	;3		37107	
+6553	 CD 5D 69			CALL a16	;6		37113	
+6556	 18 B7				JR s8	;3		37116	
+6558	 21 7F 65			LD (HL), d16	;3		37119	
+655B	 18 F6				JR s8	;3		37122	
+655D	 AF					XOR A	;1		37123	
+655E	 EA 7E DF			LD a16, A	;4		37127	
+6561	 18 85				JR s8	;3		37130	
+6563	 21 7E DF			LD (HL), d16	;3		37133	
+6566	 35					DEC (HL)	;3		37136	
+6567	 7E					LD A, (HL)	;2		37138	
+6568	 FE 28				CP d8	;2		37140	
+656A	 28 EC				JR Z s8	;3		37143	
+656C	 FE 20				CP d8	;2		37145	
+656E	 28 E0				JR Z s8	;3		37148	
+6570	 FE 18				CP d8	;2		37150	
+6572	 28 E4				JR Z s8	;3		37153	
+6574	 FE 10				CP d8	;2		37155	
+6576	 20 97				JR NZ s8	;3		37158	
+6578	 34					INC (HL)	;3		37161	
+6579	 18 94				JR s8	;3		37164	
+657B	 B2					OR D	;1		37165	
+657C	 E3		
+657D	 83					ADD A, E	;1		37166	
+657E	 C7					RST 0	;4		37170	
+657F	 B2					OR D	;1		37171	
+6580	 E3		
+6581	 C1					POP BC	;3		37174	
+6582	 C7					RST 0	;4		37178	
+6583	 FA F1 DF			JP A, a16	;4		37182	
+6586	 FE 01				CP d8	;2		37184	
+6588	 C9					RET	;4		37188	
+6589	 FA E1 DF			JP A, a16	;4		37192	
+658C	 FE 05				CP d8	;2		37194	
+658E	 C9					RET	;4		37198	
+658F	 FA E1 DF			JP A, a16	;4		37202	
+6592	 FE 07				CP d8	;2		37204	
+6594	 C9					RET	;4		37208	
+6595	 FA E1 DF			JP A, a16	;4		37212	
+6598	 FE 08				CP d8	;2		37214	
+659A	 C9					RET	;4		37218	
+659B	 00					NOP	;1		37219	
+659C	 B5					OR L	;1		37220	
+659D	 D0					RET NC	;5		37225	
+659E	 40					LD B, B	;1		37226	
+659F	 C7					RST 0	;4		37230	
+65A0	 00					NOP	;1		37231	
+65A1	 B5					OR L	;1		37232	
+65A2	 20 40				JR NZ s8	;3		37235	
+65A4	 C7					RST 0	;4		37239	
+65A5	 00					NOP	;1		37240	
+65A6	 B6					OR (HL)	;2		37242	
+65A7	 A1					AND C	;1		37243	
+65A8	 80					ADD A, B	;1		37244	
+65A9	 C7					RST 0	;4		37248	
+65AA	 3E 05				LD, A, d8	;2		37250	
+65AC	 21 9B 65			LD (HL), d16	;3		37253	
+65AF	 C3 36 69			JP a16	;4		37257	
+65B2	 CD 8B 69			CALL a16	;6		37263	
+65B5	 A7					AND A	;1		37264	
+65B6	 C0					RET NZ	;5		37269	
+65B7	 21 E4 DF			LD (HL), d16	;3		37272	
+65BA	 34					INC (HL)	;3		37275	
+65BB	 7E					LD A, (HL)	;2		37277	
+65BC	 FE 02				CP d8	;2		37279	
+65BE	 28 13				JR Z s8	;3		37282	
+65C0	 21 A0 65			LD (HL), d16	;3		37285	
+65C3	 C3 56 69			JP a16	;4		37289	
+65C6	 3E 03				LD, A, d8	;2		37291	
+65C8	 21 A5 65			LD (HL), d16	;3		37294	
+65CB	 C3 36 69			JP a16	;4		37298	
+65CE	 CD 8B 69			CALL a16	;6		37304	
+65D1	 A7					AND A	;1		37305	
+65D2	 C0					RET NZ	;5		37310	
+65D3	 AF					XOR A	;1		37311	
+65D4	 EA E1 DF			LD a16, A	;4		37315	
+65D7	 E0 10				LD (a8), A	;3		37318	
+65D9	 3E 08				LD, A, d8	;2		37320	
+65DB	 E0 12				LD (a8), A	;3		37323	
+65DD	 3E 80				LD, A, d8	;2		37325	
+65DF	 E0 14				LD (a8), A	;3		37328	
+65E1	 21 9F DF			LD (HL), d16	;3		37331	
+65E4	 CB		
+65E7	 00					NOP	;1		37332	
+65E8	 80					ADD A, B	;1		37333	
+65E9	 E1					POP (HL)	;3		37336	
+65EA	 C1					POP BC	;3		37339	
+65EB	 87					ADD A, A	;1		37340	
+65EC	 00					NOP	;1		37341	
+65ED	 80					ADD A, B	;1		37342	
+65EE	 E1					POP (HL)	;3		37345	
+65EF	 AC					XOR H	;1		37346	
+65F0	 87					ADD A, A	;1		37347	
+65F1	 21 E7 65			LD (HL), d16	;3		37350	
+65F4	 C3 36 69			JP a16	;4		37354	
+65F7	 21 E4 DF			LD (HL), d16	;3		37357	
+65FA	 34					INC (HL)	;3		37360	
+65FB	 7E					LD A, (HL)	;2		37362	
+65FC	 FE 04				CP d8	;2		37364	
+65FE	 28 17				JR Z s8	;3		37367	
+6600	 FE 0B				CP d8	;2		37369	
+6602	 28 19				JR Z s8	;3		37372	
+6604	 FE 0F				CP d8	;2		37374	
+6606	 28 0F				JR Z s8	;3		37377	
+6608	 FE 18				CP d8	;2		37379	
+660A	 CA 0E 66			JP Z a16	;4		37383	
+660D	 C9					RET	;4		37387	
+660E	 3E 01				LD, A, d8	;2		37389	
+6610	 21 F0 DF			LD (HL), d16	;3		37392	
+6613	 77					LD (HL), A	;2		37394	
+6614	 C3 D3 65			JP a16	;4		37398	
+6617	 21 EC 65			LD (HL), d16	;3		37401	
+661A	 C3 56 69			JP a16	;4		37405	
+661D	 21 E7 65			LD (HL), d16	;3		37408	
+6620	 C3 56 69			JP a16	;4		37412	
+6623	 48					LD C, B	;1		37413	
+6624	 BC					CP H	;1		37414	
+6625	 42					LD B, D	;1		37415	
+6626	 66					LD H, (HL)	;2		37417	
+6627	 87					ADD A, A	;1		37418	
+6628	 CD 83 65			CALL a16	;6		37424	
+662B	 C8					RET Z	;5		37429	
+662C	 CD 95 65			CALL a16	;6		37435	
+662F	 C8					RET Z	;5		37440	
+6630	 CD 8F 65			CALL a16	;6		37446	
+6633	 C8					RET Z	;5		37451	
+6634	 CD 89 65			CALL a16	;6		37457	
+6637	 C8					RET Z	;5		37462	
+6638	 3E 02				LD, A, d8	;2		37464	
+663A	 21 23 66			LD (HL), d16	;3		37467	
+663D	 C3 36 69			JP a16	;4		37471	
+6640	 00					NOP	;1		37472	
+6641	 B0					OR B	;1		37473	
+6642	 F1					POP AF	;3		37476	
+6643	 B6					OR (HL)	;2		37478	
+6644	 C7					RST 0	;4		37482	
+6645	 00					NOP	;1		37483	
+6646	 B0					OR B	;1		37484	
+6647	 F1					POP AF	;3		37487	
+6648	 C4 C7 00			CALL NZ, a16	;6		37493	
+664B	 B0					OR B	;1		37494	
+664C	 F1					POP AF	;3		37497	
+664D	 CE C7				ADC A, d8	;2		37499	
+664F	 00					NOP	;1		37500	
+6650	 B0					OR B	;1		37501	
+6651	 F1					POP AF	;3		37504	
+6652	 DB		
+6653	 C7					RST 0	;4		37508	
+6654	 CD 8F 65			CALL a16	;6		37514	
+6657	 C8					RET Z	;5		37519	
+6658	 3E 07				LD, A, d8	;2		37521	
+665A	 21 40 66			LD (HL), d16	;3		37524	
+665D	 C3 36 69			JP a16	;4		37528	
+6660	 CD 8B 69			CALL a16	;6		37534	
+6663	 A7					AND A	;1		37535	
+6664	 C0					RET NZ	;5		37540	
+6665	 21 E4 DF			LD (HL), d16	;3		37543	
+6668	 34					INC (HL)	;3		37546	
+6669	 7E					LD A, (HL)	;2		37548	
+666A	 FE 01				CP d8	;2		37550	
+666C	 28 12				JR Z s8	;3		37553	
+666E	 FE 02				CP d8	;2		37555	
+6670	 28 13				JR Z s8	;3		37558	
+6672	 FE 03				CP d8	;2		37560	
+6674	 28 14				JR Z s8	;3		37563	
+6676	 FE 04				CP d8	;2		37565	
+6678	 28 15				JR Z s8	;3		37568	
+667A	 FE 05				CP d8	;2		37570	
+667C	 CA D3 65			JP Z a16	;4		37574	
+667F	 C9					RET	;4		37578	
+6680	 21 45 66			LD (HL), d16	;3		37581	
+6683	 18 0D				JR s8	;3		37584	
+6685	 21 4A 66			LD (HL), d16	;3		37587	
+6688	 18 08				JR s8	;3		37590	
+668A	 21 4F 66			LD (HL), d16	;3		37593	
+668D	 18 03				JR s8	;3		37596	
+668F	 21 40 66			LD (HL), d16	;3		37599	
+6692	 C3 56 69			JP a16	;4		37603	
+6695	 3E 80				LD, A, d8	;2		37605	
+6697	 E3		
+6699	 C4 93 83			CALL NZ, a16	;6		37611	
+669C	 83					ADD A, E	;1		37612	
+669D	 73					LD (HL), E	;2		37614	
+669E	 63					LD H, E	;1		37615	
+669F	 53					LD D, E	;1		37616	
+66A0	 43					LD B, E	;1		37617	
+66A1	 33					INC, SP	;2		37619	
+66A2	 23					INC, (HL)	;2		37621	
+66A3	 13					INC, DE	;2		37623	
+66A4	 00					NOP	;1		37624	
+66A5	 00					NOP	;1		37625	
+66A6	 23					INC, (HL)	;2		37627	
+66A7	 43					LD B, E	;1		37628	
+66A8	 63					LD H, E	;1		37629	
+66A9	 83					ADD A, E	;1		37630	
+66AA	 A3					AND E	;1		37631	
+66AB	 C3 D3 E3			JP a16	;4		37635	
+66AE	 FF					RST 7	;4		37639	
+66AF	 CD 83 65			CALL a16	;6		37645	
+66B2	 C8					RET Z	;5		37650	
+66B3	 CD 95 65			CALL a16	;6		37656	
+66B6	 C8					RET Z	;5		37661	
+66B7	 CD 8F 65			CALL a16	;6		37667	
+66BA	 C8					RET Z	;5		37672	
+66BB	 3E 06				LD, A, d8	;2		37674	
+66BD	 21 95 66			LD (HL), d16	;3		37677	
+66C0	 C3 36 69			JP a16	;4		37681	
+66C3	 CD 8B 69			CALL a16	;6		37687	
+66C6	 A7					AND A	;1		37688	
+66C7	 C0					RET NZ	;5		37693	
+66C8	 21 E4 DF			LD (HL), d16	;3		37696	
+66CB	 4E					LD C, (HL)	;2		37698	
+66CC	 34					INC (HL)	;3		37701	
+66CD	 06 00				LD, B, d8	;2		37703	
+66CF	 21 9A 66			LD (HL), d16	;3		37706	
+66D2	 09					ADD HL, BC	;2		37708	
+66D3	 7E					LD A, (HL)	;2		37710	
+66D4	 A7					AND A	;1		37711	
+66D5	 CA D3 65			JP Z a16	;4		37715	
+66D8	 5F					LD E, A	;1		37716	
+66D9	 21 A5 66			LD (HL), d16	;3		37719	
+66DC	 09					ADD HL, BC	;2		37721	
+66DD	 7E					LD A, (HL)	;2		37723	
+66DE	 57					LD D, A	;1		37724	
+66DF	 06 86				LD, B, d8	;2		37726	
+66E1	 0E 12				LD, C, d8	;2		37728	
+66E3	 7B					LD A, E	;1		37729	
+66E4	 E2					LD (C), A	;2		37731	
+66E5	 0C					INC, C	;1		37732	
+66E6	 7A					LD A, D	;1		37733	
+66E7	 E2					LD (C), A	;2		37735	
+66E8	 0C					INC, C	;1		37736	
+66E9	 78					LD A, B	;1		37737	
+66EA	 E2					LD (C), A	;2		37739	
+66EB	 C9					RET	;4		37743	
+66EC	 3B					DEC, SP	;2		37745	
+66ED	 80					ADD A, B	;1		37746	
+66EE	 B2					OR D	;1		37747	
+66EF	 87					ADD A, A	;1		37748	
+66F0	 87					ADD A, A	;1		37749	
+66F1	 A2					AND D	;1		37750	
+66F2	 93					SUB E	;1		37751	
+66F3	 62					LD H, D	;1		37752	
+66F4	 43					LD B, E	;1		37753	
+66F5	 23					INC, (HL)	;2		37755	
+66F6	 00					NOP	;1		37756	
+66F7	 80					ADD A, B	;1		37757	
+66F8	 40					LD B, B	;1		37758	
+66F9	 80					ADD A, B	;1		37759	
+66FA	 40					LD B, B	;1		37760	
+66FB	 80					ADD A, B	;1		37761	
+66FC	 CD 83 65			CALL a16	;6		37767	
+66FF	 C8					RET Z	;5		37772	
+6700	 CD 95 65			CALL a16	;6		37778	
+6703	 C8					RET Z	;5		37783	
+6704	 CD 8F 65			CALL a16	;6		37789	
+6707	 C8					RET Z	;5		37794	
+6708	 CD 89 65			CALL a16	;6		37800	
+670B	 C8					RET Z	;5		37805	
+670C	 3E 03				LD, A, d8	;2		37807	
+670E	 21 EC 66			LD (HL), d16	;3		37810	
+6711	 C3 36 69			JP a16	;4		37814	
+6714	 CD 8B 69			CALL a16	;6		37820	
+6717	 A7					AND A	;1		37821	
+6718	 C0					RET NZ	;5		37826	
+6719	 21 E4 DF			LD (HL), d16	;3		37829	
+671C	 4E					LD C, (HL)	;2		37831	
+671D	 34					INC (HL)	;3		37834	
+671E	 06 00				LD, B, d8	;2		37836	
+6720	 21 F1 66			LD (HL), d16	;3		37839	
+6723	 09					ADD HL, BC	;2		37841	
+6724	 7E					LD A, (HL)	;2		37843	
+6725	 A7					AND A	;1		37844	
+6726	 CA D3 65			JP Z a16	;4		37848	
+6729	 5F					LD E, A	;1		37849	
+672A	 21 F7 66			LD (HL), d16	;3		37852	
+672D	 09					ADD HL, BC	;2		37854	
+672E	 7E					LD A, (HL)	;2		37856	
+672F	 57					LD D, A	;1		37857	
+6730	 06 87				LD, B, d8	;2		37859	
+6732	 18 AD				JR s8	;3		37862	
+6734	 CD 8F 65			CALL a16	;6		37868	
+6737	 C8					RET Z	;5		37873	
+6738	 3E 28				LD, A, d8	;2		37875	
+673A	 21 40 67			LD (HL), d16	;3		37878	
+673D	 C3 36 69			JP a16	;4		37882	
+6740	 B7					OR A	;1		37883	
+6741	 80					ADD A, B	;1		37884	
+6742	 90					SUB B	;1		37885	
+6743	 FF					RST 7	;4		37889	
+6744	 83					ADD A, E	;1		37890	
+6745	 00					NOP	;1		37891	
+6746	 D1					POP DE	;3		37894	
+6747	 45					LD B, L	;1		37895	
+6748	 80					ADD A, B	;1		37896	
+6749	 00					NOP	;1		37897	
+674A	 F1					POP AF	;3		37900	
+674B	 54					LD D, H	;1		37901	
+674C	 80					ADD A, B	;1		37902	
+674D	 00					NOP	;1		37903	
+674E	 D5					PUSH DE	;4		37907	
+674F	 65					LD H, L	;1		37908	
+6750	 80					ADD A, B	;1		37909	
+6751	 00					NOP	;1		37910	
+6752	 70					LD (HL), B	;2		37912	
+6753	 66					LD H, (HL)	;2		37914	
+6754	 80					ADD A, B	;1		37915	
+6755	 65					LD H, L	;1		37916	
+6756	 65					LD H, L	;1		37917	
+6757	 65					LD H, L	;1		37918	
+6758	 64					LD H, H	;1		37919	
+6759	 57					LD D, A	;1		37920	
+675A	 56					LD D, (HL)	;2		37922	
+675B	 55					LD D, L	;1		37923	
+675C	 54					LD D, H	;1		37924	
+675D	 54					LD D, H	;1		37925	
+675E	 54					LD D, H	;1		37926	
+675F	 54					LD D, H	;1		37927	
+6760	 54					LD D, H	;1		37928	
+6761	 47					LD B, A	;1		37929	
+6762	 46					LD B, (HL)	;2		37931	
+6763	 46					LD B, (HL)	;2		37933	
+6764	 45					LD B, L	;1		37934	
+6765	 45					LD B, L	;1		37935	
+6766	 45					LD B, L	;1		37936	
+6767	 44					LD B, H	;1		37937	
+6768	 44					LD B, H	;1		37938	
+6769	 44					LD B, H	;1		37939	
+676A	 34					INC (HL)	;3		37942	
+676B	 34					INC (HL)	;3		37945	
+676C	 34					INC (HL)	;3		37948	
+676D	 34					INC (HL)	;3		37951	
+676E	 34					INC (HL)	;3		37954	
+676F	 34					INC (HL)	;3		37957	
+6770	 34					INC (HL)	;3		37960	
+6771	 34					INC (HL)	;3		37963	
+6772	 34					INC (HL)	;3		37966	
+6773	 34					INC (HL)	;3		37969	
+6774	 34					INC (HL)	;3		37972	
+6775	 34					INC (HL)	;3		37975	
+6776	 34					INC (HL)	;3		37978	
+6777	 34					INC (HL)	;3		37981	
+6778	 34					INC (HL)	;3		37984	
+6779	 70					LD (HL), B	;2		37986	
+677A	 60					LD H, B	;1		37987	
+677B	 70					LD (HL), B	;2		37989	
+677C	 70					LD (HL), B	;2		37991	
+677D	 70					LD (HL), B	;2		37993	
+677E	 80					ADD A, B	;1		37994	
+677F	 90					SUB B	;1		37995	
+6780	 A0					AND B	;1		37996	
+6781	 D0					RET NC	;5		38001	
+6782	 F0 E0				LD A, (a8)	;2		38003	
+6784	 D0					RET NC	;5		38008	
+6785	 C0					RET NZ	;5		38013	
+6786	 B0					OR B	;1		38014	
+6787	 A0					AND B	;1		38015	
+6788	 90					SUB B	;1		38016	
+6789	 80					ADD A, B	;1		38017	
+678A	 70					LD (HL), B	;2		38019	
+678B	 60					LD H, B	;1		38020	
+678C	 50					LD D, B	;1		38021	
+678D	 40					LD B, B	;1		38022	
+678E	 30 30				JR NC s8	;3		38025	
+6790	 20 20				JR NZ s8	;3		38028	
+6792	 20 20				JR NZ s8	;3		38031	
+6794	 20 20				JR NZ s8	;3		38034	
+6796	 20 20				JR NZ s8	;3		38037	
+6798	 20 20				JR NZ s8	;3		38040	
+679A	 20 10				JR NZ s8	;3		38043	
+679C	 10 3E				STOP	;1		38044	
+679E	 30 21				JR NC s8	;3		38047	
+67A0	 4D					LD C, L	;1		38048	
+67A1	 67					LD H, A	;1		38049	
+67A2	 C3 36 69			JP a16	;4		38053	
+67A5	 3E 30				LD, A, d8	;2		38055	
+67A7	 21 51 67			LD (HL), d16	;3		38058	
+67AA	 C3 36 69			JP a16	;4		38062	
+67AD	 CD 8B 69			CALL a16	;6		38068	
+67B0	 A7					AND A	;1		38069	
+67B1	 C0					RET NZ	;5		38074	
+67B2	 21 FC DF			LD (HL), d16	;3		38077	
+67B5	 7E					LD A, (HL)	;2		38079	
+67B6	 4F					LD C, A	;1		38080	
+67B7	 FE 24				CP d8	;2		38082	
+67B9	 CA E9 67			JP Z a16	;4		38086	
+67BC	 34					INC (HL)	;3		38089	
+67BD	 06 00				LD, B, d8	;2		38091	
+67BF	 C5					PUSH BC	;4		38095	
+67C0	 21 55 67			LD (HL), d16	;3		38098	
+67C3	 09					ADD HL, BC	;2		38100	
+67C4	 7E					LD A, (HL)	;2		38102	
+67C5	 E0 22				LD (a8), A	;3		38105	
+67C7	 C1					POP BC	;3		38108	
+67C8	 21 79 67			LD (HL), d16	;3		38111	
+67CB	 09					ADD HL, BC	;2		38113	
+67CC	 7E					LD A, (HL)	;2		38115	
+67CD	 E0 21				LD (a8), A	;3		38118	
+67CF	 3E 80				LD, A, d8	;2		38120	
+67D1	 E0 23				LD (a8), A	;3		38123	
+67D3	 C9					RET	;4		38127	
+67D4	 3E 20				LD, A, d8	;2		38129	
+67D6	 21 49 67			LD (HL), d16	;3		38132	
+67D9	 C3 36 69			JP a16	;4		38136	
+67DC	 3E 12				LD, A, d8	;2		38138	
+67DE	 21 45 67			LD (HL), d16	;3		38141	
+67E1	 C3 36 69			JP a16	;4		38145	
+67E4	 CD 8B 69			CALL a16	;6		38151	
+67E7	 A7					AND A	;1		38152	
+67E8	 C0					RET NZ	;5		38157	
+67E9	 AF					XOR A	;1		38158	
+67EA	 EA F9 DF			LD a16, A	;4		38162	
+67ED	 3E 08				LD, A, d8	;2		38164	
+67EF	 E0 21				LD (a8), A	;3		38167	
+67F1	 3E 80				LD, A, d8	;2		38169	
+67F3	 E0 23				LD (a8), A	;3		38172	
+67F5	 21 CF DF			LD (HL), d16	;3		38175	
+67F8	 CB		
+67FB	 80					ADD A, B	;1		38176	
+67FC	 3A					LD A, (HL-)	;2		38178	
+67FD	 20 60				JR NZ s8	;3		38181	
+67FF	 C6 21				ADD A, d8	;2		38183	
+6801	 D9					RETI	;4		38187	
+6802	 6E					LD L, (HL)	;2		38189	
+6803	 CD 0D 69			CALL a16	;6		38195	
+6806	 F0 04				LD A, (a8)	;2		38197	
+6808	 E6 1F				AND d8	;2		38199	
+680A	 47					LD B, A	;1		38200	
+680B	 3E D0				LD, A, d8	;2		38202	
+680D	 80					ADD A, B	;1		38203	
+680E	 EA F5 DF			LD a16, A	;4		38207	
+6811	 21 FB 67			LD (HL), d16	;3		38210	
+6814	 C3 64 69			JP a16	;4		38214	
+6817	 F0 04				LD A, (a8)	;2		38216	
+6819	 E6 0F				AND d8	;2		38218	
+681B	 47					LD B, A	;1		38219	
+681C	 21 F4 DF			LD (HL), d16	;3		38222	
+681F	 34					INC (HL)	;3		38225	
+6820	 7E					LD A, (HL)	;2		38227	
+6821	 21 F5 DF			LD (HL), d16	;3		38230	
+6824	 FE 0E				CP d8	;2		38232	
+6826	 30 0A				JR NC s8	;3		38235	
+6828	 34					INC (HL)	;3		38238	
+6829	 34					INC (HL)	;3		38241	
+682A	 7E					LD A, (HL)	;2		38243	
+682B	 E6 F0				AND d8	;2		38245	
+682D	 B0					OR B	;1		38246	
+682E	 0E 1D				LD, C, d8	;2		38248	
+6830	 E2					LD (C), A	;2		38250	
+6831	 C9					RET	;4		38254	
+6832	 FE 1E				CP d8	;2		38256	
+6834	 CA E2 68			JP Z a16	;4		38260	
+6837	 35					DEC (HL)	;3		38263	
+6838	 35					DEC (HL)	;3		38266	
+6839	 35					DEC (HL)	;3		38269	
+683A	 18 EE				JR s8	;3		38272	
+683C	 FA F0 DF			JP A, a16	;4		38276	
+683F	 FE 01				CP d8	;2		38278	
+6841	 CA 6B 68			JP Z a16	;4		38282	
+6844	 FE 02				CP d8	;2		38284	
+6846	 CA 00 68			JP Z a16	;4		38288	
+6849	 FA F1 DF			JP A, a16	;4		38292	
+684C	 FE 01				CP d8	;2		38294	
+684E	 CA B6 68			JP Z a16	;4		38298	
+6851	 FE 02				CP d8	;2		38300	
+6853	 CA 17 68			JP Z a16	;4		38304	
+6856	 C9					RET	;4		38308	
+6857	 80					ADD A, B	;1		38309	
+6858	 80					ADD A, B	;1		38310	
+6859	 20 9D				JR NZ s8	;3		38313	
+685B	 87					ADD A, A	;1		38314	
+685C	 80					ADD A, B	;1		38315	
+685D	 F8 20				LD HL, SP+s8	;3		38318	
+685F	 98					SBC A, B	;1		38319	
+6860	 87					ADD A, A	;1		38320	
+6861	 80					ADD A, B	;1		38321	
+6862	 FB					EI	;1		38322	
+6863	 20 96				JR NZ s8	;3		38325	
+6865	 87					ADD A, A	;1		38326	
+6866	 80					ADD A, B	;1		38327	
+6867	 F6 20				OR d8	;2		38329	
+6869	 95					SUB L	;1		38330	
+686A	 87					ADD A, A	;1		38331	
+686B	 21 A9 6E			LD (HL), d16	;3		38334	
+686E	 CD 0D 69			CALL a16	;6		38340	
+6871	 21 5A 68			LD (HL), d16	;3		38343	
+6874	 7E					LD A, (HL)	;2		38345	
+6875	 EA F6 DF			LD a16, A	;4		38349	
+6878	 3E 01				LD, A, d8	;2		38351	
+687A	 EA F5 DF			LD a16, A	;4		38355	
+687D	 21 57 68			LD (HL), d16	;3		38358	
+6880	 C3 64 69			JP a16	;4		38362	
+6883	 3E 00				LD, A, d8	;2		38364	
+6885	 EA F5 DF			LD a16, A	;4		38368	
+6888	 21 5F 68			LD (HL), d16	;3		38371	
+688B	 7E					LD A, (HL)	;2		38373	
+688C	 EA F6 DF			LD a16, A	;4		38377	
+688F	 21 5C 68			LD (HL), d16	;3		38380	
+6892	 18 EC				JR s8	;3		38383	
+6894	 3E 01				LD, A, d8	;2		38385	
+6896	 EA F5 DF			LD a16, A	;4		38389	
+6899	 21 64 68			LD (HL), d16	;3		38392	
+689C	 7E					LD A, (HL)	;2		38394	
+689D	 EA F6 DF			LD a16, A	;4		38398	
+68A0	 21 61 68			LD (HL), d16	;3		38401	
+68A3	 18 DB				JR s8	;3		38404	
+68A5	 3E 02				LD, A, d8	;2		38406	
+68A7	 EA F5 DF			LD a16, A	;4		38410	
+68AA	 21 69 68			LD (HL), d16	;3		38413	
+68AD	 7E					LD A, (HL)	;2		38415	
+68AE	 EA F6 DF			LD a16, A	;4		38419	
+68B1	 21 66 68			LD (HL), d16	;3		38422	
+68B4	 18 CA				JR s8	;3		38425	
+68B6	 21 F4 DF			LD (HL), d16	;3		38428	
+68B9	 34					INC (HL)	;3		38431	
+68BA	 2A					LD A, (HL+)	;2		38433	
+68BB	 FE 09				CP d8	;2		38435	
+68BD	 28 C4				JR Z s8	;3		38438	
+68BF	 FE 13				CP d8	;2		38440	
+68C1	 28 D1				JR Z s8	;3		38443	
+68C3	 FE 17				CP d8	;2		38445	
+68C5	 28 DE				JR Z s8	;3		38448	
+68C7	 FE 20				CP d8	;2		38450	
+68C9	 28 17				JR Z s8	;3		38453	
+68CB	 2A					LD A, (HL+)	;2		38455	
+68CC	 FE 00				CP d8	;2		38457	
+68CE	 C8					RET Z	;5		38462	
+68CF	 FE 01				CP d8	;2		38464	
+68D1	 28 05				JR Z s8	;3		38467	
+68D3	 FE 02				CP d8	;2		38469	
+68D5	 28 05				JR Z s8	;3		38472	
+68D7	 C9					RET	;4		38476	
+68D8	 34					INC (HL)	;3		38479	
+68D9	 34					INC (HL)	;3		38482	
+68DA	 18 02				JR s8	;3		38485	
+68DC	 35					DEC (HL)	;3		38488	
+68DD	 35					DEC (HL)	;3		38491	
+68DE	 7E					LD A, (HL)	;2		38493	
+68DF	 E0 1D				LD (a8), A	;3		38496	
+68E1	 C9					RET	;4		38500	
+68E2	 AF					XOR A	;1		38501	
+68E3	 EA F1 DF			LD a16, A	;4		38505	
+68E6	 E0 1A				LD (a8), A	;3		38508	
+68E8	 21 BF DF			LD (HL), d16	;3		38511	
+68EB	 CB		
+68EE	 9F					SBC A, A	;1		38512	
+68EF	 DF					RST 3	;4		38516	
+68F0	 CB		
+68F1	 BE					CP (HL)	;2		38518	
+68F2	 21 AF DF			LD (HL), d16	;3		38521	
+68F5	 CB		
+68F8	 CF					RST 1	;4		38525	
+68F9	 DF					RST 3	;4		38529	
+68FA	 CB		
+68FB	 BE					CP (HL)	;2		38531	
+68FC	 FA E9 DF			JP A, a16	;4		38535	
+68FF	 FE 05				CP d8	;2		38537	
+6901	 28 05				JR Z s8	;3		38540	
+6903	 21 E9 6E			LD (HL), d16	;3		38543	
+6906	 18 2A				JR s8	;3		38546	
+6908	 21 C9 6E			LD (HL), d16	;3		38549	
+690B	 18 25				JR s8	;3		38552	
+690D	 E5					PUSH (HL)	;4		38556	
+690E	 EA F1 DF			LD a16, A	;4		38560	
+6911	 21 BF DF			LD (HL), d16	;3		38563	
+6914	 CB		
+6917	 EA F4 DF			LD a16, A	;4		38567	
+691A	 EA F5 DF			LD a16, A	;4		38571	
+691D	 EA F6 DF			LD a16, A	;4		38575	
+6920	 E0 1A				LD (a8), A	;3		38578	
+6922	 21 9F DF			LD (HL), d16	;3		38581	
+6925	 CB		
+6928	 AF					XOR A	;1		38582	
+6929	 DF					RST 3	;4		38586	
+692A	 CB		
+692B	 FE 21				CP d8	;2		38588	
+692D	 CF					RST 1	;4		38592	
+692E	 DF					RST 3	;4		38596	
+692F	 CB		
+6930	 FE E1				CP d8	;2		38598	
+6932	 CD 98 69			CALL a16	;6		38604	
+6935	 C9					RET	;4		38608	
+6936	 F5					PUSH AF	;4		38612	
+6937	 1D					DEC, E	;1		38613	
+6938	 FA 71 DF			JP A, a16	;4		38617	
+693B	 12					LD (DE), A	;2		38619	
+693C	 1C					INC, E	;1		38620	
+693D	 F1					POP AF	;3		38623	
+693E	 1C					INC, E	;1		38624	
+693F	 12					LD (DE), A	;2		38626	
+6940	 1D					DEC, E	;1		38627	
+6941	 AF					XOR A	;1		38628	
+6942	 12					LD (DE), A	;2		38630	
+6943	 1C					INC, E	;1		38631	
+6944	 1C					INC, E	;1		38632	
+6945	 12					LD (DE), A	;2		38634	
+6946	 1C					INC, E	;1		38635	
+6947	 12					LD (DE), A	;2		38637	
+6948	 7B					LD A, E	;1		38638	
+6949	 FE E5				CP d8	;2		38640	
+694B	 28 09				JR Z s8	;3		38643	
+694D	 FE F5				CP d8	;2		38645	
+694F	 28 13				JR Z s8	;3		38648	
+6951	 FE FD				CP d8	;2		38650	
+6953	 28 16				JR Z s8	;3		38653	
+6955	 C9					RET	;4		38657	
+6956	 C5					PUSH BC	;4		38661	
+6957	 0E 10				LD, C, d8	;2		38663	
+6959	 06 05				LD, B, d8	;2		38665	
+695B	 18 13				JR s8	;3		38668	
+695D	 C5					PUSH BC	;4		38672	
+695E	 0E 16				LD, C, d8	;2		38674	
+6960	 06 04				LD, B, d8	;2		38676	
+6962	 18 0C				JR s8	;3		38679	
+6964	 C5					PUSH BC	;4		38683	
+6965	 0E 1A				LD, C, d8	;2		38685	
+6967	 06 05				LD, B, d8	;2		38687	
+6969	 18 05				JR s8	;3		38690	
+696B	 C5					PUSH BC	;4		38694	
+696C	 0E 20				LD, C, d8	;2		38696	
+696E	 06 04				LD, B, d8	;2		38698	
+6970	 2A					LD A, (HL+)	;2		38700	
+6971	 E2					LD (C), A	;2		38702	
+6972	 0C					INC, C	;1		38703	
+6973	 05					DEC, B	;1		38704	
+6974	 20 FA				JR NZ s8	;3		38707	
+6976	 C1					POP BC	;3		38710	
+6977	 C9					RET	;4		38714	
+6978	 1C					INC, E	;1		38715	
+6979	 EA 71 DF			LD a16, A	;4		38719	
+697C	 1C					INC, E	;1		38720	
+697D	 3D					DEC, A	;1		38721	
+697E	 CB		
+697F	 27					DAA	;1		38722	
+6980	 4F					LD C, A	;1		38723	
+6981	 06 00				LD, B, d8	;2		38725	
+6983	 09					ADD HL, BC	;2		38727	
+6984	 4E					LD C, (HL)	;2		38729	
+6985	 23					INC, (HL)	;2		38731	
+6986	 46					LD B, (HL)	;2		38733	
+6987	 69					LD L, C	;1		38734	
+6988	 60					LD H, B	;1		38735	
+6989	 7C					LD A, H	;1		38736	
+698A	 C9					RET	;4		38740	
+698B	 D5					PUSH DE	;4		38744	
+698C	 6B					LD L, E	;1		38745	
+698D	 62					LD H, D	;1		38746	
+698E	 34					INC (HL)	;3		38749	
+698F	 2A					LD A, (HL+)	;2		38751	
+6990	 BE					CP (HL)	;2		38753	
+6991	 20 03				JR NZ s8	;3		38756	
+6993	 2D					DEC, L	;1		38757	
+6994	 AF					XOR A	;1		38758	
+6995	 77					LD (HL), A	;2		38760	
+6996	 D1					POP DE	;3		38763	
+6997	 C9					RET	;4		38767	
+6998	 C5					PUSH BC	;4		38771	
+6999	 0E 30				LD, C, d8	;2		38773	
+699B	 2A					LD A, (HL+)	;2		38775	
+699C	 E2					LD (C), A	;2		38777	
+699D	 0C					INC, C	;1		38778	
+699E	 79					LD A, C	;1		38779	
+699F	 FE 40				CP d8	;2		38781	
+69A1	 20 F8				JR NZ s8	;3		38784	
+69A3	 C1					POP BC	;3		38787	
+69A4	 C9					RET	;4		38791	
+69A5	 AF					XOR A	;1		38792	
+69A6	 EA E1 DF			LD a16, A	;4		38796	
+69A9	 EA E9 DF			LD a16, A	;4		38800	
+69AC	 EA F1 DF			LD a16, A	;4		38804	
+69AF	 EA F9 DF			LD a16, A	;4		38808	
+69B2	 EA 9F DF			LD a16, A	;4		38812	
+69B5	 EA AF DF			LD a16, A	;4		38816	
+69B8	 EA BF DF			LD a16, A	;4		38820	
+69BB	 EA CF DF			LD a16, A	;4		38824	
+69BE	 3E FF				LD, A, d8	;2		38826	
+69C0	 E0 25				LD (a8), A	;3		38829	
+69C2	 3E 03				LD, A, d8	;2		38831	
+69C4	 EA 78 DF			LD a16, A	;4		38835	
+69C7	 3E 08				LD, A, d8	;2		38837	
+69C9	 E0 12				LD (a8), A	;3		38840	
+69CB	 E0 17				LD (a8), A	;3		38843	
+69CD	 E0 21				LD (a8), A	;3		38846	
+69CF	 3E 80				LD, A, d8	;2		38848	
+69D1	 E0 14				LD (a8), A	;3		38851	
+69D3	 E0 19				LD (a8), A	;3		38854	
+69D5	 E0 23				LD (a8), A	;3		38857	
+69D7	 AF					XOR A	;1		38858	
+69D8	 E0 10				LD (a8), A	;3		38861	
+69DA	 E0 1A				LD (a8), A	;3		38864	
+69DC	 C9					RET	;4		38868	
+69DD	 11 E0 DF			LD DE, d16	;3		38871	
+69E0	 1A					LD A, (DE)	;2		38873	
+69E1	 A7					AND A	;1		38874	
+69E2	 28 0C				JR Z s8	;3		38877	
+69E4	 21 9F DF			LD (HL), d16	;3		38880	
+69E7	 CB		
+69EA	 80					ADD A, B	;1		38881	
+69EB	 64					LD H, H	;1		38882	
+69EC	 CD 78 69			CALL a16	;6		38888	
+69EF	 E9					JP HL	;1		38889	
+69F0	 1C					INC, E	;1		38890	
+69F1	 1A					LD A, (DE)	;2		38892	
+69F2	 A7					AND A	;1		38893	
+69F3	 28 07				JR Z s8	;3		38896	
+69F5	 21 90 64			LD (HL), d16	;3		38899	
+69F8	 CD 7C 69			CALL a16	;6		38905	
+69FB	 E9					JP HL	;1		38906	
+69FC	 C9					RET	;4		38910	
+69FD	 11 F8 DF			LD DE, d16	;3		38913	
+6A00	 1A					LD A, (DE)	;2		38915	
+6A01	 A7					AND A	;1		38916	
+6A02	 28 0C				JR Z s8	;3		38919	
+6A04	 21 CF DF			LD (HL), d16	;3		38922	
+6A07	 CB		
+6A0A	 A0					AND B	;1		38923	
+6A0B	 64					LD H, H	;1		38924	
+6A0C	 CD 78 69			CALL a16	;6		38930	
+6A0F	 E9					JP HL	;1		38931	
+6A10	 1C					INC, E	;1		38932	
+6A11	 1A					LD A, (DE)	;2		38934	
+6A12	 A7					AND A	;1		38935	
+6A13	 28 07				JR Z s8	;3		38938	
+6A15	 21 A8 64			LD (HL), d16	;3		38941	
+6A18	 CD 7C 69			CALL a16	;6		38947	
+6A1B	 E9					JP HL	;1		38948	
+6A1C	 C9					RET	;4		38952	
+6A1D	 CD A5 69			CALL a16	;6		38958	
+6A20	 C9					RET	;4		38962	
+6A21	 21 E8 DF			LD (HL), d16	;3		38965	
+6A24	 2A					LD A, (HL+)	;2		38967	
+6A25	 A7					AND A	;1		38968	
+6A26	 C8					RET Z	;5		38973	
+6A27	 FE FF				CP d8	;2		38975	
+6A29	 28 F2				JR Z s8	;3		38978	
+6A2B	 77					LD (HL), A	;2		38980	
+6A2C	 47					LD B, A	;1		38981	
+6A2D	 21 B0 64			LD (HL), d16	;3		38984	
+6A30	 E6 1F				AND d8	;2		38986	
+6A32	 CD 7C 69			CALL a16	;6		38992	
+6A35	 CD 13 6B			CALL a16	;6		38998	
+6A38	 CD 3C 6A			CALL a16	;6		39004	
+6A3B	 C9					RET	;4		39008	
+6A3C	 FA E9 DF			JP A, a16	;4		39012	
+6A3F	 A7					AND A	;1		39013	
+6A40	 C8					RET Z	;5		39018	
+6A41	 21 BE 6A			LD (HL), d16	;3		39021	
+6A44	 3D					DEC, A	;1		39022	
+6A45	 28 06				JR Z s8	;3		39025	
+6A47	 23					INC, (HL)	;2		39027	
+6A48	 23					INC, (HL)	;2		39029	
+6A49	 23					INC, (HL)	;2		39031	
+6A4A	 23					INC, (HL)	;2		39033	
+6A4B	 18 F7				JR s8	;3		39036	
+6A4D	 2A					LD A, (HL+)	;2		39038	
+6A4E	 EA 78 DF			LD a16, A	;4		39042	
+6A51	 2A					LD A, (HL+)	;2		39044	
+6A52	 EA 76 DF			LD a16, A	;4		39048	
+6A55	 2A					LD A, (HL+)	;2		39050	
+6A56	 EA 79 DF			LD a16, A	;4		39054	
+6A59	 2A					LD A, (HL+)	;2		39056	
+6A5A	 EA 7A DF			LD a16, A	;4		39060	
+6A5D	 AF					XOR A	;1		39061	
+6A5E	 EA 75 DF			LD a16, A	;4		39065	
+6A61	 EA 77 DF			LD a16, A	;4		39069	
+6A64	 C9					RET	;4		39073	
+6A65	 FA E9 DF			JP A, a16	;4		39077	
+6A68	 A7					AND A	;1		39078	
+6A69	 28 3D				JR Z s8	;3		39081	
+6A6B	 21 75 DF			LD (HL), d16	;3		39084	
+6A6E	 FA 78 DF			JP A, a16	;4		39088	
+6A71	 FE 01				CP d8	;2		39090	
+6A73	 28 37				JR Z s8	;3		39093	
+6A75	 FE 03				CP d8	;2		39095	
+6A77	 28 2F				JR Z s8	;3		39098	
+6A79	 34					INC (HL)	;3		39101	
+6A7A	 2A					LD A, (HL+)	;2		39103	
+6A7B	 BE					CP (HL)	;2		39105	
+6A7C	 20 33				JR NZ s8	;3		39108	
+6A7E	 2D					DEC, L	;1		39109	
+6A7F	 36 00				LD (HL), d8	;3		39112	
+6A81	 2C					INC, L	;1		39113	
+6A82	 2C					INC, L	;1		39114	
+6A83	 34					INC (HL)	;3		39117	
+6A84	 FA 79 DF			JP A, a16	;4		39121	
+6A87	 CB		
+6A8A	 8F					ADC A, A	;1		39122	
+6A8B	 6A					LD L, D	;1		39123	
+6A8C	 FA 7A DF			JP A, a16	;4		39127	
+6A8F	 47					LD B, A	;1		39128	
+6A90	 FA F1 DF			JP A, a16	;4		39132	
+6A93	 A7					AND A	;1		39133	
+6A94	 28 04				JR Z s8	;3		39136	
+6A96	 CB		
+6A98	 CB		
+6A9A	 FA F9 DF			JP A, a16	;4		39140	
+6A9D	 A7					AND A	;1		39141	
+6A9E	 28 04				JR Z s8	;3		39144	
+6AA0	 CB		
+6AA2	 CB		
+6AA4	 78					LD A, B	;1		39145	
+6AA5	 E0 25				LD (a8), A	;3		39148	
+6AA7	 C9					RET	;4		39152	
+6AA8	 3E FF				LD, A, d8	;2		39154	
+6AAA	 18 F9				JR s8	;3		39157	
+6AAC	 FA 79 DF			JP A, a16	;4		39161	
+6AAF	 18 DE				JR s8	;3		39164	
+6AB1	 FA F9 DF			JP A, a16	;4		39168	
+6AB4	 A7					AND A	;1		39169	
+6AB5	 20 F1				JR NZ s8	;3		39172	
+6AB7	 FA F1 DF			JP A, a16	;4		39176	
+6ABA	 A7					AND A	;1		39177	
+6ABB	 20 EB				JR NZ s8	;3		39180	
+6ABD	 C9					RET	;4		39184	
+6ABE	 01 24 EF			LD BC, d16	;3		39187	
+6AC1	 56					LD D, (HL)	;2		39189	
+6AC2	 01 00 E5			LD BC, d16	;3		39192	
+6AC5	 00					NOP	;1		39193	
+6AC6	 01 20 FD			LD BC, d16	;3		39196	
+6AC9	 00					NOP	;1		39197	
+6ACA	 01 20 DE			LD BC, d16	;3		39200	
+6ACD	 F7					RST 6	;4		39204	
+6ACE	 03					INC, BC	;2		39206	
+6ACF	 18 7F				JR s8	;3		39209	
+6AD1	 F7					RST 6	;4		39213	
+6AD2	 03					INC, BC	;2		39215	
+6AD3	 18 F7				JR s8	;3		39218	
+6AD5	 7F					LD A, A	;1		39219	
+6AD6	 03					INC, BC	;2		39221	
+6AD7	 48					LD C, B	;1		39222	
+6AD8	 DF					RST 3	;4		39226	
+6AD9	 5B					LD E, E	;1		39227	
+6ADA	 01 18 DB			LD BC, d16	;3		39230	
+6ADD	 E7					RST 4	;4		39234	
+6ADE	 01 00 FD			LD BC, d16	;3		39237	
+6AE1	 F7					RST 6	;4		39241	
+6AE2	 03					INC, BC	;2		39243	
+6AE3	 20 7F				JR NZ s8	;3		39246	
+6AE5	 F7					RST 6	;4		39250	
+6AE6	 01 20 ED			LD BC, d16	;3		39253	
+6AE9	 F7					RST 6	;4		39257	
+6AEA	 01 20 ED			LD BC, d16	;3		39260	
+6AED	 F7					RST 6	;4		39264	
+6AEE	 01 20 ED			LD BC, d16	;3		39267	
+6AF1	 F7					RST 6	;4		39271	
+6AF2	 01 20 ED			LD BC, d16	;3		39274	
+6AF5	 F7					RST 6	;4		39278	
+6AF6	 01 20 ED			LD BC, d16	;3		39281	
+6AF9	 F7					RST 6	;4		39285	
+6AFA	 01 20 EF			LD BC, d16	;3		39288	
+6AFD	 F7					RST 6	;4		39292	
+6AFE	 01 20 EF			LD BC, d16	;3		39295	
+6B01	 F7					RST 6	;4		39299	
+6B02	 2A					LD A, (HL+)	;2		39301	
+6B03	 4F					LD C, A	;1		39302	
+6B04	 7E					LD A, (HL)	;2		39304	
+6B05	 47					LD B, A	;1		39305	
+6B06	 0A					LD A, (BC)	;2		39307	
+6B07	 12					LD (DE), A	;2		39309	
+6B08	 1C					INC, E	;1		39310	
+6B09	 03					INC, BC	;2		39312	
+6B0A	 0A					LD A, (BC)	;2		39314	
+6B0B	 12					LD (DE), A	;2		39316	
+6B0C	 C9					RET	;4		39320	
+6B0D	 2A					LD A, (HL+)	;2		39322	
+6B0E	 12					LD (DE), A	;2		39324	
+6B0F	 1C					INC, E	;1		39325	
+6B10	 2A					LD A, (HL+)	;2		39327	
+6B11	 12					LD (DE), A	;2		39329	
+6B12	 C9					RET	;4		39333	
+6B13	 CD C7 69			CALL a16	;6		39339	
+6B16	 AF					XOR A	;1		39340	
+6B17	 EA 75 DF			LD a16, A	;4		39344	
+6B1A	 EA 77 DF			LD a16, A	;4		39348	
+6B1D	 11 80 DF			LD DE, d16	;3		39351	
+6B20	 06 00				LD, B, d8	;2		39353	
+6B22	 2A					LD A, (HL+)	;2		39355	
+6B23	 12					LD (DE), A	;2		39357	
+6B24	 1C					INC, E	;1		39358	
+6B25	 CD 0D 6B			CALL a16	;6		39364	
+6B28	 11 90 DF			LD DE, d16	;3		39367	
+6B2B	 CD 0D 6B			CALL a16	;6		39373	
+6B2E	 11 A0 DF			LD DE, d16	;3		39376	
+6B31	 CD 0D 6B			CALL a16	;6		39382	
+6B34	 11 B0 DF			LD DE, d16	;3		39385	
+6B37	 CD 0D 6B			CALL a16	;6		39391	
+6B3A	 11 C0 DF			LD DE, d16	;3		39394	
+6B3D	 CD 0D 6B			CALL a16	;6		39400	
+6B40	 21 90 DF			LD (HL), d16	;3		39403	
+6B43	 11 94 DF			LD DE, d16	;3		39406	
+6B46	 CD 02 6B			CALL a16	;6		39412	
+6B49	 21 A0 DF			LD (HL), d16	;3		39415	
+6B4C	 11 A4 DF			LD DE, d16	;3		39418	
+6B4F	 CD 02 6B			CALL a16	;6		39424	
+6B52	 21 B0 DF			LD (HL), d16	;3		39427	
+6B55	 11 B4 DF			LD DE, d16	;3		39430	
+6B58	 CD 02 6B			CALL a16	;6		39436	
+6B5B	 21 C0 DF			LD (HL), d16	;3		39439	
+6B5E	 11 C4 DF			LD DE, d16	;3		39442	
+6B61	 CD 02 6B			CALL a16	;6		39448	
+6B64	 01 10 04			LD BC, d16	;3		39451	
+6B67	 21 92 DF			LD (HL), d16	;3		39454	
+6B6A	 36 01				LD (HL), d8	;3		39457	
+6B6C	 79					LD A, C	;1		39458	
+6B6D	 85					ADD A, L	;1		39459	
+6B6E	 6F					LD L, A	;1		39460	
+6B6F	 05					DEC, B	;1		39461	
+6B70	 20 F8				JR NZ s8	;3		39464	
+6B72	 AF					XOR A	;1		39465	
+6B73	 EA 9E DF			LD a16, A	;4		39469	
+6B76	 EA AE DF			LD a16, A	;4		39473	
+6B79	 EA BE DF			LD a16, A	;4		39477	
+6B7C	 C9					RET	;4		39481	
+6B7D	 E5					PUSH (HL)	;4		39485	
+6B7E	 AF					XOR A	;1		39486	
+6B7F	 E0 1A				LD (a8), A	;3		39489	
+6B81	 6B					LD L, E	;1		39490	
+6B82	 62					LD H, D	;1		39491	
+6B83	 CD 98 69			CALL a16	;6		39497	
+6B86	 E1					POP (HL)	;3		39500	
+6B87	 18 2A				JR s8	;3		39503	
+6B89	 CD B9 6B			CALL a16	;6		39509	
+6B8C	 CD CE 6B			CALL a16	;6		39515	
+6B8F	 5F					LD E, A	;1		39516	
+6B90	 CD B9 6B			CALL a16	;6		39522	
+6B93	 CD CE 6B			CALL a16	;6		39528	
+6B96	 57					LD D, A	;1		39529	
+6B97	 CD B9 6B			CALL a16	;6		39535	
+6B9A	 CD CE 6B			CALL a16	;6		39541	
+6B9D	 4F					LD C, A	;1		39542	
+6B9E	 2C					INC, L	;1		39543	
+6B9F	 2C					INC, L	;1		39544	
+6BA0	 73					LD (HL), E	;2		39546	
+6BA1	 2C					INC, L	;1		39547	
+6BA2	 72					LD (HL), D	;2		39549	
+6BA3	 2C					INC, L	;1		39550	
+6BA4	 71					LD (HL), C	;2		39552	
+6BA5	 2D					DEC, L	;1		39553	
+6BA6	 2D					DEC, L	;1		39554	
+6BA7	 2D					DEC, L	;1		39555	
+6BA8	 2D					DEC, L	;1		39556	
+6BA9	 E5					PUSH (HL)	;4		39560	
+6BAA	 21 70 DF			LD (HL), d16	;3		39563	
+6BAD	 7E					LD A, (HL)	;2		39565	
+6BAE	 E1					POP (HL)	;3		39568	
+6BAF	 FE 03				CP d8	;2		39570	
+6BB1	 28 CA				JR Z s8	;3		39573	
+6BB3	 CD B9 6B			CALL a16	;6		39579	
+6BB6	 C3 5E 6C			JP a16	;4		39583	
+6BB9	 D5					PUSH DE	;4		39587	
+6BBA	 2A					LD A, (HL+)	;2		39589	
+6BBB	 5F					LD E, A	;1		39590	
+6BBC	 3A					LD A, (HL-)	;2		39592	
+6BBD	 57					LD D, A	;1		39593	
+6BBE	 13					INC, DE	;2		39595	
+6BBF	 7B					LD A, E	;1		39596	
+6BC0	 22					LD (HL+), A	;2		39598	
+6BC1	 7A					LD A, D	;1		39599	
+6BC2	 32					LD (HL-), A	;2		39601	
+6BC3	 D1					POP DE	;3		39604	
+6BC4	 C9					RET	;4		39608	
+6BC5	 D5					PUSH DE	;4		39612	
+6BC6	 2A					LD A, (HL+)	;2		39614	
+6BC7	 5F					LD E, A	;1		39615	
+6BC8	 3A					LD A, (HL-)	;2		39617	
+6BC9	 57					LD D, A	;1		39618	
+6BCA	 13					INC, DE	;2		39620	
+6BCB	 13					INC, DE	;2		39622	
+6BCC	 18 F1				JR s8	;3		39625	
+6BCE	 2A					LD A, (HL+)	;2		39627	
+6BCF	 4F					LD C, A	;1		39628	
+6BD0	 3A					LD A, (HL-)	;2		39630	
+6BD1	 47					LD B, A	;1		39631	
+6BD2	 0A					LD A, (BC)	;2		39633	
+6BD3	 47					LD B, A	;1		39634	
+6BD4	 C9					RET	;4		39638	
+6BD5	 E1					POP (HL)	;3		39641	
+6BD6	 18 2C				JR s8	;3		39644	
+6BD8	 FA 70 DF			JP A, a16	;4		39648	
+6BDB	 FE 03				CP d8	;2		39650	
+6BDD	 20 10				JR NZ s8	;3		39653	
+6BDF	 FA B8 DF			JP A, a16	;4		39657	
+6BE2	 CB		
+6BE5	 09					ADD HL, BC	;2		39659	
+6BE6	 7E					LD A, (HL)	;2		39661	
+6BE7	 FE 06				CP d8	;2		39663	
+6BE9	 20 04				JR NZ s8	;3		39666	
+6BEB	 3E 40				LD, A, d8	;2		39668	
+6BED	 E0 1C				LD (a8), A	;3		39671	
+6BEF	 E5					PUSH (HL)	;4		39675	
+6BF0	 7D					LD A, L	;1		39676	
+6BF1	 C6 09				ADD A, d8	;2		39678	
+6BF3	 6F					LD L, A	;1		39679	
+6BF4	 7E					LD A, (HL)	;2		39681	
+6BF5	 A7					AND A	;1		39682	
+6BF6	 20 DD				JR NZ s8	;3		39685	
+6BF8	 7D					LD A, L	;1		39686	
+6BF9	 C6 04				ADD A, d8	;2		39688	
+6BFB	 6F					LD L, A	;1		39689	
+6BFC	 CB		
+6BFD	 7E					LD A, (HL)	;2		39691	
+6BFE	 20 D5				JR NZ s8	;3		39694	
+6C00	 E1					POP (HL)	;3		39697	
+6C01	 CD 67 6D			CALL a16	;6		39703	
+6C04	 2D					DEC, L	;1		39704	
+6C05	 2D					DEC, L	;1		39705	
+6C06	 C3 39 6D			JP a16	;4		39709	
+6C09	 2D					DEC, L	;1		39710	
+6C0A	 2D					DEC, L	;1		39711	
+6C0B	 2D					DEC, L	;1		39712	
+6C0C	 2D					DEC, L	;1		39713	
+6C0D	 CD C5 6B			CALL a16	;6		39719	
+6C10	 7D					LD A, L	;1		39720	
+6C11	 C6 04				ADD A, d8	;2		39722	
+6C13	 5F					LD E, A	;1		39723	
+6C14	 54					LD D, H	;1		39724	
+6C15	 CD 02 6B			CALL a16	;6		39730	
+6C18	 FE 00				CP d8	;2		39732	
+6C1A	 28 1F				JR Z s8	;3		39735	
+6C1C	 FE FF				CP d8	;2		39737	
+6C1E	 28 04				JR Z s8	;3		39740	
+6C20	 2C					INC, L	;1		39741	
+6C21	 C3 5C 6C			JP a16	;4		39745	
+6C24	 2D					DEC, L	;1		39746	
+6C25	 E5					PUSH (HL)	;4		39750	
+6C26	 CD C5 6B			CALL a16	;6		39756	
+6C29	 CD CE 6B			CALL a16	;6		39762	
+6C2C	 5F					LD E, A	;1		39763	
+6C2D	 CD B9 6B			CALL a16	;6		39769	
+6C30	 CD CE 6B			CALL a16	;6		39775	
+6C33	 57					LD D, A	;1		39776	
+6C34	 E1					POP (HL)	;3		39779	
+6C35	 7B					LD A, E	;1		39780	
+6C36	 22					LD (HL+), A	;2		39782	
+6C37	 7A					LD A, D	;1		39783	
+6C38	 32					LD (HL-), A	;2		39785	
+6C39	 18 D5				JR s8	;3		39788	
+6C3B	 21 E9 DF			LD (HL), d16	;3		39791	
+6C3E	 36 00				LD (HL), d8	;3		39794	
+6C40	 CD A5 69			CALL a16	;6		39800	
+6C43	 C9					RET	;4		39804	
+6C44	 21 E9 DF			LD (HL), d16	;3		39807	
+6C47	 7E					LD A, (HL)	;2		39809	
+6C48	 A7					AND A	;1		39810	
+6C49	 C8					RET Z	;5		39815	
+6C4A	 3E 01				LD, A, d8	;2		39817	
+6C4C	 EA 70 DF			LD a16, A	;4		39821	
+6C4F	 21 90 DF			LD (HL), d16	;3		39824	
+6C52	 2C					INC, L	;1		39825	
+6C53	 2A					LD A, (HL+)	;2		39827	
+6C54	 A7					AND A	;1		39828	
+6C55	 CA 04 6C			JP Z a16	;4		39832	
+6C58	 35					DEC (HL)	;3		39835	
+6C59	 C2 D8 6B			JP NZ a16	;4		39839	
+6C5C	 2C					INC, L	;1		39840	
+6C5D	 2C					INC, L	;1		39841	
+6C5E	 CD CE 6B			CALL a16	;6		39847	
+6C61	 FE 00				CP d8	;2		39849	
+6C63	 CA 09 6C			JP Z a16	;4		39853	
+6C66	 FE 9D				CP d8	;2		39855	
+6C68	 CA 89 6B			JP Z a16	;4		39859	
+6C6B	 E6 F0				AND d8	;2		39861	
+6C6D	 FE A0				CP d8	;2		39863	
+6C6F	 20 1A				JR NZ s8	;3		39866	
+6C71	 78					LD A, B	;1		39867	
+6C72	 E6 0F				AND d8	;2		39869	
+6C74	 4F					LD C, A	;1		39870	
+6C75	 06 00				LD, B, d8	;2		39872	
+6C77	 E5					PUSH (HL)	;4		39876	
+6C78	 11 81 DF			LD DE, d16	;3		39879	
+6C7B	 1A					LD A, (DE)	;2		39881	
+6C7C	 6F					LD L, A	;1		39882	
+6C7D	 13					INC, DE	;2		39884	
+6C7E	 1A					LD A, (DE)	;2		39886	
+6C7F	 67					LD H, A	;1		39887	
+6C80	 09					ADD HL, BC	;2		39889	
+6C81	 7E					LD A, (HL)	;2		39891	
+6C82	 E1					POP (HL)	;3		39894	
+6C83	 2D					DEC, L	;1		39895	
+6C84	 22					LD (HL+), A	;2		39897	
+6C85	 CD B9 6B			CALL a16	;6		39903	
+6C88	 CD CE 6B			CALL a16	;6		39909	
+6C8B	 78					LD A, B	;1		39910	
+6C8C	 4F					LD C, A	;1		39911	
+6C8D	 06 00				LD, B, d8	;2		39913	
+6C8F	 CD B9 6B			CALL a16	;6		39919	
+6C92	 FA 70 DF			JP A, a16	;4		39923	
+6C95	 FE 04				CP d8	;2		39925	
+6C97	 CA BC 6C			JP Z a16	;4		39929	
+6C9A	 E5					PUSH (HL)	;4		39933	
+6C9B	 7D					LD A, L	;1		39934	
+6C9C	 C6 05				ADD A, d8	;2		39936	
+6C9E	 6F					LD L, A	;1		39937	
+6C9F	 5D					LD E, L	;1		39938	
+6CA0	 54					LD D, H	;1		39939	
+6CA1	 2C					INC, L	;1		39940	
+6CA2	 2C					INC, L	;1		39941	
+6CA3	 79					LD A, C	;1		39942	
+6CA4	 FE 01				CP d8	;2		39944	
+6CA6	 28 0F				JR Z s8	;3		39947	
+6CA8	 36 00				LD (HL), d8	;3		39950	
+6CAA	 21 02 6E			LD (HL), d16	;3		39953	
+6CAD	 09					ADD HL, BC	;2		39955	
+6CAE	 2A					LD A, (HL+)	;2		39957	
+6CAF	 12					LD (DE), A	;2		39959	
+6CB0	 1C					INC, E	;1		39960	
+6CB1	 7E					LD A, (HL)	;2		39962	
+6CB2	 12					LD (DE), A	;2		39964	
+6CB3	 E1					POP (HL)	;3		39967	
+6CB4	 C3 D3 6C			JP a16	;4		39971	
+6CB7	 36 01				LD (HL), d8	;3		39974	
+6CB9	 E1					POP (HL)	;3		39977	
+6CBA	 18 17				JR s8	;3		39980	
+6CBC	 E5					PUSH (HL)	;4		39984	
+6CBD	 11 C6 DF			LD DE, d16	;3		39987	
+6CC0	 21 94 6E			LD (HL), d16	;3		39990	
+6CC3	 09					ADD HL, BC	;2		39992	
+6CC4	 2A					LD A, (HL+)	;2		39994	
+6CC5	 12					LD (DE), A	;2		39996	
+6CC6	 1C					INC, E	;1		39997	
+6CC7	 7B					LD A, E	;1		39998	
+6CC8	 FE CB				CP d8	;2		40000	
+6CCA	 20 F8				JR NZ s8	;3		40003	
+6CCC	 0E 20				LD, C, d8	;2		40005	
+6CCE	 21 C4 DF			LD (HL), d16	;3		40008	
+6CD1	 18 2E				JR s8	;3		40011	
+6CD3	 E5					PUSH (HL)	;4		40015	
+6CD4	 FA 70 DF			JP A, a16	;4		40019	
+6CD7	 FE 01				CP d8	;2		40021	
+6CD9	 28 21				JR Z s8	;3		40024	
+6CDB	 FE 02				CP d8	;2		40026	
+6CDD	 28 19				JR Z s8	;3		40029	
+6CDF	 0E 1A				LD, C, d8	;2		40031	
+6CE1	 FA BF DF			JP A, a16	;4		40035	
+6CE4	 CB		
+6CE7	 05					DEC, B	;1		40036	
+6CE8	 AF					XOR A	;1		40037	
+6CE9	 E2					LD (C), A	;2		40039	
+6CEA	 3E 80				LD, A, d8	;2		40041	
+6CEC	 E2					LD (C), A	;2		40043	
+6CED	 0C					INC, C	;1		40044	
+6CEE	 2C					INC, L	;1		40045	
+6CEF	 2C					INC, L	;1		40046	
+6CF0	 2C					INC, L	;1		40047	
+6CF1	 2C					INC, L	;1		40048	
+6CF2	 2A					LD A, (HL+)	;2		40050	
+6CF3	 5F					LD E, A	;1		40051	
+6CF4	 16 00				LD, D, d8	;2		40053	
+6CF6	 18 15				JR s8	;3		40056	
+6CF8	 0E 16				LD, C, d8	;2		40058	
+6CFA	 18 05				JR s8	;3		40061	
+6CFC	 0E 10				LD, C, d8	;2		40063	
+6CFE	 3E 00				LD, A, d8	;2		40065	
+6D00	 0C					INC, C	;1		40066	
+6D01	 2C					INC, L	;1		40067	
+6D02	 2C					INC, L	;1		40068	
+6D03	 2C					INC, L	;1		40069	
+6D04	 3A					LD A, (HL-)	;2		40071	
+6D05	 A7					AND A	;1		40072	
+6D06	 20 4F				JR NZ s8	;3		40075	
+6D08	 2A					LD A, (HL+)	;2		40077	
+6D09	 5F					LD E, A	;1		40078	
+6D0A	 2C					INC, L	;1		40079	
+6D0B	 2A					LD A, (HL+)	;2		40081	
+6D0C	 57					LD D, A	;1		40082	
+6D0D	 E5					PUSH (HL)	;4		40086	
+6D0E	 2C					INC, L	;1		40087	
+6D0F	 2C					INC, L	;1		40088	
+6D10	 2A					LD A, (HL+)	;2		40090	
+6D11	 A7					AND A	;1		40091	
+6D12	 28 02				JR Z s8	;3		40094	
+6D14	 1E 01				LD, E, d8	;2		40096	
+6D16	 2C					INC, L	;1		40097	
+6D17	 2C					INC, L	;1		40098	
+6D18	 36 00				LD (HL), d8	;3		40101	
+6D1A	 2C					INC, L	;1		40102	
+6D1B	 7E					LD A, (HL)	;2		40104	
+6D1C	 E1					POP (HL)	;3		40107	
+6D1D	 CB		
+6D1E	 7F					LD A, A	;1		40108	
+6D1F	 20 13				JR NZ s8	;3		40111	
+6D21	 7A					LD A, D	;1		40112	
+6D22	 E2					LD (C), A	;2		40114	
+6D23	 0C					INC, C	;1		40115	
+6D24	 7B					LD A, E	;1		40116	
+6D25	 E2					LD (C), A	;2		40118	
+6D26	 0C					INC, C	;1		40119	
+6D27	 2A					LD A, (HL+)	;2		40121	
+6D28	 E2					LD (C), A	;2		40123	
+6D29	 0C					INC, C	;1		40124	
+6D2A	 7E					LD A, (HL)	;2		40126	
+6D2B	 F6 80				OR d8	;2		40128	
+6D2D	 E2					LD (C), A	;2		40130	
+6D2E	 7D					LD A, L	;1		40131	
+6D2F	 F6 05				OR d8	;2		40133	
+6D31	 6F					LD L, A	;1		40134	
+6D32	 CB		
+6D33	 86					ADD A, (HL)	;2		40136	
+6D34	 E1					POP (HL)	;3		40139	
+6D35	 2D					DEC, L	;1		40140	
+6D36	 3A					LD A, (HL-)	;2		40142	
+6D37	 32					LD (HL-), A	;2		40144	
+6D38	 2D					DEC, L	;1		40145	
+6D39	 11 70 DF			LD DE, d16	;3		40148	
+6D3C	 1A					LD A, (DE)	;2		40150	
+6D3D	 FE 04				CP d8	;2		40152	
+6D3F	 28 09				JR Z s8	;3		40155	
+6D41	 3C					INC, A	;1		40156	
+6D42	 12					LD (DE), A	;2		40158	
+6D43	 11 10 00			LD DE, d16	;3		40161	
+6D46	 19					ADD HL, DE	;2		40163	
+6D47	 C3 52 6C			JP a16	;4		40167	
+6D4A	 21 9E DF			LD (HL), d16	;3		40170	
+6D4D	 34					INC (HL)	;3		40173	
+6D4E	 21 AE DF			LD (HL), d16	;3		40176	
+6D51	 34					INC (HL)	;3		40179	
+6D52	 21 BE DF			LD (HL), d16	;3		40182	
+6D55	 34					INC (HL)	;3		40185	
+6D56	 C9					RET	;4		40189	
+6D57	 06 00				LD, B, d8	;2		40191	
+6D59	 E5					PUSH (HL)	;4		40195	
+6D5A	 E1					POP (HL)	;3		40198	
+6D5B	 2C					INC, L	;1		40199	
+6D5C	 18 AC				JR s8	;3		40202	
+6D5E	 78					LD A, B	;1		40203	
+6D5F	 CB		
+6D60	 3F					CCF	;1		40204	
+6D61	 6F					LD L, A	;1		40205	
+6D62	 26 00				LD, H, d8	;2		40207	
+6D64	 19					ADD HL, DE	;2		40209	
+6D65	 5E					LD E, (HL)	;2		40211	
+6D66	 C9					RET	;4		40215	
+6D67	 E5					PUSH (HL)	;4		40219	
+6D68	 7D					LD A, L	;1		40220	
+6D69	 C6 06				ADD A, d8	;2		40222	
+6D6B	 6F					LD L, A	;1		40223	
+6D6C	 7E					LD A, (HL)	;2		40225	
+6D6D	 E6 0F				AND d8	;2		40227	
+6D6F	 28 18				JR Z s8	;3		40230	
+6D71	 EA 71 DF			LD a16, A	;4		40234	
+6D74	 FA 70 DF			JP A, a16	;4		40238	
+6D77	 0E 13				LD, C, d8	;2		40240	
+6D79	 FE 01				CP d8	;2		40242	
+6D7B	 28 0E				JR Z s8	;3		40245	
+6D7D	 0E 18				LD, C, d8	;2		40247	
+6D7F	 FE 02				CP d8	;2		40249	
+6D81	 28 08				JR Z s8	;3		40252	
+6D83	 0E 1D				LD, C, d8	;2		40254	
+6D85	 FE 03				CP d8	;2		40256	
+6D87	 28 02				JR Z s8	;3		40259	
+6D89	 E1					POP (HL)	;3		40262	
+6D8A	 C9					RET	;4		40266	
+6D8B	 2C					INC, L	;1		40267	
+6D8C	 2A					LD A, (HL+)	;2		40269	
+6D8D	 5F					LD E, A	;1		40270	
+6D8E	 7E					LD A, (HL)	;2		40272	
+6D8F	 57					LD D, A	;1		40273	
+6D90	 D5					PUSH DE	;4		40277	
+6D91	 7D					LD A, L	;1		40278	
+6D92	 C6 04				ADD A, d8	;2		40280	
+6D94	 6F					LD L, A	;1		40281	
+6D95	 46					LD B, (HL)	;2		40283	
+6D96	 FA 71 DF			JP A, a16	;4		40287	
+6D99	 FE 01				CP d8	;2		40289	
+6D9B	 18 09				JR s8	;3		40292	
+6D9D	 FE 03				CP d8	;2		40294	
+6D9F	 18 00				JR s8	;3		40297	
+6DA1	 21 FF FF			LD (HL), d16	;3		40300	
+6DA4	 18 1C				JR s8	;3		40303	
+6DA6	 11 CB 6D			LD DE, d16	;3		40306	
+6DA9	 CD 5E 6D			CALL a16	;6		40312	
+6DAC	 CB		
+6DAF	 02					LD (BC), A	;2		40314	
+6DB0	 CB		
+6DB1	 33					INC, SP	;2		40316	
+6DB2	 7B					LD A, E	;1		40317	
+6DB3	 E6 0F				AND d8	;2		40319	
+6DB5	 CB		
+6DB7	 28 06				JR Z s8	;3		40322	
+6DB9	 26 FF				LD, H, d8	;2		40324	
+6DBB	 F6 F0				OR d8	;2		40326	
+6DBD	 18 02				JR s8	;3		40329	
+6DBF	 26 00				LD, H, d8	;2		40331	
+6DC1	 6F					LD L, A	;1		40332	
+6DC2	 D1					POP DE	;3		40335	
+6DC3	 19					ADD HL, DE	;2		40337	
+6DC4	 7D					LD A, L	;1		40338	
+6DC5	 E2					LD (C), A	;2		40340	
+6DC6	 0C					INC, C	;1		40341	
+6DC7	 7C					LD A, H	;1		40342	
+6DC8	 E2					LD (C), A	;2		40344	
+6DC9	 18 BE				JR s8	;3		40347	
+6DCB	 00					NOP	;1		40348	
+6DCC	 00					NOP	;1		40349	
+6DCD	 00					NOP	;1		40350	
+6DCE	 00					NOP	;1		40351	
+6DCF	 00					NOP	;1		40352	
+6DD0	 00					NOP	;1		40353	
+6DD1	 10 00				STOP	;1		40354	
+6DD3	 0F					RRCA	;1		40355	
+6DD4	 00					NOP	;1		40356	
+6DD5	 00					NOP	;1		40357	
+6DD6	 11 00 0F			LD DE, d16	;3		40360	
+6DD9	 F0 01				LD A, (a8)	;2		40362	
+6DDB	 12					LD (DE), A	;2		40364	
+6DDC	 10 FF				STOP	;1		40365	
+6DDE	 EF					RST 5	;4		40369	
+6DDF	 01 12 10			LD BC, d16	;3		40372	
+6DE2	 FF					RST 7	;4		40376	
+6DE3	 EF					RST 5	;4		40380	
+6DE4	 01 12 10			LD BC, d16	;3		40383	
+6DE7	 FF					RST 7	;4		40387	
+6DE8	 EF					RST 5	;4		40391	
+6DE9	 01 12 10			LD BC, d16	;3		40394	
+6DEC	 FF					RST 7	;4		40398	
+6DED	 EF					RST 5	;4		40402	
+6DEE	 01 12 10			LD BC, d16	;3		40405	
+6DF1	 FF					RST 7	;4		40409	
+6DF2	 EF					RST 5	;4		40413	
+6DF3	 01 12 10			LD BC, d16	;3		40416	
+6DF6	 FF					RST 7	;4		40420	
+6DF7	 EF					RST 5	;4		40424	
+6DF8	 01 12 10			LD BC, d16	;3		40427	
+6DFB	 FF					RST 7	;4		40431	
+6DFC	 EF					RST 5	;4		40435	
+6DFD	 01 12 10			LD BC, d16	;3		40438	
+6E00	 FF					RST 7	;4		40442	
+6E01	 EF					RST 5	;4		40446	
+6E02	 00					NOP	;1		40447	
+6E03	 0F					RRCA	;1		40448	
+6E04	 2C					INC, L	;1		40449	
+6E05	 00					NOP	;1		40450	
+6E06	 9C					SBC A, H	;1		40451	
+6E07	 00					NOP	;1		40452	
+6E08	 06 01				LD, B, d8	;2		40454	
+6E0A	 6B					LD L, E	;1		40455	
+6E0B	 01 C9 01			LD BC, d16	;3		40458	
+6E0E	 23					INC, (HL)	;2		40460	
+6E0F	 02					LD (BC), A	;2		40462	
+6E10	 77					LD (HL), A	;2		40464	
+6E11	 02					LD (BC), A	;2		40466	
+6E12	 C6 02				ADD A, d8	;2		40468	
+6E14	 12					LD (DE), A	;2		40470	
+6E15	 03					INC, BC	;2		40472	
+6E16	 56					LD D, (HL)	;2		40474	
+6E17	 03					INC, BC	;2		40476	
+6E18	 9B					SBC A, E	;1		40477	
+6E19	 03					INC, BC	;2		40479	
+6E1A	 DA 03 16			JP C a16	;4		40483	
+6E1D	 04					INC, B	;1		40484	
+6E1E	 4E					LD C, (HL)	;2		40486	
+6E1F	 04					INC, B	;1		40487	
+6E20	 83					ADD A, E	;1		40488	
+6E21	 04					INC, B	;1		40489	
+6E22	 B5					OR L	;1		40490	
+6E23	 04					INC, B	;1		40491	
+6E24	 E5					PUSH (HL)	;4		40495	
+6E25	 04					INC, B	;1		40496	
+6E26	 11 05 3B			LD DE, d16	;3		40499	
+6E29	 05					DEC, B	;1		40500	
+6E2A	 63					LD H, E	;1		40501	
+6E2B	 05					DEC, B	;1		40502	
+6E2C	 89					ADC A, C	;1		40503	
+6E2D	 05					DEC, B	;1		40504	
+6E2E	 AC					XOR H	;1		40505	
+6E2F	 05					DEC, B	;1		40506	
+6E30	 CE 05				ADC A, d8	;2		40508	
+6E32	 ED		
+6E34	 0A					LD A, (BC)	;2		40510	
+6E35	 06 27				LD, B, d8	;2		40512	
+6E37	 06 42				LD, B, d8	;2		40514	
+6E39	 06 5B				LD, B, d8	;2		40516	
+6E3B	 06 72				LD, B, d8	;2		40518	
+6E3D	 06 89				LD, B, d8	;2		40520	
+6E3F	 06 9E				LD, B, d8	;2		40522	
+6E41	 06 B2				LD, B, d8	;2		40524	
+6E43	 06 C4				LD, B, d8	;2		40526	
+6E45	 06 D6				LD, B, d8	;2		40528	
+6E47	 06 E7				LD, B, d8	;2		40530	
+6E49	 06 F7				LD, B, d8	;2		40532	
+6E4B	 06 06				LD, B, d8	;2		40534	
+6E4D	 07					RLCA	;1		40535	
+6E4E	 14					INC, D	;1		40536	
+6E4F	 07					RLCA	;1		40537	
+6E50	 21 07 2D			LD (HL), d16	;3		40540	
+6E53	 07					RLCA	;1		40541	
+6E54	 39					ADD HL, SP	;2		40543	
+6E55	 07					RLCA	;1		40544	
+6E56	 44					LD B, H	;1		40545	
+6E57	 07					RLCA	;1		40546	
+6E58	 4F					LD C, A	;1		40547	
+6E59	 07					RLCA	;1		40548	
+6E5A	 59					LD E, C	;1		40549	
+6E5B	 07					RLCA	;1		40550	
+6E5C	 62					LD H, D	;1		40551	
+6E5D	 07					RLCA	;1		40552	
+6E5E	 6B					LD L, E	;1		40553	
+6E5F	 07					RLCA	;1		40554	
+6E60	 73					LD (HL), E	;2		40556	
+6E61	 07					RLCA	;1		40557	
+6E62	 7B					LD A, E	;1		40558	
+6E63	 07					RLCA	;1		40559	
+6E64	 83					ADD A, E	;1		40560	
+6E65	 07					RLCA	;1		40561	
+6E66	 8A					ADC A, D	;1		40562	
+6E67	 07					RLCA	;1		40563	
+6E68	 90					SUB B	;1		40564	
+6E69	 07					RLCA	;1		40565	
+6E6A	 97					SUB A	;1		40566	
+6E6B	 07					RLCA	;1		40567	
+6E6C	 9D					SBC A, L	;1		40568	
+6E6D	 07					RLCA	;1		40569	
+6E6E	 A2					AND D	;1		40570	
+6E6F	 07					RLCA	;1		40571	
+6E70	 A7					AND A	;1		40572	
+6E71	 07					RLCA	;1		40573	
+6E72	 AC					XOR H	;1		40574	
+6E73	 07					RLCA	;1		40575	
+6E74	 B1					OR C	;1		40576	
+6E75	 07					RLCA	;1		40577	
+6E76	 B6					OR (HL)	;2		40579	
+6E77	 07					RLCA	;1		40580	
+6E78	 BA					CP D	;1		40581	
+6E79	 07					RLCA	;1		40582	
+6E7A	 BE					CP (HL)	;2		40584	
+6E7B	 07					RLCA	;1		40585	
+6E7C	 C1					POP BC	;3		40588	
+6E7D	 07					RLCA	;1		40589	
+6E7E	 C4 07 C8			CALL NZ, a16	;6		40595	
+6E81	 07					RLCA	;1		40596	
+6E82	 CB		
+6E83	 07					RLCA	;1		40597	
+6E84	 CE 07				ADC A, d8	;2		40599	
+6E86	 D1					POP DE	;3		40602	
+6E87	 07					RLCA	;1		40603	
+6E88	 D4 07 D6			CALL NC, a16	;6		40609	
+6E8B	 07					RLCA	;1		40610	
+6E8C	 D9					RETI	;4		40614	
+6E8D	 07					RLCA	;1		40615	
+6E8E	 DB		
+6E8F	 07					RLCA	;1		40616	
+6E90	 DD		
+6E91	 07					RLCA	;1		40617	
+6E92	 DF					RST 3	;4		40621	
+6E93	 07					RLCA	;1		40622	
+6E94	 00					NOP	;1		40623	
+6E95	 00					NOP	;1		40624	
+6E96	 00					NOP	;1		40625	
+6E97	 00					NOP	;1		40626	
+6E98	 00					NOP	;1		40627	
+6E99	 C0					RET NZ	;5		40632	
+6E9A	 A1					AND C	;1		40633	
+6E9B	 00					NOP	;1		40634	
+6E9C	 3A					LD A, (HL-)	;2		40636	
+6E9D	 00					NOP	;1		40637	
+6E9E	 C0					RET NZ	;5		40642	
+6E9F	 B1					OR C	;1		40643	
+6EA0	 00					NOP	;1		40644	
+6EA1	 29					ADD HL, (HL)	;2		40646	
+6EA2	 01 C0 61			LD BC, d16	;3		40649	
+6EA5	 00					NOP	;1		40650	
+6EA6	 3A					LD A, (HL-)	;2		40652	
+6EA7	 00					NOP	;1		40653	
+6EA8	 C0					RET NZ	;5		40658	
+6EA9	 12					LD (DE), A	;2		40660	
+6EAA	 34					INC (HL)	;3		40663	
+6EAB	 45					LD B, L	;1		40664	
+6EAC	 67					LD H, A	;1		40665	
+6EAD	 9A					SBC A, D	;1		40666	
+6EAE	 BC					CP H	;1		40667	
+6EAF	 DE FE				SBC A, d8	;2		40669	
+6EB1	 98					SBC A, B	;1		40670	
+6EB2	 7A					LD A, D	;1		40671	
+6EB3	 B7					OR A	;1		40672	
+6EB4	 BE					CP (HL)	;2		40674	
+6EB5	 A8					XOR B	;1		40675	
+6EB6	 76					HALT	;1		40676	
+6EB7	 54					LD D, H	;1		40677	
+6EB8	 31 01 23			LD SP, d16	;3		40680	
+6EBB	 44					LD B, H	;1		40681	
+6EBC	 55					LD D, L	;1		40682	
+6EBD	 67					LD H, A	;1		40683	
+6EBE	 88					ADC A, B	;1		40684	
+6EBF	 9A					SBC A, D	;1		40685	
+6EC0	 BB					CP E	;1		40686	
+6EC1	 A9					XOR C	;1		40687	
+6EC2	 88					ADC A, B	;1		40688	
+6EC3	 76					HALT	;1		40689	
+6EC4	 55					LD D, L	;1		40690	
+6EC5	 44					LD B, H	;1		40691	
+6EC6	 33					INC, SP	;2		40693	
+6EC7	 22					LD (HL+), A	;2		40695	
+6EC8	 11 01 23			LD DE, d16	;3		40698	
+6ECB	 45					LD B, L	;1		40699	
+6ECC	 67					LD H, A	;1		40700	
+6ECD	 89					ADC A, C	;1		40701	
+6ECE	 AB					XOR E	;1		40702	
+6ECF	 CD EF FE			CALL a16	;6		40708	
+6ED2	 DC BA 98			CALL C, a16	;6		40714	
+6ED5	 76					HALT	;1		40715	
+6ED6	 54					LD D, H	;1		40716	
+6ED7	 32					LD (HL-), A	;2		40718	
+6ED8	 10 A1				STOP	;1		40719	
+6EDA	 82					ADD A, D	;1		40720	
+6EDB	 23					INC, (HL)	;2		40722	
+6EDC	 34					INC (HL)	;3		40725	
+6EDD	 45					LD B, L	;1		40726	
+6EDE	 56					LD D, (HL)	;2		40728	
+6EDF	 67					LD H, A	;1		40729	
+6EE0	 78					LD A, B	;1		40730	
+6EE1	 89					ADC A, C	;1		40731	
+6EE2	 9A					SBC A, D	;1		40732	
+6EE3	 AB					XOR E	;1		40733	
+6EE4	 BC					CP H	;1		40734	
+6EE5	 CD 64 32			CALL a16	;6		40740	
+6EE8	 10 11				STOP	;1		40741	
+6EEA	 23					INC, (HL)	;2		40743	
+6EEB	 56					LD D, (HL)	;2		40745	
+6EEC	 78					LD A, B	;1		40746	
+6EED	 99					SBC A, C	;1		40747	
+6EEE	 98					SBC A, B	;1		40748	
+6EEF	 76					HALT	;1		40749	
+6EF0	 67					LD H, A	;1		40750	
+6EF1	 9A					SBC A, D	;1		40751	
+6EF2	 DF					RST 3	;4		40755	
+6EF3	 FE C9				CP d8	;2		40757	
+6EF5	 85					ADD A, L	;1		40758	
+6EF6	 42					LD B, D	;1		40759	
+6EF7	 11 31 02			LD DE, d16	;3		40762	
+6EFA	 04					INC, B	;1		40763	
+6EFB	 08 10 20			LD (a16), SP	;5		40768	
+6EFE	 40					LD B, B	;1		40769	
+6EFF	 0C					INC, C	;1		40770	
+6F00	 18 30				JR s8	;3		40773	
+6F02	 05					DEC, B	;1		40774	
+6F03	 00					NOP	;1		40775	
+6F04	 01 03 05			LD BC, d16	;3		40778	
+6F07	 0A					LD A, (BC)	;2		40780	
+6F08	 14					INC, D	;1		40781	
+6F09	 28 50				JR Z s8	;3		40784	
+6F0B	 0F					RRCA	;1		40785	
+6F0C	 1E 3C				LD, E, d8	;2		40787	
+6F0E	 03					INC, BC	;2		40789	
+6F0F	 06 0C				LD, B, d8	;2		40791	
+6F11	 18 30				JR s8	;3		40794	
+6F13	 60					LD H, B	;1		40795	
+6F14	 12					LD (DE), A	;2		40797	
+6F15	 24					INC, H	;1		40798	
+6F16	 48					LD C, B	;1		40799	
+6F17	 08 10 00			LD (a16), SP	;5		40804	
+6F1A	 07					RLCA	;1		40805	
+6F1B	 0E 1C				LD, C, d8	;2		40807	
+6F1D	 38 70				JR C s8	;3		40810	
+6F1F	 15					DEC, D	;1		40811	
+6F20	 2A					LD A, (HL+)	;2		40813	
+6F21	 54					LD D, H	;1		40814	
+6F22	 04					INC, B	;1		40815	
+6F23	 08 10 20			LD (a16), SP	;5		40820	
+6F26	 40					LD B, B	;1		40821	
+6F27	 80					ADD A, B	;1		40822	
+6F28	 18 30				JR s8	;3		40825	
+6F2A	 60					LD H, B	;1		40826	
+6F2B	 04					INC, B	;1		40827	
+6F2C	 09					ADD HL, BC	;2		40829	
+6F2D	 12					LD (DE), A	;2		40831	
+6F2E	 24					INC, H	;1		40832	
+6F2F	 48					LD C, B	;1		40833	
+6F30	 90					SUB B	;1		40834	
+6F31	 1B					DEC, DE	;2		40836	
+6F32	 36 6C				LD (HL), d8	;3		40839	
+6F34	 0C					INC, C	;1		40840	
+6F35	 18 04				JR s8	;3		40843	
+6F37	 0A					LD A, (BC)	;2		40845	
+6F38	 14					INC, D	;1		40846	
+6F39	 28 50				JR Z s8	;3		40849	
+6F3B	 A0					AND B	;1		40850	
+6F3C	 1E 3C				LD, E, d8	;2		40852	
+6F3E	 78					LD A, B	;1		40853	
+6F3F	 00					NOP	;1		40854	
+6F40	 0E 6F				LD, C, d8	;2		40856	
+6F42	 F9					LD SP, HL	;2		40858	
+6F43	 7C					LD A, H	;1		40859	
+6F44	 FF					RST 7	;4		40863	
+6F45	 7C					LD A, H	;1		40864	
+6F46	 11 7D 21			LD DE, d16	;3		40867	
+6F49	 7D					LD A, L	;1		40868	
+6F4A	 00					NOP	;1		40869	
+6F4B	 05					DEC, B	;1		40870	
+6F4C	 6F					LD L, A	;1		40871	
+6F4D	 48					LD C, B	;1		40872	
+6F4E	 7E					LD A, (HL)	;2		40874	
+6F4F	 44					LD B, H	;1		40875	
+6F50	 7E					LD A, (HL)	;2		40877	
+6F51	 4A					LD C, D	;1		40878	
+6F52	 7E					LD A, (HL)	;2		40880	
+6F53	 4C					LD C, H	;1		40881	
+6F54	 7E					LD A, (HL)	;2		40883	
+6F55	 00					NOP	;1		40884	
+6F56	 0E 6F				LD, C, d8	;2		40886	
+6F58	 3B					DEC, SP	;2		40888	
+6F59	 76					HALT	;1		40889	
+6F5A	 33					INC, SP	;2		40891	
+6F5B	 76					HALT	;1		40892	
+6F5C	 41					LD B, C	;1		40893	
+6F5D	 76					HALT	;1		40894	
+6F5E	 63					LD H, E	;1		40895	
+6F5F	 76					HALT	;1		40896	
+6F60	 00					NOP	;1		40897	
+6F61	 F9					LD SP, HL	;2		40899	
+6F62	 6E					LD L, (HL)	;2		40901	
+6F63	 00					NOP	;1		40902	
+6F64	 76					HALT	;1		40903	
+6F65	 FC		
+6F66	 75					LD (HL), L	;2		40905	
+6F67	 02					LD (BC), A	;2		40907	
+6F68	 76					HALT	;1		40908	
+6F69	 00					NOP	;1		40909	
+6F6A	 00					NOP	;1		40910	
+6F6B	 00					NOP	;1		40911	
+6F6C	 0E 6F				LD, C, d8	;2		40913	
+6F6E	 4C					LD C, H	;1		40914	
+6F6F	 71					LD (HL), C	;2		40916	
+6F70	 42					LD B, D	;1		40917	
+6F71	 71					LD (HL), C	;2		40919	
+6F72	 56					LD D, (HL)	;2		40921	
+6F73	 71					LD (HL), C	;2		40923	
+6F74	 62					LD H, D	;1		40924	
+6F75	 71					LD (HL), C	;2		40926	
+6F76	 00					NOP	;1		40927	
+6F77	 0E 6F				LD, C, d8	;2		40929	
+6F79	 C6 72				ADD A, d8	;2		40931	
+6F7B	 B8					CP B	;1		40932	
+6F7C	 72					LD (HL), D	;2		40934	
+6F7D	 D4 72 02			CALL NC, a16	;6		40940	
+6F80	 73					LD (HL), E	;2		40942	
+6F81	 00					NOP	;1		40943	
+6F82	 0E 6F				LD, C, d8	;2		40945	
+6F84	 08 70 FA			LD (a16), SP	;5		40950	
+6F87	 6F					LD L, A	;1		40951	
+6F88	 00					NOP	;1		40952	
+6F89	 00					NOP	;1		40953	
+6F8A	 00					NOP	;1		40954	
+6F8B	 00					NOP	;1		40955	
+6F8C	 00					NOP	;1		40956	
+6F8D	 05					DEC, B	;1		40957	
+6F8E	 6F					LD L, A	;1		40958	
+6F8F	 9D					SBC A, L	;1		40959	
+6F90	 7E					LD A, (HL)	;2		40961	
+6F91	 91					SUB C	;1		40962	
+6F92	 7E					LD A, (HL)	;2		40964	
+6F93	 A9					XOR C	;1		40965	
+6F94	 7E					LD A, (HL)	;2		40967	
+6F95	 B5					OR L	;1		40968	
+6F96	 7E					LD A, (HL)	;2		40970	
+6F97	 00					NOP	;1		40971	
+6F98	 0E 6F				LD, C, d8	;2		40973	
+6F9A	 28 7C				JR Z s8	;3		40976	
+6F9C	 24					INC, H	;1		40977	
+6F9D	 7C					LD A, H	;1		40978	
+6F9E	 2A					LD A, (HL+)	;2		40980	
+6F9F	 7C					LD A, H	;1		40981	
+6FA0	 2C					INC, L	;1		40982	
+6FA1	 7C					LD A, H	;1		40983	
+6FA2	 00					NOP	;1		40984	
+6FA3	 0E 6F				LD, C, d8	;2		40986	
+6FA5	 00					NOP	;1		40987	
+6FA6	 00					NOP	;1		40988	
+6FA7	 00					NOP	;1		40989	
+6FA8	 7A					LD A, D	;1		40990	
+6FA9	 00					NOP	;1		40991	
+6FAA	 00					NOP	;1		40992	
+6FAB	 00					NOP	;1		40993	
+6FAC	 00					NOP	;1		40994	
+6FAD	 00					NOP	;1		40995	
+6FAE	 0E 6F				LD, C, d8	;2		40997	
+6FB0	 00					NOP	;1		40998	
+6FB1	 00					NOP	;1		40999	
+6FB2	 26 7A				LD, H, d8	;2		41001	
+6FB4	 2A					LD A, (HL+)	;2		41003	
+6FB5	 7A					LD A, D	;1		41004	
+6FB6	 00					NOP	;1		41005	
+6FB7	 00					NOP	;1		41006	
+6FB8	 00					NOP	;1		41007	
+6FB9	 0E 6F				LD, C, d8	;2		41009	
+6FBB	 73					LD (HL), E	;2		41011	
+6FBC	 7A					LD A, D	;1		41012	
+6FBD	 6F					LD L, A	;1		41013	
+6FBE	 7A					LD A, D	;1		41014	
+6FBF	 75					LD (HL), L	;2		41016	
+6FC0	 7A					LD A, D	;1		41017	
+6FC1	 00					NOP	;1		41018	
+6FC2	 00					NOP	;1		41019	
+6FC3	 00					NOP	;1		41020	
+6FC4	 0E 6F				LD, C, d8	;2		41022	
+6FC6	 DF					RST 3	;4		41026	
+6FC7	 7A					LD A, D	;1		41027	
+6FC8	 E3		
+6FC9	 7A					LD A, D	;1		41028	
+6FCA	 E5					PUSH (HL)	;4		41032	
+6FCB	 7A					LD A, D	;1		41033	
+6FCC	 E7					RST 4	;4		41037	
+6FCD	 7A					LD A, D	;1		41038	
+6FCE	 00					NOP	;1		41039	
+6FCF	 0E 6F				LD, C, d8	;2		41041	
+6FD1	 65					LD H, L	;1		41042	
+6FD2	 7B					LD A, E	;1		41043	
+6FD3	 6B					LD L, E	;1		41044	
+6FD4	 7B					LD A, E	;1		41045	
+6FD5	 6F					LD L, A	;1		41046	
+6FD6	 7B					LD A, E	;1		41047	
+6FD7	 73					LD (HL), E	;2		41049	
+6FD8	 7B					LD A, E	;1		41050	
+6FD9	 00					NOP	;1		41051	
+6FDA	 0E 6F				LD, C, d8	;2		41053	
+6FDC	 6C					LD L, H	;1		41054	
+6FDD	 78					LD A, B	;1		41055	
+6FDE	 76					HALT	;1		41056	
+6FDF	 78					LD A, B	;1		41057	
+6FE0	 7E					LD A, (HL)	;2		41059	
+6FE1	 78					LD A, B	;1		41060	
+6FE2	 86					ADD A, (HL)	;2		41062	
+6FE3	 78					LD A, B	;1		41063	
+6FE4	 00					NOP	;1		41064	
+6FE5	 2B					DEC, (HL)	;2		41066	
+6FE6	 6F					LD L, A	;1		41067	
+6FE7	 43					LD B, E	;1		41068	
+6FE8	 75					LD (HL), L	;2		41070	
+6FE9	 4B					LD C, E	;1		41071	
+6FEA	 75					LD (HL), L	;2		41073	
+6FEB	 51					LD D, C	;1		41074	
+6FEC	 75					LD (HL), L	;2		41076	
+6FED	 00					NOP	;1		41077	
+6FEE	 00					NOP	;1		41078	
+6FEF	 00					NOP	;1		41079	
+6FF0	 0E 6F				LD, C, d8	;2		41081	
+6FF2	 8D					ADC A, L	;1		41082	
+6FF3	 75					LD (HL), L	;2		41084	
+6FF4	 95					SUB L	;1		41085	
+6FF5	 75					LD (HL), L	;2		41087	
+6FF6	 9B					SBC A, E	;1		41088	
+6FF7	 75					LD (HL), L	;2		41090	
+6FF8	 00					NOP	;1		41091	
+6FF9	 00					NOP	;1		41092	
+6FFA	 16 70				LD, D, d8	;2		41094	
+6FFC	 34					INC (HL)	;3		41097	
+6FFD	 70					LD (HL), B	;2		41099	
+6FFE	 16 70				LD, D, d8	;2		41101	
+7000	 4D					LD C, L	;1		41102	
+7001	 70					LD (HL), B	;2		41104	
+7002	 93					SUB E	;1		41105	
+7003	 70					LD (HL), B	;2		41107	
+7004	 FF					RST 7	;4		41111	
+7005	 FF					RST 7	;4		41115	
+7006	 FA 6F 62			JP A, a16	;4		41119	
+7009	 70					LD (HL), B	;2		41121	
+700A	 74					LD (HL), H	;2		41123	
+700B	 70					LD (HL), B	;2		41125	
+700C	 62					LD H, D	;1		41126	
+700D	 70					LD (HL), B	;2		41128	
+700E	 85					ADD A, L	;1		41129	
+700F	 70					LD (HL), B	;2		41131	
+7010	 F4		
+7011	 70					LD (HL), B	;2		41133	
+7012	 FF					RST 7	;4		41137	
+7013	 FF					RST 7	;4		41141	
+7014	 08 70 9D			LD (a16), SP	;5		41146	
+7017	 74					LD (HL), H	;2		41148	
+7018	 00					NOP	;1		41149	
+7019	 41					LD B, C	;1		41150	
+701A	 A2					AND D	;1		41151	
+701B	 44					LD B, H	;1		41152	
+701C	 4C					LD C, H	;1		41153	
+701D	 56					LD D, (HL)	;2		41155	
+701E	 4C					LD C, H	;1		41156	
+701F	 42					LD B, D	;1		41157	
+7020	 4C					LD C, H	;1		41158	
+7021	 44					LD B, H	;1		41159	
+7022	 4C					LD C, H	;1		41160	
+7023	 3E 4C				LD, A, d8	;2		41162	
+7025	 3C					INC, A	;1		41163	
+7026	 4C					LD C, H	;1		41164	
+7027	 44					LD B, H	;1		41165	
+7028	 4C					LD C, H	;1		41166	
+7029	 56					LD D, (HL)	;2		41168	
+702A	 4C					LD C, H	;1		41169	
+702B	 42					LD B, D	;1		41170	
+702C	 4C					LD C, H	;1		41171	
+702D	 44					LD B, H	;1		41172	
+702E	 4C					LD C, H	;1		41173	
+702F	 3E 4C				LD, A, d8	;2		41175	
+7031	 3C					INC, A	;1		41176	
+7032	 4C					LD C, H	;1		41177	
+7033	 00					NOP	;1		41178	
+7034	 44					LD B, H	;1		41179	
+7035	 4C					LD C, H	;1		41180	
+7036	 44					LD B, H	;1		41181	
+7037	 3E 4E				LD, A, d8	;2		41183	
+7039	 48					LD C, B	;1		41184	
+703A	 42					LD B, D	;1		41185	
+703B	 48					LD C, B	;1		41186	
+703C	 42					LD B, D	;1		41187	
+703D	 3A					LD A, (HL-)	;2		41189	
+703E	 4C					LD C, H	;1		41190	
+703F	 44					LD B, H	;1		41191	
+7040	 3E 4C				LD, A, d8	;2		41193	
+7042	 48					LD C, B	;1		41194	
+7043	 44					LD B, H	;1		41195	
+7044	 42					LD B, D	;1		41196	
+7045	 3E 3C				LD, A, d8	;2		41198	
+7047	 34					INC (HL)	;3		41201	
+7048	 3C					INC, A	;1		41202	
+7049	 42					LD B, D	;1		41203	
+704A	 4C					LD C, H	;1		41204	
+704B	 48					LD C, B	;1		41205	
+704C	 00					NOP	;1		41206	
+704D	 44					LD B, H	;1		41207	
+704E	 4C					LD C, H	;1		41208	
+704F	 44					LD B, H	;1		41209	
+7050	 3E 4E				LD, A, d8	;2		41211	
+7052	 48					LD C, B	;1		41212	
+7053	 42					LD B, D	;1		41213	
+7054	 48					LD C, B	;1		41214	
+7055	 42					LD B, D	;1		41215	
+7056	 3A					LD A, (HL-)	;2		41217	
+7057	 52					LD D, D	;1		41218	
+7058	 48					LD C, B	;1		41219	
+7059	 4C					LD C, H	;1		41220	
+705A	 52					LD D, D	;1		41221	
+705B	 4C					LD C, H	;1		41222	
+705C	 44					LD B, H	;1		41223	
+705D	 3A					LD A, (HL-)	;2		41225	
+705E	 42					LD B, D	;1		41226	
+705F	 A8					XOR B	;1		41227	
+7060	 44					LD B, H	;1		41228	
+7061	 00					NOP	;1		41229	
+7062	 9D					SBC A, L	;1		41230	
+7063	 64					LD H, H	;1		41231	
+7064	 00					NOP	;1		41232	
+7065	 41					LD B, C	;1		41233	
+7066	 A3					AND E	;1		41234	
+7067	 26 3E				LD, H, d8	;2		41236	
+7069	 3C					INC, A	;1		41237	
+706A	 26 2C				LD, H, d8	;2		41239	
+706C	 34					INC (HL)	;3		41242	
+706D	 3E 36				LD, A, d8	;2		41244	
+706F	 34					INC (HL)	;3		41247	
+7070	 3E 2C				LD, A, d8	;2		41249	
+7072	 34					INC (HL)	;3		41252	
+7073	 00					NOP	;1		41253	
+7074	 26 3E				LD, H, d8	;2		41255	
+7076	 30 22				JR NC s8	;3		41258	
+7078	 3A					LD A, (HL-)	;2		41260	
+7079	 2C					INC, L	;1		41261	
+707A	 1E 36				LD, E, d8	;2		41263	
+707C	 30 A2				JR NC s8	;3		41266	
+707E	 34					INC (HL)	;3		41269	
+707F	 36 34				LD (HL), d8	;3		41272	
+7081	 30 2C				JR NC s8	;3		41275	
+7083	 2A					LD A, (HL+)	;2		41277	
+7084	 00					NOP	;1		41278	
+7085	 A3					AND E	;1		41279	
+7086	 26 3E				LD, H, d8	;2		41281	
+7088	 30 22				JR NC s8	;3		41284	
+708A	 3A					LD A, (HL-)	;2		41286	
+708B	 2A					LD A, (HL+)	;2		41288	
+708C	 2C					INC, L	;1		41289	
+708D	 34					INC (HL)	;3		41292	
+708E	 34					INC (HL)	;3		41295	
+708F	 2C					INC, L	;1		41296	
+7090	 22					LD (HL+), A	;2		41298	
+7091	 14					INC, D	;1		41299	
+7092	 00					NOP	;1		41300	
+7093	 A2					AND D	;1		41301	
+7094	 52					LD D, D	;1		41302	
+7095	 4E					LD C, (HL)	;2		41304	
+7096	 4C					LD C, H	;1		41305	
+7097	 48					LD C, B	;1		41306	
+7098	 44					LD B, H	;1		41307	
+7099	 42					LD B, D	;1		41308	
+709A	 44					LD B, H	;1		41309	
+709B	 48					LD C, B	;1		41310	
+709C	 4C					LD C, H	;1		41311	
+709D	 44					LD B, H	;1		41312	
+709E	 48					LD C, B	;1		41313	
+709F	 4E					LD C, (HL)	;2		41315	
+70A0	 4C					LD C, H	;1		41316	
+70A1	 4E					LD C, (HL)	;2		41318	
+70A2	 A3					AND E	;1		41319	
+70A3	 52					LD D, D	;1		41320	
+70A4	 42					LD B, D	;1		41321	
+70A5	 A2					AND D	;1		41322	
+70A6	 44					LD B, H	;1		41323	
+70A7	 48					LD C, B	;1		41324	
+70A8	 A3					AND E	;1		41325	
+70A9	 4C					LD C, H	;1		41326	
+70AA	 48					LD C, B	;1		41327	
+70AB	 4C					LD C, H	;1		41328	
+70AC	 56					LD D, (HL)	;2		41330	
+70AD	 50					LD D, B	;1		41331	
+70AE	 A2					AND D	;1		41332	
+70AF	 56					LD D, (HL)	;2		41334	
+70B0	 5A					LD E, D	;1		41335	
+70B1	 A3					AND E	;1		41336	
+70B2	 5C					LD E, H	;1		41337	
+70B3	 5A					LD E, D	;1		41338	
+70B4	 A2					AND D	;1		41339	
+70B5	 56					LD D, (HL)	;2		41341	
+70B6	 52					LD D, D	;1		41342	
+70B7	 50					LD D, B	;1		41343	
+70B8	 4C					LD C, H	;1		41344	
+70B9	 50					LD D, B	;1		41345	
+70BA	 4A					LD C, D	;1		41346	
+70BB	 A8					XOR B	;1		41347	
+70BC	 4C					LD C, H	;1		41348	
+70BD	 A7					AND A	;1		41349	
+70BE	 52					LD D, D	;1		41350	
+70BF	 A1					AND C	;1		41351	
+70C0	 56					LD D, (HL)	;2		41353	
+70C1	 58					LD E, B	;1		41354	
+70C2	 A3					AND E	;1		41355	
+70C3	 56					LD D, (HL)	;2		41357	
+70C4	 A2					AND D	;1		41358	
+70C5	 52					LD D, D	;1		41359	
+70C6	 4E					LD C, (HL)	;2		41361	
+70C7	 52					LD D, D	;1		41362	
+70C8	 4C					LD C, H	;1		41363	
+70C9	 4E					LD C, (HL)	;2		41365	
+70CA	 48					LD C, B	;1		41366	
+70CB	 A7					AND A	;1		41367	
+70CC	 56					LD D, (HL)	;2		41369	
+70CD	 A1					AND C	;1		41370	
+70CE	 5A					LD E, D	;1		41371	
+70CF	 5C					LD E, H	;1		41372	
+70D0	 A3					AND E	;1		41373	
+70D1	 5A					LD E, D	;1		41374	
+70D2	 A2					AND D	;1		41375	
+70D3	 56					LD D, (HL)	;2		41377	
+70D4	 54					LD D, H	;1		41378	
+70D5	 56					LD D, (HL)	;2		41380	
+70D6	 50					LD D, B	;1		41381	
+70D7	 54					LD D, H	;1		41382	
+70D8	 4C					LD C, H	;1		41383	
+70D9	 5A					LD E, D	;1		41384	
+70DA	 54					LD D, H	;1		41385	
+70DB	 4C					LD C, H	;1		41386	
+70DC	 54					LD D, H	;1		41387	
+70DD	 5A					LD E, D	;1		41388	
+70DE	 60					LD H, B	;1		41389	
+70DF	 66					LD H, (HL)	;2		41391	
+70E0	 54					LD D, H	;1		41392	
+70E1	 64					LD H, H	;1		41393	
+70E2	 54					LD D, H	;1		41394	
+70E3	 60					LD H, B	;1		41395	
+70E4	 54					LD D, H	;1		41396	
+70E5	 A3					AND E	;1		41397	
+70E6	 5C					LD E, H	;1		41398	
+70E7	 A2					AND D	;1		41399	
+70E8	 60					LD H, B	;1		41400	
+70E9	 5C					LD E, H	;1		41401	
+70EA	 5A					LD E, D	;1		41402	
+70EB	 5C					LD E, H	;1		41403	
+70EC	 A1					AND C	;1		41404	
+70ED	 56					LD D, (HL)	;2		41406	
+70EE	 5A					LD E, D	;1		41407	
+70EF	 A4					AND H	;1		41408	
+70F0	 56					LD D, (HL)	;2		41410	
+70F1	 A2					AND D	;1		41411	
+70F2	 01 00 A2			LD BC, d16	;3		41414	
+70F5	 34					INC (HL)	;3		41417	
+70F6	 3A					LD A, (HL-)	;2		41419	
+70F7	 44					LD B, H	;1		41420	
+70F8	 3A					LD A, (HL-)	;2		41422	
+70F9	 30 3A				JR NC s8	;3		41425	
+70FB	 34					INC (HL)	;3		41428	
+70FC	 3A					LD A, (HL-)	;2		41430	
+70FD	 2C					INC, L	;1		41431	
+70FE	 3A					LD A, (HL-)	;2		41433	
+70FF	 2A					LD A, (HL+)	;2		41435	
+7100	 3A					LD A, (HL-)	;2		41437	
+7101	 2C					INC, L	;1		41438	
+7102	 3A					LD A, (HL-)	;2		41440	
+7103	 44					LD B, H	;1		41441	
+7104	 3A					LD A, (HL-)	;2		41443	
+7105	 30 3A				JR NC s8	;3		41446	
+7107	 34					INC (HL)	;3		41449	
+7108	 3A					LD A, (HL-)	;2		41451	
+7109	 2C					INC, L	;1		41452	
+710A	 3A					LD A, (HL-)	;2		41454	
+710B	 2A					LD A, (HL+)	;2		41456	
+710C	 3A					LD A, (HL-)	;2		41458	
+710D	 2C					INC, L	;1		41459	
+710E	 34					INC (HL)	;3		41462	
+710F	 2C					INC, L	;1		41463	
+7110	 26 3E				LD, H, d8	;2		41465	
+7112	 38 32				JR C s8	;3		41468	
+7114	 38 2A				JR C s8	;3		41471	
+7116	 38 32				JR C s8	;3		41474	
+7118	 38 A3				JR C s8	;3		41477	
+711A	 34					INC (HL)	;3		41480	
+711B	 42					LD B, D	;1		41481	
+711C	 2A					LD A, (HL+)	;2		41483	
+711D	 A2					AND D	;1		41484	
+711E	 34					INC (HL)	;3		41487	
+711F	 3A					LD A, (HL-)	;2		41489	
+7120	 42					LD B, D	;1		41490	
+7121	 3A					LD A, (HL-)	;2		41492	
+7122	 30 3A				JR NC s8	;3		41495	
+7124	 2E 34				LD, L, d8	;2		41497	
+7126	 26 34				LD, H, d8	;2		41499	
+7128	 2E 34				LD, L, d8	;2		41501	
+712A	 A8					XOR B	;1		41502	
+712B	 30 A2				JR NC s8	;3		41505	
+712D	 32					LD (HL-), A	;2		41507	
+712E	 38 2A				JR C s8	;3		41510	
+7130	 38 32				JR C s8	;3		41513	
+7132	 38 A8				JR C s8	;3		41516	
+7134	 34					INC (HL)	;3		41519	
+7135	 A3					AND E	;1		41520	
+7136	 34					INC (HL)	;3		41523	
+7137	 2A					LD A, (HL+)	;2		41525	
+7138	 24					INC, H	;1		41526	
+7139	 1C					INC, E	;1		41527	
+713A	 20 24				JR NZ s8	;3		41530	
+713C	 2C					INC, L	;1		41531	
+713D	 30 34				JR NC s8	;3		41534	
+713F	 A8					XOR B	;1		41535	
+7140	 26 00				LD, H, d8	;2		41537	
+7142	 68					LD L, B	;1		41538	
+7143	 71					LD (HL), C	;2		41540	
+7144	 68					LD L, B	;1		41541	
+7145	 71					LD (HL), C	;2		41543	
+7146	 AE					XOR (HL)	;2		41545	
+7147	 71					LD (HL), C	;2		41547	
+7148	 FF					RST 7	;4		41551	
+7149	 FF					RST 7	;4		41555	
+714A	 42					LD B, D	;1		41556	
+714B	 71					LD (HL), C	;2		41558	
+714C	 CB		
+714D	 71					LD (HL), C	;2		41560	
+714E	 CB		
+714F	 71					LD (HL), C	;2		41562	
+7150	 1D					DEC, E	;1		41563	
+7151	 72					LD (HL), D	;2		41565	
+7152	 FF					RST 7	;4		41569	
+7153	 FF					RST 7	;4		41573	
+7154	 4C					LD C, H	;1		41574	
+7155	 71					LD (HL), C	;2		41576	
+7156	 3A					LD A, (HL-)	;2		41578	
+7157	 72					LD (HL), D	;2		41580	
+7158	 3A					LD A, (HL-)	;2		41582	
+7159	 72					LD (HL), D	;2		41584	
+715A	 7F					LD A, A	;1		41585	
+715B	 72					LD (HL), D	;2		41587	
+715C	 7F					LD A, A	;1		41588	
+715D	 72					LD (HL), D	;2		41590	
+715E	 FF					RST 7	;4		41594	
+715F	 FF					RST 7	;4		41598	
+7160	 56					LD D, (HL)	;2		41600	
+7161	 71					LD (HL), C	;2		41602	
+7162	 A3					AND E	;1		41603	
+7163	 72					LD (HL), D	;2		41605	
+7164	 FF					RST 7	;4		41609	
+7165	 FF					RST 7	;4		41613	
+7166	 62					LD H, D	;1		41614	
+7167	 71					LD (HL), C	;2		41616	
+7168	 9D					SBC A, L	;1		41617	
+7169	 84					ADD A, H	;1		41618	
+716A	 00					NOP	;1		41619	
+716B	 81					ADD A, C	;1		41620	
+716C	 A3					AND E	;1		41621	
+716D	 52					LD D, D	;1		41622	
+716E	 A2					AND D	;1		41623	
+716F	 48					LD C, B	;1		41624	
+7170	 4A					LD C, D	;1		41625	
+7171	 A3					AND E	;1		41626	
+7172	 4E					LD C, (HL)	;2		41628	
+7173	 A2					AND D	;1		41629	
+7174	 4A					LD C, D	;1		41630	
+7175	 48					LD C, B	;1		41631	
+7176	 A3					AND E	;1		41632	
+7177	 44					LD B, H	;1		41633	
+7178	 A2					AND D	;1		41634	
+7179	 44					LD B, H	;1		41635	
+717A	 4A					LD C, D	;1		41636	
+717B	 A3					AND E	;1		41637	
+717C	 52					LD D, D	;1		41638	
+717D	 A2					AND D	;1		41639	
+717E	 4E					LD C, (HL)	;2		41641	
+717F	 4A					LD C, D	;1		41642	
+7180	 A7					AND A	;1		41643	
+7181	 48					LD C, B	;1		41644	
+7182	 A2					AND D	;1		41645	
+7183	 4A					LD C, D	;1		41646	
+7184	 A3					AND E	;1		41647	
+7185	 4E					LD C, (HL)	;2		41649	
+7186	 52					LD D, D	;1		41650	
+7187	 A3					AND E	;1		41651	
+7188	 4A					LD C, D	;1		41652	
+7189	 44					LD B, H	;1		41653	
+718A	 44					LD B, H	;1		41654	
+718B	 01 A2 01			LD BC, d16	;3		41657	
+718E	 A3					AND E	;1		41658	
+718F	 4E					LD C, (HL)	;2		41660	
+7190	 A2					AND D	;1		41661	
+7191	 54					LD D, H	;1		41662	
+7192	 A3					AND E	;1		41663	
+7193	 5C					LD E, H	;1		41664	
+7194	 A2					AND D	;1		41665	
+7195	 58					LD E, B	;1		41666	
+7196	 54					LD D, H	;1		41667	
+7197	 A7					AND A	;1		41668	
+7198	 52					LD D, D	;1		41669	
+7199	 A2					AND D	;1		41670	
+719A	 4A					LD C, D	;1		41671	
+719B	 A3					AND E	;1		41672	
+719C	 52					LD D, D	;1		41673	
+719D	 A2					AND D	;1		41674	
+719E	 4E					LD C, (HL)	;2		41676	
+719F	 4A					LD C, D	;1		41677	
+71A0	 A3					AND E	;1		41678	
+71A1	 48					LD C, B	;1		41679	
+71A2	 A2					AND D	;1		41680	
+71A3	 48					LD C, B	;1		41681	
+71A4	 4A					LD C, D	;1		41682	
+71A5	 A3					AND E	;1		41683	
+71A6	 4E					LD C, (HL)	;2		41685	
+71A7	 52					LD D, D	;1		41686	
+71A8	 A3					AND E	;1		41687	
+71A9	 4A					LD C, D	;1		41688	
+71AA	 44					LD B, H	;1		41689	
+71AB	 44					LD B, H	;1		41690	
+71AC	 01 00 9D			LD BC, d16	;3		41693	
+71AF	 50					LD D, B	;1		41694	
+71B0	 00					NOP	;1		41695	
+71B1	 81					ADD A, C	;1		41696	
+71B2	 A4					AND H	;1		41697	
+71B3	 3A					LD A, (HL-)	;2		41699	
+71B4	 32					LD (HL-), A	;2		41701	
+71B5	 36 30				LD (HL), d8	;3		41704	
+71B7	 A4					AND H	;1		41705	
+71B8	 32					LD (HL-), A	;2		41707	
+71B9	 2C					INC, L	;1		41708	
+71BA	 A8					XOR B	;1		41709	
+71BB	 2A					LD A, (HL+)	;2		41711	
+71BC	 A3					AND E	;1		41712	
+71BD	 01 A4 3A			LD BC, d16	;3		41715	
+71C0	 32					LD (HL-), A	;2		41717	
+71C1	 36 30				LD (HL), d8	;3		41720	
+71C3	 A3					AND E	;1		41721	
+71C4	 32					LD (HL-), A	;2		41723	
+71C5	 3A					LD A, (HL-)	;2		41725	
+71C6	 A4					AND H	;1		41726	
+71C7	 44					LD B, H	;1		41727	
+71C8	 42					LD B, D	;1		41728	
+71C9	 01 00 9D			LD BC, d16	;3		41731	
+71CC	 43					LD B, E	;1		41732	
+71CD	 00					NOP	;1		41733	
+71CE	 81					ADD A, C	;1		41734	
+71CF	 A3					AND E	;1		41735	
+71D0	 48					LD C, B	;1		41736	
+71D1	 A2					AND D	;1		41737	
+71D2	 42					LD B, D	;1		41738	
+71D3	 44					LD B, H	;1		41739	
+71D4	 48					LD C, B	;1		41740	
+71D5	 A1					AND C	;1		41741	
+71D6	 52					LD D, D	;1		41742	
+71D7	 4E					LD C, (HL)	;2		41744	
+71D8	 A2					AND D	;1		41745	
+71D9	 44					LD B, H	;1		41746	
+71DA	 42					LD B, D	;1		41747	
+71DB	 A7					AND A	;1		41748	
+71DC	 3A					LD A, (HL-)	;2		41750	
+71DD	 A2					AND D	;1		41751	
+71DE	 44					LD B, H	;1		41752	
+71DF	 4A					LD C, D	;1		41753	
+71E0	 01 A2 48			LD BC, d16	;3		41756	
+71E3	 44					LD B, H	;1		41757	
+71E4	 A1					AND C	;1		41758	
+71E5	 42					LD B, D	;1		41759	
+71E6	 42					LD B, D	;1		41760	
+71E7	 A2					AND D	;1		41761	
+71E8	 3A					LD A, (HL-)	;2		41763	
+71E9	 42					LD B, D	;1		41764	
+71EA	 44					LD B, H	;1		41765	
+71EB	 A3					AND E	;1		41766	
+71EC	 48					LD C, B	;1		41767	
+71ED	 4A					LD C, D	;1		41768	
+71EE	 A3					AND E	;1		41769	
+71EF	 44					LD B, H	;1		41770	
+71F0	 3A					LD A, (HL-)	;2		41772	
+71F1	 3A					LD A, (HL-)	;2		41774	
+71F2	 01 A2 1E			LD BC, d16	;3		41777	
+71F5	 A3					AND E	;1		41778	
+71F6	 3C					INC, A	;1		41779	
+71F7	 A2					AND D	;1		41780	
+71F8	 44					LD B, H	;1		41781	
+71F9	 4A					LD C, D	;1		41782	
+71FA	 A1					AND C	;1		41783	
+71FB	 4A					LD C, D	;1		41784	
+71FC	 4A					LD C, D	;1		41785	
+71FD	 A2					AND D	;1		41786	
+71FE	 48					LD C, B	;1		41787	
+71FF	 44					LD B, H	;1		41788	
+7200	 A7					AND A	;1		41789	
+7201	 40					LD B, B	;1		41790	
+7202	 A2					AND D	;1		41791	
+7203	 3A					LD A, (HL-)	;2		41793	
+7204	 40					LD B, B	;1		41794	
+7205	 A1					AND C	;1		41795	
+7206	 44					LD B, H	;1		41796	
+7207	 40					LD B, B	;1		41797	
+7208	 A2					AND D	;1		41798	
+7209	 3C					INC, A	;1		41799	
+720A	 3A					LD A, (HL-)	;2		41801	
+720B	 42					LD B, D	;1		41802	
+720C	 3A					LD A, (HL-)	;2		41804	
+720D	 42					LD B, D	;1		41805	
+720E	 44					LD B, H	;1		41806	
+720F	 48					LD C, B	;1		41807	
+7210	 42					LD B, D	;1		41808	
+7211	 4A					LD C, D	;1		41809	
+7212	 42					LD B, D	;1		41810	
+7213	 A1					AND C	;1		41811	
+7214	 44					LD B, H	;1		41812	
+7215	 4A					LD C, D	;1		41813	
+7216	 3A					LD A, (HL-)	;2		41815	
+7217	 01 A3 3A			LD BC, d16	;3		41818	
+721A	 3A					LD A, (HL-)	;2		41820	
+721B	 01 00 9D			LD BC, d16	;3		41823	
+721E	 30 00				JR NC s8	;3		41826	
+7220	 81					ADD A, C	;1		41827	
+7221	 A4					AND H	;1		41828	
+7222	 32					LD (HL-), A	;2		41830	
+7223	 2C					INC, L	;1		41831	
+7224	 30 2A				JR NC s8	;3		41834	
+7226	 2C					INC, L	;1		41835	
+7227	 22					LD (HL+), A	;2		41837	
+7228	 A4					AND H	;1		41838	
+7229	 22					LD (HL+), A	;2		41840	
+722A	 A3					AND E	;1		41841	
+722B	 30 01				JR NC s8	;3		41844	
+722D	 A4					AND H	;1		41845	
+722E	 32					LD (HL-), A	;2		41847	
+722F	 2C					INC, L	;1		41848	
+7230	 30 2A				JR NC s8	;3		41851	
+7232	 A3					AND E	;1		41852	
+7233	 2C					INC, L	;1		41853	
+7234	 32					LD (HL-), A	;2		41855	
+7235	 A4					AND H	;1		41856	
+7236	 3A					LD A, (HL-)	;2		41858	
+7237	 36 01				LD (HL), d8	;3		41861	
+7239	 00					NOP	;1		41862	
+723A	 9D					SBC A, L	;1		41863	
+723B	 C9					RET	;4		41867	
+723C	 6E					LD L, (HL)	;2		41869	
+723D	 20 A2				JR NZ s8	;3		41872	
+723F	 22					LD (HL+), A	;2		41874	
+7240	 3A					LD A, (HL-)	;2		41876	
+7241	 22					LD (HL+), A	;2		41878	
+7242	 3A					LD A, (HL-)	;2		41880	
+7243	 22					LD (HL+), A	;2		41882	
+7244	 3A					LD A, (HL-)	;2		41884	
+7245	 22					LD (HL+), A	;2		41886	
+7246	 3A					LD A, (HL-)	;2		41888	
+7247	 2C					INC, L	;1		41889	
+7248	 44					LD B, H	;1		41890	
+7249	 2C					INC, L	;1		41891	
+724A	 44					LD B, H	;1		41892	
+724B	 2C					INC, L	;1		41893	
+724C	 44					LD B, H	;1		41894	
+724D	 2C					INC, L	;1		41895	
+724E	 44					LD B, H	;1		41896	
+724F	 2A					LD A, (HL+)	;2		41898	
+7250	 42					LD B, D	;1		41899	
+7251	 2A					LD A, (HL+)	;2		41901	
+7252	 42					LD B, D	;1		41902	
+7253	 22					LD (HL+), A	;2		41904	
+7254	 3A					LD A, (HL-)	;2		41906	
+7255	 22					LD (HL+), A	;2		41908	
+7256	 3A					LD A, (HL-)	;2		41910	
+7257	 2C					INC, L	;1		41911	
+7258	 44					LD B, H	;1		41912	
+7259	 2C					INC, L	;1		41913	
+725A	 44					LD B, H	;1		41914	
+725B	 2C					INC, L	;1		41915	
+725C	 44					LD B, H	;1		41916	
+725D	 30 32				JR NC s8	;3		41919	
+725F	 36 1E				LD (HL), d8	;3		41922	
+7261	 01 1E 01			LD BC, d16	;3		41925	
+7264	 1E 2C				LD, E, d8	;2		41927	
+7266	 24					INC, H	;1		41928	
+7267	 1A					LD A, (DE)	;2		41930	
+7268	 32					LD (HL-), A	;2		41932	
+7269	 01 32 1A			LD BC, d16	;3		41935	
+726C	 28 28				JR Z s8	;3		41938	
+726E	 01 30 48			LD BC, d16	;3		41941	
+7271	 01 48 01			LD BC, d16	;3		41944	
+7274	 3A					LD A, (HL-)	;2		41946	
+7275	 01 42 2C			LD BC, d16	;3		41949	
+7278	 3A					LD A, (HL-)	;2		41951	
+7279	 2C					INC, L	;1		41952	
+727A	 3A					LD A, (HL-)	;2		41954	
+727B	 A3					AND E	;1		41955	
+727C	 2C					INC, L	;1		41956	
+727D	 01 00 9D			LD BC, d16	;3		41959	
+7280	 C9					RET	;4		41963	
+7281	 6E					LD L, (HL)	;2		41965	
+7282	 20 A2				JR NZ s8	;3		41968	
+7284	 44					LD B, H	;1		41969	
+7285	 52					LD D, D	;1		41970	
+7286	 44					LD B, H	;1		41971	
+7287	 52					LD D, D	;1		41972	
+7288	 44					LD B, H	;1		41973	
+7289	 52					LD D, D	;1		41974	
+728A	 44					LD B, H	;1		41975	
+728B	 52					LD D, D	;1		41976	
+728C	 42					LD B, D	;1		41977	
+728D	 52					LD D, D	;1		41978	
+728E	 42					LD B, D	;1		41979	
+728F	 52					LD D, D	;1		41980	
+7290	 42					LD B, D	;1		41981	
+7291	 52					LD D, D	;1		41982	
+7292	 42					LD B, D	;1		41983	
+7293	 52					LD D, D	;1		41984	
+7294	 44					LD B, H	;1		41985	
+7295	 52					LD D, D	;1		41986	
+7296	 44					LD B, H	;1		41987	
+7297	 52					LD D, D	;1		41988	
+7298	 44					LD B, H	;1		41989	
+7299	 52					LD D, D	;1		41990	
+729A	 44					LD B, H	;1		41991	
+729B	 52					LD D, D	;1		41992	
+729C	 42					LD B, D	;1		41993	
+729D	 52					LD D, D	;1		41994	
+729E	 42					LD B, D	;1		41995	
+729F	 52					LD D, D	;1		41996	
+72A0	 A4					AND H	;1		41997	
+72A1	 01 00 A2			LD BC, d16	;3		42000	
+72A4	 01 06 01			LD BC, d16	;3		42003	
+72A7	 06 01				LD, B, d8	;2		42005	
+72A9	 A1					AND C	;1		42006	
+72AA	 06 06				LD, B, d8	;2		42008	
+72AC	 A2					AND D	;1		42009	
+72AD	 01 06 01			LD BC, d16	;3		42012	
+72B0	 06 01				LD, B, d8	;2		42014	
+72B2	 06 01				LD, B, d8	;2		42016	
+72B4	 06 06				LD, B, d8	;2		42018	
+72B6	 06 00				LD, B, d8	;2		42020	
+72B8	 0B					DEC, BC	;2		42022	
+72B9	 73					LD (HL), E	;2		42024	
+72BA	 3F					CCF	;1		42025	
+72BB	 73					LD (HL), E	;2		42027	
+72BC	 67					LD H, A	;1		42028	
+72BD	 73					LD (HL), E	;2		42030	
+72BE	 67					LD H, A	;1		42031	
+72BF	 73					LD (HL), E	;2		42033	
+72C0	 C9					RET	;4		42037	
+72C1	 73					LD (HL), E	;2		42039	
+72C2	 FF					RST 7	;4		42043	
+72C3	 FF					RST 7	;4		42047	
+72C4	 B8					CP B	;1		42048	
+72C5	 72					LD (HL), D	;2		42050	
+72C6	 08 73 3C			LD (a16), SP	;5		42055	
+72C9	 73					LD (HL), E	;2		42057	
+72CA	 8E					ADC A, (HL)	;2		42059	
+72CB	 73					LD (HL), E	;2		42061	
+72CC	 8E					ADC A, (HL)	;2		42063	
+72CD	 73					LD (HL), E	;2		42065	
+72CE	 4B					LD C, E	;1		42066	
+72CF	 74					LD (HL), H	;2		42068	
+72D0	 FF					RST 7	;4		42072	
+72D1	 FF					RST 7	;4		42076	
+72D2	 C6 72				ADD A, d8	;2		42078	
+72D4	 1F					RRA	;1		42079	
+72D5	 73					LD (HL), E	;2		42081	
+72D6	 53					LD D, E	;1		42082	
+72D7	 73					LD (HL), E	;2		42084	
+72D8	 B5					OR L	;1		42085	
+72D9	 73					LD (HL), E	;2		42087	
+72DA	 B5					OR L	;1		42088	
+72DB	 73					LD (HL), E	;2		42090	
+72DC	 B5					OR L	;1		42091	
+72DD	 73					LD (HL), E	;2		42093	
+72DE	 B5					OR L	;1		42094	
+72DF	 73					LD (HL), E	;2		42096	
+72E0	 B5					OR L	;1		42097	
+72E1	 73					LD (HL), E	;2		42099	
+72E2	 B5					OR L	;1		42100	
+72E3	 73					LD (HL), E	;2		42102	
+72E4	 C0					RET NZ	;5		42107	
+72E5	 74					LD (HL), H	;2		42109	
+72E6	 DE 74				SBC A, d8	;2		42111	
+72E8	 DE 74				SBC A, d8	;2		42113	
+72EA	 DE 74				SBC A, d8	;2		42115	
+72EC	 EE 74				XOR d8	;2		42117	
+72EE	 FE 74				CP d8	;2		42119	
+72F0	 FE 74				CP d8	;2		42121	
+72F2	 0E 75				LD, C, d8	;2		42123	
+72F4	 0E 75				LD, C, d8	;2		42125	
+72F6	 1E 75				LD, E, d8	;2		42127	
+72F8	 1E 75				LD, E, d8	;2		42129	
+72FA	 0E 75				LD, C, d8	;2		42131	
+72FC	 2E 75				LD, L, d8	;2		42133	
+72FE	 FF					RST 7	;4		42137	
+72FF	 FF					RST 7	;4		42141	
+7300	 D4 72 33			CALL NC, a16	;6		42147	
+7303	 73					LD (HL), E	;2		42149	
+7304	 FF					RST 7	;4		42153	
+7305	 FF					RST 7	;4		42157	
+7306	 02					LD (BC), A	;2		42159	
+7307	 73					LD (HL), E	;2		42161	
+7308	 A5					AND L	;1		42162	
+7309	 01 00 9D			LD BC, d16	;3		42165	
+730C	 62					LD H, D	;1		42166	
+730D	 00					NOP	;1		42167	
+730E	 80					ADD A, B	;1		42168	
+730F	 A2					AND D	;1		42169	
+7310	 3A					LD A, (HL-)	;2		42171	
+7311	 A1					AND C	;1		42172	
+7312	 3A					LD A, (HL-)	;2		42174	
+7313	 3A					LD A, (HL-)	;2		42176	
+7314	 A2					AND D	;1		42177	
+7315	 30 30				JR NC s8	;3		42180	
+7317	 3A					LD A, (HL-)	;2		42182	
+7318	 A1					AND C	;1		42183	
+7319	 3A					LD A, (HL-)	;2		42185	
+731A	 3A					LD A, (HL-)	;2		42187	
+731B	 A2					AND D	;1		42188	
+731C	 30 30				JR NC s8	;3		42191	
+731E	 00					NOP	;1		42192	
+731F	 9D					SBC A, L	;1		42193	
+7320	 E9					JP HL	;1		42194	
+7321	 6E					LD L, (HL)	;2		42196	
+7322	 A0					AND B	;1		42197	
+7323	 A2					AND D	;1		42198	
+7324	 3A					LD A, (HL-)	;2		42200	
+7325	 A1					AND C	;1		42201	
+7326	 3A					LD A, (HL-)	;2		42203	
+7327	 3A					LD A, (HL-)	;2		42205	
+7328	 A2					AND D	;1		42206	
+7329	 30 30				JR NC s8	;3		42209	
+732B	 3A					LD A, (HL-)	;2		42211	
+732C	 A1					AND C	;1		42212	
+732D	 3A					LD A, (HL-)	;2		42214	
+732E	 3A					LD A, (HL-)	;2		42216	
+732F	 A2					AND D	;1		42217	
+7330	 30 30				JR NC s8	;3		42220	
+7332	 00					NOP	;1		42221	
+7333	 A2					AND D	;1		42222	
+7334	 06 A1				LD, B, d8	;2		42224	
+7336	 06 06				LD, B, d8	;2		42226	
+7338	 A2					AND D	;1		42227	
+7339	 06 06				LD, B, d8	;2		42229	
+733B	 00					NOP	;1		42230	
+733C	 A5					AND L	;1		42231	
+733D	 01 00 9D			LD BC, d16	;3		42234	
+7340	 32					LD (HL-), A	;2		42236	
+7341	 00					NOP	;1		42237	
+7342	 80					ADD A, B	;1		42238	
+7343	 A2					AND D	;1		42239	
+7344	 3A					LD A, (HL-)	;2		42241	
+7345	 A1					AND C	;1		42242	
+7346	 3A					LD A, (HL-)	;2		42244	
+7347	 3A					LD A, (HL-)	;2		42246	
+7348	 A2					AND D	;1		42247	
+7349	 30 30				JR NC s8	;3		42250	
+734B	 3A					LD A, (HL-)	;2		42252	
+734C	 A1					AND C	;1		42253	
+734D	 3A					LD A, (HL-)	;2		42255	
+734E	 3A					LD A, (HL-)	;2		42257	
+734F	 A2					AND D	;1		42258	
+7350	 30 30				JR NC s8	;3		42261	
+7352	 00					NOP	;1		42262	
+7353	 9D					SBC A, L	;1		42263	
+7354	 E9					JP HL	;1		42264	
+7355	 6E					LD L, (HL)	;2		42266	
+7356	 A0					AND B	;1		42267	
+7357	 A2					AND D	;1		42268	
+7358	 3A					LD A, (HL-)	;2		42270	
+7359	 A1					AND C	;1		42271	
+735A	 3A					LD A, (HL-)	;2		42273	
+735B	 3A					LD A, (HL-)	;2		42275	
+735C	 A2					AND D	;1		42276	
+735D	 30 30				JR NC s8	;3		42279	
+735F	 3A					LD A, (HL-)	;2		42281	
+7360	 A1					AND C	;1		42282	
+7361	 3A					LD A, (HL-)	;2		42284	
+7362	 3A					LD A, (HL-)	;2		42286	
+7363	 A2					AND D	;1		42287	
+7364	 30 30				JR NC s8	;3		42290	
+7366	 00					NOP	;1		42291	
+7367	 9D					SBC A, L	;1		42292	
+7368	 82					ADD A, D	;1		42293	
+7369	 00					NOP	;1		42294	
+736A	 80					ADD A, B	;1		42295	
+736B	 A2					AND D	;1		42296	
+736C	 3A					LD A, (HL-)	;2		42298	
+736D	 48					LD C, B	;1		42299	
+736E	 52					LD D, D	;1		42300	
+736F	 50					LD D, B	;1		42301	
+7370	 52					LD D, D	;1		42302	
+7371	 A1					AND C	;1		42303	
+7372	 48					LD C, B	;1		42304	
+7373	 48					LD C, B	;1		42305	
+7374	 A2					AND D	;1		42306	
+7375	 4A					LD C, D	;1		42307	
+7376	 44					LD B, H	;1		42308	
+7377	 48					LD C, B	;1		42309	
+7378	 A1					AND C	;1		42310	
+7379	 40					LD B, B	;1		42311	
+737A	 40					LD B, B	;1		42312	
+737B	 A2					AND D	;1		42313	
+737C	 44					LD B, H	;1		42314	
+737D	 3E 40				LD, A, d8	;2		42316	
+737F	 A1					AND C	;1		42317	
+7380	 3A					LD A, (HL-)	;2		42319	
+7381	 3A					LD A, (HL-)	;2		42321	
+7382	 A2					AND D	;1		42322	
+7383	 3E 38				LD, A, d8	;2		42324	
+7385	 3A					LD A, (HL-)	;2		42326	
+7386	 30 32				JR NC s8	;3		42329	
+7388	 38 3A				JR C s8	;3		42332	
+738A	 30 32				JR NC s8	;3		42335	
+738C	 3E 00				LD, A, d8	;2		42337	
+738E	 9D					SBC A, L	;1		42338	
+738F	 53					LD D, E	;1		42339	
+7390	 00					NOP	;1		42340	
+7391	 40					LD B, B	;1		42341	
+7392	 A2					AND D	;1		42342	
+7393	 30 40				JR NC s8	;3		42345	
+7395	 40					LD B, B	;1		42346	
+7396	 44					LD B, H	;1		42347	
+7397	 40					LD B, B	;1		42348	
+7398	 A1					AND C	;1		42349	
+7399	 3E 40				LD, A, d8	;2		42351	
+739B	 A2					AND D	;1		42352	
+739C	 44					LD B, H	;1		42353	
+739D	 3E 40				LD, A, d8	;2		42355	
+739F	 A1					AND C	;1		42356	
+73A0	 38 3A				JR C s8	;3		42359	
+73A2	 A2					AND D	;1		42360	
+73A3	 3E 38				LD, A, d8	;2		42362	
+73A5	 3A					LD A, (HL-)	;2		42364	
+73A6	 A1					AND C	;1		42365	
+73A7	 2E 30				LD, L, d8	;2		42367	
+73A9	 A2					AND D	;1		42368	
+73AA	 38 30				JR C s8	;3		42371	
+73AC	 30 28				JR NC s8	;3		42374	
+73AE	 2C					INC, L	;1		42375	
+73AF	 2C					INC, L	;1		42376	
+73B0	 30 28				JR NC s8	;3		42379	
+73B2	 2C					INC, L	;1		42380	
+73B3	 38 00				JR C s8	;3		42383	
+73B5	 9D					SBC A, L	;1		42384	
+73B6	 E9					JP HL	;1		42385	
+73B7	 6E					LD L, (HL)	;2		42387	
+73B8	 A0					AND B	;1		42388	
+73B9	 A2					AND D	;1		42389	
+73BA	 3A					LD A, (HL-)	;2		42391	
+73BB	 A1					AND C	;1		42392	
+73BC	 3A					LD A, (HL-)	;2		42394	
+73BD	 3A					LD A, (HL-)	;2		42396	
+73BE	 A2					AND D	;1		42397	
+73BF	 30 30				JR NC s8	;3		42400	
+73C1	 3A					LD A, (HL-)	;2		42402	
+73C2	 A1					AND C	;1		42403	
+73C3	 3A					LD A, (HL-)	;2		42405	
+73C4	 3A					LD A, (HL-)	;2		42407	
+73C5	 A2					AND D	;1		42408	
+73C6	 30 30				JR NC s8	;3		42411	
+73C8	 00					NOP	;1		42412	
+73C9	 A8					XOR B	;1		42413	
+73CA	 3A					LD A, (HL-)	;2		42415	
+73CB	 A2					AND D	;1		42416	
+73CC	 3E 38				LD, A, d8	;2		42418	
+73CE	 A8					XOR B	;1		42419	
+73CF	 3A					LD A, (HL-)	;2		42421	
+73D0	 A3					AND E	;1		42422	
+73D1	 3E A2				LD, A, d8	;2		42424	
+73D3	 40					LD B, B	;1		42425	
+73D4	 A1					AND C	;1		42426	
+73D5	 40					LD B, B	;1		42427	
+73D6	 40					LD B, B	;1		42428	
+73D7	 A2					AND D	;1		42429	
+73D8	 44					LD B, H	;1		42430	
+73D9	 3E 40				LD, A, d8	;2		42432	
+73DB	 A1					AND C	;1		42433	
+73DC	 40					LD B, B	;1		42434	
+73DD	 40					LD B, B	;1		42435	
+73DE	 A2					AND D	;1		42436	
+73DF	 44					LD B, H	;1		42437	
+73E0	 3E A8				LD, A, d8	;2		42439	
+73E2	 40					LD B, B	;1		42440	
+73E3	 A3					AND E	;1		42441	
+73E4	 44					LD B, H	;1		42442	
+73E5	 A2					AND D	;1		42443	
+73E6	 48					LD C, B	;1		42444	
+73E7	 A1					AND C	;1		42445	
+73E8	 48					LD C, B	;1		42446	
+73E9	 48					LD C, B	;1		42447	
+73EA	 A2					AND D	;1		42448	
+73EB	 4A					LD C, D	;1		42449	
+73EC	 44					LD B, H	;1		42450	
+73ED	 48					LD C, B	;1		42451	
+73EE	 A1					AND C	;1		42452	
+73EF	 48					LD C, B	;1		42453	
+73F0	 48					LD C, B	;1		42454	
+73F1	 A2					AND D	;1		42455	
+73F2	 4A					LD C, D	;1		42456	
+73F3	 44					LD B, H	;1		42457	
+73F4	 A8					XOR B	;1		42458	
+73F5	 48					LD C, B	;1		42459	
+73F6	 A3					AND E	;1		42460	
+73F7	 4C					LD C, H	;1		42461	
+73F8	 A2					AND D	;1		42462	
+73F9	 4E					LD C, (HL)	;2		42464	
+73FA	 A1					AND C	;1		42465	
+73FB	 4E					LD C, (HL)	;2		42467	
+73FC	 4E					LD C, (HL)	;2		42469	
+73FD	 A2					AND D	;1		42470	
+73FE	 4E					LD C, (HL)	;2		42472	
+73FF	 4E					LD C, (HL)	;2		42474	
+7400	 52					LD D, D	;1		42475	
+7401	 4E					LD C, (HL)	;2		42477	
+7402	 4E					LD C, (HL)	;2		42479	
+7403	 4C					LD C, H	;1		42480	
+7404	 4E					LD C, (HL)	;2		42482	
+7405	 A1					AND C	;1		42483	
+7406	 4E					LD C, (HL)	;2		42485	
+7407	 4E					LD C, (HL)	;2		42487	
+7408	 A2					AND D	;1		42488	
+7409	 4E					LD C, (HL)	;2		42490	
+740A	 4E					LD C, (HL)	;2		42492	
+740B	 52					LD D, D	;1		42493	
+740C	 4E					LD C, (HL)	;2		42495	
+740D	 4E					LD C, (HL)	;2		42497	
+740E	 4C					LD C, H	;1		42498	
+740F	 4E					LD C, (HL)	;2		42500	
+7410	 A1					AND C	;1		42501	
+7411	 4E					LD C, (HL)	;2		42503	
+7412	 4E					LD C, (HL)	;2		42505	
+7413	 A2					AND D	;1		42506	
+7414	 4E					LD C, (HL)	;2		42508	
+7415	 4E					LD C, (HL)	;2		42510	
+7416	 4C					LD C, H	;1		42511	
+7417	 A1					AND C	;1		42512	
+7418	 4C					LD C, H	;1		42513	
+7419	 4C					LD C, H	;1		42514	
+741A	 A2					AND D	;1		42515	
+741B	 4C					LD C, H	;1		42516	
+741C	 4C					LD C, H	;1		42517	
+741D	 4A					LD C, D	;1		42518	
+741E	 A1					AND C	;1		42519	
+741F	 4A					LD C, D	;1		42520	
+7420	 4A					LD C, D	;1		42521	
+7421	 A2					AND D	;1		42522	
+7422	 4A					LD C, D	;1		42523	
+7423	 44					LD B, H	;1		42524	
+7424	 3E 40				LD, A, d8	;2		42526	
+7426	 44					LD B, H	;1		42527	
+7427	 36 44				LD (HL), d8	;3		42530	
+7429	 A1					AND C	;1		42531	
+742A	 40					LD B, B	;1		42532	
+742B	 40					LD B, B	;1		42533	
+742C	 A2					AND D	;1		42534	
+742D	 36 A3				LD (HL), d8	;3		42537	
+742F	 40					LD B, B	;1		42538	
+7430	 A1					AND C	;1		42539	
+7431	 36 3A				LD (HL), d8	;3		42542	
+7433	 A2					AND D	;1		42543	
+7434	 36 30				LD (HL), d8	;3		42546	
+7436	 44					LD B, H	;1		42547	
+7437	 A1					AND C	;1		42548	
+7438	 40					LD B, B	;1		42549	
+7439	 40					LD B, B	;1		42550	
+743A	 A2					AND D	;1		42551	
+743B	 36 A3				LD (HL), d8	;3		42554	
+743D	 40					LD B, B	;1		42555	
+743E	 A1					AND C	;1		42556	
+743F	 36 3A				LD (HL), d8	;3		42559	
+7441	 A2					AND D	;1		42560	
+7442	 36 2E				LD (HL), d8	;3		42563	
+7444	 A5					AND L	;1		42564	
+7445	 36 A8				LD (HL), d8	;3		42567	
+7447	 01 A3 38			LD BC, d16	;3		42570	
+744A	 00					NOP	;1		42571	
+744B	 A8					XOR B	;1		42572	
+744C	 30 A2				JR NC s8	;3		42575	
+744E	 30 30				JR NC s8	;3		42578	
+7450	 A8					XOR B	;1		42579	
+7451	 30 A3				JR NC s8	;3		42582	
+7453	 36 A5				LD (HL), d8	;3		42585	
+7455	 01 A8 01			LD BC, d16	;3		42588	
+7458	 A3					AND E	;1		42589	
+7459	 3E A2				LD, A, d8	;2		42591	
+745B	 40					LD B, B	;1		42592	
+745C	 A1					AND C	;1		42593	
+745D	 40					LD B, B	;1		42594	
+745E	 40					LD B, B	;1		42595	
+745F	 A2					AND D	;1		42596	
+7460	 44					LD B, H	;1		42597	
+7461	 3E 40				LD, A, d8	;2		42599	
+7463	 A1					AND C	;1		42600	
+7464	 40					LD B, B	;1		42601	
+7465	 40					LD B, B	;1		42602	
+7466	 A2					AND D	;1		42603	
+7467	 44					LD B, H	;1		42604	
+7468	 3E A8				LD, A, d8	;2		42606	
+746A	 36 A3				LD (HL), d8	;3		42609	
+746C	 3A					LD A, (HL-)	;2		42611	
+746D	 A2					AND D	;1		42612	
+746E	 3E A1				LD, A, d8	;2		42614	
+7470	 40					LD B, B	;1		42615	
+7471	 44					LD B, H	;1		42616	
+7472	 A2					AND D	;1		42617	
+7473	 3E 44				LD, A, d8	;2		42619	
+7475	 48					LD C, B	;1		42620	
+7476	 48					LD C, B	;1		42621	
+7477	 48					LD C, B	;1		42622	
+7478	 3A					LD A, (HL-)	;2		42624	
+7479	 3E A1				LD, A, d8	;2		42626	
+747B	 40					LD B, B	;1		42627	
+747C	 44					LD B, H	;1		42628	
+747D	 A2					AND D	;1		42629	
+747E	 3E 44				LD, A, d8	;2		42631	
+7480	 46					LD B, (HL)	;2		42633	
+7481	 46					LD B, (HL)	;2		42635	
+7482	 46					LD B, (HL)	;2		42637	
+7483	 3A					LD A, (HL-)	;2		42639	
+7484	 3E A1				LD, A, d8	;2		42641	
+7486	 40					LD B, B	;1		42642	
+7487	 44					LD B, H	;1		42643	
+7488	 A2					AND D	;1		42644	
+7489	 3E 44				LD, A, d8	;2		42646	
+748B	 3A					LD A, (HL-)	;2		42648	
+748C	 A1					AND C	;1		42649	
+748D	 3E 40				LD, A, d8	;2		42651	
+748F	 A2					AND D	;1		42652	
+7490	 3A					LD A, (HL-)	;2		42654	
+7491	 40					LD B, B	;1		42655	
+7492	 3A					LD A, (HL-)	;2		42657	
+7493	 A1					AND C	;1		42658	
+7494	 3E 40				LD, A, d8	;2		42660	
+7496	 A2					AND D	;1		42661	
+7497	 3E 3E				LD, A, d8	;2		42663	
+7499	 2C					INC, L	;1		42664	
+749A	 3A					LD A, (HL-)	;2		42666	
+749B	 3E 26				LD, A, d8	;2		42668	
+749D	 30 A1				JR NC s8	;3		42671	
+749F	 30 30				JR NC s8	;3		42674	
+74A1	 A2					AND D	;1		42675	
+74A2	 30 A3				JR NC s8	;3		42678	
+74A4	 30 A1				JR NC s8	;3		42681	
+74A6	 30 34				JR NC s8	;3		42684	
+74A8	 A2					AND D	;1		42685	
+74A9	 30 28				JR NC s8	;3		42688	
+74AB	 2E A1				LD, L, d8	;2		42690	
+74AD	 2E 2E				LD, L, d8	;2		42692	
+74AF	 A2					AND D	;1		42693	
+74B0	 2E A3				LD, L, d8	;2		42695	
+74B2	 2E A1				LD, L, d8	;2		42697	
+74B4	 2E 32				LD, L, d8	;2		42699	
+74B6	 A2					AND D	;1		42700	
+74B7	 2E 28				LD, L, d8	;2		42702	
+74B9	 A5					AND L	;1		42703	
+74BA	 26 A8				LD, H, d8	;2		42705	
+74BC	 01 A3 2C			LD BC, d16	;3		42708	
+74BF	 00					NOP	;1		42709	
+74C0	 A2					AND D	;1		42710	
+74C1	 3A					LD A, (HL-)	;2		42712	
+74C2	 A1					AND C	;1		42713	
+74C3	 3A					LD A, (HL-)	;2		42715	
+74C4	 3A					LD A, (HL-)	;2		42717	
+74C5	 A2					AND D	;1		42718	
+74C6	 32					LD (HL-), A	;2		42720	
+74C7	 2C					INC, L	;1		42721	
+74C8	 3A					LD A, (HL-)	;2		42723	
+74C9	 A1					AND C	;1		42724	
+74CA	 3A					LD A, (HL-)	;2		42726	
+74CB	 3A					LD A, (HL-)	;2		42728	
+74CC	 A2					AND D	;1		42729	
+74CD	 38 30				JR C s8	;3		42732	
+74CF	 3A					LD A, (HL-)	;2		42734	
+74D0	 A1					AND C	;1		42735	
+74D1	 3A					LD A, (HL-)	;2		42737	
+74D2	 3A					LD A, (HL-)	;2		42739	
+74D3	 A2					AND D	;1		42740	
+74D4	 32					LD (HL-), A	;2		42742	
+74D5	 2C					INC, L	;1		42743	
+74D6	 3A					LD A, (HL-)	;2		42745	
+74D7	 A1					AND C	;1		42746	
+74D8	 3A					LD A, (HL-)	;2		42748	
+74D9	 3A					LD A, (HL-)	;2		42750	
+74DA	 A2					AND D	;1		42751	
+74DB	 2C					INC, L	;1		42752	
+74DC	 1E 00				LD, E, d8	;2		42754	
+74DE	 A2					AND D	;1		42755	
+74DF	 28 A1				JR Z s8	;3		42758	
+74E1	 40					LD B, B	;1		42759	
+74E2	 28 A2				JR Z s8	;3		42762	
+74E4	 1E 36				LD, E, d8	;2		42764	
+74E6	 28 A1				JR Z s8	;3		42767	
+74E8	 40					LD B, B	;1		42768	
+74E9	 28 A2				JR Z s8	;3		42771	
+74EB	 1E 36				LD, E, d8	;2		42773	
+74ED	 00					NOP	;1		42774	
+74EE	 A2					AND D	;1		42775	
+74EF	 28 A1				JR Z s8	;3		42778	
+74F1	 40					LD B, B	;1		42779	
+74F2	 28 A2				JR Z s8	;3		42782	
+74F4	 1E 36				LD, E, d8	;2		42784	
+74F6	 28 A1				JR Z s8	;3		42787	
+74F8	 40					LD B, B	;1		42788	
+74F9	 28 A2				JR Z s8	;3		42791	
+74FB	 2C					INC, L	;1		42792	
+74FC	 44					LD B, H	;1		42793	
+74FD	 00					NOP	;1		42794	
+74FE	 A2					AND D	;1		42795	
+74FF	 1E A1				LD, E, d8	;2		42797	
+7501	 36 1E				LD (HL), d8	;3		42800	
+7503	 A2					AND D	;1		42801	
+7504	 1E 36				LD, E, d8	;2		42803	
+7506	 28 A1				JR Z s8	;3		42806	
+7508	 40					LD B, B	;1		42807	
+7509	 28 A2				JR Z s8	;3		42810	
+750B	 28 40				JR Z s8	;3		42813	
+750D	 00					NOP	;1		42814	
+750E	 A2					AND D	;1		42815	
+750F	 1E A1				LD, E, d8	;2		42817	
+7511	 36 1E				LD (HL), d8	;3		42820	
+7513	 A2					AND D	;1		42821	
+7514	 1E 36				LD, E, d8	;2		42823	
+7516	 1E A1				LD, E, d8	;2		42825	
+7518	 36 1E				LD (HL), d8	;3		42828	
+751A	 A2					AND D	;1		42829	
+751B	 1E 36				LD, E, d8	;2		42831	
+751D	 00					NOP	;1		42832	
+751E	 A2					AND D	;1		42833	
+751F	 22					LD (HL+), A	;2		42835	
+7520	 A1					AND C	;1		42836	
+7521	 3A					LD A, (HL-)	;2		42838	
+7522	 22					LD (HL+), A	;2		42840	
+7523	 A2					AND D	;1		42841	
+7524	 22					LD (HL+), A	;2		42843	
+7525	 3A					LD A, (HL-)	;2		42845	
+7526	 22					LD (HL+), A	;2		42847	
+7527	 A1					AND C	;1		42848	
+7528	 3A					LD A, (HL-)	;2		42850	
+7529	 22					LD (HL+), A	;2		42852	
+752A	 A2					AND D	;1		42853	
+752B	 22					LD (HL+), A	;2		42855	
+752C	 3A					LD A, (HL-)	;2		42857	
+752D	 00					NOP	;1		42858	
+752E	 A2					AND D	;1		42859	
+752F	 1E A1				LD, E, d8	;2		42861	
+7531	 36 1E				LD (HL), d8	;3		42864	
+7533	 A2					AND D	;1		42865	
+7534	 1E 36				LD, E, d8	;2		42867	
+7536	 1E A1				LD, E, d8	;2		42869	
+7538	 36 1E				LD (HL), d8	;3		42872	
+753A	 A2					AND D	;1		42873	
+753B	 A4					AND H	;1		42874	
+753C	 3E 00				LD, A, d8	;2		42876	
+753E	 36 3E				LD (HL), d8	;3		42879	
+7540	 44					LD B, H	;1		42880	
+7541	 A4					AND H	;1		42881	
+7542	 44					LD B, H	;1		42882	
+7543	 57					LD D, A	;1		42883	
+7544	 75					LD (HL), L	;2		42885	
+7545	 62					LD H, D	;1		42886	
+7546	 75					LD (HL), L	;2		42888	
+7547	 FF					RST 7	;4		42892	
+7548	 FF					RST 7	;4		42896	
+7549	 45					LD B, L	;1		42897	
+754A	 75					LD (HL), L	;2		42899	
+754B	 5E					LD E, (HL)	;2		42901	
+754C	 75					LD (HL), L	;2		42903	
+754D	 FF					RST 7	;4		42907	
+754E	 FF					RST 7	;4		42911	
+754F	 4B					LD C, E	;1		42912	
+7550	 75					LD (HL), L	;2		42914	
+7551	 7C					LD A, H	;1		42915	
+7552	 75					LD (HL), L	;2		42917	
+7553	 FF					RST 7	;4		42921	
+7554	 FF					RST 7	;4		42925	
+7555	 51					LD D, C	;1		42926	
+7556	 75					LD (HL), L	;2		42928	
+7557	 9D					SBC A, L	;1		42929	
+7558	 20 00				JR NZ s8	;3		42932	
+755A	 81					ADD A, C	;1		42933	
+755B	 AA					XOR D	;1		42934	
+755C	 01 00 9D			LD BC, d16	;3		42937	
+755F	 70					LD (HL), B	;2		42939	
+7560	 00					NOP	;1		42940	
+7561	 81					ADD A, C	;1		42941	
+7562	 A2					AND D	;1		42942	
+7563	 42					LD B, D	;1		42943	
+7564	 32					LD (HL-), A	;2		42945	
+7565	 38 42				JR C s8	;3		42948	
+7567	 46					LD B, (HL)	;2		42950	
+7568	 34					INC (HL)	;3		42953	
+7569	 3C					INC, A	;1		42954	
+756A	 46					LD B, (HL)	;2		42956	
+756B	 4A					LD C, D	;1		42957	
+756C	 38 42				JR C s8	;3		42960	
+756E	 4A					LD C, D	;1		42961	
+756F	 4C					LD C, H	;1		42962	
+7570	 3C					INC, A	;1		42963	
+7571	 42					LD B, D	;1		42964	
+7572	 4C					LD C, H	;1		42965	
+7573	 46					LD B, (HL)	;2		42967	
+7574	 34					INC (HL)	;3		42970	
+7575	 3C					INC, A	;1		42971	
+7576	 46					LD B, (HL)	;2		42973	
+7577	 40					LD B, B	;1		42974	
+7578	 2E 34				LD, L, d8	;2		42976	
+757A	 40					LD B, B	;1		42977	
+757B	 00					NOP	;1		42978	
+757C	 9D					SBC A, L	;1		42979	
+757D	 E9					JP HL	;1		42980	
+757E	 6E					LD L, (HL)	;2		42982	
+757F	 21 A8 42			LD (HL), d16	;3		42985	
+7582	 A3					AND E	;1		42986	
+7583	 2A					LD A, (HL+)	;2		42988	
+7584	 A8					XOR B	;1		42989	
+7585	 42					LD B, D	;1		42990	
+7586	 A3					AND E	;1		42991	
+7587	 2A					LD A, (HL+)	;2		42993	
+7588	 A8					XOR B	;1		42994	
+7589	 42					LD B, D	;1		42995	
+758A	 A3					AND E	;1		42996	
+758B	 2A					LD A, (HL+)	;2		42998	
+758C	 00					NOP	;1		42999	
+758D	 A1					AND C	;1		43000	
+758E	 75					LD (HL), L	;2		43002	
+758F	 AC					XOR H	;1		43003	
+7590	 75					LD (HL), L	;2		43005	
+7591	 FF					RST 7	;4		43009	
+7592	 FF					RST 7	;4		43013	
+7593	 8F					ADC A, A	;1		43014	
+7594	 75					LD (HL), L	;2		43016	
+7595	 A8					XOR B	;1		43017	
+7596	 75					LD (HL), L	;2		43019	
+7597	 FF					RST 7	;4		43023	
+7598	 FF					RST 7	;4		43027	
+7599	 95					SUB L	;1		43028	
+759A	 75					LD (HL), L	;2		43030	
+759B	 EE 75				XOR d8	;2		43032	
+759D	 FF					RST 7	;4		43036	
+759E	 FF					RST 7	;4		43040	
+759F	 9B					SBC A, E	;1		43041	
+75A0	 75					LD (HL), L	;2		43043	
+75A1	 9D					SBC A, L	;1		43044	
+75A2	 20 00				JR NZ s8	;3		43047	
+75A4	 81					ADD A, C	;1		43048	
+75A5	 AA					XOR D	;1		43049	
+75A6	 01 00 9D			LD BC, d16	;3		43052	
+75A9	 70					LD (HL), B	;2		43054	
+75AA	 00					NOP	;1		43055	
+75AB	 81					ADD A, C	;1		43056	
+75AC	 A2					AND D	;1		43057	
+75AD	 4C					LD C, H	;1		43058	
+75AE	 42					LD B, D	;1		43059	
+75AF	 50					LD D, B	;1		43060	
+75B0	 42					LD B, D	;1		43061	
+75B1	 54					LD D, H	;1		43062	
+75B2	 42					LD B, D	;1		43063	
+75B3	 50					LD D, B	;1		43064	
+75B4	 42					LD B, D	;1		43065	
+75B5	 56					LD D, (HL)	;2		43067	
+75B6	 42					LD B, D	;1		43068	
+75B7	 54					LD D, H	;1		43069	
+75B8	 42					LD B, D	;1		43070	
+75B9	 50					LD D, B	;1		43071	
+75BA	 42					LD B, D	;1		43072	
+75BB	 54					LD D, H	;1		43073	
+75BC	 42					LD B, D	;1		43074	
+75BD	 4C					LD C, H	;1		43075	
+75BE	 42					LD B, D	;1		43076	
+75BF	 50					LD D, B	;1		43077	
+75C0	 42					LD B, D	;1		43078	
+75C1	 54					LD D, H	;1		43079	
+75C2	 42					LD B, D	;1		43080	
+75C3	 50					LD D, B	;1		43081	
+75C4	 42					LD B, D	;1		43082	
+75C5	 56					LD D, (HL)	;2		43084	
+75C6	 42					LD B, D	;1		43085	
+75C7	 54					LD D, H	;1		43086	
+75C8	 42					LD B, D	;1		43087	
+75C9	 50					LD D, B	;1		43088	
+75CA	 42					LD B, D	;1		43089	
+75CB	 54					LD D, H	;1		43090	
+75CC	 42					LD B, D	;1		43091	
+75CD	 5A					LD E, D	;1		43092	
+75CE	 46					LD B, (HL)	;2		43094	
+75CF	 56					LD D, (HL)	;2		43096	
+75D0	 46					LD B, (HL)	;2		43098	
+75D1	 54					LD D, H	;1		43099	
+75D2	 46					LD B, (HL)	;2		43101	
+75D3	 50					LD D, B	;1		43102	
+75D4	 46					LD B, (HL)	;2		43104	
+75D5	 4E					LD C, (HL)	;2		43106	
+75D6	 46					LD B, (HL)	;2		43108	
+75D7	 50					LD D, B	;1		43109	
+75D8	 46					LD B, (HL)	;2		43111	
+75D9	 54					LD D, H	;1		43112	
+75DA	 46					LD B, (HL)	;2		43114	
+75DB	 50					LD D, B	;1		43115	
+75DC	 46					LD B, (HL)	;2		43117	
+75DD	 50					LD D, B	;1		43118	
+75DE	 3E 4C				LD, A, d8	;2		43120	
+75E0	 3E 4C				LD, A, d8	;2		43122	
+75E2	 3E 4A				LD, A, d8	;2		43124	
+75E4	 3E 4A				LD, A, d8	;2		43126	
+75E6	 3E 46				LD, A, d8	;2		43128	
+75E8	 3E 4A				LD, A, d8	;2		43130	
+75EA	 3E 50				LD, A, d8	;2		43132	
+75EC	 3E 00				LD, A, d8	;2		43134	
+75EE	 9D					SBC A, L	;1		43135	
+75EF	 E9					JP HL	;1		43136	
+75F0	 6E					LD L, (HL)	;2		43138	
+75F1	 21 A5 4C			LD (HL), d16	;3		43141	
+75F4	 4A					LD C, D	;1		43142	
+75F5	 46					LD B, (HL)	;2		43144	
+75F6	 42					LD B, D	;1		43145	
+75F7	 38 3E				JR C s8	;3		43148	
+75F9	 42					LD B, D	;1		43149	
+75FA	 42					LD B, D	;1		43150	
+75FB	 00					NOP	;1		43151	
+75FC	 04					INC, B	;1		43152	
+75FD	 76					HALT	;1		43153	
+75FE	 00					NOP	;1		43154	
+75FF	 00					NOP	;1		43155	
+7600	 14					INC, D	;1		43156	
+7601	 76					HALT	;1		43157	
+7602	 23					INC, (HL)	;2		43159	
+7603	 76					HALT	;1		43160	
+7604	 9D					SBC A, L	;1		43161	
+7605	 B2					OR D	;1		43162	
+7606	 00					NOP	;1		43163	
+7607	 80					ADD A, B	;1		43164	
+7608	 A2					AND D	;1		43165	
+7609	 60					LD H, B	;1		43166	
+760A	 5C					LD E, H	;1		43167	
+760B	 60					LD H, B	;1		43168	
+760C	 5C					LD E, H	;1		43169	
+760D	 60					LD H, B	;1		43170	
+760E	 62					LD H, D	;1		43171	
+760F	 60					LD H, B	;1		43172	
+7610	 5C					LD E, H	;1		43173	
+7611	 A4					AND H	;1		43174	
+7612	 60					LD H, B	;1		43175	
+7613	 00					NOP	;1		43176	
+7614	 9D					SBC A, L	;1		43177	
+7615	 92					SUB D	;1		43178	
+7616	 00					NOP	;1		43179	
+7617	 80					ADD A, B	;1		43180	
+7618	 A2					AND D	;1		43181	
+7619	 52					LD D, D	;1		43182	
+761A	 4E					LD C, (HL)	;2		43184	
+761B	 52					LD D, D	;1		43185	
+761C	 4E					LD C, (HL)	;2		43187	
+761D	 52					LD D, D	;1		43188	
+761E	 54					LD D, H	;1		43189	
+761F	 52					LD D, D	;1		43190	
+7620	 4E					LD C, (HL)	;2		43192	
+7621	 A4					AND H	;1		43193	
+7622	 52					LD D, D	;1		43194	
+7623	 9D					SBC A, L	;1		43195	
+7624	 E9					JP HL	;1		43196	
+7625	 6E					LD L, (HL)	;2		43198	
+7626	 20 A2				JR NZ s8	;3		43201	
+7628	 62					LD H, D	;1		43202	
+7629	 60					LD H, B	;1		43203	
+762A	 62					LD H, D	;1		43204	
+762B	 60					LD H, B	;1		43205	
+762C	 62					LD H, D	;1		43206	
+762D	 66					LD H, (HL)	;2		43208	
+762E	 62					LD H, D	;1		43209	
+762F	 60					LD H, B	;1		43210	
+7630	 A3					AND E	;1		43211	
+7631	 62					LD H, D	;1		43212	
+7632	 01 6F 76			LD BC, d16	;3		43215	
+7635	 69					LD L, C	;1		43216	
+7636	 77					LD (HL), A	;2		43218	
+7637	 69					LD L, C	;1		43219	
+7638	 77					LD (HL), A	;2		43221	
+7639	 00					NOP	;1		43222	
+763A	 00					NOP	;1		43223	
+763B	 BF					CP A	;1		43224	
+763C	 76					HALT	;1		43225	
+763D	 AA					XOR D	;1		43226	
+763E	 77					LD (HL), A	;2		43228	
+763F	 3C					INC, A	;1		43229	
+7640	 78					LD A, B	;1		43230	
+7641	 0C					INC, C	;1		43231	
+7642	 77					LD (HL), A	;2		43233	
+7643	 EB		
+7644	 77					LD (HL), A	;2		43235	
+7645	 EB		
+7646	 77					LD (HL), A	;2		43237	
+7647	 F5					PUSH AF	;4		43241	
+7648	 77					LD (HL), A	;2		43243	
+7649	 EB		
+764A	 77					LD (HL), A	;2		43245	
+764B	 EB		
+764C	 77					LD (HL), A	;2		43247	
+764D	 FE 77				CP d8	;2		43249	
+764F	 F5					PUSH AF	;4		43253	
+7650	 77					LD (HL), A	;2		43255	
+7651	 EB		
+7652	 77					LD (HL), A	;2		43257	
+7653	 EB		
+7654	 77					LD (HL), A	;2		43259	
+7655	 FE 77				CP d8	;2		43261	
+7657	 F5					PUSH AF	;4		43265	
+7658	 77					LD (HL), A	;2		43267	
+7659	 07					RLCA	;1		43268	
+765A	 78					LD A, B	;1		43269	
+765B	 11 78 FE			LD DE, d16	;3		43272	
+765E	 77					LD (HL), A	;2		43274	
+765F	 F5					PUSH AF	;4		43278	
+7660	 77					LD (HL), A	;2		43280	
+7661	 EB		
+7662	 77					LD (HL), A	;2		43282	
+7663	 5B					LD E, E	;1		43283	
+7664	 77					LD (HL), A	;2		43285	
+7665	 5B					LD E, E	;1		43286	
+7666	 77					LD (HL), A	;2		43288	
+7667	 1A					LD A, (DE)	;2		43290	
+7668	 78					LD A, B	;1		43291	
+7669	 1A					LD A, (DE)	;2		43293	
+766A	 78					LD A, B	;1		43294	
+766B	 1A					LD A, (DE)	;2		43296	
+766C	 78					LD A, B	;1		43297	
+766D	 1A					LD A, (DE)	;2		43299	
+766E	 78					LD A, B	;1		43300	
+766F	 9D					SBC A, L	;1		43301	
+7670	 C3 00 80			JP a16	;4		43305	
+7673	 A2					AND D	;1		43306	
+7674	 3C					INC, A	;1		43307	
+7675	 3E 3C				LD, A, d8	;2		43309	
+7677	 3E 38				LD, A, d8	;2		43311	
+7679	 50					LD D, B	;1		43312	
+767A	 A3					AND E	;1		43313	
+767B	 01 A2 3C			LD BC, d16	;3		43316	
+767E	 3E 3C				LD, A, d8	;2		43318	
+7680	 3E 38				LD, A, d8	;2		43320	
+7682	 50					LD D, B	;1		43321	
+7683	 A3					AND E	;1		43322	
+7684	 01 A2 01			LD BC, d16	;3		43325	
+7687	 48					LD C, B	;1		43326	
+7688	 01 46 01			LD BC, d16	;3		43329	
+768B	 42					LD B, D	;1		43330	
+768C	 01 46 A1			LD BC, d16	;3		43333	
+768F	 42					LD B, D	;1		43334	
+7690	 46					LD B, (HL)	;2		43336	
+7691	 A2					AND D	;1		43337	
+7692	 42					LD B, D	;1		43338	
+7693	 42					LD B, D	;1		43339	
+7694	 38 A3				JR C s8	;3		43342	
+7696	 3C					INC, A	;1		43343	
+7697	 01 A2 3E			LD BC, d16	;3		43346	
+769A	 42					LD B, D	;1		43347	
+769B	 3E 42				LD, A, d8	;2		43349	
+769D	 3C					INC, A	;1		43350	
+769E	 54					LD D, H	;1		43351	
+769F	 A3					AND E	;1		43352	
+76A0	 01 A2 3E			LD BC, d16	;3		43355	
+76A3	 42					LD B, D	;1		43356	
+76A4	 3E 42				LD, A, d8	;2		43358	
+76A6	 3C					INC, A	;1		43359	
+76A7	 54					LD D, H	;1		43360	
+76A8	 A3					AND E	;1		43361	
+76A9	 01 A2 01			LD BC, d16	;3		43364	
+76AC	 56					LD D, (HL)	;2		43366	
+76AD	 01 54 01			LD BC, d16	;3		43369	
+76B0	 54					LD D, H	;1		43370	
+76B1	 01 50 A2			LD BC, d16	;3		43373	
+76B4	 01 A1 50			LD BC, d16	;3		43376	
+76B7	 54					LD D, H	;1		43377	
+76B8	 A2					AND D	;1		43378	
+76B9	 50					LD D, B	;1		43379	
+76BA	 4E					LD C, (HL)	;2		43381	
+76BB	 A3					AND E	;1		43382	
+76BC	 50					LD D, B	;1		43383	
+76BD	 01 00 9D			LD BC, d16	;3		43386	
+76C0	 74					LD (HL), H	;2		43388	
+76C1	 00					NOP	;1		43389	
+76C2	 80					ADD A, B	;1		43390	
+76C3	 A2					AND D	;1		43391	
+76C4	 36 38				LD (HL), d8	;3		43394	
+76C6	 36 38				LD (HL), d8	;3		43397	
+76C8	 2E 3E				LD, L, d8	;2		43399	
+76CA	 A3					AND E	;1		43400	
+76CB	 01 A2 36			LD BC, d16	;3		43403	
+76CE	 38 36				JR C s8	;3		43406	
+76D0	 38 2E				JR C s8	;3		43409	
+76D2	 3E A3				LD, A, d8	;2		43411	
+76D4	 01 A2 01			LD BC, d16	;3		43414	
+76D7	 36 01				LD (HL), d8	;3		43417	
+76D9	 36 01				LD (HL), d8	;3		43420	
+76DB	 32					LD (HL-), A	;2		43422	
+76DC	 01 36 36			LD BC, d16	;3		43425	
+76DF	 32					LD (HL-), A	;2		43427	
+76E0	 32					LD (HL-), A	;2		43429	
+76E1	 30 A3				JR NC s8	;3		43432	
+76E3	 36 01				LD (HL), d8	;3		43435	
+76E5	 A2					AND D	;1		43436	
+76E6	 38 3C				JR C s8	;3		43439	
+76E8	 38 3C				JR C s8	;3		43442	
+76EA	 36 4E				LD (HL), d8	;3		43445	
+76EC	 A3					AND E	;1		43446	
+76ED	 01 A2 38			LD BC, d16	;3		43449	
+76F0	 3C					INC, A	;1		43450	
+76F1	 38 3C				JR C s8	;3		43453	
+76F3	 36 4E				LD (HL), d8	;3		43456	
+76F5	 A3					AND E	;1		43457	
+76F6	 01 A2 01			LD BC, d16	;3		43460	
+76F9	 50					LD D, B	;1		43461	
+76FA	 01 4E 01			LD BC, d16	;3		43464	
+76FD	 46					LD B, (HL)	;2		43466	
+76FE	 01 46 A2			LD BC, d16	;3		43469	
+7701	 01 A1 48			LD BC, d16	;3		43472	
+7704	 4E					LD C, (HL)	;2		43474	
+7705	 A2					AND D	;1		43475	
+7706	 48					LD C, B	;1		43476	
+7707	 46					LD B, (HL)	;2		43478	
+7708	 A3					AND E	;1		43479	
+7709	 40					LD B, B	;1		43480	
+770A	 01 00 9D			LD BC, d16	;3		43483	
+770D	 E9					JP HL	;1		43484	
+770E	 6E					LD L, (HL)	;2		43486	
+770F	 20 A2				JR NZ s8	;3		43489	
+7711	 48					LD C, B	;1		43490	
+7712	 46					LD B, (HL)	;2		43492	
+7713	 48					LD C, B	;1		43493	
+7714	 46					LD B, (HL)	;2		43495	
+7715	 3E 20				LD, A, d8	;2		43497	
+7717	 A3					AND E	;1		43498	
+7718	 01 A2 48			LD BC, d16	;3		43501	
+771B	 46					LD B, (HL)	;2		43503	
+771C	 48					LD C, B	;1		43504	
+771D	 46					LD B, (HL)	;2		43506	
+771E	 3E 20				LD, A, d8	;2		43508	
+7720	 A3					AND E	;1		43509	
+7721	 01 A2 2E			LD BC, d16	;3		43512	
+7724	 3C					INC, A	;1		43513	
+7725	 2E 24				LD, L, d8	;2		43515	
+7727	 24					INC, H	;1		43516	
+7728	 24					INC, H	;1		43517	
+7729	 24					INC, H	;1		43518	
+772A	 3C					INC, A	;1		43519	
+772B	 2A					LD A, (HL+)	;2		43521	
+772C	 3E 2A				LD, A, d8	;2		43523	
+772E	 3E A6				LD, A, d8	;2		43525	
+7730	 2E A3				LD, L, d8	;2		43527	
+7732	 01 A1 01			LD BC, d16	;3		43530	
+7735	 A2					AND D	;1		43531	
+7736	 48					LD C, B	;1		43532	
+7737	 46					LD B, (HL)	;2		43534	
+7738	 48					LD C, B	;1		43535	
+7739	 46					LD B, (HL)	;2		43537	
+773A	 2E 2E				LD, L, d8	;2		43539	
+773C	 A3					AND E	;1		43540	
+773D	 01 A2 48			LD BC, d16	;3		43543	
+7740	 46					LD B, (HL)	;2		43545	
+7741	 48					LD C, B	;1		43546	
+7742	 46					LD B, (HL)	;2		43548	
+7743	 2E 2E				LD, L, d8	;2		43550	
+7745	 A3					AND E	;1		43551	
+7746	 01 A2 2A			LD BC, d16	;3		43554	
+7749	 3C					INC, A	;1		43555	
+774A	 2A					LD A, (HL+)	;2		43557	
+774B	 3C					INC, A	;1		43558	
+774C	 2E 3E				LD, L, d8	;2		43560	
+774E	 2E 3E				LD, L, d8	;2		43562	
+7750	 2E 42				LD, L, d8	;2		43564	
+7752	 2E 42				LD, L, d8	;2		43566	
+7754	 A6					AND (HL)	;2		43568	
+7755	 38 A3				JR C s8	;3		43571	
+7757	 01 A1 01			LD BC, d16	;3		43574	
+775A	 00					NOP	;1		43575	
+775B	 A8					XOR B	;1		43576	
+775C	 01 A2 06			LD BC, d16	;3		43579	
+775F	 0B					DEC, BC	;2		43581	
+7760	 A8					XOR B	;1		43582	
+7761	 01 A2 06			LD BC, d16	;3		43585	
+7764	 0B					DEC, BC	;2		43587	
+7765	 A5					AND L	;1		43588	
+7766	 01 01 00			LD BC, d16	;3		43591	
+7769	 9D					SBC A, L	;1		43592	
+776A	 C5					PUSH BC	;4		43596	
+776B	 00					NOP	;1		43597	
+776C	 80					ADD A, B	;1		43598	
+776D	 A1					AND C	;1		43599	
+776E	 46					LD B, (HL)	;2		43601	
+776F	 4A					LD C, D	;1		43602	
+7770	 A4					AND H	;1		43603	
+7771	 46					LD B, (HL)	;2		43605	
+7772	 A2					AND D	;1		43606	
+7773	 01 A3 50			LD BC, d16	;3		43609	
+7776	 A8					XOR B	;1		43610	
+7777	 4A					LD C, D	;1		43611	
+7778	 A3					AND E	;1		43612	
+7779	 01 A1 42			LD BC, d16	;3		43615	
+777C	 46					LD B, (HL)	;2		43617	
+777D	 A4					AND H	;1		43618	
+777E	 42					LD B, D	;1		43619	
+777F	 A2					AND D	;1		43620	
+7780	 01 A3 4E			LD BC, d16	;3		43623	
+7783	 A1					AND C	;1		43624	
+7784	 4E					LD C, (HL)	;2		43626	
+7785	 50					LD D, B	;1		43627	
+7786	 A4					AND H	;1		43628	
+7787	 46					LD B, (HL)	;2		43630	
+7788	 A7					AND A	;1		43631	
+7789	 01 A1 40			LD BC, d16	;3		43634	
+778C	 46					LD B, (HL)	;2		43636	
+778D	 A4					AND H	;1		43637	
+778E	 40					LD B, B	;1		43638	
+778F	 A2					AND D	;1		43639	
+7790	 01 A3 46			LD BC, d16	;3		43642	
+7793	 A1					AND C	;1		43643	
+7794	 46					LD B, (HL)	;2		43645	
+7795	 4A					LD C, D	;1		43646	
+7796	 A4					AND H	;1		43647	
+7797	 42					LD B, D	;1		43648	
+7798	 A7					AND A	;1		43649	
+7799	 01 A1 36			LD BC, d16	;3		43652	
+779C	 38 A4				JR C s8	;3		43655	
+779E	 36 A2				LD (HL), d8	;3		43658	
+77A0	 01 A3 3C			LD BC, d16	;3		43661	
+77A3	 A7					AND A	;1		43662	
+77A4	 42					LD B, D	;1		43663	
+77A5	 A4					AND H	;1		43664	
+77A6	 40					LD B, B	;1		43665	
+77A7	 A2					AND D	;1		43666	
+77A8	 01 00 9D			LD BC, d16	;3		43669	
+77AB	 84					ADD A, H	;1		43670	
+77AC	 00					NOP	;1		43671	
+77AD	 41					LD B, C	;1		43672	
+77AE	 A1					AND C	;1		43673	
+77AF	 40					LD B, B	;1		43674	
+77B0	 42					LD B, D	;1		43675	
+77B1	 A4					AND H	;1		43676	
+77B2	 40					LD B, B	;1		43677	
+77B3	 A2					AND D	;1		43678	
+77B4	 01 A3 40			LD BC, d16	;3		43681	
+77B7	 A8					XOR B	;1		43682	
+77B8	 42					LD B, D	;1		43683	
+77B9	 A3					AND E	;1		43684	
+77BA	 01 A1 3C			LD BC, d16	;3		43687	
+77BD	 40					LD B, B	;1		43688	
+77BE	 A4					AND H	;1		43689	
+77BF	 3C					INC, A	;1		43690	
+77C0	 A2					AND D	;1		43691	
+77C1	 01 A3 3C			LD BC, d16	;3		43694	
+77C4	 A1					AND C	;1		43695	
+77C5	 3C					INC, A	;1		43696	
+77C6	 40					LD B, B	;1		43697	
+77C7	 A4					AND H	;1		43698	
+77C8	 40					LD B, B	;1		43699	
+77C9	 A7					AND A	;1		43700	
+77CA	 01 A1 36			LD BC, d16	;3		43703	
+77CD	 32					LD (HL-), A	;2		43705	
+77CE	 A4					AND H	;1		43706	
+77CF	 2E A2				LD, L, d8	;2		43708	
+77D1	 01 A3 40			LD BC, d16	;3		43711	
+77D4	 A1					AND C	;1		43712	
+77D5	 36 38				LD (HL), d8	;3		43715	
+77D7	 A4					AND H	;1		43716	
+77D8	 32					LD (HL-), A	;2		43718	
+77D9	 A7					AND A	;1		43719	
+77DA	 01 A1 2E			LD BC, d16	;3		43722	
+77DD	 32					LD (HL-), A	;2		43724	
+77DE	 A4					AND H	;1		43725	
+77DF	 2E A2				LD, L, d8	;2		43727	
+77E1	 01 A3 2A			LD BC, d16	;3		43730	
+77E4	 A7					AND A	;1		43731	
+77E5	 30 A4				JR NC s8	;3		43734	
+77E7	 2E A2				LD, L, d8	;2		43736	
+77E9	 01 00 A2			LD BC, d16	;3		43739	
+77EC	 38 38				JR C s8	;3		43742	
+77EE	 01 38 38			LD BC, d16	;3		43745	
+77F1	 38 01				JR C s8	;3		43748	
+77F3	 38 00				JR C s8	;3		43751	
+77F5	 2E 2E				LD, L, d8	;2		43753	
+77F7	 01 2E 2E			LD BC, d16	;3		43756	
+77FA	 2E 01				LD, L, d8	;2		43758	
+77FC	 2E 00				LD, L, d8	;2		43760	
+77FE	 2A					LD A, (HL+)	;2		43762	
+77FF	 2A					LD A, (HL+)	;2		43764	
+7800	 01 2A 2A			LD BC, d16	;3		43767	
+7803	 2A					LD A, (HL+)	;2		43769	
+7804	 01 2A 00			LD BC, d16	;3		43772	
+7807	 A2					AND D	;1		43773	
+7808	 38 38				JR C s8	;3		43776	
+780A	 01 38 36			LD BC, d16	;3		43779	
+780D	 36 01				LD (HL), d8	;3		43782	
+780F	 36 00				LD (HL), d8	;3		43785	
+7811	 32					LD (HL-), A	;2		43787	
+7812	 32					LD (HL-), A	;2		43789	
+7813	 01 32 2E			LD BC, d16	;3		43792	
+7816	 2E 01				LD, L, d8	;2		43794	
+7818	 2E 00				LD, L, d8	;2		43796	
+781A	 A2					AND D	;1		43797	
+781B	 06 0B				LD, B, d8	;2		43799	
+781D	 01 06 06			LD BC, d16	;3		43802	
+7820	 0B					DEC, BC	;2		43804	
+7821	 01 06 06			LD BC, d16	;3		43807	
+7824	 0B					DEC, BC	;2		43809	
+7825	 01 06 06			LD BC, d16	;3		43812	
+7828	 0B					DEC, BC	;2		43814	
+7829	 01 06 06			LD BC, d16	;3		43817	
+782C	 0B					DEC, BC	;2		43819	
+782D	 01 06 06			LD BC, d16	;3		43822	
+7830	 0B					DEC, BC	;2		43824	
+7831	 01 06 06			LD BC, d16	;3		43827	
+7834	 0B					DEC, BC	;2		43829	
+7835	 01 06 01			LD BC, d16	;3		43832	
+7838	 0B					DEC, BC	;2		43834	
+7839	 01 0B 00			LD BC, d16	;3		43837	
+783C	 9D					SBC A, L	;1		43838	
+783D	 66					LD H, (HL)	;2		43840	
+783E	 00					NOP	;1		43841	
+783F	 81					ADD A, C	;1		43842	
+7840	 A7					AND A	;1		43843	
+7841	 58					LD E, B	;1		43844	
+7842	 5A					LD E, D	;1		43845	
+7843	 A3					AND E	;1		43846	
+7844	 58					LD E, B	;1		43847	
+7845	 A7					AND A	;1		43848	
+7846	 5E					LD E, (HL)	;2		43850	
+7847	 A4					AND H	;1		43851	
+7848	 5A					LD E, D	;1		43852	
+7849	 A2					AND D	;1		43853	
+784A	 01 A7 50			LD BC, d16	;3		43856	
+784D	 54					LD D, H	;1		43857	
+784E	 A3					AND E	;1		43858	
+784F	 58					LD E, B	;1		43859	
+7850	 A7					AND A	;1		43860	
+7851	 5A					LD E, D	;1		43861	
+7852	 A4					AND H	;1		43862	
+7853	 58					LD E, B	;1		43863	
+7854	 A2					AND D	;1		43864	
+7855	 01 A7 50			LD BC, d16	;3		43867	
+7858	 A3					AND E	;1		43868	
+7859	 4E					LD C, (HL)	;2		43870	
+785A	 A7					AND A	;1		43871	
+785B	 4E					LD C, (HL)	;2		43873	
+785C	 58					LD E, B	;1		43874	
+785D	 54					LD D, H	;1		43875	
+785E	 A3					AND E	;1		43876	
+785F	 4A					LD C, D	;1		43877	
+7860	 A7					AND A	;1		43878	
+7861	 5A					LD E, D	;1		43879	
+7862	 5E					LD E, (HL)	;2		43881	
+7863	 A3					AND E	;1		43882	
+7864	 5A					LD E, D	;1		43883	
+7865	 A7					AND A	;1		43884	
+7866	 54					LD D, H	;1		43885	
+7867	 A4					AND H	;1		43886	
+7868	 50					LD D, B	;1		43887	
+7869	 A2					AND D	;1		43888	
+786A	 01 00 8E			LD BC, d16	;3		43891	
+786D	 78					LD A, B	;1		43892	
+786E	 11 79 8E			LD DE, d16	;3		43895	
+7871	 78					LD A, B	;1		43896	
+7872	 96					SUB (HL)	;2		43898	
+7873	 79					LD A, C	;1		43899	
+7874	 00					NOP	;1		43900	
+7875	 00					NOP	;1		43901	
+7876	 AD					XOR L	;1		43902	
+7877	 78					LD A, B	;1		43903	
+7878	 38 79				JR C s8	;3		43906	
+787A	 AD					XOR L	;1		43907	
+787B	 78					LD A, B	;1		43908	
+787C	 BA					CP D	;1		43909	
+787D	 79					LD A, C	;1		43910	
+787E	 D5					PUSH DE	;4		43914	
+787F	 78					LD A, B	;1		43915	
+7880	 5E					LD E, (HL)	;2		43917	
+7881	 79					LD A, C	;1		43918	
+7882	 D5					PUSH DE	;4		43922	
+7883	 78					LD A, B	;1		43923	
+7884	 DD		
+7885	 79					LD A, C	;1		43924	
+7886	 FE 78				CP d8	;2		43926	
+7888	 84					ADD A, H	;1		43927	
+7889	 79					LD A, C	;1		43928	
+788A	 FE 78				CP d8	;2		43930	
+788C	 84					ADD A, H	;1		43931	
+788D	 79					LD A, C	;1		43932	
+788E	 9D					SBC A, L	;1		43933	
+788F	 D1					POP DE	;3		43936	
+7890	 00					NOP	;1		43937	
+7891	 80					ADD A, B	;1		43938	
+7892	 A2					AND D	;1		43939	
+7893	 5C					LD E, H	;1		43940	
+7894	 A1					AND C	;1		43941	
+7895	 5C					LD E, H	;1		43942	
+7896	 5A					LD E, D	;1		43943	
+7897	 A2					AND D	;1		43944	
+7898	 5C					LD E, H	;1		43945	
+7899	 5C					LD E, H	;1		43946	
+789A	 56					LD D, (HL)	;2		43948	
+789B	 52					LD D, D	;1		43949	
+789C	 4E					LD C, (HL)	;2		43951	
+789D	 56					LD D, (HL)	;2		43953	
+789E	 A2					AND D	;1		43954	
+789F	 52					LD D, D	;1		43955	
+78A0	 A1					AND C	;1		43956	
+78A1	 52					LD D, D	;1		43957	
+78A2	 50					LD D, B	;1		43958	
+78A3	 A2					AND D	;1		43959	
+78A4	 52					LD D, D	;1		43960	
+78A5	 52					LD D, D	;1		43961	
+78A6	 4C					LD C, H	;1		43962	
+78A7	 48					LD C, B	;1		43963	
+78A8	 44					LD B, H	;1		43964	
+78A9	 A1					AND C	;1		43965	
+78AA	 4C					LD C, H	;1		43966	
+78AB	 52					LD D, D	;1		43967	
+78AC	 00					NOP	;1		43968	
+78AD	 9D					SBC A, L	;1		43969	
+78AE	 B2					OR D	;1		43970	
+78AF	 00					NOP	;1		43971	
+78B0	 80					ADD A, B	;1		43972	
+78B1	 A2					AND D	;1		43973	
+78B2	 52					LD D, D	;1		43974	
+78B3	 A1					AND C	;1		43975	
+78B4	 52					LD D, D	;1		43976	
+78B5	 52					LD D, D	;1		43977	
+78B6	 A2					AND D	;1		43978	
+78B7	 52					LD D, D	;1		43979	
+78B8	 A1					AND C	;1		43980	
+78B9	 52					LD D, D	;1		43981	
+78BA	 52					LD D, D	;1		43982	
+78BB	 A2					AND D	;1		43983	
+78BC	 44					LD B, H	;1		43984	
+78BD	 A1					AND C	;1		43985	
+78BE	 44					LD B, H	;1		43986	
+78BF	 44					LD B, H	;1		43987	
+78C0	 A2					AND D	;1		43988	
+78C1	 44					LD B, H	;1		43989	
+78C2	 01 4C A1			LD BC, d16	;3		43992	
+78C5	 4C					LD C, H	;1		43993	
+78C6	 4C					LD C, H	;1		43994	
+78C7	 A2					AND D	;1		43995	
+78C8	 4C					LD C, H	;1		43996	
+78C9	 A1					AND C	;1		43997	
+78CA	 4C					LD C, H	;1		43998	
+78CB	 4C					LD C, H	;1		43999	
+78CC	 A2					AND D	;1		44000	
+78CD	 3A					LD A, (HL-)	;2		44002	
+78CE	 A1					AND C	;1		44003	
+78CF	 3A					LD A, (HL-)	;2		44005	
+78D0	 3A					LD A, (HL-)	;2		44007	
+78D1	 A2					AND D	;1		44008	
+78D2	 3A					LD A, (HL-)	;2		44010	
+78D3	 01 00 9D			LD BC, d16	;3		44013	
+78D6	 E9					JP HL	;1		44014	
+78D7	 6E					LD L, (HL)	;2		44016	
+78D8	 20 A2				JR NZ s8	;3		44019	
+78DA	 5C					LD E, H	;1		44020	
+78DB	 A1					AND C	;1		44021	
+78DC	 5C					LD E, H	;1		44022	
+78DD	 5C					LD E, H	;1		44023	
+78DE	 A2					AND D	;1		44024	
+78DF	 5C					LD E, H	;1		44025	
+78E0	 A1					AND C	;1		44026	
+78E1	 5C					LD E, H	;1		44027	
+78E2	 5C					LD E, H	;1		44028	
+78E3	 A2					AND D	;1		44029	
+78E4	 4E					LD C, (HL)	;2		44031	
+78E5	 A1					AND C	;1		44032	
+78E6	 52					LD D, D	;1		44033	
+78E7	 52					LD D, D	;1		44034	
+78E8	 A2					AND D	;1		44035	
+78E9	 56					LD D, (HL)	;2		44037	
+78EA	 01 A2 5C			LD BC, d16	;3		44040	
+78ED	 A1					AND C	;1		44041	
+78EE	 5C					LD E, H	;1		44042	
+78EF	 5C					LD E, H	;1		44043	
+78F0	 A2					AND D	;1		44044	
+78F1	 5C					LD E, H	;1		44045	
+78F2	 A1					AND C	;1		44046	
+78F3	 5C					LD E, H	;1		44047	
+78F4	 5C					LD E, H	;1		44048	
+78F5	 A2					AND D	;1		44049	
+78F6	 44					LD B, H	;1		44050	
+78F7	 A1					AND C	;1		44051	
+78F8	 48					LD C, B	;1		44052	
+78F9	 48					LD C, B	;1		44053	
+78FA	 A2					AND D	;1		44054	
+78FB	 4C					LD C, H	;1		44055	
+78FC	 01 00 A2			LD BC, d16	;3		44058	
+78FF	 06 A7				LD, B, d8	;2		44060	
+7901	 01 A2 0B			LD BC, d16	;3		44063	
+7904	 0B					DEC, BC	;2		44065	
+7905	 0B					DEC, BC	;2		44067	
+7906	 01 A2 06			LD BC, d16	;3		44070	
+7909	 A7					AND A	;1		44071	
+790A	 01 A2 0B			LD BC, d16	;3		44074	
+790D	 0B					DEC, BC	;2		44076	
+790E	 0B					DEC, BC	;2		44078	
+790F	 01 00 A2			LD BC, d16	;3		44081	
+7912	 48					LD C, B	;1		44082	
+7913	 A1					AND C	;1		44083	
+7914	 48					LD C, B	;1		44084	
+7915	 52					LD D, D	;1		44085	
+7916	 A2					AND D	;1		44086	
+7917	 44					LD B, H	;1		44087	
+7918	 A1					AND C	;1		44088	
+7919	 44					LD B, H	;1		44089	
+791A	 52					LD D, D	;1		44090	
+791B	 A2					AND D	;1		44091	
+791C	 42					LD B, D	;1		44092	
+791D	 A1					AND C	;1		44093	
+791E	 42					LD B, D	;1		44094	
+791F	 52					LD D, D	;1		44095	
+7920	 A2					AND D	;1		44096	
+7921	 48					LD C, B	;1		44097	
+7922	 A1					AND C	;1		44098	
+7923	 48					LD C, B	;1		44099	
+7924	 52					LD D, D	;1		44100	
+7925	 A2					AND D	;1		44101	
+7926	 4C					LD C, H	;1		44102	
+7927	 A1					AND C	;1		44103	
+7928	 4C					LD C, H	;1		44104	
+7929	 52					LD D, D	;1		44105	
+792A	 A2					AND D	;1		44106	
+792B	 44					LD B, H	;1		44107	
+792C	 A1					AND C	;1		44108	
+792D	 44					LD B, H	;1		44109	
+792E	 52					LD D, D	;1		44110	
+792F	 A2					AND D	;1		44111	
+7930	 48					LD C, B	;1		44112	
+7931	 44					LD B, H	;1		44113	
+7932	 A1					AND C	;1		44114	
+7933	 48					LD C, B	;1		44115	
+7934	 52					LD D, D	;1		44116	
+7935	 56					LD D, (HL)	;2		44118	
+7936	 5A					LD E, D	;1		44119	
+7937	 00					NOP	;1		44120	
+7938	 3A					LD A, (HL-)	;2		44122	
+7939	 A1					AND C	;1		44123	
+793A	 3A					LD A, (HL-)	;2		44125	
+793B	 3A					LD A, (HL-)	;2		44127	
+793C	 A2					AND D	;1		44128	
+793D	 3A					LD A, (HL-)	;2		44130	
+793E	 A1					AND C	;1		44131	
+793F	 3A					LD A, (HL-)	;2		44133	
+7940	 3A					LD A, (HL-)	;2		44135	
+7941	 A2					AND D	;1		44136	
+7942	 3A					LD A, (HL-)	;2		44138	
+7943	 A1					AND C	;1		44139	
+7944	 3A					LD A, (HL-)	;2		44141	
+7945	 3A					LD A, (HL-)	;2		44143	
+7946	 A2					AND D	;1		44144	
+7947	 3A					LD A, (HL-)	;2		44146	
+7948	 A1					AND C	;1		44147	
+7949	 3A					LD A, (HL-)	;2		44149	
+794A	 3A					LD A, (HL-)	;2		44151	
+794B	 A2					AND D	;1		44152	
+794C	 3A					LD A, (HL-)	;2		44154	
+794D	 A1					AND C	;1		44155	
+794E	 3A					LD A, (HL-)	;2		44157	
+794F	 3A					LD A, (HL-)	;2		44159	
+7950	 A2					AND D	;1		44160	
+7951	 3A					LD A, (HL-)	;2		44162	
+7952	 A1					AND C	;1		44163	
+7953	 3A					LD A, (HL-)	;2		44165	
+7954	 3A					LD A, (HL-)	;2		44167	
+7955	 A2					AND D	;1		44168	
+7956	 36 A1				LD (HL), d8	;3		44171	
+7958	 36 36				LD (HL), d8	;3		44174	
+795A	 A2					AND D	;1		44175	
+795B	 36 01				LD (HL), d8	;3		44178	
+795D	 00					NOP	;1		44179	
+795E	 48					LD C, B	;1		44180	
+795F	 A1					AND C	;1		44181	
+7960	 48					LD C, B	;1		44182	
+7961	 48					LD C, B	;1		44183	
+7962	 A2					AND D	;1		44184	
+7963	 48					LD C, B	;1		44185	
+7964	 A1					AND C	;1		44186	
+7965	 48					LD C, B	;1		44187	
+7966	 48					LD C, B	;1		44188	
+7967	 A2					AND D	;1		44189	
+7968	 48					LD C, B	;1		44190	
+7969	 A1					AND C	;1		44191	
+796A	 48					LD C, B	;1		44192	
+796B	 48					LD C, B	;1		44193	
+796C	 A2					AND D	;1		44194	
+796D	 48					LD C, B	;1		44195	
+796E	 A1					AND C	;1		44196	
+796F	 48					LD C, B	;1		44197	
+7970	 48					LD C, B	;1		44198	
+7971	 A2					AND D	;1		44199	
+7972	 44					LD B, H	;1		44200	
+7973	 A1					AND C	;1		44201	
+7974	 44					LD B, H	;1		44202	
+7975	 44					LD B, H	;1		44203	
+7976	 A2					AND D	;1		44204	
+7977	 44					LD B, H	;1		44205	
+7978	 A1					AND C	;1		44206	
+7979	 44					LD B, H	;1		44207	
+797A	 44					LD B, H	;1		44208	
+797B	 A2					AND D	;1		44209	
+797C	 42					LD B, D	;1		44210	
+797D	 A1					AND C	;1		44211	
+797E	 42					LD B, D	;1		44212	
+797F	 42					LD B, D	;1		44213	
+7980	 A2					AND D	;1		44214	
+7981	 42					LD B, D	;1		44215	
+7982	 01 00 A2			LD BC, d16	;3		44218	
+7985	 01 0B 01			LD BC, d16	;3		44221	
+7988	 0B					DEC, BC	;2		44223	
+7989	 01 0B 01			LD BC, d16	;3		44226	
+798C	 0B					DEC, BC	;2		44228	
+798D	 01 0B 01			LD BC, d16	;3		44231	
+7990	 0B					DEC, BC	;2		44233	
+7991	 01 0B 0B			LD BC, d16	;3		44236	
+7994	 01 00 A2			LD BC, d16	;3		44239	
+7997	 48					LD C, B	;1		44240	
+7998	 A1					AND C	;1		44241	
+7999	 48					LD C, B	;1		44242	
+799A	 52					LD D, D	;1		44243	
+799B	 A2					AND D	;1		44244	
+799C	 44					LD B, H	;1		44245	
+799D	 A1					AND C	;1		44246	
+799E	 44					LD B, H	;1		44247	
+799F	 52					LD D, D	;1		44248	
+79A0	 A2					AND D	;1		44249	
+79A1	 42					LD B, D	;1		44250	
+79A2	 A1					AND C	;1		44251	
+79A3	 42					LD B, D	;1		44252	
+79A4	 52					LD D, D	;1		44253	
+79A5	 A2					AND D	;1		44254	
+79A6	 48					LD C, B	;1		44255	
+79A7	 A1					AND C	;1		44256	
+79A8	 48					LD C, B	;1		44257	
+79A9	 52					LD D, D	;1		44258	
+79AA	 A2					AND D	;1		44259	
+79AB	 4C					LD C, H	;1		44260	
+79AC	 A1					AND C	;1		44261	
+79AD	 4C					LD C, H	;1		44262	
+79AE	 52					LD D, D	;1		44263	
+79AF	 A2					AND D	;1		44264	
+79B0	 48					LD C, B	;1		44265	
+79B1	 A1					AND C	;1		44266	
+79B2	 48					LD C, B	;1		44267	
+79B3	 52					LD D, D	;1		44268	
+79B4	 A2					AND D	;1		44269	
+79B5	 44					LD B, H	;1		44270	
+79B6	 52					LD D, D	;1		44271	
+79B7	 A3					AND E	;1		44272	
+79B8	 5C					LD E, H	;1		44273	
+79B9	 00					NOP	;1		44274	
+79BA	 3A					LD A, (HL-)	;2		44276	
+79BB	 A1					AND C	;1		44277	
+79BC	 3A					LD A, (HL-)	;2		44279	
+79BD	 3A					LD A, (HL-)	;2		44281	
+79BE	 A2					AND D	;1		44282	
+79BF	 3A					LD A, (HL-)	;2		44284	
+79C0	 A1					AND C	;1		44285	
+79C1	 3A					LD A, (HL-)	;2		44287	
+79C2	 3A					LD A, (HL-)	;2		44289	
+79C3	 A2					AND D	;1		44290	
+79C4	 3A					LD A, (HL-)	;2		44292	
+79C5	 A1					AND C	;1		44293	
+79C6	 3A					LD A, (HL-)	;2		44295	
+79C7	 3A					LD A, (HL-)	;2		44297	
+79C8	 A2					AND D	;1		44298	
+79C9	 3A					LD A, (HL-)	;2		44300	
+79CA	 A1					AND C	;1		44301	
+79CB	 3A					LD A, (HL-)	;2		44303	
+79CC	 3A					LD A, (HL-)	;2		44305	
+79CD	 A2					AND D	;1		44306	
+79CE	 3A					LD A, (HL-)	;2		44308	
+79CF	 A1					AND C	;1		44309	
+79D0	 3A					LD A, (HL-)	;2		44311	
+79D1	 3A					LD A, (HL-)	;2		44313	
+79D2	 A2					AND D	;1		44314	
+79D3	 3A					LD A, (HL-)	;2		44316	
+79D4	 A1					AND C	;1		44317	
+79D5	 3A					LD A, (HL-)	;2		44319	
+79D6	 3A					LD A, (HL-)	;2		44321	
+79D7	 A2					AND D	;1		44322	
+79D8	 01 3A A3			LD BC, d16	;3		44325	
+79DB	 4C					LD C, H	;1		44326	
+79DC	 00					NOP	;1		44327	
+79DD	 48					LD C, B	;1		44328	
+79DE	 A1					AND C	;1		44329	
+79DF	 48					LD C, B	;1		44330	
+79E0	 48					LD C, B	;1		44331	
+79E1	 A2					AND D	;1		44332	
+79E2	 48					LD C, B	;1		44333	
+79E3	 A1					AND C	;1		44334	
+79E4	 48					LD C, B	;1		44335	
+79E5	 48					LD C, B	;1		44336	
+79E6	 A2					AND D	;1		44337	
+79E7	 48					LD C, B	;1		44338	
+79E8	 A1					AND C	;1		44339	
+79E9	 48					LD C, B	;1		44340	
+79EA	 48					LD C, B	;1		44341	
+79EB	 A2					AND D	;1		44342	
+79EC	 48					LD C, B	;1		44343	
+79ED	 A1					AND C	;1		44344	
+79EE	 48					LD C, B	;1		44345	
+79EF	 48					LD C, B	;1		44346	
+79F0	 A2					AND D	;1		44347	
+79F1	 44					LD B, H	;1		44348	
+79F2	 A1					AND C	;1		44349	
+79F3	 44					LD B, H	;1		44350	
+79F4	 44					LD B, H	;1		44351	
+79F5	 A2					AND D	;1		44352	
+79F6	 44					LD B, H	;1		44353	
+79F7	 A1					AND C	;1		44354	
+79F8	 44					LD B, H	;1		44355	
+79F9	 44					LD B, H	;1		44356	
+79FA	 A2					AND D	;1		44357	
+79FB	 01 4C A3			LD BC, d16	;3		44360	
+79FE	 44					LD B, H	;1		44361	
+79FF	 00					NOP	;1		44362	
+7A00	 04					INC, B	;1		44363	
+7A01	 7A					LD A, D	;1		44364	
+7A02	 00					NOP	;1		44365	
+7A03	 00					NOP	;1		44366	
+7A04	 9D					SBC A, L	;1		44367	
+7A05	 C2 00 40			JP NZ a16	;4		44371	
+7A08	 A2					AND D	;1		44372	
+7A09	 5C					LD E, H	;1		44373	
+7A0A	 A1					AND C	;1		44374	
+7A0B	 5C					LD E, H	;1		44375	
+7A0C	 5A					LD E, D	;1		44376	
+7A0D	 A2					AND D	;1		44377	
+7A0E	 5C					LD E, H	;1		44378	
+7A0F	 5C					LD E, H	;1		44379	
+7A10	 56					LD D, (HL)	;2		44381	
+7A11	 52					LD D, D	;1		44382	
+7A12	 4E					LD C, (HL)	;2		44384	
+7A13	 56					LD D, (HL)	;2		44386	
+7A14	 A2					AND D	;1		44387	
+7A15	 52					LD D, D	;1		44388	
+7A16	 A1					AND C	;1		44389	
+7A17	 52					LD D, D	;1		44390	
+7A18	 50					LD D, B	;1		44391	
+7A19	 A2					AND D	;1		44392	
+7A1A	 52					LD D, D	;1		44393	
+7A1B	 52					LD D, D	;1		44394	
+7A1C	 4C					LD C, H	;1		44395	
+7A1D	 48					LD C, B	;1		44396	
+7A1E	 A1					AND C	;1		44397	
+7A1F	 44					LD B, H	;1		44398	
+7A20	 42					LD B, D	;1		44399	
+7A21	 A2					AND D	;1		44400	
+7A22	 44					LD B, H	;1		44401	
+7A23	 A4					AND H	;1		44402	
+7A24	 01 00 2C			LD BC, d16	;3		44405	
+7A27	 7A					LD A, D	;1		44406	
+7A28	 00					NOP	;1		44407	
+7A29	 00					NOP	;1		44408	
+7A2A	 4B					LD C, E	;1		44409	
+7A2B	 7A					LD A, D	;1		44410	
+7A2C	 9D					SBC A, L	;1		44411	
+7A2D	 C2 00 80			JP NZ a16	;4		44415	
+7A30	 A2					AND D	;1		44416	
+7A31	 5C					LD E, H	;1		44417	
+7A32	 A1					AND C	;1		44418	
+7A33	 5C					LD E, H	;1		44419	
+7A34	 5A					LD E, D	;1		44420	
+7A35	 A2					AND D	;1		44421	
+7A36	 5C					LD E, H	;1		44422	
+7A37	 5C					LD E, H	;1		44423	
+7A38	 56					LD D, (HL)	;2		44425	
+7A39	 52					LD D, D	;1		44426	
+7A3A	 4E					LD C, (HL)	;2		44428	
+7A3B	 56					LD D, (HL)	;2		44430	
+7A3C	 A2					AND D	;1		44431	
+7A3D	 52					LD D, D	;1		44432	
+7A3E	 A1					AND C	;1		44433	
+7A3F	 52					LD D, D	;1		44434	
+7A40	 50					LD D, B	;1		44435	
+7A41	 A2					AND D	;1		44436	
+7A42	 52					LD D, D	;1		44437	
+7A43	 4C					LD C, H	;1		44438	
+7A44	 44					LD B, H	;1		44439	
+7A45	 52					LD D, D	;1		44440	
+7A46	 A3					AND E	;1		44441	
+7A47	 5C					LD E, H	;1		44442	
+7A48	 A4					AND H	;1		44443	
+7A49	 01 00 9D			LD BC, d16	;3		44446	
+7A4C	 E9					JP HL	;1		44447	
+7A4D	 6E					LD L, (HL)	;2		44449	
+7A4E	 20 A2				JR NZ s8	;3		44452	
+7A50	 5C					LD E, H	;1		44453	
+7A51	 A1					AND C	;1		44454	
+7A52	 5C					LD E, H	;1		44455	
+7A53	 5C					LD E, H	;1		44456	
+7A54	 A2					AND D	;1		44457	
+7A55	 5C					LD E, H	;1		44458	
+7A56	 A1					AND C	;1		44459	
+7A57	 5C					LD E, H	;1		44460	
+7A58	 5C					LD E, H	;1		44461	
+7A59	 A2					AND D	;1		44462	
+7A5A	 4E					LD C, (HL)	;2		44464	
+7A5B	 52					LD D, D	;1		44465	
+7A5C	 56					LD D, (HL)	;2		44467	
+7A5D	 01 A2 5C			LD BC, d16	;3		44470	
+7A60	 A1					AND C	;1		44471	
+7A61	 5C					LD E, H	;1		44472	
+7A62	 5C					LD E, H	;1		44473	
+7A63	 A2					AND D	;1		44474	
+7A64	 5C					LD E, H	;1		44475	
+7A65	 A1					AND C	;1		44476	
+7A66	 5C					LD E, H	;1		44477	
+7A67	 5C					LD E, H	;1		44478	
+7A68	 A2					AND D	;1		44479	
+7A69	 52					LD D, D	;1		44480	
+7A6A	 4C					LD C, H	;1		44481	
+7A6B	 44					LD B, H	;1		44482	
+7A6C	 01 A5 01			LD BC, d16	;3		44485	
+7A6F	 77					LD (HL), A	;2		44487	
+7A70	 7A					LD A, D	;1		44488	
+7A71	 00					NOP	;1		44489	
+7A72	 00					NOP	;1		44490	
+7A73	 96					SUB (HL)	;2		44492	
+7A74	 7A					LD A, D	;1		44493	
+7A75	 B4					OR H	;1		44494	
+7A76	 7A					LD A, D	;1		44495	
+7A77	 9D					SBC A, L	;1		44496	
+7A78	 C2 00 80			JP NZ a16	;4		44500	
+7A7B	 A2					AND D	;1		44501	
+7A7C	 5C					LD E, H	;1		44502	
+7A7D	 A1					AND C	;1		44503	
+7A7E	 5C					LD E, H	;1		44504	
+7A7F	 5A					LD E, D	;1		44505	
+7A80	 A2					AND D	;1		44506	
+7A81	 5C					LD E, H	;1		44507	
+7A82	 5C					LD E, H	;1		44508	
+7A83	 56					LD D, (HL)	;2		44510	
+7A84	 52					LD D, D	;1		44511	
+7A85	 4E					LD C, (HL)	;2		44513	
+7A86	 56					LD D, (HL)	;2		44515	
+7A87	 A2					AND D	;1		44516	
+7A88	 52					LD D, D	;1		44517	
+7A89	 A1					AND C	;1		44518	
+7A8A	 52					LD D, D	;1		44519	
+7A8B	 50					LD D, B	;1		44520	
+7A8C	 A2					AND D	;1		44521	
+7A8D	 52					LD D, D	;1		44522	
+7A8E	 4C					LD C, H	;1		44523	
+7A8F	 44					LD B, H	;1		44524	
+7A90	 52					LD D, D	;1		44525	
+7A91	 A3					AND E	;1		44526	
+7A92	 5C					LD E, H	;1		44527	
+7A93	 A4					AND H	;1		44528	
+7A94	 01 00 9D			LD BC, d16	;3		44531	
+7A97	 C2 00 40			JP NZ a16	;4		44535	
+7A9A	 A2					AND D	;1		44536	
+7A9B	 4E					LD C, (HL)	;2		44538	
+7A9C	 A1					AND C	;1		44539	
+7A9D	 4E					LD C, (HL)	;2		44541	
+7A9E	 52					LD D, D	;1		44542	
+7A9F	 A2					AND D	;1		44543	
+7AA0	 56					LD D, (HL)	;2		44545	
+7AA1	 4E					LD C, (HL)	;2		44547	
+7AA2	 A3					AND E	;1		44548	
+7AA3	 48					LD C, B	;1		44549	
+7AA4	 48					LD C, B	;1		44550	
+7AA5	 A2					AND D	;1		44551	
+7AA6	 4C					LD C, H	;1		44552	
+7AA7	 A1					AND C	;1		44553	
+7AA8	 4C					LD C, H	;1		44554	
+7AA9	 4A					LD C, D	;1		44555	
+7AAA	 A2					AND D	;1		44556	
+7AAB	 4C					LD C, H	;1		44557	
+7AAC	 44					LD B, H	;1		44558	
+7AAD	 34					INC (HL)	;3		44561	
+7AAE	 4C					LD C, H	;1		44562	
+7AAF	 A3					AND E	;1		44563	
+7AB0	 4C					LD C, H	;1		44564	
+7AB1	 A5					AND L	;1		44565	
+7AB2	 01 00 9D			LD BC, d16	;3		44568	
+7AB5	 E9					JP HL	;1		44569	
+7AB6	 6E					LD L, (HL)	;2		44571	
+7AB7	 20 A2				JR NZ s8	;3		44574	
+7AB9	 5C					LD E, H	;1		44575	
+7ABA	 A1					AND C	;1		44576	
+7ABB	 5C					LD E, H	;1		44577	
+7ABC	 5C					LD E, H	;1		44578	
+7ABD	 A2					AND D	;1		44579	
+7ABE	 5C					LD E, H	;1		44580	
+7ABF	 A1					AND C	;1		44581	
+7AC0	 5C					LD E, H	;1		44582	
+7AC1	 5C					LD E, H	;1		44583	
+7AC2	 A2					AND D	;1		44584	
+7AC3	 4E					LD C, (HL)	;2		44586	
+7AC4	 52					LD D, D	;1		44587	
+7AC5	 A1					AND C	;1		44588	
+7AC6	 56					LD D, (HL)	;2		44590	
+7AC7	 56					LD D, (HL)	;2		44592	
+7AC8	 A2					AND D	;1		44593	
+7AC9	 56					LD D, (HL)	;2		44595	
+7ACA	 A2					AND D	;1		44596	
+7ACB	 5C					LD E, H	;1		44597	
+7ACC	 A1					AND C	;1		44598	
+7ACD	 5C					LD E, H	;1		44599	
+7ACE	 5C					LD E, H	;1		44600	
+7ACF	 A2					AND D	;1		44601	
+7AD0	 5C					LD E, H	;1		44602	
+7AD1	 A1					AND C	;1		44603	
+7AD2	 5C					LD E, H	;1		44604	
+7AD3	 5C					LD E, H	;1		44605	
+7AD4	 A2					AND D	;1		44606	
+7AD5	 52					LD D, D	;1		44607	
+7AD6	 4C					LD C, H	;1		44608	
+7AD7	 A1					AND C	;1		44609	
+7AD8	 44					LD B, H	;1		44610	
+7AD9	 44					LD B, H	;1		44611	
+7ADA	 A2					AND D	;1		44612	
+7ADB	 01 A5 01			LD BC, d16	;3		44615	
+7ADE	 00					NOP	;1		44616	
+7ADF	 E9					JP HL	;1		44617	
+7AE0	 7A					LD A, D	;1		44618	
+7AE1	 00					NOP	;1		44619	
+7AE2	 00					NOP	;1		44620	
+7AE3	 08 7B 25			LD (a16), SP	;5		44625	
+7AE6	 7B					LD A, E	;1		44626	
+7AE7	 4F					LD C, A	;1		44627	
+7AE8	 7B					LD A, E	;1		44628	
+7AE9	 9D					SBC A, L	;1		44629	
+7AEA	 C2 00 80			JP NZ a16	;4		44633	
+7AED	 A2					AND D	;1		44634	
+7AEE	 5C					LD E, H	;1		44635	
+7AEF	 A1					AND C	;1		44636	
+7AF0	 5C					LD E, H	;1		44637	
+7AF1	 5A					LD E, D	;1		44638	
+7AF2	 A2					AND D	;1		44639	
+7AF3	 5C					LD E, H	;1		44640	
+7AF4	 5C					LD E, H	;1		44641	
+7AF5	 56					LD D, (HL)	;2		44643	
+7AF6	 52					LD D, D	;1		44644	
+7AF7	 4E					LD C, (HL)	;2		44646	
+7AF8	 56					LD D, (HL)	;2		44648	
+7AF9	 A2					AND D	;1		44649	
+7AFA	 52					LD D, D	;1		44650	
+7AFB	 A1					AND C	;1		44651	
+7AFC	 52					LD D, D	;1		44652	
+7AFD	 50					LD D, B	;1		44653	
+7AFE	 A2					AND D	;1		44654	
+7AFF	 52					LD D, D	;1		44655	
+7B00	 4C					LD C, H	;1		44656	
+7B01	 44					LD B, H	;1		44657	
+7B02	 52					LD D, D	;1		44658	
+7B03	 A3					AND E	;1		44659	
+7B04	 5C					LD E, H	;1		44660	
+7B05	 A4					AND H	;1		44661	
+7B06	 01 00 9D			LD BC, d16	;3		44664	
+7B09	 B2					OR D	;1		44665	
+7B0A	 00					NOP	;1		44666	
+7B0B	 80					ADD A, B	;1		44667	
+7B0C	 A2					AND D	;1		44668	
+7B0D	 4E					LD C, (HL)	;2		44670	
+7B0E	 A1					AND C	;1		44671	
+7B0F	 4E					LD C, (HL)	;2		44673	
+7B10	 52					LD D, D	;1		44674	
+7B11	 A2					AND D	;1		44675	
+7B12	 56					LD D, (HL)	;2		44677	
+7B13	 4E					LD C, (HL)	;2		44679	
+7B14	 A3					AND E	;1		44680	
+7B15	 48					LD C, B	;1		44681	
+7B16	 48					LD C, B	;1		44682	
+7B17	 A2					AND D	;1		44683	
+7B18	 4C					LD C, H	;1		44684	
+7B19	 A1					AND C	;1		44685	
+7B1A	 4C					LD C, H	;1		44686	
+7B1B	 4A					LD C, D	;1		44687	
+7B1C	 A2					AND D	;1		44688	
+7B1D	 4C					LD C, H	;1		44689	
+7B1E	 44					LD B, H	;1		44690	
+7B1F	 34					INC (HL)	;3		44693	
+7B20	 4C					LD C, H	;1		44694	
+7B21	 A3					AND E	;1		44695	
+7B22	 4C					LD C, H	;1		44696	
+7B23	 A5					AND L	;1		44697	
+7B24	 01 9D E9			LD BC, d16	;3		44700	
+7B27	 6E					LD L, (HL)	;2		44702	
+7B28	 20 A2				JR NZ s8	;3		44705	
+7B2A	 5C					LD E, H	;1		44706	
+7B2B	 A1					AND C	;1		44707	
+7B2C	 5C					LD E, H	;1		44708	
+7B2D	 5C					LD E, H	;1		44709	
+7B2E	 A2					AND D	;1		44710	
+7B2F	 5C					LD E, H	;1		44711	
+7B30	 A1					AND C	;1		44712	
+7B31	 5C					LD E, H	;1		44713	
+7B32	 5C					LD E, H	;1		44714	
+7B33	 4E					LD C, (HL)	;2		44716	
+7B34	 56					LD D, (HL)	;2		44718	
+7B35	 5C					LD E, H	;1		44719	
+7B36	 56					LD D, (HL)	;2		44721	
+7B37	 4E					LD C, (HL)	;2		44723	
+7B38	 44					LD B, H	;1		44724	
+7B39	 3E 44				LD, A, d8	;2		44726	
+7B3B	 A2					AND D	;1		44727	
+7B3C	 5C					LD E, H	;1		44728	
+7B3D	 A1					AND C	;1		44729	
+7B3E	 5C					LD E, H	;1		44730	
+7B3F	 5C					LD E, H	;1		44731	
+7B40	 A2					AND D	;1		44732	
+7B41	 5C					LD E, H	;1		44733	
+7B42	 A1					AND C	;1		44734	
+7B43	 5C					LD E, H	;1		44735	
+7B44	 5C					LD E, H	;1		44736	
+7B45	 52					LD D, D	;1		44737	
+7B46	 4C					LD C, H	;1		44738	
+7B47	 44					LD B, H	;1		44739	
+7B48	 4C					LD C, H	;1		44740	
+7B49	 5C					LD E, H	;1		44741	
+7B4A	 01 A2 01			LD BC, d16	;3		44744	
+7B4D	 A5					AND L	;1		44745	
+7B4E	 01 A2 0B			LD BC, d16	;3		44748	
+7B51	 0B					DEC, BC	;2		44750	
+7B52	 0B					DEC, BC	;2		44752	
+7B53	 0B					DEC, BC	;2		44754	
+7B54	 A2					AND D	;1		44755	
+7B55	 0B					DEC, BC	;2		44757	
+7B56	 0B					DEC, BC	;2		44759	
+7B57	 0B					DEC, BC	;2		44761	
+7B58	 01 A2 0B			LD BC, d16	;3		44764	
+7B5B	 0B					DEC, BC	;2		44766	
+7B5C	 0B					DEC, BC	;2		44768	
+7B5D	 0B					DEC, BC	;2		44770	
+7B5E	 A2					AND D	;1		44771	
+7B5F	 0B					DEC, BC	;2		44773	
+7B60	 0B					DEC, BC	;2		44775	
+7B61	 0B					DEC, BC	;2		44777	
+7B62	 01 A5 01			LD BC, d16	;3		44780	
+7B65	 77					LD (HL), A	;2		44782	
+7B66	 7B					LD A, E	;1		44783	
+7B67	 CE 7B				ADC A, d8	;2		44785	
+7B69	 00					NOP	;1		44786	
+7B6A	 00					NOP	;1		44787	
+7B6B	 96					SUB (HL)	;2		44789	
+7B6C	 7B					LD A, E	;1		44790	
+7B6D	 F2					LD A, (C)	;2		44792	
+7B6E	 7B					LD A, E	;1		44793	
+7B6F	 A8					XOR B	;1		44794	
+7B70	 7B					LD A, E	;1		44795	
+7B71	 02					LD (BC), A	;2		44797	
+7B72	 7C					LD A, H	;1		44798	
+7B73	 BB					CP E	;1		44799	
+7B74	 7B					LD A, E	;1		44800	
+7B75	 12					LD (DE), A	;2		44802	
+7B76	 7C					LD A, H	;1		44803	
+7B77	 9D					SBC A, L	;1		44804	
+7B78	 D1					POP DE	;3		44807	
+7B79	 00					NOP	;1		44808	
+7B7A	 80					ADD A, B	;1		44809	
+7B7B	 A2					AND D	;1		44810	
+7B7C	 5C					LD E, H	;1		44811	
+7B7D	 A1					AND C	;1		44812	
+7B7E	 5C					LD E, H	;1		44813	
+7B7F	 5A					LD E, D	;1		44814	
+7B80	 A2					AND D	;1		44815	
+7B81	 5C					LD E, H	;1		44816	
+7B82	 5C					LD E, H	;1		44817	
+7B83	 56					LD D, (HL)	;2		44819	
+7B84	 52					LD D, D	;1		44820	
+7B85	 4E					LD C, (HL)	;2		44822	
+7B86	 56					LD D, (HL)	;2		44824	
+7B87	 A2					AND D	;1		44825	
+7B88	 52					LD D, D	;1		44826	
+7B89	 A1					AND C	;1		44827	
+7B8A	 52					LD D, D	;1		44828	
+7B8B	 50					LD D, B	;1		44829	
+7B8C	 A2					AND D	;1		44830	
+7B8D	 52					LD D, D	;1		44831	
+7B8E	 52					LD D, D	;1		44832	
+7B8F	 4C					LD C, H	;1		44833	
+7B90	 48					LD C, B	;1		44834	
+7B91	 44					LD B, H	;1		44835	
+7B92	 A1					AND C	;1		44836	
+7B93	 4C					LD C, H	;1		44837	
+7B94	 52					LD D, D	;1		44838	
+7B95	 00					NOP	;1		44839	
+7B96	 A2					AND D	;1		44840	
+7B97	 52					LD D, D	;1		44841	
+7B98	 A7					AND A	;1		44842	
+7B99	 01 A2 44			LD BC, d16	;3		44845	
+7B9C	 44					LD B, H	;1		44846	
+7B9D	 44					LD B, H	;1		44847	
+7B9E	 01 4C A7			LD BC, d16	;3		44850	
+7BA1	 01 A2 3A			LD BC, d16	;3		44853	
+7BA4	 3A					LD A, (HL-)	;2		44855	
+7BA5	 3A					LD A, (HL-)	;2		44857	
+7BA6	 01 00 A2			LD BC, d16	;3		44860	
+7BA9	 5C					LD E, H	;1		44861	
+7BAA	 A7					AND A	;1		44862	
+7BAB	 01 A2 4E			LD BC, d16	;3		44865	
+7BAE	 52					LD D, D	;1		44866	
+7BAF	 56					LD D, (HL)	;2		44868	
+7BB0	 01 A2 5C			LD BC, d16	;3		44871	
+7BB3	 A7					AND A	;1		44872	
+7BB4	 01 A2 44			LD BC, d16	;3		44875	
+7BB7	 48					LD C, B	;1		44876	
+7BB8	 4C					LD C, H	;1		44877	
+7BB9	 01 00 A2			LD BC, d16	;3		44880	
+7BBC	 06 A7				LD, B, d8	;2		44882	
+7BBE	 01 A2 0B			LD BC, d16	;3		44885	
+7BC1	 0B					DEC, BC	;2		44887	
+7BC2	 0B					DEC, BC	;2		44889	
+7BC3	 01 A2 06			LD BC, d16	;3		44892	
+7BC6	 A7					AND A	;1		44893	
+7BC7	 01 A2 0B			LD BC, d16	;3		44896	
+7BCA	 0B					DEC, BC	;2		44898	
+7BCB	 0B					DEC, BC	;2		44900	
+7BCC	 01 00 A2			LD BC, d16	;3		44903	
+7BCF	 48					LD C, B	;1		44904	
+7BD0	 A1					AND C	;1		44905	
+7BD1	 48					LD C, B	;1		44906	
+7BD2	 52					LD D, D	;1		44907	
+7BD3	 A2					AND D	;1		44908	
+7BD4	 44					LD B, H	;1		44909	
+7BD5	 A1					AND C	;1		44910	
+7BD6	 44					LD B, H	;1		44911	
+7BD7	 52					LD D, D	;1		44912	
+7BD8	 A2					AND D	;1		44913	
+7BD9	 42					LD B, D	;1		44914	
+7BDA	 A1					AND C	;1		44915	
+7BDB	 42					LD B, D	;1		44916	
+7BDC	 52					LD D, D	;1		44917	
+7BDD	 A2					AND D	;1		44918	
+7BDE	 48					LD C, B	;1		44919	
+7BDF	 A1					AND C	;1		44920	
+7BE0	 48					LD C, B	;1		44921	
+7BE1	 52					LD D, D	;1		44922	
+7BE2	 A2					AND D	;1		44923	
+7BE3	 4C					LD C, H	;1		44924	
+7BE4	 A1					AND C	;1		44925	
+7BE5	 4C					LD C, H	;1		44926	
+7BE6	 52					LD D, D	;1		44927	
+7BE7	 A2					AND D	;1		44928	
+7BE8	 48					LD C, B	;1		44929	
+7BE9	 A1					AND C	;1		44930	
+7BEA	 48					LD C, B	;1		44931	
+7BEB	 52					LD D, D	;1		44932	
+7BEC	 A2					AND D	;1		44933	
+7BED	 5C					LD E, H	;1		44934	
+7BEE	 52					LD D, D	;1		44935	
+7BEF	 A3					AND E	;1		44936	
+7BF0	 5C					LD E, H	;1		44937	
+7BF1	 00					NOP	;1		44938	
+7BF2	 01 3A 01			LD BC, d16	;3		44941	
+7BF5	 3A					LD A, (HL-)	;2		44943	
+7BF6	 01 3A 01			LD BC, d16	;3		44946	
+7BF9	 3A					LD A, (HL-)	;2		44948	
+7BFA	 01 3A 01			LD BC, d16	;3		44951	
+7BFD	 3A					LD A, (HL-)	;2		44953	
+7BFE	 01 3A A3			LD BC, d16	;3		44956	
+7C01	 34					INC (HL)	;3		44959	
+7C02	 01 48 01			LD BC, d16	;3		44962	
+7C05	 48					LD C, B	;1		44963	
+7C06	 01 48 01			LD BC, d16	;3		44966	
+7C09	 48					LD C, B	;1		44967	
+7C0A	 01 44 01			LD BC, d16	;3		44970	
+7C0D	 44					LD B, H	;1		44971	
+7C0E	 01 4C A3			LD BC, d16	;3		44974	
+7C11	 44					LD B, H	;1		44975	
+7C12	 A2					AND D	;1		44976	
+7C13	 01 0B 01			LD BC, d16	;3		44979	
+7C16	 0B					DEC, BC	;2		44981	
+7C17	 01 0B 01			LD BC, d16	;3		44984	
+7C1A	 0B					DEC, BC	;2		44986	
+7C1B	 01 0B 01			LD BC, d16	;3		44989	
+7C1E	 0B					DEC, BC	;2		44991	
+7C1F	 A2					AND D	;1		44992	
+7C20	 01 0B 0B			LD BC, d16	;3		44995	
+7C23	 01 2E 7C			LD BC, d16	;3		44998	
+7C26	 00					NOP	;1		44999	
+7C27	 00					NOP	;1		45000	
+7C28	 63					LD H, E	;1		45001	
+7C29	 7C					LD A, H	;1		45002	
+7C2A	 97					SUB A	;1		45003	
+7C2B	 7C					LD A, H	;1		45004	
+7C2C	 CB		
+7C2D	 7C					LD A, H	;1		45005	
+7C2E	 9D					SBC A, L	;1		45006	
+7C2F	 B3					OR E	;1		45007	
+7C30	 00					NOP	;1		45008	
+7C31	 80					ADD A, B	;1		45009	
+7C32	 A6					AND (HL)	;2		45011	
+7C33	 52					LD D, D	;1		45012	
+7C34	 A1					AND C	;1		45013	
+7C35	 50					LD D, B	;1		45014	
+7C36	 A6					AND (HL)	;2		45016	
+7C37	 52					LD D, D	;1		45017	
+7C38	 A1					AND C	;1		45018	
+7C39	 50					LD D, B	;1		45019	
+7C3A	 A6					AND (HL)	;2		45021	
+7C3B	 52					LD D, D	;1		45022	
+7C3C	 A1					AND C	;1		45023	
+7C3D	 48					LD C, B	;1		45024	
+7C3E	 A3					AND E	;1		45025	
+7C3F	 01 A6 4C			LD BC, d16	;3		45028	
+7C42	 A1					AND C	;1		45029	
+7C43	 4A					LD C, D	;1		45030	
+7C44	 A6					AND (HL)	;2		45032	
+7C45	 4C					LD C, H	;1		45033	
+7C46	 A1					AND C	;1		45034	
+7C47	 4A					LD C, D	;1		45035	
+7C48	 A6					AND (HL)	;2		45037	
+7C49	 4C					LD C, H	;1		45038	
+7C4A	 A1					AND C	;1		45039	
+7C4B	 42					LD B, D	;1		45040	
+7C4C	 A3					AND E	;1		45041	
+7C4D	 01 A6 3E			LD BC, d16	;3		45044	
+7C50	 A1					AND C	;1		45045	
+7C51	 42					LD B, D	;1		45046	
+7C52	 A6					AND (HL)	;2		45048	
+7C53	 44					LD B, H	;1		45049	
+7C54	 A1					AND C	;1		45050	
+7C55	 48					LD C, B	;1		45051	
+7C56	 A6					AND (HL)	;2		45053	
+7C57	 4C					LD C, H	;1		45054	
+7C58	 A1					AND C	;1		45055	
+7C59	 50					LD D, B	;1		45056	
+7C5A	 A6					AND (HL)	;2		45058	
+7C5B	 52					LD D, D	;1		45059	
+7C5C	 A1					AND C	;1		45060	
+7C5D	 56					LD D, (HL)	;2		45062	
+7C5E	 A6					AND (HL)	;2		45064	
+7C5F	 52					LD D, D	;1		45065	
+7C60	 A1					AND C	;1		45066	
+7C61	 6A					LD L, D	;1		45067	
+7C62	 00					NOP	;1		45068	
+7C63	 9D					SBC A, L	;1		45069	
+7C64	 93					SUB E	;1		45070	
+7C65	 00					NOP	;1		45071	
+7C66	 C0					RET NZ	;5		45076	
+7C67	 A6					AND (HL)	;2		45078	
+7C68	 42					LD B, D	;1		45079	
+7C69	 A1					AND C	;1		45080	
+7C6A	 40					LD B, B	;1		45081	
+7C6B	 A6					AND (HL)	;2		45083	
+7C6C	 42					LD B, D	;1		45084	
+7C6D	 A1					AND C	;1		45085	
+7C6E	 40					LD B, B	;1		45086	
+7C6F	 A6					AND (HL)	;2		45088	
+7C70	 42					LD B, D	;1		45089	
+7C71	 A1					AND C	;1		45090	
+7C72	 42					LD B, D	;1		45091	
+7C73	 A3					AND E	;1		45092	
+7C74	 01 A6 3A			LD BC, d16	;3		45095	
+7C77	 A1					AND C	;1		45096	
+7C78	 38 A6				JR C s8	;3		45099	
+7C7A	 3A					LD A, (HL-)	;2		45101	
+7C7B	 A1					AND C	;1		45102	
+7C7C	 38 A6				JR C s8	;3		45105	
+7C7E	 3A					LD A, (HL-)	;2		45107	
+7C7F	 A1					AND C	;1		45108	
+7C80	 3A					LD A, (HL-)	;2		45110	
+7C81	 A3					AND E	;1		45111	
+7C82	 01 A6 38			LD BC, d16	;3		45114	
+7C85	 A1					AND C	;1		45115	
+7C86	 38 A6				JR C s8	;3		45118	
+7C88	 3A					LD A, (HL-)	;2		45120	
+7C89	 A1					AND C	;1		45121	
+7C8A	 3E A6				LD, A, d8	;2		45123	
+7C8C	 42					LD B, D	;1		45124	
+7C8D	 A1					AND C	;1		45125	
+7C8E	 44					LD B, H	;1		45126	
+7C8F	 A6					AND (HL)	;2		45128	
+7C90	 48					LD C, B	;1		45129	
+7C91	 A1					AND C	;1		45130	
+7C92	 4C					LD C, H	;1		45131	
+7C93	 A6					AND (HL)	;2		45133	
+7C94	 42					LD B, D	;1		45134	
+7C95	 A1					AND C	;1		45135	
+7C96	 42					LD B, D	;1		45136	
+7C97	 9D					SBC A, L	;1		45137	
+7C98	 E9					JP HL	;1		45138	
+7C99	 6E					LD L, (HL)	;2		45140	
+7C9A	 A0					AND B	;1		45141	
+7C9B	 A6					AND (HL)	;2		45143	
+7C9C	 48					LD C, B	;1		45144	
+7C9D	 A1					AND C	;1		45145	
+7C9E	 46					LD B, (HL)	;2		45147	
+7C9F	 A6					AND (HL)	;2		45149	
+7CA0	 48					LD C, B	;1		45150	
+7CA1	 A1					AND C	;1		45151	
+7CA2	 46					LD B, (HL)	;2		45153	
+7CA3	 A6					AND (HL)	;2		45155	
+7CA4	 48					LD C, B	;1		45156	
+7CA5	 A1					AND C	;1		45157	
+7CA6	 52					LD D, D	;1		45158	
+7CA7	 A3					AND E	;1		45159	
+7CA8	 01 A6 44			LD BC, d16	;3		45162	
+7CAB	 A1					AND C	;1		45163	
+7CAC	 42					LD B, D	;1		45164	
+7CAD	 A6					AND (HL)	;2		45166	
+7CAE	 44					LD B, H	;1		45167	
+7CAF	 A1					AND C	;1		45168	
+7CB0	 42					LD B, D	;1		45169	
+7CB1	 A6					AND (HL)	;2		45171	
+7CB2	 44					LD B, H	;1		45172	
+7CB3	 A1					AND C	;1		45173	
+7CB4	 4C					LD C, H	;1		45174	
+7CB5	 A3					AND E	;1		45175	
+7CB6	 01 A6 48			LD BC, d16	;3		45178	
+7CB9	 A1					AND C	;1		45179	
+7CBA	 3A					LD A, (HL-)	;2		45181	
+7CBB	 A6					AND (HL)	;2		45183	
+7CBC	 3E A1				LD, A, d8	;2		45185	
+7CBE	 42					LD B, D	;1		45186	
+7CBF	 A6					AND (HL)	;2		45188	
+7CC0	 44					LD B, H	;1		45189	
+7CC1	 A1					AND C	;1		45190	
+7CC2	 48					LD C, B	;1		45191	
+7CC3	 A6					AND (HL)	;2		45193	
+7CC4	 4C					LD C, H	;1		45194	
+7CC5	 A1					AND C	;1		45195	
+7CC6	 50					LD D, B	;1		45196	
+7CC7	 A6					AND (HL)	;2		45198	
+7CC8	 52					LD D, D	;1		45199	
+7CC9	 A1					AND C	;1		45200	
+7CCA	 3A					LD A, (HL-)	;2		45202	
+7CCB	 A6					AND (HL)	;2		45204	
+7CCC	 0B					DEC, BC	;2		45206	
+7CCD	 A1					AND C	;1		45207	
+7CCE	 06 A6				LD, B, d8	;2		45209	
+7CD0	 0B					DEC, BC	;2		45211	
+7CD1	 A1					AND C	;1		45212	
+7CD2	 06 A6				LD, B, d8	;2		45214	
+7CD4	 0B					DEC, BC	;2		45216	
+7CD5	 A1					AND C	;1		45217	
+7CD6	 06 A3				LD, B, d8	;2		45219	
+7CD8	 01 A6 0B			LD BC, d16	;3		45222	
+7CDB	 A1					AND C	;1		45223	
+7CDC	 06 A6				LD, B, d8	;2		45225	
+7CDE	 0B					DEC, BC	;2		45227	
+7CDF	 A1					AND C	;1		45228	
+7CE0	 06 A6				LD, B, d8	;2		45230	
+7CE2	 0B					DEC, BC	;2		45232	
+7CE3	 A1					AND C	;1		45233	
+7CE4	 06 A3				LD, B, d8	;2		45235	
+7CE6	 01 A6 0B			LD BC, d16	;3		45238	
+7CE9	 A1					AND C	;1		45239	
+7CEA	 06 A6				LD, B, d8	;2		45241	
+7CEC	 0B					DEC, BC	;2		45243	
+7CED	 A1					AND C	;1		45244	
+7CEE	 06 A6				LD, B, d8	;2		45246	
+7CF0	 0B					DEC, BC	;2		45248	
+7CF1	 A1					AND C	;1		45249	
+7CF2	 06 A3				LD, B, d8	;2		45251	
+7CF4	 01 A6 0B			LD BC, d16	;3		45254	
+7CF7	 A1					AND C	;1		45255	
+7CF8	 06 2E				LD, B, d8	;2		45257	
+7CFA	 7D					LD A, L	;1		45258	
+7CFB	 FF					RST 7	;4		45262	
+7CFC	 FF					RST 7	;4		45266	
+7CFD	 01 7D 29			LD BC, d16	;3		45269	
+7D00	 7D					LD A, L	;1		45270	
+7D01	 35					DEC (HL)	;3		45273	
+7D02	 7D					LD A, L	;1		45274	
+7D03	 5B					LD E, E	;1		45275	
+7D04	 7D					LD A, L	;1		45276	
+7D05	 82					ADD A, D	;1		45277	
+7D06	 7D					LD A, L	;1		45278	
+7D07	 5B					LD E, E	;1		45279	
+7D08	 7D					LD A, L	;1		45280	
+7D09	 A4					AND H	;1		45281	
+7D0A	 7D					LD A, L	;1		45282	
+7D0B	 C6 7D				ADD A, d8	;2		45284	
+7D0D	 FF					RST 7	;4		45288	
+7D0E	 FF					RST 7	;4		45292	
+7D0F	 03					INC, BC	;2		45294	
+7D10	 7D					LD A, L	;1		45295	
+7D11	 3B					DEC, SP	;2		45297	
+7D12	 7D					LD A, L	;1		45298	
+7D13	 6C					LD L, H	;1		45299	
+7D14	 7D					LD A, L	;1		45300	
+7D15	 93					SUB E	;1		45301	
+7D16	 7D					LD A, L	;1		45302	
+7D17	 6C					LD L, H	;1		45303	
+7D18	 7D					LD A, L	;1		45304	
+7D19	 B5					OR L	;1		45305	
+7D1A	 7D					LD A, L	;1		45306	
+7D1B	 07					RLCA	;1		45307	
+7D1C	 7E					LD A, (HL)	;2		45309	
+7D1D	 FF					RST 7	;4		45313	
+7D1E	 FF					RST 7	;4		45317	
+7D1F	 13					INC, DE	;2		45319	
+7D20	 7D					LD A, L	;1		45320	
+7D21	 3E 7D				LD, A, d8	;2		45322	
+7D23	 41					LD B, C	;1		45323	
+7D24	 7D					LD A, L	;1		45324	
+7D25	 FF					RST 7	;4		45328	
+7D26	 FF					RST 7	;4		45332	
+7D27	 23					INC, (HL)	;2		45334	
+7D28	 7D					LD A, L	;1		45335	
+7D29	 9D					SBC A, L	;1		45336	
+7D2A	 60					LD H, B	;1		45337	
+7D2B	 00					NOP	;1		45338	
+7D2C	 81					ADD A, C	;1		45339	
+7D2D	 00					NOP	;1		45340	
+7D2E	 9D					SBC A, L	;1		45341	
+7D2F	 20 00				JR NZ s8	;3		45344	
+7D31	 81					ADD A, C	;1		45345	
+7D32	 AA					XOR D	;1		45346	
+7D33	 01 00 A3			LD BC, d16	;3		45349	
+7D36	 01 50 54			LD BC, d16	;3		45352	
+7D39	 58					LD E, B	;1		45353	
+7D3A	 00					NOP	;1		45354	
+7D3B	 A5					AND L	;1		45355	
+7D3C	 01 00 A5			LD BC, d16	;3		45358	
+7D3F	 01 00 A3			LD BC, d16	;3		45361	
+7D42	 01 06 01			LD BC, d16	;3		45364	
+7D45	 06 01				LD, B, d8	;2		45366	
+7D47	 A2					AND D	;1		45367	
+7D48	 06 06				LD, B, d8	;2		45369	
+7D4A	 A3					AND E	;1		45370	
+7D4B	 01 06 A3			LD BC, d16	;3		45373	
+7D4E	 01 06 01			LD BC, d16	;3		45376	
+7D51	 06 01				LD, B, d8	;2		45378	
+7D53	 A2					AND D	;1		45379	
+7D54	 06 06				LD, B, d8	;2		45381	
+7D56	 01 01 06			LD BC, d16	;3		45384	
+7D59	 06 00				LD, B, d8	;2		45386	
+7D5B	 A7					AND A	;1		45387	
+7D5C	 5A					LD E, D	;1		45388	
+7D5D	 A2					AND D	;1		45389	
+7D5E	 5E					LD E, (HL)	;2		45391	
+7D5F	 A7					AND A	;1		45392	
+7D60	 5A					LD E, D	;1		45393	
+7D61	 A2					AND D	;1		45394	
+7D62	 58					LD E, B	;1		45395	
+7D63	 A7					AND A	;1		45396	
+7D64	 58					LD E, B	;1		45397	
+7D65	 A2					AND D	;1		45398	
+7D66	 54					LD D, H	;1		45399	
+7D67	 A7					AND A	;1		45400	
+7D68	 58					LD E, B	;1		45401	
+7D69	 A2					AND D	;1		45402	
+7D6A	 54					LD D, H	;1		45403	
+7D6B	 00					NOP	;1		45404	
+7D6C	 9D					SBC A, L	;1		45405	
+7D6D	 C9					RET	;4		45409	
+7D6E	 6E					LD L, (HL)	;2		45411	
+7D6F	 20 A2				JR NZ s8	;3		45414	
+7D71	 5A					LD E, D	;1		45415	
+7D72	 62					LD H, D	;1		45416	
+7D73	 68					LD L, B	;1		45417	
+7D74	 70					LD (HL), B	;2		45419	
+7D75	 5A					LD E, D	;1		45420	
+7D76	 62					LD H, D	;1		45421	
+7D77	 68					LD L, B	;1		45422	
+7D78	 70					LD (HL), B	;2		45424	
+7D79	 5A					LD E, D	;1		45425	
+7D7A	 64					LD H, H	;1		45426	
+7D7B	 66					LD H, (HL)	;2		45428	
+7D7C	 6C					LD L, H	;1		45429	
+7D7D	 5A					LD E, D	;1		45430	
+7D7E	 64					LD H, H	;1		45431	
+7D7F	 66					LD H, (HL)	;2		45433	
+7D80	 6C					LD L, H	;1		45434	
+7D81	 00					NOP	;1		45435	
+7D82	 A7					AND A	;1		45436	
+7D83	 54					LD D, H	;1		45437	
+7D84	 A2					AND D	;1		45438	
+7D85	 50					LD D, B	;1		45439	
+7D86	 A7					AND A	;1		45440	
+7D87	 54					LD D, H	;1		45441	
+7D88	 A2					AND D	;1		45442	
+7D89	 50					LD D, B	;1		45443	
+7D8A	 A7					AND A	;1		45444	
+7D8B	 50					LD D, B	;1		45445	
+7D8C	 A2					AND D	;1		45446	
+7D8D	 4C					LD C, H	;1		45447	
+7D8E	 A7					AND A	;1		45448	
+7D8F	 4A					LD C, D	;1		45449	
+7D90	 A2					AND D	;1		45450	
+7D91	 50					LD D, B	;1		45451	
+7D92	 00					NOP	;1		45452	
+7D93	 58					LD E, B	;1		45453	
+7D94	 5E					LD E, (HL)	;2		45455	
+7D95	 64					LD H, H	;1		45456	
+7D96	 6C					LD L, H	;1		45457	
+7D97	 58					LD E, B	;1		45458	
+7D98	 5E					LD E, (HL)	;2		45460	
+7D99	 64					LD H, H	;1		45461	
+7D9A	 6C					LD L, H	;1		45462	
+7D9B	 50					LD D, B	;1		45463	
+7D9C	 54					LD D, H	;1		45464	
+7D9D	 58					LD E, B	;1		45465	
+7D9E	 5E					LD E, (HL)	;2		45467	
+7D9F	 50					LD D, B	;1		45468	
+7DA0	 58					LD E, B	;1		45469	
+7DA1	 5E					LD E, (HL)	;2		45471	
+7DA2	 64					LD H, H	;1		45472	
+7DA3	 00					NOP	;1		45473	
+7DA4	 A7					AND A	;1		45474	
+7DA5	 54					LD D, H	;1		45475	
+7DA6	 A2					AND D	;1		45476	
+7DA7	 50					LD D, B	;1		45477	
+7DA8	 A7					AND A	;1		45478	
+7DA9	 54					LD D, H	;1		45479	
+7DAA	 A2					AND D	;1		45480	
+7DAB	 50					LD D, B	;1		45481	
+7DAC	 A7					AND A	;1		45482	
+7DAD	 50					LD D, B	;1		45483	
+7DAE	 A2					AND D	;1		45484	
+7DAF	 4C					LD C, H	;1		45485	
+7DB0	 A7					AND A	;1		45486	
+7DB1	 4A					LD C, D	;1		45487	
+7DB2	 A2					AND D	;1		45488	
+7DB3	 46					LD B, (HL)	;2		45490	
+7DB4	 00					NOP	;1		45491	
+7DB5	 58					LD E, B	;1		45492	
+7DB6	 5E					LD E, (HL)	;2		45494	
+7DB7	 64					LD H, H	;1		45495	
+7DB8	 6C					LD L, H	;1		45496	
+7DB9	 58					LD E, B	;1		45497	
+7DBA	 5E					LD E, (HL)	;2		45499	
+7DBB	 64					LD H, H	;1		45500	
+7DBC	 6C					LD L, H	;1		45501	
+7DBD	 50					LD D, B	;1		45502	
+7DBE	 54					LD D, H	;1		45503	
+7DBF	 58					LD E, B	;1		45504	
+7DC0	 5E					LD E, (HL)	;2		45506	
+7DC1	 50					LD D, B	;1		45507	
+7DC2	 58					LD E, B	;1		45508	
+7DC3	 5E					LD E, (HL)	;2		45510	
+7DC4	 64					LD H, H	;1		45511	
+7DC5	 00					NOP	;1		45512	
+7DC6	 A7					AND A	;1		45513	
+7DC7	 4A					LD C, D	;1		45514	
+7DC8	 A2					AND D	;1		45515	
+7DC9	 4C					LD C, H	;1		45516	
+7DCA	 A7					AND A	;1		45517	
+7DCB	 4A					LD C, D	;1		45518	
+7DCC	 A2					AND D	;1		45519	
+7DCD	 46					LD B, (HL)	;2		45521	
+7DCE	 A7					AND A	;1		45522	
+7DCF	 46					LD B, (HL)	;2		45524	
+7DD0	 A2					AND D	;1		45525	
+7DD1	 44					LD B, H	;1		45526	
+7DD2	 A7					AND A	;1		45527	
+7DD3	 46					LD B, (HL)	;2		45529	
+7DD4	 A2					AND D	;1		45530	
+7DD5	 4A					LD C, D	;1		45531	
+7DD6	 A7					AND A	;1		45532	
+7DD7	 4C					LD C, H	;1		45533	
+7DD8	 A2					AND D	;1		45534	
+7DD9	 50					LD D, B	;1		45535	
+7DDA	 A7					AND A	;1		45536	
+7DDB	 4C					LD C, H	;1		45537	
+7DDC	 A2					AND D	;1		45538	
+7DDD	 4A					LD C, D	;1		45539	
+7DDE	 A7					AND A	;1		45540	
+7DDF	 4A					LD C, D	;1		45541	
+7DE0	 A2					AND D	;1		45542	
+7DE1	 46					LD B, (HL)	;2		45544	
+7DE2	 A7					AND A	;1		45545	
+7DE3	 4A					LD C, D	;1		45546	
+7DE4	 A2					AND D	;1		45547	
+7DE5	 4C					LD C, H	;1		45548	
+7DE6	 A7					AND A	;1		45549	
+7DE7	 50					LD D, B	;1		45550	
+7DE8	 A2					AND D	;1		45551	
+7DE9	 4E					LD C, (HL)	;2		45553	
+7DEA	 A7					AND A	;1		45554	
+7DEB	 50					LD D, B	;1		45555	
+7DEC	 A2					AND D	;1		45556	
+7DED	 52					LD D, D	;1		45557	
+7DEE	 A7					AND A	;1		45558	
+7DEF	 58					LD E, B	;1		45559	
+7DF0	 A2					AND D	;1		45560	
+7DF1	 54					LD D, H	;1		45561	
+7DF2	 A7					AND A	;1		45562	
+7DF3	 5A					LD E, D	;1		45563	
+7DF4	 A2					AND D	;1		45564	
+7DF5	 54					LD D, H	;1		45565	
+7DF6	 A7					AND A	;1		45566	
+7DF7	 52					LD D, D	;1		45567	
+7DF8	 A2					AND D	;1		45568	
+7DF9	 50					LD D, B	;1		45569	
+7DFA	 A7					AND A	;1		45570	
+7DFB	 4C					LD C, H	;1		45571	
+7DFC	 A2					AND D	;1		45572	
+7DFD	 4A					LD C, D	;1		45573	
+7DFE	 A2					AND D	;1		45574	
+7DFF	 42					LD B, D	;1		45575	
+7E00	 38 3C				JR C s8	;3		45578	
+7E02	 4A					LD C, D	;1		45579	
+7E03	 A3					AND E	;1		45580	
+7E04	 42					LD B, D	;1		45581	
+7E05	 01 00 4A			LD BC, d16	;3		45584	
+7E08	 52					LD D, D	;1		45585	
+7E09	 58					LD E, B	;1		45586	
+7E0A	 5E					LD E, (HL)	;2		45588	
+7E0B	 4A					LD C, D	;1		45589	
+7E0C	 58					LD E, B	;1		45590	
+7E0D	 5E					LD E, (HL)	;2		45592	
+7E0E	 62					LD H, D	;1		45593	
+7E0F	 54					LD D, H	;1		45594	
+7E10	 62					LD H, D	;1		45595	
+7E11	 68					LD L, B	;1		45596	
+7E12	 6C					LD L, H	;1		45597	
+7E13	 54					LD D, H	;1		45598	
+7E14	 62					LD H, D	;1		45599	
+7E15	 68					LD L, B	;1		45600	
+7E16	 6C					LD L, H	;1		45601	
+7E17	 46					LD B, (HL)	;2		45603	
+7E18	 4C					LD C, H	;1		45604	
+7E19	 54					LD D, H	;1		45605	
+7E1A	 5E					LD E, (HL)	;2		45607	
+7E1B	 46					LD B, (HL)	;2		45609	
+7E1C	 4C					LD C, H	;1		45610	
+7E1D	 54					LD D, H	;1		45611	
+7E1E	 5A					LD E, D	;1		45612	
+7E1F	 50					LD D, B	;1		45613	
+7E20	 58					LD E, B	;1		45614	
+7E21	 5E					LD E, (HL)	;2		45616	
+7E22	 64					LD H, H	;1		45617	
+7E23	 50					LD D, B	;1		45618	
+7E24	 5E					LD E, (HL)	;2		45620	
+7E25	 64					LD H, H	;1		45621	
+7E26	 6C					LD L, H	;1		45622	
+7E27	 4A					LD C, D	;1		45623	
+7E28	 50					LD D, B	;1		45624	
+7E29	 58					LD E, B	;1		45625	
+7E2A	 5E					LD E, (HL)	;2		45627	
+7E2B	 4A					LD C, D	;1		45628	
+7E2C	 58					LD E, B	;1		45629	
+7E2D	 5E					LD E, (HL)	;2		45631	
+7E2E	 62					LD H, D	;1		45632	
+7E2F	 4E					LD C, (HL)	;2		45634	
+7E30	 54					LD D, H	;1		45635	
+7E31	 5A					LD E, D	;1		45636	
+7E32	 62					LD H, D	;1		45637	
+7E33	 4E					LD C, (HL)	;2		45639	
+7E34	 54					LD D, H	;1		45640	
+7E35	 5A					LD E, D	;1		45641	
+7E36	 66					LD H, (HL)	;2		45643	
+7E37	 50					LD D, B	;1		45644	
+7E38	 58					LD E, B	;1		45645	
+7E39	 5E					LD E, (HL)	;2		45647	
+7E3A	 64					LD H, H	;1		45648	
+7E3B	 50					LD D, B	;1		45649	
+7E3C	 5E					LD E, (HL)	;2		45651	
+7E3D	 64					LD H, H	;1		45652	
+7E3E	 68					LD L, B	;1		45653	
+7E3F	 A8					XOR B	;1		45654	
+7E40	 5A					LD E, D	;1		45655	
+7E41	 A3					AND E	;1		45656	
+7E42	 01 00 4E			LD BC, d16	;3		45659	
+7E45	 7E					LD A, (HL)	;2		45661	
+7E46	 00					NOP	;1		45662	
+7E47	 00					NOP	;1		45663	
+7E48	 5E					LD E, (HL)	;2		45665	
+7E49	 7E					LD A, (HL)	;2		45667	
+7E4A	 6D					LD L, L	;1		45668	
+7E4B	 7E					LD A, (HL)	;2		45670	
+7E4C	 7D					LD A, L	;1		45671	
+7E4D	 7E					LD A, (HL)	;2		45673	
+7E4E	 9D					SBC A, L	;1		45674	
+7E4F	 B1					OR C	;1		45675	
+7E50	 00					NOP	;1		45676	
+7E51	 80					ADD A, B	;1		45677	
+7E52	 A7					AND A	;1		45678	
+7E53	 01 A1 5E			LD BC, d16	;3		45681	
+7E56	 5E					LD E, (HL)	;2		45683	
+7E57	 A6					AND (HL)	;2		45685	
+7E58	 68					LD L, B	;1		45686	
+7E59	 A1					AND C	;1		45687	
+7E5A	 5E					LD E, (HL)	;2		45689	
+7E5B	 A4					AND H	;1		45690	
+7E5C	 68					LD L, B	;1		45691	
+7E5D	 00					NOP	;1		45692	
+7E5E	 9D					SBC A, L	;1		45693	
+7E5F	 91					SUB C	;1		45694	
+7E60	 00					NOP	;1		45695	
+7E61	 80					ADD A, B	;1		45696	
+7E62	 A7					AND A	;1		45697	
+7E63	 01 A1 54			LD BC, d16	;3		45700	
+7E66	 54					LD D, H	;1		45701	
+7E67	 A6					AND (HL)	;2		45703	
+7E68	 5E					LD E, (HL)	;2		45705	
+7E69	 A1					AND C	;1		45706	
+7E6A	 58					LD E, B	;1		45707	
+7E6B	 A4					AND H	;1		45708	
+7E6C	 5E					LD E, (HL)	;2		45710	
+7E6D	 9D					SBC A, L	;1		45711	
+7E6E	 E9					JP HL	;1		45712	
+7E6F	 6E					LD L, (HL)	;2		45714	
+7E70	 20 A7				JR NZ s8	;3		45717	
+7E72	 01 A1 4E			LD BC, d16	;3		45720	
+7E75	 4E					LD C, (HL)	;2		45722	
+7E76	 A6					AND (HL)	;2		45724	
+7E77	 58					LD E, B	;1		45725	
+7E78	 A1					AND C	;1		45726	
+7E79	 50					LD D, B	;1		45727	
+7E7A	 A3					AND E	;1		45728	
+7E7B	 58					LD E, B	;1		45729	
+7E7C	 01 A7 01			LD BC, d16	;3		45732	
+7E7F	 A1					AND C	;1		45733	
+7E80	 06 06				LD, B, d8	;2		45735	
+7E82	 A6					AND (HL)	;2		45737	
+7E83	 0B					DEC, BC	;2		45739	
+7E84	 A1					AND C	;1		45740	
+7E85	 06 A0				LD, B, d8	;2		45742	
+7E87	 06 06				LD, B, d8	;2		45744	
+7E89	 06 06				LD, B, d8	;2		45746	
+7E8B	 06 06				LD, B, d8	;2		45748	
+7E8D	 06 06				LD, B, d8	;2		45750	
+7E8F	 A3					AND E	;1		45751	
+7E90	 01 BB 7E			LD BC, d16	;3		45754	
+7E93	 28 7F				JR Z s8	;3		45757	
+7E95	 BB					CP E	;1		45758	
+7E96	 7E					LD A, (HL)	;2		45760	
+7E97	 73					LD (HL), E	;2		45762	
+7E98	 7F					LD A, A	;1		45763	
+7E99	 FF					RST 7	;4		45767	
+7E9A	 FF					RST 7	;4		45771	
+7E9B	 91					SUB C	;1		45772	
+7E9C	 7E					LD A, (HL)	;2		45774	
+7E9D	 E5					PUSH (HL)	;4		45778	
+7E9E	 7E					LD A, (HL)	;2		45780	
+7E9F	 4F					LD C, A	;1		45781	
+7EA0	 7F					LD A, A	;1		45782	
+7EA1	 E5					PUSH (HL)	;4		45786	
+7EA2	 7E					LD A, (HL)	;2		45788	
+7EA3	 96					SUB (HL)	;2		45790	
+7EA4	 7F					LD A, A	;1		45791	
+7EA5	 FF					RST 7	;4		45795	
+7EA6	 FF					RST 7	;4		45799	
+7EA7	 9D					SBC A, L	;1		45800	
+7EA8	 7E					LD A, (HL)	;2		45802	
+7EA9	 FB					EI	;1		45803	
+7EAA	 7E					LD A, (HL)	;2		45805	
+7EAB	 61					LD H, C	;1		45806	
+7EAC	 7F					LD A, A	;1		45807	
+7EAD	 FB					EI	;1		45808	
+7EAE	 7E					LD A, (HL)	;2		45810	
+7EAF	 AE					XOR (HL)	;2		45812	
+7EB0	 7F					LD A, A	;1		45813	
+7EB1	 FF					RST 7	;4		45817	
+7EB2	 FF					RST 7	;4		45821	
+7EB3	 A9					XOR C	;1		45822	
+7EB4	 7E					LD A, (HL)	;2		45824	
+7EB5	 11 7F FF			LD DE, d16	;3		45827	
+7EB8	 FF					RST 7	;4		45831	
+7EB9	 B5					OR L	;1		45832	
+7EBA	 7E					LD A, (HL)	;2		45834	
+7EBB	 9D					SBC A, L	;1		45835	
+7EBC	 82					ADD A, D	;1		45836	
+7EBD	 00					NOP	;1		45837	
+7EBE	 80					ADD A, B	;1		45838	
+7EBF	 A2					AND D	;1		45839	
+7EC0	 54					LD D, H	;1		45840	
+7EC1	 A1					AND C	;1		45841	
+7EC2	 54					LD D, H	;1		45842	
+7EC3	 54					LD D, H	;1		45843	
+7EC4	 54					LD D, H	;1		45844	
+7EC5	 4A					LD C, D	;1		45845	
+7EC6	 46					LD B, (HL)	;2		45847	
+7EC7	 4A					LD C, D	;1		45848	
+7EC8	 A2					AND D	;1		45849	
+7EC9	 54					LD D, H	;1		45850	
+7ECA	 A1					AND C	;1		45851	
+7ECB	 54					LD D, H	;1		45852	
+7ECC	 54					LD D, H	;1		45853	
+7ECD	 54					LD D, H	;1		45854	
+7ECE	 58					LD E, B	;1		45855	
+7ECF	 5C					LD E, H	;1		45856	
+7ED0	 58					LD E, B	;1		45857	
+7ED1	 A2					AND D	;1		45858	
+7ED2	 54					LD D, H	;1		45859	
+7ED3	 A1					AND C	;1		45860	
+7ED4	 54					LD D, H	;1		45861	
+7ED5	 54					LD D, H	;1		45862	
+7ED6	 58					LD E, B	;1		45863	
+7ED7	 54					LD D, H	;1		45864	
+7ED8	 52					LD D, D	;1		45865	
+7ED9	 54					LD D, H	;1		45866	
+7EDA	 A1					AND C	;1		45867	
+7EDB	 58					LD E, B	;1		45868	
+7EDC	 5C					LD E, H	;1		45869	
+7EDD	 58					LD E, B	;1		45870	
+7EDE	 5C					LD E, H	;1		45871	
+7EDF	 A2					AND D	;1		45872	
+7EE0	 58					LD E, B	;1		45873	
+7EE1	 A1					AND C	;1		45874	
+7EE2	 56					LD D, (HL)	;2		45876	
+7EE3	 58					LD E, B	;1		45877	
+7EE4	 00					NOP	;1		45878	
+7EE5	 9D					SBC A, L	;1		45879	
+7EE6	 62					LD H, D	;1		45880	
+7EE7	 00					NOP	;1		45881	
+7EE8	 80					ADD A, B	;1		45882	
+7EE9	 A2					AND D	;1		45883	
+7EEA	 01 44 01			LD BC, d16	;3		45886	
+7EED	 40					LD B, B	;1		45887	
+7EEE	 01 44 01			LD BC, d16	;3		45890	
+7EF1	 46					LD B, (HL)	;2		45892	
+7EF2	 01 44 01			LD BC, d16	;3		45895	
+7EF5	 44					LD B, H	;1		45896	
+7EF6	 01 40 01			LD BC, d16	;3		45899	
+7EF9	 40					LD B, B	;1		45900	
+7EFA	 00					NOP	;1		45901	
+7EFB	 9D					SBC A, L	;1		45902	
+7EFC	 E9					JP HL	;1		45903	
+7EFD	 6E					LD L, (HL)	;2		45905	
+7EFE	 20 A2				JR NZ s8	;3		45908	
+7F00	 54					LD D, H	;1		45909	
+7F01	 54					LD D, H	;1		45910	
+7F02	 4A					LD C, D	;1		45911	
+7F03	 52					LD D, D	;1		45912	
+7F04	 54					LD D, H	;1		45913	
+7F05	 54					LD D, H	;1		45914	
+7F06	 4A					LD C, D	;1		45915	
+7F07	 58					LD E, B	;1		45916	
+7F08	 54					LD D, H	;1		45917	
+7F09	 54					LD D, H	;1		45918	
+7F0A	 52					LD D, D	;1		45919	
+7F0B	 54					LD D, H	;1		45920	
+7F0C	 4E					LD C, (HL)	;2		45922	
+7F0D	 54					LD D, H	;1		45923	
+7F0E	 4A					LD C, D	;1		45924	
+7F0F	 52					LD D, D	;1		45925	
+7F10	 00					NOP	;1		45926	
+7F11	 A2					AND D	;1		45927	
+7F12	 06 0B				LD, B, d8	;2		45929	
+7F14	 06 0B				LD, B, d8	;2		45931	
+7F16	 06 0B				LD, B, d8	;2		45933	
+7F18	 06 0B				LD, B, d8	;2		45935	
+7F1A	 06 0B				LD, B, d8	;2		45937	
+7F1C	 06 0B				LD, B, d8	;2		45939	
+7F1E	 06 A1				LD, B, d8	;2		45941	
+7F20	 0B					DEC, BC	;2		45943	
+7F21	 0B					DEC, BC	;2		45945	
+7F22	 06 A2				LD, B, d8	;2		45947	
+7F24	 0B					DEC, BC	;2		45949	
+7F25	 A1					AND C	;1		45950	
+7F26	 06 00				LD, B, d8	;2		45952	
+7F28	 A2					AND D	;1		45953	
+7F29	 5E					LD E, (HL)	;2		45955	
+7F2A	 A1					AND C	;1		45956	
+7F2B	 5E					LD E, (HL)	;2		45958	
+7F2C	 5E					LD E, (HL)	;2		45960	
+7F2D	 5E					LD E, (HL)	;2		45962	
+7F2E	 54					LD D, H	;1		45963	
+7F2F	 50					LD D, B	;1		45964	
+7F30	 54					LD D, H	;1		45965	
+7F31	 A2					AND D	;1		45966	
+7F32	 5E					LD E, (HL)	;2		45968	
+7F33	 A1					AND C	;1		45969	
+7F34	 5E					LD E, (HL)	;2		45971	
+7F35	 5E					LD E, (HL)	;2		45973	
+7F36	 5E					LD E, (HL)	;2		45975	
+7F37	 62					LD H, D	;1		45976	
+7F38	 66					LD H, (HL)	;2		45978	
+7F39	 62					LD H, D	;1		45979	
+7F3A	 A2					AND D	;1		45980	
+7F3B	 5E					LD E, (HL)	;2		45982	
+7F3C	 A1					AND C	;1		45983	
+7F3D	 5E					LD E, (HL)	;2		45985	
+7F3E	 5C					LD E, H	;1		45986	
+7F3F	 A2					AND D	;1		45987	
+7F40	 58					LD E, B	;1		45988	
+7F41	 A1					AND C	;1		45989	
+7F42	 58					LD E, B	;1		45990	
+7F43	 54					LD D, H	;1		45991	
+7F44	 A1					AND C	;1		45992	
+7F45	 52					LD D, D	;1		45993	
+7F46	 54					LD D, H	;1		45994	
+7F47	 52					LD D, D	;1		45995	
+7F48	 54					LD D, H	;1		45996	
+7F49	 A2					AND D	;1		45997	
+7F4A	 52					LD D, D	;1		45998	
+7F4B	 A1					AND C	;1		45999	
+7F4C	 4E					LD C, (HL)	;2		46001	
+7F4D	 52					LD D, D	;1		46002	
+7F4E	 00					NOP	;1		46003	
+7F4F	 A2					AND D	;1		46004	
+7F50	 01 46 01			LD BC, d16	;3		46007	
+7F53	 4A					LD C, D	;1		46008	
+7F54	 01 46 01			LD BC, d16	;3		46011	
+7F57	 4A					LD C, D	;1		46012	
+7F58	 01 46 01			LD BC, d16	;3		46015	
+7F5B	 46					LD B, (HL)	;2		46017	
+7F5C	 01 46 01			LD BC, d16	;3		46020	
+7F5F	 46					LD B, (HL)	;2		46022	
+7F60	 00					NOP	;1		46023	
+7F61	 A2					AND D	;1		46024	
+7F62	 46					LD B, (HL)	;2		46026	
+7F63	 54					LD D, H	;1		46027	
+7F64	 54					LD D, H	;1		46028	
+7F65	 54					LD D, H	;1		46029	
+7F66	 46					LD B, (HL)	;2		46031	
+7F67	 54					LD D, H	;1		46032	
+7F68	 54					LD D, H	;1		46033	
+7F69	 54					LD D, H	;1		46034	
+7F6A	 46					LD B, (HL)	;2		46036	
+7F6B	 54					LD D, H	;1		46037	
+7F6C	 52					LD D, D	;1		46038	
+7F6D	 58					LD E, B	;1		46039	
+7F6E	 44					LD B, H	;1		46040	
+7F6F	 52					LD D, D	;1		46041	
+7F70	 4A					LD C, D	;1		46042	
+7F71	 58					LD E, B	;1		46043	
+7F72	 00					NOP	;1		46044	
+7F73	 A2					AND D	;1		46045	
+7F74	 62					LD H, D	;1		46046	
+7F75	 A1					AND C	;1		46047	
+7F76	 62					LD H, D	;1		46048	
+7F77	 62					LD H, D	;1		46049	
+7F78	 62					LD H, D	;1		46050	
+7F79	 5E					LD E, (HL)	;2		46052	
+7F7A	 5A					LD E, D	;1		46053	
+7F7B	 5E					LD E, (HL)	;2		46055	
+7F7C	 A2					AND D	;1		46056	
+7F7D	 62					LD H, D	;1		46057	
+7F7E	 A1					AND C	;1		46058	
+7F7F	 62					LD H, D	;1		46059	
+7F80	 62					LD H, D	;1		46060	
+7F81	 62					LD H, D	;1		46061	
+7F82	 5E					LD E, (HL)	;2		46063	
+7F83	 5A					LD E, D	;1		46064	
+7F84	 5E					LD E, (HL)	;2		46066	
+7F85	 A2					AND D	;1		46067	
+7F86	 62					LD H, D	;1		46068	
+7F87	 A1					AND C	;1		46069	
+7F88	 4A					LD C, D	;1		46070	
+7F89	 4E					LD C, (HL)	;2		46072	
+7F8A	 A2					AND D	;1		46073	
+7F8B	 52					LD D, D	;1		46074	
+7F8C	 A1					AND C	;1		46075	
+7F8D	 4A					LD C, D	;1		46076	
+7F8E	 5C					LD E, H	;1		46077	
+7F8F	 A3					AND E	;1		46078	
+7F90	 58					LD E, B	;1		46079	
+7F91	 A1					AND C	;1		46080	
+7F92	 54					LD D, H	;1		46081	
+7F93	 A6					AND (HL)	;2		46083	
+7F94	 6C					LD L, H	;1		46084	
+7F95	 00					NOP	;1		46085	
+7F96	 A2					AND D	;1		46086	
+7F97	 01 4A 01			LD BC, d16	;3		46089	
+7F9A	 4A					LD C, D	;1		46090	
+7F9B	 01 4A 01			LD BC, d16	;3		46093	
+7F9E	 4A					LD C, D	;1		46094	
+7F9F	 01 A1 46			LD BC, d16	;3		46097	
+7FA2	 46					LD B, (HL)	;2		46099	
+7FA3	 A2					AND D	;1		46100	
+7FA4	 46					LD B, (HL)	;2		46102	
+7FA5	 A1					AND C	;1		46103	
+7FA6	 46					LD B, (HL)	;2		46105	
+7FA7	 46					LD B, (HL)	;2		46107	
+7FA8	 A3					AND E	;1		46108	
+7FA9	 46					LD B, (HL)	;2		46110	
+7FAA	 A2					AND D	;1		46111	
+7FAB	 44					LD B, H	;1		46112	
+7FAC	 01 00 A2			LD BC, d16	;3		46115	
+7FAF	 42					LD B, D	;1		46116	
+7FB0	 5A					LD E, D	;1		46117	
+7FB1	 50					LD D, B	;1		46118	
+7FB2	 5A					LD E, D	;1		46119	
+7FB3	 42					LD B, D	;1		46120	
+7FB4	 5A					LD E, D	;1		46121	
+7FB5	 50					LD D, B	;1		46122	
+7FB6	 5A					LD E, D	;1		46123	
+7FB7	 4A					LD C, D	;1		46124	
+7FB8	 A1					AND C	;1		46125	
+7FB9	 52					LD D, D	;1		46126	
+7FBA	 52					LD D, D	;1		46127	
+7FBB	 A2					AND D	;1		46128	
+7FBC	 52					LD D, D	;1		46129	
+7FBD	 A1					AND C	;1		46130	
+7FBE	 52					LD D, D	;1		46131	
+7FBF	 52					LD D, D	;1		46132	
+7FC0	 A3					AND E	;1		46133	
+7FC1	 52					LD D, D	;1		46134	
+7FC2	 A2					AND D	;1		46135	
+7FC3	 54					LD D, H	;1		46136	
+7FC4	 01 00 00			LD BC, d16	;3		46139	
+7FC7	 00					NOP	;1		46140	
+7FC8	 00					NOP	;1		46141	
+7FC9	 00					NOP	;1		46142	
+7FCA	 00					NOP	;1		46143	
+7FCB	 00					NOP	;1		46144	
+7FCC	 00					NOP	;1		46145	
+7FCD	 00					NOP	;1		46146	
+7FCE	 00					NOP	;1		46147	
+7FCF	 00					NOP	;1		46148	
+7FD0	 00					NOP	;1		46149	
+7FD1	 00					NOP	;1		46150	
+7FD2	 00					NOP	;1		46151	
+7FD3	 00					NOP	;1		46152	
+7FD4	 00					NOP	;1		46153	
+7FD5	 00					NOP	;1		46154	
+7FD6	 00					NOP	;1		46155	
+7FD7	 00					NOP	;1		46156	
+7FD8	 00					NOP	;1		46157	
+7FD9	 00					NOP	;1		46158	
+7FDA	 00					NOP	;1		46159	
+7FDB	 00					NOP	;1		46160	
+7FDC	 00					NOP	;1		46161	
+7FDD	 00					NOP	;1		46162	
+7FDE	 00					NOP	;1		46163	
+7FDF	 00					NOP	;1		46164	
+7FE0	 00					NOP	;1		46165	
+7FE1	 00					NOP	;1		46166	
+7FE2	 00					NOP	;1		46167	
+7FE3	 00					NOP	;1		46168	
+7FE4	 00					NOP	;1		46169	
+7FE5	 00					NOP	;1		46170	
+7FE6	 00					NOP	;1		46171	
+7FE7	 00					NOP	;1		46172	
+7FE8	 00					NOP	;1		46173	
+7FE9	 00					NOP	;1		46174	
+7FEA	 00					NOP	;1		46175	
+7FEB	 00					NOP	;1		46176	
+7FEC	 00					NOP	;1		46177	
+7FED	 00					NOP	;1		46178	
+7FEE	 00					NOP	;1		46179	
+7FEF	 00					NOP	;1		46180	
+7FF0	 C3 D3 64			JP a16	;4		46184	
+7FF3	 C3 A5 69			JP a16	;4		46188	
+7FF6	 00					NOP	;1		46189	
+7FF7	 00					NOP	;1		46190	
+7FF8	 00					NOP	;1		46191	
+7FF9	 00					NOP	;1		46192	
+7FFA	 00					NOP	;1		46193	
+7FFB	 00					NOP	;1		46194	
+7FFC	 00					NOP	;1		46195	
+7FFD	 00					NOP	;1		46196	
+7FFE	 00					NOP	;1		46197	
