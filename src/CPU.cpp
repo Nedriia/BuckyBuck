@@ -4,6 +4,7 @@
 #include "CPU.h"
 #include <fstream>
 #include <iostream>
+#include <cstring>
 
 namespace MemoryMap
 {

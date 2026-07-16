@@ -8,7 +8,6 @@
 #include <filesystem>
 #include <fstream>
 #include <stdarg.h>
-#include <cstring>
 #include <vector>
 #include "CPU.h"
 
