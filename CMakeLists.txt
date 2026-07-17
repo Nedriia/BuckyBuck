@@ -14,8 +14,6 @@ add_executable( ${PROJECT_NAME}
                 ${SRC_DIR}/Disassembler.h
                 ${SRC_DIR}/CPU.cpp
                 ${SRC_DIR}/CPU.h
-                ${SRC_DIR}/HexEditor.cpp
-                ${SRC_DIR}/HexEditor.h
 )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
