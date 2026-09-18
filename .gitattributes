@@ -1,4 +1,4 @@
 *.c linguist-vendored
-*.Assembly linguist-vendored
+*.asm linguist-vendored
 *.cpp linguist-language=C++
 *.h linguist-language=C++
