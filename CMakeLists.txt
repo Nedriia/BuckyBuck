@@ -7,7 +7,7 @@ set( PROJECT_DIR    "${CMAKE_CURRENT_SOURCE_DIR}" )
 set( VENDOR_DIR     "${CMAKE_CURRENT_SOURCE_DIR}/vendor" )
 set( LIBS_DIR       "${CMAKE_CURRENT_SOURCE_DIR}/librairies" )
 set( SRC_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/src" )
-set( IMGUI_DIR      "${SRC_DIR}/imgui")
+set( IMGUI_DIR      "${VENDOR_DIR}/imgui")
 
 set(PROJECT_SOURCES
         ${SRC_DIR}/main.cpp
@@ -30,7 +30,7 @@ add_executable(${PROJECT_NAME}
         ${IMGUI_SOURCES}
         ${PROJECT_SOURCES}
 
-        ${SRC_DIR}/glad.c
+        ${VENDOR_DIR}/glad.c
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE
@@ -42,7 +42,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
-add_subdirectory(${SRC_DIR}/glfw ${CMAKE_BINARY_DIR}/glfw_build)
+add_subdirectory(${VENDOR_DIR}/glfw ${CMAKE_BINARY_DIR}/glfw_build)
 
 find_package(OpenGL REQUIRED)
 
