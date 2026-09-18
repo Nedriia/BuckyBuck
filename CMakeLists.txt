@@ -7,13 +7,48 @@ set( PROJECT_DIR    "${CMAKE_CURRENT_SOURCE_DIR}" )
 set( VENDOR_DIR     "${CMAKE_CURRENT_SOURCE_DIR}/vendor" )
 set( LIBS_DIR       "${CMAKE_CURRENT_SOURCE_DIR}/librairies" )
 set( SRC_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/src" )
+set( IMGUI_DIR      "${SRC_DIR}/imgui")
 
-add_executable( ${PROJECT_NAME}
-                ${SRC_DIR}/main.cpp
-                ${SRC_DIR}/Disassembler.cpp
-                ${SRC_DIR}/Disassembler.h
-                ${SRC_DIR}/CPU.cpp
-                ${SRC_DIR}/CPU.h
+set(PROJECT_SOURCES
+        ${SRC_DIR}/main.cpp
+        ${SRC_DIR}/Disassembler.cpp
+        ${SRC_DIR}/Disassembler.h
+        ${SRC_DIR}/CPU.cpp
+        ${SRC_DIR}/CPU.h
+)
+
+set(IMGUI_SOURCES
+        ${IMGUI_DIR}/imgui.cpp
+        ${IMGUI_DIR}/imgui_draw.cpp
+        ${IMGUI_DIR}/imgui_tables.cpp
+        ${IMGUI_DIR}/imgui_widgets.cpp
+        ${IMGUI_DIR}/backends/imgui_impl_opengl3.cpp
+        ${IMGUI_DIR}/backends/imgui_impl_glfw.cpp
+)
+
+add_executable(${PROJECT_NAME}
+        ${IMGUI_SOURCES}
+        ${PROJECT_SOURCES}
+
+        ${SRC_DIR}/glad.c
+)
+
+target_include_directories(${PROJECT_NAME} PRIVATE
+        ${IMGUI_DIR}/backends
+        ${IMGUI_DIR}
+        ${LIBS_DIR}/Include
+)
+
+set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
+set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
+add_subdirectory(${SRC_DIR}/glfw ${CMAKE_BINARY_DIR}/glfw_build)
+
+find_package(OpenGL REQUIRED)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+        glfw
+        OpenGL::GL
 )
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE
@@ -21,7 +56,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
         DISASSM_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Disassembly/"
 )
 
-option( LEAK_DETECTOR_ENABLE "Enable leak detector" OFF )
+option( LEAK_DETECTOR_ENABLE "Enable leak detector" ON )
 if( LEAK_DETECTOR_ENABLE )
     target_compile_definitions( ${PROJECT_NAME} PRIVATE LEAK_DETECTOR )
 
