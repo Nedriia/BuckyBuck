@@ -26,9 +26,16 @@ set(IMGUI_SOURCES
         ${IMGUI_DIR}/backends/imgui_impl_glfw.cpp
 )
 
+set( HEXEDITOR_SOURCES
+        ${VENDOR_DIR}/HexEditor/src/Buffer.cpp
+        ${VENDOR_DIR}/HexEditor/src/HexEditor.cpp
+        ${VENDOR_DIR}/HexEditor/src/HexEditor_ImGUI.cpp
+)
+
 add_executable(${PROJECT_NAME}
         ${IMGUI_SOURCES}
         ${PROJECT_SOURCES}
+        ${HEXEDITOR_SOURCES}
 
         ${VENDOR_DIR}/glad.c
 )
