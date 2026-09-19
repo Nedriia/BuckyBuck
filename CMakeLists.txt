@@ -8,14 +8,7 @@ set( VENDOR_DIR     "${CMAKE_CURRENT_SOURCE_DIR}/vendor" )
 set( LIBS_DIR       "${CMAKE_CURRENT_SOURCE_DIR}/librairies" )
 set( SRC_DIR        "${CMAKE_CURRENT_SOURCE_DIR}/src" )
 set( IMGUI_DIR      "${VENDOR_DIR}/imgui")
-
-set(PROJECT_SOURCES
-        ${SRC_DIR}/main.cpp
-        ${SRC_DIR}/Disassembler.cpp
-        ${SRC_DIR}/Disassembler.h
-        ${SRC_DIR}/CPU.cpp
-        ${SRC_DIR}/CPU.h
-)
+set( HEX_DIR        "${VENDOR_DIR}/HexEditor/src")
 
 set(IMGUI_SOURCES
         ${IMGUI_DIR}/imgui.cpp
@@ -26,10 +19,18 @@ set(IMGUI_SOURCES
         ${IMGUI_DIR}/backends/imgui_impl_glfw.cpp
 )
 
+set(PROJECT_SOURCES
+        ${SRC_DIR}/main.cpp
+        ${SRC_DIR}/Disassembler.cpp
+        ${SRC_DIR}/CPU.cpp
+        ${SRC_DIR}/Display.cpp
+        ${SRC_DIR}/DebugInfosDisplay.cpp
+)
+
 set( HEXEDITOR_SOURCES
-        ${VENDOR_DIR}/HexEditor/src/Buffer.cpp
-        ${VENDOR_DIR}/HexEditor/src/HexEditor.cpp
-        ${VENDOR_DIR}/HexEditor/src/HexEditor_ImGUI.cpp
+        ${HEX_DIR}/Buffer.cpp
+        ${HEX_DIR}/HexEditor.cpp
+        ${HEX_DIR}/HexEditor_ImGUI.cpp
 )
 
 add_executable(${PROJECT_NAME}
@@ -43,6 +44,7 @@ add_executable(${PROJECT_NAME}
 target_include_directories(${PROJECT_NAME} PRIVATE
         ${IMGUI_DIR}/backends
         ${IMGUI_DIR}
+        ${HEX_DIR}
         ${LIBS_DIR}/Include
 )
 
@@ -63,7 +65,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
         DISASSM_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Disassembly/"
 )
 
-option( LEAK_DETECTOR_ENABLE "Enable leak detector" OFF )
+option( LEAK_DETECTOR_ENABLE "Enable leak detector" ON )
 if( LEAK_DETECTOR_ENABLE )
     target_compile_definitions( ${PROJECT_NAME} PRIVATE LEAK_DETECTOR )
 
