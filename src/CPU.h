@@ -4,6 +4,7 @@
 
 #ifndef BUCKYBUCK_CPU_H
 #define BUCKYBUCK_CPU_H
+#include <cstdint>
 #include <array>
 
 enum CPU_FLAGS
