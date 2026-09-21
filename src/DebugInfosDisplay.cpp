@@ -28,8 +28,6 @@ void DebugInfosDisplay::Init( GLFWwindow* mainWindow )
 		return;
 	}
 
-	float main_scale = ImGui_ImplGlfw_GetContentScaleForMonitor( glfwGetPrimaryMonitor() ); // Valid on GLFW 3.3+ only
-
 	// Setup Dear ImGui context
 	IMGUI_CHECKVERSION();
 	ImGui::CreateContext();
@@ -38,11 +36,13 @@ void DebugInfosDisplay::Init( GLFWwindow* mainWindow )
 	ImGui::StyleColorsClassic();
 	//ImGui::StyleColorsLight();
 
-	// Setup scaling
 	ImGuiStyle& style = ImGui::GetStyle();
-	style.ScaleAllSizes( main_scale );        // Bake a fixed style scale. (until we have a solution for dynamic style scaling, changing this requires resetting Style + calling this again)
-	style.FontScaleDpi = main_scale;        // Set initial font scale. (using io.ConfigDpiScaleFonts=true makes this unnecessary. We leave both here for documentation purpose)
+	float fMain_scale = 1.0f;
+	style.FontSizeBase = 15.0f;
 
+	style.ScaleAllSizes( fMain_scale );        // Bake a fixed style scale. (until we have a solution for dynamic style scaling, changing this requires resetting Style + calling this again)
+	style.FontScaleDpi = fMain_scale;        // Set initial font scale. (using io.ConfigDpiScaleFonts=true makes this unnecessary. We leave both here for documentation purpose)
+	
 	// Setup Platform/Renderer backends
 	ImGui_ImplGlfw_InitForOpenGL( m_pWindow,true );
 #ifdef __EMSCRIPTEN__
