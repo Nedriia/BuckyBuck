@@ -3,6 +3,7 @@
 //
 #ifndef BUCKYBUCK_DISASSEMBLER_H
 #define BUCKYBUCK_DISASSEMBLER_H
+#include <cstdint>
 
 class CPU;
 class Disassembler
