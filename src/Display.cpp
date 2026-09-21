@@ -28,8 +28,6 @@ const uint16_t WINDOW_HEIGHT = 1080;
 #define DISABLE_SPECIFIC_LEAK_DETECTION() ((void)0)
 #endif
 
-#define DEBUG_INFO
-
 Display* Display::m_pSingleton = nullptr;
 
 Display::Display() :

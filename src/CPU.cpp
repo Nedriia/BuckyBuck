@@ -5,6 +5,11 @@
 #include <fstream>
 #include <iostream>
 #include <cstring>
+#include "Display.h"
+
+#ifdef DEBUG_INFO
+#include "DebugInfosDisplay.h"
+#endif
 
 namespace MemoryMap
 {
@@ -47,6 +52,9 @@ int CPU::LoadRom( const char* sROMPath )
 		}
 
 		memcpy( m_aMemory, memblock, size );
+#ifdef DEBUG_INFO
+		DebugInfosDisplay::GetHexEditor()->LoadBufferFromMemory( m_aMemory );
+#endif
 		delete[] memblock;
 	}
 	else

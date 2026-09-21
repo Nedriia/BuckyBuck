@@ -28,7 +28,6 @@ int main( int argc, char *argv[] )
 		return -1;
 	}
 
-	Disassembler::m_oCPU;
 	if ( argc <= 1 || Disassembler::m_oCPU.LoadRom( argv[ 1 ] ) != 0 )
 		return -1;
 

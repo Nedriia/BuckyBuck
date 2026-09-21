@@ -7,6 +7,8 @@
 #include <glad/glad.h>
 #include <GLFW/glfw3.h>
 
+#define DEBUG_INFO
+
 class Display
 {
 public:

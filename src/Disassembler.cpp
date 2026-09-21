@@ -148,24 +148,27 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 	std::filesystem::path outputPath = DISASSM_DIR / static_cast<std::filesystem::path>( sRomPath ).filename();
 	outputPath.replace_extension( ".asm" );
 
-	std::fstream file;
-	file.open( outputPath.string(), std::ofstream::out );
-
-	if( file.is_open() )
+	if ( exists( outputPath ) == false )
 	{
-		g_iCounter = 0;
-		uint8_t iLengthIncrease = 0;
-		for ( uint16_t iPC = 0x0000; iPC < 0x7FFF; )
-		{
-			if ( iPC >= 0x104 && iPC <= 0x14F )
-			{
-				DecryptCartridge(file );
-				iPC = 0x150;
-				continue;
-			}
+		std::fstream file;
+		file.open( outputPath.string(), std::ofstream::out );
 
-			_WriteInstruction( file, iPC, "",&iLengthIncrease );
-			iPC += iLengthIncrease;
+		if( file.is_open() )
+		{
+			g_iCounter = 0;
+			uint8_t iLengthIncrease = 0;
+			for ( uint16_t iPC = 0x0000; iPC < 0x7FFF; )
+			{
+				if ( iPC >= 0x104 && iPC <= 0x14F )
+				{
+					DecryptCartridge(file );
+					iPC = 0x150;
+					continue;
+				}
+
+				_WriteInstruction( file, iPC, "",&iLengthIncrease );
+				iPC += iLengthIncrease;
+			}
 		}
 	}
 }

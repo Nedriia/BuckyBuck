@@ -26,6 +26,8 @@ public:
 		return m_pSingleton;
 	}
 
+	static std::unique_ptr<HexEditor_ImGUI>& GetHexEditor() { return m_oHexEditor; }
+
 private:
 	static DebugInfosDisplay*					m_pSingleton;
 
