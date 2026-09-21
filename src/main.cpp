@@ -17,7 +17,7 @@ int Quit()
 
 	Display::GetInstance()->DestroyWindow();
 	CPU::GetInstance()->DestroyInstance();
-	
+
 	return -1;
 }
 
