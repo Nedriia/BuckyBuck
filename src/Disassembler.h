@@ -50,7 +50,7 @@ public:
 
 	static CPU_Instructions* m_aOpcodesTable[256];
 	static CPU_Instructions* m_aExtendOpcodesTable[256];
-	static CPU m_oCPU;
+	static CPU* m_pCPU;
 };
 
 

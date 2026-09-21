@@ -16,9 +16,16 @@ namespace MemoryMap
 	constexpr uint16_t MEMORY_SIZE = 0xFFFF;
 }
 
+CPU* CPU::m_pSingleton = nullptr;
+
 CPU::CPU()
 	:	m_aMemory{0}
 {
+}
+
+CPU::~CPU()
+{
+	m_pSingleton = nullptr;
 }
 
 int CPU::LoadRom( const char* sROMPath )
@@ -63,4 +70,14 @@ int CPU::LoadRom( const char* sROMPath )
 		return -1;
 	}
 	return 0;
+}
+
+void CPU::DestroyInstance()
+{
+	delete m_pSingleton;
+}
+
+void CPU::EmulateCycle()
+{
+
 }

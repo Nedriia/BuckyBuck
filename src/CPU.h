@@ -8,11 +8,46 @@
 
 class CPU
 {
+	union Register
+	{
+		uint16_t reg;
+		struct
+		{
+			uint8_t lo;
+			uint8_t hi;
+		};
+	};
+
+	Register m_RegisterAF;
+	Register m_RegisterBC;
+	Register m_RegisterDE;
+	Register m_RegisterHL;
+
 public:
 	CPU();
-	int LoadRom( const char* sROMPath );
-	uint8_t GetDataAtAdress( const uint16_t iAdress ) const { return m_aMemory[iAdress]; }
+	~CPU();
+
+	int				LoadRom( const char* sROMPath );
+	void			EmulateCycle();
+	void			DestroyInstance();
+
+	uint8_t			GetDataAtAdress( const uint16_t iAdress ) const { return m_aMemory[iAdress]; }
+
+	static CPU* GetInstance()
+	{
+		if( m_pSingleton == nullptr )
+			m_pSingleton = new CPU;
+		return m_pSingleton;
+	}
+
 private:
+
+	uint16_t m_iPC;
+	uint16_t m_iSP;
+
+	uint8_t m_iIR;	//Instruction Register
+	uint8_t m_iIE;	//Interrupt Enable
+
 	uint8_t m_aMemory[0x7FFF];
 
 	void NOP() {};
@@ -60,6 +95,8 @@ private:
 	void SET() {};
 
 	friend class Disassembler;
+
+	static CPU* m_pSingleton;
 };
 
 

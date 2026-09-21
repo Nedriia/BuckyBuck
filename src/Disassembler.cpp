@@ -29,7 +29,7 @@ Disassembler::CPU_Instructions* Disassembler::m_aOpcodesTable[ 256 ] = { nullptr
 Disassembler::CPU_Instructions* Disassembler::m_aExtendOpcodesTable[ 256 ] = { nullptr };
 
 static int g_iCounter = 0;
-CPU Disassembler::m_oCPU;
+CPU* Disassembler::m_pCPU = nullptr;
 
 Disassembler::Disassembler()
 {
@@ -49,6 +49,7 @@ Disassembler::~Disassembler()
 
 void Disassembler::Init()
 {
+	m_pCPU = CPU::GetInstance();
 	_FillOpcodesTables();
 }
 
@@ -264,7 +265,7 @@ void Disassembler::_WriteInstruction( std::fstream& file, const uint16_t iAdress
 			int i = 0;
 			while ( iAdress + i < 0x134 )
 			{
-				oss << Format (" %02X", m_oCPU.GetDataAtAdress( iAdress + i ) );
+				oss << Format (" %02X", m_pCPU->GetDataAtAdress( iAdress + i ) );
 				++i;
 				if ( i % 16 == 0 && iAdress + i != 0x134 )
 					oss << Format ("\n%04X	", iAdress + i );
@@ -279,25 +280,25 @@ void Disassembler::_WriteInstruction( std::fstream& file, const uint16_t iAdress
 			int i = 0;
 			while ( iAdress + i < 0x143 )
 			{
-				if ( m_oCPU.GetDataAtAdress( iAdress + i ) == 0 )
+				if ( m_pCPU->GetDataAtAdress( iAdress + i ) == 0 )
 					break;
-				oss << Format ("%c",m_oCPU.GetDataAtAdress( iAdress + i ) );
+				oss << Format ("%c",m_pCPU->GetDataAtAdress( iAdress + i ) );
 				++i;
 			}
 			break;
 		}
 		case 0x143:
 		{
-			switch ( m_oCPU.GetDataAtAdress( iAdress ) )
+			switch ( m_pCPU->GetDataAtAdress( iAdress ) )
 			{
 				case 0:
-					oss << Format (" %02X		;DMG - classic gameboy",m_oCPU.GetDataAtAdress( iAdress ) );
+					oss << Format (" %02X		;DMG - classic gameboy",m_pCPU->GetDataAtAdress( iAdress ) );
 					break;
 				case 0x80:
-					oss << Format (" %02X		;CGB - retro compat monochrome",m_oCPU.GetDataAtAdress( iAdress ) );
+					oss << Format (" %02X		;CGB - retro compat monochrome",m_pCPU->GetDataAtAdress( iAdress ) );
 					break;
 				case 0xC0:
-					oss << Format (" %02X		;CGB - only",m_oCPU.GetDataAtAdress( iAdress ) );
+					oss << Format (" %02X		;CGB - only",m_pCPU->GetDataAtAdress( iAdress ) );
 					break;
 			}
 			break;
@@ -305,7 +306,7 @@ void Disassembler::_WriteInstruction( std::fstream& file, const uint16_t iAdress
 		case 0x147:
 		{
 			std::string sText;
-			switch ( m_oCPU.GetDataAtAdress( iAdress ) )
+			switch ( m_pCPU->GetDataAtAdress( iAdress ) )
 			{
 				case 0x00: sText =  "ROM ONLY" ; break;
 				case 0x01: sText =  "MBC1" ; break;
@@ -337,13 +338,13 @@ void Disassembler::_WriteInstruction( std::fstream& file, const uint16_t iAdress
 				case 0xFF: sText =  "HuC1+RAM+BATTERY" ; break;
 				default:   sText =  "Unknown Type" ; break;
 			}
-			oss << Format (" %02X		;%s",m_oCPU.GetDataAtAdress( iAdress ), sText.c_str() );
+			oss << Format (" %02X		;%s",m_pCPU->GetDataAtAdress( iAdress ), sText.c_str() );
 			break;
 		}
 		case 0x148:
 		{
 			std::string sText;
-			switch ( m_oCPU.GetDataAtAdress( iAdress ) )
+			switch ( m_pCPU->GetDataAtAdress( iAdress ) )
 			{
 				case 0x00: sText = "32 KiB, 2 (no banking)"; break;
 				case 0x01: sText = "64 KiB, 4"; break;
@@ -359,13 +360,13 @@ void Disassembler::_WriteInstruction( std::fstream& file, const uint16_t iAdress
 				case 0x54: sText = "1.5 MiB, 96"; break;
 				default:   sText = "Unknown Value"; break;
 			}
-			oss << Format (" %02X		;%s",m_oCPU.GetDataAtAdress( iAdress ), sText.c_str() );
+			oss << Format (" %02X		;%s",m_pCPU->GetDataAtAdress( iAdress ), sText.c_str() );
 			break;
 		}
 		case 0x149:
 		{
 			std::string sText;
-			switch ( m_oCPU.GetDataAtAdress( iAdress ) )
+			switch ( m_pCPU->GetDataAtAdress( iAdress ) )
 			{
 				case 0x00: sText =  "0, No RAM"; break;
 				case 0x01: sText =  "-, Unused"; break;
@@ -375,20 +376,20 @@ void Disassembler::_WriteInstruction( std::fstream& file, const uint16_t iAdress
 				case 0x05: sText =  "64 KiB, 8 banks of 8 KiB each"; break;
 				default:   sText =  "Unknown Code"; break;
 			}
-			oss << Format (" %02X		;%s",m_oCPU.GetDataAtAdress( iAdress ), sText.c_str() );
+			oss << Format (" %02X		;%s",m_pCPU->GetDataAtAdress( iAdress ), sText.c_str() );
 			break;
 		}
 		case 0x14A:
 		{
-			if ( m_oCPU.GetDataAtAdress( iAdress ) == 0 )
-				oss << Format (" %02X		;Destination code : Japanese",m_oCPU.GetDataAtAdress( iAdress ) );
-			else if ( m_oCPU.GetDataAtAdress( iAdress ) == 1 )
-				oss << Format (" %02X		;Destination code : Overseas only",m_oCPU.GetDataAtAdress( iAdress ) );
+			if ( m_pCPU->GetDataAtAdress( iAdress ) == 0 )
+				oss << Format (" %02X		;Destination code : Japanese",m_pCPU->GetDataAtAdress( iAdress ) );
+			else if ( m_pCPU->GetDataAtAdress( iAdress ) == 1 )
+				oss << Format (" %02X		;Destination code : Overseas only",m_pCPU->GetDataAtAdress( iAdress ) );
 			break;
 		}
 		case 0x14E:
 		{
-			oss << Format( " %02X %02X		",m_oCPU.GetDataAtAdress( iAdress ),m_oCPU.GetDataAtAdress( iAdress + 1 ) );
+			oss << Format( " %02X %02X		",m_pCPU->GetDataAtAdress( iAdress ),m_pCPU->GetDataAtAdress( iAdress + 1 ) );
 			break;
 		}
 		case 0x13F:
@@ -398,19 +399,19 @@ void Disassembler::_WriteInstruction( std::fstream& file, const uint16_t iAdress
 		case 0x14C:
 		case 0x14D:
 		{
-			oss << Format( " %02X	",m_oCPU.GetDataAtAdress( iAdress ) );
+			oss << Format( " %02X	",m_pCPU->GetDataAtAdress( iAdress ) );
 			break;
 		}
 
 		default:
-			CPU_Instructions* pInstruction = m_aOpcodesTable[ m_oCPU.GetDataAtAdress( iAdress ) ];
+			CPU_Instructions* pInstruction = m_aOpcodesTable[ m_pCPU->GetDataAtAdress( iAdress ) ];
 			if( pInstruction != nullptr )
 			{
 				int i = 0;
 				while( i < 4 )
 				{
 					if( iAdress + i < iAdress + pInstruction->m_iLength )
-						oss << Format( " %02X",m_oCPU.GetDataAtAdress( iAdress + i ) );
+						oss << Format( " %02X",m_pCPU->GetDataAtAdress( iAdress + i ) );
 					else
 						oss << "	";
 					++i;
@@ -423,7 +424,7 @@ void Disassembler::_WriteInstruction( std::fstream& file, const uint16_t iAdress
 					*iLengthIncrease = pInstruction->m_iLength;
 			}
 			else
-				oss << Format( " %02X	",m_oCPU.GetDataAtAdress( iAdress ) );
+				oss << Format( " %02X	",m_pCPU->GetDataAtAdress( iAdress ) );
 
 			break;
 	}

@@ -16,19 +16,23 @@ int Quit()
 #endif
 
 	Display::GetInstance()->DestroyWindow();
+	CPU::GetInstance()->DestroyInstance();
+	
 	return -1;
 }
 
 int main( int argc, char *argv[] )
 {
 	Display* m_pDisplayInstance = Display::GetInstance();
+	CPU*	m_pCPUInstance		= CPU::GetInstance();
+
 	if( m_pDisplayInstance->Init() != 0 )
 	{
 		Quit();
 		return -1;
 	}
 
-	if ( argc <= 1 || Disassembler::m_oCPU.LoadRom( argv[ 1 ] ) != 0 )
+	if ( argc <= 1 || m_pCPUInstance->LoadRom( argv[ 1 ] ) != 0 )
 		return -1;
 
 	Disassembler m_oDisassembler;
@@ -38,6 +42,7 @@ int main( int argc, char *argv[] )
 	while( !quit )
 	{
 		m_pDisplayInstance->Update( quit );
+
 	}
 
 	Quit();
