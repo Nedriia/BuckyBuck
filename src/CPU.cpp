@@ -35,9 +35,18 @@ CPU::CPU_Instructions* CPU::m_aOpcodesTable[ 256 ] = { nullptr };
 CPU::CPU_Instructions* CPU::m_aExtendOpcodesTable[ 256 ] = { nullptr };
 
 CPU::CPU() :
-	m_aMemory{0}
+	m_aMemory{0},
+	m_iPC( 0 ),
+	m_iSP( 0 ),
+	m_iIR( 0 ),
+	m_iIE( 0 ),
+	m_RegisterAF( 0 ),
+	m_RegisterBC( 0 ),
+	m_RegisterDE( 0 ),
+	m_RegisterHL( 0 )
 {
 	_FillOpcodesTables();
+	Init();
 }
 
 CPU::~CPU()
@@ -55,6 +64,8 @@ CPU::~CPU()
 
 void CPU::Init()
 {
+	//Init for blarg test suite
+	m_iPC = 0x100;
 }
 
 int CPU::LoadRom( const char* sROMPath )
@@ -103,7 +114,19 @@ int CPU::LoadRom( const char* sROMPath )
 
 void CPU::FetchDecode()
 {
+	if( m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ] != nullptr )
+	{
+		CPU_Instructions* pInstruction = m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ];
 
+		std::cout << pInstruction->m_sMnemonic << " " << static_cast< int >( pInstruction->m_iLength ) << " " << static_cast< int >( pInstruction->m_iDuration ) << " ";
+		if ( pInstruction->m_iConditionalDuration != 0 )
+			std::cout << ( int )pInstruction->m_iConditionalDuration;
+
+		( this->*pInstruction->m_pFct )();
+		std::cout << std::endl;
+	}
+	else
+		std::cout << "UNKNOWN CPU INSTR" << std::endl;
 }
 
 void CPU::DestroyInstance()
@@ -207,6 +230,94 @@ void CPU::EmulateCycle()
 	FetchDecode();
 }
 
+
+void CPU::NOP()
+{
+	++m_iPC;
+}
+
+void CPU::LD_HLd16()
+{
+	uint16_t iValue = ( GetDataAtAdress( m_iPC + 2 ) << 8 ) | GetDataAtAdress( m_iPC + 1 );
+	std::cout << std::hex << std::uppercase << " ( 0X" << ( int )iValue << " )" << std::dec;
+	m_RegisterHL.reg = iValue;
+
+	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+}
+
+void CPU::LD_r8r8()
+{
+	uint16_t iAdress = GetDataAtAdress( m_iPC );
+	uint8_t y = ( iAdress & Y_MASK ) >> 3;
+	uint8_t z = ( iAdress & Z_MASK );
+
+	_SetValueToRegisterR8( y, z );
+
+	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+}
+
+void CPU::LD_A_HLI()
+{
+	m_RegisterAF.hi = GetDataAtAdress( m_RegisterHL.reg );
+	m_RegisterHL.reg++;
+
+	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+}
+
+void CPU::LD_A_HLD()
+{
+	m_RegisterAF.hi = GetDataAtAdress( m_RegisterHL.reg );
+	m_RegisterHL.reg--;
+
+	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+}
+
+void CPU::LD_r8d8()
+{
+	uint16_t iAdress = GetDataAtAdress( m_iPC );
+	uint8_t y = ( iAdress & Y_MASK ) >> 3;
+
+	_SetValueToRegisterR8( y, GetDataAtAdress( m_iPC + 1 ) );
+
+	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+}
+
+void CPU::LD_r16A()
+{
+	uint16_t iAdress = GetDataAtAdress( m_iPC );
+	uint8_t p = ( iAdress & P_MASK ) >> 4;
+
+	switch ( p )
+	{
+		case 0:
+			m_RegisterBC.reg = m_RegisterAF.hi;
+			break;
+		case 1:
+			m_RegisterDE.reg = m_RegisterAF.hi;
+			break;
+		default:
+			std::cout << "Case not handle" << std::endl;
+	}
+
+	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+}
+
+void CPU::JPn16()
+{
+	//Read next 2 bytes of memory
+	uint16_t iAdress = ( GetDataAtAdress( m_iPC + 2 ) << 8 ) | GetDataAtAdress( m_iPC + 1 );
+	std::cout << std::hex << std::uppercase << " ( 0X" << ( int )iAdress << " )" << std::dec;
+	m_iPC = iAdress;
+}
+
+void CPU::INC_r8()
+{
+	//uint16_t iAdress = GetDataAtAdress( m_iPC );
+	//uint8_t p = ( iAdress & P_MASK ) >> 4;
+
+	//_SetValueToRegisterR8( p );
+}
+
 void CPU::_FillOpcodesTables()
 {
 	for( uint16_t i = 0; i < 256; ++i )
@@ -243,7 +354,7 @@ void CPU::_FillOpcodesTables()
 			{
 				switch( q )
 				{
-					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{3,12},false,"LD %s, d16",rp[ p ].data() ); break;
+					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_HLd16 },0,0,0,{3,12},false,"LD %s, d16",rp[ p ].data() ); break;
 					case 1: CPU::AddCPUInstruction( i,{ &CPU::ADD },static_cast< uint8_t >( N | H | C ), (0), (N),{1,8},false,"ADD HL, %s",rp[ p ].data() ); break;
 				}
 				break;
@@ -256,8 +367,8 @@ void CPU::_FillOpcodesTables()
 				{
 					switch( p )
 					{
-						case 0: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD (BC), A" ); break;
-						case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD (DE), A" ); break;
+						case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_r16A },0,0,0,{1,8},false,"LD (BC), A" ); break;
+						case 1: CPU::AddCPUInstruction( i,{ &CPU::LD_r16A },0,0,0,{1,8},false,"LD (DE), A" ); break;
 						case 2: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD (HL+), A" ); break;
 						case 3: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD (HL-), A" ); break;
 					}
@@ -269,8 +380,8 @@ void CPU::_FillOpcodesTables()
 					{
 						case 0: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, (BC)" ); break;
 						case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, (DE)" ); break;
-						case 2: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, (HL+)" ); break;
-						case 3: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, (HL-)" ); break;
+						case 2: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLI },0,0,0,{1,8},false,"LD A, (HL+)" ); break;
+						case 3: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLD },0,0,0,{1,8},false,"LD A, (HL-)" ); break;
 					}
 					break;
 				}
@@ -281,7 +392,7 @@ void CPU::_FillOpcodesTables()
 			{
 				switch( q )
 				{
-				case 0: CPU::AddCPUInstruction( i,{ &CPU::INC },0,0,0,{1,8},false,"INC, %s",rp[ p ].data() ); break;
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::INC_r8 },0,0,0,{1,8},false,"INC %s",rp[ p ].data() ); break;
 				case 1: CPU::AddCPUInstruction( i,{ &CPU::DEC },0,0,0,{1,8},false,"DEC, %s",rp[ p ].data() ); break;
 				}
 				break;
@@ -307,7 +418,7 @@ void CPU::_FillOpcodesTables()
 				if( y == 6 )
 					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{2,12},false,"LD (HL), d8" );
 				else
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{2,8},false,"LD, %c, d8",r[ y ] );
+					CPU::AddCPUInstruction( i,{ &CPU::LD_r8d8 },0,0,0,{2,8},false,"LD %c, d8",r[ y ] );
 				break;
 			}
 			case 7:
@@ -341,7 +452,7 @@ void CPU::_FillOpcodesTables()
 				else if( z == 6 )
 					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD %c, (HL)",r[ y ] );
 				else
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,4},false,"LD %c, %c",r[ y ],r[ z ] );
+					CPU::AddCPUInstruction( i,{ &CPU::LD_r8r8 },0,0,0,{1,4},false,"LD %c, %c",r[ y ],r[ z ] );
 			}
 			break;
 		}
@@ -509,7 +620,7 @@ void CPU::_FillOpcodesTables()
 			{
 				switch( y )
 				{
-				case 0: CPU::AddCPUInstruction( i,{ &CPU::JP },0,0,0,{3,16},false,"JP a16" ); break;
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::JPn16 },0,0,0,{3,16},false,"JP a16" ); break;
 				case 1:
 				{
 					for( int k = 0; k < 256; ++k )
@@ -616,4 +727,13 @@ void CPU::_FillOpcodesTables()
 		default: std::cout << "Case not handled" << std::endl; break;
 		}
 	}
+}
+
+void CPU::_SetValueToRegisterR8( uint8_t iIndexRegister, uint8_t iValue )
+{
+	static uint8_t r8[ 8 ] = { m_RegisterBC.hi,m_RegisterBC.lo,m_RegisterDE.hi,m_RegisterDE.lo,m_RegisterHL.hi,m_RegisterHL.lo,0,m_RegisterAF.hi };
+	if ( iIndexRegister == 6 || iValue == 6 )
+		std::cout << "INVESTIGATE" << std::endl;
+
+	r8[iIndexRegister] = r8[iValue];
 }

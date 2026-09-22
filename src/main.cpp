@@ -23,8 +23,8 @@ int Quit()
 
 int main( int argc, char *argv[] )
 {
-	Display* m_pDisplayInstance = Display::GetInstance();
-	CPU*	m_pCPUInstance		= CPU::GetInstance();
+	Display*	m_pDisplayInstance = Display::GetInstance();
+	CPU*		m_pCPUInstance		= CPU::GetInstance();
 
 	if( m_pDisplayInstance->Init() != 0 )
 	{
@@ -41,8 +41,8 @@ int main( int argc, char *argv[] )
 	bool quit = false;
 	while( !quit )
 	{
+		m_pCPUInstance->EmulateCycle();
 		m_pDisplayInstance->Update( quit );
-
 	}
 
 	Quit();

@@ -6,6 +6,7 @@
 #define BUCKYBUCK_CPU_H
 #include <cstdint>
 #include <array>
+#include <iostream>
 
 enum CPU_FLAGS
 {
@@ -27,12 +28,7 @@ class CPU
 		};
 	};
 
-	Register m_RegisterAF;
-	Register m_RegisterBC;
-	Register m_RegisterDE;
-	Register m_RegisterHL;
-
-public:
+	public:
 	CPU();
 	~CPU();
 
@@ -54,9 +50,10 @@ public:
 		return m_pSingleton;
 	}
 
-private:
+	private:
 
 	void 			_FillOpcodesTables();
+	void			_SetValueToRegisterR8( const uint8_t iIndexRegister, const uint8_t iValue );
 
 	uint16_t m_iPC;
 	uint16_t m_iSP;
@@ -64,51 +61,64 @@ private:
 	uint8_t m_iIR;	//Instruction Register
 	uint8_t m_iIE;	//Interrupt Enable
 
+	Register m_RegisterAF;
+	Register m_RegisterBC;
+	Register m_RegisterDE;
+	Register m_RegisterHL;
+
 	uint8_t m_aMemory[0x7FFF];
 
-	void NOP() {};
-	void LD() {};
-	void INC() {};
-	void DEC() {};
-	void RLCA() {};
-	void RRCA() {};
-	void RLA() {};
-	void RRA() {};
-	void STOP() {};
-	void JR() {};
-	void ADD() {};
-	void ADC() {};
-	void SUB() {};
-	void SBC() {};
-	void AND() {};
-	void XOR() {};
-	void OR() {};
-	void CP() {};
-	void DAA() {};
-	void CPL() {};
-	void SCF() {};
-	void CCF() {};
-	void HALT() {};
-	void DI() {};
-	void EI() {};
-	void RET() {};
-	void RETI() {};
-	void POP() {};
-	void PUSH() {};
-	void JP() {};
-	void CALL() {};
-	void RST() {};
-	void RLC() {};
-	void RRC() {};
-	void RL() {};
-	void RR() {};
-	void SLA() {};
-	void SRA() {};
-	void SWAP() {};
-	void SRL() {};
-	void BIT() {};
-	void RES() {};
-	void SET() {};
+	void NOP();
+	void LD()							{		std::cout << "NOT IMPLEMENTED"; };
+	void LD_HLd16();
+	void LD_r8r8();
+	void LD_A_HLI();
+	void LD_A_HLD();
+	void LD_r8d8();
+	void LD_r16A();
+	void INC()							{		std::cout << "NOT IMPLEMENTED"; };
+	void INC_r8();
+	void DEC()							{		std::cout << "NOT IMPLEMENTED"; };
+	void RLCA()							{		std::cout << "NOT IMPLEMENTED"; };
+	void RRCA()							{		std::cout << "NOT IMPLEMENTED"; };
+	void RLA()							{		std::cout << "NOT IMPLEMENTED"; };
+	void RRA()							{		std::cout << "NOT IMPLEMENTED"; };
+	void STOP()							{		std::cout << "NOT IMPLEMENTED"; };
+	void JR()							{		std::cout << "NOT IMPLEMENTED"; };
+	void ADD()							{		std::cout << "NOT IMPLEMENTED"; };
+	void ADC()							{		std::cout << "NOT IMPLEMENTED"; };
+	void SUB()							{		std::cout << "NOT IMPLEMENTED"; };
+	void SBC()							{		std::cout << "NOT IMPLEMENTED"; };
+	void AND()							{		std::cout << "NOT IMPLEMENTED"; };
+	void XOR()							{		std::cout << "NOT IMPLEMENTED"; };
+	void OR()							{		std::cout << "NOT IMPLEMENTED"; };
+	void CP()							{		std::cout << "NOT IMPLEMENTED"; };
+	void DAA()							{		std::cout << "NOT IMPLEMENTED"; };
+	void CPL()							{		std::cout << "NOT IMPLEMENTED"; };
+	void SCF()							{		std::cout << "NOT IMPLEMENTED"; };
+	void CCF()							{		std::cout << "NOT IMPLEMENTED"; };
+	void HALT()							{		std::cout << "NOT IMPLEMENTED"; };
+	void DI()							{		std::cout << "NOT IMPLEMENTED"; };
+	void EI()							{		std::cout << "NOT IMPLEMENTED"; };
+	void RET()							{		std::cout << "NOT IMPLEMENTED"; };
+	void RETI()							{		std::cout << "NOT IMPLEMENTED"; };
+	void POP()							{		std::cout << "NOT IMPLEMENTED"; };
+	void PUSH()							{		std::cout << "NOT IMPLEMENTED"; };
+	void JP()							{		std::cout << "NOT IMPLEMENTED"; };
+	void JPn16();
+	void CALL()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void RST()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void RLC()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void RRC()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void RL()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void RR()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void SLA()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void SRA()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void SWAP()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void SRL()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void BIT()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void RES()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void SET()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
 
 	friend class Disassembler;
 
