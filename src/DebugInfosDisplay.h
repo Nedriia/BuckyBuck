@@ -6,6 +6,8 @@
 #define BUCKYBUCK_DEBUGDISPLAY_H
 #include <memory>
 #include "HexEditor_ImGUI.h"
+#include "ProcessorDebugDisplay.h"
+#include "DisassemblerDisplay.h"
 
 class DebugInfosDisplay
 {
@@ -26,13 +28,17 @@ public:
 		return m_pSingleton;
 	}
 
-	static std::unique_ptr<HexEditor_ImGUI>& GetHexEditor() { return m_oHexEditor; }
+	static std::unique_ptr<HexEditor_ImGUI>&		GetHexEditor() { return m_oHexEditor; }
+	static std::unique_ptr<ProcessorDebugDisplay>&	GetProcDebugDisplay() { return m_oProcDebugDisplay; }
+	static std::unique_ptr<DisassemblerDisplay>&	GetDisassemblerDisplay() { return m_oDisassemblerDisplay; }
 
 private:
-	static DebugInfosDisplay*					m_pSingleton;
+	static DebugInfosDisplay*						m_pSingleton;
 
-	GLFWwindow*									m_pWindow;
-	static std::unique_ptr<HexEditor_ImGUI>		m_oHexEditor;
+	GLFWwindow*										m_pWindow;
+	static std::unique_ptr<HexEditor_ImGUI>			m_oHexEditor;
+	static std::unique_ptr<ProcessorDebugDisplay>	m_oProcDebugDisplay;
+	static std::unique_ptr<DisassemblerDisplay>		m_oDisassemblerDisplay;
 };
 
 

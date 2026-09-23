@@ -7,6 +7,9 @@
 #include "imgui_impl_opengl3.h"
 
 std::unique_ptr<HexEditor_ImGUI>			DebugInfosDisplay::m_oHexEditor;
+std::unique_ptr<ProcessorDebugDisplay>		DebugInfosDisplay::m_oProcDebugDisplay;
+std::unique_ptr<DisassemblerDisplay>		DebugInfosDisplay::m_oDisassemblerDisplay;
+
 DebugInfosDisplay*							DebugInfosDisplay::m_pSingleton = nullptr;
 
 DebugInfosDisplay::DebugInfosDisplay() :
@@ -52,7 +55,10 @@ void DebugInfosDisplay::Init( GLFWwindow* mainWindow )
 
 	ImGui::GetIO().ConfigFlags |= ImGuiConfigFlags_DockingEnable;
 
-	m_oHexEditor = std::make_unique<HexEditor_ImGUI>();
+	m_oHexEditor			= std::make_unique<HexEditor_ImGUI>();
+	m_oProcDebugDisplay		= std::make_unique<ProcessorDebugDisplay>();
+	m_oDisassemblerDisplay	= std::make_unique<DisassemblerDisplay>();
+
 	m_oHexEditor->Init( m_pWindow );
 }
 
@@ -85,6 +91,8 @@ void DebugInfosDisplay::Render()
 void DebugInfosDisplay::Update()
 {
 	m_oHexEditor->Update();
+	m_oProcDebugDisplay->Update();
+	m_oDisassemblerDisplay->Update();
 }
 
 void DebugInfosDisplay::Destroy()
