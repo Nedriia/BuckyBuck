@@ -25,6 +25,10 @@ set(PROJECT_SOURCES
         ${SRC_DIR}/CPU.cpp
         ${SRC_DIR}/Display.cpp
         ${SRC_DIR}/DebugInfosDisplay.cpp
+        ${SRC_DIR}/ProcessorDebugDisplay.cpp
+        ${SRC_DIR}/ProcessorDebugDisplay.h
+        ${SRC_DIR}/DisassemblerDisplay.cpp
+        ${SRC_DIR}/DisassemblerDisplay.h
 )
 
 set( HEXEDITOR_SOURCES
@@ -65,7 +69,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE
         DISASSM_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Disassembly/"
 )
 
-option( LEAK_DETECTOR_ENABLE "Enable leak detector" OFF )
+option( LEAK_DETECTOR_ENABLE "Enable leak detector" ON )
 if( LEAK_DETECTOR_ENABLE )
     target_compile_definitions( ${PROJECT_NAME} PRIVATE LEAK_DETECTOR )
 

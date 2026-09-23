@@ -1,0 +1,12 @@
+//
+// Created by arthu on 23/09/2026.
+//
+
+#ifndef BUCKYBUCK_PROCESSORDEBUGDISPLAY_H
+#define BUCKYBUCK_PROCESSORDEBUGDISPLAY_H
+
+
+class ProcessorDebugDisplay {};
+
+
+#endif //BUCKYBUCK_PROCESSORDEBUGDISPLAY_H
