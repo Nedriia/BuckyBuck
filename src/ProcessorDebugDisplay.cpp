@@ -8,6 +8,7 @@
 #include <GLFW/glfw3.h>
 
 #include "imgui.h"
+#include "CPU.h"
 
 void ProcessorDebugDisplay::Update()
 {
@@ -19,11 +20,21 @@ void ProcessorDebugDisplay::Update()
 	std::snprintf( titleBuffer,sizeof( titleBuffer ),"Processor (%.2f ms)###ProcDebugDisplayWindow",iDurationMs );
 	if( ImGui::Begin( titleBuffer,nullptr ) )
 	{
-		ImGui::Text( "HELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLOHELLO" );
+		_DrawFlagsState();
+		_DrawRegistersState();
 	}
 
 	ImGui::End();
 
 	auto end = std::chrono::high_resolution_clock::now();
 	iDurationMs = std::chrono::duration<double,std::milli>( end - start ).count();
+}
+
+void ProcessorDebugDisplay::_DrawFlagsState()
+{
+
+}
+
+void ProcessorDebugDisplay::_DrawRegistersState()
+{
 }

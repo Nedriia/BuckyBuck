@@ -4,6 +4,7 @@
 #ifndef BUCKYBUCK_DISASSEMBLER_H
 #define BUCKYBUCK_DISASSEMBLER_H
 #include <cstdint>
+#include <vector>
 
 class CPU;
 class Disassembler
@@ -20,8 +21,16 @@ public:
 
 private:
 	static void _WriteInstruction( std::fstream& file, const uint16_t iAdress, const char* sComment, uint8_t* iLengthIncrease = nullptr );
+	struct DisassembledLine
+	{
+		std::string m_sText;
+	};
 
+	static std::vector< DisassembledLine > m_aDisassembly;
 	static CPU* m_pCPU;
+
+public:
+	static const std::vector< DisassembledLine >& GetDisassemblyInstructions() { return m_aDisassembly; }
 };
 
 

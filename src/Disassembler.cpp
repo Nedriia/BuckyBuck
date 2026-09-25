@@ -13,6 +13,7 @@
 
 static int g_iCounter = 0;
 CPU* Disassembler::m_pCPU = nullptr;
+std::vector< Disassembler::DisassembledLine > Disassembler::m_aDisassembly;
 
 Disassembler::Disassembler()
 {
@@ -53,6 +54,22 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 
 				_WriteInstruction( file, iPC, "",&iLengthIncrease );
 				iPC += iLengthIncrease;
+			}
+		}
+	}
+	else
+	{
+		//Read the file to feed to the disassembler display
+		std::fstream file;
+		file.open( outputPath.string(), std::ofstream::in );
+		if( file.is_open() )
+		{
+			std::string line;
+			while (getline(file, line) )
+			{
+				DisassembledLine oDisasLine;
+				oDisasLine.m_sText = line;
+				m_aDisassembly.push_back( oDisasLine );
 			}
 		}
 	}
@@ -156,7 +173,7 @@ void Disassembler::_WriteInstruction( std::fstream& file, const uint16_t iAdress
 			}
 			oss << sComment << "\n";
 			file << oss.str();
-			return;
+			break;
 		}
 		case 0x134:
 		{
@@ -316,4 +333,8 @@ void Disassembler::_WriteInstruction( std::fstream& file, const uint16_t iAdress
 
 	oss << "	" << sComment;
 	file << oss.str() << "\n";
+
+	DisassembledLine line;
+	line.m_sText = oss.str();
+	m_aDisassembly.push_back( line );
 }

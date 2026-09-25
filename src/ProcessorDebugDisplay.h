@@ -15,7 +15,8 @@ public:
 
 	void Update();
 private:
-
+	void _DrawFlagsState();
+	void _DrawRegistersState();
 };
 
 
