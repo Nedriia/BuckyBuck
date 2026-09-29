@@ -57,6 +57,12 @@ set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 add_subdirectory(${VENDOR_DIR}/glfw ${CMAKE_BINARY_DIR}/glfw_build)
 
+add_subdirectory(${VENDOR_DIR}/json)
+
+target_link_libraries(${PROJECT_NAME} PRIVATE
+        nlohmann_json::nlohmann_json
+)
+
 find_package(OpenGL REQUIRED)
 
 target_link_libraries(${PROJECT_NAME} PRIVATE
