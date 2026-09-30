@@ -30,6 +30,7 @@ private:
 		std::string m_sAditionalInfo;
 		std::string m_sComment;
 		std::string m_oData;
+		uint8_t		m_iDuration = 0xFF;
 	};
 
 	static std::vector< DisassembledLine > m_aDisassembly;

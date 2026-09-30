@@ -88,8 +88,9 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 			DisassembledLine oDisasLine;
 			oDisasLine.m_iAdress = instruction.value("address", "");
 			oDisasLine.m_sMnemonic = instruction.value("text", "");
-			oDisasLine.m_sAditionalInfo = instruction.value("Comment", "");;
-			oDisasLine.m_oData = instruction.value("bytes", "");;
+			oDisasLine.m_sAditionalInfo = instruction.value("Comment", "");
+			oDisasLine.m_oData = instruction.value("bytes", "");
+			oDisasLine.m_iDuration = instruction.value("duration", 0xFF );
 
 			m_aDisassembly.push_back( oDisasLine );
 		}
@@ -252,25 +253,28 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 				++i;
 			}
 
-			block["address"] = sAdress.str();
-			block["bytes"]   = ss.str();
+			block["address"]	= sAdress.str();
+			block["bytes"]		= ss.str();
 			block["Comment"]    = sComment;
 
 			break;
 		}
 		case 0x134:
 		{
+			std::stringstream sTitle;
 			while ( iAdress < 0x143 )
 			{
-				if ( m_pCPU->GetDataAtAdress( iAdress ) != 0 )
+				int iData =  static_cast<int> ( m_pCPU->GetDataAtAdress( iAdress ) );
+				if ( iData != 0 )
 				{
 					ss << std::hex
 						<< std::uppercase
 						<< std::setw(2)
 						<< std::setfill('0')
-						<< static_cast<int>(m_pCPU->GetDataAtAdress( iAdress ) )
+						<< iData
 						<< " ";
 
+					sTitle << static_cast<char>( iData );
 					++iAdress;
 				}
 				else
@@ -279,6 +283,7 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 
 			block["address"]	= sAdress.str();
 			block["bytes"]		= ss.str();
+			block["text"]		= sTitle.str();
 			block["Comment"]    = sComment;
 			break;
 		}
@@ -293,9 +298,9 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 
 			switch ( m_pCPU->GetDataAtAdress( iAdress ) )
 			{
-				case 0:		sComment += " %02X ;DMG - classic gameboy"; break;
-				case 0x80:	sComment += " %02X ;CGB - retro compat monochrome"; break;
-				case 0xC0:	sComment += " %02X ;CGB - only"; break;
+				case 0:		sComment += " ;DMG - classic gameboy"; break;
+				case 0x80:	sComment += " ;CGB - retro compat monochrome"; break;
+				case 0xC0:	sComment += " ;CGB - only"; break;
 			}
 
 			block["address"]	= sAdress.str();
@@ -470,8 +475,10 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 		{
 			if (  m_pCPU->GetDataAtAdress( iAdress ) == 0 )
 			{
-				block["address"] = sAdress.str();
-				block["text"]    = "NOP";
+				block["address"]	= sAdress.str();
+				block["bytes"]		= "00";
+				block["text"]		= "NOP";
+				block["duration"]		= 1;
 
 				if( iLengthIncrease )
 					*iLengthIncrease = 1;
@@ -501,10 +508,19 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 					block["address"] = sAdress.str();
 					block["bytes"]   = ss.str();
 					block["text"]    = pInstruction->m_sMnemonic;
+					block["duration"]  = pInstruction->m_iDuration / 4; //TEMP -> t cycle to m cycle
 				}
 				else
 				{
-					break;
+					block["address"] = sAdress.str();
+					ss << std::hex
+					   << std::uppercase
+					   << std::setw(2)
+					   << std::setfill('0')
+					   << static_cast<int>( m_pCPU->GetDataAtAdress( iAdress ) );
+					block["bytes"]		= ss.str();
+					block["text"]		= "undefined opcode";
+					block["duration"]		= 0;
 				}
 				break;
 			}

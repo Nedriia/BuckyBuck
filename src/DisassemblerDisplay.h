@@ -10,11 +10,15 @@
 
 class DisassemblerDisplay
 {
-	public:
+public:
 	DisassemblerDisplay(){};
 	~DisassemblerDisplay(){};
 
 	void Update();
+
+protected :
+	static const char* EndOfNthBlock( const char* text, int nb_blocs );
+
 };
 
 
