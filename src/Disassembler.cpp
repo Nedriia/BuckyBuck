@@ -52,7 +52,7 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 			g_iCounter = 0;
 			uint8_t iLengthIncrease = 0;
 
-			for ( uint16_t iPC = 0x000; iPC < 0x7FFF; )//Change that size and memory harcoded size :<
+			for ( uint16_t iPC = 0x000; iPC < m_pCPU->GetMemorySize(); )
 			{
 				if ( iPC >= 0x104 && iPC <= 0x14F )
 				{

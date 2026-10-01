@@ -7,6 +7,7 @@
 #include <cstdint>
 #include <array>
 #include <iostream>
+#include <vector>
 
 enum CPU_FLAGS
 {
@@ -40,6 +41,7 @@ class CPU
 
 	uint8_t			GetDataAtAdress( const uint16_t iAdress ) const { return m_aMemory[iAdress]; }
 	uint16_t		GetPC() const { return m_iPC; }
+	uint16_t		GetMemorySize() const { return m_aMemory.size(); }
 
 	typedef void ( CPU::* fct_opcode )( );
 	static void		AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8_t iFlags, uint8_t iFlagSet1, uint8_t iFlagReset0, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );
@@ -69,7 +71,7 @@ class CPU
 	Register m_RegisterDE;
 	Register m_RegisterHL;
 
-	uint8_t m_aMemory[0x7FFF];
+	std::vector<uint8_t> m_aMemory;
 
 	void NOP();
 	void LD()							{		std::cout << "NOT IMPLEMENTED"; };

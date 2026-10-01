@@ -124,7 +124,8 @@ int CPU::LoadRom( const char* sROMPath )
 			return -1;
 		}
 
-		memcpy( m_aMemory, memblock, size );
+		m_aMemory.resize( size );
+		memcpy( m_aMemory.data(), memblock, size );
 #ifdef DEBUG_INFO
 		DebugInfosDisplay::GetHexEditor()->LoadBufferFromMemory( m_aMemory );
 #endif
