@@ -26,6 +26,12 @@
 #define START_DURATION_POS	float( START_DATA_ADD_POS + 125.0f )
 #define START_ADDINFO_POS	float( START_DURATION_POS + 100.0f )
 
+DisassemblerDisplay::DisassemblerDisplay() :
+	m_iSelectedLine( UINT16_MAX )
+{
+
+}
+
 void DisassemblerDisplay::Update()
 {
 	auto start = std::chrono::high_resolution_clock::now();
@@ -66,6 +72,9 @@ void DisassemblerDisplay::Update()
 
 		while( clipper.Step() )
 		{
+			_SelectLine( clipper.DisplayStart );
+			_DrawSelectedLine( draw_list, window_pos.x, window_pos.y, clipper.DisplayStart,clipper.DisplayEnd );
+			
 			for( int n = clipper.DisplayStart; n < clipper.DisplayEnd; ++n )
 			{
 				auto oInstruct = aDisassemblyInstructions.at( n );
@@ -123,6 +132,61 @@ void DisassemblerDisplay::Update()
 
 	auto end = std::chrono::high_resolution_clock::now();
 	iDurationMs = std::chrono::duration<double,std::milli>( end - start ).count();
+}
+
+void DisassemblerDisplay::_SelectLine( const uint16_t iStart )
+{
+	if( ImGui::IsMouseClicked( 0 ) )
+	{
+		ImVec2 mouse_pos = ImGui::GetMousePos();
+		ImVec2 window_pos = ImGui::GetWindowPos();
+		ImVec2 window_size = ImGui::GetWindowSize();
+
+		ImVec2 zone_min(
+			window_pos.x,
+			window_pos.y + ( ImGui::GetTextLineHeight() * 2.0f )
+		);
+
+		ImVec2 zone_max(
+			window_pos.x + window_size.x,
+			window_pos.y + window_size.y
+		);
+
+		if( ImGui::IsMouseHoveringRect(zone_min, zone_max) )
+		{
+			ImGuiStyle& style = ImGui::GetStyle();
+
+			//Now check if the mouse is on data
+			float gridStartX = window_pos.x;
+			float gridStartY = window_pos.y + ImGui::GetTextLineHeightWithSpacing();
+
+			float relativeX = mouse_pos.x - gridStartX;
+			float relativeY = mouse_pos.y - gridStartY;
+
+			if( relativeX >= 0 && relativeY >= 0 )
+			{
+				int hoveredLine = static_cast< int >( relativeY / ( 15.0f * style.FontScaleDpi ) );
+				m_iSelectedLine = iStart + hoveredLine;
+			}
+		}
+	}
+}
+
+void DisassemblerDisplay::_DrawSelectedLine( ImDrawList* draw_list, const float fWindowPosX,const float fWindowPosY, const uint16_t iStart, const uint16_t iSize )
+{
+	if( m_iSelectedLine != UINT16_MAX )
+	{
+		ImGuiStyle& style = ImGui::GetStyle();
+
+		//Check if current line selection is in current viewport
+		if( m_iSelectedLine < iStart || m_iSelectedLine > ( iStart + iSize ) )
+			return;
+
+		ImVec2 vStartPos = { fWindowPosX, fWindowPosY + ImGui::GetTextLineHeight() * 2.0f };
+		vStartPos.y += ( m_iSelectedLine - iStart ) * ( 15.0f * style.FontScaleDpi );
+
+		draw_list->AddRectFilled( vStartPos,ImVec2( vStartPos.x + 99999,vStartPos.y + ImGui::GetTextLineHeightWithSpacing() ),ImGui::GetColorU32( ImGuiCol_DockingPreview ) );
+	}
 }
 
 const char* DisassemblerDisplay::EndOfNthBlock( const char* text, int nb_blocs )
