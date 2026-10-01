@@ -39,6 +39,7 @@ class CPU
 	void			DestroyInstance();
 
 	uint8_t			GetDataAtAdress( const uint16_t iAdress ) const { return m_aMemory[iAdress]; }
+	uint16_t		GetPC() const { return m_iPC; }
 
 	typedef void ( CPU::* fct_opcode )( );
 	static void		AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8_t iFlags, uint8_t iFlagSet1, uint8_t iFlagReset0, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );
@@ -53,7 +54,9 @@ class CPU
 	private:
 
 	void 			_FillOpcodesTables();
-	void			_SetValueToRegisterR8( const uint8_t iIndexRegister, const uint8_t iValue );
+	void			_SetRegisterValToRegisterVal( const uint8_t iIndexRegister, const uint8_t iIndex2Register );
+	void			_SetRegisterVal( const uint8_t iIndexRegister, const uint8_t iValue );
+	void			_INCRegisterVal( const uint8_t iIndexRegister );
 
 	uint16_t m_iPC;
 	uint16_t m_iSP;
@@ -70,7 +73,7 @@ class CPU
 
 	void NOP();
 	void LD()							{		std::cout << "NOT IMPLEMENTED"; };
-	void LD_HLd16();
+	void LD_r16n16();
 	void LD_r8r8();
 	void LD_A_HLI();
 	void LD_A_HLD();
@@ -85,6 +88,7 @@ class CPU
 	void RRA()							{		std::cout << "NOT IMPLEMENTED"; };
 	void STOP()							{		std::cout << "NOT IMPLEMENTED"; };
 	void JR()							{		std::cout << "NOT IMPLEMENTED"; };
+	void JR_cc_n16();
 	void ADD()							{		std::cout << "NOT IMPLEMENTED"; };
 	void ADC()							{		std::cout << "NOT IMPLEMENTED"; };
 	void SUB()							{		std::cout << "NOT IMPLEMENTED"; };
@@ -138,6 +142,15 @@ class CPU
 
 	static CPU_Instructions* m_aOpcodesTable[256];
 	static CPU_Instructions* m_aExtendOpcodesTable[256];
+
+	struct MemoryRegion
+	{
+		uint16_t m_iStartAdress = 0;
+		uint16_t m_iEndAdress = 0;
+		std::string m_sLabel;
+	};
+	static MemoryRegion m_aMemoryMap[12];
+	static std::string GetMemoryRegionLabel( const uint16_t iAdress );
 };
 
 

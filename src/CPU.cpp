@@ -24,8 +24,8 @@ static constexpr uint8_t Q_MASK = 0b00001000;
 static constexpr uint8_t Z_MASK = 0b00000111;
 
 static constexpr uint32_t r[ 8 ] = { 'B','C','D','E','H','L',' ','A' };
-static constexpr std::string_view rp[ 4 ] = { "BC","DE","(HL)","SP" };
-static constexpr std::string_view rp2[ 4 ] = { "BC","DE","(HL)","AF" };
+static constexpr std::string_view rp[ 4 ] = { "BC","DE","HL","SP" };
+static constexpr std::string_view rp2[ 4 ] = { "BC","DE","HL","AF" };
 static constexpr std::string_view cc[ 4 ] = { "NZ","Z","NC","C" };
 static constexpr std::string_view alu[ 8 ] = { "ADD A,","ADC A,","SUB","SBC A,","AND","XOR","OR","CP" };
 static constexpr std::string_view rot[ 8 ] = { "RLC","RRC","RL","RR","SLA","SRA","SWAP","SRL" };
@@ -33,6 +33,32 @@ static constexpr std::string_view rot[ 8 ] = { "RLC","RRC","RL","RR","SLA","SRA"
 CPU* CPU::m_pSingleton = nullptr;
 CPU::CPU_Instructions* CPU::m_aOpcodesTable[ 256 ] = { nullptr };
 CPU::CPU_Instructions* CPU::m_aExtendOpcodesTable[ 256 ] = { nullptr };
+CPU::MemoryRegion CPU::m_aMemoryMap[12] = {
+	{ 0x0000, 0x3FFF, "ROM" }, //16 KiB ROM bank 00
+	{ 0x4000, 0x7FFF, "ROM" }, //16 KiB ROM Bank 01-NN
+	{ 0x8000, 0x9FFF, "VRA" }, //8 KiB Video RAM (VRAM)
+	{ 0xA000, 0xBFFF, "SRA" }, //8 KiB External RAM
+	{ 0xC000, 0xCFFF, "WRA" }, //4 KiB Work RAM (WRAM)
+	{ 0xD000, 0xDFFF, "WRA" }, //4 KiB Work RAM (WRAM)
+	{ 0xE000, 0xFDFF, "ECHO" },//Echo RAM
+	{ 0xFE00, 0xFE9F, "OAM" }, //Object Attribute Memory (OAM)
+	{ 0xFEA0, 0xFEFF, "----" },//Not Usable
+	{ 0xFF00, 0xFF7F, "I/O" }, //I/O Registers
+	{ 0xFF80, 0xFFFE, "HRAM" },//High RAM (HRAM)
+	{ 0xFFFF, 0xFFFF, "I/O" }  //Interrupt Enable register (IE)
+};
+std::string CPU::GetMemoryRegionLabel( const uint16_t iAdress )
+{
+	for ( int i = 0; i < 12; ++i )
+	{
+		if ( iAdress > m_aMemoryMap[i].m_iEndAdress )
+			continue;
+
+		if ( iAdress >= m_aMemoryMap[i].m_iStartAdress && iAdress <= m_aMemoryMap[i].m_iEndAdress )
+			return m_aMemoryMap[i].m_sLabel;
+	}
+	return "";
+}
 
 CPU::CPU() :
 	m_aMemory{0},
@@ -236,11 +262,31 @@ void CPU::NOP()
 	++m_iPC;
 }
 
-void CPU::LD_HLd16()
+void CPU::LD_r16n16()
 {
 	uint16_t iValue = ( GetDataAtAdress( m_iPC + 2 ) << 8 ) | GetDataAtAdress( m_iPC + 1 );
 	std::cout << std::hex << std::uppercase << " ( 0X" << ( int )iValue << " )" << std::dec;
-	m_RegisterHL.reg = iValue;
+
+	uint16_t iAdress = GetDataAtAdress( m_iPC );
+	uint8_t p = ( iAdress & P_MASK ) >> 4;
+	switch ( p )
+	{
+		case 0:
+			m_RegisterBC.reg = iValue;
+			break;
+		case 1:
+			m_RegisterDE.reg = iValue;
+			break;
+		case 2:
+			m_RegisterHL.reg = iValue;
+			break;
+		case 3:
+			m_iSP = iValue;
+			break;
+		default:
+			std::cout << "case not handle" << std::endl;
+			break;
+	}
 
 	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
 }
@@ -251,7 +297,7 @@ void CPU::LD_r8r8()
 	uint8_t y = ( iAdress & Y_MASK ) >> 3;
 	uint8_t z = ( iAdress & Z_MASK );
 
-	_SetValueToRegisterR8( y, z );
+	_SetRegisterValToRegisterVal( y, z );
 
 	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
 }
@@ -277,7 +323,7 @@ void CPU::LD_r8d8()
 	uint16_t iAdress = GetDataAtAdress( m_iPC );
 	uint8_t y = ( iAdress & Y_MASK ) >> 3;
 
-	_SetValueToRegisterR8( y, GetDataAtAdress( m_iPC + 1 ) );
+	_SetRegisterVal( y, GetDataAtAdress( m_iPC + 1 ) );
 
 	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
 }
@@ -312,10 +358,26 @@ void CPU::JPn16()
 
 void CPU::INC_r8()
 {
-	//uint16_t iAdress = GetDataAtAdress( m_iPC );
-	//uint8_t p = ( iAdress & P_MASK ) >> 4;
+	uint16_t iAdress = GetDataAtAdress( m_iPC );
+	uint8_t y = ( iAdress & Y_MASK ) >> 3;
 
-	//_SetValueToRegisterR8( p );
+	_INCRegisterVal( y );
+
+	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+
+	//FLAGS
+}
+
+void CPU::JR_cc_n16()
+{
+	uint16_t iAdress = GetDataAtAdress( m_iPC );
+	uint8_t z = ( iAdress & Z_MASK );
+
+	int8_t iValue = static_cast<int8_t>( GetDataAtAdress( m_iPC + 1 ) );
+	if ( !z )
+		m_iPC += iValue;
+
+	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
 }
 
 void CPU::_FillOpcodesTables()
@@ -339,14 +401,14 @@ void CPU::_FillOpcodesTables()
 				switch( y )
 				{
 					case 0: CPU::AddCPUInstruction( i,{ &CPU::NOP }, 0,0,0,{1,4},false,"NOP" ); break;
-					case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },  0,0,0,{3,20},false,"LD (a16), SP" ); break;
+					case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },  0,0,0,{3,20},false,"LD a16, SP" ); break;
 					case 2: CPU::AddCPUInstruction( i,{ &CPU::STOP },0,0,0,{2,4},false,"STOP" ); break;
 					case 3: CPU::AddCPUInstruction( i,{ &CPU::JR },  0,0,0,{2,12},false,"JR s8" ); break;
 					case 4:
 					case 5:
 					case 6:
 					case 7:
-						CPU::AddCPUInstruction( i,{ &CPU::JR },0,0,0,{2,12,8},false,"JR %s s8",cc[ y-4 ].data() ); break;
+						CPU::AddCPUInstruction( i,{ &CPU::JR_cc_n16 },0,0,0,{2,12,8},false,"JR %s s8",cc[ y-4 ].data() ); break;
 				}
 				break;
 			}
@@ -354,7 +416,7 @@ void CPU::_FillOpcodesTables()
 			{
 				switch( q )
 				{
-					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_HLd16 },0,0,0,{3,12},false,"LD %s, d16",rp[ p ].data() ); break;
+					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_r16n16 },0,0,0,{3,12},false,"LD %s, d16",rp[ p ].data() ); break;
 					case 1: CPU::AddCPUInstruction( i,{ &CPU::ADD },static_cast< uint8_t >( N | H | C ), (0), (N),{1,8},false,"ADD HL, %s",rp[ p ].data() ); break;
 				}
 				break;
@@ -367,10 +429,10 @@ void CPU::_FillOpcodesTables()
 				{
 					switch( p )
 					{
-						case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_r16A },0,0,0,{1,8},false,"LD (BC), A" ); break;
-						case 1: CPU::AddCPUInstruction( i,{ &CPU::LD_r16A },0,0,0,{1,8},false,"LD (DE), A" ); break;
-						case 2: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD (HL+), A" ); break;
-						case 3: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD (HL-), A" ); break;
+						case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_r16A },0,0,0,{1,8},false,"LD BC, A" ); break;
+						case 1: CPU::AddCPUInstruction( i,{ &CPU::LD_r16A },0,0,0,{1,8},false,"LD DE, A" ); break;
+						case 2: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD [HL+], A" ); break;
+						case 3: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD [HL-], A" ); break;
 					}
 					break;
 				}
@@ -378,10 +440,10 @@ void CPU::_FillOpcodesTables()
 				{
 					switch( p )
 					{
-						case 0: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, (BC)" ); break;
-						case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, (DE)" ); break;
-						case 2: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLI },0,0,0,{1,8},false,"LD A, (HL+)" ); break;
-						case 3: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLD },0,0,0,{1,8},false,"LD A, (HL-)" ); break;
+						case 0: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, BC" ); break;
+						case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, DE" ); break;
+						case 2: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLI },0,0,0,{1,8},false,"LD A, [HL+]" ); break;
+						case 3: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLD },0,0,0,{1,8},false,"LD A, [HL-]" ); break;
 					}
 					break;
 				}
@@ -392,7 +454,7 @@ void CPU::_FillOpcodesTables()
 			{
 				switch( q )
 				{
-				case 0: CPU::AddCPUInstruction( i,{ &CPU::INC_r8 },0,0,0,{1,8},false,"INC %s",rp[ p ].data() ); break;
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::INC },0,0,0,{1,8},false,"INC %s",rp[ p ].data() ); break;
 				case 1: CPU::AddCPUInstruction( i,{ &CPU::DEC },0,0,0,{1,8},false,"DEC, %s",rp[ p ].data() ); break;
 				}
 				break;
@@ -400,15 +462,15 @@ void CPU::_FillOpcodesTables()
 			case 4:
 			{
 				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::INC },( Z | N | H ),0, ( N ),{1,12},false,"INC (HL)" );
+					CPU::AddCPUInstruction( i,{ &CPU::INC },( Z | N | H ),0, ( N ),{1,12},false,"INC HL" );
 				else
-					CPU::AddCPUInstruction( i,{ &CPU::INC },( Z | N | H ),0, ( N ),{1,4},false,"INC, %c",r[ y ] );
+					CPU::AddCPUInstruction( i,{ &CPU::INC_r8 },( Z | N | H ),0, ( N ),{1,4},false,"INC %c",r[ y ] );
 				break;
 			}
 			case 5:
 			{
 				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::DEC },(Z | N | H),( N ), 0,{1,12},false,"DEC (HL)" );
+					CPU::AddCPUInstruction( i,{ &CPU::DEC },(Z | N | H),( N ), 0,{1,12},false,"DEC HL" );
 				else
 					CPU::AddCPUInstruction( i,{ &CPU::DEC },(Z | N | H),( N ), 0,{1,4},false,"DEC, %c",r[ y ] );
 				break;
@@ -416,7 +478,7 @@ void CPU::_FillOpcodesTables()
 			case 6:
 			{
 				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{2,12},false,"LD (HL), d8" );
+					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{2,12},false,"LD HL, d8" );
 				else
 					CPU::AddCPUInstruction( i,{ &CPU::LD_r8d8 },0,0,0,{2,8},false,"LD %c, d8",r[ y ] );
 				break;
@@ -448,9 +510,9 @@ void CPU::_FillOpcodesTables()
 			else
 			{
 				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD (HL), %c",r[ z ] );
+					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD HL, %c",r[ z ] );
 				else if( z == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD %c, (HL)",r[ y ] );
+					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD %c, HL",r[ y ] );
 				else
 					CPU::AddCPUInstruction( i,{ &CPU::LD_r8r8 },0,0,0,{1,4},false,"LD %c, %c",r[ y ],r[ z ] );
 			}
@@ -463,7 +525,7 @@ void CPU::_FillOpcodesTables()
 				case 0:
 				{
 					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( N ),{1,8},false,"%s (HL)", alu[ y ].data(),r[ z ] );
+						CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( N ),{1,8},false,"%s HL", alu[ y ].data(),r[ z ] );
 					else
 						CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( N ),{1,4},false,"%s %c", alu[ y ].data(),r[ z ] );
 					break;
@@ -472,7 +534,7 @@ void CPU::_FillOpcodesTables()
 				case 1:
 				{
 					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),0,( N ),{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+						CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),0,( N ),{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
 					else
 						CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),0,( N ),{1,4},false,"%s %c", alu[ y ].data(),r[ z ] );
 					break;
@@ -481,7 +543,7 @@ void CPU::_FillOpcodesTables()
 				case 2:
 				{
 					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ),( N ), 0,{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+						CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ),( N ), 0,{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
 					else
 					{
 						if ( z == 7 )
@@ -495,7 +557,7 @@ void CPU::_FillOpcodesTables()
 				case 3:
 				{
 					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::SBC },	( Z | N | H | C ),( N ), 0,	{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+						CPU::AddCPUInstruction( i,{ &CPU::SBC },	( Z | N | H | C ),( N ), 0,	{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
 					else
 					{
 						if ( z == 7 )
@@ -509,7 +571,7 @@ void CPU::_FillOpcodesTables()
 				case 4:
 				{
 					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::AND },( Z | N | H | C ), ( H ),( N | C ),{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+						CPU::AddCPUInstruction( i,{ &CPU::AND },( Z | N | H | C ), ( H ),( N | C ),{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
 					else
 						CPU::AddCPUInstruction( i,{ &CPU::AND },( Z | N | H | C ), ( H ),( N | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
 					break;
@@ -518,7 +580,7 @@ void CPU::_FillOpcodesTables()
 				case 5:
 				{
 					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::XOR },	( Z | N | H | C ), ( Z ),( N | H | C ),{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+						CPU::AddCPUInstruction( i,{ &CPU::XOR },	( Z | N | H | C ), ( Z ),( N | H | C ),{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
 					else
 					{
 						if ( z == 7 )
@@ -532,7 +594,7 @@ void CPU::_FillOpcodesTables()
 				case 6:
 				{
 					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::OR },( Z | N | H | C ),	0,	( N | H | C ),{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+						CPU::AddCPUInstruction( i,{ &CPU::OR },( Z | N | H | C ),	0,	( N | H | C ),{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
 					else
 						CPU::AddCPUInstruction( i,{ &CPU::OR },( Z | N | H | C ), ( Z ),( N | H | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
 					break;
@@ -541,7 +603,7 @@ void CPU::_FillOpcodesTables()
 				case 7:
 				{
 					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::CP },		( Z | N | H | C ),		0,	( N ),			{1,8},false, "%s (HL)", alu[ y ].data(),r[ z ] );
+						CPU::AddCPUInstruction( i,{ &CPU::CP },		( Z | N | H | C ),		0,	( N ),			{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
 					else
 					{
 						if ( z == 7 )
@@ -609,9 +671,9 @@ void CPU::_FillOpcodesTables()
 					case 2:
 					case 3:
 							CPU::AddCPUInstruction( i,{ &CPU::JP },0,0,0,{3,16,12},false,"JP %s a16",cc[ y ].data() ); break;
-					case 4: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD (C), A",cc[ y ].data() ); break;
+					case 4: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD [C], A",cc[ y ].data() ); break;
 					case 5: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{3,16},false,"LD a16, A" ); break;
-					case 6: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, (C)" ); break;
+					case 6: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, [C]" ); break;
 					case 7: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{3,16},false,"JP A, a16" ); break;
 				}
 				break;
@@ -656,7 +718,7 @@ void CPU::_FillOpcodesTables()
 						case 1:
 						{
 							if( z == 6 )
-								CPU::AddCPUInstruction( k,{ &CPU::BIT },( Z | N | H ), ( H ),( N ),{2,12},true,"BIT %i, (HL)",y );
+								CPU::AddCPUInstruction( k,{ &CPU::BIT },( Z | N | H ), ( H ),( N ),{2,12},true,"BIT %i, HL",y );
 							else
 								CPU::AddCPUInstruction( k,{ &CPU::BIT },( Z | N | H ), ( H ),( N ),{2,8},true,"BIT %i, %c",y,r[ z ] );
 							break;
@@ -664,7 +726,7 @@ void CPU::_FillOpcodesTables()
 						case 2:
 						{
 							if( z == 6 )
-								CPU::AddCPUInstruction( k,{ &CPU::RES },0,0,0,{2,16},true,"RES %i, (HL)",y );
+								CPU::AddCPUInstruction( k,{ &CPU::RES },0,0,0,{2,16},true,"RES %i, HL",y );
 							else
 								CPU::AddCPUInstruction( k,{ &CPU::RES },0,0,0,{2,8},true,"RES %i, %c",y,r[ z ] );
 							break;
@@ -672,7 +734,7 @@ void CPU::_FillOpcodesTables()
 						case 3:
 						{
 							if( z == 6 )
-								CPU::AddCPUInstruction( k,{ &CPU::SET },0,0,0,{2,16},true,"SET %i, (HL)",y );
+								CPU::AddCPUInstruction( k,{ &CPU::SET },0,0,0,{2,16},true,"SET %i, HL",y );
 							else
 								CPU::AddCPUInstruction( k,{ &CPU::SET },0,0,0,{2,8},true,"SET %i, %c",y,r[ z ] );
 						}
@@ -729,11 +791,29 @@ void CPU::_FillOpcodesTables()
 	}
 }
 
-void CPU::_SetValueToRegisterR8( uint8_t iIndexRegister, uint8_t iValue )
+void CPU::_SetRegisterValToRegisterVal( const uint8_t iIndexRegister, const uint8_t iIndex2Register )
 {
 	static uint8_t r8[ 8 ] = { m_RegisterBC.hi,m_RegisterBC.lo,m_RegisterDE.hi,m_RegisterDE.lo,m_RegisterHL.hi,m_RegisterHL.lo,0,m_RegisterAF.hi };
-	if ( iIndexRegister == 6 || iValue == 6 )
+	if ( iIndexRegister == 6 || iIndex2Register == 6 )
 		std::cout << "INVESTIGATE" << std::endl;
 
-	r8[iIndexRegister] = r8[iValue];
+	r8[iIndexRegister] = r8[iIndex2Register];
+}
+
+void CPU::_SetRegisterVal( const uint8_t iIndexRegister, const uint8_t iValue )
+{
+	static uint8_t r8[ 8 ] = { m_RegisterBC.hi,m_RegisterBC.lo,m_RegisterDE.hi,m_RegisterDE.lo,m_RegisterHL.hi,m_RegisterHL.lo,0,m_RegisterAF.hi };
+	if ( iIndexRegister == 6 )
+		std::cout << "INVESTIGATE" << std::endl;
+
+	r8[iIndexRegister] = iValue;
+}
+
+void CPU::_INCRegisterVal( const uint8_t iIndexRegister )
+{
+	static uint8_t r8[ 8 ] = { m_RegisterBC.hi,m_RegisterBC.lo,m_RegisterDE.hi,m_RegisterDE.lo,m_RegisterHL.hi,m_RegisterHL.lo,0,m_RegisterAF.hi };
+	if ( iIndexRegister == 6 )
+		std::cout << "INVESTIGATE" << std::endl;
+
+	r8[iIndexRegister]++;
 }

@@ -52,7 +52,7 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 			g_iCounter = 0;
 			uint8_t iLengthIncrease = 0;
 
-			for ( uint16_t iPC = 0x000; iPC < 0x7FFF; )//Size ROM
+			for ( uint16_t iPC = 0x000; iPC < 0x7FFF; )//Change that size and memory harcoded size :<
 			{
 				if ( iPC >= 0x104 && iPC <= 0x14F )
 				{
@@ -62,6 +62,10 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 				}
 
 				_WriteInstruction( data, iPC, sComment,&iLengthIncrease );
+
+				if ( iPC + iLengthIncrease >= static_cast<uint32_t>( UINT16_MAX ) )
+					break;
+
 				iPC += iLengthIncrease;
 			}
 			file << data.dump(4);
@@ -208,10 +212,12 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 	json block = json::object();
 	std::stringstream ss;
 	std::stringstream sAdress;
-	sAdress << std::hex
+
+	sAdress << CPU::GetMemoryRegionLabel( iAdress )
+			<< "::"
+			<< std::hex
 			<< std::uppercase
-			<< "0X"
-			<< std::setw(8)
+			<< std::setw(4)
 			<< std::setfill('0')
 			<< static_cast<int>( iAdress );
 
@@ -222,7 +228,7 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 			int i = 0;
 			while ( i + iAdress < 0x134 )
 			{
-				if ( i != 0 && i % 16 == 0 )
+				if ( i != 0 && i % 8 == 0 )
 				{
 					block["address"] = sAdress.str();
 					block["bytes"]   = ss.str();
@@ -230,14 +236,17 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 					oData["Instructions"].push_back( block );
 
 					block = json::object();
+
 					sAdress.str("");
 					sAdress.clear();
-					sAdress << std::hex
+
+					sAdress << CPU::GetMemoryRegionLabel( iAdress )
+							<< "::"
+							<< std::hex
 							<< std::uppercase
-							<< "0X"
-							<< std::setw(8)
+							<< std::setw(4)
 							<< std::setfill('0')
-							<< static_cast<int>( iAdress + i );
+							<< static_cast<int>( iAdress );
 
 					ss.str("");
 					ss.clear();
@@ -265,20 +274,17 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 			while ( iAdress < 0x143 )
 			{
 				int iData =  static_cast<int> ( m_pCPU->GetDataAtAdress( iAdress ) );
-				if ( iData != 0 )
-				{
-					ss << std::hex
-						<< std::uppercase
-						<< std::setw(2)
-						<< std::setfill('0')
-						<< iData
-						<< " ";
 
+				ss << std::hex
+					<< std::uppercase
+					<< std::setw(2)
+					<< std::setfill('0')
+					<< iData
+					<< " ";
+
+				if ( iData != 0 )
 					sTitle << static_cast<char>( iData );
-					++iAdress;
-				}
-				else
-					break;
+				++iAdress;
 			}
 
 			block["address"]	= sAdress.str();
@@ -518,8 +524,8 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 					   << std::setw(2)
 					   << std::setfill('0')
 					   << static_cast<int>( m_pCPU->GetDataAtAdress( iAdress ) );
-					block["bytes"]		= ss.str();
-					block["text"]		= "undefined opcode";
+					block["bytes"]			= ss.str();
+					block["text"]			= "undefined opcode";
 					block["duration"]		= 0;
 				}
 				break;

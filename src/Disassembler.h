@@ -28,7 +28,6 @@ private:
 		std::string m_iAdress;
 		std::string m_sMnemonic;
 		std::string m_sAditionalInfo;
-		std::string m_sComment;
 		std::string m_oData;
 		uint8_t		m_iDuration = 0xFF;
 	};

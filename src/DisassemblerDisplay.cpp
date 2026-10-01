@@ -12,21 +12,19 @@
 #include "imgui.h"
 #include "imgui_internal.h"
 
-#define ADDR_COLOR ImVec4( 0.082f, 0.573f, 0.573f, 1.00f )
-#define DATA_COLOR ImVec4( 0.953f, 0.478f, 0.918f, 1.00f )
-#define DATA_BIS_COLOR ImVec4( 0.953f, 0.478f, 0.918f, 1.00f )
-#define LENGTH_COLOR ImVec4( 0.953f, 0.478f, 0.918f, 1.00f )
-#define MNEMONIC_COLOR ImVec4( 0.88f, 0.796f, 0.051f, 1.00f )
-#define ADITIONNALINFO_COLOR ImVec4( 0.867f, 0.439f, 0.008f, 1.00f )
-#define COMMENT_COLOR ImVec4( 0.867f, 0.439f, 0.008f, 1.00f )
+#define ADDR_COLOR ImVec4( 0.337f, 0.612f, 0.839f, 1.00f )
+#define DATA_COLOR ImVec4( 0.831f, 0.831f, 0.831f, 1.00f )
+#define DATA_BIS_COLOR ImVec4( 0.678f, 0.502f, 0.361f, 1.00f )
+#define LENGTH_COLOR ImVec4( 0.93f, 0.537f, 0.208f, 1.00f )
+#define MNEMONIC_COLOR ImVec4( 0.306f, 0.788f, 0.69f, 1.00f )
+#define ADITIONNALINFO_COLOR ImVec4( 0.357f, 0.357f, 0.357f, 1.00f )
 
 #define START_ADDR_POS		float( 10.0f )
 #define START_DATA_POS		float( START_ADDR_POS + 100.0f )
 #define START_MNEMONIC_POS	float( START_DATA_POS + 125.0f )
-#define START_DATA_ADD_POS	float( START_MNEMONIC_POS + 150.0f )
-#define START_DURATION_POS	float( START_DATA_ADD_POS + 150.0f )
-#define START_ADDINFO_POS	float( START_DURATION_POS + 400.0f )
-#define START_COMMENT_POS	float( START_ADDINFO_POS + 275.0f )
+#define START_DATA_ADD_POS	float( START_MNEMONIC_POS + 135.0f )
+#define START_DURATION_POS	float( START_DATA_ADD_POS + 125.0f )
+#define START_ADDINFO_POS	float( START_DURATION_POS + 100.0f )
 
 void DisassemblerDisplay::Update()
 {
@@ -89,9 +87,18 @@ void DisassemblerDisplay::Update()
 										ImGui::GetColorU32( DATA_COLOR ), "+" );
 				}
 
-				pos.x = window_pos.x + START_DATA_ADD_POS * style.FontScaleDpi;//Need to adapt
-				ImFormatString( aBuffer, sizeof( aBuffer ), "%s",  oInstruct.m_oData.c_str() );
-				draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ), aBuffer );
+				if ( oInstruct.m_iAdress != "ROM::0134" ) //TEMP
+				{
+					pos.x = window_pos.x + START_DATA_ADD_POS * style.FontScaleDpi;//Need to adapt
+					ImFormatString( aBuffer, sizeof( aBuffer ), "%s",  oInstruct.m_oData.c_str() );
+					draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ), aBuffer );
+				}
+				else
+				{
+					pos.x = window_pos.x + START_DATA_ADD_POS * style.FontScaleDpi;
+					ImFormatString( aBuffer, sizeof( aBuffer ), "%s", oInstruct.m_sMnemonic.empty() ? "\"		\"" : oInstruct.m_sMnemonic.c_str() );
+					draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ), aBuffer );
+				}
 
 				if ( oInstruct.m_iDuration != 0xFF )
 				{
@@ -107,10 +114,6 @@ void DisassemblerDisplay::Update()
 				pos.x = window_pos.x + START_ADDINFO_POS * style.FontScaleDpi;
 				ImFormatString( aBuffer, sizeof(aBuffer), "%s", oInstruct.m_sAditionalInfo.c_str() );
 				draw_list->AddText( pos,ImGui::GetColorU32( ADITIONNALINFO_COLOR ), aBuffer );
-
-				pos.x = window_pos.x + START_COMMENT_POS * style.FontScaleDpi;
-				ImFormatString( aBuffer, sizeof(aBuffer), "%s", oInstruct.m_sComment.c_str() );
-				draw_list->AddText( pos,ImGui::GetColorU32( COMMENT_COLOR ), aBuffer );
 
 				pos.y += 15.0f * style.FontScaleDpi;
 			}
