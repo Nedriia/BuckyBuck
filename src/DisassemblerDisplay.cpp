@@ -101,6 +101,10 @@ void DisassemblerDisplay::Update()
 					pos.x = window_pos.x + START_DATA_ADD_POS * style.FontScaleDpi;//Need to adapt
 					ImFormatString( aBuffer, sizeof( aBuffer ), "%s",  oInstruct.m_oData.c_str() );
 					draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ), aBuffer );
+
+					pos.x = window_pos.x + START_MNEMONIC_POS * style.FontScaleDpi;
+					ImFormatString( aBuffer, sizeof(aBuffer), "%s", oInstruct.m_sMnemonic.c_str() );
+					draw_list->AddText( pos,ImGui::GetColorU32( MNEMONIC_COLOR ), aBuffer );
 				}
 				else
 				{
@@ -115,10 +119,6 @@ void DisassemblerDisplay::Update()
 					ImFormatString( aBuffer, sizeof( aBuffer ), "%i",  oInstruct.m_iDuration );
 					draw_list->AddText( pos,ImGui::GetColorU32( LENGTH_COLOR ), aBuffer );
 				}
-
-				pos.x = window_pos.x + START_MNEMONIC_POS * style.FontScaleDpi;
-				ImFormatString( aBuffer, sizeof(aBuffer), "%s", oInstruct.m_sMnemonic.c_str() );
-				draw_list->AddText( pos,ImGui::GetColorU32( MNEMONIC_COLOR ), aBuffer );
 
 				pos.x = window_pos.x + START_ADDINFO_POS * style.FontScaleDpi;
 				ImFormatString( aBuffer, sizeof(aBuffer), "%s", oInstruct.m_sAditionalInfo.c_str() );

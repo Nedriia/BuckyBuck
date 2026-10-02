@@ -243,13 +243,13 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 					sAdress.str("");
 					sAdress.clear();
 
-					sAdress << CPU::GetMemoryRegionLabel( iAdress )
+					sAdress << CPU::GetMemoryRegionLabel( iAdress + i )
 							<< "::"
 							<< std::hex
 							<< std::uppercase
 							<< std::setw(4)
 							<< std::setfill('0')
-							<< static_cast<int>( iAdress );
+							<< static_cast<int>( iAdress + i );
 
 					ss.str("");
 					ss.clear();
@@ -259,7 +259,7 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 					<< std::uppercase
 					<< std::setw(2)
 					<< std::setfill('0')
-					<< static_cast<int>(m_pCPU->GetDataAtAdress( iAdress + i ) )
+					<< static_cast<int>( m_pCPU->GetDataAtAdress( iAdress + i ) )
 					<< " ";
 
 				++i;
