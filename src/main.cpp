@@ -33,7 +33,10 @@ int main( int argc, char *argv[] )
 	}
 
 	if ( argc <= 1 || m_pCPUInstance->LoadRom( argv[ 1 ] ) != 0 )
+	{
+		Quit();
 		return -1;
+	}
 
 	Disassembler m_oDisassembler;
 	Disassembler::Disassemble_ROM( argv[1] );

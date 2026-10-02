@@ -14,7 +14,6 @@ void ProcessorDebugDisplay::Update()
 {
 	auto start = std::chrono::high_resolution_clock::now();
 
-	glfwPollEvents();
 	static double iDurationMs;
 	char titleBuffer[ 128 ];
 	std::snprintf( titleBuffer,sizeof( titleBuffer ),"Processor (%.2f ms)###ProcDebugDisplayWindow",iDurationMs );

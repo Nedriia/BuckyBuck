@@ -35,6 +35,9 @@ void Disassembler::Init()
 
 void Disassembler::Disassemble_ROM( const char* sRomPath )
 {
+	if( sRomPath == nullptr )
+		return;
+
 	std::filesystem::path outputPath = DISASSM_DIR / static_cast<std::filesystem::path>( sRomPath ).filename();//don't use name but calculate HASH
 	outputPath.replace_extension( ".json" );
 
