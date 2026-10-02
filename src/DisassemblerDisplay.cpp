@@ -74,10 +74,10 @@ void DisassemblerDisplay::Update()
 		{
 			_SelectLine( clipper.DisplayStart );
 			_DrawSelectedLine( draw_list, window_pos.x, window_pos.y, clipper.DisplayStart,clipper.DisplayEnd );
-			
+
 			for( int n = clipper.DisplayStart; n < clipper.DisplayEnd; ++n )
 			{
-				auto oInstruct = aDisassemblyInstructions.at( n );
+				auto& oInstruct = aDisassemblyInstructions[ n ];
 				//missing registers / flags / instructions count
 				char aBuffer[128] = "";
 
