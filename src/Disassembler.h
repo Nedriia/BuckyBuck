@@ -17,19 +17,19 @@ public:
 
 	static void Disassemble_ROM( const char* sRomPath );
 	static std::string Format( const char* sFormat, ... );
-	static void DecryptCartridge(std::fstream& file, nlohmann::json& oData );
-	static void DecryptIORange(std::fstream& file);
+	static void DecryptCartridge( nlohmann::json& oData );
+	static void DecryptIORange();
 	void Init();
 
 private:
-	static void _WriteInstruction( nlohmann::json& oData, uint16_t iAdress, std::string& sComment, uint8_t* iLengthIncrease = nullptr );
+	static void _WriteInstruction( nlohmann::json& oData, uint16_t _iAdress, std::string& sComment, uint8_t* iLengthIncrease = nullptr );
 	struct DisassembledLine
 	{
-		std::string m_iAdress;
-		std::string m_sMnemonic;
-		std::string m_sAditionalInfo;
-		std::string m_oData;
-		uint8_t		m_iDuration = 0xFF;
+		uint16_t				m_iAdress = 0;
+		uint8_t					m_iDuration = 0;
+		char					m_sMnemonic[ 32 ] = { '\0' };
+		char					m_sAditionalInfo[ 32 ] = { '\0' };
+		std::vector<uint8_t>	m_oData = {};
 	};
 
 	static std::vector< DisassembledLine > m_aDisassembly;

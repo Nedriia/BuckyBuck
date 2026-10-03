@@ -39,9 +39,10 @@ class CPU
 	void			EmulateCycle();
 	void			DestroyInstance();
 
-	uint8_t			GetDataAtAdress( const uint16_t iAdress ) const { return m_aMemory[iAdress]; }
-	uint16_t		GetPC() const { return m_iPC; }
-	uint16_t		GetMemorySize() const { return m_aMemory.size(); }
+	uint8_t							GetDataAtAdress( const uint16_t iAdress ) const { return m_aMemory[iAdress]; }
+	uint16_t						GetPC() const { return m_iPC; }
+	uint16_t						GetMemorySize() const { return m_aMemory.size(); }
+	const std::vector<uint8_t>&		GetMemory() const { return m_aMemory; }
 
 	typedef void ( CPU::* fct_opcode )( );
 	static void		AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8_t iFlags, uint8_t iFlagSet1, uint8_t iFlagReset0, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );

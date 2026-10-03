@@ -73,47 +73,53 @@ void DisassemblerDisplay::Update()
 		while( clipper.Step() )
 		{
 			_SelectLine( clipper.DisplayStart );
-			_DrawSelectedLine( draw_list, window_pos.x, window_pos.y, clipper.DisplayStart,clipper.DisplayEnd );
+			_DrawSelectedLine( draw_list,window_pos.x,window_pos.y,clipper.DisplayStart,clipper.DisplayEnd );
 
 			for( int n = clipper.DisplayStart; n < clipper.DisplayEnd; ++n )
 			{
 				auto& oInstruct = aDisassemblyInstructions[ n ];
 				//missing registers / flags / instructions count
-				char aBuffer[128] = "";
+				char aBuffer[ 128 ] = "";
 
 				pos.x = window_pos.x + START_ADDR_POS * style.FontScaleDpi;
-				ImFormatString( aBuffer, sizeof(aBuffer), "%s", oInstruct.m_iAdress.c_str() );
-				draw_list->AddText( pos,ImGui::GetColorU32( ADDR_COLOR ), aBuffer );
+				ImFormatString( aBuffer,sizeof( aBuffer ),"%#06X",oInstruct.m_iAdress );
+				draw_list->AddText( pos,ImGui::GetColorU32( ADDR_COLOR ),aBuffer );
 
 				pos.x = window_pos.x + START_DATA_POS * style.FontScaleDpi;
-				ImFormatString( aBuffer, sizeof( aBuffer ), "%s",  oInstruct.m_oData.c_str() );
-				const char* sEnd = DisassemblerDisplay::EndOfNthBlock( aBuffer, 4 );
-				draw_list->AddText( pos,ImGui::GetColorU32( DATA_COLOR ), aBuffer, sEnd );
-				if ( ( *sEnd ) != '\0' )
+				int nSize = oInstruct.m_oData.size();
+				for( int i = 0; i < 4; ++i )
 				{
-					ImVec2 sz = ImGui::CalcTextSize( aBuffer, sEnd );
-					draw_list->AddText( ImVec2( pos.x + sz.x, pos.y ),
-										ImGui::GetColorU32( DATA_COLOR ), "+" );
-				}
+					if( i >= nSize )
+						break;
 
-				if ( oInstruct.m_iAdress != "ROM::0134" ) //TEMP
+					ImFormatString( aBuffer,sizeof( aBuffer ),"%02X",oInstruct.m_oData[ i ] );
+					draw_list->AddText( pos,ImGui::GetColorU32( DATA_COLOR ),aBuffer );
+					pos.x += ImGui::CalcTextSize( "FF " ).x + 1.0f;
+				}
+				if( nSize > 4 )
+					draw_list->AddText( ImVec2( pos.x,pos.y ),ImGui::GetColorU32( DATA_COLOR ),"+" );
+
+				if( oInstruct.m_iAdress != 0x134 )
 				{
-					pos.x = window_pos.x + START_DATA_ADD_POS * style.FontScaleDpi;//Need to adapt
-					ImFormatString( aBuffer, sizeof( aBuffer ), "%s",  oInstruct.m_oData.c_str() );
-					draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ), aBuffer );
+					for( int i = 0; i < oInstruct.m_oData.size(); ++i )
+					{
+						ImFormatString( aBuffer,sizeof( aBuffer ),"%02",oInstruct.m_oData[ i ] );
+						draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ),aBuffer );
+						pos.x += ImGui::CalcTextSize( "FF" ).x + 1.0f;
+					}
 
 					pos.x = window_pos.x + START_MNEMONIC_POS * style.FontScaleDpi;
-					ImFormatString( aBuffer, sizeof(aBuffer), "%s", oInstruct.m_sMnemonic.c_str() );
-					draw_list->AddText( pos,ImGui::GetColorU32( MNEMONIC_COLOR ), aBuffer );
+					ImFormatString( aBuffer,sizeof( aBuffer ),"%s",oInstruct.m_sMnemonic );
+					draw_list->AddText( pos,ImGui::GetColorU32( MNEMONIC_COLOR ),aBuffer );
 				}
 				else
 				{
-					pos.x = window_pos.x + START_DATA_ADD_POS * style.FontScaleDpi;
-					ImFormatString( aBuffer, sizeof( aBuffer ), "%s", oInstruct.m_sMnemonic.empty() ? "\"		\"" : oInstruct.m_sMnemonic.c_str() );
-					draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ), aBuffer );
+					 pos.x = window_pos.x + START_DATA_ADD_POS * style.FontScaleDpi;
+					 ImFormatString( aBuffer, sizeof( aBuffer ), "%s", oInstruct.m_sMnemonic );
+					 draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ), aBuffer );
 				}
 
-				if ( oInstruct.m_iDuration != 0xFF )
+				if ( oInstruct.m_iAdress != 0xFF )
 				{
 					pos.x = window_pos.x + START_DURATION_POS * style.FontScaleDpi;
 					ImFormatString( aBuffer, sizeof( aBuffer ), "%i",  oInstruct.m_iDuration );
@@ -121,7 +127,7 @@ void DisassemblerDisplay::Update()
 				}
 
 				pos.x = window_pos.x + START_ADDINFO_POS * style.FontScaleDpi;
-				ImFormatString( aBuffer, sizeof(aBuffer), "%s", oInstruct.m_sAditionalInfo.c_str() );
+				ImFormatString( aBuffer, sizeof(aBuffer), "%s", oInstruct.m_sAditionalInfo );
 				draw_list->AddText( pos,ImGui::GetColorU32( ADITIONNALINFO_COLOR ), aBuffer );
 
 				pos.y += 15.0f * style.FontScaleDpi;
@@ -152,7 +158,7 @@ void DisassemblerDisplay::_SelectLine( const uint16_t iStart )
 			window_pos.y + window_size.y
 		);
 
-		if( ImGui::IsMouseHoveringRect(zone_min, zone_max) )
+		if( ImGui::IsMouseHoveringRect( zone_min,zone_max ) )
 		{
 			ImGuiStyle& style = ImGui::GetStyle();
 
@@ -172,32 +178,32 @@ void DisassemblerDisplay::_SelectLine( const uint16_t iStart )
 	}
 }
 
-void DisassemblerDisplay::_DrawSelectedLine( ImDrawList* draw_list, const float fWindowPosX,const float fWindowPosY, const uint16_t iStart, const uint16_t iSize )
+void DisassemblerDisplay::_DrawSelectedLine( ImDrawList* draw_list,const float fWindowPosX,const float fWindowPosY,const uint16_t iStart,const uint16_t iSize )
 {
 	if( m_iSelectedLine != UINT16_MAX )
 	{
 		ImGuiStyle& style = ImGui::GetStyle();
 
 		//Check if current line selection is in current viewport
-		if( m_iSelectedLine < iStart || m_iSelectedLine > ( iStart + iSize ) )
+		if( m_iSelectedLine < iStart || m_iSelectedLine >( iStart + iSize ) )
 			return;
 
 		ImVec2 vStartPos = { fWindowPosX, fWindowPosY + ImGui::GetTextLineHeight() * 2.0f };
 		vStartPos.y += ( m_iSelectedLine - iStart ) * ( 15.0f * style.FontScaleDpi );
 
-		draw_list->AddRectFilled( vStartPos,ImVec2( vStartPos.x + 99999,vStartPos.y + ImGui::GetTextLineHeightWithSpacing() ),ImGui::GetColorU32( ImGuiCol_DockingPreview ) );
+		draw_list->AddRectFilled( vStartPos,ImVec2( vStartPos.x + 99999,vStartPos.y + ImGui::GetTextLineHeight() ),ImGui::GetColorU32( ImGuiCol_DockingPreview ) );
 	}
 }
 
-const char* DisassemblerDisplay::EndOfNthBlock( const char* text, int nb_blocs )
+const char* DisassemblerDisplay::EndOfNthBlock( const char* text,int nb_blocs )
 {
 	const char* p = text;
 	int blocs = 0;
-	while ( *p )
+	while( *p )
 	{
-		if ( *p == ' ' )
+		if( *p == ' ' )
 		{
-			if ( ++blocs == nb_blocs )
+			if( ++blocs == nb_blocs )
 				return p;
 		}
 		++p;

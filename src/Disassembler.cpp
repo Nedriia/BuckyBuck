@@ -38,44 +38,48 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 	if( sRomPath == nullptr )
 		return;
 
-	std::filesystem::path outputPath = DISASSM_DIR / static_cast<std::filesystem::path>( sRomPath ).filename();//don't use name but calculate HASH
+	std::filesystem::path outputPath = DISASSM_DIR / static_cast< std::filesystem::path >( sRomPath ).filename();//don't use name but calculate HASH
 	outputPath.replace_extension( ".json" );
 
-	if ( exists( outputPath ) == false )
+	//Disassemble instructions
+	if( exists( outputPath ) == false )
 	{
 		std::fstream file;
-		file.open( outputPath.string(), std::ofstream::out );
+		file.open( outputPath.string(),std::ofstream::out );
 
 		if( file.is_open() )
 		{
 			std::string sComment = "";
 			json data;
-			data["Instructions"] = json::array();
+			auto& instructions = data[ "Instructions" ];
+			instructions = json::array();
+
+			instructions.get_ref<json::array_t&>().reserve( m_pCPU->GetMemorySize() );
 
 			g_iCounter = 0;
 			uint8_t iLengthIncrease = 0;
 
-			for ( uint16_t iPC = 0x000; iPC < m_pCPU->GetMemorySize(); )
+			for( uint16_t iPC = 0x000; iPC < m_pCPU->GetMemorySize(); )
 			{
-				if ( iPC >= 0x104 && iPC <= 0x14F )
+				if( iPC >= 0x104 && iPC <= 0x14F )
 				{
-					DecryptCartridge( file, data );
+					DecryptCartridge( instructions );
 					iPC = 0x150;
 					continue;
 				}
 
-				_WriteInstruction( data, iPC, sComment,&iLengthIncrease );
+				_WriteInstruction( instructions,iPC,sComment,&iLengthIncrease );
 
-				if ( iPC + iLengthIncrease >= static_cast<uint32_t>( UINT16_MAX ) )
+				if( iPC + iLengthIncrease >= static_cast< uint32_t >( UINT16_MAX ) )
 					break;
 
 				iPC += iLengthIncrease;
 			}
-			file << data.dump(4);
+			file << data.dump( 4 );
 		}
 	}
 
-	//Read the file to feed to the disassembler display
+	//Read the file to feed to the disassembler visual display
 	std::ifstream file( outputPath );
 	if( file.is_open() )
 	{
@@ -90,81 +94,89 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 			return;
 		}
 
+		m_aDisassembly.clear();
+		m_aDisassembly.reserve( data[ "Instructions" ].size() );
+
 		for ( const auto& instruction : data["Instructions"])
 		{
 			DisassembledLine oDisasLine;
-			oDisasLine.m_iAdress = instruction.value("address", "");
-			oDisasLine.m_sMnemonic = instruction.value("text", "");
-			oDisasLine.m_sAditionalInfo = instruction.value("Comment", "");
-			oDisasLine.m_oData = instruction.value("bytes", "");
-			oDisasLine.m_iDuration = instruction.value("duration", 0xFF );
+			oDisasLine.m_iAdress = instruction.value("address", 0x0000 );
 
-			m_aDisassembly.push_back( oDisasLine );
+			std::string sText = instruction.value( "opcode","" );
+			strncpy_s( oDisasLine.m_sMnemonic, sText.c_str(),sizeof( oDisasLine.m_sMnemonic ) - 1 );
+
+			sText = instruction.value( "comment","" );
+			strncpy_s( oDisasLine.m_sAditionalInfo, sText.c_str(),sizeof( oDisasLine.m_sAditionalInfo ) - 1 );
+
+			oDisasLine.m_oData = instruction["bytes"].get<std::vector<uint8_t> >( );
+			oDisasLine.m_iDuration = instruction.value( "duration",0 );
+
+			m_aDisassembly.emplace_back( std::move( oDisasLine ) );
 		}
 	}
 }
 
-std::string Disassembler::Format( const char* sFormat, ... )
+std::string Disassembler::Format( const char* sFormat,... )
 {
 	va_list args;
-	va_start(args, sFormat);
-	size_t len = std::vsnprintf(nullptr, 0, sFormat, args);
-	va_end(args);
+	va_start( args,sFormat );
+	size_t len = std::vsnprintf( nullptr,0,sFormat,args );
+	va_end( args );
 
-	std::vector<char> vec(len + 1);
-	va_start(args, sFormat);
-	std::vsnprintf(&vec[0], len + 1, sFormat, args);
-	va_end(args);
+	std::vector<char> vec( len + 1 );
+	va_start( args,sFormat );
+	std::vsnprintf( &vec[ 0 ],len + 1,sFormat,args );
+	va_end( args );
 
-	return &vec[0];
+	return &vec[ 0 ];
 }
 
-void Disassembler::DecryptCartridge( std::fstream& file, json& oData )
+void Disassembler::DecryptCartridge( json& oData )
 {
 	std::string sComment = ";Nintendo Logo";
-	_WriteInstruction( oData, 0x104,sComment  );
+	_WriteInstruction( oData,0x104,sComment );
 
 	sComment = ";Title";
-	_WriteInstruction( oData, 0x134, sComment );
+	_WriteInstruction( oData,0x134,sComment );
 
 	sComment = ";Manufacturer code";
-	_WriteInstruction( oData, 0x13F, sComment );
+	_WriteInstruction( oData,0x13F,sComment );
 
 	sComment = ";CGB Flag";
-	_WriteInstruction( oData, 0x143, sComment );
+	_WriteInstruction( oData,0x143,sComment );
 
 	sComment = ";New Licence Code";
-	_WriteInstruction( oData, 0x144, sComment );
+	_WriteInstruction( oData,0x144,sComment );
 
 	sComment = ";SGB Flag";
-	_WriteInstruction( oData, 0x146, sComment );
+	_WriteInstruction( oData,0x146,sComment );
 
 	sComment = ";Cartridge Type";
-	_WriteInstruction( oData, 0x147, sComment );
+	_WriteInstruction( oData,0x147,sComment );
 
 	sComment = ";ROM size";
-	_WriteInstruction( oData, 0x148, sComment );
+	_WriteInstruction( oData,0x148,sComment );
 
 	sComment = ";RAM size";
-	_WriteInstruction( oData, 0x149, sComment );
+	_WriteInstruction( oData,0x149,sComment );
 
 	sComment = ";Destination code";
-	_WriteInstruction( oData, 0x14A, sComment );
+	_WriteInstruction( oData,0x14A,sComment );
 
 	sComment = ";Old Licence code";
-	_WriteInstruction( oData, 0x14B, sComment );
+	_WriteInstruction( oData,0x14B,sComment );
 
 	sComment = ";Mask ROM version number";
-	_WriteInstruction( oData, 0x14C, sComment );
+	_WriteInstruction( oData,0x14C,sComment );
 
 	sComment = ";Header Checksum";
-	_WriteInstruction( oData, 0x14D, sComment );
+	_WriteInstruction( oData,0x14D,sComment );
 
 	sComment = ";Global Checksum";
-	_WriteInstruction( oData, 0x14E, sComment );
+	_WriteInstruction( oData,0x14E,sComment );
 }
 
-void Disassembler::DecryptIORange( std::fstream& file )
+void Disassembler::DecryptIORange()
 {
 	// _WriteInstruction( file, 0xFF00, ";Joypad");
 	// _WriteInstruction( file, 0xFF01, ";Serial data");
@@ -210,168 +222,99 @@ void Disassembler::DecryptIORange( std::fstream& file )
 	// _WriteInstruction( file, 0xFF77, ";PCM12");
 }
 
-void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string& sComment, uint8_t* iLengthIncrease /*= nullptr*/ )
+void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,std::string& sComment,uint8_t* iLengthIncrease /*= nullptr*/ )
 {
-	json block = json::object();
-	std::stringstream ss;
-	std::stringstream sAdress;
+	uint8_t					iDuration = 0;
+	uint16_t				iAdress = static_cast< int >( _iAdress );
+	char					sMnemonic[ 32 ] = { '\0' };
+	std::vector<uint8_t>	aData = {};
 
-	sAdress << CPU::GetMemoryRegionLabel( iAdress )
-			<< "::"
-			<< std::hex
-			<< std::uppercase
-			<< std::setw(4)
-			<< std::setfill('0')
-			<< static_cast<int>( iAdress );
-
-	switch ( iAdress )
+	switch( iAdress )
 	{
-		case 0x104 :
+		case 0x104:
 		{
-			int i = 0;
-			while ( i + iAdress < 0x134 )
+			for( int i = 0; i < 4; ++i )//Nintendo logo
 			{
-				if ( i != 0 && i % 8 == 0 )
-				{
-					block["address"] = sAdress.str();
-					block["bytes"]   = ss.str();
+				aData.resize( 8 );
+				memcpy( aData.data(),&m_pCPU->GetMemory()[ iAdress + 8 * i ],8 * sizeof( uint8_t ) );
 
-					oData["Instructions"].push_back( block );
-
-					block = json::object();
-
-					sAdress.str("");
-					sAdress.clear();
-
-					sAdress << CPU::GetMemoryRegionLabel( iAdress + i )
-							<< "::"
-							<< std::hex
-							<< std::uppercase
-							<< std::setw(4)
-							<< std::setfill('0')
-							<< static_cast<int>( iAdress + i );
-
-					ss.str("");
-					ss.clear();
-				}
-
-				ss	<< std::hex
-					<< std::uppercase
-					<< std::setw(2)
-					<< std::setfill('0')
-					<< static_cast<int>( m_pCPU->GetDataAtAdress( iAdress + i ) )
-					<< " ";
-
-				++i;
+				oData.push_back( {
+							{ "address",		iAdress + 8 * i },
+							{ "bytes",			aData }
+						} );
 			}
+			return;
+		}
+		case 0x134://Title
+		{
+			size_t iSize = ( 0x143 - 0x134 );
+			aData.resize( iSize );
+			memcpy( aData.data(),&m_pCPU->GetMemory()[ iAdress ],iSize * sizeof( uint8_t ) );
 
-			block["address"]	= sAdress.str();
-			block["bytes"]		= ss.str();
-			block["Comment"]    = sComment;
+			size_t nLen = std::min( aData.size(),sizeof( sMnemonic ) - 1 );
+			std::copy( aData.begin(),aData.begin() + nLen,sMnemonic );
+			sMnemonic[ nLen ] = '\0';
 
 			break;
 		}
-		case 0x134:
+		case 0x143://Manufacturer code
 		{
-			std::stringstream sTitle;
-			while ( iAdress < 0x143 )
-			{
-				int iData =  static_cast<int> ( m_pCPU->GetDataAtAdress( iAdress ) );
+			aData.resize( 1 );
+			aData[ 0 ] = m_pCPU->GetMemory()[ iAdress ];
 
-				ss << std::hex
-					<< std::uppercase
-					<< std::setw(2)
-					<< std::setfill('0')
-					<< iData
-					<< " ";
-
-				if ( iData != 0 )
-					sTitle << static_cast<char>( iData );
-				++iAdress;
-			}
-
-			block["address"]	= sAdress.str();
-			block["bytes"]		= ss.str();
-			block["text"]		= sTitle.str();
-			block["Comment"]    = sComment;
-			break;
-		}
-		case 0x143:
-		{
-			std::string sText;
-			ss << std::hex
-				<< std::uppercase
-				<< std::setw(2)
-				<< std::setfill('0')
-				<< static_cast<int>(m_pCPU->GetDataAtAdress( iAdress ) );
-
-			switch ( m_pCPU->GetDataAtAdress( iAdress ) )
+			switch( m_pCPU->GetDataAtAdress( iAdress ) )
 			{
 				case 0:		sComment += " ;DMG - classic gameboy"; break;
 				case 0x80:	sComment += " ;CGB - retro compat monochrome"; break;
 				case 0xC0:	sComment += " ;CGB - only"; break;
 			}
-
-			block["address"]	= sAdress.str();
-			block["bytes"]		= ss.str();
-			block["Comment"]    = sComment;
-			block["text"]		= sText;
 			break;
 		}
 		case 0x147:
 		{
-			std::string sText;
-			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
-			switch ( iData )
+			aData.resize( 1 );
+			aData[ 0 ] = m_pCPU->GetMemory()[ iAdress ];
+
+			switch( m_pCPU->GetDataAtAdress( iAdress ) )
 			{
-				case 0x00: sComment += " ROM ONLY" ; break;
-				case 0x01: sComment += " MBC1" ; break;
-				case 0x02: sComment += " MBC1+RAM" ; break;
-				case 0x03: sComment += " MBC1+RAM+BATTERY" ; break;
-				case 0x05: sComment += " MBC2" ; break;
-				case 0x06: sComment += " MBC2+BATTERY" ; break;
-				case 0x08: sComment += " ROM+RAM" ; break;
-				case 0x09: sComment += " ROM+RAM+BATTERY" ; break;
-				case 0x0B: sComment += " MMM01" ; break;
-				case 0x0C: sComment += " MMM01+RAM" ; break;
-				case 0x0D: sComment += " MMM01+RAM+BATTERY" ; break;
-				case 0x0F: sComment += " MBC3+TIMER+BATTERY" ; break;
-				case 0x10: sComment += " MBC3+TIMER+RAM+BATTERY" ; break;
-				case 0x11: sComment += " MBC3" ; break;
-				case 0x12: sComment += " MBC3+RAM" ; break;
-				case 0x13: sComment += " MBC3+RAM+BATTERY" ; break;
-				case 0x19: sComment += " MBC5" ; break;
-				case 0x1A: sComment += " MBC5+RAM" ; break;
-				case 0x1B: sComment += " MBC5+RAM+BATTERY" ; break;
-				case 0x1C: sComment += " MBC5+RUMBLE" ; break;
-				case 0x1D: sComment += " MBC5+RUMBLE+RAM" ; break;
-				case 0x1E: sComment += " MBC5+RUMBLE+RAM+BATTERY" ; break;
-				case 0x20: sComment += " MBC6" ; break;
-				case 0x22: sComment += " MBC7+SENSOR+RUMBLE+RAM+BATTERY" ; break;
-				case 0xFC: sComment += " POCKET CAMERA" ; break;
-				case 0xFD: sComment += " BANDAI TAMA5" ; break;
-				case 0xFE: sComment += " HuC3" ; break;
-				case 0xFF: sComment += " HuC1+RAM+BATTERY" ; break;
-				default:   sComment += " Unknown Type" ; break;
+				case 0x00: sComment += " ROM ONLY"; break;
+				case 0x01: sComment += " MBC1"; break;
+				case 0x02: sComment += " MBC1+RAM"; break;
+				case 0x03: sComment += " MBC1+RAM+BATTERY"; break;
+				case 0x05: sComment += " MBC2"; break;
+				case 0x06: sComment += " MBC2+BATTERY"; break;
+				case 0x08: sComment += " ROM+RAM"; break;
+				case 0x09: sComment += " ROM+RAM+BATTERY"; break;
+				case 0x0B: sComment += " MMM01"; break;
+				case 0x0C: sComment += " MMM01+RAM"; break;
+				case 0x0D: sComment += " MMM01+RAM+BATTERY"; break;
+				case 0x0F: sComment += " MBC3+TIMER+BATTERY"; break;
+				case 0x10: sComment += " MBC3+TIMER+RAM+BATTERY"; break;
+				case 0x11: sComment += " MBC3"; break;
+				case 0x12: sComment += " MBC3+RAM"; break;
+				case 0x13: sComment += " MBC3+RAM+BATTERY"; break;
+				case 0x19: sComment += " MBC5"; break;
+				case 0x1A: sComment += " MBC5+RAM"; break;
+				case 0x1B: sComment += " MBC5+RAM+BATTERY"; break;
+				case 0x1C: sComment += " MBC5+RUMBLE"; break;
+				case 0x1D: sComment += " MBC5+RUMBLE+RAM"; break;
+				case 0x1E: sComment += " MBC5+RUMBLE+RAM+BATTERY"; break;
+				case 0x20: sComment += " MBC6"; break;
+				case 0x22: sComment += " MBC7+SENSOR+RUMBLE+RAM+BATTERY"; break;
+				case 0xFC: sComment += " POCKET CAMERA"; break;
+				case 0xFD: sComment += " BANDAI TAMA5"; break;
+				case 0xFE: sComment += " HuC3"; break;
+				case 0xFF: sComment += " HuC1+RAM+BATTERY"; break;
+				default:   sComment += " Unknown Type"; break;
 			}
-
-			ss << std::hex
-				<< std::uppercase
-				<< std::setw(2)
-				<< std::setfill('0')
-				<< static_cast<int>( iData );
-
-			block["address"]	= sAdress.str();
-			block["bytes"]		= ss.str();
-			block["Comment"]    = sComment;
-			block["text"]		= sText;
 			break;
 		}
 		case 0x148:
 		{
-			std::string sText;
-			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
-			switch ( iData )
+			aData.resize( 1 );
+			aData[0] = m_pCPU->GetMemory()[ iAdress ];
+
+			switch( m_pCPU->GetDataAtAdress( iAdress ) )
 			{
 				case 0x00: sComment += " 32 KiB, 2 (no banking)"; break;
 				case 0x01: sComment += " 64 KiB, 4"; break;
@@ -387,25 +330,14 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 				case 0x54: sComment += " 1.5 MiB, 96"; break;
 				default:   sComment += " Unknown Value"; break;
 			}
-
-			ss << std::hex
-				<< std::uppercase
-				<< std::setw(2)
-				<< std::setfill('0')
-				<< static_cast<int>( iData );
-
-			block["address"] = sAdress.str();
-			block["bytes"]   = ss.str();
-			block["Comment"]    = sComment;
-			block["text"]    = sText;
 			break;
 		}
 		case 0x149:
 		{
-			std::string sText;
-			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
+			aData.resize( 1 );
+			aData[ 0 ] = m_pCPU->GetMemory()[ iAdress ];
 
-			switch ( iData )
+			switch( m_pCPU->GetDataAtAdress( iAdress ) )
 			{
 				case 0x00: sComment += " 0, No RAM"; break;
 				case 0x01: sComment += " -, Unused"; break;
@@ -415,49 +347,23 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 				case 0x05: sComment += " 64 KiB, 8 banks of 8 KiB each"; break;
 				default:   sComment += " Unknown Code"; break;
 			}
-
-			ss << std::hex
-				<< std::uppercase
-				<< std::setw(2)
-				<< std::setfill('0')
-				<< static_cast<int>( iData );
-
-			block["address"] = sAdress.str();
-			block["bytes"]   = ss.str();
-			block["Comment"]    = sComment;
-			block["text"]    = sText;
 			break;
 		}
 		case 0x14A:
 		{
-			ss << std::hex
-				<< std::uppercase
-				<< std::setw(2)
-				<< std::setfill('0')
-				<< static_cast<int>( m_pCPU->GetDataAtAdress( iAdress ) );
+			aData.resize( 1 );
+			aData[ 0 ] = m_pCPU->GetMemory()[ iAdress ];
 
-			block["address"]	= sAdress.str();
-			block["bytes"]		= ss.str();
-			if ( m_pCPU->GetDataAtAdress( iAdress ) == 0 )
-				sComment    += " : Japanese" ;
-			else if ( m_pCPU->GetDataAtAdress( iAdress ) == 1 )
-				sComment    += " : Overseas only" ;
-			block["Comment"]    = sComment;
+			if( m_pCPU->GetDataAtAdress( iAdress ) == 0 )
+				sComment += " : Japanese";
+			else if( m_pCPU->GetDataAtAdress( iAdress ) == 1 )
+				sComment += " : Overseas only";
 			break;
 		}
 		case 0x14E:
 		{
-			ss << std::hex
-				<< std::uppercase
-				<< std::setw(2)
-				<< std::setfill('0')
-				<< static_cast<int>( m_pCPU->GetDataAtAdress( iAdress ) )
-				<< " "
-				<< static_cast<int>( m_pCPU->GetDataAtAdress( iAdress + 1 ) );
-
-			block["address"] = sAdress.str();
-			block["bytes"]   = ss.str();
-			block["Comment"]    = sComment;
+			aData.resize( 2 );
+			memcpy( aData.data(),&m_pCPU->GetMemory()[ iAdress ],2 * sizeof( uint8_t ) );
 			break;
 		}
 		case 0x13F:
@@ -467,73 +373,35 @@ void Disassembler::_WriteInstruction( json& oData, uint16_t iAdress, std::string
 		case 0x14C:
 		case 0x14D:
 		{
-			ss << std::hex
-				<< std::uppercase
-				<< std::setw(2)
-				<< std::setfill('0')
-				<< static_cast<int>( m_pCPU->GetDataAtAdress( iAdress ) )
-				<< " ";
-
-			block["address"]	= sAdress.str();
-			block["bytes"]		= ss.str();
-			block["Comment"]    = sComment;
 			break;
 		}
 
 		default:
 		{
-			if (  m_pCPU->GetDataAtAdress( iAdress ) == 0 )
-			{
-				block["address"]	= sAdress.str();
-				block["bytes"]		= "00";
-				block["text"]		= "NOP";
-				block["duration"]		= 1;
+			uint8_t iIndex = m_pCPU->GetDataAtAdress( iAdress );
+			CPU::CPU_Instructions* pInstruction = iIndex == 0xCB ? CPU::m_aExtendOpcodesTable[ m_pCPU->GetDataAtAdress( iAdress + 1 ) ] : CPU::m_aOpcodesTable[ iIndex ];
 
+			if( pInstruction )
+			{
+				aData.resize( pInstruction->m_iLength );
+				memcpy( aData.data(),&m_pCPU->GetMemory()[iAdress],pInstruction->m_iLength * sizeof(uint8_t));
+
+				g_iCounter += pInstruction->m_iDuration >> 2;
 				if( iLengthIncrease )
-					*iLengthIncrease = 1;
-			}
-			else
-			{
-				uint8_t iIndex = m_pCPU->GetDataAtAdress( iAdress );
-				CPU::CPU_Instructions* pInstruction = iIndex == 0xCB ? CPU::m_aExtendOpcodesTable[ m_pCPU->GetDataAtAdress( iAdress + 1 ) ] : CPU::m_aOpcodesTable[ iIndex ]  ;
-				if( pInstruction != nullptr )
-				{
-					int i = 0;
-					while( i < pInstruction->m_iLength )
-					{
-						ss << std::hex
-						   << std::uppercase
-						   << std::setw(2)
-						   << std::setfill('0')
-						   << static_cast<int>(m_pCPU->GetDataAtAdress( iAdress + i) )
-						   << " ";
-						++i;
-					}
+					*iLengthIncrease = pInstruction->m_iLength;
 
-					g_iCounter += pInstruction->m_iDuration >> 2;
-					if( iLengthIncrease )
-						*iLengthIncrease = pInstruction->m_iLength;
-
-					block["address"] = sAdress.str();
-					block["bytes"]   = ss.str();
-					block["text"]    = pInstruction->m_sMnemonic;
-					block["duration"]  = pInstruction->m_iDuration / 4; //TEMP -> t cycle to m cycle
-				}
-				else
-				{
-					block["address"] = sAdress.str();
-					ss << std::hex
-					   << std::uppercase
-					   << std::setw(2)
-					   << std::setfill('0')
-					   << static_cast<int>( m_pCPU->GetDataAtAdress( iAdress ) );
-					block["bytes"]			= ss.str();
-					block["text"]			= "undefined opcode";
-					block["duration"]		= 0;
-				}
-				break;
+				strncpy_s( sMnemonic, pInstruction->m_sMnemonic,sizeof( sMnemonic ) - 1 );
+				iDuration = pInstruction->m_iDuration / 4; //  -> t cycle to m cycle
 			}
+			break;
 		}
 	}
-	oData["Instructions"].push_back( block );
+
+	oData.push_back( {
+		{ "address",		iAdress },
+		{ "bytes",			aData },
+		{ "opcode",			sMnemonic },
+		{ "comment",		sComment },
+		{ "duration",		iDuration }
+		} );
 }
