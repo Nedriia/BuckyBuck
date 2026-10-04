@@ -79,13 +79,18 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 	}
 
 	//Read the file to feed to the disassembler visual display
-	std::ifstream file( outputPath,std::ios::binary );
+	std::ifstream file( outputPath,std::ios::binary | std::ios::ate );
 	if( file.is_open() )
 	{
+		const std::streamsize size = file.tellg();
+		file.seekg( 0 );
+		std::vector<uint8_t> buffer( static_cast< size_t >( size ) );
+		file.read( reinterpret_cast< char* >( buffer.data() ),size );
+
 		json data;
 		try
 		{
-			data = json::from_cbor( file );
+			data = json::from_cbor( buffer,true,true );
 		}
 		catch (const json::parse_error& e)
 		{
@@ -100,12 +105,12 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 		{
 			DisassembledLine oDisasLine;
 
-			oDisasLine.m_iAdress = instruction.value( "address",0 );
-			oDisasLine.m_iDuration = instruction.value( "duration",0 );
+			oDisasLine.m_iAdress = instruction.value( "a",0 );
+			oDisasLine.m_iDuration = instruction.value( "d",0 );
 
-			strncpy_s( oDisasLine.m_sMnemonic,instruction.value( "opcode","" ).c_str(),_TRUNCATE );
-			strncpy_s( oDisasLine.m_sAditionalInfo,instruction.value( "comment","" ).c_str(),_TRUNCATE );
-			strncpy_s( oDisasLine.m_aData,instruction.value( "bytes","" ).c_str(),_TRUNCATE );
+			strncpy_s( oDisasLine.m_sMnemonic,instruction.value( "o","" ).c_str(),_TRUNCATE );
+			strncpy_s( oDisasLine.m_sAditionalInfo,instruction.value( "c","" ).c_str(),_TRUNCATE );
+			strncpy_s( oDisasLine.m_aData,instruction.value( "b","" ).c_str(),_TRUNCATE );
 
 			m_aDisassembly.emplace_back( oDisasLine );
 		}
@@ -208,8 +213,8 @@ void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,uint8_t* iLe
 			{
 				ToHex( &m_pCPU->GetMemory()[ iAdress + 8 * i ], aData, 8 );
 				oData.push_back( {
-							{ "address",		iAdress + 8 * i },
-							{ "bytes",			aData }
+							{ "a",		iAdress + 8 * i },
+							{ "b",			aData }
 						} );
 			}
 			return;
@@ -381,13 +386,20 @@ void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,uint8_t* iLe
 		}
 	}
 
-	json oBlock = {
-		{ "address",		iAdress },
-		{ "bytes",			aData },
-		{ "opcode",			sMnemonic },
-		{ "comment",		sComment },
-		{ "duration",		iDuration }
-	};
+	json oBlock;
+	oBlock[ "a" ] = iAdress;
+
+	if( aData[ 0 ] != '\0' )
+		oBlock[ "b" ] = aData;
+
+	if( sMnemonic[ 0 ] != '\0' )
+		oBlock[ "o" ] = sMnemonic;
+
+	if( sComment.empty() == false )
+		oBlock[ "c" ] = sComment;
+
+	if( iDuration != 0 )
+		oBlock[ "d" ] = iDuration;
 
 	oData.emplace_back( std::move( oBlock ) );
 }
