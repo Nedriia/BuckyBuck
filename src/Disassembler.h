@@ -22,14 +22,14 @@ public:
 	void Init();
 
 private:
-	static void _WriteInstruction( nlohmann::json& oData, uint16_t _iAdress, std::string& sComment, uint8_t* iLengthIncrease = nullptr );
+	static void _WriteInstruction( nlohmann::json& oData, uint16_t _iAdress, uint8_t* iLengthIncrease = nullptr );
 	struct DisassembledLine
 	{
 		uint16_t				m_iAdress = 0;
 		uint8_t					m_iDuration = 0;
 		char					m_sMnemonic[ 32 ] = { '\0' };
 		char					m_sAditionalInfo[ 32 ] = { '\0' };
-		std::vector<uint8_t>	m_oData = {};
+		char					m_aData[ 32 ] = { '\0' };
 	};
 
 	static std::vector< DisassembledLine > m_aDisassembly;
@@ -37,6 +37,7 @@ private:
 
 public:
 	static const std::vector< DisassembledLine >& GetDisassemblyInstructions() { return m_aDisassembly; }
+	static void ToHex( const uint8_t* Src, char* Dst, int len );
 };
 
 

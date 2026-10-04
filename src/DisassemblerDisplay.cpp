@@ -86,27 +86,16 @@ void DisassemblerDisplay::Update()
 				draw_list->AddText( pos,ImGui::GetColorU32( ADDR_COLOR ),aBuffer );
 
 				pos.x = window_pos.x + START_DATA_POS * style.FontScaleDpi;
-				int nSize = oInstruct.m_oData.size();
-				for( int i = 0; i < 4; ++i )
-				{
-					if( i >= nSize )
-						break;
+				ImFormatString( aBuffer,sizeof( aBuffer ),"%s",oInstruct.m_aData );
+				draw_list->AddText( pos,ImGui::GetColorU32( DATA_COLOR ),aBuffer );
+				pos.x += ImGui::CalcTextSize( "FF " ).x + 1.0f;
 
-					ImFormatString( aBuffer,sizeof( aBuffer ),"%02X",oInstruct.m_oData[ i ] );
-					draw_list->AddText( pos,ImGui::GetColorU32( DATA_COLOR ),aBuffer );
-					pos.x += ImGui::CalcTextSize( "FF " ).x + 1.0f;
-				}
-				if( nSize > 4 )
-					draw_list->AddText( ImVec2( pos.x,pos.y ),ImGui::GetColorU32( DATA_COLOR ),"+" );
-
+				pos.x = window_pos.x + START_DATA_ADD_POS * style.FontScaleDpi;
 				if( oInstruct.m_iAdress != 0x134 )
 				{
-					for( int i = 0; i < oInstruct.m_oData.size(); ++i )
-					{
-						ImFormatString( aBuffer,sizeof( aBuffer ),"%02",oInstruct.m_oData[ i ] );
-						draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ),aBuffer );
-						pos.x += ImGui::CalcTextSize( "FF" ).x + 1.0f;
-					}
+					ImFormatString( aBuffer,sizeof( aBuffer ),"%s",oInstruct.m_aData );
+					draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ),aBuffer );
+					pos.x += ImGui::CalcTextSize( "FF" ).x + 1.0f;
 
 					pos.x = window_pos.x + START_MNEMONIC_POS * style.FontScaleDpi;
 					ImFormatString( aBuffer,sizeof( aBuffer ),"%s",oInstruct.m_sMnemonic );
@@ -114,9 +103,8 @@ void DisassemblerDisplay::Update()
 				}
 				else
 				{
-					 pos.x = window_pos.x + START_DATA_ADD_POS * style.FontScaleDpi;
-					 ImFormatString( aBuffer, sizeof( aBuffer ), "%s", oInstruct.m_sMnemonic );
-					 draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ), aBuffer );
+					ImFormatString( aBuffer, sizeof( aBuffer ), "%s", oInstruct.m_sMnemonic );
+					draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ), aBuffer );
 				}
 
 				if ( oInstruct.m_iAdress != 0xFF )

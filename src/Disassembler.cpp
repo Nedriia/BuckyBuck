@@ -45,11 +45,10 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 	if( exists( outputPath ) == false )
 	{
 		std::fstream file;
-		file.open( outputPath.string(),std::ofstream::out );
+		file.open( outputPath.string(),std::ofstream::out | std::ios::binary );
 
 		if( file.is_open() )
 		{
-			std::string sComment = "";
 			json data;
 			auto& instructions = data[ "Instructions" ];
 			instructions = json::array();
@@ -59,7 +58,7 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 			g_iCounter = 0;
 			uint8_t iLengthIncrease = 0;
 
-			for( uint16_t iPC = 0x000; iPC < m_pCPU->GetMemorySize(); )
+			for( uint16_t iPC = 0x0000; iPC < m_pCPU->GetMemorySize(); )
 			{
 				if( iPC >= 0x104 && iPC <= 0x14F )
 				{
@@ -68,25 +67,25 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 					continue;
 				}
 
-				_WriteInstruction( instructions,iPC,sComment,&iLengthIncrease );
+				_WriteInstruction( instructions,iPC,&iLengthIncrease );
 
 				if( iPC + iLengthIncrease >= static_cast< uint32_t >( UINT16_MAX ) )
 					break;
 
 				iPC += iLengthIncrease;
 			}
-			file << data.dump( 4 );
+			json::to_cbor( data, file );
 		}
 	}
 
 	//Read the file to feed to the disassembler visual display
-	std::ifstream file( outputPath );
+	std::ifstream file( outputPath,std::ios::binary );
 	if( file.is_open() )
 	{
 		json data;
 		try
 		{
-			data = json::parse(file);
+			data = json::from_cbor( file );
 		}
 		catch (const json::parse_error& e)
 		{
@@ -100,18 +99,15 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 		for ( const auto& instruction : data["Instructions"])
 		{
 			DisassembledLine oDisasLine;
-			oDisasLine.m_iAdress = instruction.value("address", 0x0000 );
 
-			std::string sText = instruction.value( "opcode","" );
-			strncpy_s( oDisasLine.m_sMnemonic, sText.c_str(),sizeof( oDisasLine.m_sMnemonic ) - 1 );
-
-			sText = instruction.value( "comment","" );
-			strncpy_s( oDisasLine.m_sAditionalInfo, sText.c_str(),sizeof( oDisasLine.m_sAditionalInfo ) - 1 );
-
-			oDisasLine.m_oData = instruction["bytes"].get<std::vector<uint8_t> >( );
+			oDisasLine.m_iAdress = instruction.value( "address",0 );
 			oDisasLine.m_iDuration = instruction.value( "duration",0 );
 
-			m_aDisassembly.emplace_back( std::move( oDisasLine ) );
+			strncpy_s( oDisasLine.m_sMnemonic,instruction.value( "opcode","" ).c_str(),_TRUNCATE );
+			strncpy_s( oDisasLine.m_sAditionalInfo,instruction.value( "comment","" ).c_str(),_TRUNCATE );
+			strncpy_s( oDisasLine.m_aData,instruction.value( "bytes","" ).c_str(),_TRUNCATE );
+
+			m_aDisassembly.emplace_back( oDisasLine );
 		}
 	}
 }
@@ -133,47 +129,20 @@ std::string Disassembler::Format( const char* sFormat,... )
 
 void Disassembler::DecryptCartridge( json& oData )
 {
-	std::string sComment = ";Nintendo Logo";
-	_WriteInstruction( oData,0x104,sComment );
-
-	sComment = ";Title";
-	_WriteInstruction( oData,0x134,sComment );
-
-	sComment = ";Manufacturer code";
-	_WriteInstruction( oData,0x13F,sComment );
-
-	sComment = ";CGB Flag";
-	_WriteInstruction( oData,0x143,sComment );
-
-	sComment = ";New Licence Code";
-	_WriteInstruction( oData,0x144,sComment );
-
-	sComment = ";SGB Flag";
-	_WriteInstruction( oData,0x146,sComment );
-
-	sComment = ";Cartridge Type";
-	_WriteInstruction( oData,0x147,sComment );
-
-	sComment = ";ROM size";
-	_WriteInstruction( oData,0x148,sComment );
-
-	sComment = ";RAM size";
-	_WriteInstruction( oData,0x149,sComment );
-
-	sComment = ";Destination code";
-	_WriteInstruction( oData,0x14A,sComment );
-
-	sComment = ";Old Licence code";
-	_WriteInstruction( oData,0x14B,sComment );
-
-	sComment = ";Mask ROM version number";
-	_WriteInstruction( oData,0x14C,sComment );
-
-	sComment = ";Header Checksum";
-	_WriteInstruction( oData,0x14D,sComment );
-
-	sComment = ";Global Checksum";
-	_WriteInstruction( oData,0x14E,sComment );
+	_WriteInstruction( oData,0x104 );
+	_WriteInstruction( oData,0x134 );
+	_WriteInstruction( oData,0x13F );
+	_WriteInstruction( oData,0x143 );
+	_WriteInstruction( oData,0x144 );
+	_WriteInstruction( oData,0x146 );
+	_WriteInstruction( oData,0x147 );
+	_WriteInstruction( oData,0x148 );
+	_WriteInstruction( oData,0x149 );
+	_WriteInstruction( oData,0x14A );
+	_WriteInstruction( oData,0x14B );
+	_WriteInstruction( oData,0x14C );
+	_WriteInstruction( oData,0x14D );
+	_WriteInstruction( oData,0x14E );
 }
 
 void Disassembler::DecryptIORange()
@@ -222,22 +191,22 @@ void Disassembler::DecryptIORange()
 	// _WriteInstruction( file, 0xFF77, ";PCM12");
 }
 
-void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,std::string& sComment,uint8_t* iLengthIncrease /*= nullptr*/ )
+void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,uint8_t* iLengthIncrease /*= nullptr*/ )
 {
 	uint8_t					iDuration = 0;
 	uint16_t				iAdress = static_cast< int >( _iAdress );
 	char					sMnemonic[ 32 ] = { '\0' };
-	std::vector<uint8_t>	aData = {};
+	char					aData[ 32 ] = { '\0' };
+	std::string				sComment = "";
 
 	switch( iAdress )
 	{
 		case 0x104:
 		{
-			for( int i = 0; i < 4; ++i )//Nintendo logo
+			sComment = ";Nintendo Logo";
+			for( int i = 0; i < 6; ++i )
 			{
-				aData.resize( 8 );
-				memcpy( aData.data(),&m_pCPU->GetMemory()[ iAdress + 8 * i ],8 * sizeof( uint8_t ) );
-
+				ToHex( &m_pCPU->GetMemory()[ iAdress + 8 * i ], aData, 8 );
 				oData.push_back( {
 							{ "address",		iAdress + 8 * i },
 							{ "bytes",			aData }
@@ -245,24 +214,30 @@ void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,std::string&
 			}
 			return;
 		}
-		case 0x134://Title
+		case 0x134:
 		{
+			sComment = ";Title";
 			size_t iSize = ( 0x143 - 0x134 );
-			aData.resize( iSize );
-			memcpy( aData.data(),&m_pCPU->GetMemory()[ iAdress ],iSize * sizeof( uint8_t ) );
+			ToHex( &m_pCPU->GetMemory()[ iAdress ],aData,iSize );
 
-			size_t nLen = std::min( aData.size(),sizeof( sMnemonic ) - 1 );
+			/*size_t nLen = std::min( aData.size(),sizeof( sMnemonic ) - 1 );
+			if( nLen >= 32 )
+			{
+				snprintf( sMnemonic,32,"ERROR_SIZE_BUFFER" );
+				return;
+			}
 			std::copy( aData.begin(),aData.begin() + nLen,sMnemonic );
-			sMnemonic[ nLen ] = '\0';
+			sMnemonic[ nLen ] = '\0';*/
 
 			break;
 		}
-		case 0x143://Manufacturer code
+		case 0x143:
 		{
-			aData.resize( 1 );
-			aData[ 0 ] = m_pCPU->GetMemory()[ iAdress ];
+			sComment = ";CGB Flag";
+			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
+			ToHex( &iData,aData,1 );
 
-			switch( m_pCPU->GetDataAtAdress( iAdress ) )
+			switch( iData )
 			{
 				case 0:		sComment += " ;DMG - classic gameboy"; break;
 				case 0x80:	sComment += " ;CGB - retro compat monochrome"; break;
@@ -272,10 +247,12 @@ void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,std::string&
 		}
 		case 0x147:
 		{
-			aData.resize( 1 );
-			aData[ 0 ] = m_pCPU->GetMemory()[ iAdress ];
+			sComment = ";Cartridge Type";
 
-			switch( m_pCPU->GetDataAtAdress( iAdress ) )
+			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
+			ToHex( &iData,aData,1 );
+
+			switch( iData )
 			{
 				case 0x00: sComment += " ROM ONLY"; break;
 				case 0x01: sComment += " MBC1"; break;
@@ -311,10 +288,12 @@ void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,std::string&
 		}
 		case 0x148:
 		{
-			aData.resize( 1 );
-			aData[0] = m_pCPU->GetMemory()[ iAdress ];
+			sComment = ";ROM size";
 
-			switch( m_pCPU->GetDataAtAdress( iAdress ) )
+			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
+			ToHex( &iData,aData,1 );
+
+			switch( iData )
 			{
 				case 0x00: sComment += " 32 KiB, 2 (no banking)"; break;
 				case 0x01: sComment += " 64 KiB, 4"; break;
@@ -334,10 +313,12 @@ void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,std::string&
 		}
 		case 0x149:
 		{
-			aData.resize( 1 );
-			aData[ 0 ] = m_pCPU->GetMemory()[ iAdress ];
+			sComment = ";RAM size";
 
-			switch( m_pCPU->GetDataAtAdress( iAdress ) )
+			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
+			ToHex( &iData,aData,1 );
+
+			switch( iData )
 			{
 				case 0x00: sComment += " 0, No RAM"; break;
 				case 0x01: sComment += " -, Unused"; break;
@@ -351,30 +332,29 @@ void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,std::string&
 		}
 		case 0x14A:
 		{
-			aData.resize( 1 );
-			aData[ 0 ] = m_pCPU->GetMemory()[ iAdress ];
+			sComment = ";Destination code";
 
-			if( m_pCPU->GetDataAtAdress( iAdress ) == 0 )
+			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
+			ToHex( &iData,aData,1 );
+
+			if( iData )
 				sComment += " : Japanese";
-			else if( m_pCPU->GetDataAtAdress( iAdress ) == 1 )
+			else
 				sComment += " : Overseas only";
 			break;
 		}
 		case 0x14E:
 		{
-			aData.resize( 2 );
-			memcpy( aData.data(),&m_pCPU->GetMemory()[ iAdress ],2 * sizeof( uint8_t ) );
+			sComment = ";Global Checksum";
+			ToHex( &m_pCPU->GetMemory()[ iAdress ],aData,2 );//TODO : Check that
 			break;
 		}
-		case 0x13F:
-		case 0x144:
-		case 0x146:
-		case 0x14B:
-		case 0x14C:
-		case 0x14D:
-		{
-			break;
-		}
+		case 0x13F: sComment = ";Manufacturer code"; break;
+		case 0x144: sComment = ";New Licence Code"; break;
+		case 0x146: sComment = ";SGB Flag"; break;
+		case 0x14B: sComment = ";Old Licence code"; break;
+		case 0x14C: sComment = ";Mask ROM version number"; break;
+		case 0x14D: sComment = ";Header Checksum"; break;
 
 		default:
 		{
@@ -383,25 +363,43 @@ void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,std::string&
 
 			if( pInstruction )
 			{
-				aData.resize( pInstruction->m_iLength );
-				memcpy( aData.data(),&m_pCPU->GetMemory()[iAdress],pInstruction->m_iLength * sizeof(uint8_t));
+				ToHex( &iIndex,aData,pInstruction->m_iLength );
 
 				g_iCounter += pInstruction->m_iDuration >> 2;
 				if( iLengthIncrease )
 					*iLengthIncrease = pInstruction->m_iLength;
 
-				strncpy_s( sMnemonic, pInstruction->m_sMnemonic,sizeof( sMnemonic ) - 1 );
+				snprintf( sMnemonic,32,pInstruction->m_sMnemonic );
 				iDuration = pInstruction->m_iDuration / 4; //  -> t cycle to m cycle
+			}
+			else
+			{
+				snprintf( sMnemonic,32,"undefined opcode" );
+				aData[0] = 0;
 			}
 			break;
 		}
 	}
 
-	oData.push_back( {
+	json oBlock = {
 		{ "address",		iAdress },
 		{ "bytes",			aData },
 		{ "opcode",			sMnemonic },
 		{ "comment",		sComment },
 		{ "duration",		iDuration }
-		} );
+	};
+
+	oData.emplace_back( std::move( oBlock ) );
+}
+
+void Disassembler::ToHex( const uint8_t* Src,char* Dst,int len )
+{
+//TODO: check len param
+	static const char hex[] = "0123456789ABCDEF";
+	for( size_t i = 0,k = 0; i < len; i++, k += 2 )
+	{
+		uint8_t val = Src[ i ];
+		Dst[ k + 0 ] = hex[ val >> 4 ];
+		Dst[ k + 1 ] = hex[ val & 15 ];
+	}
 }
