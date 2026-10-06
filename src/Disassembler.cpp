@@ -10,7 +10,6 @@
 #include <stdarg.h>
 #include <vector>
 #include "CPU.h"
-#include <cstring>
 
 #include <nlohmann/json.hpp>
 
@@ -105,9 +104,9 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 
 			oDisasLine.m_iAdress = instruction.value( "a",0 );
 
-			strncpy_s( oDisasLine.m_sMnemonic,instruction.value( "m","" ).c_str(),_TRUNCATE );
-			strncpy_s( oDisasLine.m_sAditionalInfo,instruction.value( "c","" ).c_str(),_TRUNCATE );
-			strncpy_s( oDisasLine.m_aData,instruction.value( "b","" ).c_str(),_TRUNCATE );
+			CopyTrunc( oDisasLine.m_sMnemonic,instruction.value( "m","" ).c_str() );
+			CopyTrunc( oDisasLine.m_sAditionalInfo,instruction.value( "c","" ).c_str() );
+			CopyTrunc( oDisasLine.m_aData,instruction.value( "b","" ).c_str() );
 
 			oDisasLine.m_iDuration = instruction.value( "d",0 );
 

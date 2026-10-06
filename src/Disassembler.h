@@ -4,6 +4,7 @@
 #ifndef BUCKYBUCK_DISASSEMBLER_H
 #define BUCKYBUCK_DISASSEMBLER_H
 #include <cstdint>
+#include <cstring>
 #include <vector>
 
 #include "nlohmann/json_fwd.hpp"
@@ -86,6 +87,14 @@ static void WriteBlock( CBORWriter& oCborWriter,uint16_t iAdress,const char* sHe
 	if( sComment[ 0 ] ){			oCborWriter.Key( 'c' );			oCborWriter.Text( sComment.data(),sComment.size() );}
 	if( sHex[ 0 ] ){				oCborWriter.Key( 'b' );			oCborWriter.Text( sHex,strlen( sHex ) ); }
 	if( iDuration ){				oCborWriter.Key( 'd' );			oCborWriter.UInt( iDuration );}
+}
+
+template<size_t N>
+static void CopyTrunc( char (&sDst)[N], const char* sSrc )
+{
+	size_t iLen = std::min( strlen(sSrc), N - 1 );
+	memcpy( sDst,sSrc,iLen );
+	sDst[iLen] = '\0';
 }
 
 #endif //BUCKYBUCK_DISASSEMBLER_H
