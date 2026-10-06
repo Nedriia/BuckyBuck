@@ -1,7 +1,7 @@
 # BuckyBuck
 <div align="center">
 
-*A WIP gameboy emulattor in c++*  
+*A WIP gameboy emulator in c++*  
 **Windows and Linux.**
 
 </div>
