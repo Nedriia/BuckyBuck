@@ -10,7 +10,7 @@
 #include <stdarg.h>
 #include <vector>
 #include "CPU.h"
-#include <string.h>
+#include <cstring>
 
 #include <nlohmann/json.hpp>
 
