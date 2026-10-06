@@ -49,32 +49,29 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 
 		if( file.is_open() )
 		{
-			json data;
-			auto& instructions = data[ "Instructions" ];
-			instructions = json::array();
-
-			instructions.get_ref<json::array_t&>().reserve( m_pCPU->GetMemorySize() );
+			CBORWriter oCborWriter;
+			oCborWriter.buffer.reserve( 1 << 20 );
+			oCborWriter.Map( 1 );
+			oCborWriter.Text( "Instructions", 12 );
+			oCborWriter.Array_Begin();
 
 			g_iCounter = 0;
-			uint8_t iLengthIncrease = 0;
+			uint8_t iLengthIncrease = 1;
 
-			for( uint16_t iPC = 0x0000; iPC < m_pCPU->GetMemorySize(); )
+			for( uint32_t iPC = 0; iPC < m_pCPU->GetMemorySize(); )
 			{
 				if( iPC >= 0x104 && iPC <= 0x14F )
 				{
-					DecryptCartridge( instructions );
+					DecryptCartridge( oCborWriter );
 					iPC = 0x150;
 					continue;
 				}
 
-				_WriteInstruction( instructions,iPC,&iLengthIncrease );
-
-				if( iPC + iLengthIncrease >= static_cast< uint32_t >( UINT16_MAX ) )
-					break;
-
+				_WriteInstruction( oCborWriter,iPC,&iLengthIncrease );
 				iPC += iLengthIncrease;
 			}
-			json::to_cbor( data, file );
+			oCborWriter.Break();
+			file.write( reinterpret_cast< const char* >( oCborWriter.buffer.data() ), oCborWriter.buffer.size() );
 		}
 	}
 
@@ -106,11 +103,12 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 			DisassembledLine oDisasLine;
 
 			oDisasLine.m_iAdress = instruction.value( "a",0 );
-			oDisasLine.m_iDuration = instruction.value( "d",0 );
 
-			strncpy_s( oDisasLine.m_sMnemonic,instruction.value( "o","" ).c_str(),_TRUNCATE );
+			strncpy_s( oDisasLine.m_sMnemonic,instruction.value( "m","" ).c_str(),_TRUNCATE );
 			strncpy_s( oDisasLine.m_sAditionalInfo,instruction.value( "c","" ).c_str(),_TRUNCATE );
 			strncpy_s( oDisasLine.m_aData,instruction.value( "b","" ).c_str(),_TRUNCATE );
+
+			oDisasLine.m_iDuration = instruction.value( "d",0 );
 
 			m_aDisassembly.emplace_back( oDisasLine );
 		}
@@ -132,7 +130,7 @@ std::string Disassembler::Format( const char* sFormat,... )
 	return &vec[ 0 ];
 }
 
-void Disassembler::DecryptCartridge( json& oData )
+void Disassembler::DecryptCartridge( CBORWriter& oData )
 {
 	_WriteInstruction( oData,0x104 );
 	_WriteInstruction( oData,0x134 );
@@ -196,11 +194,11 @@ void Disassembler::DecryptIORange()
 	// _WriteInstruction( file, 0xFF77, ";PCM12");
 }
 
-void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,uint8_t* iLengthIncrease /*= nullptr*/ )
+void Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress,uint8_t* iLengthIncrease /*= nullptr*/ )
 {
 	uint8_t					iDuration = 0;
 	uint16_t				iAdress = static_cast< int >( _iAdress );
-	char					sMnemonic[ 32 ] = { '\0' };
+	const char*				sMnemonic = "";
 	char					aData[ 32 ] = { '\0' };
 	std::string				sComment = "";
 
@@ -212,10 +210,7 @@ void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,uint8_t* iLe
 			for( int i = 0; i < 6; ++i )
 			{
 				ToHex( &m_pCPU->GetMemory()[ iAdress + 8 * i ], aData, 8 );
-				oData.push_back( {
-							{ "a",		iAdress + 8 * i },
-							{ "b",			aData }
-						} );
+				WriteBlock( oData,iAdress,sMnemonic,i == 5 ? sComment.c_str() : "",aData,0);
 			}
 			return;
 		}
@@ -374,34 +369,19 @@ void Disassembler::_WriteInstruction( json& oData,uint16_t _iAdress,uint8_t* iLe
 				if( iLengthIncrease )
 					*iLengthIncrease = pInstruction->m_iLength;
 
-				snprintf( sMnemonic,32,pInstruction->m_sMnemonic );
+				sMnemonic = pInstruction->m_sMnemonic;
 				iDuration = pInstruction->m_iDuration / 4; //  -> t cycle to m cycle
 			}
 			else
 			{
-				snprintf( sMnemonic,32,"undefined opcode" );
+				sMnemonic = "undefined opcode";
 				aData[0] = 0;
 			}
 			break;
 		}
 	}
 
-	json oBlock;
-	oBlock[ "a" ] = iAdress;
-
-	if( aData[ 0 ] != '\0' )
-		oBlock[ "b" ] = aData;
-
-	if( sMnemonic[ 0 ] != '\0' )
-		oBlock[ "o" ] = sMnemonic;
-
-	if( sComment.empty() == false )
-		oBlock[ "c" ] = sComment;
-
-	if( iDuration != 0 )
-		oBlock[ "d" ] = iDuration;
-
-	oData.emplace_back( std::move( oBlock ) );
+	WriteBlock( oData,iAdress,aData,sMnemonic,sComment, iDuration );
 }
 
 void Disassembler::ToHex( const uint8_t* Src,char* Dst,int len )
