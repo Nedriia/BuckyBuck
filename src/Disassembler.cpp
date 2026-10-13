@@ -16,8 +16,8 @@ using json = nlohmann::json;
 static int g_iCounter = 0;
 CPU* Disassembler::m_pCPU = nullptr;
 std::vector< Disassembler::DisassembledLine > Disassembler::m_aDisassembly;
-Disassembler::DisassembledLine SAXParser::m_oDisassembledLine;
 uint8_t SAXParser::m_iElementFlag = 0;
+uint8_t SAXParser::m_iDepth = 0;
 
 Disassembler::Disassembler()
 {
@@ -35,6 +35,8 @@ void Disassembler::Init()
 
 void Disassembler::Disassemble_ROM( const char* sRomPath )
 {
+	auto start = std::chrono::high_resolution_clock::now();
+
 	if( sRomPath == nullptr )
 		return;
 
@@ -54,6 +56,7 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 			oCborWriter.Map( 1 );
 			oCborWriter.Text( "Instructions", 12 );
 			oCborWriter.Array_Begin();
+			oCborWriter.SizePlaceHolder();
 
 			g_iCounter = 0;
 			uint8_t iLengthIncrease = 1;
@@ -74,8 +77,13 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 			file.write( reinterpret_cast< const char* >( oCborWriter.buffer.data() ), oCborWriter.buffer.size() );
 		}
 	}
+	//TODO : tmp file
+	auto end = std::chrono::high_resolution_clock::now();
+	auto iDurationMs = std::chrono::duration<double,std::milli>( end - start ).count();
+	start = end;
+	std::cout << "Disassemble Time " << iDurationMs;
 
-	//Read the file to feed to the disassembler visual display
+	////Read the file to feed to the disassembler visual display
 	std::ifstream file( outputPath,std::ios::binary | std::ios::ate );
 	if( file.is_open() )
 	{
@@ -85,23 +93,15 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 		file.read( reinterpret_cast< char* >( buffer.data() ),size );
 
 		m_aDisassembly.clear();
-		//m_aDisassembly.reserve( 30 );
-
 		SAXParser oSaxParser;
 		bool bResult = json::sax_parse( buffer, &oSaxParser, nlohmann::detail::input_format_t::cbor, true, true );
-
-		// json data;
-		// try
-		// {
-		// 	data = json::from_cbor( buffer,true,true );
-		// }
-		//
-
-		// m_aDisassembly.clear();
-		// m_aDisassembly.reserve( data[ "Instructions" ].size() );
-		//
-		// for ( const auto& instruction : data["Instructions"])
+		if ( bResult == false )
+			m_aDisassembly.clear();
 	}
+
+	end = std::chrono::high_resolution_clock::now();
+	iDurationMs = std::chrono::duration<double,std::milli>( end - start ).count();
+	std::cout << " + Reading Time " << iDurationMs << std::endl;
 }
 
 std::string Disassembler::Format( const char* sFormat,... )
@@ -401,11 +401,17 @@ bool SAXParser::number_unsigned( number_unsigned_t val )
 {
 	switch( m_iElementFlag )
 	{
+		case 0:
+		{
+			if( Disassembler::m_aDisassembly.empty() )
+				Disassembler::m_aDisassembly.reserve( std::min<size_t>( static_cast<size_t>( val ), 100000 ) );
+			break;
+		}
 		case 1:
-			m_oDisassembledLine.m_iAdress = val;
+			m_pLine->m_iAdress = val;
 			break;
 		case 5:
-			m_oDisassembledLine.m_iDuration = val;
+			m_pLine->m_iDuration = val;
 			break;
 		default :
 			std::cerr << "Element not handle" << std::endl;
@@ -418,13 +424,13 @@ bool SAXParser::string( string_t& val )
 	switch( m_iElementFlag )
 	{
 		case 2:
-			CopyTrunc( m_oDisassembledLine.m_sMnemonic, val.c_str() );
+			CopyTrunc( m_pLine->m_sMnemonic, val.c_str() );
 			break;
 		case 3:
-			CopyTrunc( m_oDisassembledLine.m_sAditionalInfo,val.c_str() );
+			CopyTrunc( m_pLine->m_sAditionalInfo,val.c_str() );
 			break;
 		case 4:
-			CopyTrunc( m_oDisassembledLine.m_aData,val.c_str() );
+			CopyTrunc( m_pLine->m_aData,val.c_str() );
 			break;
 		default:
 			std::cerr << "Element not handle" << std::endl;
@@ -435,14 +441,24 @@ bool SAXParser::string( string_t& val )
 
 bool SAXParser::end_object()
 {
-	Disassembler::m_aDisassembly.push_back( m_oDisassembledLine );
+	--m_iDepth;
 	m_iElementFlag = 0;
 	return true;
 }
 
 bool SAXParser::key( string_t& val )
 {
-	m_iElementFlag = m_aKeys.at( val.c_str() );
+	if( val.size() == 1 )
+	{
+		switch( val[ 0 ] )
+		{
+			case 'a': m_iElementFlag = 1; return true;
+			case 'm': m_iElementFlag = 2; return true;
+			case 'c': m_iElementFlag = 3; return true;
+			case 'b': m_iElementFlag = 4; return true;
+			case 'd': m_iElementFlag = 5; return true;
+		}
+	}
 	return true;
 }
 
@@ -456,7 +472,14 @@ bool SAXParser::start_object( std::size_t elements )
 {
 	if( elements != 0 && elements != std::numeric_limits<std::size_t>::max() )
 	{
-		m_oDisassembledLine = Disassembler::DisassembledLine();
+		if( m_iDepth >= 1 )
+		{
+			auto& a = Disassembler::m_aDisassembly;
+			a.emplace_back();
+			m_pLine = &a.back();
+		}
+
+		++m_iDepth;
 		return true;
 	}
 

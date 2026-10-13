@@ -78,25 +78,45 @@ struct CBORWriter
 	void Map( size_t n ){ Head( 5, n ); }
 	void Array_Begin()	{ buffer.push_back( 0x9F ); }
 	void Break()		{ buffer.push_back( 0xFF ); }
+	void SizePlaceHolder()
+	{
+		m_iPos = buffer.size();
+		buffer.push_back( 0x1A );
+		for( int i = 0; i < 4; ++i )
+			buffer.push_back( 0 );
+	}
+	const size_t&	GetPosFixedSize() const { return m_iPos; }
+	const size_t&	GetSize() const { return m_iSize; }
+	void			IncrementInstructSize() { m_iSize++; }
+private :
+	size_t m_iPos = 0;
+	size_t m_iSize = 0; //TODO : Check if opening two files 
 };
 
 static void WriteBlock( CBORWriter& oCborWriter,uint16_t iAdress,const char* sHex, const char* sMnemo,const std::string& sComment,uint8_t iDuration )
 {
-	oCborWriter.Map( 1 + ( sHex[ 0 ] != 0 ) + ( sMnemo[ 0 ] != 0 ) + !sComment.empty() + ( iDuration != 0 ) );
+	uint8_t iBlockCount = 1 + ( sHex[ 0 ] != 0 ) + ( sMnemo[ 0 ] != 0 ) + !sComment.empty() + ( iDuration != 0 );
+	oCborWriter.Map( iBlockCount );
 									oCborWriter.Key( 'a' );			oCborWriter.UInt( iAdress );
 
 	if( sMnemo[ 0 ] ){				oCborWriter.Key( 'm' );			oCborWriter.Text( sMnemo,strlen( sMnemo ) );}
 	if( sComment[ 0 ] ){			oCborWriter.Key( 'c' );			oCborWriter.Text( sComment.data(),sComment.size() );}
 	if( sHex[ 0 ] ){				oCborWriter.Key( 'b' );			oCborWriter.Text( sHex,strlen( sHex ) ); }
 	if( iDuration ){				oCborWriter.Key( 'd' );			oCborWriter.UInt( iDuration );}
+
+	//Patch size
+	for( int i = 0; i < 4; ++i )
+		oCborWriter.buffer[ oCborWriter.GetPosFixedSize() + 1 + i] = static_cast< uint8_t >( oCborWriter.GetSize() >> ( 24 - 8 * i ) );
+
+	oCborWriter.IncrementInstructSize();
 }
 
 template<size_t N>
-static void CopyTrunc( char (&sDst)[N], const char* sSrc )
+static void CopyTrunc( char( &sDst )[ N ],const char* sSrc )
 {
-	size_t iLen = std::min( strlen(sSrc), N - 1 );
+	size_t iLen = std::min( strlen( sSrc ),N - 1 );
 	memcpy( sDst,sSrc,iLen );
-	sDst[iLen] = '\0';
+	sDst[ iLen ] = '\0';
 }
 
 struct SAXParser : public nlohmann::json_sax<nlohmann::json>
@@ -133,17 +153,8 @@ struct SAXParser : public nlohmann::json_sax<nlohmann::json>
 
 private:
 	static uint8_t m_iElementFlag;
-	static Disassembler::DisassembledLine m_oDisassembledLine;
-
-	std::unordered_map<std::string,uint8_t > m_aKeys
-	{
-		{ "Instructions", 0 },
-		{ "a", 1 },
-		{ "m", 2 },
-		{ "c", 3 },
-		{ "b", 4 },
-		{ "d", 5 }
-	};
-}; 
+	static uint8_t m_iDepth;
+	Disassembler::DisassembledLine* m_pLine = nullptr;
+};
 
 #endif //BUCKYBUCK_DISASSEMBLER_H
