@@ -85,22 +85,22 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 		file.read( reinterpret_cast< char* >( buffer.data() ),size );
 
 		m_aDisassembly.clear();
-		m_aDisassembly.reserve( data[ "Instructions" ].size() );
+		//m_aDisassembly.reserve( 30 );
 
 		SAXParser oSaxParser;
 		bool bResult = json::sax_parse( buffer, &oSaxParser, nlohmann::detail::input_format_t::cbor, true, true );
 
+		// json data;
+		// try
+		// {
+		// 	data = json::from_cbor( buffer,true,true );
+		// }
+		//
 
-			oDisasLine.m_iAdress = instruction.value( "a",0 );
-
-			CopyTrunc( oDisasLine.m_sMnemonic,instruction.value( "m","" ).c_str() );
-			CopyTrunc( oDisasLine.m_sAditionalInfo,instruction.value( "c","" ).c_str() );
-			CopyTrunc( oDisasLine.m_aData,instruction.value( "b","" ).c_str() );
-
-			oDisasLine.m_iDuration = instruction.value( "d",0 );
-
-			m_aDisassembly.emplace_back( oDisasLine );
-		}
+		// m_aDisassembly.clear();
+		// m_aDisassembly.reserve( data[ "Instructions" ].size() );
+		//
+		// for ( const auto& instruction : data["Instructions"])
 	}
 }
 
