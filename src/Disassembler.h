@@ -7,7 +7,7 @@
 #include <cstring>
 #include <vector>
 
-#include "nlohmann/json_fwd.hpp"
+#include <nlohmann/json.hpp>
 
 struct CBORWriter;
 class CPU;
@@ -34,12 +34,14 @@ private:
 		char					m_aData[ 32 ] = { '\0' };
 	};
 
-	static std::vector< DisassembledLine > m_aDisassembly;
-	static CPU* m_pCPU;
+	static std::vector< DisassembledLine >	m_aDisassembly;
+	static CPU*								m_pCPU;
 
 public:
 	static const std::vector< DisassembledLine >& GetDisassemblyInstructions() { return m_aDisassembly; }
 	static void ToHex( const uint8_t* Src, char* Dst, int len );
+
+	friend class SAXParser;
 };
 
 struct CBORWriter
@@ -96,5 +98,52 @@ static void CopyTrunc( char (&sDst)[N], const char* sSrc )
 	memcpy( sDst,sSrc,iLen );
 	sDst[iLen] = '\0';
 }
+
+struct SAXParser : public nlohmann::json_sax<nlohmann::json>
+{
+	// called when null is parsed
+	bool null();
+
+	// called when a boolean is parsed; value is passed
+	bool boolean( bool val );
+
+	// called when a signed or unsigned integer number is parsed; value is passed
+	bool number_integer( number_integer_t val );
+	bool number_unsigned( number_unsigned_t val );
+
+	// called when a floating-point number is parsed; value and original string is passed
+	bool number_float( number_float_t val,const string_t& s );
+
+	// called when a string is parsed; value is passed and can be safely moved away
+	bool string( string_t& val );
+	// called when a binary value is parsed; value is passed and can be safely moved away
+	bool binary( binary_t& val );
+
+	// called when an object or array begins or ends, resp. The number of elements is passed (or -1 if not known)
+	bool start_object( std::size_t elements );
+	bool end_object();
+	bool start_array( std::size_t elements );
+	bool end_array();
+	// called when an object key is parsed; value is passed and can be safely moved away
+	bool key( string_t& val );
+
+	// called when a parse error occurs; byte position, the last token, and an exception is passed
+	bool parse_error( std::size_t position,const std::string& last_token,const nlohmann::json::exception& ex );
+
+
+private:
+	static uint8_t m_iElementFlag;
+	static Disassembler::DisassembledLine m_oDisassembledLine;
+
+	std::unordered_map<std::string,uint8_t > m_aKeys
+	{
+		{ "Instructions", 0 },
+		{ "a", 1 },
+		{ "m", 2 },
+		{ "c", 3 },
+		{ "b", 4 },
+		{ "d", 5 }
+	};
+}; 
 
 #endif //BUCKYBUCK_DISASSEMBLER_H

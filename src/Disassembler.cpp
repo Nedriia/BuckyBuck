@@ -11,13 +11,13 @@
 #include <vector>
 #include "CPU.h"
 
-#include <nlohmann/json.hpp>
-
 using json = nlohmann::json;
 
 static int g_iCounter = 0;
 CPU* Disassembler::m_pCPU = nullptr;
 std::vector< Disassembler::DisassembledLine > Disassembler::m_aDisassembly;
+Disassembler::DisassembledLine SAXParser::m_oDisassembledLine;
+uint8_t SAXParser::m_iElementFlag = 0;
 
 Disassembler::Disassembler()
 {
@@ -84,23 +84,12 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 		std::vector<uint8_t> buffer( static_cast< size_t >( size ) );
 		file.read( reinterpret_cast< char* >( buffer.data() ),size );
 
-		json data;
-		try
-		{
-			data = json::from_cbor( buffer,true,true );
-		}
-		catch (const json::parse_error& e)
-		{
-			std::cerr << e.what() << '\n';
-			return;
-		}
-
 		m_aDisassembly.clear();
 		m_aDisassembly.reserve( data[ "Instructions" ].size() );
 
-		for ( const auto& instruction : data["Instructions"])
-		{
-			DisassembledLine oDisasLine;
+		SAXParser oSaxParser;
+		bool bResult = json::sax_parse( buffer, &oSaxParser, nlohmann::detail::input_format_t::cbor, true, true );
+
 
 			oDisasLine.m_iAdress = instruction.value( "a",0 );
 
@@ -394,4 +383,82 @@ void Disassembler::ToHex( const uint8_t* Src,char* Dst,int len )
 		Dst[ k + 0 ] = hex[ val >> 4 ];
 		Dst[ k + 1 ] = hex[ val & 15 ];
 	}
+}
+
+bool SAXParser::boolean( bool val ) { return false; }
+bool SAXParser::number_integer( number_integer_t val ) { return false; }
+bool SAXParser::number_float( number_float_t val, const string_t& s ) { return false; }
+bool SAXParser::binary( binary_t& val ){ return true; }
+bool SAXParser::start_array( std::size_t elements ){ return true; }
+bool SAXParser::end_array(){ return true;}												 //Not Used
+
+bool SAXParser::null()
+{
+	return true;
+}
+
+bool SAXParser::number_unsigned( number_unsigned_t val )
+{
+	switch( m_iElementFlag )
+	{
+		case 1:
+			m_oDisassembledLine.m_iAdress = val;
+			break;
+		case 5:
+			m_oDisassembledLine.m_iDuration = val;
+			break;
+		default :
+			std::cerr << "Element not handle" << std::endl;
+			return false;
+	}
+	return true;
+}
+bool SAXParser::string( string_t& val )
+{
+	switch( m_iElementFlag )
+	{
+		case 2:
+			CopyTrunc( m_oDisassembledLine.m_sMnemonic, val.c_str() );
+			break;
+		case 3:
+			CopyTrunc( m_oDisassembledLine.m_sAditionalInfo,val.c_str() );
+			break;
+		case 4:
+			CopyTrunc( m_oDisassembledLine.m_aData,val.c_str() );
+			break;
+		default:
+			std::cerr << "Element not handle" << std::endl;
+			return false;
+	}
+	return true;
+}
+
+bool SAXParser::end_object()
+{
+	Disassembler::m_aDisassembly.push_back( m_oDisassembledLine );
+	m_iElementFlag = 0;
+	return true;
+}
+
+bool SAXParser::key( string_t& val )
+{
+	m_iElementFlag = m_aKeys.at( val.c_str() );
+	return true;
+}
+
+bool SAXParser::parse_error( std::size_t position, const std::string& last_token, const nlohmann::json::exception& ex )
+{
+	std::cerr << ex.what() << '\n';
+	return false;
+}
+
+bool SAXParser::start_object( std::size_t elements )
+{
+	if( elements != 0 && elements != std::numeric_limits<std::size_t>::max() )
+	{
+		m_oDisassembledLine = Disassembler::DisassembledLine();
+		return true;
+	}
+
+	return false;
 }
