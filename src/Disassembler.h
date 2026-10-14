@@ -32,6 +32,7 @@ private:
 		char					m_sMnemonic[ 32 ] = { '\0' };
 		char					m_sAditionalInfo[ 32 ] = { '\0' };
 		char					m_aData[ 32 ] = { '\0' };
+		char					m_aDataBis[ 32 ] = { '\0' };
 	};
 
 	static std::vector< DisassembledLine >	m_aDisassembly;
@@ -39,7 +40,7 @@ private:
 
 public:
 	static const std::vector< DisassembledLine >& GetDisassemblyInstructions() { return m_aDisassembly; }
-	static void ToHex( const uint16_t iSrcAdress, char* Dst, int len );
+	static void ToHex( const uint16_t iSrcAdress, char* Dst, int len, bool bConcat = false );
 
 	friend class SAXParser;
 };
@@ -93,9 +94,9 @@ private :
 	size_t m_iSize = 0; //TODO : Check if opening two files 
 };
 
-static void WriteBlock( CBORWriter& oCborWriter,uint16_t iAdress,const char* sHex, const char* sMnemo,const std::string& sComment,uint8_t iDuration )
+static void WriteBlock( CBORWriter& oCborWriter,uint16_t iAdress,const char* sHex, const char* sHexBis, const char* sMnemo,const std::string& sComment,uint8_t iDuration )
 {
-	uint8_t iBlockCount = 1 + ( sHex[ 0 ] != 0 ) + ( sMnemo[ 0 ] != 0 ) + !sComment.empty() + ( iDuration != 0 );
+	uint8_t iBlockCount = 1 + ( sHex[ 0 ] != 0 ) + ( sHexBis[ 0 ] != 0 ) + ( sMnemo[ 0 ] != 0 ) + !sComment.empty() + ( iDuration != 0 );
 	oCborWriter.Map( iBlockCount );
 									oCborWriter.Key( 'a' );			oCborWriter.UInt( iAdress );
 
@@ -103,6 +104,7 @@ static void WriteBlock( CBORWriter& oCborWriter,uint16_t iAdress,const char* sHe
 	if( sComment[ 0 ] ){			oCborWriter.Key( 'c' );			oCborWriter.Text( sComment.data(),sComment.size() );}
 	if( sHex[ 0 ] ){				oCborWriter.Key( 'b' );			oCborWriter.Text( sHex,strlen( sHex ) ); }
 	if( iDuration ){				oCborWriter.Key( 'd' );			oCborWriter.UInt( iDuration );}
+	if( sHexBis[ 0 ] ) {			oCborWriter.Key( 'z' );			oCborWriter.Text( sHexBis,strlen( sHexBis ) ); }
 
 	//Patch size
 	for( int i = 0; i < 4; ++i )

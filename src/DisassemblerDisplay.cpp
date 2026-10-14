@@ -99,7 +99,7 @@ void DisassemblerDisplay::Update()
 				pos.x = window_pos.x + START_DATA_ADD_POS * style.FontScaleDpi;
 				if( oInstruct.m_iAdress != 0x134 )
 				{
-					ImFormatString( aBuffer,sizeof( aBuffer ),"%s",oInstruct.m_aData );
+					ImFormatString( aBuffer,sizeof( aBuffer ),"%s",oInstruct.m_aDataBis );
 					draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ),aBuffer );
 					pos.x += ImGui::CalcTextSize( "FF" ).x + 1.0f;
 
@@ -121,7 +121,7 @@ void DisassemblerDisplay::Update()
 				}
 
 				pos.x = window_pos.x + START_ADDINFO_POS * style.FontScaleDpi;
-				ImFormatString( aBuffer, sizeof(aBuffer), "%s", oInstruct.m_sAditionalInfo );
+				ImFormatString( aBuffer, sizeof( aBuffer ), "%s", oInstruct.m_sAditionalInfo );
 				draw_list->AddText( pos,ImGui::GetColorU32( ADITIONNALINFO_COLOR ), aBuffer );
 
 				pos.y += 15.0f * style.FontScaleDpi;

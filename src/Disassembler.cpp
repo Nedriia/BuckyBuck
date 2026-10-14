@@ -187,6 +187,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 	uint16_t				iAdress = static_cast< int >( _iAdress );
 	std::string				sMnemonic;
 	char					aData[ 64 ] = { '\0' };
+	char					aDataBis[ 64 ] = { '\0' };
 	std::string				sComment = "";
 	uint8_t					iPCIncrease = 1;
 	uint8_t					iLengthData = 1;
@@ -203,7 +204,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 				for( int i = 0; i < 6; ++i )
 				{
 					ToHex( iAdress + 8 * i,aData,8 );
-					WriteBlock( oData,iAdress + 8 * i,sMnemonic.c_str(),i == 5 ? sComment.c_str() : "",aData,0);
+					WriteBlock( oData,iAdress + 8 * i,aData,aDataBis,sMnemonic.c_str(),i == 5 ? sComment.c_str() : "",0 );
 				}
 				iPCIncrease = 48;
 				return iPCIncrease;
@@ -372,11 +373,12 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 				if( pInstruction )
 				{
 					g_iCounter += pInstruction->m_iDuration >> 2;
-					iPCIncrease = pInstruction->m_iLength;
-					iLengthData = pInstruction->m_iLength;
+					iPCIncrease = iLengthData = pInstruction->m_iLength;
 
 					sMnemonic = pInstruction->m_sMnemonic;
 					iDuration = pInstruction->m_iDuration / 4; //  -> t cycle to m cycle
+
+					ToHex( iAdress,aDataBis,iLengthData, true ); //Write Data bis
 				}
 				else
 				{
@@ -389,21 +391,21 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 	}
 
 	ToHex( iAdress,aData,iLengthData );
-	WriteBlock( oData,iAdress,aData,sMnemonic.c_str(),sComment,iDuration);
+	WriteBlock( oData,iAdress,aData,aDataBis,sMnemonic.c_str(),sComment,iDuration);
 
 	return iPCIncrease;
 }
 
-void Disassembler::ToHex( const uint16_t iSrcAdress,char* Dst,int len )
+void Disassembler::ToHex( const uint16_t iSrcAdress,char* Dst,int len, bool bConcat /*= false*/ )
 {
 	//TODO: check len param
 	static const char hex[] = "0123456789ABCDEF";
-	for( size_t i = 0,k = 0; i < len; i++,k += 3 )
+	for( size_t i = bConcat ? len - 1 : 0,k = 0; bConcat ? i > 0 : i < len; bConcat ? i-- : i++,bConcat ? k+= 2 : k += 3 )
 	{
 		uint8_t val  = CPU::GetInstance()->GetDataAtAdress( iSrcAdress + i );
 		Dst[ k + 0 ] = hex[ val >> 4 ];
 		Dst[ k + 1 ] = hex[ val & 15 ];
-		if( i + 1 < len )
+		if( bConcat == false && i + 1 < len )
 			Dst[ k + 2 ] = ' ';
 	}
 }
@@ -455,6 +457,9 @@ bool SAXParser::string( string_t& val )
 		case 4:
 			CopyTrunc( m_pLine->m_aData,val.c_str() );
 			break;
+		case 6:
+			CopyTrunc( m_pLine->m_aDataBis,val.c_str() );
+			break;
 		default:
 			std::cerr << "Element not handle" << std::endl;
 			return false;
@@ -475,11 +480,12 @@ bool SAXParser::key( string_t& val )
 	{
 		switch( val[ 0 ] )
 		{
-			case 'a': m_iElementFlag = 1; return true;
-			case 'm': m_iElementFlag = 2; return true;
-			case 'c': m_iElementFlag = 3; return true;
-			case 'b': m_iElementFlag = 4; return true;
-			case 'd': m_iElementFlag = 5; return true;
+			case 'a':	m_iElementFlag = 1; return true;
+			case 'm':	m_iElementFlag = 2; return true;
+			case 'c':	m_iElementFlag = 3; return true;
+			case 'b':	m_iElementFlag = 4; return true;
+			case 'd':	m_iElementFlag = 5; return true;
+			case 'z':	m_iElementFlag = 6; return true;
 		}
 	}
 	return true;
