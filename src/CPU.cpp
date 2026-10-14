@@ -161,6 +161,14 @@ void CPU::DestroyInstance()
 	delete m_pSingleton;
 }
 
+uint8_t CPU::GetDataAtAdress( const uint16_t iAdress ) const
+{
+	if( iAdress < 0 || iAdress >= GetMemorySize() )
+		return 0;
+
+	return m_aMemory[ iAdress ];
+}
+
 void CPU::AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8_t iFlags, uint8_t iFlagSet1, uint8_t iFlagReset0, std::array<uint8_t, 3> aValues, bool bExtent, const char* sMnemonic, ... )
 {
 	if( m_aOpcodesTable[ iIndex ] != nullptr && !bExtent )
@@ -630,9 +638,9 @@ void CPU::_FillOpcodesTables()
 					case 2:
 					case 3:
 							CPU::AddCPUInstruction( i,{ &CPU::RET },	0,			  0,	0,		{1,20,8},false,"RET %s",cc[ y ].data() ); break;
-					case 4: CPU::AddCPUInstruction( i,{ &CPU::LD },		0,			  0,	0,		{2,12},false,"LD (a8), A" ); break;
+					case 4: CPU::AddCPUInstruction( i,{ &CPU::LDH_C },	0,			  0,	0,		{2,12},false,"LD (0xFF00+C), A" ); break;
 					case 5: CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( Z | N ),  {2,16},false,"ADD SP, s8" ); break;
-					case 6: CPU::AddCPUInstruction( i,{ &CPU::LD },		0,			  0,	0,		{2,8},false,"LD A, (a8)" ); break;
+					case 6: CPU::AddCPUInstruction( i,{ &CPU::LDH },	0,			  0,	0,		{2,8},false,"LD A, (0xFF00+C)" ); break;
 					case 7: CPU::AddCPUInstruction( i,{ &CPU::LD }, ( Z | N | H | C ),0,( Z | N ),  {2,12},false,"LD HL, SP+s8" ); break;
 				}
 				break;
@@ -783,7 +791,7 @@ void CPU::_FillOpcodesTables()
 				}
 				break;
 			}
-			case 7: CPU::AddCPUInstruction( i,{ &CPU::RST },0,0,0,{1,16},false,"RST %i",y ); break;
+			case 7: CPU::AddCPUInstruction( i,{ &CPU::RST },0,0,0,{1,16},false,"RST %02X",y * 8 ); break;
 			}
 			break;
 		}

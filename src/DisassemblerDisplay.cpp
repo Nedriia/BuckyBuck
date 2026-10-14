@@ -20,11 +20,11 @@
 #define ADITIONNALINFO_COLOR ImVec4( 0.357f, 0.357f, 0.357f, 1.00f )
 
 #define START_ADDR_POS		float( 10.0f )
-#define START_DATA_POS		float( START_ADDR_POS + 100.0f )
+#define START_DATA_POS		float( START_ADDR_POS + 85.0f )
 #define START_MNEMONIC_POS	float( START_DATA_POS + 125.0f )
-#define START_DATA_ADD_POS	float( START_MNEMONIC_POS + 135.0f )
-#define START_DURATION_POS	float( START_DATA_ADD_POS + 125.0f )
-#define START_ADDINFO_POS	float( START_DURATION_POS + 100.0f )
+#define START_DATA_ADD_POS	float( START_MNEMONIC_POS + 175.0f )
+#define START_DURATION_POS	float( START_DATA_ADD_POS + 115.0f )
+#define START_ADDINFO_POS	float( START_DURATION_POS + 50.0f )
 
 DisassemblerDisplay::DisassemblerDisplay() :
 	m_iSelectedLine( UINT16_MAX )

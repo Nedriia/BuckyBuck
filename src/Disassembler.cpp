@@ -198,6 +198,12 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 	{
 		switch( iAdress )
 		{
+			case 0x40:sComment = ";vblank";		goto LINE_DEFAULT; break;
+			case 0x48:sComment = ";LCD";		goto LINE_DEFAULT; break;
+			case 0x50:sComment = ";timer";		goto LINE_DEFAULT; break;
+			case 0x58:sComment = ";serial";		goto LINE_DEFAULT; break;
+			case 0x60:sComment = ";joypad";		goto LINE_DEFAULT; break;
+			
 			case 0x104:
 			{
 				sComment = ";Nintendo Logo";
@@ -325,50 +331,12 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 			case 0x14C: sComment = ";Mask ROM version number"; break;
 			case 0x14D: sComment = ";Header Checksum"; break;
 
-			//case 0xFF00: sComment = ";Joypad"; break;
-			//case 0xFF01: sComment = ";Serial data"; break;
-			//case 0xFF02: sComment = ";Serial control"; break;
-			//case 0xFF03: break;
-			//case 0xFF04: sComment = ";Divider"; break;
-			//case 0xFF05: sComment = ";Timer counter"; break;
-			//case 0xFF06: sComment = ";Timer modulo"; break;
-			//case 0xFF07: sComment = ";Timer ctrl"; break;
-			//case 0xFF08: break;
-			//case 0xFF0F: sComment = ";Int flag"; break;
-			//case 0xFF30: sComment = ";Wave pattern"; break;
-			//case 0xFF40: sComment = ";lcd ctrl"; break;
-			//case 0xFF41: sComment = ";lcd stat"; break;
-			//case 0xFF42: sComment = ";scroll Y"; break;
-			//case 0xFF43: sComment = ";scroll X"; break;
-			//case 0xFF44: sComment = ";LY"; break;
-			//case 0xFF45: sComment = ";LYC"; break;
-			//case 0xFF46: sComment = ";OAM DMA"; break;
-			//case 0xFF47: sComment = ";bg pal"; break;
-			//case 0xFF48: sComment = ";obj pal 0"; break;
-			//case 0xFF49: sComment = ";obj pal 1"; break;
-			//case 0xFF4A: sComment = ";win Y"; break;
-			//case 0xFF4B: sComment = ";win X"; break;
-			//case 0xFF4D: sComment = ";speed switch"; break;
-			//case 0xFF4F: sComment = ";vram bank"; break;
-			//case 0xFF50: sComment = ";disable bootrom"; break;
-			//case 0xFF51: sComment = ";hdma src hi"; break;
-			//case 0xFF52: sComment = ";hdma src low"; break;
-			//case 0xFF53: sComment = ";hdma dest hi"; break;
-			//case 0xFF54: sComment = ";hdma dest low"; break;
-			//case 0xFF55: sComment = "; hdma count"; break;
-			//case 0xFF56: sComment = ";ir port"; break;
-			//case 0xFF68: sComment = ";bg pal set"; break;
-			//case 0xFF69: sComment = ";bg pal data"; break;
-			//case 0xFF6A: sComment = ";obj pal set"; break;
-			//case 0xFF6B: sComment = ";obj pal data"; break;
-			//case 0xFF70: sComment = ";wram bank"; break;
-			//case 0xFF76: sComment = ";PCM34"; break;
-			//case 0xFF77: sComment = ";PCM12"; break;
-
+			LINE_DEFAULT:
 			default:
 			{
 				uint8_t iIndex = m_pCPU->GetDataAtAdress( iAdress );
-				CPU::CPU_Instructions* pInstruction = iIndex == 0xCB ? CPU::m_aExtendOpcodesTable[ m_pCPU->GetDataAtAdress( iAdress + 1 ) ] : CPU::m_aOpcodesTable[ iIndex ];
+				uint8_t iDataNext = m_pCPU->GetDataAtAdress( iAdress + 1 );
+				CPU::CPU_Instructions* pInstruction = iIndex == 0xCB ? CPU::m_aExtendOpcodesTable[ iDataNext ] : CPU::m_aOpcodesTable[ iIndex ];
 
 				if( pInstruction )
 				{
@@ -378,7 +346,60 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 					sMnemonic = pInstruction->m_sMnemonic;
 					iDuration = pInstruction->m_iDuration / 4; //  -> t cycle to m cycle
 
-					ToHex( iAdress,aDataBis,iLengthData, true ); //Write Data bis
+					if( pInstruction->m_pFct == &CPU::LDH ||
+						pInstruction->m_pFct == &CPU::LDH_C ) //LDH
+					{
+						switch( iDataNext )
+						{
+							case 0:		sComment = ";joypad";break;
+							case 1:		sComment = ";serial data";break;
+							case 2:		sComment = ";serial control";break;
+							case 4:		sComment = ";divider";break;
+							case 5:		sComment = ";timer counter";break;
+							case 6:		sComment = ";timer modulo";break;
+							case 7:		sComment = ";timer control";break;
+							case 0x10:case 0x11:case 0x12:case 0x13:case 0x14:
+							case 0x15:case 0x16:case 0x17:case 0x18:case 0x19:
+							case 0x20:case 0x21:case 0x22:case 0x23:case 0x24:
+							case 0x25:case 0x26:
+								sComment = Format( "NR%i",iDataNext ).c_str();
+								break;
+							case 0x0F:	sComment = ";int flag"; break;
+							case 0x30:	sComment = ";wave pattern"; break;
+							case 0x40:	sComment = ";lcd control";break;
+							case 0x41:	sComment = ";lcd status";break;
+							case 0x42:	sComment = ";scroll Y";break;
+							case 0x43:	sComment = ";scroll X";break;
+							case 0x44:	sComment = ";LY";break;
+							case 0x45:	sComment = ";LYC";break;
+							case 0x46:	sComment = ";OAM DMA";break;
+							case 0x47:	sComment = ";bg pal";break;
+							case 0x48:	sComment = ";obj pal 0";break;
+							case 0x49:	sComment = ";obj pal 1";break;
+							case 0x4A:	sComment = ";win Y";break;
+							case 0x4B:	sComment = ";win X";break;
+							case 0x4D:	sComment = ";speed switch";break;
+							case 0x4F:	sComment = ";vram bank";break;
+							case 0x50:	sComment = ";disable bootrom";break;
+							case 0x51:	sComment = ";hdma src hi";break;
+							case 0x52:	sComment = ";hdma src low";break;
+							case 0x53:	sComment = ";hdma dst hi";break;
+							case 0x54:	sComment = ";hdma dst low";break;
+							case 0x55:	sComment = ";hdma count";break;
+							case 0x56:	sComment = ";ir port";break;
+							case 0x68:	sComment = ";bg pal set";break;
+							case 0x69:	sComment = ";bg pal data";break;
+							case 0x6A:	sComment = ";obj pal set";break;
+							case 0x6B:	sComment = ";obj pal data";break;
+							case 0x70:	sComment = ";wram bank";break;
+							case 0x76:	sComment = ";PCM34";break;
+							case 0x77:	sComment = ";PCM12";break;
+							case 0xFF:	sComment = ";int enable";break;
+							default: break;
+						}
+					}
+					
+					ToHex( iAdress,aDataBis,iLengthData,true ); //Write Data bis
 				}
 				else
 				{
