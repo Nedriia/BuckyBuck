@@ -21,7 +21,7 @@ protected :
 
 	void				_SelectLine( const uint16_t iStart );
 	void				_DrawSelectedLine( ImDrawList* draw_list, const float fWindowPosX, const float fWindowPosY, const uint16_t iStart, const uint16_t iSize );
-	static const char* EndOfNthBlock( const char* text, int nb_blocs );
+	static const char*	EndOfNthBlock( const char* text, int nb_blocs );
 
 	uint16_t			m_iSelectedLine;
 };

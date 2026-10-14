@@ -185,7 +185,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 {
 	uint8_t					iDuration = 0;
 	uint16_t				iAdress = static_cast< int >( _iAdress );
-	const char*				sMnemonic = "";
+	std::string				sMnemonic;
 	char					aData[ 64 ] = { '\0' };
 	std::string				sComment = "";
 	uint8_t					iPCIncrease = 1;
@@ -203,7 +203,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 				for( int i = 0; i < 6; ++i )
 				{
 					ToHex( iAdress + 8 * i,aData,8 );
-					WriteBlock( oData,iAdress + 8 * i,sMnemonic,i == 5 ? sComment.c_str() : "",aData,0 );
+					WriteBlock( oData,iAdress + 8 * i,sMnemonic.c_str(),i == 5 ? sComment.c_str() : "",aData,0);
 				}
 				iPCIncrease = 48;
 				return iPCIncrease;
@@ -212,15 +212,9 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 			{
 				sComment = ";Title";
 				iLengthData = 15;
-
-				/*size_t nLen = std::min( aData.size(),sizeof( sMnemonic ) - 1 );
-				if( nLen >= 32 )
-				{
-					snprintf( sMnemonic,32,"ERROR_SIZE_BUFFER" );
-					return;
-				}
-				std::copy( aData.begin(),aData.begin() + nLen,sMnemonic );
-				sMnemonic[ nLen ] = '\0';*/
+				sMnemonic.resize( iLengthData );
+				for( int i = 0; i < iLengthData; ++i )
+					sMnemonic[i] = static_cast<char>( m_pCPU->GetDataAtAdress( iAdress + i ) );
 
 				break;
 			}
@@ -395,7 +389,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 	}
 
 	ToHex( iAdress,aData,iLengthData );
-	WriteBlock( oData,iAdress,aData,sMnemonic,sComment, iDuration );
+	WriteBlock( oData,iAdress,aData,sMnemonic.c_str(),sComment,iDuration);
 
 	return iPCIncrease;
 }
