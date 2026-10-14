@@ -20,11 +20,11 @@ public:
 	static void Disassemble_ROM( const char* sRomPath );
 	static std::string Format( const char* sFormat, ... );
 	static void DecryptCartridge( CBORWriter& oData );
-	static void DecryptIORange();
+	static void DecryptIORange( CBORWriter& oData );
 	void Init();
 
 private:
-	static void _WriteInstruction( CBORWriter& oData, uint16_t _iAdress, uint8_t* iLengthIncrease = nullptr );
+	static uint8_t _WriteInstruction( CBORWriter& oData, uint16_t _iAdress );
 	struct DisassembledLine
 	{
 		uint16_t				m_iAdress = 0;
@@ -39,7 +39,7 @@ private:
 
 public:
 	static const std::vector< DisassembledLine >& GetDisassemblyInstructions() { return m_aDisassembly; }
-	static void ToHex( const uint8_t* Src, char* Dst, int len );
+	static void ToHex( const uint16_t iSrcAdress, char* Dst, int len );
 
 	friend class SAXParser;
 };

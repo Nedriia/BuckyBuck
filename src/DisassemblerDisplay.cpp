@@ -107,10 +107,10 @@ void DisassemblerDisplay::Update()
 					draw_list->AddText( pos,ImGui::GetColorU32( DATA_BIS_COLOR ), aBuffer );
 				}
 
-				if ( oInstruct.m_iAdress != 0xFF )
+				if ( oInstruct.m_iAdress != 0xFF && oInstruct.m_iDuration )
 				{
 					pos.x = window_pos.x + START_DURATION_POS * style.FontScaleDpi;
-					ImFormatString( aBuffer, sizeof( aBuffer ), "%i",  oInstruct.m_iDuration );
+					ImFormatString( aBuffer, sizeof( aBuffer ), "%i", oInstruct.m_iDuration );
 					draw_list->AddText( pos,ImGui::GetColorU32( LENGTH_COLOR ), aBuffer );
 				}
 

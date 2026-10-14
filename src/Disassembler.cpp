@@ -59,8 +59,6 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 			oCborWriter.SizePlaceHolder();
 
 			g_iCounter = 0;
-			uint8_t iLengthIncrease = 1;
-
 			for( uint32_t iPC = 0; iPC < m_pCPU->GetMemorySize(); )
 			{
 				if( iPC >= 0x104 && iPC <= 0x14F )
@@ -70,9 +68,9 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 					continue;
 				}
 
-				_WriteInstruction( oCborWriter,iPC,&iLengthIncrease );
-				iPC += iLengthIncrease;
+				iPC += _WriteInstruction( oCborWriter,iPC );
 			}
+
 			oCborWriter.Break();
 			file.write( reinterpret_cast< const char* >( oCborWriter.buffer.data() ), oCborWriter.buffer.size() );
 		}
@@ -137,251 +135,282 @@ void Disassembler::DecryptCartridge( CBORWriter& oData )
 	_WriteInstruction( oData,0x14E );
 }
 
-void Disassembler::DecryptIORange()
+void Disassembler::DecryptIORange( CBORWriter& oData )
 {
-	// _WriteInstruction( file, 0xFF00, ";Joypad");
-	// _WriteInstruction( file, 0xFF01, ";Serial data");
-	// _WriteInstruction( file, 0xFF02, ";Serial control");
-	// _WriteInstruction( file, 0xFF03, "");
-	// _WriteInstruction( file, 0xFF04, ";Divider");
-	// _WriteInstruction( file, 0xFF05, ";Timer counter");
-	// _WriteInstruction( file, 0xFF06, ";Timer modulo");
-	// _WriteInstruction( file, 0xFF07, ";Timer ctrl");
-	// _WriteInstruction( file, 0xFF08, "");
-	// _WriteInstruction( file, 0xFF0F, ";Int flag");
-	// for ( int i = 0xFF10; i <= 0xFF26; ++i )
-	// 	_WriteInstruction( file, i, Format( "NR%i", i ).c_str());
-	// _WriteInstruction( file, 0xFF27, "");
-	// _WriteInstruction( file, 0xFF30, ";Wave pattern");
-	// _WriteInstruction( file, 0xFF40, ";lcd ctrl");
-	// _WriteInstruction( file, 0xFF41, ";lcd stat");
-	// _WriteInstruction( file, 0xFF42, ";scroll Y");
-	// _WriteInstruction( file, 0xFF43, ";scroll X");
-	// _WriteInstruction( file, 0xFF44, ";LY");
-	// _WriteInstruction( file, 0xFF45, ";LYC");
-	// _WriteInstruction( file, 0xFF46, ";OAM DMA");
-	// _WriteInstruction( file, 0xFF47, ";bg pal");
-	// _WriteInstruction( file, 0xFF48, ";obj pal 0");
-	// _WriteInstruction( file, 0xFF49, ";obj pal 1");
-	// _WriteInstruction( file, 0xFF4A, ";win Y");
-	// _WriteInstruction( file, 0xFF4B, ";win X");
-	// _WriteInstruction( file, 0xFF4D, ";speed switch");
-	// _WriteInstruction( file, 0xFF4F, ";vram bank");
-	// _WriteInstruction( file, 0xFF50, ";disable bootrom");
-	// _WriteInstruction( file, 0xFF51, ";hdma src hi");
-	// _WriteInstruction( file, 0xFF52, ";hdma src low");
-	// _WriteInstruction( file, 0xFF53, ";hdma dest hi");
-	// _WriteInstruction( file, 0xFF54, ";hdma dest low");
-	// _WriteInstruction( file, 0xFF55, ";hdma count");
-	// _WriteInstruction( file, 0xFF56, ";ir port");
-	// _WriteInstruction( file, 0xFF68, ";bg pal set");
-	// _WriteInstruction( file, 0xFF69, ";bg pal data");
-	// _WriteInstruction( file, 0xFF6A, ";obj pal sel");
-	// _WriteInstruction( file, 0xFF6B, ";obj pal data");
-	// _WriteInstruction( file, 0xFF70, ";wram bank");
-	// _WriteInstruction( file, 0xFF76, ";PCM34");
-	// _WriteInstruction( file, 0xFF77, ";PCM12");
+	_WriteInstruction( oData, 0xFF00 );
+	_WriteInstruction( oData, 0xFF01 );
+	_WriteInstruction( oData, 0xFF02 );
+	_WriteInstruction( oData, 0xFF03 );
+	_WriteInstruction( oData, 0xFF04 );
+	_WriteInstruction( oData, 0xFF05 );
+	_WriteInstruction( oData, 0xFF06 );
+	_WriteInstruction( oData, 0xFF07 );
+	_WriteInstruction( oData, 0xFF08 );
+	_WriteInstruction( oData, 0xFF0F );
+	for ( int i = 0xFF10; i <= 0xFF26; ++i )
+		_WriteInstruction( oData, i );
+	_WriteInstruction( oData, 0xFF27 );
+	_WriteInstruction( oData, 0xFF30 );
+	_WriteInstruction( oData, 0xFF40 );
+	_WriteInstruction( oData, 0xFF41 );
+	_WriteInstruction( oData, 0xFF42 );
+	_WriteInstruction( oData, 0xFF43 );
+	_WriteInstruction( oData, 0xFF44 );
+	_WriteInstruction( oData, 0xFF45 );
+	_WriteInstruction( oData, 0xFF46 );
+	_WriteInstruction( oData, 0xFF47 );
+	_WriteInstruction( oData, 0xFF48 );
+	_WriteInstruction( oData, 0xFF49 );
+	_WriteInstruction( oData, 0xFF4A );
+	_WriteInstruction( oData, 0xFF4B );
+	_WriteInstruction( oData, 0xFF4D );
+	_WriteInstruction( oData, 0xFF4F );
+	_WriteInstruction( oData, 0xFF50 );
+	_WriteInstruction( oData, 0xFF51 );
+	_WriteInstruction( oData, 0xFF52 );
+	_WriteInstruction( oData, 0xFF53 );
+	_WriteInstruction( oData, 0xFF54 );
+	_WriteInstruction( oData, 0xFF55 );
+	_WriteInstruction( oData, 0xFF56 );
+	_WriteInstruction( oData, 0xFF68 );
+	_WriteInstruction( oData, 0xFF69 );
+	_WriteInstruction( oData, 0xFF6A );
+	_WriteInstruction( oData, 0xFF6B );
+	_WriteInstruction( oData, 0xFF70 );
+	_WriteInstruction( oData, 0xFF76 );
+	_WriteInstruction( oData, 0xFF77 );
 }
 
-void Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress,uint8_t* iLengthIncrease /*= nullptr*/ )
+uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 {
 	uint8_t					iDuration = 0;
 	uint16_t				iAdress = static_cast< int >( _iAdress );
 	const char*				sMnemonic = "";
-	char					aData[ 32 ] = { '\0' };
+	char					aData[ 64 ] = { '\0' };
 	std::string				sComment = "";
+	uint8_t					iPCIncrease = 1;
+	uint8_t					iLengthData = 1;
 
-	switch( iAdress )
+	if( iAdress >= 0xFF10 && iAdress <= 0xFF26 )
+		sComment = Format( "NR%i", iAdress - 0xFF10 ).c_str();
+	else
 	{
-		case 0x104:
+		switch( iAdress )
 		{
-			sComment = ";Nintendo Logo";
-			for( int i = 0; i < 6; ++i )
+			case 0x104:
 			{
-				ToHex( &m_pCPU->GetMemory()[ iAdress + 8 * i ], aData, 8 );
-				WriteBlock( oData,iAdress,sMnemonic,i == 5 ? sComment.c_str() : "",aData,0);
+				sComment = ";Nintendo Logo";
+				for( int i = 0; i < 6; ++i )
+				{
+					ToHex( iAdress + 8 * i,aData,8 );
+					WriteBlock( oData,iAdress + 8 * i,sMnemonic,i == 5 ? sComment.c_str() : "",aData,0 );
+				}
+				iPCIncrease = 48;
+				return iPCIncrease;
 			}
-			return;
-		}
-		case 0x134:
-		{
-			sComment = ";Title";
-			size_t iSize = ( 0x143 - 0x134 );
-			ToHex( &m_pCPU->GetMemory()[ iAdress ],aData,iSize );
-
-			/*size_t nLen = std::min( aData.size(),sizeof( sMnemonic ) - 1 );
-			if( nLen >= 32 )
+			case 0x134:
 			{
-				snprintf( sMnemonic,32,"ERROR_SIZE_BUFFER" );
-				return;
+				sComment = ";Title";
+				iLengthData = 15;
+
+				/*size_t nLen = std::min( aData.size(),sizeof( sMnemonic ) - 1 );
+				if( nLen >= 32 )
+				{
+					snprintf( sMnemonic,32,"ERROR_SIZE_BUFFER" );
+					return;
+				}
+				std::copy( aData.begin(),aData.begin() + nLen,sMnemonic );
+				sMnemonic[ nLen ] = '\0';*/
+
+				break;
 			}
-			std::copy( aData.begin(),aData.begin() + nLen,sMnemonic );
-			sMnemonic[ nLen ] = '\0';*/
-
-			break;
-		}
-		case 0x143:
-		{
-			sComment = ";CGB Flag";
-			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
-			ToHex( &iData,aData,1 );
-
-			switch( iData )
+			case 0x143:
 			{
-				case 0:		sComment += " ;DMG - classic gameboy"; break;
-				case 0x80:	sComment += " ;CGB - retro compat monochrome"; break;
-				case 0xC0:	sComment += " ;CGB - only"; break;
+				sComment = ";CGB Flag";
+				switch( m_pCPU->GetDataAtAdress( iAdress ) )
+				{
+					case 0:		sComment += " ;DMG - classic gameboy"; break;
+					case 0x80:	sComment += " ;CGB - retro compat monochrome"; break;
+					case 0xC0:	sComment += " ;CGB - only"; break;
+				}
+				break;
 			}
-			break;
-		}
-		case 0x147:
-		{
-			sComment = ";Cartridge Type";
-
-			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
-			ToHex( &iData,aData,1 );
-
-			switch( iData )
+			case 0x147:
 			{
-				case 0x00: sComment += " ROM ONLY"; break;
-				case 0x01: sComment += " MBC1"; break;
-				case 0x02: sComment += " MBC1+RAM"; break;
-				case 0x03: sComment += " MBC1+RAM+BATTERY"; break;
-				case 0x05: sComment += " MBC2"; break;
-				case 0x06: sComment += " MBC2+BATTERY"; break;
-				case 0x08: sComment += " ROM+RAM"; break;
-				case 0x09: sComment += " ROM+RAM+BATTERY"; break;
-				case 0x0B: sComment += " MMM01"; break;
-				case 0x0C: sComment += " MMM01+RAM"; break;
-				case 0x0D: sComment += " MMM01+RAM+BATTERY"; break;
-				case 0x0F: sComment += " MBC3+TIMER+BATTERY"; break;
-				case 0x10: sComment += " MBC3+TIMER+RAM+BATTERY"; break;
-				case 0x11: sComment += " MBC3"; break;
-				case 0x12: sComment += " MBC3+RAM"; break;
-				case 0x13: sComment += " MBC3+RAM+BATTERY"; break;
-				case 0x19: sComment += " MBC5"; break;
-				case 0x1A: sComment += " MBC5+RAM"; break;
-				case 0x1B: sComment += " MBC5+RAM+BATTERY"; break;
-				case 0x1C: sComment += " MBC5+RUMBLE"; break;
-				case 0x1D: sComment += " MBC5+RUMBLE+RAM"; break;
-				case 0x1E: sComment += " MBC5+RUMBLE+RAM+BATTERY"; break;
-				case 0x20: sComment += " MBC6"; break;
-				case 0x22: sComment += " MBC7+SENSOR+RUMBLE+RAM+BATTERY"; break;
-				case 0xFC: sComment += " POCKET CAMERA"; break;
-				case 0xFD: sComment += " BANDAI TAMA5"; break;
-				case 0xFE: sComment += " HuC3"; break;
-				case 0xFF: sComment += " HuC1+RAM+BATTERY"; break;
-				default:   sComment += " Unknown Type"; break;
+				sComment = ";Cartridge Type";
+				switch( m_pCPU->GetDataAtAdress( iAdress ) )
+				{
+					case 0x00: sComment += " ROM ONLY"; break;
+					case 0x01: sComment += " MBC1"; break;
+					case 0x02: sComment += " MBC1+RAM"; break;
+					case 0x03: sComment += " MBC1+RAM+BATTERY"; break;
+					case 0x05: sComment += " MBC2"; break;
+					case 0x06: sComment += " MBC2+BATTERY"; break;
+					case 0x08: sComment += " ROM+RAM"; break;
+					case 0x09: sComment += " ROM+RAM+BATTERY"; break;
+					case 0x0B: sComment += " MMM01"; break;
+					case 0x0C: sComment += " MMM01+RAM"; break;
+					case 0x0D: sComment += " MMM01+RAM+BATTERY"; break;
+					case 0x0F: sComment += " MBC3+TIMER+BATTERY"; break;
+					case 0x10: sComment += " MBC3+TIMER+RAM+BATTERY"; break;
+					case 0x11: sComment += " MBC3"; break;
+					case 0x12: sComment += " MBC3+RAM"; break;
+					case 0x13: sComment += " MBC3+RAM+BATTERY"; break;
+					case 0x19: sComment += " MBC5"; break;
+					case 0x1A: sComment += " MBC5+RAM"; break;
+					case 0x1B: sComment += " MBC5+RAM+BATTERY"; break;
+					case 0x1C: sComment += " MBC5+RUMBLE"; break;
+					case 0x1D: sComment += " MBC5+RUMBLE+RAM"; break;
+					case 0x1E: sComment += " MBC5+RUMBLE+RAM+BATTERY"; break;
+					case 0x20: sComment += " MBC6"; break;
+					case 0x22: sComment += " MBC7+SENSOR+RUMBLE+RAM+BATTERY"; break;
+					case 0xFC: sComment += " POCKET CAMERA"; break;
+					case 0xFD: sComment += " BANDAI TAMA5"; break;
+					case 0xFE: sComment += " HuC3"; break;
+					case 0xFF: sComment += " HuC1+RAM+BATTERY"; break;
+					default:   sComment += " Unknown Type"; break;
+				}
+				break;
 			}
-			break;
-		}
-		case 0x148:
-		{
-			sComment = ";ROM size";
-
-			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
-			ToHex( &iData,aData,1 );
-
-			switch( iData )
+			case 0x148:
 			{
-				case 0x00: sComment += " 32 KiB, 2 (no banking)"; break;
-				case 0x01: sComment += " 64 KiB, 4"; break;
-				case 0x02: sComment += " 128 KiB, 8"; break;
-				case 0x03: sComment += " 256 KiB, 16"; break;
-				case 0x04: sComment += " 512 KiB, 32"; break;
-				case 0x05: sComment += " 1 MiB, 64"; break;
-				case 0x06: sComment += " 2 MiB, 128"; break;
-				case 0x07: sComment += " 4 MiB, 256"; break;
-				case 0x08: sComment += " 8 MiB, 512"; break;
-				case 0x52: sComment += " 1.1 MiB, 72"; break;
-				case 0x53: sComment += " 1.2 MiB, 80"; break;
-				case 0x54: sComment += " 1.5 MiB, 96"; break;
-				default:   sComment += " Unknown Value"; break;
+				sComment = ";ROM size";
+				switch( m_pCPU->GetDataAtAdress( iAdress ) )
+				{
+					case 0x00: sComment += " 32 KiB, 2 (no banking)"; break;
+					case 0x01: sComment += " 64 KiB, 4"; break;
+					case 0x02: sComment += " 128 KiB, 8"; break;
+					case 0x03: sComment += " 256 KiB, 16"; break;
+					case 0x04: sComment += " 512 KiB, 32"; break;
+					case 0x05: sComment += " 1 MiB, 64"; break;
+					case 0x06: sComment += " 2 MiB, 128"; break;
+					case 0x07: sComment += " 4 MiB, 256"; break;
+					case 0x08: sComment += " 8 MiB, 512"; break;
+					case 0x52: sComment += " 1.1 MiB, 72"; break;
+					case 0x53: sComment += " 1.2 MiB, 80"; break;
+					case 0x54: sComment += " 1.5 MiB, 96"; break;
+					default:   sComment += " Unknown Value"; break;
+				}
+				break;
 			}
-			break;
-		}
-		case 0x149:
-		{
-			sComment = ";RAM size";
-
-			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
-			ToHex( &iData,aData,1 );
-
-			switch( iData )
+			case 0x149:
 			{
-				case 0x00: sComment += " 0, No RAM"; break;
-				case 0x01: sComment += " -, Unused"; break;
-				case 0x02: sComment += " 8 KiB, 1 bank"; break;
-				case 0x03: sComment += " 32 KiB, 4 banks of 8 KiB each"; break;
-				case 0x04: sComment += " 128 KiB, 16 banks of 8 KiB each"; break;
-				case 0x05: sComment += " 64 KiB, 8 banks of 8 KiB each"; break;
-				default:   sComment += " Unknown Code"; break;
+				sComment = ";RAM size";
+				switch( m_pCPU->GetDataAtAdress( iAdress ) )
+				{
+					case 0x00: sComment += " 0, No RAM"; break;
+					case 0x01: sComment += " -, Unused"; break;
+					case 0x02: sComment += " 8 KiB, 1 bank"; break;
+					case 0x03: sComment += " 32 KiB, 4 banks of 8 KiB each"; break;
+					case 0x04: sComment += " 128 KiB, 16 banks of 8 KiB each"; break;
+					case 0x05: sComment += " 64 KiB, 8 banks of 8 KiB each"; break;
+					default:   sComment += " Unknown Code"; break;
+				}
+				break;
 			}
-			break;
-		}
-		case 0x14A:
-		{
-			sComment = ";Destination code";
-
-			uint8_t iData = m_pCPU->GetDataAtAdress( iAdress );
-			ToHex( &iData,aData,1 );
-
-			if( iData )
-				sComment += " : Japanese";
-			else
-				sComment += " : Overseas only";
-			break;
-		}
-		case 0x14E:
-		{
-			sComment = ";Global Checksum";
-			ToHex( &m_pCPU->GetMemory()[ iAdress ],aData,2 );//TODO : Check that
-			break;
-		}
-		case 0x13F: sComment = ";Manufacturer code"; break;
-		case 0x144: sComment = ";New Licence Code"; break;
-		case 0x146: sComment = ";SGB Flag"; break;
-		case 0x14B: sComment = ";Old Licence code"; break;
-		case 0x14C: sComment = ";Mask ROM version number"; break;
-		case 0x14D: sComment = ";Header Checksum"; break;
-
-		default:
-		{
-			uint8_t iIndex = m_pCPU->GetDataAtAdress( iAdress );
-			CPU::CPU_Instructions* pInstruction = iIndex == 0xCB ? CPU::m_aExtendOpcodesTable[ m_pCPU->GetDataAtAdress( iAdress + 1 ) ] : CPU::m_aOpcodesTable[ iIndex ];
-
-			if( pInstruction )
+			case 0x14A:
 			{
-				ToHex( &iIndex,aData,pInstruction->m_iLength );
-
-				g_iCounter += pInstruction->m_iDuration >> 2;
-				if( iLengthIncrease )
-					*iLengthIncrease = pInstruction->m_iLength;
-
-				sMnemonic = pInstruction->m_sMnemonic;
-				iDuration = pInstruction->m_iDuration / 4; //  -> t cycle to m cycle
+				sComment = ";Destination code";
+				if( m_pCPU->GetDataAtAdress( iAdress ) )
+					sComment += " : Japanese";
+				else
+					sComment += " : Overseas only";
+				break;
 			}
-			else
+			case 0x14E:
 			{
-				sMnemonic = "undefined opcode";
-				aData[0] = 0;
+				sComment = ";Global Checksum";
+				iLengthData = 2;//TODO : Check that
+				break;
 			}
-			break;
+			case 0x13F: sComment = ";Manufacturer code"; break;
+			case 0x144: sComment = ";New Licence Code"; break;
+			case 0x146: sComment = ";SGB Flag"; break;
+			case 0x14B: sComment = ";Old Licence code"; break;
+			case 0x14C: sComment = ";Mask ROM version number"; break;
+			case 0x14D: sComment = ";Header Checksum"; break;
+
+			//case 0xFF00: sComment = ";Joypad"; break;
+			//case 0xFF01: sComment = ";Serial data"; break;
+			//case 0xFF02: sComment = ";Serial control"; break;
+			//case 0xFF03: break;
+			//case 0xFF04: sComment = ";Divider"; break;
+			//case 0xFF05: sComment = ";Timer counter"; break;
+			//case 0xFF06: sComment = ";Timer modulo"; break;
+			//case 0xFF07: sComment = ";Timer ctrl"; break;
+			//case 0xFF08: break;
+			//case 0xFF0F: sComment = ";Int flag"; break;
+			//case 0xFF30: sComment = ";Wave pattern"; break;
+			//case 0xFF40: sComment = ";lcd ctrl"; break;
+			//case 0xFF41: sComment = ";lcd stat"; break;
+			//case 0xFF42: sComment = ";scroll Y"; break;
+			//case 0xFF43: sComment = ";scroll X"; break;
+			//case 0xFF44: sComment = ";LY"; break;
+			//case 0xFF45: sComment = ";LYC"; break;
+			//case 0xFF46: sComment = ";OAM DMA"; break;
+			//case 0xFF47: sComment = ";bg pal"; break;
+			//case 0xFF48: sComment = ";obj pal 0"; break;
+			//case 0xFF49: sComment = ";obj pal 1"; break;
+			//case 0xFF4A: sComment = ";win Y"; break;
+			//case 0xFF4B: sComment = ";win X"; break;
+			//case 0xFF4D: sComment = ";speed switch"; break;
+			//case 0xFF4F: sComment = ";vram bank"; break;
+			//case 0xFF50: sComment = ";disable bootrom"; break;
+			//case 0xFF51: sComment = ";hdma src hi"; break;
+			//case 0xFF52: sComment = ";hdma src low"; break;
+			//case 0xFF53: sComment = ";hdma dest hi"; break;
+			//case 0xFF54: sComment = ";hdma dest low"; break;
+			//case 0xFF55: sComment = "; hdma count"; break;
+			//case 0xFF56: sComment = ";ir port"; break;
+			//case 0xFF68: sComment = ";bg pal set"; break;
+			//case 0xFF69: sComment = ";bg pal data"; break;
+			//case 0xFF6A: sComment = ";obj pal set"; break;
+			//case 0xFF6B: sComment = ";obj pal data"; break;
+			//case 0xFF70: sComment = ";wram bank"; break;
+			//case 0xFF76: sComment = ";PCM34"; break;
+			//case 0xFF77: sComment = ";PCM12"; break;
+
+			default:
+			{
+				uint8_t iIndex = m_pCPU->GetDataAtAdress( iAdress );
+				CPU::CPU_Instructions* pInstruction = iIndex == 0xCB ? CPU::m_aExtendOpcodesTable[ m_pCPU->GetDataAtAdress( iAdress + 1 ) ] : CPU::m_aOpcodesTable[ iIndex ];
+
+				if( pInstruction )
+				{
+					g_iCounter += pInstruction->m_iDuration >> 2;
+					iPCIncrease = pInstruction->m_iLength;
+					iLengthData = pInstruction->m_iLength;
+
+					sMnemonic = pInstruction->m_sMnemonic;
+					iDuration = pInstruction->m_iDuration / 4; //  -> t cycle to m cycle
+				}
+				else
+				{
+					sMnemonic = "undefined opcode";
+					aData[ 0 ] = 0;
+				}
+				break;
+			}
 		}
 	}
 
+	ToHex( iAdress,aData,iLengthData );
 	WriteBlock( oData,iAdress,aData,sMnemonic,sComment, iDuration );
+
+	return iPCIncrease;
 }
 
-void Disassembler::ToHex( const uint8_t* Src,char* Dst,int len )
+void Disassembler::ToHex( const uint16_t iSrcAdress,char* Dst,int len )
 {
-//TODO: check len param
+	//TODO: check len param
 	static const char hex[] = "0123456789ABCDEF";
-	for( size_t i = 0,k = 0; i < len; i++, k += 2 )
+	for( size_t i = 0,k = 0; i < len; i++,k += 3 )
 	{
-		uint8_t val = Src[ i ];
+		uint8_t val  = CPU::GetInstance()->GetDataAtAdress( iSrcAdress + i );
 		Dst[ k + 0 ] = hex[ val >> 4 ];
 		Dst[ k + 1 ] = hex[ val & 15 ];
+		if( i + 1 < len )
+			Dst[ k + 2 ] = ' ';
 	}
 }
 

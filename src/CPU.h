@@ -39,7 +39,7 @@ class CPU
 	void			EmulateCycle();
 	void			DestroyInstance();
 
-	uint8_t							GetDataAtAdress( const uint16_t iAdress ) const { return m_aMemory[iAdress]; }
+	uint8_t							GetDataAtAdress( const uint16_t iAdress ) const { return m_aMemory[iAdress]; } //TODO : check adress param
 	uint16_t						GetPC() const { return m_iPC; }
 	uint16_t						GetMemorySize() const { return m_aMemory.size(); }
 	const std::vector<uint8_t>&		GetMemory() const { return m_aMemory; }
