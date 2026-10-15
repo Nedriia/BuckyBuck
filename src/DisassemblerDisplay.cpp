@@ -7,7 +7,6 @@
 #include <chrono>
 #include <GLFW/glfw3.h>
 
-#include "CPU.h"
 #include "Disassembler.h"
 #include "imgui.h"
 #include "imgui_internal.h"
@@ -27,7 +26,7 @@
 #define START_ADDINFO_POS	float( START_DURATION_POS + 50.0f )
 
 DisassemblerDisplay::DisassemblerDisplay() :
-	m_iSelectedLine( UINT16_MAX )
+	m_iSelectedLine( -1 )
 {
 
 }
@@ -72,7 +71,7 @@ void DisassemblerDisplay::Update()
 
 		while( clipper.Step() )
 		{
-			_SelectLine( clipper.DisplayStart );
+			_SelectLine( clipper.DisplayStart, clipper.DisplayEnd );
 			_DrawSelectedLine( draw_list,window_pos.x,window_pos.y,clipper.DisplayStart,clipper.DisplayEnd );
 
 			for( int n = clipper.DisplayStart; n < clipper.DisplayEnd; ++n )
@@ -87,7 +86,7 @@ void DisassemblerDisplay::Update()
 
 				pos.x = window_pos.x + START_DATA_POS * style.FontScaleDpi;
 				ImFormatString( aBuffer,sizeof( aBuffer ),"%s",oInstruct.m_aData );
-				const char* sEnd = DisassemblerDisplay::EndOfNthBlock( aBuffer,4 );
+				const char* sEnd = DisassemblerDisplay::_EndOfNthBlock( aBuffer,4 );
 				draw_list->AddText( pos,ImGui::GetColorU32( DATA_COLOR ),aBuffer,sEnd );
 				if( ( *sEnd ) != '\0' )
 				{
@@ -134,7 +133,7 @@ void DisassemblerDisplay::Update()
 	iDurationMs = std::chrono::duration<double,std::milli>( end - start ).count();
 }
 
-void DisassemblerDisplay::_SelectLine( const uint16_t iStart )
+void DisassemblerDisplay::_SelectLine( const int iStart,const int iEnd )
 {
 	if( ImGui::IsMouseClicked( 0 ) )
 	{
@@ -170,11 +169,34 @@ void DisassemblerDisplay::_SelectLine( const uint16_t iStart )
 			}
 		}
 	}
+
+	if( ImGui::IsWindowFocused( ImGuiFocusedFlags_ChildWindows ) && m_iSelectedLine != -1 )
+	{
+		int iLine = m_iSelectedLine;
+		if( ImGui::IsKeyPressed( ImGuiKey_UpArrow ) ) { iLine--; }
+		else if( ImGui::IsKeyPressed( ImGuiKey_DownArrow ) ) { iLine++; }
+
+		iLine = std::max( 0, iLine );
+		iLine = std::min( iLine, static_cast< int >( Disassembler::GetDisassemblyInstructions().size() ) );
+
+		if( iLine != m_iSelectedLine )
+		{
+			//Scroll to focus
+			ImGuiStyle& style = ImGui::GetStyle();
+			float selectedY = iLine * ( 15.0f * style.FontScaleDpi );
+			if( iLine < iStart )
+				ImGui::SetScrollFromPosY( ImGui::GetCursorStartPos().y + selectedY,0.0f );
+			else if( iLine > iEnd )
+				ImGui::SetScrollFromPosY( ImGui::GetCursorStartPos().y + selectedY,1.0f );
+
+			m_iSelectedLine = iLine;
+		}
+	}
 }
 
 void DisassemblerDisplay::_DrawSelectedLine( ImDrawList* draw_list,const float fWindowPosX,const float fWindowPosY,const uint16_t iStart,const uint16_t iSize )
 {
-	if( m_iSelectedLine != UINT16_MAX )
+	if( m_iSelectedLine != -1 )
 	{
 		ImGuiStyle& style = ImGui::GetStyle();
 
@@ -189,7 +211,7 @@ void DisassemblerDisplay::_DrawSelectedLine( ImDrawList* draw_list,const float f
 	}
 }
 
-const char* DisassemblerDisplay::EndOfNthBlock( const char* text,int nb_blocs )
+const char* DisassemblerDisplay::_EndOfNthBlock( const char* text,int nb_blocs )
 {
 	const char* p = text;
 	int blocs = 0;
