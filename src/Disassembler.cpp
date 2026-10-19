@@ -40,61 +40,89 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 	if( sRomPath == nullptr )
 		return;
 
-	std::filesystem::path outputPath = DISASSM_DIR / static_cast< std::filesystem::path >( sRomPath ).filename();//don't use name but calculate HASH
-	outputPath.replace_extension( ".json" );
+	std::filesystem::path sTmpPath = DISASSM_DIR / static_cast< std::filesystem::path >( sRomPath ).filename();//don't use name but calculate HASH
+	sTmpPath.replace_extension( ".json.tmp" );
 
 	//Disassemble instructions
-	if( exists( outputPath ) == false )
+	try
 	{
-		std::fstream file;
-		file.open( outputPath.string(),std::ofstream::out | std::ios::binary );
-
-		if( file.is_open() )
+		if( exists( sTmpPath ) == false )
 		{
-			CBORWriter oCborWriter;
-			oCborWriter.buffer.reserve( 1 << 20 );
-			oCborWriter.Map( 1 );
-			oCborWriter.Text( "Instructions", 12 );
-			oCborWriter.Array_Begin();
-			oCborWriter.SizePlaceHolder();
+			std::fstream file;
+			file.open( sTmpPath.string(),std::ofstream::out | std::ios::binary );
 
-			g_iCounter = 0;
-			for( uint32_t iPC = 0; iPC < m_pCPU->GetMemorySize(); )
+			if( file.is_open() )
 			{
-				if( iPC >= 0x104 && iPC <= 0x14F )
+				CBORWriter oCborWriter;
+				oCborWriter.buffer.reserve( 1 << 20 );
+				oCborWriter.Map( 1 );
+				oCborWriter.Text( "Instructions", 12 );
+				oCborWriter.Array_Begin();
+				oCborWriter.SizePlaceHolder();
+
+				g_iCounter = 0;
+				for( uint32_t iPC = 0; iPC < m_pCPU->GetMemorySize(); )
 				{
-					DecryptCartridge( oCborWriter );
-					iPC = 0x150;
-					continue;
+					if( iPC >= 0x104 && iPC <= 0x14F )
+					{
+						DecryptCartridge( oCborWriter );
+						iPC = 0x150;
+						continue;
+					}
+
+					iPC += _WriteInstruction( oCborWriter,iPC );
 				}
 
-				iPC += _WriteInstruction( oCborWriter,iPC );
+				oCborWriter.Break();
+				file.write( reinterpret_cast< const char* >( oCborWriter.buffer.data() ), oCborWriter.buffer.size() );
 			}
-
-			oCborWriter.Break();
-			file.write( reinterpret_cast< const char* >( oCborWriter.buffer.data() ), oCborWriter.buffer.size() );
+			else
+			{
+				throw "CANT_WRITE_INSTRUCTIONS_TO_FILE";
+			}
 		}
 	}
-	//TODO : tmp file
+	catch ( const char* msg )
+	{
+		std::cerr << msg << std::endl;
+		std::filesystem::remove( sTmpPath );
+		return;
+	}
+
 	auto end = std::chrono::high_resolution_clock::now();
 	auto iDurationMs = std::chrono::duration<double,std::milli>( end - start ).count();
 	start = end;
 	std::cout << "Disassemble Time " << iDurationMs;
 
-	////Read the file to feed to the disassembler visual display
-	std::ifstream file( outputPath,std::ios::binary | std::ios::ate );
-	if( file.is_open() )
-	{
-		const std::streamsize size = file.tellg();
-		file.seekg( 0 );
-		std::vector<uint8_t> buffer( static_cast< size_t >( size ) );
-		file.read( reinterpret_cast< char* >( buffer.data() ),size );
+	std::string sOutputPath = sTmpPath.string().substr( 0,sTmpPath.string().find_last_of('.') );
+	std::filesystem::rename( sTmpPath,sOutputPath );
 
-		m_aDisassembly.clear();
-		SAXParser oSaxParser;
-		bool bResult = json::sax_parse( buffer, &oSaxParser, nlohmann::detail::input_format_t::cbor, true, true );
-		if ( bResult == false )
+	////Read the file to feed to the disassembler visual display
+	try
+	{
+		std::ifstream file( sOutputPath,std::ios::binary | std::ios::ate );
+		if( file.is_open() )
+		{
+			const std::streamsize size = file.tellg();
+		
+			if( size <= 0 || size > MemoryMap::MEMORY_SIZE_DISASSEMBLER )
+				throw "SIZE_INVALID_DURING_DISASSEMBLED_FILE_READING";
+
+			file.seekg( 0 );
+			std::vector<uint8_t> buffer( static_cast< size_t >( size ) );
+			file.read( reinterpret_cast< char* >( buffer.data() ),size );
+
 			m_aDisassembly.clear();
+			SAXParser oSaxParser;
+			if( json::sax_parse( buffer,&oSaxParser,nlohmann::detail::input_format_t::cbor,true,true ) == false )
+				throw "CANT_READ_INSTRUCTIONS_FROM_FILE";
+		}
+	}
+	catch( const char* msg )
+	{
+		std::cerr << msg << std::endl;
+		m_aDisassembly.clear();
+		return;
 	}
 
 	end = std::chrono::high_resolution_clock::now();

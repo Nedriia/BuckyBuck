@@ -9,6 +9,12 @@
 #include <iostream>
 #include <vector>
 
+namespace MemoryMap
+{
+	constexpr uint16_t MEMORY_SIZE = 0xFFFF;
+	constexpr uint32_t MEMORY_SIZE_DISASSEMBLER = 0xFFFFF;
+}
+
 enum CPU_FLAGS
 {
 	Z = 1 << 0,

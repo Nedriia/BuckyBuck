@@ -64,7 +64,7 @@ void DisassemblerDisplay::Update()
 		const auto& aDisassemblyInstructions = Disassembler::GetDisassemblyInstructions();
 		int num_items = static_cast< int >( aDisassemblyInstructions.size() );
 		ImGuiListClipper clipper;
-		clipper.Begin( num_items,15.0f * style.FontScaleDpi );
+		clipper.Begin( num_items,15.0f * style.FontScaleDpi  );
 
 		ImVec2 pos;
 		pos.y = window_pos.y + ImGui::GetTextLineHeight() * 2.0f;

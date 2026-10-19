@@ -12,11 +12,6 @@
 #include "DebugInfosDisplay.h"
 #endif
 
-namespace MemoryMap
-{
-	constexpr uint16_t MEMORY_SIZE = 0xFFFF;
-}
-
 static constexpr uint8_t X_MASK = 0b11000000;
 static constexpr uint8_t Y_MASK = 0b00111000;
 static constexpr uint8_t P_MASK = 0b00110000;
