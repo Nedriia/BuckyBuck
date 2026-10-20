@@ -40,16 +40,20 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 	if( sRomPath == nullptr )
 		return;
 
-	std::filesystem::path sTmpPath = DISASSM_DIR / static_cast< std::filesystem::path >( sRomPath ).filename();//don't use name but calculate HASH
-	sTmpPath.replace_extension( ".json.tmp" );
+	std::filesystem::path sOutputPath = DISASSM_DIR / static_cast< std::filesystem::path >( sRomPath ).filename();//TODO : don't use name but calculate HASH
+	sOutputPath.replace_extension( ".json" );
 
 	//Disassemble instructions
+	bool bExist = true;
 	try
 	{
-		if( exists( sTmpPath ) == false )
+		if( exists( sOutputPath ) == false )
 		{
+			bExist = false;
+
 			std::fstream file;
-			file.open( sTmpPath.string(),std::ofstream::out | std::ios::binary );
+			sOutputPath.replace_extension( ".json.tmp" );
+			file.open( sOutputPath.string(),std::ofstream::out | std::ios::binary );
 
 			if( file.is_open() )
 			{
@@ -85,7 +89,7 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 	catch ( const char* msg )
 	{
 		std::cerr << msg << std::endl;
-		std::filesystem::remove( sTmpPath );
+		std::filesystem::remove( sOutputPath );
 		return;
 	}
 
@@ -94,10 +98,14 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 	start = end;
 	std::cout << "Disassemble Time " << iDurationMs;
 
-	std::string sOutputPath = sTmpPath.string().substr( 0,sTmpPath.string().find_last_of('.') );
-	std::filesystem::rename( sTmpPath,sOutputPath );
+	if( !bExist )
+	{
+		std::filesystem::path sNewPath = sOutputPath.string().substr( 0,sOutputPath.string().find_last_of( '.' ) );
+		std::filesystem::rename( sOutputPath,sNewPath );
+		sOutputPath = sNewPath;
+	}
 
-	////Read the file to feed to the disassembler visual display
+	////Read the file to feed to the disassembler's display
 	try
 	{
 		std::ifstream file( sOutputPath,std::ios::binary | std::ios::ate );
@@ -117,6 +125,8 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 			if( json::sax_parse( buffer,&oSaxParser,nlohmann::detail::input_format_t::cbor,true,true ) == false )
 				throw "CANT_READ_INSTRUCTIONS_FROM_FILE";
 		}
+		else
+			throw "CANT_OPEN_FINAL_DISASSEMBLED_FILE";
 	}
 	catch( const char* msg )
 	{
