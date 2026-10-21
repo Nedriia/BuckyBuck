@@ -11,3 +11,6 @@
 [submodule "vendor/json"]
 	path = vendor/json
 	url = https://github.com/nlohmann/json.git
+[submodule "vendor/IconFontCppHeaders"]
+	path = vendor/IconFontCppHeaders
+	url = https://github.com/juliettef/IconFontCppHeaders.git
