@@ -50,6 +50,7 @@ target_include_directories(${PROJECT_NAME} PRIVATE
         ${IMGUI_DIR}
         ${HEX_DIR}
         ${LIBS_DIR}/Include
+        ${VENDOR_DIR}/IconFontCppHeaders
 )
 
 set(GLFW_BUILD_EXAMPLES OFF CACHE BOOL "" FORCE)
@@ -73,9 +74,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         PATH_ROMS="${CMAKE_CURRENT_SOURCE_DIR}/Roms/"
         DISASSM_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Disassembly/"
+        ASSETS_DIR="${CMAKE_CURRENT_SOURCE_DIR}/ASSETS/"
 )
 
-option( LEAK_DETECTOR_ENABLE "Enable leak detector" OFF )
+option( LEAK_DETECTOR_ENABLE "Enable leak detector" ON )
 if( LEAK_DETECTOR_ENABLE )
     target_compile_definitions( ${PROJECT_NAME} PRIVATE LEAK_DETECTOR )
 
