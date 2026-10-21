@@ -47,6 +47,7 @@ class CPU
 
 	uint8_t							GetDataAtAdress( const uint16_t iAdress ) const;
 	uint16_t						GetPC() const { return m_iPC; }
+	uint16_t						GetSP() const { return m_iSP; }
 	uint16_t						GetMemorySize() const { return m_aMemory.size(); }
 	const std::vector<uint8_t>&		GetMemory() const { return m_aMemory; }
 
@@ -60,6 +61,17 @@ class CPU
 		return m_pSingleton;
 	}
 
+	//TEMP
+	Register m_RegisterAF;
+	Register m_RegisterBC;
+	Register m_RegisterDE;
+	Register m_RegisterHL;
+
+	bool	ZFlag;
+	bool	NFlag;
+	bool	HFlag;
+	bool	CFlag;
+
 	private:
 
 	void 			_FillOpcodesTables();
@@ -72,11 +84,6 @@ class CPU
 
 	uint8_t m_iIR;	//Instruction Register
 	uint8_t m_iIE;	//Interrupt Enable
-
-	Register m_RegisterAF;
-	Register m_RegisterBC;
-	Register m_RegisterDE;
-	Register m_RegisterHL;
 
 	std::vector<uint8_t> m_aMemory;
 

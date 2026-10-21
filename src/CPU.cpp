@@ -64,7 +64,11 @@ CPU::CPU() :
 	m_RegisterAF( 0 ),
 	m_RegisterBC( 0 ),
 	m_RegisterDE( 0 ),
-	m_RegisterHL( 0 )
+	m_RegisterHL( 0 ),
+	ZFlag( false ),
+	NFlag( false ),
+	HFlag( false ),
+	CFlag( false )
 {
 	_FillOpcodesTables();
 	Init();
