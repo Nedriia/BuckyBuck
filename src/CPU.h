@@ -15,6 +15,14 @@ namespace MemoryMap
 	constexpr uint32_t MEMORY_SIZE_DISASSEMBLER = 0xFFFFF;
 }
 
+enum State
+{
+	Pause,
+	Running,
+	SkipToNext,
+	Reset
+};
+
 enum CPU_FLAGS
 {
 	Z = 1 << 0,
@@ -44,6 +52,14 @@ class CPU
 	void			FetchDecode();
 	void			EmulateCycle();
 	void			DestroyInstance();
+
+	//Control Flow
+	bool			IsRunning() const { return m_oCPUState == State::Running; }
+
+	void			Run()			{ m_oCPUState = State::Running; }
+	void			Reset()			{ m_oCPUState = State::Reset; }
+	void			Pause()			{ m_oCPUState = State::Pause; }
+	void			SkipToNext()	{ m_oCPUState = State::SkipToNext; }
 
 	uint8_t							GetDataAtAdress( const uint16_t iAdress ) const;
 	uint16_t						GetPC() const { return m_iPC; }
@@ -169,6 +185,8 @@ class CPU
 	};
 	static MemoryRegion m_aMemoryMap[12];
 	static std::string GetMemoryRegionLabel( const uint16_t iAdress );
+
+	State m_oCPUState;
 };
 
 

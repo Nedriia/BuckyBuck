@@ -47,6 +47,8 @@ private:
 
 	void _DrawFlagsState( ImVec2& pos );
 	void _DrawRegistersState( ImVec2& pos );
+	void _DrawFlowControl();
+	void _LoadIconFont();
 
 	template <typename T>
 	void _AddInfosText( const T iVar,const char* sLabel,const char* sFormat,ImVec2& pos, float fXPos, const DATA_TEXT oDataEnum,NEW_LINE oNewLine = NEW_LINE( 0 ),LINE oAddLine = LINE( 0 ) );

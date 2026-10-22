@@ -10,6 +10,7 @@
 #include "Disassembler.h"
 #include "imgui.h"
 #include "imgui_internal.h"
+#include "CPU.h"
 
 #define ADDR_COLOR ImVec4( 0.337f, 0.612f, 0.839f, 1.00f )
 #define DATA_COLOR ImVec4( 0.831f, 0.831f, 0.831f, 1.00f )
@@ -26,7 +27,9 @@
 #define START_ADDINFO_POS	float( START_DURATION_POS + 50.0f )
 
 DisassemblerDisplay::DisassemblerDisplay() :
-	m_iSelectedLine( -1 )
+	m_iSelectedLine( -1 ),
+	m_bFollowPc( true ),
+	m_iLastPc( 0 )
 {
 
 }
@@ -46,25 +49,35 @@ void DisassemblerDisplay::Update()
 
 		ImGuiStyle& style = ImGui::GetStyle();
 
-		//CPU* m_pCpuInstance = CPU::GetInstance();
-		// if( m_bFollowPc )
-		// {
-		// 	std::vector<uint16_t>::iterator it = std::lower_bound( m_aAdress.begin(),m_aAdress.end(),m_pCPU->GetPC() );
-		// 	if( it != m_aAdress.end() )
-		// 	{
-		// 		int iIndex = std::distance( m_aAdress.begin(),it );
-		// 		if( iIndex >= 0 )
-		// 		{
-		// 			float scroll_target = iIndex * ImGui::GetTextLineHeightWithSpacing() - ImGui::GetWindowHeight() * 0.5f;
-		// 			ImGui::SetScrollY( scroll_target );
-		// 		}
-		// 	}
-		// }
-
 		const auto& aDisassemblyInstructions = Disassembler::GetDisassemblyInstructions();
+
+		if( m_bFollowPc )
+		{
+			CPU* m_pCpu = CPU::GetInstance();
+			if( m_pCpu && m_iLastPc != m_pCpu->GetPC() )
+			{
+				const uint16_t iAdress = m_pCpu->GetPC();
+				for( auto it = aDisassemblyInstructions.begin(); it != aDisassemblyInstructions.end(); ++it )
+				{
+					if( ( *it ).m_iAdress == iAdress )
+					{
+						int iIndex = std::distance( aDisassemblyInstructions.begin(),it );
+						if( iIndex >= 0 )
+						{
+							m_iSelectedLine = iIndex;
+							float scroll_target = ( iIndex + 1 ) * ( 15.0f * style.FontScaleDpi );
+							ImGui::SetScrollY( scroll_target );
+						}
+						m_iLastPc = m_pCpu->GetPC();
+						break;
+					}
+				}
+			}
+		}
+
 		int num_items = static_cast< int >( aDisassemblyInstructions.size() );
 		ImGuiListClipper clipper;
-		clipper.Begin( num_items,15.0f * style.FontScaleDpi  );
+		clipper.Begin( num_items,15.0f * style.FontScaleDpi );
 
 		ImVec2 pos;
 		pos.y = window_pos.y + ImGui::GetTextLineHeight() * 2.0f;
@@ -127,6 +140,8 @@ void DisassemblerDisplay::Update()
 			}
 		}
 	}
+	_DrawOptions();
+
 	ImGui::End();
 
 	auto end = std::chrono::high_resolution_clock::now();
@@ -135,7 +150,7 @@ void DisassemblerDisplay::Update()
 
 void DisassemblerDisplay::_SelectLine( const int iStart,const int iEnd )
 {
-	if( ImGui::IsMouseClicked( 0 ) )
+	if( ImGui::IsMouseClicked( 0 ) && ImGui::IsPopupOpen( "context" ) == false )
 	{
 		ImVec2 mouse_pos = ImGui::GetMousePos();
 		ImVec2 window_pos = ImGui::GetWindowPos();
@@ -170,27 +185,60 @@ void DisassemblerDisplay::_SelectLine( const int iStart,const int iEnd )
 		}
 	}
 
-	if( ImGui::IsWindowFocused( ImGuiFocusedFlags_ChildWindows ) && m_iSelectedLine != -1 )
+	if( ImGui::IsWindowFocused( ImGuiFocusedFlags_ChildWindows ) )
 	{
-		int iLine = m_iSelectedLine;
-		if( ImGui::IsKeyPressed( ImGuiKey_UpArrow ) ) { iLine--; }
-		else if( ImGui::IsKeyPressed( ImGuiKey_DownArrow ) ) { iLine++; }
-
-		iLine = std::max( 0, iLine );
-		iLine = std::min( iLine, static_cast< int >( Disassembler::GetDisassemblyInstructions().size() ) );
-
-		if( iLine != m_iSelectedLine )
+		if( m_iSelectedLine != -1 )
 		{
-			//Scroll to focus
-			ImGuiStyle& style = ImGui::GetStyle();
-			float selectedY = iLine * ( 15.0f * style.FontScaleDpi );
-			if( iLine < iStart )
-				ImGui::SetScrollFromPosY( ImGui::GetCursorStartPos().y + selectedY,0.0f );
-			else if( iLine > iEnd )
-				ImGui::SetScrollFromPosY( ImGui::GetCursorStartPos().y + selectedY,1.0f );
+			int iLine = m_iSelectedLine;
+			if( ImGui::IsKeyPressed( ImGuiKey_UpArrow ) ) { iLine--; }
+			else if( ImGui::IsKeyPressed( ImGuiKey_DownArrow ) ) { iLine++; }
 
-			m_iSelectedLine = iLine;
+			iLine = std::max( 0,iLine );
+			iLine = std::min( iLine,static_cast< int >( Disassembler::GetDisassemblyInstructions().size() ) );
+
+			if( iLine != m_iSelectedLine )
+			{
+				//Scroll to focus
+				ImGuiStyle& style = ImGui::GetStyle();
+				float selectedY = iLine * ( 15.0f * style.FontScaleDpi );
+				if( iLine < iStart )
+					ImGui::SetScrollFromPosY( ImGui::GetCursorStartPos().y + selectedY,0.0f );
+				else if( iLine > iEnd )
+					ImGui::SetScrollFromPosY( ImGui::GetCursorStartPos().y + selectedY,1.0f );
+
+				m_iSelectedLine = iLine;
+			}
 		}
+	}
+
+	if( ImGui::IsMouseClicked( 1 ) )
+	{
+		//Check if mouse is on current window and focus on it
+		ImVec2 mouse_pos = ImGui::GetMousePos();
+		ImVec2 window_pos = ImGui::GetWindowPos();
+		ImVec2 window_size = ImGui::GetWindowSize();
+
+		ImVec2 zone_min(
+			window_pos.x,
+			window_pos.y
+		);
+
+		ImVec2 zone_max(
+			window_pos.x + window_size.x,
+			window_pos.y + window_size.y
+		);
+
+		if( ImGui::IsMouseHoveringRect( zone_min,zone_max ) )
+			ImGui::OpenPopup( "context" );
+	}
+}
+
+void DisassemblerDisplay::_DrawOptions()
+{
+	if( ImGui::BeginPopup( "context" ) )
+	{
+		ImGui::Checkbox( "Follow PC",&m_bFollowPc );
+		ImGui::EndPopup();
 	}
 }
 

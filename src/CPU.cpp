@@ -68,7 +68,8 @@ CPU::CPU() :
 	ZFlag( false ),
 	NFlag( false ),
 	HFlag( false ),
-	CFlag( false )
+	CFlag( false ),
+	m_oCPUState( State::Pause )
 {
 	_FillOpcodesTables();
 	Init();
@@ -261,7 +262,11 @@ void CPU::AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8
 
 void CPU::EmulateCycle()
 {
-	FetchDecode();
+	if( m_oCPUState == State::Running || m_oCPUState == State::SkipToNext )
+		FetchDecode();
+
+	if( m_oCPUState == State::SkipToNext )
+		m_oCPUState = State::Pause;
 }
 
 
