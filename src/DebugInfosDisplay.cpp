@@ -5,6 +5,7 @@
 #include "DebugInfosDisplay.h"
 #include "imgui_impl_glfw.h"
 #include "imgui_impl_opengl3.h"
+#include "IconsFontAwesome6.h"
 
 std::unique_ptr<HexEditor_ImGUI>			DebugInfosDisplay::m_oHexEditor;
 std::unique_ptr<ProcessorDebugDisplay>		DebugInfosDisplay::m_oProcDebugDisplay;
@@ -60,6 +61,24 @@ void DebugInfosDisplay::Init( GLFWwindow* mainWindow )
 	m_oDisassemblerDisplay	= std::make_unique<DisassemblerDisplay>();
 
 	m_oHexEditor->Init( m_pWindow );
+
+	_LoadIconFont();
+}
+
+void DebugInfosDisplay::_LoadIconFont()
+{
+	ImGuiIO& io = ImGui::GetIO();
+	ImFontConfig baseCfg;
+	baseCfg.SizePixels = 16.0f;
+	io.Fonts->AddFontDefault( &baseCfg );
+
+	// merge in icons from Font Awesome
+	ImFontConfig cfg;
+	cfg.MergeMode = true;
+	cfg.PixelSnapH = true;
+	cfg.GlyphMinAdvanceX = 16.0f;
+	std::string sFontPath = std::string( ASSETS_DIR ) + "fa-solid-900.ttf";
+	io.Fonts->AddFontFromFileTTF( sFontPath.c_str(),16.0f,&cfg );
 }
 
 void DebugInfosDisplay::StartFrame()

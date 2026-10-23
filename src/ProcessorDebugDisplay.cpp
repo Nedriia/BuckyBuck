@@ -21,23 +21,6 @@
 ProcessorDebugDisplay::ProcessorDebugDisplay() :
 	m_pCPU( nullptr )
 {
-	_LoadIconFont();
-}
-
-void ProcessorDebugDisplay::_LoadIconFont()
-{
-	ImGuiIO& io = ImGui::GetIO();
-	ImFontConfig baseCfg;
-	baseCfg.SizePixels = 16.0f;
-	io.Fonts->AddFontDefault( &baseCfg );
-
-	// merge in icons from Font Awesome
-	ImFontConfig cfg;
-	cfg.MergeMode = true;
-	cfg.PixelSnapH = true;
-	cfg.GlyphMinAdvanceX = 16.0f;
-	std::string sFontPath = std::string( ASSETS_DIR ) + "fa-solid-900.ttf";
-	io.Fonts->AddFontFromFileTTF( sFontPath.c_str(),16.0f,&cfg );
 }
 
 void ProcessorDebugDisplay::Update()
@@ -122,7 +105,8 @@ void ProcessorDebugDisplay::_DrawFlowControl()
 
 	if( ImGui::Button( ICON_FA_PLAY,btn ) )				{	m_pCPU->Run(); }		ImGui::SameLine();
 	if( ImGui::Button( ICON_FA_PAUSE,btn ) )			{	m_pCPU->Pause(); }		ImGui::SameLine();
-	if( ImGui::Button( ICON_FA_FORWARD_STEP,btn ) )		{	m_pCPU->SkipToNext(); } ImGui::SameLine();
+	if( ImGui::Button( ICON_FA_FORWARD_STEP,btn ) || 
+		ImGui::IsKeyPressed( ImGuiKey_F3 ) )			{	m_pCPU->SkipToNext(); } ImGui::SameLine();
 	if( ImGui::Button( ICON_FA_ROTATE_LEFT,btn ) )		{	m_pCPU->Reset(); }
 
 	ImGui::PopStyleVar( 3 );

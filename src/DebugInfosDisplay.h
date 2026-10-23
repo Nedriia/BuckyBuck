@@ -33,6 +33,9 @@ public:
 	static std::unique_ptr<DisassemblerDisplay>&	GetDisassemblerDisplay() { return m_oDisassemblerDisplay; }
 
 private:
+
+	void _LoadIconFont();
+
 	static DebugInfosDisplay*						m_pSingleton;
 
 	GLFWwindow*										m_pWindow;
