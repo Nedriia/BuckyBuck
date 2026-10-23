@@ -57,11 +57,12 @@ class CPU
 	bool			IsRunning() const { return m_oCPUState == State::Running; }
 
 	void			Run()			{ m_oCPUState = State::Running; }
-	void			Reset()			{ m_oCPUState = State::Reset; }
+	void			Reset();
 	void			Pause()			{ m_oCPUState = State::Pause; }
 	void			SkipToNext()	{ m_oCPUState = State::SkipToNext; }
 
 	uint8_t							GetDataAtAdress( const uint16_t iAdress ) const;
+	uint8_t&						GetRefAtMemory( const uint16_t iAdress );
 	uint16_t						GetPC() const { return m_iPC; }
 	uint16_t						GetSP() const { return m_iSP; }
 	uint16_t						GetMemorySize() const { return m_aMemory.size(); }
@@ -91,9 +92,15 @@ class CPU
 	private:
 
 	void 			_FillOpcodesTables();
-	void			_SetRegisterValToRegisterVal( const uint8_t iIndexRegister, const uint8_t iIndex2Register );
-	void			_SetRegisterVal( const uint8_t iIndexRegister, const uint8_t iValue );
-	void			_INCRegisterVal( const uint8_t iIndexRegister );
+	void			_SimulateBootRom();
+	void			_UpdateFlags();
+
+	uint8_t&		_Get_Destr8( bool s8 = false );
+	uint16_t&		_Get_Destr16( bool bMem = false );
+	uint16_t&		_Get_Destr16Stk(){};
+	void			_Get_Cond();
+	void			_LoadR8Value( uint8_t& iDst, uint8_t iData );
+	void			_LoadR16Value( uint16_t& iDst, uint16_t iData );
 
 	uint16_t m_iPC;
 	uint16_t m_iSP;
@@ -103,7 +110,7 @@ class CPU
 
 	std::vector<uint8_t> m_aMemory;
 
-	void NOP();
+	void NOP(){};
 	void LD()							{		std::cout << "NOT IMPLEMENTED"; };
 	void LDH()							{		std::cout << "NOT IMPLEMENTED"; };
 	void LDH_C()						{		std::cout << "NOT IMPLEMENTED"; };

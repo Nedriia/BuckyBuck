@@ -90,12 +90,58 @@ CPU::~CPU()
 
 void CPU::Init()
 {
-	//Init for blarg test suite
+	m_iPC = 0;
+
+	m_iSP = 0;
+	m_iIR = 0;
+	m_iIE = 0;
+
+	m_RegisterAF.reg = 0;
+	m_RegisterBC.reg = 0;
+	m_RegisterDE.reg = 0;
+	m_RegisterHL.reg = 0;
+
+	ZFlag = false;
+	NFlag = false;
+	HFlag = false;
+	CFlag = false;
+
+	//TODO : Re Init memory ? 
+
+	m_oCPUState = State::Pause;
+}
+
+void CPU::_SimulateBootRom()
+{
+	m_RegisterAF.hi = 0x11;
+	m_RegisterAF.lo = 1 << 7;
+
+	m_RegisterBC.hi = 0x00;
+	m_RegisterBC.lo = 0x00;
+
+	m_RegisterDE.hi = 0xFF;
+	m_RegisterDE.lo = 0x56;
+
+	m_RegisterHL.hi = 0x00;
+	m_RegisterHL.lo = 0x0D;
+
 	m_iPC = 0x100;
+	m_iSP = 0xFFFE;
+}
+
+void CPU::_UpdateFlags()
+{
+	ZFlag = ( m_RegisterAF.lo >> 7 ) & 1; //Zero flag
+	NFlag = ( m_RegisterAF.lo >> 6 ) & 1; //Subtraction flag( BCD )
+	HFlag = ( m_RegisterAF.lo >> 5 ) & 1; //Half Carry flag( BCD )
+	CFlag = ( m_RegisterAF.lo >> 4 ) & 1; //Carry flag
 }
 
 int CPU::LoadRom( const char* sROMPath )
 {
+	_SimulateBootRom();
+	_UpdateFlags();
+
 	std::string sRomPath = std::string( PATH_ROMS ) + sROMPath;
 	std::ifstream file( sRomPath,std::ios::binary | std::ios::in | std::ios::ate );
 	if( file.is_open() )
@@ -149,8 +195,12 @@ void CPU::FetchDecode()
 		if ( pInstruction->m_iConditionalDuration != 0 )
 			std::cout << ( int )pInstruction->m_iConditionalDuration;
 
+		uint16_t iPreviousPC = m_iPC;
 		( this->*pInstruction->m_pFct )();
 		std::cout << std::endl;
+
+		if( iPreviousPC == m_iPC )
+			m_iPC += pInstruction->m_iLength;
 	}
 	else
 		std::cout << "UNKNOWN CPU INSTR" << std::endl;
@@ -161,12 +211,25 @@ void CPU::DestroyInstance()
 	delete m_pSingleton;
 }
 
+void CPU::Reset()
+{
+	m_oCPUState = State::Reset;
+	_SimulateBootRom();
+	_UpdateFlags();
+	m_oCPUState = State::Pause;
+}
+
 uint8_t CPU::GetDataAtAdress( const uint16_t iAdress ) const
 {
 	if( iAdress < 0 || iAdress >= GetMemorySize() )
 		return 0;
 
 	return m_aMemory[ iAdress ];
+}
+
+uint8_t& CPU::GetRefAtMemory( const uint16_t iAdress )
+{
+	return m_aMemory.at( iAdress );
 }
 
 void CPU::AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8_t iFlags, uint8_t iFlagSet1, uint8_t iFlagReset0, std::array<uint8_t, 3> aValues, bool bExtent, const char* sMnemonic, ... )
@@ -269,96 +332,40 @@ void CPU::EmulateCycle()
 		m_oCPUState = State::Pause;
 }
 
-
-void CPU::NOP()
-{
-	++m_iPC;
-}
-
 void CPU::LD_r16n16()
 {
 	uint16_t iValue = ( GetDataAtAdress( m_iPC + 2 ) << 8 ) | GetDataAtAdress( m_iPC + 1 );
 	std::cout << std::hex << std::uppercase << " ( 0X" << ( int )iValue << " )" << std::dec;
 
-	uint16_t iAdress = GetDataAtAdress( m_iPC );
-	uint8_t p = ( iAdress & P_MASK ) >> 4;
-	switch ( p )
-	{
-		case 0:
-			m_RegisterBC.reg = iValue;
-			break;
-		case 1:
-			m_RegisterDE.reg = iValue;
-			break;
-		case 2:
-			m_RegisterHL.reg = iValue;
-			break;
-		case 3:
-			m_iSP = iValue;
-			break;
-		default:
-			std::cout << "case not handle" << std::endl;
-			break;
-	}
-
-	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+	_LoadR16Value( _Get_Destr16(), iValue );
 }
 
 void CPU::LD_r8r8()
 {
-	uint16_t iAdress = GetDataAtAdress( m_iPC );
-	uint8_t y = ( iAdress & Y_MASK ) >> 3;
-	uint8_t z = ( iAdress & Z_MASK );
-
-	_SetRegisterValToRegisterVal( y, z );
-
-	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+	_LoadR8Value( _Get_Destr8(),_Get_Destr8( true ) );
 }
 
 void CPU::LD_A_HLI()
 {
-	m_RegisterAF.hi = GetDataAtAdress( m_RegisterHL.reg );
+	_LoadR8Value( m_RegisterAF.hi, GetRefAtMemory( m_RegisterHL.reg ) );
 	m_RegisterHL.reg++;
-
-	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
 }
 
 void CPU::LD_A_HLD()
 {
-	m_RegisterAF.hi = GetDataAtAdress( m_RegisterHL.reg );
+	_LoadR8Value( m_RegisterAF.hi, GetRefAtMemory( m_RegisterHL.reg ) );
 	m_RegisterHL.reg--;
-
-	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
 }
 
 void CPU::LD_r8d8()
 {
-	uint16_t iAdress = GetDataAtAdress( m_iPC );
-	uint8_t y = ( iAdress & Y_MASK ) >> 3;
-
-	_SetRegisterVal( y, GetDataAtAdress( m_iPC + 1 ) );
-
-	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+	_LoadR8Value( _Get_Destr8(),GetRefAtMemory( m_iPC + 1 ) );
 }
 
 void CPU::LD_r16A()
 {
-	uint16_t iAdress = GetDataAtAdress( m_iPC );
-	uint8_t p = ( iAdress & P_MASK ) >> 4;
-
-	switch ( p )
-	{
-		case 0:
-			m_RegisterBC.reg = m_RegisterAF.hi;
-			break;
-		case 1:
-			m_RegisterDE.reg = m_RegisterAF.hi;
-			break;
-		default:
-			std::cout << "Case not handle" << std::endl;
-	}
-
-	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
+	uint8_t& rA = m_RegisterAF.hi;
+	_LoadR8Value( rA,GetRefAtMemory( _Get_Destr16( true ) ) );
 }
 
 void CPU::JPn16()
@@ -374,10 +381,7 @@ void CPU::INC_r8()
 	uint16_t iAdress = GetDataAtAdress( m_iPC );
 	uint8_t y = ( iAdress & Y_MASK ) >> 3;
 
-	_INCRegisterVal( y );
-
-	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
-
+	//_INCRegisterVal( y );
 	//FLAGS
 }
 
@@ -389,8 +393,6 @@ void CPU::JR_cc_n16()
 	int8_t iValue = static_cast<int8_t>( GetDataAtAdress( m_iPC + 1 ) );
 	if ( !z )
 		m_iPC += iValue;
-
-	m_iPC += m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ]->m_iLength;
 }
 
 void CPU::_FillOpcodesTables()
@@ -804,29 +806,56 @@ void CPU::_FillOpcodesTables()
 	}
 }
 
-void CPU::_SetRegisterValToRegisterVal( const uint8_t iIndexRegister, const uint8_t iIndex2Register )
+uint8_t& CPU::_Get_Destr8( bool s8 /*= false */)
 {
-	static uint8_t r8[ 8 ] = { m_RegisterBC.hi,m_RegisterBC.lo,m_RegisterDE.hi,m_RegisterDE.lo,m_RegisterHL.hi,m_RegisterHL.lo,0,m_RegisterAF.hi };
-	if ( iIndexRegister == 6 || iIndex2Register == 6 )
-		std::cout << "INVESTIGATE" << std::endl;
-
-	r8[iIndexRegister] = r8[iIndex2Register];
+	const uint8_t iData = GetDataAtAdress( m_iPC );
+	uint8_t r8 = s8 ? ( iData & Z_MASK ) : ( iData & Y_MASK ) >> 3;
+	switch( r8 )
+	{
+		case 0: return m_RegisterBC.hi;						break;
+		case 1: return m_RegisterBC.lo;						break;
+		case 2: return m_RegisterDE.hi;						break;
+		case 3: return m_RegisterDE.lo;						break;
+		case 4: return m_RegisterHL.hi;						break;
+		case 5: return m_RegisterHL.lo;						break;
+		case 6: return GetRefAtMemory( m_RegisterHL.reg );	break;
+		case 7: return m_RegisterAF.hi;						break;
+	}
+	throw std::runtime_error( "ERROR_GETTING_DESTR8" );
 }
 
-void CPU::_SetRegisterVal( const uint8_t iIndexRegister, const uint8_t iValue )
+uint16_t& CPU::_Get_Destr16( bool bMem /*= false*/ )
 {
-	static uint8_t r8[ 8 ] = { m_RegisterBC.hi,m_RegisterBC.lo,m_RegisterDE.hi,m_RegisterDE.lo,m_RegisterHL.hi,m_RegisterHL.lo,0,m_RegisterAF.hi };
-	if ( iIndexRegister == 6 )
-		std::cout << "INVESTIGATE" << std::endl;
-
-	r8[iIndexRegister] = iValue;
+	uint8_t r8 = ( GetDataAtAdress( m_iPC ) & P_MASK ) >> 4;
+	switch( r8 )
+	{
+		case 0: return m_RegisterBC.reg;							break;
+		case 1: return m_RegisterDE.reg;							break;
+		case 2: 
+		{
+			if( bMem )
+				m_RegisterAF.hi++;
+			return m_RegisterHL.reg;								break;
+		}
+		case 3:
+		{
+			if( bMem )
+			{
+				m_RegisterAF.hi--;
+				return m_RegisterHL.reg;
+			}
+			return m_iSP;											break;
+		}
+	}
+	throw std::runtime_error( "ERROR_GETTING_DESTR16" );
 }
 
-void CPU::_INCRegisterVal( const uint8_t iIndexRegister )
+void CPU::_LoadR8Value( uint8_t& iDst, uint8_t iData )
 {
-	static uint8_t r8[ 8 ] = { m_RegisterBC.hi,m_RegisterBC.lo,m_RegisterDE.hi,m_RegisterDE.lo,m_RegisterHL.hi,m_RegisterHL.lo,0,m_RegisterAF.hi };
-	if ( iIndexRegister == 6 )
-		std::cout << "INVESTIGATE" << std::endl;
+	iDst = iData;
+}
 
-	r8[iIndexRegister]++;
+void CPU::_LoadR16Value( uint16_t& iDst,uint16_t iData )
+{
+	iDst = iData;
 }
