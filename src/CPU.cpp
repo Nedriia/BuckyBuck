@@ -42,7 +42,7 @@ CPU::MemoryRegion CPU::m_aMemoryMap[12] = {
 	{ 0xFF80, 0xFFFE, "HRAM" },//High RAM (HRAM)
 	{ 0xFFFF, 0xFFFF, "I/O" }  //Interrupt Enable register (IE)
 };
-std::string CPU::GetMemoryRegionLabel( const uint16_t iAdress )
+const std::string& CPU::GetMemoryRegionLabel( const uint16_t iAdress )
 {
 	for ( int i = 0; i < 12; ++i )
 	{
@@ -52,15 +52,14 @@ std::string CPU::GetMemoryRegionLabel( const uint16_t iAdress )
 		if ( iAdress >= m_aMemoryMap[i].m_iStartAdress && iAdress <= m_aMemoryMap[i].m_iEndAdress )
 			return m_aMemoryMap[i].m_sLabel;
 	}
-	return "";
+	throw std::runtime_error( "ADRESS_NOT_VALID" );
 }
 
 CPU::CPU() :
-	m_aMemory{0},
+	m_aROM_Memory{0},
 	m_iPC( 0 ),
 	m_iSP( 0 ),
 	m_iIR( 0 ),
-	m_iIE( 0 ),
 	m_RegisterAF( 0 ),
 	m_RegisterBC( 0 ),
 	m_RegisterDE( 0 ),
@@ -69,8 +68,11 @@ CPU::CPU() :
 	NFlag( false ),
 	HFlag( false ),
 	CFlag( false ),
-	m_oCPUState( State::Pause )
+	m_oCPUState( State::Pause ),
+	m_pCurrentInstruction( nullptr )
 {
+	m_aMemory = std::vector<uint8_t>( 0x10000,0xFF );
+
 	_FillOpcodesTables();
 	Init();
 }
@@ -94,7 +96,6 @@ void CPU::Init()
 
 	m_iSP = 0;
 	m_iIR = 0;
-	m_iIE = 0;
 
 	m_RegisterAF.reg = 0;
 	m_RegisterBC.reg = 0;
@@ -106,9 +107,10 @@ void CPU::Init()
 	HFlag = false;
 	CFlag = false;
 
-	//TODO : Re Init memory ? 
-
+	memset( m_aMemory.data(),0xFF,0x10000 );
 	m_oCPUState = State::Pause;
+
+	m_pCurrentInstruction = nullptr;
 }
 
 void CPU::_SimulateBootRom()
@@ -151,7 +153,7 @@ int CPU::LoadRom( const char* sROMPath )
 		std::streamsize bytesRead = 0;
 		try
 		{
-			if( size <= 0 || size > MemoryMap::MEMORY_SIZE )
+			if( size <= 0 )
 				throw std::runtime_error( "SIZE_INVALID" );
 
 			memblock = new char[ size ];
@@ -170,8 +172,10 @@ int CPU::LoadRom( const char* sROMPath )
 			return -1;
 		}
 
-		m_aMemory.resize( size );
-		memcpy( m_aMemory.data(), memblock, size );
+		m_aROM_Memory.resize( size );
+		memcpy( m_aROM_Memory.data(), memblock, size );
+		memcpy( m_aMemory.data(),memblock,size > 0x8000 ? 0x8000 : size);
+
 #ifdef DEBUG_INFO
 		DebugInfosDisplay::GetHexEditor()->LoadBufferFromMemory( m_aMemory );
 #endif
@@ -187,20 +191,24 @@ int CPU::LoadRom( const char* sROMPath )
 
 void CPU::FetchDecode()
 {
-	if( m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ] != nullptr )
+	if( m_aOpcodesTable[ ReadMemory( m_iPC ) ] != nullptr )
 	{
-		CPU_Instructions* pInstruction = m_aOpcodesTable[ GetDataAtAdress( m_iPC ) ];
+		m_pCurrentInstruction = m_aOpcodesTable[ ReadMemory( m_iPC ) ];
+		if( m_pCurrentInstruction == nullptr )
+			throw std::runtime_error("UNKNOWN_OPCODE??");
 
-		std::cout << pInstruction->m_sMnemonic << " " << static_cast< int >( pInstruction->m_iLength ) << " " << static_cast< int >( pInstruction->m_iDuration ) << " ";
-		if ( pInstruction->m_iConditionalDuration != 0 )
-			std::cout << ( int )pInstruction->m_iConditionalDuration;
+		/*std::cout << m_pCurrentInstruction->m_sMnemonic << " " << static_cast< int >( m_pCurrentInstruction->m_iLength ) << " " << static_cast< int >( m_pCurrentInstruction->m_iDuration ) << " ";
+		if ( m_pCurrentInstruction->m_iConditionalDuration != 0 )
+			std::cout << ( int )m_pCurrentInstruction->m_iConditionalDuration;*/
 
 		uint16_t iPreviousPC = m_iPC;
-		( this->*pInstruction->m_pFct )();
-		std::cout << std::endl;
+		( this->*m_pCurrentInstruction->m_pFct )();
+		//std::cout << std::endl;
 
 		if( iPreviousPC == m_iPC )
-			m_iPC += pInstruction->m_iLength;
+			m_iPC += m_pCurrentInstruction->m_iLength;
+
+		_UpdateFlags();
 	}
 	else
 		std::cout << "UNKNOWN CPU INSTR" << std::endl;
@@ -214,17 +222,43 @@ void CPU::DestroyInstance()
 void CPU::Reset()
 {
 	m_oCPUState = State::Reset;
+	Init();
+
+	size_t size = m_aROM_Memory.size();
+	if( size > 0 )
+		memcpy( m_aMemory.data(),m_aROM_Memory.data(),size > 0x8000 ? 0x8000 : size );
+
 	_SimulateBootRom();
 	_UpdateFlags();
-	m_oCPUState = State::Pause;
 }
 
-uint8_t CPU::GetDataAtAdress( const uint16_t iAdress ) const
+void CPU::MarkBreakpoint( const uint16_t iAdress )
 {
-	if( iAdress < 0 || iAdress >= GetMemorySize() )
-		return 0;
+	if( m_aBreakpoints.find( iAdress ) == m_aBreakpoints.end() )
+		m_aBreakpoints.insert( iAdress );
+	else
+		m_aBreakpoints.erase( iAdress );
+}
 
-	return m_aMemory[ iAdress ];
+bool CPU::IsBreakpoint( const uint16_t iAdress ) const
+{
+	return m_aBreakpoints.find( iAdress ) != m_aBreakpoints.end();
+}
+
+uint8_t CPU::ReadMemory( const uint16_t iAdress ) const
+{
+	if( iAdress >= 0xFEA0 && iAdress <= 0xFEFF )
+		return 0xFF;
+
+	return m_aMemory.at( iAdress );
+}
+
+void CPU::WriteMemory( const uint16_t iAdress,const uint8_t iValue )
+{
+	if( iAdress >= 0xFEA0 && iAdress <= 0xFEFF )
+		return;
+
+	m_aMemory.at( iAdress ) = iValue;
 }
 
 uint8_t& CPU::GetRefAtMemory( const uint16_t iAdress )
@@ -325,490 +359,171 @@ void CPU::AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8
 
 void CPU::EmulateCycle()
 {
+	if( m_oCPUState == State::Pause )
+		return;
+
 	if( m_oCPUState == State::Running || m_oCPUState == State::SkipToNext )
 		FetchDecode();
 
-	if( m_oCPUState == State::SkipToNext )
+	if( m_oCPUState == State::SkipToNext || m_aBreakpoints.find( m_iPC ) != m_aBreakpoints.end() )
 		m_oCPUState = State::Pause;
 }
 
 void CPU::LD_r16n16()
 {
-	uint16_t iValue = ( GetDataAtAdress( m_iPC + 2 ) << 8 ) | GetDataAtAdress( m_iPC + 1 );
-	std::cout << std::hex << std::uppercase << " ( 0X" << ( int )iValue << " )" << std::dec;
+	uint16_t iValue = ( ReadMemory( m_iPC + 2 ) << 8 ) | ReadMemory( m_iPC + 1 );
+	//std::cout << std::hex << std::uppercase << " ( 0X" << ( int )iValue << " )" << std::dec;
 
-	_LoadR16Value( _Get_Destr16(), iValue );
+	_LDR16( _Get_Dest_R16(), iValue );
 }
 
 void CPU::LD_r8r8()
 {
-	_LoadR8Value( _Get_Destr8(),_Get_Destr8( true ) );
+	_LDR8( _Get_Dest_R8(),_Get_Dest_R8( true ) );
 }
 
 void CPU::LD_A_HLI()
 {
-	_LoadR8Value( m_RegisterAF.hi, GetRefAtMemory( m_RegisterHL.reg ) );
+	_LDR8( m_RegisterAF.hi,ReadMemory( m_RegisterHL.reg ) );
 	m_RegisterHL.reg++;
 }
 
 void CPU::LD_A_HLD()
 {
-	_LoadR8Value( m_RegisterAF.hi, GetRefAtMemory( m_RegisterHL.reg ) );
+	_LDR8( m_RegisterAF.hi,ReadMemory( m_RegisterHL.reg ) );
 	m_RegisterHL.reg--;
 }
 
-void CPU::LD_r8d8()
+void CPU::LD_r8n8()
 {
-	_LoadR8Value( _Get_Destr8(),GetRefAtMemory( m_iPC + 1 ) );
+	_LDR8( _Get_Dest_R8(),ReadMemory( m_iPC + 1 ) );
 }
 
-void CPU::LD_r16A()
+void CPU::LD_atR16A()
 {
-	uint8_t& rA = m_RegisterAF.hi;
-	_LoadR8Value( rA,GetRefAtMemory( _Get_Destr16( true ) ) );
+	WriteMemory( _Get_Dest_R16( true ), m_RegisterAF.hi );
 }
 
 void CPU::JPn16()
 {
 	//Read next 2 bytes of memory
-	uint16_t iAdress = ( GetDataAtAdress( m_iPC + 2 ) << 8 ) | GetDataAtAdress( m_iPC + 1 );
-	std::cout << std::hex << std::uppercase << " ( 0X" << ( int )iAdress << " )" << std::dec;
+	uint16_t iAdress = ( ReadMemory( m_iPC + 2 ) << 8 ) | ReadMemory( m_iPC + 1 );
+	//std::cout << std::hex << std::uppercase << " ( 0X" << ( int )iAdress << " )" << std::dec;
 	m_iPC = iAdress;
 }
 
 void CPU::INC_r8()
 {
-	uint16_t iAdress = GetDataAtAdress( m_iPC );
-	uint8_t y = ( iAdress & Y_MASK ) >> 3;
+	uint8_t& iData = _Get_Dest_R8();
+	_LDR8( iData,iData + 1 );
 
-	//_INCRegisterVal( y );
-	//FLAGS
+	uint8_t iFlag = m_pCurrentInstruction->m_aFlags;
+	uint8_t iFlagSet = m_pCurrentInstruction->m_aFlagSet_1;
+	uint8_t iFlagReset = m_pCurrentInstruction->m_aFlagReset_0;
+
+	if( iFlag & 1 )//Zero flag
+	{
+		if( iFlagSet & 1 )
+			m_RegisterAF.lo |= 1 << 7;
+		else if( iFlagReset & 1 )
+			m_RegisterAF.lo |= 0 << 7;
+		else
+			m_RegisterAF.lo &= iData == 0 ? 1 << 7 : 0 << 7;
+	}
+
+	//if( ( iFlag >> 1 ) & 1 )//Subtraction flag( BCD )
+	//{
+	//	if( ( iFlag >> 1 ) & 1 )
+	//		m_RegisterAF.lo |= 1 << 6;
+	//	else if( ( iFlagReset >> 1 ) & 1 )
+	//		m_RegisterAF.lo |= 0 << 6;
+	//	else
+	//		m_RegisterAF.lo |= iData == 0 ? 1 << 6 : 0 << 6;
+	//}
+
+	//if( ( iFlag >> 2 ) & 1 )//Half Carry flag( BCD )
+	//{
+	//	if( ( iFlag >> 2 ) & 1 )
+	//		m_RegisterAF.lo |= 1 << 5;
+	//	else if( ( iFlag >> 2 ) & 1 )
+	//		m_RegisterAF.lo |= 0 << 5;
+	//	else
+	//		m_RegisterAF.lo |= iData == 0 ? 1 << 5 : 0 << 5;
+	//}
+
+	//if( ( iFlag >> 3 ) & 1 )//Carry flag
+	//{
+	//	if( iFlagSet & 1 )
+	//		m_RegisterAF.lo | 1 << 4;
+
+	//	if( iFlagReset & 1 )
+	//		m_RegisterAF.lo | 0 << 4;
+	//}
+}
+
+void CPU::DEC_r8()
+{
+	uint8_t& iData = _Get_Dest_R8();
+	_LDR8( iData,iData - 1 );
+
+	uint8_t iFlag = m_pCurrentInstruction->m_aFlags;
+	uint8_t iFlagSet = m_pCurrentInstruction->m_aFlagSet_1;
+	uint8_t iFlagReset = m_pCurrentInstruction->m_aFlagReset_0;
+
+	if( iFlag & 1 )//Zero flag
+	{
+		if( iFlagSet & 1 )
+			m_RegisterAF.lo |= 1 << 7;
+		else if( iFlagReset & 1 )
+			m_RegisterAF.lo |= 0 << 7;
+		else
+			m_RegisterAF.lo |= iData == 0 ? 1 << 7 : 0 << 7;
+	}
+
+	//if( ( iFlag >> 1 ) & 1 )//Subtraction flag( BCD )
+	//{
+	//	if( ( iFlag >> 1 ) & 1 )
+	//		m_RegisterAF.lo |= 1 << 6;
+	//	else if( ( iFlagReset >> 1 ) & 1 )
+	//		m_RegisterAF.lo |= 0 << 6;
+	//	else
+	//		m_RegisterAF.lo |= iData == 0 ? 1 << 6 : 0 << 6;
+	//}
+
+	//if( ( iFlag >> 2 ) & 1 )//Half Carry flag( BCD )
+	//{
+	//	if( ( iFlag >> 2 ) & 1 )
+	//		m_RegisterAF.lo |= 1 << 5;
+	//	else if( ( iFlag >> 2 ) & 1 )
+	//		m_RegisterAF.lo |= 0 << 5;
+	//	else
+	//		m_RegisterAF.lo |= iData == 0 ? 1 << 5 : 0 << 5;
+	//}
+
+	//if( ( iFlag >> 3 ) & 1 )//Carry flag
+	//{
+	//	if( iFlagSet & 1 )
+	//		m_RegisterAF.lo | 1 << 4;
+
+	//	if( iFlagReset & 1 )
+	//		m_RegisterAF.lo | 0 << 4;
+	//}
 }
 
 void CPU::JR_cc_n16()
 {
-	uint16_t iAdress = GetDataAtAdress( m_iPC );
-	uint8_t z = ( iAdress & Z_MASK );
+	const uint8_t iData = ReadMemory( m_iPC );
+	uint8_t cc = iData & Z_MASK;
+	int8_t iValue = static_cast< int8_t >( ReadMemory( m_iPC + 1 ) );
 
-	int8_t iValue = static_cast<int8_t>( GetDataAtAdress( m_iPC + 1 ) );
-	if ( !z )
+	m_iPC += m_pCurrentInstruction->m_iLength;
+	if( _CheckCondition( cc ) )
 		m_iPC += iValue;
 }
 
-void CPU::_FillOpcodesTables()
+uint8_t& CPU::_Get_Dest_R8( bool s8 /*= false */)
 {
-	for( uint16_t i = 0; i < 256; ++i )
-	{
-		uint8_t x = ( i & X_MASK ) >> 6;
-		uint8_t y = ( i & Y_MASK ) >> 3;
-		uint8_t p = ( i & P_MASK ) >> 4;
-		uint8_t q = ( i & Q_MASK ) >> 3;
-		uint8_t z = ( i & Z_MASK );
-
-		switch( x )
-		{
-		case 0:
-		{
-			switch( z )
-			{
-			case 0:
-			{
-				switch( y )
-				{
-					case 0: CPU::AddCPUInstruction( i,{ &CPU::NOP }, 0,0,0,{1,4},false,"NOP" ); break;
-					case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },  0,0,0,{3,20},false,"LD a16, SP" ); break;
-					case 2: CPU::AddCPUInstruction( i,{ &CPU::STOP },0,0,0,{2,4},false,"STOP" ); break;
-					case 3: CPU::AddCPUInstruction( i,{ &CPU::JR },  0,0,0,{2,12},false,"JR s8" ); break;
-					case 4:
-					case 5:
-					case 6:
-					case 7:
-						CPU::AddCPUInstruction( i,{ &CPU::JR_cc_n16 },0,0,0,{2,12,8},false,"JR %s s8",cc[ y-4 ].data() ); break;
-				}
-				break;
-			}
-			case 1:
-			{
-				switch( q )
-				{
-					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_r16n16 },0,0,0,{3,12},false,"LD %s, d16",rp[ p ].data() ); break;
-					case 1: CPU::AddCPUInstruction( i,{ &CPU::ADD },static_cast< uint8_t >( N | H | C ), (0), (N),{1,8},false,"ADD HL, %s",rp[ p ].data() ); break;
-				}
-				break;
-			}
-			case 2:
-			{
-				switch( q )
-				{
-				case 0:
-				{
-					switch( p )
-					{
-						case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_r16A },0,0,0,{1,8},false,"LD BC, A" ); break;
-						case 1: CPU::AddCPUInstruction( i,{ &CPU::LD_r16A },0,0,0,{1,8},false,"LD DE, A" ); break;
-						case 2: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD [HL+], A" ); break;
-						case 3: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD [HL-], A" ); break;
-					}
-					break;
-				}
-				case 1:
-				{
-					switch( p )
-					{
-						case 0: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, BC" ); break;
-						case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, DE" ); break;
-						case 2: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLI },0,0,0,{1,8},false,"LD A, [HL+]" ); break;
-						case 3: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLD },0,0,0,{1,8},false,"LD A, [HL-]" ); break;
-					}
-					break;
-				}
-				}
-				break;
-			}
-			case 3:
-			{
-				switch( q )
-				{
-				case 0: CPU::AddCPUInstruction( i,{ &CPU::INC },0,0,0,{1,8},false,"INC %s",rp[ p ].data() ); break;
-				case 1: CPU::AddCPUInstruction( i,{ &CPU::DEC },0,0,0,{1,8},false,"DEC, %s",rp[ p ].data() ); break;
-				}
-				break;
-			}
-			case 4:
-			{
-				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::INC },( Z | N | H ),0, ( N ),{1,12},false,"INC HL" );
-				else
-					CPU::AddCPUInstruction( i,{ &CPU::INC_r8 },( Z | N | H ),0, ( N ),{1,4},false,"INC %c",r[ y ] );
-				break;
-			}
-			case 5:
-			{
-				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::DEC },(Z | N | H),( N ), 0,{1,12},false,"DEC HL" );
-				else
-					CPU::AddCPUInstruction( i,{ &CPU::DEC },(Z | N | H),( N ), 0,{1,4},false,"DEC, %c",r[ y ] );
-				break;
-			}
-			case 6:
-			{
-				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{2,12},false,"LD HL, d8" );
-				else
-					CPU::AddCPUInstruction( i,{ &CPU::LD_r8d8 },0,0,0,{2,8},false,"LD %c, d8",r[ y ] );
-				break;
-			}
-			case 7:
-			{
-				switch( y )
-				{
-					case 0: CPU::AddCPUInstruction( i,{ &CPU::RLCA },( Z | N | H | C ),  0,		 ( Z | N | H ), {1,4},false,"RLCA" ); break;
-					case 1: CPU::AddCPUInstruction( i,{ &CPU::RRCA },( Z | N | H | C ),  0,		 ( Z | N | H ), {1,4},false,"RRCA" ); break;
-					case 2: CPU::AddCPUInstruction( i,{ &CPU::RLA }, ( Z | N | H | C ),  0,		 ( Z | N | H ), {1,4},false,"RLA" ); break;
-					case 3: CPU::AddCPUInstruction( i,{ &CPU::RRA }, ( Z | N | H | C ),  0,		 ( Z | N | H ), {1,4},false,"RRA" ); break;
-					case 4: CPU::AddCPUInstruction( i,{ &CPU::DAA }, ( Z     | H | C ),  0,		 (		   H ),	{1,4},false,"DAA" ); break;
-					case 5: CPU::AddCPUInstruction( i,{ &CPU::CPL }, (	   N | H	), ( N | H	),		   0,	{1,4},false,"CPL" ); break;
-					case 6: CPU::AddCPUInstruction( i,{ &CPU::SCF }, (     N | H | C ),( C ),	 (	   N | H ),	{1,4},false,"SCF" ); break;
-					case 7: CPU::AddCPUInstruction( i,{ &CPU::CCF }, (     N | H | C ),  0,		 (     N | H ),	{1,4},false,"CCF" ); break;
-				}
-				break;
-			}
-			}
-			break;
-		}
-		case 1:
-		{
-			if( z == 6 && y == 6 )
-			{
-				CPU::AddCPUInstruction( i,{ &CPU::HALT },0,0,0,{1,4},false,"HALT" );
-			}
-			else
-			{
-				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD HL, %c",r[ z ] );
-				else if( z == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD %c, HL",r[ y ] );
-				else
-					CPU::AddCPUInstruction( i,{ &CPU::LD_r8r8 },0,0,0,{1,4},false,"LD %c, %c",r[ y ],r[ z ] );
-			}
-			break;
-		}
-		case 2:
-		{
-			switch( y )
-			{
-				case 0:
-				{
-					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( N ),{1,8},false,"%s HL", alu[ y ].data(),r[ z ] );
-					else
-						CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( N ),{1,4},false,"%s %c", alu[ y ].data(),r[ z ] );
-					break;
-				}
-
-				case 1:
-				{
-					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),0,( N ),{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
-					else
-						CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),0,( N ),{1,4},false,"%s %c", alu[ y ].data(),r[ z ] );
-					break;
-				}
-
-				case 2:
-				{
-					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ),( N ), 0,{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
-					else
-					{
-						if ( z == 7 )
-							CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ),( Z | N ),( H | C ),{1,4},false,"%s %c", alu[ y ].data(),r[ z ] );
-						else
-							CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ),(		N ),	0	 ,{1,4},false,"%s %c", alu[ y ].data(),r[ z ] );
-					}
-					break;
-				}
-
-				case 3:
-				{
-					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::SBC },	( Z | N | H | C ),( N ), 0,	{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
-					else
-					{
-						if ( z == 7 )
-							CPU::AddCPUInstruction( i,{ &CPU::SBC },( Z | N | H ),	  ( N ), 0,	{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
-						else
-							CPU::AddCPUInstruction( i,{ &CPU::SBC },( Z | N | H | C ),( N ), 0,	{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
-					}
-					break;
-				}
-
-				case 4:
-				{
-					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::AND },( Z | N | H | C ), ( H ),( N | C ),{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
-					else
-						CPU::AddCPUInstruction( i,{ &CPU::AND },( Z | N | H | C ), ( H ),( N | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
-					break;
-				}
-
-				case 5:
-				{
-					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::XOR },	( Z | N | H | C ), ( Z ),( N | H | C ),{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
-					else
-					{
-						if ( z == 7 )
-							CPU::AddCPUInstruction( i,{ &CPU::XOR },( Z | N | H | C ), ( Z ),( N | H | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
-						else
-							CPU::AddCPUInstruction( i,{ &CPU::XOR },( Z | N | H | C ),	 0,	 ( N | H | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
-					}
-					break;
-				}
-
-				case 6:
-				{
-					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::OR },( Z | N | H | C ),	0,	( N | H | C ),{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
-					else
-						CPU::AddCPUInstruction( i,{ &CPU::OR },( Z | N | H | C ), ( Z ),( N | H | C ),{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
-					break;
-				}
-
-				case 7:
-				{
-					if ( z == 6 )
-						CPU::AddCPUInstruction( i,{ &CPU::CP },		( Z | N | H | C ),		0,	( N ),			{1,8},false, "%s HL", alu[ y ].data(),r[ z ] );
-					else
-					{
-						if ( z == 7 )
-							CPU::AddCPUInstruction( i,{ &CPU::CP }, ( Z | N | H | C ), ( Z | N ),	( H | C ),	{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
-						else
-							CPU::AddCPUInstruction( i,{ &CPU::CP }, ( Z | N | H | C ), (	 N ),	0,			{1,4},false, "%s %c", alu[ y ].data(),r[ z ] );
-					}
-					break;
-				}
-			}
-			break;
-		}
-		case 3:
-		{
-			switch( z )
-			{
-			case 0:
-			{
-				switch( y )
-				{
-					case 0:
-					case 1:
-					case 2:
-					case 3:
-							CPU::AddCPUInstruction( i,{ &CPU::RET },	0,			  0,	0,		{1,20,8},false,"RET %s",cc[ y ].data() ); break;
-					case 4: CPU::AddCPUInstruction( i,{ &CPU::LDH_C },	0,			  0,	0,		{2,12},false,"LD (0xFF00+C), A" ); break;
-					case 5: CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( Z | N ),  {2,16},false,"ADD SP, s8" ); break;
-					case 6: CPU::AddCPUInstruction( i,{ &CPU::LDH },	0,			  0,	0,		{2,8},false,"LD A, (0xFF00+C)" ); break;
-					case 7: CPU::AddCPUInstruction( i,{ &CPU::LD }, ( Z | N | H | C ),0,( Z | N ),  {2,12},false,"LD HL, SP+s8" ); break;
-				}
-				break;
-			}
-			case 1:
-			{
-				switch( q )
-				{
-				case 0:
-				{
-					if( p == 3 ) //AF
-						CPU::AddCPUInstruction( i,{ &CPU::POP },( Z | N | H | C ),0,0,{1,12},false,"POP %s",rp2[ p ].data() );
-					else
-						CPU::AddCPUInstruction( i,{ &CPU::POP },	  0,		  0,0,{1,12},false,"POP %s",rp2[ p ].data() );
-					break;
-				}
-				case 1:
-				{
-					switch( p )
-					{
-						case 0: CPU::AddCPUInstruction( i,{ &CPU::RET }, 0,0,0,{1,16},false,"RET" ); break;
-						case 1: CPU::AddCPUInstruction( i,{ &CPU::RETI },0,0,0,{1,16},false,"RETI" ); break;
-						case 2: CPU::AddCPUInstruction( i,{ &CPU::JP },  0,0,0,{1,4},false,"JP HL" ); break;
-						case 3: CPU::AddCPUInstruction( i,{ &CPU::LD },  0,0,0,{1,8},false,"LD SP, HL" ); break;
-					}
-					break;
-				}
-				}
-				break;
-			}
-			case 2:
-			{
-				switch( y )
-				{
-					case 0:
-					case 1:
-					case 2:
-					case 3:
-							CPU::AddCPUInstruction( i,{ &CPU::JP },0,0,0,{3,16,12},false,"JP %s a16",cc[ y ].data() ); break;
-					case 4: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD [C], A",cc[ y ].data() ); break;
-					case 5: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{3,16},false,"LD a16, A" ); break;
-					case 6: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{1,8},false,"LD A, [C]" ); break;
-					case 7: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{3,16},false,"JP A, a16" ); break;
-				}
-				break;
-			}
-			case 3:
-			{
-				switch( y )
-				{
-				case 0: CPU::AddCPUInstruction( i,{ &CPU::JPn16 },0,0,0,{3,16},false,"JP a16" ); break;
-				case 1:
-				{
-					for( int k = 0; k < 256; ++k )
-					{
-						x = ( k & X_MASK ) >> 6;
-						y = ( k & Y_MASK ) >> 3;
-						z = ( k & Z_MASK );
-
-						switch( x )
-						{
-						case 0:
-						{
-							const char* format = "%s %c";
-							uint8_t iDuration = 8;
-							if ( z == 6 )
-							{
-								format =  "%s (HL)";
-								iDuration = 16;
-							}
-							switch( y )
-							{
-								case 0: CPU::AddCPUInstruction( k,{ &CPU::RLC }, ( Z | N | H | C ), 0,( N | H ),	 { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 1: CPU::AddCPUInstruction( k,{ &CPU::RRC }, ( Z | N | H | C ), 0,( N | H ),	 { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 2: CPU::AddCPUInstruction( k,{ &CPU::RL },  ( Z | N | H | C ), 0,( N | H ),	 { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 3: CPU::AddCPUInstruction( k,{ &CPU::RR },  ( Z | N | H | C ), 0,( N | H ),	 { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 4: CPU::AddCPUInstruction( k,{ &CPU::SLA }, ( Z | N | H | C ), 0,( N | H ),	 { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 5: CPU::AddCPUInstruction( k,{ &CPU::SRA }, ( Z | N | H | C ), 0,( N | H ),	 { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 6: CPU::AddCPUInstruction( k,{ &CPU::SWAP },( Z | N | H | C ), 0,( N | H | C ), { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-								case 7: CPU::AddCPUInstruction( k,{ &CPU::SRL }, ( Z | N | H | C ), 0,( N | H ),	 { 2, iDuration },true, format,rot[ y ].data(), r[ z ] ); break;
-							}
-							break;
-						}
-						case 1:
-						{
-							if( z == 6 )
-								CPU::AddCPUInstruction( k,{ &CPU::BIT },( Z | N | H ), ( H ),( N ),{2,12},true,"BIT %i, HL",y );
-							else
-								CPU::AddCPUInstruction( k,{ &CPU::BIT },( Z | N | H ), ( H ),( N ),{2,8},true,"BIT %i, %c",y,r[ z ] );
-							break;
-						}
-						case 2:
-						{
-							if( z == 6 )
-								CPU::AddCPUInstruction( k,{ &CPU::RES },0,0,0,{2,16},true,"RES %i, HL",y );
-							else
-								CPU::AddCPUInstruction( k,{ &CPU::RES },0,0,0,{2,8},true,"RES %i, %c",y,r[ z ] );
-							break;
-						}
-						case 3:
-						{
-							if( z == 6 )
-								CPU::AddCPUInstruction( k,{ &CPU::SET },0,0,0,{2,16},true,"SET %i, HL",y );
-							else
-								CPU::AddCPUInstruction( k,{ &CPU::SET },0,0,0,{2,8},true,"SET %i, %c",y,r[ z ] );
-						}
-						}
-					}
-					break;
-				}
-				case 6: CPU::AddCPUInstruction( i,{ &CPU::DI },0,0,0,{1,4},false,"DI" ); break;
-				case 7: CPU::AddCPUInstruction( i,{ &CPU::EI },0,0,0,{1,4},false,"EI" ); break;
-				}
-				break;
-			}
-			case 4:
-			{
-				switch( y )
-				{
-					case 0:
-					case 1:
-					case 2:
-					case 3:
-						CPU::AddCPUInstruction( i,{ &CPU::PUSH },0,0,0,{3,24,12},false,"CALL %s, a16",cc[ y ].data() ); break;
-				}
-				break;
-			}
-			case 5:
-			{
-				if( q == 0 )
-					CPU::AddCPUInstruction( i,{ &CPU::PUSH },0,0,0,{1,16},false,"PUSH %s",rp2[ p ].data() );
-				else if( q == 1 && p == 0 )
-					CPU::AddCPUInstruction( i,{ &CPU::CALL },0,0,0,{3,24},false,"CALL a16" );
-				break;
-			}
-			case 6:
-			{
-				switch( y )
-				{
-					case 0: CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),   0,	  ( N ),		{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 1: CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),   0,	  ( N ),		{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 2: CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ), ( N ),   0,			{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 3: CPU::AddCPUInstruction( i,{ &CPU::SBC },( Z | N | H | C ), ( N ),   0,			{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 4: CPU::AddCPUInstruction( i,{ &CPU::AND },( Z | N | H | C ), ( H ), ( N | C ),	{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 5: CPU::AddCPUInstruction( i,{ &CPU::XOR },( Z | N | H | C ),   0,	  ( N | H | C ),{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 6: CPU::AddCPUInstruction( i,{ &CPU::OR }, ( Z | N | H | C ),   0,	  ( N | H | C ),{2,8},false,"%s d8",alu[ y ].data() ); break;
-					case 7: CPU::AddCPUInstruction( i,{ &CPU::CP }, ( Z | N | H | C ), ( N ),   0,			{2,8},false,"%s d8",alu[ y ].data() ); break;
-				}
-				break;
-			}
-			case 7: CPU::AddCPUInstruction( i,{ &CPU::RST },0,0,0,{1,16},false,"RST %02X",y * 8 ); break;
-			}
-			break;
-		}
-		default: std::cout << "Case not handled" << std::endl; break;
-		}
-	}
-}
-
-uint8_t& CPU::_Get_Destr8( bool s8 /*= false */)
-{
-	const uint8_t iData = GetDataAtAdress( m_iPC );
+	const uint8_t iData = ReadMemory( m_iPC );
 	uint8_t r8 = s8 ? ( iData & Z_MASK ) : ( iData & Y_MASK ) >> 3;
 	switch( r8 )
 	{
@@ -824,9 +539,9 @@ uint8_t& CPU::_Get_Destr8( bool s8 /*= false */)
 	throw std::runtime_error( "ERROR_GETTING_DESTR8" );
 }
 
-uint16_t& CPU::_Get_Destr16( bool bMem /*= false*/ )
+uint16_t& CPU::_Get_Dest_R16( bool bMem /*= false*/ )
 {
-	uint8_t r8 = ( GetDataAtAdress( m_iPC ) & P_MASK ) >> 4;
+	uint8_t r8 = ( ReadMemory( m_iPC ) & P_MASK ) >> 4;
 	switch( r8 )
 	{
 		case 0: return m_RegisterBC.reg;							break;
@@ -850,12 +565,436 @@ uint16_t& CPU::_Get_Destr16( bool bMem /*= false*/ )
 	throw std::runtime_error( "ERROR_GETTING_DESTR16" );
 }
 
-void CPU::_LoadR8Value( uint8_t& iDst, uint8_t iData )
+bool CPU::_CheckCondition( uint8_t cc )
+{
+	switch( cc )
+	{
+		case 0: return !ZFlag;	//Not Zero
+		case 1: return ZFlag;	//Zero
+		case 2: return !CFlag;	//Not Carry
+		case 3: return CFlag;	//Carry
+	}
+
+	throw std::runtime_error( "ERROR_GETTING_CONDITION" );
+}
+
+void CPU::_LDR8( uint8_t& iDst,uint8_t iData )
 {
 	iDst = iData;
 }
 
-void CPU::_LoadR16Value( uint16_t& iDst,uint16_t iData )
+void CPU::_LDR16( uint16_t& iDst,uint16_t iData )
 {
 	iDst = iData;
+}
+
+void CPU::_FillOpcodesTables()
+{
+	for( uint16_t i = 0; i < 256; ++i )
+	{
+		uint8_t x = ( i & X_MASK ) >> 6;
+		uint8_t y = ( i & Y_MASK ) >> 3;
+		uint8_t p = ( i & P_MASK ) >> 4;
+		uint8_t q = ( i & Q_MASK ) >> 3;
+		uint8_t z = ( i & Z_MASK );
+
+		switch( x )
+		{
+		case 0:
+		{
+			switch( z )
+			{
+			case 0:
+			{
+				switch( y )
+				{
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::NOP },0,0,0,{ 1,4 },false,"NOP" ); break;
+				case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 3,20 },false,"LD a16, SP" ); break;
+				case 2: CPU::AddCPUInstruction( i,{ &CPU::STOP },0,0,0,{ 2,4 },false,"STOP" ); break;
+				case 3: CPU::AddCPUInstruction( i,{ &CPU::JR },0,0,0,{ 2,12 },false,"JR s8" ); break;
+				case 4:
+				case 5:
+				case 6:
+				case 7:
+					CPU::AddCPUInstruction( i,{ &CPU::JR_cc_n16 },0,0,0,{ 2,12,8 },false,"JR %s s8",cc[ y - 4 ].data() ); break;
+				}
+				break;
+			}
+			case 1:
+			{
+				switch( q )
+				{
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_r16n16 },0,0,0,{ 3,12 },false,"LD %s, d16",rp[ p ].data() ); break;
+				case 1: CPU::AddCPUInstruction( i,{ &CPU::ADD },static_cast< uint8_t >( N | H | C ),( 0 ),( N ),{ 1,8 },false,"ADD HL, %s",rp[ p ].data() ); break;
+				}
+				break;
+			}
+			case 2:
+			{
+				switch( q )
+				{
+				case 0:
+				{
+					switch( p )
+					{
+					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_atR16A },0,0,0,{ 1,8 },false,"LD BC, A" ); break;
+					case 1: CPU::AddCPUInstruction( i,{ &CPU::LD_atR16A },0,0,0,{ 1,8 },false,"LD DE, A" ); break;
+					case 2: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD [HL+], A" ); break;
+					case 3: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD [HL-], A" ); break;
+					}
+					break;
+				}
+				case 1:
+				{
+					switch( p )
+					{
+					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD A, BC" ); break;
+					case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD A, DE" ); break;
+					case 2: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLI },0,0,0,{ 1,8 },false,"LD A, [HL+]" ); break;
+					case 3: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLD },0,0,0,{ 1,8 },false,"LD A, [HL-]" ); break;
+					}
+					break;
+				}
+				}
+				break;
+			}
+			case 3:
+			{
+				switch( q )
+				{
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::INC },0,0,0,{ 1,8 },false,"INC %s",rp[ p ].data() ); break;
+				case 1: CPU::AddCPUInstruction( i,{ &CPU::DEC },0,0,0,{ 1,8 },false,"DEC, %s",rp[ p ].data() ); break;
+				}
+				break;
+			}
+			case 4:
+			{
+				if( y == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::INC },( Z | N | H ),0,( N ),{ 1,12 },false,"INC HL" );
+				else
+					CPU::AddCPUInstruction( i,{ &CPU::INC_r8 },( Z | N | H ),0,( N ),{ 1,4 },false,"INC %c",r[ y ] );
+				break;
+			}
+			case 5:
+			{
+				if( y == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::DEC },( Z | N | H ),( N ),0,{ 1,12 },false,"DEC HL" );
+				else
+					CPU::AddCPUInstruction( i,{ &CPU::DEC_r8 },( Z | N | H ),( N ),0,{ 1,4 },false,"DEC %c",r[ y ] );
+				break;
+			}
+			case 6:
+			{
+				if( y == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 2,12 },false,"LD HL, d8" );
+				else
+					CPU::AddCPUInstruction( i,{ &CPU::LD_r8n8 },0,0,0,{ 2,8 },false,"LD %c, d8",r[ y ] );
+				break;
+			}
+			case 7:
+			{
+				switch( y )
+				{
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::RLCA },( Z | N | H | C ),0,( Z | N | H ),{ 1,4 },false,"RLCA" ); break;
+				case 1: CPU::AddCPUInstruction( i,{ &CPU::RRCA },( Z | N | H | C ),0,( Z | N | H ),{ 1,4 },false,"RRCA" ); break;
+				case 2: CPU::AddCPUInstruction( i,{ &CPU::RLA },( Z | N | H | C ),0,( Z | N | H ),{ 1,4 },false,"RLA" ); break;
+				case 3: CPU::AddCPUInstruction( i,{ &CPU::RRA },( Z | N | H | C ),0,( Z | N | H ),{ 1,4 },false,"RRA" ); break;
+				case 4: CPU::AddCPUInstruction( i,{ &CPU::DAA },( Z | H | C ),0,( H ),{ 1,4 },false,"DAA" ); break;
+				case 5: CPU::AddCPUInstruction( i,{ &CPU::CPL },( N | H ),( N | H ),0,{ 1,4 },false,"CPL" ); break;
+				case 6: CPU::AddCPUInstruction( i,{ &CPU::SCF },( N | H | C ),( C ),( N | H ),{ 1,4 },false,"SCF" ); break;
+				case 7: CPU::AddCPUInstruction( i,{ &CPU::CCF },( N | H | C ),0,( N | H ),{ 1,4 },false,"CCF" ); break;
+				}
+				break;
+			}
+			}
+			break;
+		}
+		case 1:
+		{
+			if( z == 6 && y == 6 )
+			{
+				CPU::AddCPUInstruction( i,{ &CPU::HALT },0,0,0,{ 1,4 },false,"HALT" );
+			}
+			else
+			{
+				if( y == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD HL, %c",r[ z ] );
+				else if( z == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD %c, HL",r[ y ] );
+				else
+					CPU::AddCPUInstruction( i,{ &CPU::LD_r8r8 },0,0,0,{ 1,4 },false,"LD %c, %c",r[ y ],r[ z ] );
+			}
+			break;
+		}
+		case 2:
+		{
+			switch( y )
+			{
+			case 0:
+			{
+				if( z == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( N ),{ 1,8 },false,"%s HL",alu[ y ].data(),r[ z ] );
+				else
+					CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( N ),{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+				break;
+			}
+
+			case 1:
+			{
+				if( z == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),0,( N ),{ 1,8 },false,"%s HL",alu[ y ].data(),r[ z ] );
+				else
+					CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),0,( N ),{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+				break;
+			}
+
+			case 2:
+			{
+				if( z == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ),( N ),0,{ 1,8 },false,"%s HL",alu[ y ].data(),r[ z ] );
+				else
+				{
+					if( z == 7 )
+						CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ),( Z | N ),( H | C ),{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+					else
+						CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ),( N ),0,{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+				}
+				break;
+			}
+
+			case 3:
+			{
+				if( z == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::SBC },( Z | N | H | C ),( N ),0,{ 1,8 },false,"%s HL",alu[ y ].data(),r[ z ] );
+				else
+				{
+					if( z == 7 )
+						CPU::AddCPUInstruction( i,{ &CPU::SBC },( Z | N | H ),( N ),0,{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+					else
+						CPU::AddCPUInstruction( i,{ &CPU::SBC },( Z | N | H | C ),( N ),0,{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+				}
+				break;
+			}
+
+			case 4:
+			{
+				if( z == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::AND },( Z | N | H | C ),( H ),( N | C ),{ 1,8 },false,"%s HL",alu[ y ].data(),r[ z ] );
+				else
+					CPU::AddCPUInstruction( i,{ &CPU::AND },( Z | N | H | C ),( H ),( N | C ),{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+				break;
+			}
+
+			case 5:
+			{
+				if( z == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::XOR },( Z | N | H | C ),( Z ),( N | H | C ),{ 1,8 },false,"%s HL",alu[ y ].data(),r[ z ] );
+				else
+				{
+					if( z == 7 )
+						CPU::AddCPUInstruction( i,{ &CPU::XOR },( Z | N | H | C ),( Z ),( N | H | C ),{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+					else
+						CPU::AddCPUInstruction( i,{ &CPU::XOR },( Z | N | H | C ),0,( N | H | C ),{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+				}
+				break;
+			}
+
+			case 6:
+			{
+				if( z == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::OR },( Z | N | H | C ),0,( N | H | C ),{ 1,8 },false,"%s HL",alu[ y ].data(),r[ z ] );
+				else
+					CPU::AddCPUInstruction( i,{ &CPU::OR },( Z | N | H | C ),( Z ),( N | H | C ),{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+				break;
+			}
+
+			case 7:
+			{
+				if( z == 6 )
+					CPU::AddCPUInstruction( i,{ &CPU::CP },( Z | N | H | C ),0,( N ),{ 1,8 },false,"%s HL",alu[ y ].data(),r[ z ] );
+				else
+				{
+					if( z == 7 )
+						CPU::AddCPUInstruction( i,{ &CPU::CP },( Z | N | H | C ),( Z | N ),( H | C ),{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+					else
+						CPU::AddCPUInstruction( i,{ &CPU::CP },( Z | N | H | C ),( N ),0,{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+				}
+				break;
+			}
+			}
+			break;
+		}
+		case 3:
+		{
+			switch( z )
+			{
+			case 0:
+			{
+				switch( y )
+				{
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+					CPU::AddCPUInstruction( i,{ &CPU::RET },0,0,0,{ 1,20,8 },false,"RET %s",cc[ y ].data() ); break;
+				case 4: CPU::AddCPUInstruction( i,{ &CPU::LDH_C },0,0,0,{ 2,12 },false,"LD (0xFF00+C), A" ); break;
+				case 5: CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( Z | N ),{ 2,16 },false,"ADD SP, s8" ); break;
+				case 6: CPU::AddCPUInstruction( i,{ &CPU::LDH },0,0,0,{ 2,8 },false,"LD A, (0xFF00+C)" ); break;
+				case 7: CPU::AddCPUInstruction( i,{ &CPU::LD },( Z | N | H | C ),0,( Z | N ),{ 2,12 },false,"LD HL, SP+s8" ); break;
+				}
+				break;
+			}
+			case 1:
+			{
+				switch( q )
+				{
+				case 0:
+				{
+					if( p == 3 ) //AF
+						CPU::AddCPUInstruction( i,{ &CPU::POP },( Z | N | H | C ),0,0,{ 1,12 },false,"POP %s",rp2[ p ].data() );
+					else
+						CPU::AddCPUInstruction( i,{ &CPU::POP },0,0,0,{ 1,12 },false,"POP %s",rp2[ p ].data() );
+					break;
+				}
+				case 1:
+				{
+					switch( p )
+					{
+					case 0: CPU::AddCPUInstruction( i,{ &CPU::RET },0,0,0,{ 1,16 },false,"RET" ); break;
+					case 1: CPU::AddCPUInstruction( i,{ &CPU::RETI },0,0,0,{ 1,16 },false,"RETI" ); break;
+					case 2: CPU::AddCPUInstruction( i,{ &CPU::JP },0,0,0,{ 1,4 },false,"JP HL" ); break;
+					case 3: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD SP, HL" ); break;
+					}
+					break;
+				}
+				}
+				break;
+			}
+			case 2:
+			{
+				switch( y )
+				{
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+					CPU::AddCPUInstruction( i,{ &CPU::JP },0,0,0,{ 3,16,12 },false,"JP %s a16",cc[ y ].data() ); break;
+				case 4: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD [C], A",cc[ y ].data() ); break;
+				case 5: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 3,16 },false,"LD a16, A" ); break;
+				case 6: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD A, [C]" ); break;
+				case 7: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 3,16 },false,"JP A, a16" ); break;
+				}
+				break;
+			}
+			case 3:
+			{
+				switch( y )
+				{
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::JPn16 },0,0,0,{ 3,16 },false,"JP a16" ); break;
+				case 1:
+				{
+					for( int k = 0; k < 256; ++k )
+					{
+						x = ( k & X_MASK ) >> 6;
+						y = ( k & Y_MASK ) >> 3;
+						z = ( k & Z_MASK );
+
+						switch( x )
+						{
+						case 0:
+						{
+							const char* format = "%s %c";
+							uint8_t iDuration = 8;
+							if( z == 6 )
+							{
+								format = "%s (HL)";
+								iDuration = 16;
+							}
+							switch( y )
+							{
+							case 0: CPU::AddCPUInstruction( k,{ &CPU::RLC },( Z | N | H | C ),0,( N | H ),{ 2, iDuration },true,format,rot[ y ].data(),r[ z ] ); break;
+							case 1: CPU::AddCPUInstruction( k,{ &CPU::RRC },( Z | N | H | C ),0,( N | H ),{ 2, iDuration },true,format,rot[ y ].data(),r[ z ] ); break;
+							case 2: CPU::AddCPUInstruction( k,{ &CPU::RL },( Z | N | H | C ),0,( N | H ),{ 2, iDuration },true,format,rot[ y ].data(),r[ z ] ); break;
+							case 3: CPU::AddCPUInstruction( k,{ &CPU::RR },( Z | N | H | C ),0,( N | H ),{ 2, iDuration },true,format,rot[ y ].data(),r[ z ] ); break;
+							case 4: CPU::AddCPUInstruction( k,{ &CPU::SLA },( Z | N | H | C ),0,( N | H ),{ 2, iDuration },true,format,rot[ y ].data(),r[ z ] ); break;
+							case 5: CPU::AddCPUInstruction( k,{ &CPU::SRA },( Z | N | H | C ),0,( N | H ),{ 2, iDuration },true,format,rot[ y ].data(),r[ z ] ); break;
+							case 6: CPU::AddCPUInstruction( k,{ &CPU::SWAP },( Z | N | H | C ),0,( N | H | C ),{ 2, iDuration },true,format,rot[ y ].data(),r[ z ] ); break;
+							case 7: CPU::AddCPUInstruction( k,{ &CPU::SRL },( Z | N | H | C ),0,( N | H ),{ 2, iDuration },true,format,rot[ y ].data(),r[ z ] ); break;
+							}
+							break;
+						}
+						case 1:
+						{
+							if( z == 6 )
+								CPU::AddCPUInstruction( k,{ &CPU::BIT },( Z | N | H ),( H ),( N ),{ 2,12 },true,"BIT %i, HL",y );
+							else
+								CPU::AddCPUInstruction( k,{ &CPU::BIT },( Z | N | H ),( H ),( N ),{ 2,8 },true,"BIT %i, %c",y,r[ z ] );
+							break;
+						}
+						case 2:
+						{
+							if( z == 6 )
+								CPU::AddCPUInstruction( k,{ &CPU::RES },0,0,0,{ 2,16 },true,"RES %i, HL",y );
+							else
+								CPU::AddCPUInstruction( k,{ &CPU::RES },0,0,0,{ 2,8 },true,"RES %i, %c",y,r[ z ] );
+							break;
+						}
+						case 3:
+						{
+							if( z == 6 )
+								CPU::AddCPUInstruction( k,{ &CPU::SET },0,0,0,{ 2,16 },true,"SET %i, HL",y );
+							else
+								CPU::AddCPUInstruction( k,{ &CPU::SET },0,0,0,{ 2,8 },true,"SET %i, %c",y,r[ z ] );
+						}
+						}
+					}
+					break;
+				}
+				case 6: CPU::AddCPUInstruction( i,{ &CPU::DI },0,0,0,{ 1,4 },false,"DI" ); break;
+				case 7: CPU::AddCPUInstruction( i,{ &CPU::EI },0,0,0,{ 1,4 },false,"EI" ); break;
+				}
+				break;
+			}
+			case 4:
+			{
+				switch( y )
+				{
+				case 0:
+				case 1:
+				case 2:
+				case 3:
+					CPU::AddCPUInstruction( i,{ &CPU::PUSH },0,0,0,{ 3,24,12 },false,"CALL %s, a16",cc[ y ].data() ); break;
+				}
+				break;
+			}
+			case 5:
+			{
+				if( q == 0 )
+					CPU::AddCPUInstruction( i,{ &CPU::PUSH },0,0,0,{ 1,16 },false,"PUSH %s",rp2[ p ].data() );
+				else if( q == 1 && p == 0 )
+					CPU::AddCPUInstruction( i,{ &CPU::CALL },0,0,0,{ 3,24 },false,"CALL a16" );
+				break;
+			}
+			case 6:
+			{
+				switch( y )
+				{
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( N ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 1: CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),0,( N ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 2: CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ),( N ),0,{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 3: CPU::AddCPUInstruction( i,{ &CPU::SBC },( Z | N | H | C ),( N ),0,{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 4: CPU::AddCPUInstruction( i,{ &CPU::AND },( Z | N | H | C ),( H ),( N | C ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 5: CPU::AddCPUInstruction( i,{ &CPU::XOR },( Z | N | H | C ),0,( N | H | C ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 6: CPU::AddCPUInstruction( i,{ &CPU::OR },( Z | N | H | C ),0,( N | H | C ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 7: CPU::AddCPUInstruction( i,{ &CPU::CP },( Z | N | H | C ),( N ),0,{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				}
+				break;
+			}
+			case 7: CPU::AddCPUInstruction( i,{ &CPU::RST },0,0,0,{ 1,16 },false,"RST %02X",y * 8 ); break;
+			}
+			break;
+		}
+		default: std::cout << "Case not handled" << std::endl; break;
+		}
+	}
 }
