@@ -8,12 +8,7 @@
 #include <array>
 #include <iostream>
 #include <vector>
-
-namespace MemoryMap
-{
-	constexpr uint16_t MEMORY_SIZE = 0xFFFF;
-	constexpr uint32_t MEMORY_SIZE_DISASSEMBLER = 0xFFFFF;
-}
+#include <unordered_set>
 
 enum State
 {
@@ -43,7 +38,7 @@ class CPU
 		};
 	};
 
-	public:
+public:
 	CPU();
 	~CPU();
 
@@ -60,13 +55,15 @@ class CPU
 	void			Reset();
 	void			Pause()			{ m_oCPUState = State::Pause; }
 	void			SkipToNext()	{ m_oCPUState = State::SkipToNext; }
+	void			MarkBreakpoint( const uint16_t iAdress );
+	bool			IsBreakpoint( const uint16_t iAdress ) const;
 
-	uint8_t							GetDataAtAdress( const uint16_t iAdress ) const;
+	uint8_t							ReadMemory( const uint16_t iAdress ) const;
+	void							WriteMemory( const uint16_t iAdress, const uint8_t iValue );
 	uint8_t&						GetRefAtMemory( const uint16_t iAdress );
+
 	uint16_t						GetPC() const { return m_iPC; }
 	uint16_t						GetSP() const { return m_iSP; }
-	uint16_t						GetMemorySize() const { return m_aMemory.size(); }
-	const std::vector<uint8_t>&		GetMemory() const { return m_aMemory; }
 
 	typedef void ( CPU::* fct_opcode )( );
 	static void		AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8_t iFlags, uint8_t iFlagSet1, uint8_t iFlagReset0, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );
@@ -88,82 +85,81 @@ class CPU
 	bool	NFlag;
 	bool	HFlag;
 	bool	CFlag;
+	static const std::string& GetMemoryRegionLabel( const uint16_t iAdress );
 
-	private:
+private:
 
 	void 			_FillOpcodesTables();
 	void			_SimulateBootRom();
 	void			_UpdateFlags();
 
-	uint8_t&		_Get_Destr8( bool s8 = false );
-	uint16_t&		_Get_Destr16( bool bMem = false );
+	uint8_t&		_Get_Dest_R8( bool s8 = false );
+	uint16_t&		_Get_Dest_R16( bool bMem = false );
 	uint16_t&		_Get_Destr16Stk(){};
-	void			_Get_Cond();
-	void			_LoadR8Value( uint8_t& iDst, uint8_t iData );
-	void			_LoadR16Value( uint16_t& iDst, uint16_t iData );
+	bool			_CheckCondition( uint8_t cc );
+	void			_LDR8( uint8_t& iDst, uint8_t iData );
+	void			_LDR16( uint16_t& iDst, uint16_t iData );
 
 	uint16_t m_iPC;
 	uint16_t m_iSP;
 
 	uint8_t m_iIR;	//Instruction Register
-	uint8_t m_iIE;	//Interrupt Enable
-
-	std::vector<uint8_t> m_aMemory;
 
 	void NOP(){};
-	void LD()							{		std::cout << "NOT IMPLEMENTED"; };
-	void LDH()							{		std::cout << "NOT IMPLEMENTED"; };
-	void LDH_C()						{		std::cout << "NOT IMPLEMENTED"; };
+	void LD()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void LDH()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void LDH_C()						{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void LD_r16n16();
 	void LD_r8r8();
 	void LD_A_HLI();
 	void LD_A_HLD();
-	void LD_r8d8();
-	void LD_r16A();
-	void INC()							{		std::cout << "NOT IMPLEMENTED"; };
+	void LD_r8n8();
+	void LD_atR16A();
+	void INC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void INC_r8();
-	void DEC()							{		std::cout << "NOT IMPLEMENTED"; };
-	void RLCA()							{		std::cout << "NOT IMPLEMENTED"; };
-	void RRCA()							{		std::cout << "NOT IMPLEMENTED"; };
-	void RLA()							{		std::cout << "NOT IMPLEMENTED"; };
-	void RRA()							{		std::cout << "NOT IMPLEMENTED"; };
-	void STOP()							{		std::cout << "NOT IMPLEMENTED"; };
-	void JR()							{		std::cout << "NOT IMPLEMENTED"; };
+	void DEC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void DEC_r8();
+	void RLCA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RRCA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RLA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RRA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void STOP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void JR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void JR_cc_n16();
-	void ADD()							{		std::cout << "NOT IMPLEMENTED"; };
-	void ADC()							{		std::cout << "NOT IMPLEMENTED"; };
-	void SUB()							{		std::cout << "NOT IMPLEMENTED"; };
-	void SBC()							{		std::cout << "NOT IMPLEMENTED"; };
-	void AND()							{		std::cout << "NOT IMPLEMENTED"; };
-	void XOR()							{		std::cout << "NOT IMPLEMENTED"; };
-	void OR()							{		std::cout << "NOT IMPLEMENTED"; };
-	void CP()							{		std::cout << "NOT IMPLEMENTED"; };
-	void DAA()							{		std::cout << "NOT IMPLEMENTED"; };
-	void CPL()							{		std::cout << "NOT IMPLEMENTED"; };
-	void SCF()							{		std::cout << "NOT IMPLEMENTED"; };
-	void CCF()							{		std::cout << "NOT IMPLEMENTED"; };
-	void HALT()							{		std::cout << "NOT IMPLEMENTED"; };
-	void DI()							{		std::cout << "NOT IMPLEMENTED"; };
-	void EI()							{		std::cout << "NOT IMPLEMENTED"; };
-	void RET()							{		std::cout << "NOT IMPLEMENTED"; };
-	void RETI()							{		std::cout << "NOT IMPLEMENTED"; };
-	void POP()							{		std::cout << "NOT IMPLEMENTED"; };
-	void PUSH()							{		std::cout << "NOT IMPLEMENTED"; };
-	void JP()							{		std::cout << "NOT IMPLEMENTED"; };
+	void ADD()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void ADC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SUB()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SBC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void AND()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void XOR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void OR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void CP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void DAA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void CPL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SCF()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void CCF()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void HALT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void DI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void EI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RET()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RETI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void POP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void PUSH()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void JP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void JPn16();
-	void CALL()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void RST()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void RLC()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void RRC()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void RL()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void RR()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void SLA()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void SRA()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void SWAP()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void SRL()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void BIT()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void RES()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
-	void SET()							{		std::cout << "NOT IMPLEMENTED" << std::endl; };
+	void CALL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RST()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RLC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RRC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SLA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SRA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SWAP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SRL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void BIT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RES()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SET()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 
 	friend class Disassembler;
 
@@ -191,9 +187,14 @@ class CPU
 		std::string m_sLabel;
 	};
 	static MemoryRegion m_aMemoryMap[12];
-	static std::string GetMemoryRegionLabel( const uint16_t iAdress );
 
 	State m_oCPUState;
+
+	std::vector<uint8_t> m_aROM_Memory;
+	std::vector<uint8_t> m_aMemory;
+
+	CPU_Instructions* m_pCurrentInstruction;
+	std::unordered_set< uint16_t > m_aBreakpoints;
 };
 
 

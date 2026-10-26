@@ -65,7 +65,7 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 				oCborWriter.SizePlaceHolder();
 
 				g_iCounter = 0;
-				for( uint32_t iPC = 0; iPC < m_pCPU->GetMemorySize(); )
+				for( uint16_t iPC = 0; iPC < 0xFFFF; ) //TODO : need to do banks
 				{
 					if( iPC >= 0x104 && iPC <= 0x14F )
 					{
@@ -73,6 +73,12 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 						iPC = 0x150;
 						continue;
 					}
+					/*else if( iPC >= 0xFF00 && iPC <= 0xFF77 )
+					{
+						DecryptIORange( oCborWriter );
+						iPC = 0xFF78;
+						continue;
+					}*/
 
 					iPC += _WriteInstruction( oCborWriter,iPC );
 				}
@@ -113,7 +119,7 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 		{
 			const std::streamsize size = file.tellg();
 		
-			if( size <= 0 || size > MemoryMap::MEMORY_SIZE_DISASSEMBLER )
+			if( size <= 0 )
 				throw "SIZE_INVALID_DURING_DISASSEMBLED_FILE_READING";
 
 			file.seekg( 0 );
@@ -229,6 +235,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 	std::string				sComment = "";
 	uint8_t					iPCIncrease = 1;
 	uint8_t					iLengthData = 1;
+	std::string				sLabel = CPU::GetInstance()->GetMemoryRegionLabel( iAdress );
 
 	if( iAdress >= 0xFF10 && iAdress <= 0xFF26 )
 		sComment = Format( "NR%i", iAdress - 0xFF10 ).c_str();
@@ -248,7 +255,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 				for( int i = 0; i < 6; ++i )
 				{
 					ToHex( iAdress + 8 * i,aData,8 );
-					WriteBlock( oData,iAdress + 8 * i,aData,aDataBis,sMnemonic.c_str(),i == 5 ? sComment.c_str() : "",0 );
+					WriteBlock( oData, sLabel.c_str(),iAdress + 8 * i,aData,aDataBis,sMnemonic.c_str(),i == 5 ? sComment.c_str() : "",0);
 				}
 				iPCIncrease = 48;
 				return iPCIncrease;
@@ -259,14 +266,14 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 				iLengthData = 15;
 				sMnemonic.resize( iLengthData );
 				for( int i = 0; i < iLengthData; ++i )
-					sMnemonic[i] = static_cast<char>( m_pCPU->GetDataAtAdress( iAdress + i ) );
+					sMnemonic[i] = static_cast<char>( m_pCPU->ReadMemory( iAdress + i ) );
 
 				break;
 			}
 			case 0x143:
 			{
 				sComment = ";CGB Flag";
-				switch( m_pCPU->GetDataAtAdress( iAdress ) )
+				switch( m_pCPU->ReadMemory( iAdress ) )
 				{
 					case 0:		sComment += " ;DMG - classic gameboy"; break;
 					case 0x80:	sComment += " ;CGB - retro compat monochrome"; break;
@@ -277,7 +284,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 			case 0x147:
 			{
 				sComment = ";Cartridge Type";
-				switch( m_pCPU->GetDataAtAdress( iAdress ) )
+				switch( m_pCPU->ReadMemory( iAdress ) )
 				{
 					case 0x00: sComment += " ROM ONLY"; break;
 					case 0x01: sComment += " MBC1"; break;
@@ -314,7 +321,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 			case 0x148:
 			{
 				sComment = ";ROM size";
-				switch( m_pCPU->GetDataAtAdress( iAdress ) )
+				switch( m_pCPU->ReadMemory( iAdress ) )
 				{
 					case 0x00: sComment += " 32 KiB, 2 (no banking)"; break;
 					case 0x01: sComment += " 64 KiB, 4"; break;
@@ -335,7 +342,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 			case 0x149:
 			{
 				sComment = ";RAM size";
-				switch( m_pCPU->GetDataAtAdress( iAdress ) )
+				switch( m_pCPU->ReadMemory( iAdress ) )
 				{
 					case 0x00: sComment += " 0, No RAM"; break;
 					case 0x01: sComment += " -, Unused"; break;
@@ -350,7 +357,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 			case 0x14A:
 			{
 				sComment = ";Destination code";
-				if( m_pCPU->GetDataAtAdress( iAdress ) )
+				if( m_pCPU->ReadMemory( iAdress ) )
 					sComment += " : Japanese";
 				else
 					sComment += " : Overseas only";
@@ -372,8 +379,8 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 			LINE_DEFAULT:
 			default:
 			{
-				uint8_t iIndex = m_pCPU->GetDataAtAdress( iAdress );
-				uint8_t iDataNext = m_pCPU->GetDataAtAdress( iAdress + 1 );
+				uint8_t iIndex = m_pCPU->ReadMemory( iAdress );
+				uint8_t iDataNext = m_pCPU->ReadMemory( iAdress + 1 );
 				CPU::CPU_Instructions* pInstruction = iIndex == 0xCB ? CPU::m_aExtendOpcodesTable[ iDataNext ] : CPU::m_aOpcodesTable[ iIndex ];
 
 				if( pInstruction )
@@ -450,7 +457,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 	}
 
 	ToHex( iAdress,aData,iLengthData );
-	WriteBlock( oData,iAdress,aData,aDataBis,sMnemonic.c_str(),sComment,iDuration);
+	WriteBlock( oData,sLabel.c_str(),iAdress,aData,aDataBis,sMnemonic.c_str(),sComment,iDuration);
 
 	return iPCIncrease;
 }
@@ -461,7 +468,7 @@ void Disassembler::ToHex( const uint16_t iSrcAdress,char* Dst,int len, bool bCon
 	static const char hex[] = "0123456789ABCDEF";
 	for( size_t i = bConcat ? len - 1 : 0,k = 0; bConcat ? i > 0 : i < len; bConcat ? i-- : i++,bConcat ? k+= 2 : k += 3 )
 	{
-		uint8_t val  = CPU::GetInstance()->GetDataAtAdress( iSrcAdress + i );
+		uint8_t val  = CPU::GetInstance()->ReadMemory( iSrcAdress + i );
 		Dst[ k + 0 ] = hex[ val >> 4 ];
 		Dst[ k + 1 ] = hex[ val & 15 ];
 		if( bConcat == false && i + 1 < len )
@@ -519,6 +526,9 @@ bool SAXParser::string( string_t& val )
 		case 6:
 			CopyTrunc( m_pLine->m_aDataBis,val.c_str() );
 			break;
+		case 7:
+			CopyTrunc( m_pLine->m_aLabel,val.c_str() );
+			break;
 		default:
 			std::cerr << "Element not handle" << std::endl;
 			return false;
@@ -545,6 +555,7 @@ bool SAXParser::key( string_t& val )
 			case 'b':	m_iElementFlag = 4; return true;
 			case 'd':	m_iElementFlag = 5; return true;
 			case 'z':	m_iElementFlag = 6; return true;
+			case 'k':	m_iElementFlag = 7; return true;
 		}
 	}
 	return true;

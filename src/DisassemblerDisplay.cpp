@@ -11,6 +11,7 @@
 #include "imgui.h"
 #include "imgui_internal.h"
 #include "CPU.h"
+#include "IconsFontAwesome6.h"
 
 #define ADDR_COLOR ImVec4( 0.337f, 0.612f, 0.839f, 1.00f )
 #define DATA_COLOR ImVec4( 0.831f, 0.831f, 0.831f, 1.00f )
@@ -18,13 +19,15 @@
 #define LENGTH_COLOR ImVec4( 0.93f, 0.537f, 0.208f, 1.00f )
 #define MNEMONIC_COLOR ImVec4( 0.306f, 0.788f, 0.69f, 1.00f )
 #define ADITIONNALINFO_COLOR ImVec4( 0.357f, 0.357f, 0.357f, 1.00f )
+#define BREAKPOINT_COLOR ImVec4( 1.0f, 0.0f, 0.0f, 1.00f )
 
-#define START_ADDR_POS		float( 10.0f )
-#define START_DATA_POS		float( START_ADDR_POS + 85.0f )
-#define START_MNEMONIC_POS	float( START_DATA_POS + 125.0f )
-#define START_DATA_ADD_POS	float( START_MNEMONIC_POS + 175.0f )
-#define START_DURATION_POS	float( START_DATA_ADD_POS + 115.0f )
-#define START_ADDINFO_POS	float( START_DURATION_POS + 50.0f )
+#define START_BREAKPOINT_POS	float( 10.0f )
+#define START_ADDR_POS			float( START_BREAKPOINT_POS + 20.0f )
+#define START_DATA_POS			float( START_ADDR_POS + 105.0f )
+#define START_MNEMONIC_POS		float( START_DATA_POS + 125.0f )
+#define START_DATA_ADD_POS		float( START_MNEMONIC_POS + 175.0f )
+#define START_DURATION_POS		float( START_DATA_ADD_POS + 115.0f )
+#define START_ADDINFO_POS		float( START_DURATION_POS + 50.0f )
 
 DisassemblerDisplay::DisassemblerDisplay() :
 	m_iSelectedLine( -1 ),
@@ -51,12 +54,12 @@ void DisassemblerDisplay::Update()
 
 		const auto& aDisassemblyInstructions = Disassembler::GetDisassemblyInstructions();
 
-		if( m_bFollowPc )
+		CPU* pCpu = CPU::GetInstance();
+		if( pCpu )
 		{
-			CPU* m_pCpu = CPU::GetInstance();
-			if( m_pCpu && m_iLastPc != m_pCpu->GetPC() )
+			if( m_iLastPc != pCpu->GetPC() )
 			{
-				const uint16_t iAdress = m_pCpu->GetPC();
+				const uint16_t iAdress = pCpu->GetPC();
 				for( auto it = aDisassemblyInstructions.begin(); it != aDisassemblyInstructions.end(); ++it )
 				{
 					if( ( *it ).m_iAdress == iAdress )
@@ -65,10 +68,13 @@ void DisassemblerDisplay::Update()
 						if( iIndex >= 0 )
 						{
 							m_iSelectedLine = iIndex;
-							float scroll_target = ( iIndex + 1 ) * ( 15.0f * style.FontScaleDpi );
-							ImGui::SetScrollY( scroll_target );
+							if( m_bFollowPc )
+							{
+								float scroll_target = ( iIndex + 1 ) * ( 15.0f * style.FontScaleDpi );
+								ImGui::SetScrollY( scroll_target );
+							}
 						}
-						m_iLastPc = m_pCpu->GetPC();
+						m_iLastPc = pCpu->GetPC();
 						break;
 					}
 				}
@@ -93,8 +99,12 @@ void DisassemblerDisplay::Update()
 				//missing registers / flags / instructions count
 				char aBuffer[ 128 ] = "";
 
+				pos.x = window_pos.x + START_BREAKPOINT_POS * style.FontScaleDpi;
+				if( pCpu && pCpu->IsBreakpoint( oInstruct.m_iAdress ) )
+					draw_list->AddText( pos,ImGui::GetColorU32( BREAKPOINT_COLOR ),ICON_FA_CIRCLE );
+
 				pos.x = window_pos.x + START_ADDR_POS * style.FontScaleDpi;
-				ImFormatString( aBuffer,sizeof( aBuffer ),"%#06X",oInstruct.m_iAdress );
+				ImFormatString( aBuffer,sizeof( aBuffer ),"%s::%#06X",oInstruct.m_aLabel,oInstruct.m_iAdress );
 				draw_list->AddText( pos,ImGui::GetColorU32( ADDR_COLOR ),aBuffer );
 
 				pos.x = window_pos.x + START_DATA_POS * style.FontScaleDpi;
@@ -230,6 +240,12 @@ void DisassemblerDisplay::_SelectLine( const int iStart,const int iEnd )
 
 		if( ImGui::IsMouseHoveringRect( zone_min,zone_max ) )
 			ImGui::OpenPopup( "context" );
+	}
+
+	if( ImGui::IsKeyPressed( ImGuiKey_F9 ) ) 
+	{
+		const auto& aDisassemblyInstructions = Disassembler::GetDisassemblyInstructions();
+		CPU::GetInstance()->MarkBreakpoint( aDisassemblyInstructions[ m_iSelectedLine ].m_iAdress );
 	}
 }
 

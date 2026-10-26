@@ -33,6 +33,7 @@ private:
 		char					m_sAditionalInfo[ 32 ] = { '\0' };
 		char					m_aData[ 32 ] = { '\0' };
 		char					m_aDataBis[ 32 ] = { '\0' };
+		char					m_aLabel[ 32 ] = { '\0' };
 	};
 
 	static std::vector< DisassembledLine >	m_aDisassembly;
@@ -94,10 +95,12 @@ private :
 	size_t m_iSize = 0; //TODO : Check if opening two files 
 };
 
-static void WriteBlock( CBORWriter& oCborWriter,uint16_t iAdress,const char* sHex, const char* sHexBis, const char* sMnemo,const std::string& sComment,uint8_t iDuration )
+static void WriteBlock( CBORWriter& oCborWriter,const char* sLabelAdress,uint16_t iAdress,const char* sHex, const char* sHexBis, const char* sMnemo,const std::string& sComment,uint8_t iDuration )
 {
-	uint8_t iBlockCount = 1 + ( sHex[ 0 ] != 0 ) + ( sHexBis[ 0 ] != 0 ) + ( sMnemo[ 0 ] != 0 ) + !sComment.empty() + ( iDuration != 0 );
+	uint8_t iBlockCount = ( sLabelAdress[ 0 ] != 0 ) + 1 + ( sHex[ 0 ] != 0 ) + ( sHexBis[ 0 ] != 0 ) + ( sMnemo[ 0 ] != 0 ) + !sComment.empty() + ( iDuration != 0 );
 	oCborWriter.Map( iBlockCount );
+
+	if( sLabelAdress[ 0 ] ) {		oCborWriter.Key( 'k' );			oCborWriter.Text( sLabelAdress,strlen( sLabelAdress ) ); }
 									oCborWriter.Key( 'a' );			oCborWriter.UInt( iAdress );
 
 	if( sMnemo[ 0 ] ){				oCborWriter.Key( 'm' );			oCborWriter.Text( sMnemo,strlen( sMnemo ) );}
