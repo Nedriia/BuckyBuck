@@ -68,6 +68,7 @@ CPU::CPU() :
 	NFlag( false ),
 	HFlag( false ),
 	CFlag( false ),
+	IME( false ),
 	m_oCPUState( State::Pause ),
 	m_pCurrentInstruction( nullptr )
 {
@@ -106,6 +107,7 @@ void CPU::Init()
 	NFlag = false;
 	HFlag = false;
 	CFlag = false;
+	IME	  = false;
 
 	memset( m_aMemory.data(),0xFF,0x10000 );
 	m_oCPUState = State::Pause;
@@ -197,13 +199,13 @@ void CPU::FetchDecode()
 		if( m_pCurrentInstruction == nullptr )
 			throw std::runtime_error("UNKNOWN_OPCODE??");
 
-		/*std::cout << m_pCurrentInstruction->m_sMnemonic << " " << static_cast< int >( m_pCurrentInstruction->m_iLength ) << " " << static_cast< int >( m_pCurrentInstruction->m_iDuration ) << " ";
+		std::cout << m_pCurrentInstruction->m_sMnemonic << " " << static_cast< int >( m_pCurrentInstruction->m_iLength ) << " " << static_cast< int >( m_pCurrentInstruction->m_iDuration ) << " ";
 		if ( m_pCurrentInstruction->m_iConditionalDuration != 0 )
-			std::cout << ( int )m_pCurrentInstruction->m_iConditionalDuration;*/
+			std::cout << ( int )m_pCurrentInstruction->m_iConditionalDuration;
 
 		uint16_t iPreviousPC = m_iPC;
 		( this->*m_pCurrentInstruction->m_pFct )();
-		//std::cout << std::endl;
+		std::cout << std::endl;
 
 		if( iPreviousPC == m_iPC )
 			m_iPC += m_pCurrentInstruction->m_iLength;
@@ -369,6 +371,13 @@ void CPU::EmulateCycle()
 		m_oCPUState = State::Pause;
 }
 
+void CPU::LDH_C()
+{
+	uint8_t iValue = ReadMemory( m_iPC + 1 );
+	uint16_t iAdress = 0xFF00 + iValue;
+	WriteMemory( iAdress,m_RegisterAF.hi );
+}
+
 void CPU::LD_r16n16()
 {
 	uint16_t iValue = ( ReadMemory( m_iPC + 2 ) << 8 ) | ReadMemory( m_iPC + 1 );
@@ -404,6 +413,17 @@ void CPU::LD_atR16A()
 	WriteMemory( _Get_Dest_R16( true ), m_RegisterAF.hi );
 }
 
+void CPU::LD_n16A()
+{
+	uint16_t iAdress = ( ReadMemory( m_iPC + 2 ) << 8 ) | ReadMemory( m_iPC + 1 );
+	WriteMemory( iAdress,m_RegisterAF.hi );
+}
+
+void CPU::DI()
+{
+	IME = false;
+}
+
 void CPU::JPn16()
 {
 	//Read next 2 bytes of memory
@@ -412,102 +432,108 @@ void CPU::JPn16()
 	m_iPC = iAdress;
 }
 
+void CPU::CALL_n16()
+{
+}
+
 void CPU::INC_r8()
 {
 	uint8_t& iData = _Get_Dest_R8();
+	uint8_t iTemp = iData;
 	_LDR8( iData,iData + 1 );
 
 	uint8_t iFlag = m_pCurrentInstruction->m_aFlags;
 	uint8_t iFlagSet = m_pCurrentInstruction->m_aFlagSet_1;
 	uint8_t iFlagReset = m_pCurrentInstruction->m_aFlagReset_0;
 
-	if( iFlag & 1 )//Zero flag
+	if( iFlag & 1 )//Zero flag Z
 	{
 		if( iFlagSet & 1 )
-			m_RegisterAF.lo |= 1 << 7;
+			m_RegisterAF.lo |= ( uint8_t ) 1 << 7;
 		else if( iFlagReset & 1 )
-			m_RegisterAF.lo |= 0 << 7;
+			m_RegisterAF.lo &= ~( ( uint8_t ) 1 << 7 );
 		else
-			m_RegisterAF.lo &= iData == 0 ? 1 << 7 : 0 << 7;
+		{
+			if( iData == 0 )
+				m_RegisterAF.lo |= ( uint8_t ) 1 << 7;
+			else
+				m_RegisterAF.lo &= ~( ( uint8_t ) 1 << 7 );
+		}
 	}
 
-	//if( ( iFlag >> 1 ) & 1 )//Subtraction flag( BCD )
-	//{
-	//	if( ( iFlag >> 1 ) & 1 )
-	//		m_RegisterAF.lo |= 1 << 6;
-	//	else if( ( iFlagReset >> 1 ) & 1 )
-	//		m_RegisterAF.lo |= 0 << 6;
-	//	else
-	//		m_RegisterAF.lo |= iData == 0 ? 1 << 6 : 0 << 6;
-	//}
+	if( ( iFlag >> 1 ) & 1 )//Subtraction flag( BCD ) N 
+	{
+		if( ( iFlagSet >> 1 ) & 1 )
+			m_RegisterAF.lo |= ( uint8_t )1 << 6;
+		else if( ( iFlagReset >> 1 ) & 1 )
+			m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	}
 
-	//if( ( iFlag >> 2 ) & 1 )//Half Carry flag( BCD )
-	//{
-	//	if( ( iFlag >> 2 ) & 1 )
-	//		m_RegisterAF.lo |= 1 << 5;
-	//	else if( ( iFlag >> 2 ) & 1 )
-	//		m_RegisterAF.lo |= 0 << 5;
-	//	else
-	//		m_RegisterAF.lo |= iData == 0 ? 1 << 5 : 0 << 5;
-	//}
-
-	//if( ( iFlag >> 3 ) & 1 )//Carry flag
-	//{
-	//	if( iFlagSet & 1 )
-	//		m_RegisterAF.lo | 1 << 4;
-
-	//	if( iFlagReset & 1 )
-	//		m_RegisterAF.lo | 0 << 4;
-	//}
+	if( ( iFlag >> 2 ) & 1 )//Half Carry flag( BCD ) H
+	{
+		if( ( iFlagSet >> 2 ) & 1 )
+			m_RegisterAF.lo |= ( uint8_t )1 << 5;
+		else if( ( iFlagReset >> 2 ) & 1 )
+			m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+		else
+		{
+			//Set if overflow from bit 3.
+			if( ( iTemp & 0xF ) == 0xF )
+				m_RegisterAF.lo |= ( uint8_t )1 << 5;
+			else
+				m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+		}
+	}
 }
 
 void CPU::DEC_r8()
 {
 	uint8_t& iData = _Get_Dest_R8();
+	uint8_t iTemp = iData;
 	_LDR8( iData,iData - 1 );
 
 	uint8_t iFlag = m_pCurrentInstruction->m_aFlags;
 	uint8_t iFlagSet = m_pCurrentInstruction->m_aFlagSet_1;
 	uint8_t iFlagReset = m_pCurrentInstruction->m_aFlagReset_0;
 
-	if( iFlag & 1 )//Zero flag
+	if( iFlag & 1 )//Zero flag Z
 	{
 		if( iFlagSet & 1 )
-			m_RegisterAF.lo |= 1 << 7;
+			m_RegisterAF.lo |= ( uint8_t )1 << 7;
 		else if( iFlagReset & 1 )
-			m_RegisterAF.lo |= 0 << 7;
+			m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
 		else
-			m_RegisterAF.lo |= iData == 0 ? 1 << 7 : 0 << 7;
+		{
+			if( iData == 0 )
+				m_RegisterAF.lo |= ( uint8_t )1 << 7;
+			else
+				m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+		}
 	}
 
-	//if( ( iFlag >> 1 ) & 1 )//Subtraction flag( BCD )
-	//{
-	//	if( ( iFlag >> 1 ) & 1 )
-	//		m_RegisterAF.lo |= 1 << 6;
-	//	else if( ( iFlagReset >> 1 ) & 1 )
-	//		m_RegisterAF.lo |= 0 << 6;
-	//	else
-	//		m_RegisterAF.lo |= iData == 0 ? 1 << 6 : 0 << 6;
-	//}
+	if( ( iFlag >> 1 ) & 1 )//Subtraction flag( BCD ) N 
+	{
+		if( ( iFlagSet >> 1 ) & 1 )
+			m_RegisterAF.lo |= ( uint8_t )1 << 6;
+		else if( ( iFlagReset >> 1 ) & 1 )
+			m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	}
 
-	//if( ( iFlag >> 2 ) & 1 )//Half Carry flag( BCD )
-	//{
-	//	if( ( iFlag >> 2 ) & 1 )
-	//		m_RegisterAF.lo |= 1 << 5;
-	//	else if( ( iFlag >> 2 ) & 1 )
-	//		m_RegisterAF.lo |= 0 << 5;
-	//	else
-	//		m_RegisterAF.lo |= iData == 0 ? 1 << 5 : 0 << 5;
-	//}
-
-	//if( ( iFlag >> 3 ) & 1 )//Carry flag
-	//{
-	//	if( iFlagSet & 1 )
-	//		m_RegisterAF.lo | 1 << 4;
-
-	//	if( iFlagReset & 1 )
-	//		m_RegisterAF.lo | 0 << 4;
-	//}
+	if( ( iFlag >> 2 ) & 1 )//Half Carry flag( BCD ) H
+	{
+		if( ( iFlagSet >> 2 ) & 1 )
+			m_RegisterAF.lo |= ( uint8_t )1 << 5;
+		else if( ( iFlagReset >> 2 ) & 1 )
+			m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+		else
+		{
+			//Set if overflow from bit 3.
+			if( ( iTemp & 0xF ) == 0 )
+				m_RegisterAF.lo |= ( uint8_t )1 << 5;
+			else
+				m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+		}
+	}
 }
 
 void CPU::JR_cc_n16()
@@ -519,6 +545,8 @@ void CPU::JR_cc_n16()
 	m_iPC += m_pCurrentInstruction->m_iLength;
 	if( _CheckCondition( cc ) )
 		m_iPC += iValue;
+	else
+		std::cout << std::endl;
 }
 
 uint8_t& CPU::_Get_Dest_R8( bool s8 /*= false */)
@@ -880,7 +908,7 @@ void CPU::_FillOpcodesTables()
 				case 3:
 					CPU::AddCPUInstruction( i,{ &CPU::JP },0,0,0,{ 3,16,12 },false,"JP %s a16",cc[ y ].data() ); break;
 				case 4: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD [C], A",cc[ y ].data() ); break;
-				case 5: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 3,16 },false,"LD a16, A" ); break;
+				case 5: CPU::AddCPUInstruction( i,{ &CPU::LD_n16A },0,0,0,{ 3,16 },false,"LD a16, A" ); break;
 				case 6: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD A, [C]" ); break;
 				case 7: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 3,16 },false,"JP A, a16" ); break;
 				}
@@ -972,7 +1000,7 @@ void CPU::_FillOpcodesTables()
 				if( q == 0 )
 					CPU::AddCPUInstruction( i,{ &CPU::PUSH },0,0,0,{ 1,16 },false,"PUSH %s",rp2[ p ].data() );
 				else if( q == 1 && p == 0 )
-					CPU::AddCPUInstruction( i,{ &CPU::CALL },0,0,0,{ 3,24 },false,"CALL a16" );
+					CPU::AddCPUInstruction( i,{ &CPU::CALL_n16 },0,0,0,{ 3,24 },false,"CALL a16" );
 				break;
 			}
 			case 6:

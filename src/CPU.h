@@ -85,6 +85,7 @@ public:
 	bool	NFlag;
 	bool	HFlag;
 	bool	CFlag;
+	bool	IME;
 	static const std::string& GetMemoryRegionLabel( const uint16_t iAdress );
 
 private:
@@ -108,13 +109,14 @@ private:
 	void NOP(){};
 	void LD()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void LDH()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void LDH_C()						{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void LDH_C();
 	void LD_r16n16();
 	void LD_r8r8();
 	void LD_A_HLI();
 	void LD_A_HLD();
 	void LD_r8n8();
 	void LD_atR16A();
+	void LD_n16A();
 	void INC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void INC_r8();
 	void DEC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
@@ -139,7 +141,7 @@ private:
 	void SCF()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void CCF()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void HALT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void DI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void DI();
 	void EI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void RET()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void RETI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
@@ -148,6 +150,7 @@ private:
 	void JP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void JPn16();
 	void CALL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void CALL_n16();
 	void RST()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void RLC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void RRC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
