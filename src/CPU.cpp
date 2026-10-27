@@ -410,7 +410,7 @@ void CPU::LD_r8n8()
 
 void CPU::LD_atR16A()
 {
-	WriteMemory( _Get_Dest_R16( true ), m_RegisterAF.hi );
+	WriteMemory( _Get_Mem_Address_R16(),m_RegisterAF.hi);
 }
 
 void CPU::LD_n16A()
@@ -424,6 +424,12 @@ void CPU::DI()
 	IME = false;
 }
 
+void CPU::RET()
+{
+	m_iPC = ReadMemory( m_iSP );
+	--m_iSP;
+}
+
 void CPU::JPn16()
 {
 	//Read next 2 bytes of memory
@@ -434,6 +440,9 @@ void CPU::JPn16()
 
 void CPU::CALL_n16()
 {
+	++m_iSP;
+	//m_aStack[ m_iSP ] = m_iPC + m_pCurrentInstruction->m_iLength;
+	JPn16();
 }
 
 void CPU::INC_r8()
@@ -536,6 +545,12 @@ void CPU::DEC_r8()
 	}
 }
 
+void CPU::JR_n16()
+{
+	int8_t iOffset = static_cast< int8_t >( ReadMemory( m_iPC + 1 ) );
+	m_iPC = m_iPC + m_pCurrentInstruction->m_iLength + iOffset;
+}
+
 void CPU::JR_cc_n16()
 {
 	const uint8_t iData = ReadMemory( m_iPC );
@@ -567,30 +582,30 @@ uint8_t& CPU::_Get_Dest_R8( bool s8 /*= false */)
 	throw std::runtime_error( "ERROR_GETTING_DESTR8" );
 }
 
-uint16_t& CPU::_Get_Dest_R16( bool bMem /*= false*/ )
+uint16_t& CPU::_Get_Dest_R16()
 {
 	uint8_t r8 = ( ReadMemory( m_iPC ) & P_MASK ) >> 4;
 	switch( r8 )
 	{
 		case 0: return m_RegisterBC.reg;							break;
 		case 1: return m_RegisterDE.reg;							break;
-		case 2: 
-		{
-			if( bMem )
-				m_RegisterAF.hi++;
-			return m_RegisterHL.reg;								break;
-		}
-		case 3:
-		{
-			if( bMem )
-			{
-				m_RegisterAF.hi--;
-				return m_RegisterHL.reg;
-			}
-			return m_iSP;											break;
-		}
+		case 2: return m_RegisterHL.reg;							break;
+		case 3: return m_iSP;										break;
 	}
 	throw std::runtime_error( "ERROR_GETTING_DESTR16" );
+}
+
+uint16_t CPU::_Get_Mem_Address_R16()
+{
+	uint8_t r8 = ( ReadMemory( m_iPC ) & P_MASK ) >> 4;
+	switch( r8 )
+	{
+		case 0: return m_RegisterBC.reg;							break;
+		case 1: return m_RegisterDE.reg;							break;
+		case 2: return m_RegisterHL.reg++;							break;
+		case 3: return m_RegisterHL.reg--;							break;
+	}
+	throw std::runtime_error( "ERROR_GETTING_DEST_MEMR16" );
 }
 
 bool CPU::_CheckCondition( uint8_t cc )
@@ -639,7 +654,7 @@ void CPU::_FillOpcodesTables()
 				case 0: CPU::AddCPUInstruction( i,{ &CPU::NOP },0,0,0,{ 1,4 },false,"NOP" ); break;
 				case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 3,20 },false,"LD a16, SP" ); break;
 				case 2: CPU::AddCPUInstruction( i,{ &CPU::STOP },0,0,0,{ 2,4 },false,"STOP" ); break;
-				case 3: CPU::AddCPUInstruction( i,{ &CPU::JR },0,0,0,{ 2,12 },false,"JR s8" ); break;
+				case 3: CPU::AddCPUInstruction( i,{ &CPU::JR_n16 },0,0,0,{ 2,12 },false,"JR n16" ); break;
 				case 4:
 				case 5:
 				case 6:
@@ -864,7 +879,7 @@ void CPU::_FillOpcodesTables()
 				case 1:
 				case 2:
 				case 3:
-					CPU::AddCPUInstruction( i,{ &CPU::RET },0,0,0,{ 1,20,8 },false,"RET %s",cc[ y ].data() ); break;
+					CPU::AddCPUInstruction( i,{ &CPU::RETT },0,0,0,{ 1,20,8 },false,"RET %s",cc[ y ].data() ); break;
 				case 4: CPU::AddCPUInstruction( i,{ &CPU::LDH_C },0,0,0,{ 2,12 },false,"LD (0xFF00+C), A" ); break;
 				case 5: CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( Z | N ),{ 2,16 },false,"ADD SP, s8" ); break;
 				case 6: CPU::AddCPUInstruction( i,{ &CPU::LDH },0,0,0,{ 2,8 },false,"LD A, (0xFF00+C)" ); break;

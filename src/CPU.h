@@ -95,7 +95,8 @@ private:
 	void			_UpdateFlags();
 
 	uint8_t&		_Get_Dest_R8( bool s8 = false );
-	uint16_t&		_Get_Dest_R16( bool bMem = false );
+	uint16_t&		_Get_Dest_R16();
+	uint16_t		_Get_Mem_Address_R16();
 	uint16_t&		_Get_Destr16Stk(){};
 	bool			_CheckCondition( uint8_t cc );
 	void			_LDR8( uint8_t& iDst, uint8_t iData );
@@ -127,6 +128,7 @@ private:
 	void RRA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void STOP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void JR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void JR_n16();
 	void JR_cc_n16();
 	void ADD()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void ADC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
@@ -143,7 +145,8 @@ private:
 	void HALT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void DI();
 	void EI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void RET()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RETT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RET();
 	void RETI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void POP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void PUSH()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
