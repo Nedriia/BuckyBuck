@@ -79,7 +79,6 @@ void Disassembler::Disassemble_ROM( const char* sRomPath )
 						iPC = 0xFF78;
 						continue;
 					}*/
-
 					iPC += _WriteInstruction( oCborWriter,iPC );
 				}
 
@@ -236,6 +235,9 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 	uint8_t					iPCIncrease = 1;
 	uint8_t					iLengthData = 1;
 	std::string				sLabel = CPU::GetInstance()->GetMemoryRegionLabel( iAdress );
+
+	if( iAdress >= 0xC000 && iAdress <= 0xCFFF )
+		iAdress -= 0x8000;
 
 	if( iAdress >= 0xFF10 && iAdress <= 0xFF26 )
 		sComment = Format( "NR%i", iAdress - 0xFF10 ).c_str();
@@ -444,7 +446,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 						}
 					}
 					
-					ToHex( iAdress,aDataBis,iLengthData,true ); //Write Data bis
+					ToHex( _iAdress,aDataBis,iLengthData,true ); //Write Data bis
 				}
 				else
 				{
@@ -457,7 +459,7 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 	}
 
 	ToHex( iAdress,aData,iLengthData );
-	WriteBlock( oData,sLabel.c_str(),iAdress,aData,aDataBis,sMnemonic.c_str(),sComment,iDuration);
+	WriteBlock( oData,sLabel.c_str(),_iAdress,aData,aDataBis,sMnemonic.c_str(),sComment,iDuration);
 
 	return iPCIncrease;
 }
