@@ -104,13 +104,17 @@ private:
 
 	uint16_t m_iPC;
 	uint16_t m_iSP;
+	long long m_iCounter;
 
 	uint8_t m_iIR;	//Instruction Register
 
 	void NOP(){};
 	void LD()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void LDH()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void LDH_C();
+	void LDH_n_A();
+	void LDH_A_n();
+	void LDH_A_C();
+	void LDH_C_A();
 	void LD_r16n16();
 	void LD_r8r8();
 	void LD_A_HLI();
@@ -118,8 +122,9 @@ private:
 	void LD_r8n8();
 	void LD_atR16A();
 	void LD_n16A();
-	void INC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void LD_An16();
 	void INC_r8();
+	void INC_r16();
 	void DEC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void DEC_r8();
 	void RLCA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
@@ -132,12 +137,17 @@ private:
 	void JR_cc_n16();
 	void ADD()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void ADC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void SUB()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SUB();
+	void SUB_n8();
 	void SBC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void AND()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void XOR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void OR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void CP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void AND();
+	void AND_n8();
+	void XOR();
+	void XOR_n8();
+	void OR();
+	void OR_n8();
+	void CP();
+	void CP_n8();
 	void DAA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void CPL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void SCF()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
@@ -149,11 +159,14 @@ private:
 	void RET();
 	void RETI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void POP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void POP_r16();
 	void PUSH()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void PUSH_r16();
 	void JP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void JPn16();
 	void CALL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void CALL_n16();
+	void CALL_cc_n16();
 	void RST()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void RLC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void RRC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };

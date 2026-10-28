@@ -393,8 +393,8 @@ uint8_t Disassembler::_WriteInstruction( CBORWriter& oData,uint16_t _iAdress )
 					sMnemonic = pInstruction->m_sMnemonic;
 					iDuration = pInstruction->m_iDuration / 4; //  -> t cycle to m cycle
 
-					if( pInstruction->m_pFct == &CPU::LDH ||
-						pInstruction->m_pFct == &CPU::LDH_C ) //LDH
+					if( pInstruction->m_pFct == &CPU::LDH_A_n ||
+						pInstruction->m_pFct == &CPU::LDH_n_A ) //LDH
 					{
 						switch( iDataNext )
 						{

@@ -12,11 +12,12 @@
 #include "DebugInfosDisplay.h"
 #endif
 
-static constexpr uint8_t X_MASK = 0b11000000;
-static constexpr uint8_t Y_MASK = 0b00111000;
-static constexpr uint8_t P_MASK = 0b00110000;
-static constexpr uint8_t Q_MASK = 0b00001000;
-static constexpr uint8_t Z_MASK = 0b00000111;
+static constexpr uint8_t X_MASK  = 0b11000000;
+static constexpr uint8_t Y_MASK  = 0b00111000;
+static constexpr uint8_t P_MASK  = 0b00110000;
+static constexpr uint8_t Q_MASK  = 0b00001000;
+static constexpr uint8_t Z_MASK  = 0b00000111;
+static constexpr uint8_t CC_MASK = 0b00011000;
 
 static constexpr uint32_t r[ 8 ] = { 'B','C','D','E','H','L',' ','A' };
 static constexpr std::string_view rp[ 4 ] = { "BC","DE","HL","SP" };
@@ -59,6 +60,7 @@ CPU::CPU() :
 	m_aROM_Memory{0},
 	m_iPC( 0 ),
 	m_iSP( 0 ),
+	m_iCounter( 0LL ),
 	m_iIR( 0 ),
 	m_RegisterAF( 0 ),
 	m_RegisterBC( 0 ),
@@ -97,6 +99,7 @@ void CPU::Init()
 
 	m_iSP = 0;
 	m_iIR = 0;
+	m_iCounter = 0;
 
 	m_RegisterAF.reg = 0;
 	m_RegisterBC.reg = 0;
@@ -131,6 +134,8 @@ void CPU::_SimulateBootRom()
 
 	m_iPC = 0x100;
 	m_iSP = 0xFFFE;
+
+	m_aMemory[ 0xFF44 ] = 0x91; //LY
 }
 
 void CPU::_UpdateFlags()
@@ -209,6 +214,13 @@ void CPU::FetchDecode()
 
 		if( iPreviousPC == m_iPC )
 			m_iPC += m_pCurrentInstruction->m_iLength;
+
+		m_iCounter += m_pCurrentInstruction->m_iDuration;
+		if( m_iCounter >= 456 )
+		{
+			m_iCounter -= 456;
+			m_aMemory[0xFF44]++;
+		}
 
 		_UpdateFlags();
 	}
@@ -371,11 +383,26 @@ void CPU::EmulateCycle()
 		m_oCPUState = State::Pause;
 }
 
-void CPU::LDH_C()
+void CPU::LDH_n_A()
 {
 	uint8_t iValue = ReadMemory( m_iPC + 1 );
-	uint16_t iAdress = 0xFF00 + iValue;
-	WriteMemory( iAdress,m_RegisterAF.hi );
+	WriteMemory( 0xFF00 + iValue,m_RegisterAF.hi );
+}
+
+void CPU::LDH_A_n()
+{
+	uint8_t iValue = ReadMemory( m_iPC + 1 );
+	m_RegisterAF.hi = ReadMemory( 0xFF00 + iValue );
+}
+
+void CPU::LDH_C_A()
+{
+	WriteMemory( 0xFF00 + m_RegisterBC.lo, m_RegisterAF.hi );
+}
+
+void CPU::LDH_A_C()
+{
+	m_RegisterAF.hi = ReadMemory( 0xFF00 + m_RegisterBC.lo );
 }
 
 void CPU::LD_r16n16()
@@ -419,6 +446,210 @@ void CPU::LD_n16A()
 	WriteMemory( iAdress,m_RegisterAF.hi );
 }
 
+void CPU::LD_An16()
+{
+	uint16_t iAdress = ( ReadMemory( m_iPC + 2 ) << 8 ) | ReadMemory( m_iPC + 1 );
+	m_RegisterAF.hi = ReadMemory( iAdress );
+}
+
+void CPU::CP()
+{
+	uint8_t& iData = _Get_Dest_R8();
+	uint8_t iResult = m_RegisterAF.hi - iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo |= ( uint8_t )1 << 6;
+
+	if( ( m_RegisterAF.hi & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+
+	if( iData > m_RegisterAF.hi )
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+}
+
+void CPU::CP_n8()
+{
+	const uint8_t iData = ReadMemory( m_iPC + 1 );
+	uint8_t iResult = m_RegisterAF.hi - iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo |= ( uint8_t )1 << 6;
+
+	if( ( m_RegisterAF.hi & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+
+	if( iData > m_RegisterAF.hi )
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+}
+
+void CPU::OR()
+{
+	uint8_t& iData = _Get_Dest_R8();
+	uint8_t iResult = m_RegisterAF.hi | iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterAF.hi = iResult;
+}
+
+void CPU::OR_n8()
+{
+	const uint8_t iData = ReadMemory( m_iPC + 1 );
+	uint8_t iResult = m_RegisterAF.hi | iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterAF.hi = iResult;
+}
+
+void CPU::SUB()
+{
+	uint8_t& iData = _Get_Dest_R8();
+	uint8_t iResult = m_RegisterAF.hi - iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo |= ( uint8_t )1 << 6;
+
+	if( ( iResult & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+
+	if( iData > iResult )
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterAF.hi = iResult;
+}
+
+void CPU::SUB_n8()
+{
+	const uint8_t iData = ReadMemory( m_iPC + 1 );
+	uint8_t iResult = m_RegisterAF.hi - iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo |= ( uint8_t )1 << 6;
+
+	if( ( iResult & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+
+	if( iData > iResult )
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterAF.hi = iResult;
+}
+
+void CPU::AND()
+{
+	uint8_t& iData = _Get_Dest_R8();
+	uint8_t iResult = m_RegisterAF.hi & iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo |=	  ( uint8_t )1 << 5;
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterAF.hi = iResult;
+}
+
+void CPU::AND_n8()
+{
+	const uint8_t iData = ReadMemory( m_iPC + 1 );
+	uint8_t iResult = m_RegisterAF.hi & iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo |= ( uint8_t )1 << 5;
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterAF.hi = iResult;
+}
+
+void CPU::XOR()
+{
+	uint8_t& iData = _Get_Dest_R8();
+	uint8_t iResult = m_RegisterAF.hi ^ iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterAF.hi = iResult;
+}
+
+void CPU::XOR_n8()
+{
+	const uint8_t iData = ReadMemory( m_iPC + 1 );
+	uint8_t iResult = m_RegisterAF.hi ^ iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterAF.hi = iResult;
+}
+
 void CPU::DI()
 {
 	IME = false;
@@ -426,8 +657,95 @@ void CPU::DI()
 
 void CPU::RET()
 {
-	m_iPC = ReadMemory( m_iSP );
-	--m_iSP;
+	uint16_t iAdress;
+	iAdress = m_aMemory[ m_iSP ]; //Lower byte
+	++m_iSP;
+	iAdress |= m_aMemory[ m_iSP ] << 8; //Upper byte
+	++m_iSP;
+
+	m_iPC = iAdress; //TODO : POP PC
+}
+
+void CPU::POP_r16()
+{
+	const uint8_t iData = ReadMemory( m_iPC );
+	uint8_t r8 = ( iData & P_MASK ) >> 4;
+	switch( r8 )
+	{
+		case 0: //BC
+		{
+			m_RegisterBC.lo = ReadMemory( m_iSP );
+			++m_iSP;
+			m_RegisterBC.hi = ReadMemory( m_iSP );
+			++m_iSP;
+			break;
+		}
+		case 1: //DE
+		{
+			m_RegisterDE.lo = ReadMemory( m_iSP );
+			++m_iSP;
+			m_RegisterDE.hi = ReadMemory( m_iSP );
+			++m_iSP;
+			break;
+		}
+		case 2: //HL
+		{
+			m_RegisterHL.lo = ReadMemory( m_iSP );
+			++m_iSP;
+			m_RegisterHL.hi = ReadMemory( m_iSP );
+			++m_iSP;
+			break;
+		}
+		case 3: //AF
+		{
+			m_RegisterAF.lo = ReadMemory( m_iSP );
+			++m_iSP;
+			m_RegisterAF.hi = ReadMemory( m_iSP );
+			++m_iSP;
+			break;
+		}
+	}
+}
+
+void CPU::PUSH_r16()
+{
+	const uint8_t iData = ReadMemory( m_iPC );
+	uint8_t r8 = ( iData & P_MASK ) >> 4;
+	switch( r8 )
+	{
+		case 0: //BC
+		{
+			--m_iSP;
+			WriteMemory( m_iSP, m_RegisterBC.hi );
+			--m_iSP;
+			WriteMemory( m_iSP,	m_RegisterBC.lo );
+			break;
+		}
+		case 1: //DE
+		{
+			--m_iSP;
+			WriteMemory( m_iSP,m_RegisterDE.hi );
+			--m_iSP;
+			WriteMemory( m_iSP,m_RegisterDE.lo );
+			break;
+		}
+		case 2: //HL
+		{
+			--m_iSP;
+			WriteMemory( m_iSP,m_RegisterHL.hi );
+			--m_iSP;
+			WriteMemory( m_iSP,m_RegisterHL.lo );
+			break;
+		}
+		case 3: //AF
+		{
+			--m_iSP;
+			WriteMemory( m_iSP,m_RegisterAF.hi );
+			--m_iSP;
+			WriteMemory( m_iSP,m_RegisterAF.lo );
+			break;
+		}
+	}
 }
 
 void CPU::JPn16()
@@ -440,16 +758,31 @@ void CPU::JPn16()
 
 void CPU::CALL_n16()
 {
-	++m_iSP;
-	//m_aStack[ m_iSP ] = m_iPC + m_pCurrentInstruction->m_iLength;
+	uint16_t iAdress = m_iPC + m_pCurrentInstruction->m_iLength;
+	--m_iSP;
+	m_aMemory[ m_iSP ] = iAdress >> 8; //Upper byte
+	--m_iSP;
+	m_aMemory[ m_iSP ] = iAdress &( ~0xFF00 ); //Lower byte
 	JPn16();
+}
+
+void CPU::CALL_cc_n16()
+{
+	const uint8_t iData = ReadMemory( m_iPC );
+	uint8_t cc = ( iData & CC_MASK ) >> 3;
+
+	uint16_t iAdress = ( ReadMemory( m_iPC + 2 ) << 8 ) | ReadMemory( m_iPC + 1 );
+
+	m_iPC += m_pCurrentInstruction->m_iLength;
+	if( _CheckCondition( cc ) )
+		m_iPC = iAdress;
 }
 
 void CPU::INC_r8()
 {
 	uint8_t& iData = _Get_Dest_R8();
 	uint8_t iTemp = iData;
-	_LDR8( iData,iData + 1 );
+	iData += 1;
 
 	uint8_t iFlag = m_pCurrentInstruction->m_aFlags;
 	uint8_t iFlagSet = m_pCurrentInstruction->m_aFlagSet_1;
@@ -493,6 +826,12 @@ void CPU::INC_r8()
 				m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
 		}
 	}
+}
+
+void CPU::INC_r16()
+{
+	uint16_t& ir16 = _Get_Dest_R16();
+	ir16 += 1;
 }
 
 void CPU::DEC_r8()
@@ -554,7 +893,7 @@ void CPU::JR_n16()
 void CPU::JR_cc_n16()
 {
 	const uint8_t iData = ReadMemory( m_iPC );
-	uint8_t cc = iData & Z_MASK;
+	uint8_t cc = ( iData & CC_MASK ) >> 3;
 	int8_t iValue = static_cast< int8_t >( ReadMemory( m_iPC + 1 ) );
 
 	m_iPC += m_pCurrentInstruction->m_iLength;
@@ -705,7 +1044,7 @@ void CPU::_FillOpcodesTables()
 			{
 				switch( q )
 				{
-				case 0: CPU::AddCPUInstruction( i,{ &CPU::INC },0,0,0,{ 1,8 },false,"INC %s",rp[ p ].data() ); break;
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::INC_r16 },0,0,0,{ 1,8 },false,"INC %s",rp[ p ].data() ); break;
 				case 1: CPU::AddCPUInstruction( i,{ &CPU::DEC },0,0,0,{ 1,8 },false,"DEC, %s",rp[ p ].data() ); break;
 				}
 				break;
@@ -713,7 +1052,7 @@ void CPU::_FillOpcodesTables()
 			case 4:
 			{
 				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::INC },( Z | N | H ),0,( N ),{ 1,12 },false,"INC HL" );
+					CPU::AddCPUInstruction( i,{ &CPU::INC_r8 },( Z | N | H ),0,( N ),{ 1,12 },false,"INC HL" );
 				else
 					CPU::AddCPUInstruction( i,{ &CPU::INC_r8 },( Z | N | H ),0,( N ),{ 1,4 },false,"INC %c",r[ y ] );
 				break;
@@ -880,9 +1219,9 @@ void CPU::_FillOpcodesTables()
 				case 2:
 				case 3:
 					CPU::AddCPUInstruction( i,{ &CPU::RETT },0,0,0,{ 1,20,8 },false,"RET %s",cc[ y ].data() ); break;
-				case 4: CPU::AddCPUInstruction( i,{ &CPU::LDH_C },0,0,0,{ 2,12 },false,"LD (0xFF00+C), A" ); break;
+				case 4: CPU::AddCPUInstruction( i,{ &CPU::LDH_n_A },0,0,0,{ 2,12 },false,"LD (0xFF00+n), A" ); break;
 				case 5: CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( Z | N ),{ 2,16 },false,"ADD SP, s8" ); break;
-				case 6: CPU::AddCPUInstruction( i,{ &CPU::LDH },0,0,0,{ 2,8 },false,"LD A, (0xFF00+C)" ); break;
+				case 6: CPU::AddCPUInstruction( i,{ &CPU::LDH_A_n },0,0,0,{ 2,8 },false,"LD A, (0xFF00+n)" ); break;
 				case 7: CPU::AddCPUInstruction( i,{ &CPU::LD },( Z | N | H | C ),0,( Z | N ),{ 2,12 },false,"LD HL, SP+s8" ); break;
 				}
 				break;
@@ -894,9 +1233,9 @@ void CPU::_FillOpcodesTables()
 				case 0:
 				{
 					if( p == 3 ) //AF
-						CPU::AddCPUInstruction( i,{ &CPU::POP },( Z | N | H | C ),0,0,{ 1,12 },false,"POP %s",rp2[ p ].data() );
+						CPU::AddCPUInstruction( i,{ &CPU::POP_r16 },( Z | N | H | C ),0,0,{ 1,12 },false,"POP %s",rp2[ p ].data() );
 					else
-						CPU::AddCPUInstruction( i,{ &CPU::POP },0,0,0,{ 1,12 },false,"POP %s",rp2[ p ].data() );
+						CPU::AddCPUInstruction( i,{ &CPU::POP_r16 },0,0,0,{ 1,12 },false,"POP %s",rp2[ p ].data() );
 					break;
 				}
 				case 1:
@@ -917,15 +1256,15 @@ void CPU::_FillOpcodesTables()
 			{
 				switch( y )
 				{
-				case 0:
-				case 1:
-				case 2:
-				case 3:
-					CPU::AddCPUInstruction( i,{ &CPU::JP },0,0,0,{ 3,16,12 },false,"JP %s a16",cc[ y ].data() ); break;
-				case 4: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD [C], A",cc[ y ].data() ); break;
-				case 5: CPU::AddCPUInstruction( i,{ &CPU::LD_n16A },0,0,0,{ 3,16 },false,"LD a16, A" ); break;
-				case 6: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD A, [C]" ); break;
-				case 7: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 3,16 },false,"JP A, a16" ); break;
+					case 0:
+					case 1:
+					case 2:
+					case 3:
+							CPU::AddCPUInstruction( i,{ &CPU::JP },0,0,0,{ 3,16,12 },false,"JP %s a16",cc[ y ].data() ); break;
+					case 4: CPU::AddCPUInstruction( i,{ &CPU::LDH_C_A },0,0,0,{ 1,8 },false,"LD (0xFF00+C), A",cc[ y ].data() ); break;
+					case 5: CPU::AddCPUInstruction( i,{ &CPU::LD_n16A },0,0,0,{ 3,16 },false,"LD a16, A" ); break;
+					case 6: CPU::AddCPUInstruction( i,{ &CPU::LDH_A_C },0,0,0,{ 1,8 },false,"LD A, (0xFF00+C)" ); break;
+					case 7: CPU::AddCPUInstruction( i,{ &CPU::LD_An16 },0,0,0,{ 3,16 },false,"LD A, a16" ); break;
 				}
 				break;
 			}
@@ -1006,14 +1345,14 @@ void CPU::_FillOpcodesTables()
 				case 1:
 				case 2:
 				case 3:
-					CPU::AddCPUInstruction( i,{ &CPU::PUSH },0,0,0,{ 3,24,12 },false,"CALL %s, a16",cc[ y ].data() ); break;
+					CPU::AddCPUInstruction( i,{ &CPU::CALL_cc_n16 },0,0,0,{ 3,24,12 },false,"CALL %s, a16",cc[ y ].data() ); break;
 				}
 				break;
 			}
 			case 5:
 			{
 				if( q == 0 )
-					CPU::AddCPUInstruction( i,{ &CPU::PUSH },0,0,0,{ 1,16 },false,"PUSH %s",rp2[ p ].data() );
+					CPU::AddCPUInstruction( i,{ &CPU::PUSH_r16 },0,0,0,{ 1,16 },false,"PUSH %s",rp2[ p ].data() );
 				else if( q == 1 && p == 0 )
 					CPU::AddCPUInstruction( i,{ &CPU::CALL_n16 },0,0,0,{ 3,24 },false,"CALL a16" );
 				break;
@@ -1024,12 +1363,12 @@ void CPU::_FillOpcodesTables()
 				{
 				case 0: CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( N ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				case 1: CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),0,( N ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
-				case 2: CPU::AddCPUInstruction( i,{ &CPU::SUB },( Z | N | H | C ),( N ),0,{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 2: CPU::AddCPUInstruction( i,{ &CPU::SUB_n8 },( Z | N | H | C ),( N ),0,{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				case 3: CPU::AddCPUInstruction( i,{ &CPU::SBC },( Z | N | H | C ),( N ),0,{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
-				case 4: CPU::AddCPUInstruction( i,{ &CPU::AND },( Z | N | H | C ),( H ),( N | C ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
-				case 5: CPU::AddCPUInstruction( i,{ &CPU::XOR },( Z | N | H | C ),0,( N | H | C ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
-				case 6: CPU::AddCPUInstruction( i,{ &CPU::OR },( Z | N | H | C ),0,( N | H | C ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
-				case 7: CPU::AddCPUInstruction( i,{ &CPU::CP },( Z | N | H | C ),( N ),0,{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 4: CPU::AddCPUInstruction( i,{ &CPU::AND_n8 },( Z | N | H | C ),( H ),( N | C ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 5: CPU::AddCPUInstruction( i,{ &CPU::XOR_n8 },( Z | N | H | C ),0,( N | H | C ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 6: CPU::AddCPUInstruction( i,{ &CPU::OR_n8 },( Z | N | H | C ),0,( N | H | C ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 7: CPU::AddCPUInstruction( i,{ &CPU::CP_n8 },( Z | N | H | C ),( N ),0,{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				}
 				break;
 			}
