@@ -198,12 +198,11 @@ int CPU::LoadRom( const char* sROMPath )
 
 void CPU::FetchDecode()
 {
-	if( m_aOpcodesTable[ ReadMemory( m_iPC ) ] != nullptr )
-	{
-		m_pCurrentInstruction = m_aOpcodesTable[ ReadMemory( m_iPC ) ];
-		if( m_pCurrentInstruction == nullptr )
-			throw std::runtime_error("UNKNOWN_OPCODE??");
+	uint8_t iIndex = ReadMemory( m_iPC );
+	m_pCurrentInstruction = ( iIndex == 0xCB ) ? CPU::m_aExtendOpcodesTable[ ReadMemory( m_iPC + 1 ) ] : CPU::m_aOpcodesTable[ iIndex ];
 
+	if( m_pCurrentInstruction != nullptr )
+	{
 		std::cout << m_pCurrentInstruction->m_sMnemonic << " " << static_cast< int >( m_pCurrentInstruction->m_iLength ) << " " << static_cast< int >( m_pCurrentInstruction->m_iDuration ) << " ";
 		if ( m_pCurrentInstruction->m_iConditionalDuration != 0 )
 			std::cout << ( int )m_pCurrentInstruction->m_iConditionalDuration;
@@ -225,7 +224,7 @@ void CPU::FetchDecode()
 		_UpdateFlags();
 	}
 	else
-		std::cout << "UNKNOWN CPU INSTR" << std::endl;
+		throw std::runtime_error( "UNKNOWN_CPU_INSTR??" );
 }
 
 void CPU::DestroyInstance()
@@ -424,9 +423,21 @@ void CPU::LD_A_HLI()
 	m_RegisterHL.reg++;
 }
 
+void CPU::LD_HLI_A()
+{
+	WriteMemory( m_RegisterHL.reg,m_RegisterAF.hi );
+	m_RegisterHL.reg++;
+}
+
 void CPU::LD_A_HLD()
 {
 	_LDR8( m_RegisterAF.hi,ReadMemory( m_RegisterHL.reg ) );
+	m_RegisterHL.reg--;
+}
+
+void CPU::LD_HLD_A()
+{
+	WriteMemory( m_RegisterHL.reg,m_RegisterAF.hi );
 	m_RegisterHL.reg--;
 }
 
@@ -438,6 +449,11 @@ void CPU::LD_r8n8()
 void CPU::LD_atR16A()
 {
 	WriteMemory( _Get_Mem_Address_R16(),m_RegisterAF.hi);
+}
+
+void CPU::LD_Aatr16()
+{
+	m_RegisterAF.hi = ReadMemory( _Get_Dest_R16() );
 }
 
 void CPU::LD_n16A()
@@ -465,7 +481,7 @@ void CPU::CP()
 	m_RegisterAF.lo |= ( uint8_t )1 << 6;
 
 	if( ( m_RegisterAF.hi & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
-		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+		m_RegisterAF.lo |= ( uint8_t )1 << 5;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
 
@@ -488,7 +504,7 @@ void CPU::CP_n8()
 	m_RegisterAF.lo |= ( uint8_t )1 << 6;
 
 	if( ( m_RegisterAF.hi & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
-		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+		m_RegisterAF.lo |= ( uint8_t )1 << 5;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
 
@@ -545,7 +561,7 @@ void CPU::SUB()
 	m_RegisterAF.lo |= ( uint8_t )1 << 6;
 
 	if( ( iResult & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
-		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+		m_RegisterAF.lo |= ( uint8_t )1 << 5;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
 
@@ -570,7 +586,7 @@ void CPU::SUB_n8()
 	m_RegisterAF.lo |= ( uint8_t )1 << 6;
 
 	if( ( iResult & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
-		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+		m_RegisterAF.lo |= ( uint8_t )1 << 5;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
 
@@ -653,6 +669,11 @@ void CPU::XOR_n8()
 void CPU::DI()
 {
 	IME = false;
+}
+
+void CPU::EI()
+{
+	IME = true; //TODO : set after instruction
 }
 
 void CPU::RET()
@@ -773,9 +794,40 @@ void CPU::CALL_cc_n16()
 
 	uint16_t iAdress = ( ReadMemory( m_iPC + 2 ) << 8 ) | ReadMemory( m_iPC + 1 );
 
-	m_iPC += m_pCurrentInstruction->m_iLength;
 	if( _CheckCondition( cc ) )
-		m_iPC = iAdress;
+		CALL_n16();
+	else
+		m_iPC += m_pCurrentInstruction->m_iLength;
+}
+
+void CPU::BIT()
+{
+	uint8_t iBitIndex = 1 << _GetBitIndex();
+	uint8_t iR8 = _Get_Dest_R8( true );
+
+	if( ( iR8 & iBitIndex ) == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo |= ( uint8_t )1 << 5;
+}
+
+void CPU::RES()
+{
+	uint8_t iBitIndex = 1 << _GetBitIndex();
+	uint8_t iR8 = _Get_Dest_R8( true );
+
+	iR8 &= ~iBitIndex;
+}
+
+void CPU::SET()
+{
+	uint8_t iBitIndex = 1 << _GetBitIndex();
+	uint8_t iR8 = _Get_Dest_R8( true );
+
+	iR8 |= iBitIndex;
 }
 
 void CPU::INC_r8()
@@ -903,6 +955,56 @@ void CPU::JR_cc_n16()
 		std::cout << std::endl;
 }
 
+void CPU::ADD_An8()
+{
+	const uint8_t iData = ReadMemory( m_iPC + 1 );
+	uint8_t iResult = m_RegisterAF.hi + iData;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+
+	if( ( ( m_RegisterAF.hi & 0xF ) + ( iData & 0xF ) ) > 0xF )//Set if overflow from bit 3
+		m_RegisterAF.lo |= ( uint8_t )1 << 5;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+
+	if( iResult > 0xF ) //Set if overflow from bit 7
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterAF.hi = iResult;
+}
+
+void CPU::ADC_An8()
+{
+	const uint8_t iData = ReadMemory( m_iPC + 1 );
+	int iResult = m_RegisterAF.hi + iData + CFlag;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+
+	if( ( ( m_RegisterAF.hi & 0xF ) + ( iData & 0xF ) + CFlag ) > 0xF )//Set if overflow from bit 3
+		m_RegisterAF.lo |= ( uint8_t )1 << 5;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+
+	if( iResult > 0xFF ) //Set if overflow from bit 7
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterAF.hi = iResult;
+}
+
 uint8_t& CPU::_Get_Dest_R8( bool s8 /*= false */)
 {
 	const uint8_t iData = ReadMemory( m_iPC );
@@ -945,6 +1047,23 @@ uint16_t CPU::_Get_Mem_Address_R16()
 		case 3: return m_RegisterHL.reg--;							break;
 	}
 	throw std::runtime_error( "ERROR_GETTING_DEST_MEMR16" );
+}
+
+uint8_t& CPU::_GetBitIndex()
+{
+	uint8_t r8 = ( ReadMemory( m_iPC ) & Y_MASK ) >> 4;
+	switch( r8 )
+	{
+		case 0: return m_RegisterBC.hi;						break;
+		case 1: return m_RegisterBC.lo;						break;
+		case 2: return m_RegisterDE.hi;						break;
+		case 3: return m_RegisterDE.lo;						break;
+		case 4: return m_RegisterHL.hi;						break;
+		case 5: return m_RegisterHL.lo;						break;
+		case 6: return GetRefAtMemory( m_RegisterHL.reg );	break;
+		case 7: return m_RegisterAF.hi;						break;
+	}
+	throw std::runtime_error( "ERROR_GETTING_BIT_INDEX" );
 }
 
 bool CPU::_CheckCondition( uint8_t cc )
@@ -1021,8 +1140,8 @@ void CPU::_FillOpcodesTables()
 					{
 					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_atR16A },0,0,0,{ 1,8 },false,"LD BC, A" ); break;
 					case 1: CPU::AddCPUInstruction( i,{ &CPU::LD_atR16A },0,0,0,{ 1,8 },false,"LD DE, A" ); break;
-					case 2: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD [HL+], A" ); break;
-					case 3: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD [HL-], A" ); break;
+					case 2: CPU::AddCPUInstruction( i,{ &CPU::LD_HLI_A },0,0,0,{ 1,8 },false,"LD [HL+], A" ); break;
+					case 3: CPU::AddCPUInstruction( i,{ &CPU::LD_HLD_A },0,0,0,{ 1,8 },false,"LD [HL-], A" ); break;
 					}
 					break;
 				}
@@ -1030,8 +1149,8 @@ void CPU::_FillOpcodesTables()
 				{
 					switch( p )
 					{
-					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD A, BC" ); break;
-					case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD A, DE" ); break;
+					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_Aatr16 },0,0,0,{ 1,8 },false,"LD A, BC" ); break;
+					case 1: CPU::AddCPUInstruction( i,{ &CPU::LD_Aatr16 },0,0,0,{ 1,8 },false,"LD A, DE" ); break;
 					case 2: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLI },0,0,0,{ 1,8 },false,"LD A, [HL+]" ); break;
 					case 3: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLD },0,0,0,{ 1,8 },false,"LD A, [HL-]" ); break;
 					}
@@ -1100,9 +1219,9 @@ void CPU::_FillOpcodesTables()
 			else
 			{
 				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD HL, %c",r[ z ] );
+					CPU::AddCPUInstruction( i,{ &CPU::LD_r8r8 },0,0,0,{ 1,8 },false,"LD HL, %c",r[ z ] );
 				else if( z == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD %c, HL",r[ y ] );
+					CPU::AddCPUInstruction( i,{ &CPU::LD_r8r8 },0,0,0,{ 1,8 },false,"LD %c, HL",r[ y ] );
 				else
 					CPU::AddCPUInstruction( i,{ &CPU::LD_r8r8 },0,0,0,{ 1,4 },false,"LD %c, %c",r[ y ],r[ z ] );
 			}
@@ -1361,8 +1480,8 @@ void CPU::_FillOpcodesTables()
 			{
 				switch( y )
 				{
-				case 0: CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( N ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
-				case 1: CPU::AddCPUInstruction( i,{ &CPU::ADC },( Z | N | H | C ),0,( N ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 0: CPU::AddCPUInstruction( i,{ &CPU::ADD_An8 },( Z | N | H | C ),0,( N ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 1: CPU::AddCPUInstruction( i,{ &CPU::ADC_An8 },( Z | N | H | C ),0,( N ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				case 2: CPU::AddCPUInstruction( i,{ &CPU::SUB_n8 },( Z | N | H | C ),( N ),0,{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				case 3: CPU::AddCPUInstruction( i,{ &CPU::SBC },( Z | N | H | C ),( N ),0,{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				case 4: CPU::AddCPUInstruction( i,{ &CPU::AND_n8 },( Z | N | H | C ),( H ),( N | C ),{ 2,8 },false,"%s d8",alu[ y ].data() ); break;

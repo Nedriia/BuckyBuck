@@ -98,6 +98,7 @@ private:
 	uint16_t&		_Get_Dest_R16();
 	uint16_t		_Get_Mem_Address_R16();
 	uint16_t&		_Get_Destr16Stk(){};
+	uint8_t&		_GetBitIndex(){};
 	bool			_CheckCondition( uint8_t cc );
 	void			_LDR8( uint8_t& iDst, uint8_t iData );
 	void			_LDR16( uint16_t& iDst, uint16_t iData );
@@ -110,7 +111,6 @@ private:
 
 	void NOP(){};
 	void LD()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void LDH()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void LDH_n_A();
 	void LDH_A_n();
 	void LDH_A_C();
@@ -118,11 +118,14 @@ private:
 	void LD_r16n16();
 	void LD_r8r8();
 	void LD_A_HLI();
+	void LD_HLI_A();
 	void LD_A_HLD();
+	void LD_HLD_A();
 	void LD_r8n8();
 	void LD_atR16A();
 	void LD_n16A();
 	void LD_An16();
+	void LD_Aatr16();
 	void INC_r8();
 	void INC_r16();
 	void DEC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
@@ -136,6 +139,8 @@ private:
 	void JR_n16();
 	void JR_cc_n16();
 	void ADD()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void ADD_An8();
+	void ADC_An8();
 	void ADC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void SUB();
 	void SUB_n8();
@@ -154,7 +159,7 @@ private:
 	void CCF()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void HALT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void DI();
-	void EI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void EI();
 	void RETT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void RET();
 	void RETI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
@@ -164,7 +169,6 @@ private:
 	void PUSH_r16();
 	void JP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void JPn16();
-	void CALL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void CALL_n16();
 	void CALL_cc_n16();
 	void RST()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
@@ -176,9 +180,9 @@ private:
 	void SRA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void SWAP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void SRL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void BIT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void RES()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void SET()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void BIT();
+	void RES();
+	void SET();
 
 	friend class Disassembler;
 
