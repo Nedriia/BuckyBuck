@@ -117,9 +117,7 @@ private:
 	void LDH_C_A();
 	void LD_r16n16();
 	void LD_r8r8();
-	void LD_A_HLI();
 	void LD_HLI_A();
-	void LD_A_HLD();
 	void LD_HLD_A();
 	void LD_r8n8();
 	void LD_atR16A();
@@ -131,9 +129,9 @@ private:
 	void DEC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void DEC_r8();
 	void RLCA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void RRCA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RRCA();
 	void RLA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void RRA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RRA();
 	void STOP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void JR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void JR_n16();
@@ -173,13 +171,13 @@ private:
 	void CALL_cc_n16();
 	void RST()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void RLC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void RRC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RRC();
 	void RL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void RR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RR();
 	void SLA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void SRA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void SWAP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void SRL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SRL();
 	void BIT();
 	void RES();
 	void SET();

@@ -199,7 +199,15 @@ int CPU::LoadRom( const char* sROMPath )
 void CPU::FetchDecode()
 {
 	uint8_t iIndex = ReadMemory( m_iPC );
-	m_pCurrentInstruction = ( iIndex == 0xCB ) ? CPU::m_aExtendOpcodesTable[ ReadMemory( m_iPC + 1 ) ] : CPU::m_aOpcodesTable[ iIndex ];
+	if( iIndex == 0xCB )
+	{
+		m_iPC++;
+		m_pCurrentInstruction = CPU::m_aExtendOpcodesTable[ ReadMemory( m_iPC ) ];
+	}
+	else
+	{
+		m_pCurrentInstruction = CPU::m_aOpcodesTable[ iIndex ];
+	}
 
 	if( m_pCurrentInstruction != nullptr )
 	{
@@ -786,6 +794,141 @@ void CPU::CALL_cc_n16()
 		CALL_n16();
 	else
 		m_iPC += m_pCurrentInstruction->m_iLength;
+}
+
+void CPU::RLCA()
+{
+}
+
+void CPU::RLA()
+{
+}
+
+void CPU::RRCA()
+{
+	uint8_t& iR8 = m_RegisterAF.hi;
+	uint8_t iLastBit = iR8 & 1;
+	uint8_t iResult = iR8 >> 1;
+
+	iResult |= ( iLastBit << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iLastBit )
+		m_RegisterAF.lo |= ( uint8_t )iLastBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
+}
+
+void CPU::RRA()
+{
+	uint8_t& iR8 = m_RegisterAF.hi;
+	uint8_t iLastBit = iR8 & 1;
+	uint8_t iResult = iR8 >> 1;
+
+	uint8_t iFlag = CFlag;
+	iResult |= ( iFlag << 7 );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iLastBit )
+		m_RegisterAF.lo |= ( uint8_t )iLastBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
+}
+
+void CPU::RRC()
+{
+	uint8_t& iR8 = _Get_Dest_R8( true );
+	uint8_t iLastBit = iR8 & 1;
+	uint8_t iResult = iR8 >> 1;
+
+	iResult |= ( iLastBit << 7 );
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iLastBit )
+		m_RegisterAF.lo |= ( uint8_t )iLastBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
+}
+
+void CPU::RL()
+{
+	uint8_t& iR8 = _Get_Dest_R8( true );
+	uint8_t iFirstBit = ( iR8 >> 7 );
+	uint8_t iResult = iR8 << 1;
+
+	uint8_t iFlag = CFlag;
+	iResult |= iFlag;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iFirstBit )
+		m_RegisterAF.lo |= ( uint8_t )iFirstBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
+}
+
+void CPU::RR()
+{
+	uint8_t& iR8 = _Get_Dest_R8( true );
+	uint8_t iLastBit = iR8 & 1;
+	uint8_t iResult = iR8 >> 1;
+
+	uint8_t iFlag = CFlag;
+	iResult |= ( iFlag << 7 );
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iLastBit )
+		m_RegisterAF.lo |= ( uint8_t )iLastBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
+}
+
+void CPU::SRL()
+{
+	uint8_t& iR8 = _Get_Dest_R8( true );
+	uint8_t iLastBit = iR8 & 1;
+	uint8_t iResult = iR8 >> 1;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iLastBit )
+		m_RegisterAF.lo |= ( uint8_t )iLastBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
 }
 
 void CPU::BIT()
