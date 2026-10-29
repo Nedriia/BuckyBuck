@@ -98,7 +98,7 @@ private:
 	uint16_t&		_Get_Dest_R16();
 	uint16_t		_Get_Mem_Address_R16();
 	uint16_t&		_Get_Destr16Stk(){};
-	uint8_t&		_GetBitIndex(){};
+	uint8_t&		_GetBitIndex();
 	bool			_CheckCondition( uint8_t cc );
 	void			_LDR8( uint8_t& iDst, uint8_t iData );
 	void			_LDR16( uint16_t& iDst, uint16_t iData );
