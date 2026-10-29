@@ -158,7 +158,7 @@ private:
 	void HALT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void DI();
 	void EI();
-	void RETT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RET_cc();
 	void RET();
 	void RETI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void POP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
@@ -176,7 +176,7 @@ private:
 	void RR();
 	void SLA();
 	void SRA();
-	void SWAP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SWAP();
 	void SRL();
 	void BIT();
 	void RES();

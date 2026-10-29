@@ -220,7 +220,12 @@ void CPU::FetchDecode()
 		std::cout << std::endl;
 
 		if( iPreviousPC == m_iPC )
-			m_iPC += m_pCurrentInstruction->m_iLength;
+		{
+			if( iIndex == 0xCB )
+				m_iPC += m_pCurrentInstruction->m_iLength - 1;
+			else
+				m_iPC += m_pCurrentInstruction->m_iLength;
+		}
 
 		m_iCounter += m_pCurrentInstruction->m_iDuration;
 		if( m_iCounter >= 456 )
@@ -466,7 +471,7 @@ void CPU::LD_An16()
 
 void CPU::CP()
 {
-	uint8_t& iData = _Get_Dest_R8();
+	uint8_t& iData = _Get_Dest_R8( true );
 	uint8_t iResult = m_RegisterAF.hi - iData;
 
 	if( iResult == 0 )
@@ -512,7 +517,7 @@ void CPU::CP_n8()
 
 void CPU::OR()
 {
-	uint8_t& iData = _Get_Dest_R8();
+	uint8_t& iData = _Get_Dest_R8( true );
 	uint8_t iResult = m_RegisterAF.hi | iData;
 
 	if( iResult == 0 )
@@ -546,7 +551,7 @@ void CPU::OR_n8()
 
 void CPU::SUB()
 {
-	uint8_t& iData = _Get_Dest_R8();
+	uint8_t& iData = _Get_Dest_R8( true );
 	uint8_t iResult = m_RegisterAF.hi - iData;
 
 	if( iResult == 0 )
@@ -556,12 +561,12 @@ void CPU::SUB()
 
 	m_RegisterAF.lo |= ( uint8_t )1 << 6;
 
-	if( ( iResult & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
+	if( ( m_RegisterAF.hi & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
 		m_RegisterAF.lo |= ( uint8_t )1 << 5;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
 
-	if( iData > iResult )
+	if( iData > m_RegisterAF.hi )
 		m_RegisterAF.lo |= ( uint8_t )1 << 4;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
@@ -581,12 +586,12 @@ void CPU::SUB_n8()
 
 	m_RegisterAF.lo |= ( uint8_t )1 << 6;
 
-	if( ( iResult & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
+	if( ( m_RegisterAF.hi & 0xF ) < ( iData & 0xF ) )//Set if Borrow from byte 4
 		m_RegisterAF.lo |= ( uint8_t )1 << 5;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
 
-	if( iData > iResult )
+	if( iData > m_RegisterAF.hi )
 		m_RegisterAF.lo |= ( uint8_t )1 << 4;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
@@ -596,7 +601,7 @@ void CPU::SUB_n8()
 
 void CPU::AND()
 {
-	uint8_t& iData = _Get_Dest_R8();
+	uint8_t& iData = _Get_Dest_R8( true );
 	uint8_t iResult = m_RegisterAF.hi & iData;
 
 	if( iResult == 0 )
@@ -630,7 +635,7 @@ void CPU::AND_n8()
 
 void CPU::XOR()
 {
-	uint8_t& iData = _Get_Dest_R8();
+	uint8_t& iData = _Get_Dest_R8( true );
 	uint8_t iResult = m_RegisterAF.hi ^ iData;
 
 	if( iResult == 0 )
@@ -670,6 +675,17 @@ void CPU::DI()
 void CPU::EI()
 {
 	IME = true; //TODO : set after instruction
+}
+
+void CPU::RET_cc()
+{
+	const uint8_t iData = ReadMemory( m_iPC );
+	uint8_t cc = ( iData & CC_MASK ) >> 3;
+
+	if( _CheckCondition( cc ) )
+		RET();
+	else
+		m_iPC += m_pCurrentInstruction->m_iLength;
 }
 
 void CPU::RET()
@@ -938,6 +954,25 @@ void CPU::RR()
 		m_RegisterAF.lo |= ( uint8_t )iLastBit << 4;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
+}
+
+void CPU::SWAP()
+{
+	uint8_t& iR8 = _Get_Dest_R8( true );
+	uint8_t iFirstNibble = ( iR8 & ~0xF );
+	uint8_t iLastNibble = iR8 >> 4;
+
+	uint8_t iResult = iLastNibble | ( iFirstNibble << 4 );
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
 
 	iR8 = iResult;
 }
@@ -1563,7 +1598,7 @@ void CPU::_FillOpcodesTables()
 				case 1:
 				case 2:
 				case 3:
-					CPU::AddCPUInstruction( i,{ &CPU::RETT },0,0,0,{ 1,20,8 },false,"RET %s",cc[ y ].data() ); break;
+					CPU::AddCPUInstruction( i,{ &CPU::RET_cc },0,0,0,{ 1,20,8 },false,"RET %s",cc[ y ].data() ); break;
 				case 4: CPU::AddCPUInstruction( i,{ &CPU::LDH_n_A },0,0,0,{ 2,12 },false,"LD (0xFF00+n), A" ); break;
 				case 5: CPU::AddCPUInstruction( i,{ &CPU::ADD },( Z | N | H | C ),0,( Z | N ),{ 2,16 },false,"ADD SP, s8" ); break;
 				case 6: CPU::AddCPUInstruction( i,{ &CPU::LDH_A_n },0,0,0,{ 2,8 },false,"LD A, (0xFF00+n)" ); break;
