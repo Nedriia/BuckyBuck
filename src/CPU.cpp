@@ -417,22 +417,10 @@ void CPU::LD_r8r8()
 	_LDR8( _Get_Dest_R8(),_Get_Dest_R8( true ) );
 }
 
-void CPU::LD_A_HLI()
-{
-	_LDR8( m_RegisterAF.hi,ReadMemory( m_RegisterHL.reg ) );
-	m_RegisterHL.reg++;
-}
-
 void CPU::LD_HLI_A()
 {
 	WriteMemory( m_RegisterHL.reg,m_RegisterAF.hi );
 	m_RegisterHL.reg++;
-}
-
-void CPU::LD_A_HLD()
-{
-	_LDR8( m_RegisterAF.hi,ReadMemory( m_RegisterHL.reg ) );
-	m_RegisterHL.reg--;
 }
 
 void CPU::LD_HLD_A()
@@ -453,7 +441,7 @@ void CPU::LD_atR16A()
 
 void CPU::LD_Aatr16()
 {
-	m_RegisterAF.hi = ReadMemory( _Get_Dest_R16() );
+	m_RegisterAF.hi = ReadMemory( _Get_Mem_Address_R16() );
 }
 
 void CPU::LD_n16A()
@@ -958,9 +946,9 @@ void CPU::JR_cc_n16()
 void CPU::ADD_An8()
 {
 	const uint8_t iData = ReadMemory( m_iPC + 1 );
-	uint8_t iResult = m_RegisterAF.hi + iData;
+	int iResult = m_RegisterAF.hi + iData;
 
-	if( iResult == 0 )
+	if( static_cast< uint8_t >( iResult ) == 0 )
 		m_RegisterAF.lo |= ( uint8_t )1 << 7;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
@@ -972,7 +960,7 @@ void CPU::ADD_An8()
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
 
-	if( iResult > 0xF ) //Set if overflow from bit 7
+	if( iResult > 0xFF ) //Set if overflow from bit 7
 		m_RegisterAF.lo |= ( uint8_t )1 << 4;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
@@ -985,7 +973,7 @@ void CPU::ADC_An8()
 	const uint8_t iData = ReadMemory( m_iPC + 1 );
 	int iResult = m_RegisterAF.hi + iData + CFlag;
 
-	if( iResult == 0 )
+	if( static_cast<uint8_t>( iResult ) == 0 )
 		m_RegisterAF.lo |= ( uint8_t )1 << 7;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
@@ -1151,8 +1139,8 @@ void CPU::_FillOpcodesTables()
 					{
 					case 0: CPU::AddCPUInstruction( i,{ &CPU::LD_Aatr16 },0,0,0,{ 1,8 },false,"LD A, BC" ); break;
 					case 1: CPU::AddCPUInstruction( i,{ &CPU::LD_Aatr16 },0,0,0,{ 1,8 },false,"LD A, DE" ); break;
-					case 2: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLI },0,0,0,{ 1,8 },false,"LD A, [HL+]" ); break;
-					case 3: CPU::AddCPUInstruction( i,{ &CPU::LD_A_HLD },0,0,0,{ 1,8 },false,"LD A, [HL-]" ); break;
+					case 2: CPU::AddCPUInstruction( i,{ &CPU::LD_Aatr16 },0,0,0,{ 1,8 },false,"LD A, [HL+]" ); break;
+					case 3: CPU::AddCPUInstruction( i,{ &CPU::LD_Aatr16 },0,0,0,{ 1,8 },false,"LD A, [HL-]" ); break;
 					}
 					break;
 				}
