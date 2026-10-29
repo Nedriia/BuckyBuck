@@ -128,9 +128,9 @@ private:
 	void INC_r16();
 	void DEC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void DEC_r8();
-	void RLCA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RLCA();
 	void RRCA();
-	void RLA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RLA();
 	void RRA();
 	void STOP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void JR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
@@ -170,12 +170,12 @@ private:
 	void CALL_n16();
 	void CALL_cc_n16();
 	void RST()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void RLC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RLC();
 	void RRC();
-	void RL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RL();
 	void RR();
-	void SLA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void SRA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SLA();
+	void SRA();
 	void SWAP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void SRL();
 	void BIT();

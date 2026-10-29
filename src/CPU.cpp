@@ -798,10 +798,41 @@ void CPU::CALL_cc_n16()
 
 void CPU::RLCA()
 {
+	uint8_t& iR8 = m_RegisterAF.hi;
+	uint8_t iFirstBit = ( iR8 >> 7 );
+	uint8_t iResult = iR8 << 1;
+
+	iResult |= iFirstBit;
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iFirstBit )
+		m_RegisterAF.lo |= ( uint8_t )iFirstBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
 }
 
 void CPU::RLA()
 {
+	uint8_t& iR8 = m_RegisterAF.hi;
+	uint8_t iFirstBit = ( iR8 >> 7 );
+	uint8_t iResult = iR8 << 1;
+
+	uint8_t iFlag = CFlag;
+	iResult |= iFlag;
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iFirstBit )
+		m_RegisterAF.lo |= ( uint8_t )iFirstBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
 }
 
 void CPU::RRCA()
@@ -905,6 +936,70 @@ void CPU::RR()
 	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
 	if( iLastBit )
 		m_RegisterAF.lo |= ( uint8_t )iLastBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
+}
+
+void CPU::SLA()
+{
+	uint8_t& iR8 = _Get_Dest_R8( true );
+	uint8_t iFirstBit = ( iR8 >> 7 );
+	uint8_t iResult = iR8 << 1;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iFirstBit )
+		m_RegisterAF.lo |= ( uint8_t )iFirstBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
+}
+
+void CPU::SRA()
+{
+	uint8_t& iR8 = _Get_Dest_R8( true );
+	uint8_t iLastBit = iR8 & 1;
+	uint8_t iResult = iR8 >> 1;
+
+	iResult |= ( iR8 & 0x80 );
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iLastBit )
+		m_RegisterAF.lo |= ( uint8_t )iLastBit << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	iR8 = iResult;
+}
+
+void CPU::RLC()
+{
+	uint8_t& iR8 = _Get_Dest_R8( true );
+	uint8_t iFirstBit = ( iR8 >> 7 );
+	uint8_t iResult = iR8 << 1;
+
+	iResult |= iFirstBit;
+
+	if( iResult == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	if( iFirstBit )
+		m_RegisterAF.lo |= ( uint8_t )iFirstBit << 4;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
 
