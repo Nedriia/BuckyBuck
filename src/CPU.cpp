@@ -405,6 +405,40 @@ void CPU::EmulateCycle()
 	}
 }
 
+void CPU::LD_a16_SP()
+{
+	uint16_t iAdress = ( ReadMemory( m_iPC + 2 ) << 8 ) | ( ReadMemory( m_iPC + 1 ) );
+
+	WriteMemory( iAdress, m_iSP & 0xFF );
+	WriteMemory( iAdress + 1, m_iSP >> 8 );
+}
+
+void CPU::LD_HL_SPe()
+{
+	const uint8_t e8u = ReadMemory( m_iPC + 1 );
+	int8_t e8 = static_cast< int8_t >( e8u );
+
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+
+	if( ( ( m_iSP & 0xF ) + ( e8u & 0xF ) ) > 0xF )//Set if overflow from bit 3
+		m_RegisterAF.lo |= ( uint8_t )1 << 5;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+
+	if( ( m_iSP & 0xFF ) + e8u > 0xFF ) //Set if overflow from bit 7
+		m_RegisterAF.lo |= ( uint8_t )1 << 4;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+
+	m_RegisterHL.reg = static_cast< uint16_t >( m_iSP + e8 );
+}
+
+void CPU::LD_SP_HL()
+{
+	m_iSP = m_RegisterHL.reg;
+}
+
 void CPU::LDH_n_A()
 {
 	uint8_t iValue = ReadMemory( m_iPC + 1 );
@@ -523,6 +557,51 @@ void CPU::CP_n8()
 		m_RegisterAF.lo |= ( uint8_t )1 << 4;
 	else
 		m_RegisterAF.lo &= ~( ( uint8_t )1 << 4 );
+}
+
+void CPU::DAA()
+{
+	if( NFlag )
+	{
+
+	}
+	else
+	{
+
+	}
+
+	/*If the subtract flag N is set :
+	Initialize the adjustment to 0.
+		If the half - carry flag H is set,then add $6 to the adjustment.
+		If the carry flag is set,then add $60 to the adjustment.
+		Subtract the adjustment from A.
+	If the subtract flag N is not set :
+		Initialize the adjustment to 0.
+		If the half - carry flag H is set or A & $F > $9,then add $6 to the adjustment.
+		If the carry flag is set or A > $99,then add $60 to the adjustment and set the carry flag.
+		Add the adjustment to A.*/
+}
+
+void CPU::CPL()
+{
+	m_RegisterAF.hi = ~m_RegisterAF.hi;
+
+	m_RegisterAF.lo |= ( uint8_t )1 << 6;
+	m_RegisterAF.lo |= ( uint8_t )1 << 5;
+}
+
+void CPU::SCF()
+{
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	m_RegisterAF.lo |= ( uint8_t )1 << 4;
+}
+
+void CPU::CCF()
+{
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 6 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+	m_RegisterAF.lo ^= 0x10;
 }
 
 void CPU::OR()
@@ -707,6 +786,12 @@ void CPU::RET()
 	++m_iSP;
 
 	m_iPC = iAdress; //TODO : POP PC
+}
+
+void CPU::RETI()
+{
+	RET();
+	EI();
 }
 
 void CPU::POP_r16()
@@ -1503,7 +1588,7 @@ void CPU::_FillOpcodesTables()
 				switch( y )
 				{
 				case 0: CPU::AddCPUInstruction( i,{ &CPU::NOP },0,0,0,{ 1,4 },false,"NOP" ); break;
-				case 1: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 3,20 },false,"LD a16, SP" ); break;
+				case 1: CPU::AddCPUInstruction( i,{ &CPU::LD_a16_SP },0,0,0,{ 3,20 },false,"LD a16, SP" ); break;
 				case 2: CPU::AddCPUInstruction( i,{ &CPU::STOP },0,0,0,{ 2,4 },false,"STOP" ); break;
 				case 3: CPU::AddCPUInstruction( i,{ &CPU::JR_n16 },0,0,0,{ 2,12 },false,"JR n16" ); break;
 				case 4:
@@ -1580,7 +1665,7 @@ void CPU::_FillOpcodesTables()
 			case 6:
 			{
 				if( y == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 2,12 },false,"LD HL, d8" );
+					CPU::AddCPUInstruction( i,{ &CPU::LD_r8n8 },0,0,0,{ 2,12 },false,"LD HL, d8" );
 				else
 					CPU::AddCPUInstruction( i,{ &CPU::LD_r8n8 },0,0,0,{ 2,8 },false,"LD %c, d8",r[ y ] );
 				break;
@@ -1734,7 +1819,7 @@ void CPU::_FillOpcodesTables()
 				case 4: CPU::AddCPUInstruction( i,{ &CPU::LDH_n_A },0,0,0,{ 2,12 },false,"LD (0xFF00+n), A" ); break;
 				case 5: CPU::AddCPUInstruction( i,{ &CPU::ADD_SPe8 },( Z | N | H | C ),0,( Z | N ),{ 2,16 },false,"ADD SP, s8" ); break;
 				case 6: CPU::AddCPUInstruction( i,{ &CPU::LDH_A_n },0,0,0,{ 2,8 },false,"LD A, (0xFF00+n)" ); break;
-				case 7: CPU::AddCPUInstruction( i,{ &CPU::LD },( Z | N | H | C ),0,( Z | N ),{ 2,12 },false,"LD HL, SP+s8" ); break;
+				case 7: CPU::AddCPUInstruction( i,{ &CPU::LD_HL_SPe },( Z | N | H | C ),0,( Z | N ),{ 2,12 },false,"LD HL, SP+s8" ); break;
 				}
 				break;
 			}
@@ -1757,7 +1842,7 @@ void CPU::_FillOpcodesTables()
 					case 0: CPU::AddCPUInstruction( i,{ &CPU::RET },0,0,0,{ 1,16 },false,"RET" ); break;
 					case 1: CPU::AddCPUInstruction( i,{ &CPU::RETI },0,0,0,{ 1,16 },false,"RETI" ); break;
 					case 2: CPU::AddCPUInstruction( i,{ &CPU::JPHL },0,0,0,{ 1,4 },false,"JP HL" ); break;
-					case 3: CPU::AddCPUInstruction( i,{ &CPU::LD },0,0,0,{ 1,8 },false,"LD SP, HL" ); break;
+					case 3: CPU::AddCPUInstruction( i,{ &CPU::LD_SP_HL },0,0,0,{ 1,8 },false,"LD SP, HL" ); break;
 					}
 					break;
 				}

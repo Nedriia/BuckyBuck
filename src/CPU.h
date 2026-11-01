@@ -110,7 +110,9 @@ private:
 	uint8_t m_iIR;	//Instruction Register
 
 	void NOP(){};
-	void LD()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void LD_a16_SP();
+	void LD_HL_SPe();
+	void LD_SP_HL();
 	void LDH_n_A();
 	void LDH_A_n();
 	void LDH_A_C();
@@ -153,19 +155,17 @@ private:
 	void OR_n8();
 	void CP();
 	void CP_n8();
-	void DAA()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void CPL()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void SCF()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void CCF()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void DAA();
+	void CPL();
+	void SCF();
+	void CCF();
 	void HALT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void DI();
 	void EI();
 	void RET_cc();
 	void RET();
-	void RETI()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void POP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void RETI();
 	void POP_r16();
-	void PUSH()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void PUSH_r16();
 	void JPn16();
 	void JPccn16();
