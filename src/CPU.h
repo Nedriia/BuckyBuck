@@ -135,7 +135,6 @@ private:
 	void RLA();
 	void RRA();
 	void STOP()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
-	void JR()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
 	void JR_n16();
 	void JR_cc_n16();
 	void ADD_An8();

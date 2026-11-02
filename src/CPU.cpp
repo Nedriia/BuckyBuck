@@ -561,25 +561,41 @@ void CPU::CP_n8()
 
 void CPU::DAA()
 {
+	uint8_t iAValue = m_RegisterAF.hi;
+	bool bHalfCarry = HFlag;
+	bool bCarry = CFlag;
+	uint8_t iOffset = 0;
+
 	if( NFlag )
 	{
+		if( bHalfCarry )
+			iOffset += 0x06;
 
+		if( bCarry )
+			iOffset += 0x60;
+
+		iAValue -= iOffset;
 	}
 	else
 	{
+		if( bHalfCarry || ( ( iAValue & 0x0F ) > 0x09 ) )
+			iOffset += 0x06;
 
+		if( bCarry || ( iAValue > 0x99 ) )
+		{
+			iOffset += 0x60;
+			m_RegisterAF.lo |= ( uint8_t )1 << 4;
+		}
+		iAValue += iOffset;
 	}
 
-	/*If the subtract flag N is set :
-	Initialize the adjustment to 0.
-		If the half - carry flag H is set,then add $6 to the adjustment.
-		If the carry flag is set,then add $60 to the adjustment.
-		Subtract the adjustment from A.
-	If the subtract flag N is not set :
-		Initialize the adjustment to 0.
-		If the half - carry flag H is set or A & $F > $9,then add $6 to the adjustment.
-		If the carry flag is set or A > $99,then add $60 to the adjustment and set the carry flag.
-		Add the adjustment to A.*/
+	if( iAValue == 0 )
+		m_RegisterAF.lo |= ( uint8_t )1 << 7;
+	else
+		m_RegisterAF.lo &= ~( ( uint8_t )1 << 7 );
+	m_RegisterAF.lo &= ~( ( uint8_t )1 << 5 );
+
+	m_RegisterAF.hi = iAValue;
 }
 
 void CPU::CPL()
