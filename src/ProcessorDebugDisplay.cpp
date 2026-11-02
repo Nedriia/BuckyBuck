@@ -58,10 +58,10 @@ void ProcessorDebugDisplay::_DrawFlagsState( ImVec2& pos )
 	pos.x += ( m_oVisualParams.fScreenWidth - ImGui::CalcTextSize( sLabel ).x ) * 0.5f;
 	_AddInfosText( "",sLabel,"",pos,0.0f,DATA_TEXT::TEXT_FLAG );
 
-	_AddInfosText( m_pCPU->ZFlag,"","",pos,0.0f,DATA_TEXT::FLAG,NEW_LINE::COMPLETE_NEW );
-	_AddInfosText( m_pCPU->NFlag,"","",pos,m_oVisualParams.fDataSpace,DATA_TEXT::FLAG );
-	_AddInfosText( m_pCPU->HFlag,"","",pos,m_oVisualParams.fDataSpace * 2,DATA_TEXT::FLAG );
-	_AddInfosText( m_pCPU->CFlag,"","",pos,m_oVisualParams.fDataSpace * 3,DATA_TEXT::FLAG,NEW_LINE::SAME_LINE,LINE::HORIZONTAL_LINE );
+	_AddInfosText( m_pCPU->GetFlag( ZERO_FLAG ),"","",pos,0.0f,DATA_TEXT::FLAG,NEW_LINE::COMPLETE_NEW);
+	_AddInfosText( m_pCPU->GetFlag( SUB_FLAG ),"","",pos,m_oVisualParams.fDataSpace,DATA_TEXT::FLAG );
+	_AddInfosText( m_pCPU->GetFlag( HALF_CARRY_FLAG ),"","",pos,m_oVisualParams.fDataSpace * 2,DATA_TEXT::FLAG );
+	_AddInfosText( m_pCPU->GetFlag( CARRY_FLAG ),"","",pos,m_oVisualParams.fDataSpace * 3,DATA_TEXT::FLAG,NEW_LINE::SAME_LINE,LINE::HORIZONTAL_LINE );
 }
 
 void ProcessorDebugDisplay::_DrawRegistersState( ImVec2& pos )

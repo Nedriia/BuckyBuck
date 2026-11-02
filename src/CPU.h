@@ -20,10 +20,10 @@ enum State
 
 enum CPU_FLAGS
 {
-	Z = 1 << 0,
-	N = 1 << 1,
-	H = 1 << 2,
-	C = 1 << 3,
+	ZERO_FLAG =				0b10000000,
+	SUB_FLAG =				0b01000000,
+	HALF_CARRY_FLAG =		0b00100000,
+	CARRY_FLAG =			0b00010000,
 };
 
 class CPU
@@ -66,7 +66,7 @@ public:
 	uint16_t						GetSP() const { return m_iSP; }
 
 	typedef void ( CPU::* fct_opcode )( );
-	static void		AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, uint8_t iFlags, uint8_t iFlagSet1, uint8_t iFlagReset0, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );
+	static void		AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );
 
 	static CPU* GetInstance()
 	{
@@ -81,18 +81,15 @@ public:
 	Register m_RegisterDE;
 	Register m_RegisterHL;
 
-	bool	ZFlag;
-	bool	NFlag;
-	bool	HFlag;
-	bool	CFlag;
 	bool	IME;
 	static const std::string& GetMemoryRegionLabel( const uint16_t iAdress );
+	bool GetFlag( CPU_FLAGS e ) const { return m_RegisterAF.lo & e; }
 
 private:
 
 	void 			_FillOpcodesTables();
 	void			_SimulateBootRom();
-	void			_UpdateFlags();
+	void			_SetFlag( CPU_FLAGS eFlag,bool bCond );
 
 	uint8_t&		_Get_Dest_R8( bool s8 = false );
 	uint16_t&		_Get_Dest_R16();
@@ -192,9 +189,6 @@ private:
 	{
 		char		m_sMnemonic[32];
 		fct_opcode	m_pFct;
-		uint8_t		m_aFlags; //Flags Affected
-		uint8_t		m_aFlagSet_1;
-		uint8_t		m_aFlagReset_0;
 		uint8_t		m_iLength;
 		uint8_t		m_iDuration; //T-state
 		uint8_t		m_iConditionalDuration;
