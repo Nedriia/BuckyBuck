@@ -92,6 +92,9 @@ private:
 	void 			_FillOpcodesTables();
 	void			_SimulateBootRom();
 	void			_SetFlag( CPU_FLAGS eFlag,bool bCond );
+	void			_HandleTimer();
+	void			_HandleInterupts();
+	bool			_CheckInterupts( const uint8_t iInterruptBit,const uint16_t iInterruptAdress, const uint8_t iBitsOn );
 
 	uint8_t&		_Get_Dest_R8( bool s8 = false );
 	uint16_t&		_Get_Dest_R16();
@@ -109,10 +112,11 @@ private:
 	Register m_RegisterDE;
 	Register m_RegisterHL;
 
-	bool	IME;
+	bool	m_bIME;
 	long long m_iCounter;
 
 	uint8_t m_iIR;	//Instruction Register
+	int8_t m_IME_Requested;
 
 	void NOP(){};
 	void LD_a16_SP();

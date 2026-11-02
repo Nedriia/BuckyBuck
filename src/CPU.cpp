@@ -26,6 +26,15 @@ static constexpr std::string_view cc[ 4 ] = { "NZ","Z","NC","C" };
 static constexpr std::string_view alu[ 8 ] = { "ADD A,","ADC A,","SUB","SBC A,","AND","XOR","OR","CP" };
 static constexpr std::string_view rot[ 8 ] = { "RLC","RRC","RL","RR","SLA","SRA","SWAP","SRL" };
 
+namespace interrupts
+{
+	const uint16_t vblank = 0x40;
+	const uint16_t lcdc_status = 0x48;
+	const uint16_t timer = 0x50;
+	const uint16_t serial = 0x58;
+	const uint16_t joypad = 0x60;
+}
+
 CPU* CPU::m_pSingleton = nullptr;
 CPU::CPU_Instructions* CPU::m_aOpcodesTable[ 256 ] = { nullptr };
 CPU::CPU_Instructions* CPU::m_aExtendOpcodesTable[ 256 ] = { nullptr };
@@ -78,7 +87,8 @@ CPU::CPU() :
 	m_RegisterBC( 0 ),
 	m_RegisterDE( 0 ),
 	m_RegisterHL( 0 ),
-	IME( false ),
+	m_bIME( false ),
+	m_IME_Requested( -1 ),
 	m_oCPUState( State::Pause ),
 	m_pCurrentInstruction( nullptr )
 {
@@ -114,7 +124,8 @@ void CPU::Init()
 	m_RegisterDE.reg = 0;
 	m_RegisterHL.reg = 0;
 
-	IME	  = false;
+	m_bIME	  = false;
+	m_IME_Requested = -1;
 
 	memset( m_aMemory.data(),0xFF,0x10000 );
 	m_oCPUState = State::Pause;
@@ -157,6 +168,70 @@ void CPU::_SetFlag( CPU_FLAGS eFlag,bool bCond )
 		m_RegisterAF.lo |= iMask;
 	else
 		m_RegisterAF.lo &= ~iMask;
+}
+
+void CPU::_HandleTimer()
+{
+	//FF04 DIV Divider register -> 16384Hz / 32768Hz ( double speed ) --- reset on stop instruct
+	//FF05 TIMA Timer Counter -> incremented at the clock frequency specified by TAC. If > 0xFF reset to value in TMA & interrupt request
+	//FF06 TMA Timer modulo 
+	//FF07 TAC Timer Control -> bit 0/1 clock select / bit 2 Enable
+						//Enable : Controls wheter TIMA is incremented -> DIV always counting
+						//clock select = frequency at which TIMA is incremented
+		/*				00	256 M - cycles	4096
+						01	4 M -	cycles	262144
+						10	16 M -	cycles	65536
+						11	64 M -	cycles	16384									*/
+}
+
+void CPU::_HandleInterupts()
+{
+	if( m_bIME == true )
+	{
+		// [IF] bit are only requesting an interrupt
+		//Actual execution happens if IME & same bit in the IE are set
+		uint8_t IF = ReadMemory( 0xFF0F );
+		uint8_t IE = ReadMemory( 0xFFFF );
+		uint8_t iBitsOn = ( IF & IE & 0x1F );
+
+		if( iBitsOn != 0 )
+		{
+			if( _CheckInterupts( 0, interrupts::vblank, iBitsOn ) ) return;
+			if( _CheckInterupts( 1, interrupts::lcdc_status, iBitsOn ) ) return;
+			if( _CheckInterupts( 2, interrupts::timer, iBitsOn ) ) return;
+			if( _CheckInterupts( 3, interrupts::serial, iBitsOn ) ) return;
+			if( _CheckInterupts( 4, interrupts::joypad, iBitsOn ) ) return;
+		}
+	}
+	else
+	{
+		if( m_IME_Requested == 0 )
+		{
+			m_bIME = true;
+			m_IME_Requested = -1;
+		}
+		else if( m_IME_Requested != -1 )
+			m_IME_Requested--;
+	}
+}
+
+bool CPU::_CheckInterupts( const uint8_t iInterruptBit, const uint16_t iInterruptAdress, const uint8_t iBitsOn )
+{
+	if( ( iBitsOn & ( 1 << iInterruptBit ) ) != 0 )
+	{
+		--m_iSP;
+		WriteMemory( m_iSP,m_iPC >> 8 );
+		--m_iSP;
+		WriteMemory( m_iSP,m_iPC & 0x00FF );
+
+		WriteMemory( 0xFF0F, ReadMemory( 0xFF0F ) & ~( 1 << iInterruptBit ) );
+		m_iPC = iInterruptAdress;
+		m_bIME = false;
+		m_iCounter += 20;
+		return true;
+	}
+	else
+		return false;
 }
 
 int CPU::LoadRom( const char* sROMPath )
@@ -210,6 +285,8 @@ int CPU::LoadRom( const char* sROMPath )
 
 void CPU::FetchDecode()
 {
+	_HandleInterupts();
+
 	uint8_t iIndex = ReadMemory( m_iPC );
 	if( iIndex == 0xCB )
 	{
@@ -404,7 +481,10 @@ void CPU::EmulateCycle()
 			return;
 
 		if( m_oCPUState == State::Running || m_oCPUState == State::SkipToNext )
+		{
+			_HandleTimer();
 			FetchDecode();
+		}
 
 		if( m_oCPUState == State::SkipToNext || m_aBreakpoints.find( m_iPC ) != m_aBreakpoints.end() )
 			m_oCPUState = State::Pause;
@@ -725,12 +805,13 @@ void CPU::XOR_n8()
 
 void CPU::DI()
 {
-	IME = false;
+	m_bIME = false;
+	m_IME_Requested = -1;
 }
 
 void CPU::EI()
 {
-	IME = true; //TODO : set after instruction
+	m_IME_Requested = 1;
 }
 
 void CPU::RET_cc()
