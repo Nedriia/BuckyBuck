@@ -643,6 +643,34 @@ void CPU::SUB_n8()
 	m_RegisterAF.hi = iResult;
 }
 
+void CPU::SBC_n8()
+{
+	const uint8_t iData = ReadMemory( m_iPC + 1 );
+	bool bCarryFlag = GetFlag( CARRY_FLAG );
+	uint8_t iResult = m_RegisterAF.hi - ( iData + bCarryFlag );
+
+	_SetFlag( ZERO_FLAG,iResult == 0 );
+	_SetFlag( SUB_FLAG,1 );
+	_SetFlag( HALF_CARRY_FLAG,( m_RegisterAF.hi & 0xF ) < ( iData & 0xF ) + bCarryFlag );//Set if Borrow from byte 4
+	_SetFlag( CARRY_FLAG, bCarryFlag + iData > m_RegisterAF.hi );
+
+	m_RegisterAF.hi = iResult;
+}
+
+void CPU::SBC_r8()
+{
+	uint8_t& iData = _Get_Dest_R8( true );
+	bool bCarryFlag = GetFlag( CARRY_FLAG );
+	uint8_t iResult = m_RegisterAF.hi - ( iData + bCarryFlag );
+
+	_SetFlag( ZERO_FLAG,iResult == 0 );
+	_SetFlag( SUB_FLAG,1 );
+	_SetFlag( HALF_CARRY_FLAG,( m_RegisterAF.hi & 0xF ) < ( iData & 0xF ) + bCarryFlag );//Set if Borrow from byte 4
+	_SetFlag( CARRY_FLAG, bCarryFlag + iData > m_RegisterAF.hi );
+
+	m_RegisterAF.hi = iResult;
+}
+
 void CPU::AND()
 {
 	uint8_t& iData = _Get_Dest_R8( true );
@@ -895,8 +923,7 @@ void CPU::RLA()
 	uint8_t iFirstBit = ( iR8 >> 7 );
 	uint8_t iResult = iR8 << 1;
 
-	uint8_t iFlag = GetFlag( CARRY_FLAG );
-	iResult |= iFlag;
+	iResult |= GetFlag( CARRY_FLAG );
 
 	_SetFlag( ZERO_FLAG,0 );
 	_SetFlag( SUB_FLAG,0 );
@@ -928,8 +955,7 @@ void CPU::RRA()
 	uint8_t iLastBit = iR8 & 1;
 	uint8_t iResult = iR8 >> 1;
 
-	uint8_t iFlag = GetFlag( CARRY_FLAG );
-	iResult |= ( iFlag << 7 );
+	iResult |= ( GetFlag( CARRY_FLAG ) << 7 );
 
 	_SetFlag( ZERO_FLAG,0 );
 	_SetFlag( SUB_FLAG,0 );
@@ -978,8 +1004,7 @@ void CPU::RR()
 	uint8_t iLastBit = iR8 & 1;
 	uint8_t iResult = iR8 >> 1;
 
-	uint8_t iFlag = GetFlag( CARRY_FLAG );
-	iResult |= ( iFlag << 7 );
+	iResult |= ( GetFlag( CARRY_FLAG ) << 7 );
 
 	_SetFlag( ZERO_FLAG,iResult == 0 );
 	_SetFlag( SUB_FLAG,0 );
@@ -1468,13 +1493,13 @@ void CPU::_FillOpcodesTables()
 			case 3:
 			{
 				if( z == 6 )
-					CPU::AddCPUInstruction( i,{ &CPU::SBC },{ 1,8 },false,"%s HL",alu[ y ].data(),r[ z ] );
+					CPU::AddCPUInstruction( i,{ &CPU::SBC_r8 },{ 1,8 },false,"%s HL",alu[ y ].data(),r[ z ] );
 				else
 				{
 					if( z == 7 )
-						CPU::AddCPUInstruction( i,{ &CPU::SBC },{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+						CPU::AddCPUInstruction( i,{ &CPU::SBC_r8 },{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
 					else
-						CPU::AddCPUInstruction( i,{ &CPU::SBC },{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
+						CPU::AddCPUInstruction( i,{ &CPU::SBC_r8 },{ 1,4 },false,"%s %c",alu[ y ].data(),r[ z ] );
 				}
 				break;
 			}
@@ -1685,7 +1710,7 @@ void CPU::_FillOpcodesTables()
 				case 0: CPU::AddCPUInstruction( i,{ &CPU::ADD_An8 },{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				case 1: CPU::AddCPUInstruction( i,{ &CPU::ADC_An8 },{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				case 2: CPU::AddCPUInstruction( i,{ &CPU::SUB_n8 },{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
-				case 3: CPU::AddCPUInstruction( i,{ &CPU::SBC },{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
+				case 3: CPU::AddCPUInstruction( i,{ &CPU::SBC_n8 },{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				case 4: CPU::AddCPUInstruction( i,{ &CPU::AND_n8 },{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				case 5: CPU::AddCPUInstruction( i,{ &CPU::XOR_n8 },{ 2,8 },false,"%s d8",alu[ y ].data() ); break;
 				case 6: CPU::AddCPUInstruction( i,{ &CPU::OR_n8 },{ 2,8 },false,"%s d8",alu[ y ].data() ); break;

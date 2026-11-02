@@ -150,7 +150,8 @@ private:
 	void ADC_Ar8();
 	void SUB();
 	void SUB_n8();
-	void SBC()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void SBC_n8();
+	void SBC_r8();
 	void AND();
 	void AND_n8();
 	void XOR();
