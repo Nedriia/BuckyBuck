@@ -78,14 +78,14 @@ void ProcessorDebugDisplay::_DrawRegistersState( ImVec2& pos )
 	float fLeftPart = -fHalf - fTextWidth;
 	float fRightPart = fHalf - fTextWidth;
 
-	_AddInfosText( m_pCPU->m_RegisterAF.hi,"A       ","$%02X",pos,fLeftPart,DATA_TEXT::REG,NEW_LINE::HALF_LINE,LINE::VERTICAL_LINE );
-	_AddInfosText( m_pCPU->m_RegisterAF.lo,"F       ","$%02X",pos,fRightPart,DATA_TEXT::REG,NEW_LINE::SAME_LINE );
-	_AddInfosText( m_pCPU->m_RegisterBC.hi,"B       ","$%02X",pos,fLeftPart,DATA_TEXT::REG,NEW_LINE::COMPLETE_NEW );
-	_AddInfosText( m_pCPU->m_RegisterBC.lo,"C       ","$%02X",pos,fRightPart,DATA_TEXT::REG,NEW_LINE::SAME_LINE );
-	_AddInfosText( m_pCPU->m_RegisterDE.hi,"D       ","$%02X",pos,fLeftPart,DATA_TEXT::REG,NEW_LINE::COMPLETE_NEW );
-	_AddInfosText( m_pCPU->m_RegisterDE.lo,"E       ","$%02X",pos,fRightPart,DATA_TEXT::REG,NEW_LINE::SAME_LINE );
-	_AddInfosText( m_pCPU->m_RegisterHL.hi,"H       ","$%02X",pos,fLeftPart,DATA_TEXT::REG,NEW_LINE::COMPLETE_NEW );
-	_AddInfosText( m_pCPU->m_RegisterHL.lo,"L       ","$%02X",pos,fRightPart,DATA_TEXT::REG,NEW_LINE::SAME_LINE,LINE::HORIZONTAL_LINE );
+	_AddInfosText( m_pCPU->GetRegister( AF ).hi,"A       ","$%02X",pos,fLeftPart,DATA_TEXT::REG,NEW_LINE::HALF_LINE,LINE::VERTICAL_LINE);
+	_AddInfosText( m_pCPU->GetRegister( AF ).lo,"F       ","$%02X",pos,fRightPart,DATA_TEXT::REG,NEW_LINE::SAME_LINE );
+	_AddInfosText( m_pCPU->GetRegister( BC ).hi,"B       ","$%02X",pos,fLeftPart,DATA_TEXT::REG,NEW_LINE::COMPLETE_NEW );
+	_AddInfosText( m_pCPU->GetRegister( BC ).lo,"C       ","$%02X",pos,fRightPart,DATA_TEXT::REG,NEW_LINE::SAME_LINE );
+	_AddInfosText( m_pCPU->GetRegister( DE ).hi,"D       ","$%02X",pos,fLeftPart,DATA_TEXT::REG,NEW_LINE::COMPLETE_NEW );
+	_AddInfosText( m_pCPU->GetRegister( DE ).lo,"E       ","$%02X",pos,fRightPart,DATA_TEXT::REG,NEW_LINE::SAME_LINE );
+	_AddInfosText( m_pCPU->GetRegister( HL ).hi,"H       ","$%02X",pos,fLeftPart,DATA_TEXT::REG,NEW_LINE::COMPLETE_NEW );
+	_AddInfosText( m_pCPU->GetRegister( HL ).lo,"L       ","$%02X",pos,fRightPart,DATA_TEXT::REG,NEW_LINE::SAME_LINE,LINE::HORIZONTAL_LINE );
 }
 
 void ProcessorDebugDisplay::_DrawFlowControl()

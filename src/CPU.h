@@ -26,6 +26,14 @@ enum CPU_FLAGS
 	CARRY_FLAG =			0b00010000,
 };
 
+enum REGISTER
+{
+	AF = 1,
+	BC = 2,
+	DE = 3,
+	HL = 4,
+};
+
 class CPU
 {
 	union Register
@@ -75,15 +83,9 @@ public:
 		return m_pSingleton;
 	}
 
-	//TEMP
-	Register m_RegisterAF;
-	Register m_RegisterBC;
-	Register m_RegisterDE;
-	Register m_RegisterHL;
-
-	bool	IME;
 	static const std::string& GetMemoryRegionLabel( const uint16_t iAdress );
 	bool GetFlag( CPU_FLAGS e ) const { return m_RegisterAF.lo & e; }
+	CPU::Register GetRegister( REGISTER e ) const;
 
 private:
 
@@ -95,13 +97,19 @@ private:
 	uint16_t&		_Get_Dest_R16();
 	uint16_t		_Get_Mem_Address_R16();
 	uint16_t&		_Get_Destr16Stk(){};
-	uint8_t&		_GetBitIndex();
+	uint8_t			_GetBitIndex();
 	bool			_CheckCondition( uint8_t cc );
 	void			_LDR8( uint8_t& iDst, uint8_t iData );
 	void			_LDR16( uint16_t& iDst, uint16_t iData );
 
 	uint16_t m_iPC;
 	uint16_t m_iSP;
+	Register m_RegisterAF;
+	Register m_RegisterBC;
+	Register m_RegisterDE;
+	Register m_RegisterHL;
+
+	bool	IME;
 	long long m_iCounter;
 
 	uint8_t m_iIR;	//Instruction Register

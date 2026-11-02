@@ -56,6 +56,18 @@ const std::string& CPU::GetMemoryRegionLabel( const uint16_t iAdress )
 	throw std::runtime_error( "ADRESS_NOT_VALID" );
 }
 
+CPU::Register CPU::GetRegister( REGISTER e ) const
+{
+	switch( e )
+	{
+		case AF : return m_RegisterAF; break;
+		case BC : return m_RegisterBC; break;
+		case DE : return m_RegisterDE; break;
+		case HL : return m_RegisterHL; break;
+	}
+	throw std::runtime_error( "REGISTER_NOT_VALID" );
+}
+
 CPU::CPU() :
 	m_aROM_Memory{0},
 	m_iPC( 0 ),
@@ -980,10 +992,8 @@ void CPU::RR()
 void CPU::SWAP()
 {
 	uint8_t& iR8 = _Get_Dest_R8( true );
-	uint8_t iFirstNibble = ( iR8 & ~0xF );
-	uint8_t iLastNibble = iR8 >> 4;
 
-	uint8_t iResult = iLastNibble | ( iFirstNibble << 4 );
+	uint8_t iResult = ( iR8 << 4 ) | ( iR8 >> 4 );
 
 	_SetFlag( ZERO_FLAG,iResult == 0 );
 	_SetFlag( SUB_FLAG,0 );
@@ -1253,21 +1263,9 @@ uint16_t CPU::_Get_Mem_Address_R16()
 	throw std::runtime_error( "ERROR_GETTING_DEST_MEMR16" );
 }
 
-uint8_t& CPU::_GetBitIndex()
+uint8_t CPU::_GetBitIndex()
 {
-	uint8_t r8 = ( ReadMemory( m_iPC ) & Y_MASK ) >> 3;
-	switch( r8 )
-	{
-		case 0: return m_RegisterBC.hi;						break;
-		case 1: return m_RegisterBC.lo;						break;
-		case 2: return m_RegisterDE.hi;						break;
-		case 3: return m_RegisterDE.lo;						break;
-		case 4: return m_RegisterHL.hi;						break;
-		case 5: return m_RegisterHL.lo;						break;
-		case 6: return GetRefAtMemory( m_RegisterHL.reg );	break;
-		case 7: return m_RegisterAF.hi;						break;
-	}
-	throw std::runtime_error( "ERROR_GETTING_BIT_INDEX" );
+	return ( ReadMemory( m_iPC ) & Y_MASK ) >> 3;
 }
 
 bool CPU::_CheckCondition( uint8_t cc )
