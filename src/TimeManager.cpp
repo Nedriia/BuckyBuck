@@ -8,7 +8,7 @@
 using std::chrono::operator""ns;
 using namespace std::chrono;
 
-constexpr auto iEarlyWakeUp = 2444444ns; //Time to wake up early and busy wait the next frame
+constexpr auto iEarlyWakeUp = 3333333ns; //Time to wake up early and busy wait the next frame
 constexpr int  iMaxTickLimit = 5;
 
 nanoseconds TimeManager::s_iAccumulator{0 };

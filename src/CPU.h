@@ -52,7 +52,7 @@ public:
 
 	void			Init();
 	int				LoadRom( const char* sROMPath );
-	uint8_t			FetchDecode();
+	uint8_t			ExecuteNextOpcode();
 	void			EmulateCycle();
 	void			DestroyInstance();
 
@@ -89,11 +89,12 @@ public:
 
 private:
 
+	uint8_t			_FetchDecode();
 	void 			_FillOpcodesTables();
 	void			_SimulateBootRom();
 	void			_SetFlag( CPU_FLAGS eFlag,bool bCond );
 	void			_HandleTimer();
-	void			_HandleInterupts();
+	bool			_HandleInterupts();
 	bool			_CheckInterupts( const uint8_t iInterruptBit,const uint16_t iInterruptAdress, const uint8_t iBitsOn );
 
 	uint8_t&		_Get_Dest_R8( bool s8 = false );
@@ -113,7 +114,6 @@ private:
 	Register m_RegisterHL;
 
 	bool	m_bIME;
-	long long m_iCounter;
 
 	uint8_t m_iIR;	//Instruction Register
 	int8_t m_IME_Requested;

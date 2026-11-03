@@ -81,7 +81,6 @@ CPU::CPU() :
 	m_aROM_Memory{0},
 	m_iPC( 0 ),
 	m_iSP( 0 ),
-	m_iCounter( 0LL ),
 	m_iIR( 0 ),
 	m_RegisterAF( 0 ),
 	m_RegisterBC( 0 ),
@@ -117,7 +116,6 @@ void CPU::Init()
 
 	m_iSP = 0;
 	m_iIR = 0;
-	m_iCounter = 0;
 
 	m_RegisterAF.reg = 0;
 	m_RegisterBC.reg = 0;
@@ -184,7 +182,7 @@ void CPU::_HandleTimer()
 						11	64 M -	cycles	16384									*/
 }
 
-void CPU::_HandleInterupts()
+bool CPU::_HandleInterupts()
 {
 	if( m_bIME == true )
 	{
@@ -196,11 +194,11 @@ void CPU::_HandleInterupts()
 
 		if( iBitsOn != 0 )
 		{
-			if( _CheckInterupts( 0, interrupts::vblank, iBitsOn ) ) return;
-			if( _CheckInterupts( 1, interrupts::lcdc_status, iBitsOn ) ) return;
-			if( _CheckInterupts( 2, interrupts::timer, iBitsOn ) ) return;
-			if( _CheckInterupts( 3, interrupts::serial, iBitsOn ) ) return;
-			if( _CheckInterupts( 4, interrupts::joypad, iBitsOn ) ) return;
+			if( _CheckInterupts( 0, interrupts::vblank, iBitsOn ) != 0 )	return true;
+			if( _CheckInterupts( 1, interrupts::lcdc_status, iBitsOn ) )	return true;
+			if( _CheckInterupts( 2, interrupts::timer, iBitsOn ) )			return true;
+			if( _CheckInterupts( 3, interrupts::serial, iBitsOn ) )			return true;
+			if( _CheckInterupts( 4, interrupts::joypad, iBitsOn ) )			return true;
 		}
 	}
 	else
@@ -213,6 +211,7 @@ void CPU::_HandleInterupts()
 		else if( m_IME_Requested != -1 )
 			m_IME_Requested--;
 	}
+	return false;
 }
 
 bool CPU::_CheckInterupts( const uint8_t iInterruptBit, const uint16_t iInterruptAdress, const uint8_t iBitsOn )
@@ -227,7 +226,6 @@ bool CPU::_CheckInterupts( const uint8_t iInterruptBit, const uint16_t iInterrup
 		WriteMemory( 0xFF0F, ReadMemory( 0xFF0F ) & ~( 1 << iInterruptBit ) );
 		m_iPC = iInterruptAdress;
 		m_bIME = false;
-		m_iCounter += 20;
 		return true;
 	}
 	else
@@ -283,10 +281,16 @@ int CPU::LoadRom( const char* sROMPath )
 	return 0;
 }
 
-uint8_t CPU::FetchDecode()
+uint8_t CPU::ExecuteNextOpcode()
 {
-	_HandleInterupts();
+	if( _HandleInterupts() )
+		return 20;
 
+	return _FetchDecode();
+}
+
+uint8_t CPU::_FetchDecode()
+{
 	uint8_t iIndex = ReadMemory( m_iPC );
 	if( iIndex == 0xCB )
 	{
@@ -305,7 +309,7 @@ uint8_t CPU::FetchDecode()
 			std::cout << ( int )m_pCurrentInstruction->m_iConditionalDuration;*/
 
 		uint16_t iPreviousPC = m_iPC;
-		( this->*m_pCurrentInstruction->m_pFct )();
+		( this->*m_pCurrentInstruction->m_pFct )( );
 		//std::cout << std::endl;
 
 		if( iPreviousPC == m_iPC )
@@ -314,13 +318,6 @@ uint8_t CPU::FetchDecode()
 				m_iPC += m_pCurrentInstruction->m_iLength - 1;
 			else
 				m_iPC += m_pCurrentInstruction->m_iLength;
-		}
-
-		m_iCounter += m_pCurrentInstruction->m_iDuration;
-		if( m_iCounter >= 456 )
-		{
-			m_iCounter -= 456;
-			m_aMemory[0xFF44]++;
 		}
 
 		return m_pCurrentInstruction->m_iDuration;
@@ -477,18 +474,24 @@ void CPU::AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, std::
 
 void CPU::EmulateCycle()
 {
+	if( m_oCPUState == State::Pause )
+		return;
+
 	const int iMaxCycle = 70224;
 	int cyclesThisUpdate = 0;
 
 	while( cyclesThisUpdate < iMaxCycle )
 	{
-		if( m_oCPUState == State::Pause )
-			return;
-
 		if( m_oCPUState == State::Running || m_oCPUState == State::SkipToNext )
 		{
+			int iCycle = ExecuteNextOpcode();
 			_HandleTimer();
-			cyclesThisUpdate += FetchDecode();
+			cyclesThisUpdate += iCycle;
+			/*if( cyclesThisUpdate >= 456 )
+			{
+				cyclesThisUpdate -= 456;
+				m_aMemory[ 0xFF44 ]++;
+			}*/
 		}
 
 		if( m_oCPUState == State::SkipToNext || m_aBreakpoints.find( m_iPC ) != m_aBreakpoints.end() )
