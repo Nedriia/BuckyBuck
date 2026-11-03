@@ -9,6 +9,7 @@
 #include "TimeManager.h"
 
 #include "CPU.h"
+#include "Timer.h"
 
 int Quit()
 {
@@ -18,6 +19,7 @@ int Quit()
 
 	Display::GetInstance()->DestroyWindow();
 	CPU::GetInstance()->DestroyInstance();
+	Timer::GetInstance()->DestroyInstance();
 
 	return -1;
 }

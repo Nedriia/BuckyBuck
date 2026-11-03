@@ -11,6 +11,7 @@
 #ifdef DEBUG_INFO
 #include "DebugInfosDisplay.h"
 #endif
+#include "Timer.h"
 
 static constexpr uint8_t X_MASK  = 0b11000000;
 static constexpr uint8_t Y_MASK  = 0b00111000;
@@ -149,6 +150,12 @@ void CPU::_SimulateBootRom()
 	m_iSP = 0xFFFE;
 
 	m_aMemory[ 0xFF44 ] = 0x91; //LY
+
+	GetRefAtMemory( 0xFF04 ) = 0xAB;	//DIV
+	WriteMemory( 0xFF05, 0 );			//TIMA
+	WriteMemory( 0xFF06, 0 );			//TMA
+	WriteMemory( 0xFF07, 0xF8 );		//TAC
+	WriteMemory( 0xFF0F, 0xE1 );		//IF
 }
 
 void CPU::_SetFlag( CPU_FLAGS eFlag,bool bCond )
@@ -168,22 +175,16 @@ void CPU::_SetFlag( CPU_FLAGS eFlag,bool bCond )
 		m_RegisterAF.lo &= ~iMask;
 }
 
-void CPU::_HandleTimer()
-{
-	//FF04 DIV Divider register -> 16384Hz / 32768Hz ( double speed ) --- reset on stop instruct
-	//FF05 TIMA Timer Counter -> incremented at the clock frequency specified by TAC. If > 0xFF reset to value in TMA & interrupt request
-	//FF06 TMA Timer modulo 
-	//FF07 TAC Timer Control -> bit 0/1 clock select / bit 2 Enable
-						//Enable : Controls wheter TIMA is incremented -> DIV always counting
-						//clock select = frequency at which TIMA is incremented
-		/*				00	256 M - cycles	4096
-						01	4 M -	cycles	262144
-						10	16 M -	cycles	65536
-						11	64 M -	cycles	16384									*/
-}
-
 bool CPU::_HandleInterupts()
 {
+	if( m_IME_Requested == 0 )
+	{
+		m_bIME = true;
+		m_IME_Requested = -1;
+	}
+	else if( m_IME_Requested != -1 )
+		m_IME_Requested--;
+
 	if( m_bIME == true )
 	{
 		// [IF] bit are only requesting an interrupt
@@ -192,7 +193,7 @@ bool CPU::_HandleInterupts()
 		uint8_t IE = ReadMemory( 0xFFFF );
 		uint8_t iBitsOn = ( IF & IE & 0x1F );
 
-		if( iBitsOn != 0 )
+		if( iBitsOn )
 		{
 			if( _CheckInterupts( 0, interrupts::vblank, iBitsOn ) != 0 )	return true;
 			if( _CheckInterupts( 1, interrupts::lcdc_status, iBitsOn ) )	return true;
@@ -200,16 +201,6 @@ bool CPU::_HandleInterupts()
 			if( _CheckInterupts( 3, interrupts::serial, iBitsOn ) )			return true;
 			if( _CheckInterupts( 4, interrupts::joypad, iBitsOn ) )			return true;
 		}
-	}
-	else
-	{
-		if( m_IME_Requested == 0 )
-		{
-			m_bIME = true;
-			m_IME_Requested = -1;
-		}
-		else if( m_IME_Requested != -1 )
-			m_IME_Requested--;
 	}
 	return false;
 }
@@ -356,6 +347,11 @@ bool CPU::IsBreakpoint( const uint16_t iAdress ) const
 	return m_aBreakpoints.find( iAdress ) != m_aBreakpoints.end();
 }
 
+void CPU::RequestInterrupt( uint8_t iBit )
+{
+	WriteMemory( 0xFF0F, ReadMemory( 0xFF0F ) | ( 1 << iBit ) );
+}
+
 uint8_t CPU::ReadMemory( const uint16_t iAdress ) const
 {
 	if( iAdress >= 0xFEA0 && iAdress <= 0xFEFF )
@@ -373,6 +369,19 @@ void CPU::WriteMemory( const uint16_t iAdress,const uint8_t iValue )
 	{
 		std::cout << static_cast< char >( m_aMemory[ 0xFF01 ] ) << std::flush;
 		m_aMemory[ 0xFF02 ] = 0x01;
+		return;
+	}
+
+	if( iAdress == 0xFF04 )//Divider Register
+	{
+		m_aMemory.at( iAdress ) = 0x0;
+		Timer::GetInstance()->SetResetDivider();
+		return;
+	}
+	else if( iAdress == 0xFF07 )
+	{
+		m_aMemory.at( iAdress ) = iValue;
+		Timer::GetInstance()->SetClockFrequency();
 		return;
 	}
 
@@ -484,9 +493,9 @@ void CPU::EmulateCycle()
 	{
 		if( m_oCPUState == State::Running || m_oCPUState == State::SkipToNext )
 		{
-			int iCycle = ExecuteNextOpcode();
-			_HandleTimer();
-			cyclesThisUpdate += iCycle;
+			int iCycles = ExecuteNextOpcode();
+			Timer::GetInstance()->UpdateTimers( iCycles );
+			cyclesThisUpdate += iCycles; //TODO : if over 70224 cycles are lost
 			/*if( cyclesThisUpdate >= 456 )
 			{
 				cyclesThisUpdate -= 456;
@@ -495,7 +504,10 @@ void CPU::EmulateCycle()
 		}
 
 		if( m_oCPUState == State::SkipToNext || m_aBreakpoints.find( m_iPC ) != m_aBreakpoints.end() )
+		{
 			m_oCPUState = State::Pause;
+			return;
+		}
 	}
 }
 
@@ -847,7 +859,8 @@ void CPU::RET()
 void CPU::RETI()
 {
 	RET();
-	EI();
+	m_bIME = true;
+	m_IME_Requested = -1;
 }
 
 void CPU::POP_r16()

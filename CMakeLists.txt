@@ -31,6 +31,8 @@ set(PROJECT_SOURCES
         ${SRC_DIR}/DisassemblerDisplay.h
         ${SRC_DIR}/TimeManager.cpp
         ${SRC_DIR}/TimeManager.h
+        ${SRC_DIR}/Timer.cpp
+        ${SRC_DIR}/Timer.h
 )
 
 set( HEXEDITOR_SOURCES

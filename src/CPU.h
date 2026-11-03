@@ -65,6 +65,7 @@ public:
 	void			SkipToNext()	{ m_oCPUState = State::SkipToNext; }
 	void			MarkBreakpoint( const uint16_t iAdress );
 	bool			IsBreakpoint( const uint16_t iAdress ) const;
+	void			RequestInterrupt( uint8_t iBit );
 
 	uint8_t							ReadMemory( const uint16_t iAdress ) const;
 	void							WriteMemory( const uint16_t iAdress, const uint8_t iValue );
@@ -93,7 +94,6 @@ private:
 	void 			_FillOpcodesTables();
 	void			_SimulateBootRom();
 	void			_SetFlag( CPU_FLAGS eFlag,bool bCond );
-	void			_HandleTimer();
 	bool			_HandleInterupts();
 	bool			_CheckInterupts( const uint8_t iInterruptBit,const uint16_t iInterruptAdress, const uint8_t iBitsOn );
 
