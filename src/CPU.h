@@ -52,7 +52,7 @@ public:
 
 	void			Init();
 	int				LoadRom( const char* sROMPath );
-	void			FetchDecode();
+	uint8_t			FetchDecode();
 	void			EmulateCycle();
 	void			DestroyInstance();
 

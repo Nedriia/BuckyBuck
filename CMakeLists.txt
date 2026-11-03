@@ -29,6 +29,8 @@ set(PROJECT_SOURCES
         ${SRC_DIR}/ProcessorDebugDisplay.h
         ${SRC_DIR}/DisassemblerDisplay.cpp
         ${SRC_DIR}/DisassemblerDisplay.h
+        ${SRC_DIR}/TimeManager.cpp
+        ${SRC_DIR}/TimeManager.h
 )
 
 set( HEXEDITOR_SOURCES

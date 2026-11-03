@@ -15,6 +15,7 @@ const uint16_t WINDOW_HEIGHT = 1080;
 
 #ifdef LEAK_DETECTOR
 #include <vld.h>
+#include "TimeManager.h"
 #define ENABLE_GLOBAL_LEAK_DETECTION() VLDGlobalEnable()
 #define DISABLE_GLOBAL_LEAK_DETECTION() VLDGlobalDisable()
 
@@ -91,7 +92,7 @@ int Display::CreateMainWindow()
 		return -1;
 	}
 
-	glfwSwapInterval( 1 ); //Put 0 in case you want to uncap the speed
+	//glfwSwapInterval( 1 ); //Put 0 in case you want to uncap the speed
 	return 0;
 }
 
@@ -113,8 +114,6 @@ void Display::Update( bool &quit )
 		return;
 	}
 
-	auto start = std::chrono::high_resolution_clock::now();
-
 #ifdef DEBUG_INFO
 	DebugInfosDisplay::GetInstance()->StartFrame();
 	DebugInfosDisplay::GetInstance()->Update();
@@ -123,12 +122,8 @@ void Display::Update( bool &quit )
 	glfwSwapBuffers( m_pWindow );
 #endif
 
-	static double iDurationMs;
 	char titleBuffer[ 128 ];
-	std::snprintf( titleBuffer,sizeof( titleBuffer ),"Bucky Buck (%.2f ms)",iDurationMs );
-
-	auto end = std::chrono::high_resolution_clock::now();
-	iDurationMs = std::chrono::duration<double,std::milli>( end - start ).count();
+	std::snprintf( titleBuffer,sizeof( titleBuffer ),"Bucky Buck (%.2f ms)",*TimeManager::GetTimeLastFrame() );
 
 	glfwSetWindowTitle( m_pWindow,titleBuffer );
 }

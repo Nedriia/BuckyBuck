@@ -283,7 +283,7 @@ int CPU::LoadRom( const char* sROMPath )
 	return 0;
 }
 
-void CPU::FetchDecode()
+uint8_t CPU::FetchDecode()
 {
 	_HandleInterupts();
 
@@ -322,6 +322,8 @@ void CPU::FetchDecode()
 			m_iCounter -= 456;
 			m_aMemory[0xFF44]++;
 		}
+
+		return m_pCurrentInstruction->m_iDuration;
 	}
 	else
 		throw std::runtime_error( "UNKNOWN_CPU_INSTR??" );
@@ -475,7 +477,10 @@ void CPU::AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, std::
 
 void CPU::EmulateCycle()
 {
-	for( int i = 0; i < 1000; ++i )
+	const int iMaxCycle = 70224;
+	int cyclesThisUpdate = 0;
+
+	while( cyclesThisUpdate < iMaxCycle )
 	{
 		if( m_oCPUState == State::Pause )
 			return;
@@ -483,7 +488,7 @@ void CPU::EmulateCycle()
 		if( m_oCPUState == State::Running || m_oCPUState == State::SkipToNext )
 		{
 			_HandleTimer();
-			FetchDecode();
+			cyclesThisUpdate += FetchDecode();
 		}
 
 		if( m_oCPUState == State::SkipToNext || m_aBreakpoints.find( m_iPC ) != m_aBreakpoints.end() )

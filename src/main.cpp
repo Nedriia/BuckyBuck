@@ -6,6 +6,7 @@
 #include <iostream>
 #include "Display.h"
 #include "DebugInfosDisplay.h"
+#include "TimeManager.h"
 
 #include "CPU.h"
 
@@ -44,8 +45,12 @@ int main( int argc, char *argv[] )
 	bool quit = false;
 	while( !quit )
 	{
+		std::chrono::steady_clock::time_point start = std::chrono::steady_clock::now();
+
 		m_pCPUInstance->EmulateCycle();
 		m_pDisplayInstance->Update( quit );
+
+		TimeManager::HandleTime( start );
 	}
 
 	Quit();
