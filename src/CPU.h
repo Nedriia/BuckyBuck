@@ -73,6 +73,10 @@ public:
 
 	uint16_t						GetPC() const { return m_iPC; }
 	uint16_t						GetSP() const { return m_iSP; }
+	uint8_t							GetLY() const { return ReadMemory( 0xFF44 ); }
+	uint8_t							GetIF() const { return ReadMemory( 0xFF0F ); }
+	uint8_t							GetIE() const { return ReadMemory( 0xFFFF ); }
+	bool							GetIME() const { return m_bIME; }
 
 	typedef void ( CPU::* fct_opcode )( );
 	static void		AddCPUInstruction( const uint8_t iIndex, const fct_opcode& pFct, std::array<uint8_t,3> aValues, bool bExtent, const char* sMnemonic, ... );

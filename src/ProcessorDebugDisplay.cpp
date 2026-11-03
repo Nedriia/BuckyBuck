@@ -54,10 +54,15 @@ void ProcessorDebugDisplay::Update()
 
 void ProcessorDebugDisplay::_DrawFlagsState( ImVec2& pos )
 {
-	const char* sLabel = "Z  N  H  C";
-	pos.x += ( m_oVisualParams.fScreenWidth - ImGui::CalcTextSize( sLabel ).x ) * 0.5f;
-	_AddInfosText( "",sLabel,"",pos,0.0f,DATA_TEXT::TEXT_FLAG );
-
+	pos.x += ( m_oVisualParams.fScreenWidth - ( m_oVisualParams.fDataSpace * 3 ) ) * 0.5f;
+	float fStartLine = pos.x;
+	static const char* sLabels[ 4 ] = { "Z", "N", "H", "C" };
+	for( int i = 0; i < 4; ++i )
+	{
+		_AddInfosText( "",sLabels[ i ],"",pos,0.0f,DATA_TEXT::TEXT_FLAG );
+		pos.x += m_oVisualParams.fDataSpace;
+	}
+	pos.x = fStartLine;
 	_AddInfosText( m_pCPU->GetFlag( ZERO_FLAG ),"","",pos,0.0f,DATA_TEXT::FLAG,NEW_LINE::COMPLETE_NEW);
 	_AddInfosText( m_pCPU->GetFlag( SUB_FLAG ),"","",pos,m_oVisualParams.fDataSpace,DATA_TEXT::FLAG );
 	_AddInfosText( m_pCPU->GetFlag( HALF_CARRY_FLAG ),"","",pos,m_oVisualParams.fDataSpace * 2,DATA_TEXT::FLAG );
@@ -66,10 +71,18 @@ void ProcessorDebugDisplay::_DrawFlagsState( ImVec2& pos )
 
 void ProcessorDebugDisplay::_DrawRegistersState( ImVec2& pos )
 {
-	pos.x = ImGui::GetCursorScreenPos().x + ( m_oVisualParams.fScreenWidth - ImGui::CalcTextSize( "PC    FFFFF" ).x ) * 0.5f;
+	float fCalcSize = ( ImGui::CalcTextSize( "PC    FFFFFF  " ).x ) + 1.0f;
+	pos.x = ImGui::GetCursorScreenPos().x + ( m_oVisualParams.fScreenWidth - ( fCalcSize * 2.0f ) + m_oVisualParams.fDataSpace ) * 0.5f;
 
-	_AddInfosText( m_pCPU->GetPC(),"PC    ","$%04X",pos,0.0f,DATA_TEXT::U16,NEW_LINE::HALF_LINE,LINE::HORIZONTAL_LINE );
-	_AddInfosText( m_pCPU->GetSP(),"SP    ","$%04X",pos,0.0f,DATA_TEXT::U16,NEW_LINE::HALF_LINE,LINE::HORIZONTAL_LINE );
+	_AddInfosText( m_pCPU->GetPC(),"PC    ","$%04X",pos,0.0f,DATA_TEXT::U16,NEW_LINE::HALF_LINE,LINE::NONE );
+	_AddInfosText( m_pCPU->GetSP(),"SP    ","$%04X",pos,fCalcSize,DATA_TEXT::U16,NEW_LINE::SAME_LINE,LINE::HORIZONTAL_LINE );
+
+	fCalcSize = ( ImGui::CalcTextSize( "LY  FFFFFFF" ).x ) + 1.0f;
+	pos.x = ImGui::GetCursorScreenPos().x + ( m_oVisualParams.fScreenWidth - ( fCalcSize * 4.0f ) + m_oVisualParams.fDataSpace ) * 0.5f;
+	_AddInfosText( m_pCPU->GetLY(),"LY  ","%d",pos,0.0f,DATA_TEXT::U16,NEW_LINE::HALF_LINE,LINE::NONE );
+	_AddInfosText( m_pCPU->GetIF(),"IF  ","$%02X",pos,fCalcSize,DATA_TEXT::U16,NEW_LINE::SAME_LINE,LINE::NONE );
+	_AddInfosText( m_pCPU->GetIE(),"IE  ","$%02X",pos,fCalcSize * 2,DATA_TEXT::U16,NEW_LINE::SAME_LINE,LINE::NONE );
+	_AddInfosText( m_pCPU->GetIME(),"IME  ","%d",pos,fCalcSize * 3,DATA_TEXT::U16,NEW_LINE::SAME_LINE,LINE::HORIZONTAL_LINE );
 
 	pos.x = ImGui::GetCursorScreenPos().x + ( m_oVisualParams.fScreenWidth * 0.5f );
 
