@@ -88,7 +88,9 @@ CPU::CPU() :
 	m_RegisterDE( 0 ),
 	m_RegisterHL( 0 ),
 	m_bIME( false ),
+	m_bHalted( false ),
 	m_IME_Requested( -1 ),
+	m_iLineCounter( 0 ),
 	m_oCPUState( State::Pause ),
 	m_pCurrentInstruction( nullptr )
 {
@@ -124,7 +126,9 @@ void CPU::Init()
 	m_RegisterHL.reg = 0;
 
 	m_bIME	  = false;
+	m_bHalted = false;
 	m_IME_Requested = -1;
+	m_iLineCounter = 0;
 
 	memset( m_aMemory.data(),0xFF,0x10000 );
 	m_oCPUState = State::Pause;
@@ -177,6 +181,11 @@ void CPU::_SetFlag( CPU_FLAGS eFlag,bool bCond )
 
 bool CPU::_HandleInterupts()
 {
+	// [IF] bit are only requesting an interrupt
+	uint8_t IF = ReadMemory( 0xFF0F );
+	uint8_t IE = ReadMemory( 0xFFFF );
+	uint8_t iBitsOn = ( IF & IE & 0x1F );
+
 	if( m_IME_Requested == 0 )
 	{
 		m_bIME = true;
@@ -187,19 +196,25 @@ bool CPU::_HandleInterupts()
 
 	if( m_bIME == true )
 	{
-		// [IF] bit are only requesting an interrupt
 		//Actual execution happens if IME & same bit in the IE are set
-		uint8_t IF = ReadMemory( 0xFF0F );
-		uint8_t IE = ReadMemory( 0xFFFF );
-		uint8_t iBitsOn = ( IF & IE & 0x1F );
-
 		if( iBitsOn )
 		{
+			if( m_bHalted )
+				m_bHalted = false;
+
 			if( _CheckInterupts( 0, interrupts::vblank, iBitsOn ) != 0 )	return true;
 			if( _CheckInterupts( 1, interrupts::lcdc_status, iBitsOn ) )	return true;
 			if( _CheckInterupts( 2, interrupts::timer, iBitsOn ) )			return true;
 			if( _CheckInterupts( 3, interrupts::serial, iBitsOn ) )			return true;
 			if( _CheckInterupts( 4, interrupts::joypad, iBitsOn ) )			return true;
+		}
+	}
+	else
+	{
+		if( iBitsOn && m_bHalted )
+		{
+			//HALT Bug
+			m_bHalted = false;
 		}
 	}
 	return false;
@@ -276,6 +291,8 @@ uint8_t CPU::ExecuteNextOpcode()
 {
 	if( _HandleInterupts() )
 		return 20;
+
+	if( m_bHalted ) return 4;
 
 	return _FetchDecode();
 }
@@ -495,12 +512,8 @@ void CPU::EmulateCycle()
 		{
 			int iCycles = ExecuteNextOpcode();
 			Timer::GetInstance()->UpdateTimers( iCycles );
+			_UpdateLY( iCycles );
 			cyclesThisUpdate += iCycles; //TODO : if over 70224 cycles are lost
-			/*if( cyclesThisUpdate >= 456 )
-			{
-				cyclesThisUpdate -= 456;
-				m_aMemory[ 0xFF44 ]++;
-			}*/
 		}
 
 		if( m_oCPUState == State::SkipToNext || m_aBreakpoints.find( m_iPC ) != m_aBreakpoints.end() )
@@ -508,6 +521,19 @@ void CPU::EmulateCycle()
 			m_oCPUState = State::Pause;
 			return;
 		}
+	}
+}
+
+void CPU::_UpdateLY( const int iCycles )
+{
+	m_iLineCounter += iCycles;
+	while( m_iLineCounter >= 456 )
+	{
+		m_iLineCounter -= 456;
+		uint8_t iLY = ( ReadMemory( 0xFF44 ) + 1 ) % 154;
+		WriteMemory( 0xFF44, iLY );
+		if( iLY == 144 )
+			RequestInterrupt( 0 );
 	}
 }
 
@@ -689,6 +715,11 @@ void CPU::CCF()
 	_SetFlag( SUB_FLAG,0 );
 	_SetFlag( HALF_CARRY_FLAG,0 );
 	_SetFlag( CARRY_FLAG, !GetFlag( CARRY_FLAG ) );
+}
+
+void CPU::HALT()
+{
+	m_bHalted = true;
 }
 
 void CPU::OR()

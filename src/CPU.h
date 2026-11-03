@@ -92,6 +92,7 @@ private:
 
 	uint8_t			_FetchDecode();
 	void 			_FillOpcodesTables();
+	void 			_UpdateLY( const int iCycles );
 	void			_SimulateBootRom();
 	void			_SetFlag( CPU_FLAGS eFlag,bool bCond );
 	bool			_HandleInterupts();
@@ -114,9 +115,11 @@ private:
 	Register m_RegisterHL;
 
 	bool	m_bIME;
+	bool	m_bHalted;
 
 	uint8_t m_iIR;	//Instruction Register
 	int8_t m_IME_Requested;
+	uint16_t	m_iLineCounter;
 
 	void NOP(){};
 	void LD_a16_SP();
@@ -168,7 +171,7 @@ private:
 	void CPL();
 	void SCF();
 	void CCF();
-	void HALT()							{		throw std::runtime_error( "NOT IMPLEMENTED" ); };
+	void HALT();
 	void DI();
 	void EI();
 	void RET_cc();
