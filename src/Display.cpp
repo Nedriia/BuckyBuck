@@ -8,6 +8,7 @@
 #include <iostream>
 #include "DebugInfosDisplay.h"
 #include "imgui.h"
+#include "TimeManager.h"
 
 // settings
 const uint16_t WINDOW_WIDTH = 1920;
@@ -15,7 +16,6 @@ const uint16_t WINDOW_HEIGHT = 1080;
 
 #ifdef LEAK_DETECTOR
 #include <vld.h>
-#include "TimeManager.h"
 #define ENABLE_GLOBAL_LEAK_DETECTION() VLDGlobalEnable()
 #define DISABLE_GLOBAL_LEAK_DETECTION() VLDGlobalDisable()
 
