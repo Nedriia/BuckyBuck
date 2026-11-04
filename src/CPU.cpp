@@ -13,6 +13,7 @@
 #endif
 #include "Timer.h"
 
+static bool m_bJumped = false;
 static constexpr uint8_t X_MASK  = 0b11000000;
 static constexpr uint8_t Y_MASK  = 0b00111000;
 static constexpr uint8_t P_MASK  = 0b00110000;
@@ -134,6 +135,8 @@ void CPU::Init()
 	m_oCPUState = State::Pause;
 
 	m_pCurrentInstruction = nullptr;
+
+	m_bJumped = false;
 }
 
 void CPU::_SimulateBootRom()
@@ -160,6 +163,7 @@ void CPU::_SimulateBootRom()
 	WriteMemory( 0xFF06, 0 );			//TMA
 	WriteMemory( 0xFF07, 0xF8 );		//TAC
 	WriteMemory( 0xFF0F, 0xE1 );		//IF
+	WriteMemory( 0xFFFF, 0 );			//IE
 }
 
 void CPU::_SetFlag( CPU_FLAGS eFlag,bool bCond )
@@ -312,21 +316,10 @@ uint8_t CPU::_FetchDecode()
 
 	if( m_pCurrentInstruction != nullptr )
 	{
-		/*std::cout << m_pCurrentInstruction->m_sMnemonic << " " << static_cast< int >( m_pCurrentInstruction->m_iLength ) << " " << static_cast< int >( m_pCurrentInstruction->m_iDuration ) << " ";
-		if ( m_pCurrentInstruction->m_iConditionalDuration != 0 )
-			std::cout << ( int )m_pCurrentInstruction->m_iConditionalDuration;*/
-
-		uint16_t iPreviousPC = m_iPC;
+		m_bJumped = false;
 		( this->*m_pCurrentInstruction->m_pFct )( );
-		//std::cout << std::endl;
-
-		if( iPreviousPC == m_iPC )
-		{
-			if( iIndex == 0xCB )
-				m_iPC += m_pCurrentInstruction->m_iLength - 1;
-			else
-				m_iPC += m_pCurrentInstruction->m_iLength;
-		}
+		if( !m_bJumped )
+			m_iPC += m_pCurrentInstruction->m_iLength - ( iIndex == 0xCB ? 1 : 0 );
 
 		return m_pCurrentInstruction->m_iDuration;
 	}
@@ -872,8 +865,6 @@ void CPU::RET_cc()
 
 	if( _CheckCondition( cc ) )
 		RET();
-	else
-		m_iPC += m_pCurrentInstruction->m_iLength;
 }
 
 void CPU::RET()
@@ -885,6 +876,7 @@ void CPU::RET()
 	++m_iSP;
 
 	m_iPC = iAdress; //TODO : POP PC
+	m_bJumped = true;
 }
 
 void CPU::RETI()
@@ -980,8 +972,8 @@ void CPU::JPn16()
 {
 	//Read next 2 bytes of memory
 	uint16_t iAdress = ( ReadMemory( m_iPC + 2 ) << 8 ) | ReadMemory( m_iPC + 1 );
-	//std::cout << std::hex << std::uppercase << " ( 0X" << ( int )iAdress << " )" << std::dec;
 	m_iPC = iAdress;
+	m_bJumped = true;
 }
 
 void CPU::JPccn16()
@@ -990,13 +982,12 @@ void CPU::JPccn16()
 	uint8_t cc = ( iData & CC_MASK ) >> 3;
 	if( _CheckCondition( cc ) )
 		JPn16();
-	else
-		m_iPC += m_pCurrentInstruction->m_iLength;
 }
 
 void CPU::JPHL()
 {
 	m_iPC = m_RegisterHL.reg;
+	m_bJumped = true;
 }
 
 void CPU::CALL_n16()
@@ -1018,8 +1009,6 @@ void CPU::CALL_cc_n16()
 
 	if( _CheckCondition( cc ) )
 		CALL_n16();
-	else
-		m_iPC += m_pCurrentInstruction->m_iLength;
 }
 
 void CPU::RST()
@@ -1032,6 +1021,7 @@ void CPU::RST()
 	WriteMemory( --m_iSP,iReturn & 0xFF );
 
 	m_iPC = y * 8;
+	m_bJumped = true;
 }
 
 void CPU::RLCA()
@@ -1284,7 +1274,7 @@ void CPU::DEC_r16()
 void CPU::JR_n16()
 {
 	int8_t iOffset = static_cast< int8_t >( ReadMemory( m_iPC + 1 ) );
-	m_iPC = m_iPC + m_pCurrentInstruction->m_iLength + iOffset;
+	m_iPC = m_iPC + iOffset;
 }
 
 void CPU::JR_cc_n16()
@@ -1293,7 +1283,6 @@ void CPU::JR_cc_n16()
 	uint8_t cc = ( iData & CC_MASK ) >> 3;
 	int8_t iValue = static_cast< int8_t >( ReadMemory( m_iPC + 1 ) );
 
-	m_iPC += m_pCurrentInstruction->m_iLength;
 	if( _CheckCondition( cc ) )
 		m_iPC += iValue;
 }
