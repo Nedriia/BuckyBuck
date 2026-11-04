@@ -141,29 +141,69 @@ void CPU::Init()
 
 void CPU::_SimulateBootRom()
 {
-	m_RegisterAF.hi = 0x11;
-	_SetFlag( ZERO_FLAG, 1 );
+	m_RegisterAF.hi = 0x01;
 
-	m_RegisterBC.hi = 0x00;
-	m_RegisterBC.lo = 0x00;
+	m_RegisterBC.hi = 0xFF;
+	m_RegisterBC.lo = 0x13;
 
-	m_RegisterDE.hi = 0xFF;
-	m_RegisterDE.lo = 0x56;
+	m_RegisterDE.hi = 0x00;
+	m_RegisterDE.lo = 0xC1;
 
-	m_RegisterHL.hi = 0x00;
-	m_RegisterHL.lo = 0x0D;
+	m_RegisterHL.hi = 0x84;
+	m_RegisterHL.lo = 0x03;
 
 	m_iPC = 0x100;
 	m_iSP = 0xFFFE;
 
-	m_aMemory[ 0xFF44 ] = 0x91; //LY
+	//(I/O) & Controls ---
+	WriteMemory( 0xFF00,0xCF ); // P1 (Joypad)
+	WriteMemory( 0xFF01,0x00 ); // SB (Serial transfer data)
+	WriteMemory( 0xFF02,0x7E ); // SC (Serial transfer control)
+	GetRefAtMemory( 0xFF04 ) = 0x18; // DIV (Divider register)
+	WriteMemory( 0xFF05,0x00 ); // TIMA
+	WriteMemory( 0xFF06,0x00 ); // TMA
+	WriteMemory( 0xFF07,0xF8 ); // TAC
+	WriteMemory( 0xFF0F,0xE1 ); // IF (Interrupt Flag)
 
-	GetRefAtMemory( 0xFF04 ) = 0xAB;	//DIV
-	WriteMemory( 0xFF05, 0 );			//TIMA
-	WriteMemory( 0xFF06, 0 );			//TMA
-	WriteMemory( 0xFF07, 0xF8 );		//TAC
-	WriteMemory( 0xFF0F, 0xE1 );		//IF
-	WriteMemory( 0xFFFF, 0 );			//IE
+	// --- Audio (APU) ---
+	WriteMemory( 0xFF10,0x80 ); // NR10
+	WriteMemory( 0xFF11,0xBF ); // NR11
+	WriteMemory( 0xFF12,0xF3 ); // NR12
+	WriteMemory( 0xFF13,0xFF ); // NR13
+	WriteMemory( 0xFF14,0xBF ); // NR14
+	WriteMemory( 0xFF16,0x3F ); // NR21
+	WriteMemory( 0xFF17,0x00 ); // NR22
+	WriteMemory( 0xFF18,0xFF ); // NR23
+	WriteMemory( 0xFF19,0xBF ); // NR24
+	WriteMemory( 0xFF1A,0x7F ); // NR30
+	WriteMemory( 0xFF1B,0xFF ); // NR31
+	WriteMemory( 0xFF1C,0x9F ); // NR32
+	WriteMemory( 0xFF1D,0xFF ); // NR33
+	WriteMemory( 0xFF1E,0xBF ); // NR34
+	WriteMemory( 0xFF20,0xFF ); // NR41
+	WriteMemory( 0xFF21,0x00 ); // NR42
+	WriteMemory( 0xFF22,0x00 ); // NR43
+	WriteMemory( 0xFF23,0xBF ); // NR44
+	WriteMemory( 0xFF24,0x77 ); // NR50
+	WriteMemory( 0xFF25,0xF3 ); // NR51
+	WriteMemory( 0xFF26,0xF1 ); // NR52 (Audio activé)
+
+	// --- Vidéo (LCD / PPU) ---
+	WriteMemory( 0xFF40,0x91 ); // LCDC
+	WriteMemory( 0xFF41,0x81 ); // STAT
+	WriteMemory( 0xFF42,0x00 ); // SCY
+	WriteMemory( 0xFF43,0x00 ); // SCX
+	WriteMemory( 0xFF44,0x91 ); // LY
+	WriteMemory( 0xFF45,0x00 ); // LYC
+	WriteMemory( 0xFF46,0xFF ); // DMA
+	WriteMemory( 0xFF47,0xFC ); // BGP
+	WriteMemory( 0xFF48,0x00 ); // OBP0
+	WriteMemory( 0xFF49,0x00 ); // OBP1
+	WriteMemory( 0xFF4A,0x00 ); // WY
+	WriteMemory( 0xFF4B,0x00 ); // WX
+
+	// --- Interruptions ---
+	WriteMemory( 0xFFFF,0x00 ); // IE (Interrupt Enable)
 }
 
 void CPU::_SetFlag( CPU_FLAGS eFlag,bool bCond )
