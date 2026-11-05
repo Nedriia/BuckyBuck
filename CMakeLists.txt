@@ -23,6 +23,7 @@ set(PROJECT_SOURCES
         ${SRC_DIR}/main.cpp
         ${SRC_DIR}/Disassembler.cpp
         ${SRC_DIR}/CPU.cpp
+        ${SRC_DIR}/CPU.h
         ${SRC_DIR}/Display.cpp
         ${SRC_DIR}/DebugInfosDisplay.cpp
         ${SRC_DIR}/ProcessorDebugDisplay.cpp
@@ -86,10 +87,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE
 target_compile_definitions(${PROJECT_NAME} PRIVATE
         PATH_ROMS="${CMAKE_CURRENT_SOURCE_DIR}/Roms/"
         DISASSM_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Disassembly/"
-        ASSETS_DIR="${CMAKE_CURRENT_SOURCE_DIR}/ASSETS/"
+        ASSETS_DIR="${CMAKE_CURRENT_SOURCE_DIR}/Assets/"
 )
 
-option( LEAK_DETECTOR_ENABLE "Enable leak detector" OFF )
+option( LEAK_DETECTOR_ENABLE "Enable leak detector" ON )
 if( LEAK_DETECTOR_ENABLE )
     target_compile_definitions( ${PROJECT_NAME} PRIVATE LEAK_DETECTOR )
 

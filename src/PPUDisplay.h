@@ -2,8 +2,6 @@
 // Created by arthu on 05/11/2026.
 //
 
-#pragma once
-
 #ifndef BUCKYBUCK_PPUDISPLAY_H
 #define BUCKYBUCK_PPUDISPLAY_H
 

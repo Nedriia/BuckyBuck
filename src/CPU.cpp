@@ -187,9 +187,9 @@ void CPU::_SimulateBootRom()
 	WriteMemory( 0xFF23,0xBF ); // NR44
 	WriteMemory( 0xFF24,0x77 ); // NR50
 	WriteMemory( 0xFF25,0xF3 ); // NR51
-	WriteMemory( 0xFF26,0xF1 ); // NR52 (Audio activé)
+	WriteMemory( 0xFF26,0xF1 ); // NR52 (Audio activï¿½)
 
-	// --- Vidéo (LCD / PPU) ---
+	// --- Vidï¿½o (LCD / PPU) ---
 	WriteMemory( 0xFF40,0x91 ); // LCDC
 	WriteMemory( 0xFF41,0x81 ); // STAT
 	WriteMemory( 0xFF42,0x00 ); // SCY
@@ -1088,7 +1088,7 @@ void CPU::RLA()
 	uint8_t iFirstBit = ( iR8 >> 7 );
 	uint8_t iResult = iR8 << 1;
 
-	iResult |= GetFlag( CARRY_FLAG );
+	iResult |= static_cast<uint8_t>( GetFlag( CARRY_FLAG ) );
 
 	_SetFlag( ZERO_FLAG,0 );
 	_SetFlag( SUB_FLAG,0 );

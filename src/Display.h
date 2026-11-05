@@ -1,7 +1,6 @@
 //
 // Created by arthu on 18/09/2026.
 //
-#pragma once
 #ifndef BUCKYBUCK_DISPLAY_H
 #define BUCKYBUCK_DISPLAY_H
 #include <glad/glad.h>
