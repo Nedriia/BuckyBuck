@@ -10,6 +10,8 @@
 std::unique_ptr<HexEditor_ImGUI>			DebugInfosDisplay::m_oHexEditor;
 std::unique_ptr<ProcessorDebugDisplay>		DebugInfosDisplay::m_oProcDebugDisplay;
 std::unique_ptr<DisassemblerDisplay>		DebugInfosDisplay::m_oDisassemblerDisplay;
+std::unique_ptr<PPUDisplay>					DebugInfosDisplay::m_oPPUDisplay;
+std::unique_ptr<VRAMViewer>					DebugInfosDisplay::m_oVRAMViewer;
 
 DebugInfosDisplay*							DebugInfosDisplay::m_pSingleton = nullptr;
 
@@ -112,6 +114,8 @@ void DebugInfosDisplay::Update()
 	m_oHexEditor->Update();
 	m_oProcDebugDisplay->Update();
 	m_oDisassemblerDisplay->Update();
+	m_oPPUDisplay->Update();
+	m_oVRAMViewer->Update();
 }
 
 void DebugInfosDisplay::Destroy()

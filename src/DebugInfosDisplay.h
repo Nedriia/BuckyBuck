@@ -8,6 +8,8 @@
 #include "HexEditor_ImGUI.h"
 #include "ProcessorDebugDisplay.h"
 #include "DisassemblerDisplay.h"
+#include "PPUDisplay.h"
+#include "VRAMViewer.h"
 
 class DebugInfosDisplay
 {
@@ -31,6 +33,8 @@ public:
 	static std::unique_ptr<HexEditor_ImGUI>&		GetHexEditor() { return m_oHexEditor; }
 	static std::unique_ptr<ProcessorDebugDisplay>&	GetProcDebugDisplay() { return m_oProcDebugDisplay; }
 	static std::unique_ptr<DisassemblerDisplay>&	GetDisassemblerDisplay() { return m_oDisassemblerDisplay; }
+	static std::unique_ptr<PPUDisplay>&				GetPPUDisplay() { return m_oPPUDisplay; }
+	static std::unique_ptr<VRAMViewer>&				GetVRAMDisplay() { return m_oVRAMViewer; }
 
 private:
 
@@ -42,6 +46,8 @@ private:
 	static std::unique_ptr<HexEditor_ImGUI>			m_oHexEditor;
 	static std::unique_ptr<ProcessorDebugDisplay>	m_oProcDebugDisplay;
 	static std::unique_ptr<DisassemblerDisplay>		m_oDisassemblerDisplay;
+	static std::unique_ptr<PPUDisplay>				m_oPPUDisplay;
+	static std::unique_ptr<VRAMViewer>				m_oVRAMViewer;
 };
 
 
