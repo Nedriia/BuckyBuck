@@ -33,6 +33,8 @@ set(PROJECT_SOURCES
         ${SRC_DIR}/TimeManager.h
         ${SRC_DIR}/Timer.cpp
         ${SRC_DIR}/Timer.h
+        ${SRC_DIR}/PPU.cpp
+        ${SRC_DIR}/PPU.h
 )
 
 set( HEXEDITOR_SOURCES
