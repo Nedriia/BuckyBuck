@@ -12,6 +12,7 @@
 #include "DebugInfosDisplay.h"
 #endif
 #include "Timer.h"
+#include "PPU.h"
 
 static bool m_bJumped = false;
 static constexpr uint8_t X_MASK  = 0b11000000;
@@ -546,6 +547,7 @@ void CPU::EmulateCycle()
 			int iCycles = ExecuteNextOpcode();
 			Timer::GetInstance()->UpdateTimers( iCycles );
 			_UpdateLY( iCycles );
+			PPU::GetInstance()->Update( iCycles );
 			cyclesThisUpdate += iCycles; //TODO : if over 70224 cycles are lost
 		}
 
