@@ -35,6 +35,8 @@ set(PROJECT_SOURCES
         ${SRC_DIR}/Timer.h
         ${SRC_DIR}/PPU.cpp
         ${SRC_DIR}/PPU.h
+        src/PPUDisplay.cpp
+        src/PPUDisplay.h
 )
 
 set( HEXEDITOR_SOURCES
