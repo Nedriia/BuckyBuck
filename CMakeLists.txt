@@ -39,6 +39,8 @@ set(PROJECT_SOURCES
         ${SRC_DIR}/PPUDisplay.h
         ${SRC_DIR}/VRAMViewer.cpp
         ${SRC_DIR}/VRAMViewer.h
+        ${SRC_DIR}/Shader.cpp
+        ${SRC_DIR}/Shader.h
 )
 
 set( HEXEDITOR_SOURCES
