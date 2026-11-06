@@ -112,6 +112,7 @@ CPU::~CPU()
 			delete m_aExtendOpcodesTable[ i ];
 	}
 
+	PPU::GetInstance()->Destroy();
 	m_pSingleton = nullptr;
 }
 
