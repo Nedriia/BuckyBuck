@@ -12,7 +12,12 @@ PPU* PPU::m_pSingleton = nullptr;
 
 PPU::PPU()
 {
-	m_pPixels[ 160 ][ 144 ] = { 0 };
+	memset( m_pPixels,-1,sizeof( m_pPixels ) );
+}
+
+PPU::~PPU()
+{
+	m_pSingleton = nullptr;
 }
 
 void PPU::Update( const int iCycles )

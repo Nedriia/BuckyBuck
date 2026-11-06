@@ -19,6 +19,7 @@ public:
 	void Update( bool &quit );
 	void DestroyWindow();
 
+	GLFWwindow* GetWindow() const { return m_pWindow; }
 	static Display* GetInstance()
 	{
 		if( m_pSingleton == nullptr )

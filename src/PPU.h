@@ -10,10 +10,10 @@ class PPU
 {
 public:
 	PPU();
-	~PPU(){};
+	~PPU();
 
 	void Update( const int iCycles );
-
+	void Destroy(){ delete m_pSingleton ;}
 	static PPU* GetInstance()
 	{
 		if( m_pSingleton == nullptr )

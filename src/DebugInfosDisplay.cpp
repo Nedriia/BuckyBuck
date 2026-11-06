@@ -61,6 +61,8 @@ void DebugInfosDisplay::Init( GLFWwindow* mainWindow )
 	m_oHexEditor			= std::make_unique<HexEditor_ImGUI>();
 	m_oProcDebugDisplay		= std::make_unique<ProcessorDebugDisplay>();
 	m_oDisassemblerDisplay	= std::make_unique<DisassemblerDisplay>();
+	m_oPPUDisplay			= std::make_unique<PPUDisplay>();
+	m_oVRAMViewer			= std::make_unique<VRAMViewer>();
 
 	m_oHexEditor->Init( m_pWindow );
 
