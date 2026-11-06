@@ -3,27 +3,13 @@
 out vec4 FragColor;
 in vec2 TexCoord;
 
-uniform usampler2DArray oTexture;
-
-uniform vec4 colorPalette[ 4 ];
-
-uniform int Width;
-uniform int Height;
+uniform sampler2D oTexture;
+vec3 bgColor = vec3( 0.20,0.40,0.33 );
+vec3 fontColor = vec3( 0.87,0.97,0.81 );
 
 void main()
 {
-	vec2 oCoords = vec2( int( TexCoord.x * Width ), int ( TexCoord.y * Height ) );	//Convert texture ratio to coords
-	int iBlock = int( oCoords.x ) / 32;												//Which block are we, texture sent as X block of 32 bits
-	uint iIndex = uint ( oCoords.x ) % 32u;											//Look for the pixel
-
-	uvec4 texel0 = texelFetch( oTexture, ivec3( iBlock, oCoords.y, 0 ), 0 );		//Extract memory block
-	uint v0 = ( texel0.r >> iIndex ) & 1u;
-
-	uvec4 texel1 = texelFetch( oTexture, ivec3( iBlock, oCoords.y, 1 ), 0 );
-	uint v1 = ( texel1.r >> iIndex ) & 1u;
-
-	uint colorIndex = ( v1 << 1u ) | v0;
-
-	vec3 color = colorPalette[ colorIndex ].rgb;
-	FragColor = vec4(color, 1.0);
+	float v = texture( oTexture, TexCoord ).r;
+	vec3 color = mix( bgColor, fontColor, v );
+	FragColor = vec4( color, 1.0 );
 }
