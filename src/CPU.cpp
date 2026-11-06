@@ -436,6 +436,12 @@ void CPU::WriteMemory( const uint16_t iAdress,const uint8_t iValue )
 		Timer::GetInstance()->SetClockFrequency();
 		return;
 	}
+	else if( iAdress == 0xFF80 )
+	{
+		//TEMP : To avoid VRAM flush in Tetris
+		m_aMemory.at( iAdress ) = 0;
+		return;
+	}
 
 	m_aMemory.at( iAdress ) = iValue;
 }

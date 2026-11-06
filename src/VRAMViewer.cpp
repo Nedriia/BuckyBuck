@@ -38,6 +38,18 @@ VRAMViewer::VRAMViewer() :
 
 	_InitRenderer();
 	_InitFramebuffer();
+
+	glUseProgram( m_sShaderProgram.ID );
+	GLint iColorPaletteLocation = glGetUniformLocation( m_sShaderProgram.ID,"colorPalette[0]" );
+	float fGameBoyDMGPalette[ 16 ] =
+	{
+		0.878f, 0.973f, 0.816f, 1.0f,
+		0.533f, 0.753f, 0.439f, 1.0f,
+		0.204f, 0.408f, 0.337f, 1.0f,
+		0.031f, 0.094f, 0.125f, 1.0f
+	};
+
+	glUniform4fv( iColorPaletteLocation,4,fGameBoyDMGPalette );
 }
 
 VRAMViewer::~VRAMViewer()
@@ -93,7 +105,7 @@ void VRAMViewer::_InitTexture()
 	glGenTextures( 1,&m_iVRAMTexture );
 	glBindTexture( GL_TEXTURE_2D,m_iVRAMTexture );
 
-	glTexImage2D( GL_TEXTURE_2D,0,GL_R8,128,136,0,GL_RED,GL_UNSIGNED_BYTE,NULL );
+	glTexImage2D( GL_TEXTURE_2D,0,GL_R8,128,192,0,GL_RED,GL_UNSIGNED_BYTE,NULL );
 
 	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST );
 	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST );
@@ -167,14 +179,20 @@ void VRAMViewer::_GetVRAMData()
 	int iMem = START_VRAM;
 	int posX = 0;
 	int posY = 0;
-	while( iMem < 0x9000 )
+	while( iMem < END_VRAM )
 	{
 		int pos = posX;
 		for( int k = 0; k < 8; ++k )
 		{
-			uint8_t iDataVRAM = CPU::GetInstance()->ReadMemory( iMem );
+			uint8_t ilo = CPU::GetInstance()->ReadMemory( iMem );
+			uint8_t ihi = CPU::GetInstance()->ReadMemory( iMem + 1 );
+
 			for( int p = 0; p < 8; ++p )
-				m_iVRAMPixels[ pos ][ posY + p ] = iDataVRAM & ( 0x80 >> p ) ? 255 : 0;
+			{
+				int bit = 7 - p;
+				m_iVRAMPixels[ pos ][ posY + p ] = ( ( ( ihi >> bit ) & 1 ) << 1 ) | ( ( ilo >> bit ) & 1 );
+			}
+
 			pos++;
 			iMem += 2;
 		}
@@ -193,7 +211,7 @@ void VRAMViewer::_UpdateTexture()
 	glClear( GL_COLOR_BUFFER_BIT );
 
 	glBindFramebuffer( GL_FRAMEBUFFER,m_iFBO );
-	glTexSubImage2D( GL_TEXTURE_2D,0,0,0,128,136,GL_RED,GL_UNSIGNED_BYTE,m_iVRAMPixels );
+	glTexSubImage2D( GL_TEXTURE_2D,0,0,0,128,192,GL_RED,GL_UNSIGNED_BYTE,m_iVRAMPixels );
 
 	m_sShaderProgram.Use();
 

@@ -10,7 +10,7 @@
 
 void PPUDisplay::Update()
 {
-	auto start = std::chrono::high_resolution_clock::now();
+	/*auto start = std::chrono::high_resolution_clock::now();
 
 	glfwPollEvents();
 	static double iDurationMs;
@@ -23,5 +23,5 @@ void PPUDisplay::Update()
 	ImGui::End();
 
 	auto end = std::chrono::high_resolution_clock::now();
-	iDurationMs = std::chrono::duration<double,std::milli>( end - start ).count();
+	iDurationMs = std::chrono::duration<double,std::milli>( end - start ).count();*/
 }

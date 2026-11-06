@@ -28,7 +28,7 @@ private:
 	void _GetVRAMData();
 	void _UpdateTexture();
 	void _DisplayTexture();
-	uint8_t m_iVRAMPixels[136][128];
+	uint8_t m_iVRAMPixels[192][128];
 
 	static unsigned int 				m_iVRAMTexture;
 	Shader 								m_sShaderProgram;
