@@ -28,6 +28,7 @@ private:
 	void _GetVRAMData();
 	void _UpdateTexture();
 	void _DisplayTexture();
+	void _DetermineTileSelection();
 	uint8_t m_iVRAMPixels[192][128];
 
 	static unsigned int 				m_iVRAMTexture;
@@ -38,6 +39,8 @@ private:
 	unsigned int 						m_iVBO;
 	unsigned int 						m_iEBO;
 	unsigned int						m_iFBO;
+
+	bool								m_bDrawGrid;
 };
 
 

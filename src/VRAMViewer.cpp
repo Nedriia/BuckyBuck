@@ -32,7 +32,8 @@ VRAMViewer::VRAMViewer() :
 	m_iVAO( 0 ),
 	m_iVBO( 0 ),
 	m_iEBO( 0 ),
-	m_iFBO( 0 )
+	m_iFBO( 0 ),
+	m_bDrawGrid( true )
 {
 	memset( m_iVRAMPixels,0,sizeof( m_iVRAMPixels ) );
 
@@ -79,6 +80,7 @@ void VRAMViewer::Update()
 	std::snprintf( titleBuffer,sizeof( titleBuffer ),"VRAM Viewer (%.2f ms)###VRAMDisplayWindow",iDurationMs );
 	if( ImGui::Begin( titleBuffer,nullptr ) )
 	{
+		_DetermineTileSelection();
 		_UpdateTexture();
 		_DisplayTexture();
 	}
@@ -221,6 +223,58 @@ void VRAMViewer::_UpdateTexture()
 
 void VRAMViewer::_DisplayTexture()
 {
-	ImVec2 avail = ImVec2( ImGui::GetContentRegionAvail().x,ImGui::GetContentRegionAvail().y - 14 );
+	ImVec2 avail = ImVec2( ImGui::GetContentRegionAvail().x - 250,ImGui::GetContentRegionAvail().y );
+	ImGui::BeginChild( "##TextureChild",avail,false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
+	ImVec2 p = ImGui::GetCursorScreenPos();
 	ImGui::Image( ( ImTextureID )( intptr_t )m_iFBOTexture,avail,ImVec2( 0.0f,0.0f ),ImVec2( 1.0f,1.0f ) );
+	ImGui::EndChild();
+	ImGui::BeginChild( "##TextureChild" );
+	if( m_bDrawGrid )
+	{
+		for( int i = 0; i <= 16; ++i )
+		{
+			float fOffset = ( avail.x / 16 ) * i;
+			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x + fOffset,p.y ),ImVec2( p.x + fOffset,p.y + avail.y ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
+		}
+		for( int j = 0; j <= 24; ++j )
+		{
+			float fOffset = ( avail.y / 24 ) * j;
+			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x,p.y + fOffset ),ImVec2( p.x + avail.x,p.y + fOffset ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
+		}
+	}
+	ImGui::EndChild();
+
+	ImGui::SameLine();
+	ImGui::BeginChild( "##Options",ImVec2( 250.0, avail.y ),false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav);
+	ImGui::Image( ( ImTextureID )( intptr_t )m_iFBOTexture,ImVec2( 200, 200 ),ImVec2(0.0f,0.0f),ImVec2(1.0f,1.0f) );
+
+	char txt_def[] = "0x8000";
+	ImGui::PushItemWidth( ImGui::CalcTextSize( txt_def ).x + 10.0f );
+	ImGui::InputText( "##Adress",txt_def,sizeof( txt_def ) );
+	ImGui::PopItemWidth();
+	ImGui::SameLine();
+	ImGui::Text( "Tile Adress" );
+
+	ImGui::Checkbox("Grid", &m_bDrawGrid );
+	ImGui::EndChild();
+}
+
+void VRAMViewer::_DetermineTileSelection()
+{
+	ImVec2 mouse_pos = ImGui::GetMousePos();
+	ImVec2 window_pos = ImGui::GetWindowPos();
+	ImVec2 window_size = ImGui::GetWindowSize();
+
+	ImVec2 zone_min(
+		window_pos.x,
+		window_pos.y
+	);
+
+	ImVec2 zone_max(
+		window_pos.x + window_size.x,
+		window_pos.y + window_size.y );
+
+	if( ImGui::IsMouseHoveringRect( zone_min,zone_max ) )
+	{
+	}
 }
