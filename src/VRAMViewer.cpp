@@ -11,8 +11,8 @@
 
 constexpr int XOffset = 250;
 
-constexpr int XWidthScreen = 1920;
-constexpr int YWidthScreen = 1080;
+constexpr int WidthScreen = 768;
+constexpr int HeightScreen = 1152;
 
 constexpr int XSizeTexture = 128;
 constexpr int YSizeTexture = 192;
@@ -118,14 +118,13 @@ void VRAMViewer::_InitTexture()
 	glGenTextures( 1,&m_iFBOTexture );
 	glBindTexture( GL_TEXTURE_2D,m_iFBOTexture );
 
-	glTexImage2D( GL_TEXTURE_2D,0,GL_RGB,XWidthScreen,YWidthScreen,0,GL_RGB,GL_UNSIGNED_BYTE,NULL );
+	glTexImage2D( GL_TEXTURE_2D,0,GL_RGB,WidthScreen,HeightScreen,0,GL_RGB,GL_UNSIGNED_BYTE,NULL );
 
-	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR );
-	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR );
+	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST );
+	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST );
 
 	glBindTexture( GL_TEXTURE_2D,0 );
 	glFramebufferTexture2D( GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,m_iFBOTexture,0 );
-
 
 	glGenTextures( 1,&m_iVRAMTexture );
 	glBindTexture( GL_TEXTURE_2D,m_iVRAMTexture );
@@ -177,26 +176,10 @@ void VRAMViewer::_InitRenderer()
 
 void VRAMViewer::_DestroyRenderer()
 {
-	glGenVertexArrays( 1,&m_iVAO );
-	glBindVertexArray( m_iVAO ); //Need to be bind before, any vertex attributs call will be stored inside the VAO
-	glGenBuffers( 1,&m_iVBO );
-	glGenBuffers( 1,&m_iEBO );
-
-	glBindBuffer( GL_ARRAY_BUFFER,m_iVBO );
-	glBufferData( GL_ARRAY_BUFFER,sizeof( vertices ),vertices,GL_STATIC_DRAW );
-
-	glBindBuffer( GL_ELEMENT_ARRAY_BUFFER,m_iEBO );
-	glBufferData( GL_ELEMENT_ARRAY_BUFFER,sizeof( indices ),indices,GL_STATIC_DRAW );
-
-	glVertexAttribPointer( 0,3,GL_FLOAT,GL_FALSE,5 * sizeof( float ),( void* )0 ); //Vertices
-	glEnableVertexAttribArray( 0 );
-
-	glVertexAttribPointer( 1,2,GL_FLOAT,GL_FALSE,5 * sizeof( float ),( void* )( 3 * sizeof( float ) ) ); //UV coords
-	glEnableVertexAttribArray( 1 );
-
-	glBindVertexArray( m_iVAO );
-
-	m_sShaderProgram = Shader( "vertexShader.glsl","fragmentShader.glsl" );
+	glDeleteVertexArrays( 1,&m_iVAO );
+	glDeleteBuffers( 1,&m_iVBO );
+	glDeleteBuffers( 1,&m_iEBO );
+	glDeleteFramebuffers( 1,&m_iFBO );
 }
 
 void VRAMViewer::_GetVRAMData()
@@ -232,16 +215,22 @@ void VRAMViewer::_UpdateTexture()
 {
 	_GetVRAMData();
 
+	glBindTexture( GL_TEXTURE_2D,m_iVRAMTexture );
+	glBindFramebuffer( GL_FRAMEBUFFER,m_iFBO );
+	glViewport( 0,0,WidthScreen,HeightScreen );
+
 	glClearColor( 0.f,0.f,0.f,1.f );
 	glClear( GL_COLOR_BUFFER_BIT );
 
-	glBindFramebuffer( GL_FRAMEBUFFER,m_iFBO );
+	glActiveTexture( GL_TEXTURE0 );
+	glBindTexture( GL_TEXTURE_2D,m_iVRAMTexture );
 	glTexSubImage2D( GL_TEXTURE_2D,0,0,0,XSizeTexture,YSizeTexture,GL_RED,GL_UNSIGNED_BYTE,m_iVRAMPixels );
-
 	m_sShaderProgram.Use();
-
 	glDrawElements( GL_TRIANGLES,6,GL_UNSIGNED_INT,0 );
+
 	glBindFramebuffer( GL_FRAMEBUFFER,0 );
+	glBindTexture( GL_TEXTURE_2D,0 );
+	glViewport( 0,0,1920,1080 );
 }
 
 void VRAMViewer::_DisplayTexture()
