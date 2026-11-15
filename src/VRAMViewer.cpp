@@ -4,16 +4,39 @@
 
 #include "VRAMViewer.h"
 #include <chrono>
-#include <GLFW/glfw3.h>
 #include "imgui.h"
+#include <imgui_internal.h>
 #include "CPU.h"
 #include "Display.h"
 
+constexpr int XOffset = 250;
+
+constexpr int XWidthScreen = 1920;
+constexpr int YWidthScreen = 1080;
+
+constexpr int XSizeTexture = 128;
+constexpr int YSizeTexture = 192;
+
+constexpr int xSizeMiniature = 200;
+constexpr int ySizeMiniature = 200;
+
+constexpr int TilesPerLine = 24;
+constexpr int TilesPerCol = 16;
+constexpr int SizeTile = 16;
+
+constexpr float xOffsetGrid = ( 1 / 16.0f );
+constexpr float yOffsetGrid = ( 1 / 24.0f );
+
+static ImVec2 vSizeImage = ImVec2();
+
+constexpr uint16_t START_VRAM = 0x8000;
+constexpr uint16_t END_VRAM = 0x97FF;
+
 unsigned int VRAMViewer::m_iVRAMTexture = 0;
 unsigned int VRAMViewer::m_iFBOTexture = 0;
-
-#define START_VRAM  0x8000
-#define END_VRAM  0x97FF
+uint16_t	 VRAMViewer::m_iAdressSelected = START_VRAM;
+int			 VRAMViewer::m_iHoveredLine = 0;
+int			 VRAMViewer::m_iHoveredCol = 0;
 
 float vertices[] = {
 	// positions		//Texture coords
@@ -76,7 +99,7 @@ void VRAMViewer::Update()
 	glfwPollEvents();
 	static double iDurationMs;
 
-	char titleBuffer[ 128 ];
+	char titleBuffer[ 64 ];
 	std::snprintf( titleBuffer,sizeof( titleBuffer ),"VRAM Viewer (%.2f ms)###VRAMDisplayWindow",iDurationMs );
 	if( ImGui::Begin( titleBuffer,nullptr ) )
 	{
@@ -95,7 +118,7 @@ void VRAMViewer::_InitTexture()
 	glGenTextures( 1,&m_iFBOTexture );
 	glBindTexture( GL_TEXTURE_2D,m_iFBOTexture );
 
-	glTexImage2D( GL_TEXTURE_2D,0,GL_RGB,1920,1080,0,GL_RGB,GL_UNSIGNED_BYTE,NULL );
+	glTexImage2D( GL_TEXTURE_2D,0,GL_RGB,XWidthScreen,YWidthScreen,0,GL_RGB,GL_UNSIGNED_BYTE,NULL );
 
 	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_LINEAR );
 	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_LINEAR );
@@ -107,7 +130,7 @@ void VRAMViewer::_InitTexture()
 	glGenTextures( 1,&m_iVRAMTexture );
 	glBindTexture( GL_TEXTURE_2D,m_iVRAMTexture );
 
-	glTexImage2D( GL_TEXTURE_2D,0,GL_R8,128,192,0,GL_RED,GL_UNSIGNED_BYTE,NULL );
+	glTexImage2D( GL_TEXTURE_2D,0,GL_R8,XSizeTexture,YSizeTexture,0,GL_RED,GL_UNSIGNED_BYTE,NULL );
 
 	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST );
 	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST );
@@ -200,8 +223,8 @@ void VRAMViewer::_GetVRAMData()
 		}
 
 		posY += 8;
-		posX += ( posY / 128 ) * 8;
-		posY %= 128;
+		posX += ( posY / XSizeTexture ) * 8;
+		posY %= XSizeTexture;
 	}
 }
 
@@ -213,7 +236,7 @@ void VRAMViewer::_UpdateTexture()
 	glClear( GL_COLOR_BUFFER_BIT );
 
 	glBindFramebuffer( GL_FRAMEBUFFER,m_iFBO );
-	glTexSubImage2D( GL_TEXTURE_2D,0,0,0,128,192,GL_RED,GL_UNSIGNED_BYTE,m_iVRAMPixels );
+	glTexSubImage2D( GL_TEXTURE_2D,0,0,0,XSizeTexture,YSizeTexture,GL_RED,GL_UNSIGNED_BYTE,m_iVRAMPixels );
 
 	m_sShaderProgram.Use();
 
@@ -223,34 +246,39 @@ void VRAMViewer::_UpdateTexture()
 
 void VRAMViewer::_DisplayTexture()
 {
-	ImVec2 avail = ImVec2( ImGui::GetContentRegionAvail().x - 250,ImGui::GetContentRegionAvail().y );
-	ImGui::BeginChild( "##TextureChild",avail,false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
+	vSizeImage = ImVec2( ImGui::GetContentRegionAvail().x - XOffset,ImGui::GetContentRegionAvail().y );
+	ImGui::BeginChild( "##TextureChild",vSizeImage,false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
 	ImVec2 p = ImGui::GetCursorScreenPos();
-	ImGui::Image( ( ImTextureID )( intptr_t )m_iFBOTexture,avail,ImVec2( 0.0f,0.0f ),ImVec2( 1.0f,1.0f ) );
+	ImGui::Image( ( ImTextureID )( intptr_t )m_iFBOTexture,vSizeImage,ImVec2( 0.0f,0.0f ),ImVec2( 1.0f,1.0f ) );
 	ImGui::EndChild();
-	ImGui::BeginChild( "##TextureChild" );
+
 	if( m_bDrawGrid )
 	{
-		for( int i = 0; i <= 16; ++i )
+		ImGui::BeginChild( "##TextureChild" );
+		for( int i = 0; i <= TilesPerCol; ++i )
 		{
-			float fOffset = ( avail.x / 16 ) * i;
-			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x + fOffset,p.y ),ImVec2( p.x + fOffset,p.y + avail.y ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
+			float fOffset = ( vSizeImage.x / TilesPerCol ) * i;
+			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x + fOffset,p.y ),ImVec2( p.x + fOffset,p.y + vSizeImage.y ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
 		}
-		for( int j = 0; j <= 24; ++j )
+		for( int j = 0; j <= TilesPerLine; ++j )
 		{
-			float fOffset = ( avail.y / 24 ) * j;
-			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x,p.y + fOffset ),ImVec2( p.x + avail.x,p.y + fOffset ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
+			float fOffset = ( vSizeImage.y / TilesPerLine ) * j;
+			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x,p.y + fOffset ),ImVec2( p.x + vSizeImage.x,p.y + fOffset ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
 		}
+		ImGui::EndChild();
 	}
-	ImGui::EndChild();
 
 	ImGui::SameLine();
-	ImGui::BeginChild( "##Options",ImVec2( 250.0, avail.y ),false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav);
-	ImGui::Image( ( ImTextureID )( intptr_t )m_iFBOTexture,ImVec2( 200, 200 ),ImVec2(0.0f,0.0f),ImVec2(1.0f,1.0f) );
+	ImGui::BeginChild( "##Options",ImVec2( XOffset,vSizeImage.y ),false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
+	
+	float xStartCoord = m_iHoveredCol / static_cast< float >( TilesPerCol );
+	float yStartCoord = m_iHoveredLine / static_cast< float >( TilesPerLine );
+	ImGui::Image( ( ImTextureID )( intptr_t )m_iFBOTexture,ImVec2( xSizeMiniature,ySizeMiniature ),ImVec2( xStartCoord,yStartCoord ),ImVec2( xStartCoord + xOffsetGrid,yStartCoord + yOffsetGrid ) );
 
-	char txt_def[] = "0x8000";
-	ImGui::PushItemWidth( ImGui::CalcTextSize( txt_def ).x + 10.0f );
-	ImGui::InputText( "##Adress",txt_def,sizeof( txt_def ) );
+	char aBuffer[ 6 ] = "";
+	ImFormatString( aBuffer,sizeof( aBuffer ),"%02X",m_iAdressSelected );
+	ImGui::PushItemWidth( ImGui::CalcTextSize( aBuffer ).x + 10.0f );
+	ImGui::InputText( "##Adress",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
 	ImGui::PopItemWidth();
 	ImGui::SameLine();
 	ImGui::Text( "Tile Adress" );
@@ -261,20 +289,28 @@ void VRAMViewer::_DisplayTexture()
 
 void VRAMViewer::_DetermineTileSelection()
 {
-	ImVec2 mouse_pos = ImGui::GetMousePos();
-	ImVec2 window_pos = ImGui::GetWindowPos();
-	ImVec2 window_size = ImGui::GetWindowSize();
+	ImVec2 vCursorPos = ImGui::GetCursorScreenPos();
 
 	ImVec2 zone_min(
-		window_pos.x,
-		window_pos.y
+		vCursorPos.x,
+		vCursorPos.y
 	);
 
 	ImVec2 zone_max(
-		window_pos.x + window_size.x,
-		window_pos.y + window_size.y );
+		vCursorPos.x + vSizeImage.x,
+		vCursorPos.y + vSizeImage.y );
 
 	if( ImGui::IsMouseHoveringRect( zone_min,zone_max ) )
 	{
+		ImVec2 mouse_pos = ImGui::GetMousePos();
+		float fRelativeX = ( mouse_pos.x - vCursorPos.x );
+		float fRelativeY = ( mouse_pos.y - vCursorPos.y );
+
+		m_iHoveredCol = fRelativeX / ( vSizeImage.x / TilesPerCol );
+		m_iHoveredLine = fRelativeY / ( vSizeImage.y / TilesPerLine );
+
+		m_iAdressSelected = START_VRAM + ( m_iHoveredCol * SizeTile ) + ( m_iHoveredLine * ( SizeTile * SizeTile ) );
+		if( m_iAdressSelected < START_VRAM || m_iAdressSelected > END_VRAM )
+			m_iAdressSelected = START_VRAM;
 	}
 }

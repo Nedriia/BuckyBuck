@@ -41,6 +41,9 @@ private:
 	unsigned int						m_iFBO;
 
 	bool								m_bDrawGrid;
+	static uint16_t						m_iAdressSelected;
+	static int							m_iHoveredLine;
+	static int							m_iHoveredCol;
 };
 
 
