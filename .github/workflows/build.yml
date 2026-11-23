@@ -30,7 +30,7 @@ jobs:
           submodules: recursive
 
       - name: Install Ninja
-        uses: seanmiddleditch/gha-setup-ninja@master
+        uses: seanmiddleditch/gha-setup-ninja@v6
 
       - name: Install Linux build dependencies
         if: runner.os == 'Linux'
@@ -46,6 +46,14 @@ jobs:
             libwayland-dev \
             libxkbcommon-dev
 
+      # VS 18's STL (MSVC 14.52) requires Clang 22+, but the runner ships Clang 20.
+      - name: Install LLVM 22 (clang-cl)
+        if: matrix.compiler == 'clang-cl'
+        shell: pwsh
+        run: |
+          choco install llvm --version=22.1.8 --allow-downgrade -y
+          & "C:\Program Files\LLVM\bin\clang-cl.exe" --version
+
       - name: Setup MSVC dev environment
         if: runner.os == 'Windows'
         uses: ilammy/msvc-dev-cmd@v1
@@ -56,7 +64,11 @@ jobs:
 
       - name: Configure CMake (clang-cl)
         if: matrix.compiler == 'clang-cl'
-        run: cmake -B build -G Ninja -DCMAKE_BUILD_TYPE=${{ matrix.build_type }} -DCMAKE_CXX_COMPILER=clang-cl -DCMAKE_C_COMPILER=clang-cl
+        run: >
+          cmake -B build -G Ninja
+          -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
+          -DCMAKE_CXX_COMPILER="C:/Program Files/LLVM/bin/clang-cl.exe"
+          -DCMAKE_C_COMPILER="C:/Program Files/LLVM/bin/clang-cl.exe"
 
       - name: Configure CMake (gcc)
         if: matrix.compiler == 'gcc'
