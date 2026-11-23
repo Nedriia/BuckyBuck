@@ -13,8 +13,6 @@
 class DebugInfosDisplay
 {
 public:
-	DebugInfosDisplay();
-	~DebugInfosDisplay();
 
 	void Init( GLFWwindow* mainWindow );
 	void StartFrame();
@@ -36,6 +34,9 @@ public:
 	static std::unique_ptr<VRAMViewer>&				GetVRAMDisplay() { return m_oVRAMViewer; }
 
 private:
+
+	DebugInfosDisplay();
+	~DebugInfosDisplay();
 
 	void _LoadIconFont();
 

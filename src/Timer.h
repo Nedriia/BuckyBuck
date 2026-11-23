@@ -10,8 +10,7 @@
 class Timer
 {
 public:
-	Timer();
-	~Timer();
+
 	void UpdateTimers( const int iCycle );
 	void SetClockFrequency();
 
@@ -27,6 +26,9 @@ public:
 	void	DestroyInstance() { delete m_pSingleton; }
 
 private:
+	Timer();
+	~Timer();
+
 	void _UpdateDividerRegister( const int iCycle );
 	
 	uint8_t _GetClockFrequency();

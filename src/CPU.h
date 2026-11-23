@@ -47,9 +47,6 @@ class CPU
 	};
 
 public:
-	CPU();
-	~CPU();
-
 	void			Init();
 	int				LoadRom( const char* sROMPath );
 	uint8_t			ExecuteNextOpcode();
@@ -93,6 +90,8 @@ public:
 	CPU::Register GetRegister( REGISTER e ) const;
 
 private:
+	CPU();
+	~CPU();
 
 	uint8_t			_FetchDecode();
 	void 			_FillOpcodesTables();

@@ -32,11 +32,9 @@ static ImVec2 vSizeImage = ImVec2();
 constexpr uint16_t START_VRAM = 0x8000;
 constexpr uint16_t END_VRAM = 0x97FF;
 
-unsigned int VRAMViewer::m_iVRAMTexture = 0;
-unsigned int VRAMViewer::m_iFBOTexture = 0;
-uint16_t	 VRAMViewer::m_iAdressSelected = START_VRAM;
-int			 VRAMViewer::m_iHoveredLine = 0;
-int			 VRAMViewer::m_iHoveredCol = 0;
+uint16_t	 IEVRAMViewerOption::m_iAdressSelected = START_VRAM;
+int			 IEVRAMViewerOption::m_iHoveredLine = 0;
+int			 IEVRAMViewerOption::m_iHoveredCol = 0;
 
 float vertices[] = {
 	// positions		//Texture coords
@@ -51,14 +49,27 @@ unsigned int indices[] = {
 	1, 2, 3
 };
 
+
+IEVRAMViewerOption::IEVRAMViewerOption()	:
+	m_bDrawGrid( true ),
+	m_iTexture( 0 )
+{
+	//memset( m_iTilesDataPixels,0,sizeof( m_iTilesDataPixels ) );
+}
+
+IEVRAMViewerOption::~IEVRAMViewerOption()
+{
+	glDeleteTextures( 1,&m_iTexture );
+	m_iTexture = 0;
+}
+
 VRAMViewer::VRAMViewer() :
+	m_iFBOTexture( 0 ),
 	m_iVAO( 0 ),
 	m_iVBO( 0 ),
 	m_iEBO( 0 ),
-	m_iFBO( 0 ),
-	m_bDrawGrid( true )
+	m_iFBO( 0 )
 {
-	memset( m_iVRAMPixels,0,sizeof( m_iVRAMPixels ) );
 
 	_InitRenderer();
 	_InitFramebuffer();
@@ -74,15 +85,18 @@ VRAMViewer::VRAMViewer() :
 	};
 
 	glUniform4fv( iColorPaletteLocation,4,fGameBoyDMGPalette );
+
+	m_aTabOption[ Tab::BGMAP ]		= std::make_unique<BGMapTab>();
+	m_aTabOption[ Tab::TILES ]		= std::make_unique<TilesTab>();
+	m_aTabOption[ Tab::OAM ]		= std::make_unique<OAMTab>();
+	m_aTabOption[ Tab::PALETTE ]	= std::make_unique<PaletteTab>();
 }
 
 VRAMViewer::~VRAMViewer()
 {
-	glDeleteTextures( 1,&m_iVRAMTexture );
 	glDeleteTextures( 1,&m_iFBOTexture );
 	_DestroyRenderer();
 
-	m_iVRAMTexture = 0;
 	m_iFBOTexture = 0;
 	m_iVAO = 0;
 	m_iVBO = 0;
@@ -103,9 +117,38 @@ void VRAMViewer::Update()
 	std::snprintf( titleBuffer,sizeof( titleBuffer ),"VRAM Viewer (%.2f ms)###VRAMDisplayWindow",iDurationMs );
 	if( ImGui::Begin( titleBuffer,nullptr ) )
 	{
-		_DetermineTileSelection();
-		_UpdateTexture();
-		_DisplayTexture();
+		int8_t iCurrentTab = -1;
+		if( ImGui::BeginTabBar("###TAB_BAR" ) )
+		{
+			if( ImGui::BeginTabItem( "BG Map" ) )
+			{
+				iCurrentTab = Tab::BGMAP;
+				ImGui::EndTabItem();
+			}
+			if( ImGui::BeginTabItem( "Tiles" ) )
+			{
+				iCurrentTab = Tab::TILES;
+				ImGui::EndTabItem();
+			}
+			if( ImGui::BeginTabItem( "OAM" ) )
+			{
+				iCurrentTab = Tab::OAM;
+				ImGui::EndTabItem();
+			}
+			if( ImGui::BeginTabItem( "Palettes" ) )
+			{
+				iCurrentTab = Tab::PALETTE;
+				ImGui::EndTabItem();
+			}
+		}
+		ImGui::EndTabBar();
+		
+		if( iCurrentTab != -1 )
+		{
+			m_aTabOption[ iCurrentTab ]->DetermineTileSelection();
+			m_aTabOption[ iCurrentTab ]->UpdateTexture( *this );
+			m_aTabOption[ iCurrentTab ]->RenderTexture( *this );
+		}
 	}
 	ImGui::End();
 
@@ -113,7 +156,7 @@ void VRAMViewer::Update()
 	iDurationMs = std::chrono::duration<double,std::milli>( end - start ).count();
 }
 
-void VRAMViewer::_InitTexture()
+void VRAMViewer::_InitFBOTexture()
 {
 	glGenTextures( 1,&m_iFBOTexture );
 	glBindTexture( GL_TEXTURE_2D,m_iFBOTexture );
@@ -125,16 +168,6 @@ void VRAMViewer::_InitTexture()
 
 	glBindTexture( GL_TEXTURE_2D,0 );
 	glFramebufferTexture2D( GL_FRAMEBUFFER,GL_COLOR_ATTACHMENT0,GL_TEXTURE_2D,m_iFBOTexture,0 );
-
-	glGenTextures( 1,&m_iVRAMTexture );
-	glBindTexture( GL_TEXTURE_2D,m_iVRAMTexture );
-
-	glTexImage2D( GL_TEXTURE_2D,0,GL_R8,XSizeTexture,YSizeTexture,0,GL_RED,GL_UNSIGNED_BYTE,NULL );
-
-	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST );
-	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST );
-
-	//glBindTexture( GL_TEXTURE_2D,0 );
 }
 
 void VRAMViewer::_InitFramebuffer()
@@ -142,7 +175,7 @@ void VRAMViewer::_InitFramebuffer()
 	glGenFramebuffers( 1,&m_iFBO );
 	glBindFramebuffer( GL_FRAMEBUFFER,m_iFBO );
 
-	_InitTexture();
+	_InitFBOTexture();
 
 	glBindFramebuffer( GL_FRAMEBUFFER,0 );
 
@@ -182,63 +215,30 @@ void VRAMViewer::_DestroyRenderer()
 	glDeleteFramebuffers( 1,&m_iFBO );
 }
 
-void VRAMViewer::_GetVRAMData()
+TilesTab::TilesTab()
 {
-	int iMem = START_VRAM;
-	int posX = 0;
-	int posY = 0;
-	while( iMem < END_VRAM )
-	{
-		int pos = posX;
-		for( int k = 0; k < 8; ++k )
-		{
-			uint8_t ilo = CPU::GetInstance()->ReadMemory( iMem );
-			uint8_t ihi = CPU::GetInstance()->ReadMemory( iMem + 1 );
-
-			for( int p = 0; p < 8; ++p )
-			{
-				int bit = 7 - p;
-				m_iVRAMPixels[ pos ][ posY + p ] = ( ( ( ihi >> bit ) & 1 ) << 1 ) | ( ( ilo >> bit ) & 1 );
-			}
-
-			pos++;
-			iMem += 2;
-		}
-
-		posY += 8;
-		posX += ( posY / XSizeTexture ) * 8;
-		posY %= XSizeTexture;
-	}
+	InitTexture();
 }
 
-void VRAMViewer::_UpdateTexture()
+void TilesTab::InitTexture()
 {
-	_GetVRAMData();
+	glGenTextures( 1,&m_iTexture );
+	glBindTexture( GL_TEXTURE_2D,m_iTexture );
 
-	glBindTexture( GL_TEXTURE_2D,m_iVRAMTexture );
-	glBindFramebuffer( GL_FRAMEBUFFER,m_iFBO );
-	glViewport( 0,0,WidthScreen,HeightScreen );
+	glTexImage2D( GL_TEXTURE_2D,0,GL_R8,XSizeTexture,YSizeTexture,0,GL_RED,GL_UNSIGNED_BYTE,NULL );
 
-	glClearColor( 0.f,0.f,0.f,1.f );
-	glClear( GL_COLOR_BUFFER_BIT );
+	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST );
+	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST );
 
-	glActiveTexture( GL_TEXTURE0 );
-	glBindTexture( GL_TEXTURE_2D,m_iVRAMTexture );
-	glTexSubImage2D( GL_TEXTURE_2D,0,0,0,XSizeTexture,YSizeTexture,GL_RED,GL_UNSIGNED_BYTE,m_iVRAMPixels );
-	m_sShaderProgram.Use();
-	glDrawElements( GL_TRIANGLES,6,GL_UNSIGNED_INT,0 );
-
-	glBindFramebuffer( GL_FRAMEBUFFER,0 );
-	glBindTexture( GL_TEXTURE_2D,0 );
-	glViewport( 0,0,1920,1080 );
+	//glBindTexture( GL_TEXTURE_2D,0 );
 }
 
-void VRAMViewer::_DisplayTexture()
+void TilesTab::RenderTexture( VRAMViewer& oVRAMViewer )
 {
 	vSizeImage = ImVec2( ImGui::GetContentRegionAvail().x - XOffset,ImGui::GetContentRegionAvail().y );
 	ImGui::BeginChild( "##TextureChild",vSizeImage,false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
 	ImVec2 p = ImGui::GetCursorScreenPos();
-	ImGui::Image( ( ImTextureID )( intptr_t )m_iFBOTexture,vSizeImage,ImVec2( 0.0f,0.0f ),ImVec2( 1.0f,1.0f ) );
+	ImGui::Image( ( ImTextureID )( intptr_t )oVRAMViewer.GetFBOTexture(),vSizeImage,ImVec2(0.0f,0.0f),ImVec2(1.0f,1.0f));
 	ImGui::EndChild();
 
 	if( m_bDrawGrid )
@@ -259,10 +259,10 @@ void VRAMViewer::_DisplayTexture()
 
 	ImGui::SameLine();
 	ImGui::BeginChild( "##Options",ImVec2( XOffset,vSizeImage.y ),false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
-	
+
 	float xStartCoord = m_iHoveredCol / static_cast< float >( TilesPerCol );
 	float yStartCoord = m_iHoveredLine / static_cast< float >( TilesPerLine );
-	ImGui::Image( ( ImTextureID )( intptr_t )m_iFBOTexture,ImVec2( xSizeMiniature,ySizeMiniature ),ImVec2( xStartCoord,yStartCoord ),ImVec2( xStartCoord + xOffsetGrid,yStartCoord + yOffsetGrid ) );
+	ImGui::Image( ( ImTextureID )( intptr_t )oVRAMViewer.GetFBOTexture(),ImVec2( xSizeMiniature,ySizeMiniature ),ImVec2( xStartCoord,yStartCoord ),ImVec2( xStartCoord + xOffsetGrid,yStartCoord + yOffsetGrid ) );
 
 	char aBuffer[ 6 ] = "";
 	ImFormatString( aBuffer,sizeof( aBuffer ),"%02X",m_iAdressSelected );
@@ -272,11 +272,11 @@ void VRAMViewer::_DisplayTexture()
 	ImGui::SameLine();
 	ImGui::Text( "Tile Adress" );
 
-	ImGui::Checkbox("Grid", &m_bDrawGrid );
+	ImGui::Checkbox( "Grid",&m_bDrawGrid );
 	ImGui::EndChild();
 }
 
-void VRAMViewer::_DetermineTileSelection()
+void TilesTab::DetermineTileSelection()
 {
 	ImVec2 vCursorPos = ImGui::GetCursorScreenPos();
 
@@ -302,4 +302,55 @@ void VRAMViewer::_DetermineTileSelection()
 		if( m_iAdressSelected < START_VRAM || m_iAdressSelected > END_VRAM )
 			m_iAdressSelected = START_VRAM;
 	}
+}
+
+void TilesTab::_GetVRAMData()
+{
+	int iMem = START_VRAM;
+	int posX = 0;
+	int posY = 0;
+	while( iMem < END_VRAM )
+	{
+		int pos = posX;
+		for( int k = 0; k < 8; ++k )
+		{
+			uint8_t ilo = CPU::GetInstance()->ReadMemory( iMem );
+			uint8_t ihi = CPU::GetInstance()->ReadMemory( iMem + 1 );
+
+			for( int p = 0; p < 8; ++p )
+			{
+				int bit = 7 - p;
+				m_iTilesDataPixels[ pos ][ posY + p ] = ( ( ( ihi >> bit ) & 1 ) << 1 ) | ( ( ilo >> bit ) & 1 );
+			}
+
+			pos++;
+			iMem += 2;
+		}
+
+		posY += 8;
+		posX += ( posY / XSizeTexture ) * 8;
+		posY %= XSizeTexture;
+	}
+}
+
+void TilesTab::UpdateTexture( VRAMViewer& oVRAMViewer )
+{
+	_GetVRAMData();
+
+	glBindTexture( GL_TEXTURE_2D,m_iTexture );
+	glBindFramebuffer( GL_FRAMEBUFFER,oVRAMViewer.GetFBOTexture() );
+	glViewport( 0,0,WidthScreen,HeightScreen );
+
+	glClearColor( 0.f,0.f,0.f,1.f );
+	glClear( GL_COLOR_BUFFER_BIT );
+
+	glActiveTexture( GL_TEXTURE0 );
+	glBindTexture( GL_TEXTURE_2D,m_iTexture );
+	glTexSubImage2D( GL_TEXTURE_2D,0,0,0,XSizeTexture,YSizeTexture,GL_RED,GL_UNSIGNED_BYTE,m_iTilesDataPixels );
+	oVRAMViewer.UseShader();
+	glDrawElements( GL_TRIANGLES,6,GL_UNSIGNED_INT,0 );
+
+	glBindFramebuffer( GL_FRAMEBUFFER,0 );
+	glBindTexture( GL_TEXTURE_2D,0 );
+	glViewport( 0,0,1920,1080 );
 }

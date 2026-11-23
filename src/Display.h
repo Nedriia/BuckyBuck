@@ -11,9 +11,6 @@
 class Display
 {
 public:
-	Display();
-	~Display();
-
 	int Init();
 	int CreateMainWindow();
 	void Update( bool &quit );
@@ -28,6 +25,9 @@ public:
 	}
 
 private:
+	Display();
+	~Display();
+
 	static void framebuffer_size_callback( GLFWwindow* m_pWindow,int width,int height );
 
 	GLFWwindow*							m_pWindow;
