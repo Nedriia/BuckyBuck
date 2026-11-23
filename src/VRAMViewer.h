@@ -54,62 +54,74 @@ class IEVRAMViewerOption
 {
 	public :
 		IEVRAMViewerOption();
+		IEVRAMViewerOption( uint16_t XSize,uint16_t YSize, int TilesLine, int TilesCol, int SizeTile );
+		virtual		void InitTexture();
+		virtual		void RenderTexture( VRAMViewer& oVRAMViewer );
+
 		virtual		~IEVRAMViewerOption();
-		virtual		void InitTexture() = 0;
 		virtual		void UpdateTexture( VRAMViewer& oVRAMViewer ) = 0;
-		virtual		void RenderTexture( VRAMViewer& oVRAMViewer ) = 0;
+		virtual		void DrawOptions( VRAMViewer& oVRAMViewer ) = 0;
 		virtual		void DetermineTileSelection() = 0;
 
 	protected:
-		bool								m_bDrawGrid;
 		static uint16_t						m_iAdressSelected;
 		static int							m_iHoveredLine;
 		static int							m_iHoveredCol;
 
 		unsigned int 						m_iTexture;
+
+		int									m_iXSizeTexture;
+		int									m_iYSizeTexture;
+
+		int									m_iTilesPerLine;
+		int									m_iTilesPerCol;
+		int									m_iSizeTile;
+
+		float								m_fxOffsetGrid;
+		float								m_fyOffsetGrid;
+
+		bool								m_bDrawGrid;
 };
 
 class BGMapTab : public IEVRAMViewerOption
 {
 	public:
-		void		InitTexture() override {};
-		void		UpdateTexture( VRAMViewer& oVRAMViewer )override {};
-		void		RenderTexture( VRAMViewer& oVRAMViewer )override {};
+		BGMapTab();
+		void		UpdateTexture( VRAMViewer& oVRAMViewer )override;
 		void		DetermineTileSelection() override {};
+		void		DrawOptions( VRAMViewer& oVRAMViewer ) override;
 
 	private:
-		uint8_t m_iBGMapDataPixels[ 256 ][ 256 ];
+		void		_SetTilesBGData();
+		uint8_t		m_iBGMapDataPixels[ 512 ][ 512 ];
 };
 
 class TilesTab : public IEVRAMViewerOption
 {
 	public:
 		TilesTab();
-		void		InitTexture() override;
 		void		UpdateTexture( VRAMViewer& oVRAMViewer ) override;
-		void		RenderTexture( VRAMViewer& oVRAMViewer ) override;
 		void		DetermineTileSelection() override;
+		void		DrawOptions( VRAMViewer& oVRAMViewer ) override;
 	private:
-		void		_GetVRAMData();
+		void		_SetTilesData();
 		uint8_t		m_iTilesDataPixels[ 192 ][ 128 ];
 };
 
 class OAMTab : public IEVRAMViewerOption
 {
 	public:
-		void		InitTexture() override {};
 		void		UpdateTexture( VRAMViewer& oVRAMViewer )override {};
-		void		RenderTexture( VRAMViewer& oVRAMViewer )override {};
 		void		DetermineTileSelection() override {};
+		void		DrawOptions( VRAMViewer& oVRAMViewer ) override {};
 };
 
 class PaletteTab : public IEVRAMViewerOption
 {
 	public:
-		void		InitTexture() override {};
 		void		UpdateTexture( VRAMViewer& oVRAMViewer )override {};
-		void		RenderTexture( VRAMViewer& oVRAMViewer )override {};
 		void		DetermineTileSelection() override {};
+		void		DrawOptions( VRAMViewer& oVRAMViewer ) override {};
 };
 
 

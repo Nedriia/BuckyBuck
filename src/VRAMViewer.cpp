@@ -14,25 +14,21 @@ constexpr int XOffset = 250;
 constexpr int WidthScreen = 768;
 constexpr int HeightScreen = 1152;
 
-constexpr int XSizeTexture = 128;
-constexpr int YSizeTexture = 192;
-
 constexpr int xSizeMiniature = 200;
 constexpr int ySizeMiniature = 200;
 
-constexpr int TilesPerLine = 24;
-constexpr int TilesPerCol = 16;
-constexpr int SizeTile = 16;
-
-constexpr float xOffsetGrid = ( 1 / 16.0f );
-constexpr float yOffsetGrid = ( 1 / 24.0f );
-
 static ImVec2 vSizeImage = ImVec2();
 
-constexpr uint16_t START_VRAM = 0x8000;
-constexpr uint16_t END_VRAM = 0x97FF;
+constexpr uint16_t TILE_DATA_ADDRESS_START = 0x8000;
+constexpr uint16_t TILE_DATA_ADDRESS_END = 0x97FF;
 
-uint16_t	 IEVRAMViewerOption::m_iAdressSelected = START_VRAM;
+constexpr uint16_t TILE_MAP_DATA_ADDRESS_START_1 = 0x9800;
+constexpr uint16_t TILE_MAP_DATA_ADDRESS_END_1 = 0x9BFF;
+
+constexpr uint16_t TILE_MAP_DATA_ADDRESS_START_2 = 0x9C00;
+constexpr uint16_t TILE_MAP_DATA_ADDRESS_END_2 = 0x9FFF;
+
+uint16_t	 IEVRAMViewerOption::m_iAdressSelected = TILE_DATA_ADDRESS_START;
 int			 IEVRAMViewerOption::m_iHoveredLine = 0;
 int			 IEVRAMViewerOption::m_iHoveredCol = 0;
 
@@ -50,11 +46,62 @@ unsigned int indices[] = {
 };
 
 
-IEVRAMViewerOption::IEVRAMViewerOption()	:
-	m_bDrawGrid( true ),
-	m_iTexture( 0 )
+IEVRAMViewerOption::IEVRAMViewerOption() : IEVRAMViewerOption( 0,0,0,0,0 )
 {
-	//memset( m_iTilesDataPixels,0,sizeof( m_iTilesDataPixels ) );
+}
+
+IEVRAMViewerOption::IEVRAMViewerOption( uint16_t XSize,uint16_t YSize,int TilesLine,int TilesCol,int SizeTile ) :
+		m_iTexture( 0 ),
+		m_iXSizeTexture( XSize ),
+		m_iYSizeTexture( YSize ),
+		m_iTilesPerLine( TilesLine ),
+		m_iTilesPerCol( TilesCol ),
+		m_iSizeTile( SizeTile ),
+		m_bDrawGrid( true )
+{
+}
+
+void IEVRAMViewerOption::InitTexture()
+{
+	glGenTextures( 1,&m_iTexture );
+	glBindTexture( GL_TEXTURE_2D,m_iTexture );
+
+	glTexImage2D( GL_TEXTURE_2D,0,GL_R8,m_iXSizeTexture,m_iYSizeTexture,0,GL_RED,GL_UNSIGNED_BYTE,NULL );
+
+	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST );
+	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST );
+
+	glBindTexture( GL_TEXTURE_2D,0 );
+
+	m_fxOffsetGrid = ( 1.0f / m_iTilesPerCol );
+	m_fyOffsetGrid = ( 1.0f / m_iTilesPerLine );
+}
+
+void IEVRAMViewerOption::RenderTexture( VRAMViewer& oVRAMViewer )
+{
+	vSizeImage = ImVec2( ImGui::GetContentRegionAvail().x - XOffset,ImGui::GetContentRegionAvail().y );
+	ImGui::BeginChild( "##TextureChild",vSizeImage,false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
+	ImVec2 p = ImGui::GetCursorScreenPos();
+	ImGui::Image( ( ImTextureID )( intptr_t )oVRAMViewer.GetFBOTexture(),vSizeImage,ImVec2( 0.0f,0.0f ),ImVec2( 1.0f,1.0f ) );
+	ImGui::EndChild();
+
+	if( m_bDrawGrid )
+	{
+		ImGui::BeginChild( "##TextureChild" );
+		for( int i = 0; i <= m_iTilesPerCol; ++i )
+		{
+			float fOffset = ( vSizeImage.x / m_iTilesPerCol ) * i;
+			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x + fOffset,p.y ),ImVec2( p.x + fOffset,p.y + vSizeImage.y ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
+		}
+		for( int j = 0; j <= m_iTilesPerLine; ++j )
+		{
+			float fOffset = ( vSizeImage.y / m_iTilesPerLine ) * j;
+			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x,p.y + fOffset ),ImVec2( p.x + vSizeImage.x,p.y + fOffset ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
+		}
+		ImGui::EndChild();
+	}
+
+	ImGui::SameLine();
 }
 
 IEVRAMViewerOption::~IEVRAMViewerOption()
@@ -148,6 +195,7 @@ void VRAMViewer::Update()
 			m_aTabOption[ iCurrentTab ]->DetermineTileSelection();
 			m_aTabOption[ iCurrentTab ]->UpdateTexture( *this );
 			m_aTabOption[ iCurrentTab ]->RenderTexture( *this );
+			m_aTabOption[ iCurrentTab ]->DrawOptions( *this );
 		}
 	}
 	ImGui::End();
@@ -215,67 +263,6 @@ void VRAMViewer::_DestroyRenderer()
 	glDeleteFramebuffers( 1,&m_iFBO );
 }
 
-TilesTab::TilesTab()
-{
-	InitTexture();
-}
-
-void TilesTab::InitTexture()
-{
-	glGenTextures( 1,&m_iTexture );
-	glBindTexture( GL_TEXTURE_2D,m_iTexture );
-
-	glTexImage2D( GL_TEXTURE_2D,0,GL_R8,XSizeTexture,YSizeTexture,0,GL_RED,GL_UNSIGNED_BYTE,NULL );
-
-	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MIN_FILTER,GL_NEAREST );
-	glTexParameteri( GL_TEXTURE_2D,GL_TEXTURE_MAG_FILTER,GL_NEAREST );
-
-	//glBindTexture( GL_TEXTURE_2D,0 );
-}
-
-void TilesTab::RenderTexture( VRAMViewer& oVRAMViewer )
-{
-	vSizeImage = ImVec2( ImGui::GetContentRegionAvail().x - XOffset,ImGui::GetContentRegionAvail().y );
-	ImGui::BeginChild( "##TextureChild",vSizeImage,false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
-	ImVec2 p = ImGui::GetCursorScreenPos();
-	ImGui::Image( ( ImTextureID )( intptr_t )oVRAMViewer.GetFBOTexture(),vSizeImage,ImVec2(0.0f,0.0f),ImVec2(1.0f,1.0f));
-	ImGui::EndChild();
-
-	if( m_bDrawGrid )
-	{
-		ImGui::BeginChild( "##TextureChild" );
-		for( int i = 0; i <= TilesPerCol; ++i )
-		{
-			float fOffset = ( vSizeImage.x / TilesPerCol ) * i;
-			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x + fOffset,p.y ),ImVec2( p.x + fOffset,p.y + vSizeImage.y ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
-		}
-		for( int j = 0; j <= TilesPerLine; ++j )
-		{
-			float fOffset = ( vSizeImage.y / TilesPerLine ) * j;
-			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x,p.y + fOffset ),ImVec2( p.x + vSizeImage.x,p.y + fOffset ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
-		}
-		ImGui::EndChild();
-	}
-
-	ImGui::SameLine();
-	ImGui::BeginChild( "##Options",ImVec2( XOffset,vSizeImage.y ),false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
-
-	float xStartCoord = m_iHoveredCol / static_cast< float >( TilesPerCol );
-	float yStartCoord = m_iHoveredLine / static_cast< float >( TilesPerLine );
-	ImGui::Image( ( ImTextureID )( intptr_t )oVRAMViewer.GetFBOTexture(),ImVec2( xSizeMiniature,ySizeMiniature ),ImVec2( xStartCoord,yStartCoord ),ImVec2( xStartCoord + xOffsetGrid,yStartCoord + yOffsetGrid ) );
-
-	char aBuffer[ 6 ] = "";
-	ImFormatString( aBuffer,sizeof( aBuffer ),"%02X",m_iAdressSelected );
-	ImGui::PushItemWidth( ImGui::CalcTextSize( aBuffer ).x + 10.0f );
-	ImGui::InputText( "##Adress",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
-	ImGui::PopItemWidth();
-	ImGui::SameLine();
-	ImGui::Text( "Tile Adress" );
-
-	ImGui::Checkbox( "Grid",&m_bDrawGrid );
-	ImGui::EndChild();
-}
-
 void TilesTab::DetermineTileSelection()
 {
 	ImVec2 vCursorPos = ImGui::GetCursorScreenPos();
@@ -295,21 +282,41 @@ void TilesTab::DetermineTileSelection()
 		float fRelativeX = ( mouse_pos.x - vCursorPos.x );
 		float fRelativeY = ( mouse_pos.y - vCursorPos.y );
 
-		m_iHoveredCol = fRelativeX / ( vSizeImage.x / TilesPerCol );
-		m_iHoveredLine = fRelativeY / ( vSizeImage.y / TilesPerLine );
+		m_iHoveredCol = fRelativeX / ( vSizeImage.x / m_iTilesPerCol );
+		m_iHoveredLine = fRelativeY / ( vSizeImage.y / m_iTilesPerLine );
 
-		m_iAdressSelected = START_VRAM + ( m_iHoveredCol * SizeTile ) + ( m_iHoveredLine * ( SizeTile * SizeTile ) );
-		if( m_iAdressSelected < START_VRAM || m_iAdressSelected > END_VRAM )
-			m_iAdressSelected = START_VRAM;
+		m_iAdressSelected = TILE_DATA_ADDRESS_START + ( m_iHoveredCol * m_iSizeTile ) + ( m_iHoveredLine * ( m_iSizeTile * m_iSizeTile ) );
+		if( m_iAdressSelected < TILE_DATA_ADDRESS_START || m_iAdressSelected > TILE_DATA_ADDRESS_END )
+			m_iAdressSelected = TILE_DATA_ADDRESS_START;
 	}
 }
 
-void TilesTab::_GetVRAMData()
+void TilesTab::DrawOptions( VRAMViewer& oVRAMViewer )
 {
-	int iMem = START_VRAM;
+	ImGui::BeginChild( "##Options",ImVec2( XOffset,vSizeImage.y ),false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
+
+	float xStartCoord = m_iHoveredCol / static_cast< float >( m_iTilesPerCol );
+	float yStartCoord = m_iHoveredLine / static_cast< float >( m_iTilesPerLine );
+	ImGui::Image( ( ImTextureID )( intptr_t )oVRAMViewer.GetFBOTexture(),ImVec2( xSizeMiniature,ySizeMiniature ),ImVec2( xStartCoord,yStartCoord ),ImVec2( xStartCoord + m_fxOffsetGrid,yStartCoord + m_fyOffsetGrid ) );
+
+	char aBuffer[ 6 ] = "";
+	ImFormatString( aBuffer,sizeof( aBuffer ),"%02X",m_iAdressSelected );
+	ImGui::PushItemWidth( ImGui::CalcTextSize( aBuffer ).x + 10.0f );
+	ImGui::InputText( "##Adress",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
+	ImGui::PopItemWidth();
+	ImGui::SameLine();
+	ImGui::Text( "Tile Adress" );
+
+	ImGui::Checkbox( "Grid",&m_bDrawGrid );
+	ImGui::EndChild();
+}
+
+void TilesTab::_SetTilesData()
+{
+	int iMem = TILE_DATA_ADDRESS_START;
 	int posX = 0;
 	int posY = 0;
-	while( iMem < END_VRAM )
+	while( iMem < TILE_DATA_ADDRESS_END )
 	{
 		int pos = posX;
 		for( int k = 0; k < 8; ++k )
@@ -328,14 +335,20 @@ void TilesTab::_GetVRAMData()
 		}
 
 		posY += 8;
-		posX += ( posY / XSizeTexture ) * 8;
-		posY %= XSizeTexture;
+		posX += ( posY / m_iXSizeTexture ) * 8;
+		posY %= m_iXSizeTexture;
 	}
+}
+
+TilesTab::TilesTab() : IEVRAMViewerOption( 128, 192, 24, 16, 16 )
+{
+	memset( m_iTilesDataPixels,0,sizeof( m_iTilesDataPixels ) );
+	InitTexture();
 }
 
 void TilesTab::UpdateTexture( VRAMViewer& oVRAMViewer )
 {
-	_GetVRAMData();
+	_SetTilesData();
 
 	glBindTexture( GL_TEXTURE_2D,m_iTexture );
 	glBindFramebuffer( GL_FRAMEBUFFER,oVRAMViewer.GetFBOTexture() );
@@ -346,11 +359,90 @@ void TilesTab::UpdateTexture( VRAMViewer& oVRAMViewer )
 
 	glActiveTexture( GL_TEXTURE0 );
 	glBindTexture( GL_TEXTURE_2D,m_iTexture );
-	glTexSubImage2D( GL_TEXTURE_2D,0,0,0,XSizeTexture,YSizeTexture,GL_RED,GL_UNSIGNED_BYTE,m_iTilesDataPixels );
+	glTexSubImage2D( GL_TEXTURE_2D,0,0,0,m_iXSizeTexture,m_iYSizeTexture,GL_RED,GL_UNSIGNED_BYTE,m_iTilesDataPixels );
 	oVRAMViewer.UseShader();
 	glDrawElements( GL_TRIANGLES,6,GL_UNSIGNED_INT,0 );
 
 	glBindFramebuffer( GL_FRAMEBUFFER,0 );
 	glBindTexture( GL_TEXTURE_2D,0 );
 	glViewport( 0,0,1920,1080 );
+}
+
+BGMapTab::BGMapTab() : IEVRAMViewerOption( 512, 512, 32, 32, 16 )
+{
+	memset( m_iBGMapDataPixels,0,sizeof( m_iBGMapDataPixels ) );
+	InitTexture();
+}
+
+void BGMapTab::UpdateTexture( VRAMViewer& oVRAMViewer )
+{
+	_SetTilesBGData();
+
+	glBindTexture( GL_TEXTURE_2D,m_iTexture );
+	glBindFramebuffer( GL_FRAMEBUFFER,oVRAMViewer.GetFBOTexture() );
+	glViewport( 0,0,WidthScreen,HeightScreen );
+
+	glClearColor( 0.f,0.f,0.f,1.f );
+	glClear( GL_COLOR_BUFFER_BIT );
+
+	glActiveTexture( GL_TEXTURE0 );
+	glBindTexture( GL_TEXTURE_2D,m_iTexture );
+	glTexSubImage2D( GL_TEXTURE_2D,0,0,0,m_iXSizeTexture,m_iYSizeTexture,GL_RED,GL_UNSIGNED_BYTE,m_iBGMapDataPixels );
+	oVRAMViewer.UseShader();
+	glDrawElements( GL_TRIANGLES,6,GL_UNSIGNED_INT,0 );
+
+	glBindFramebuffer( GL_FRAMEBUFFER,0 );
+	glBindTexture( GL_TEXTURE_2D,0 );
+	glViewport( 0,0,1920,1080 );
+}
+
+void BGMapTab::DrawOptions( VRAMViewer& oVRAMViewer )
+{
+	ImGui::BeginChild( "##Options",ImVec2( XOffset,vSizeImage.y ),false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
+
+	float xStartCoord = m_iHoveredCol / static_cast< float >( m_iTilesPerCol );
+	float yStartCoord = m_iHoveredLine / static_cast< float >( m_iTilesPerLine );
+	ImGui::Image( ( ImTextureID )( intptr_t )oVRAMViewer.GetFBOTexture(),ImVec2( xSizeMiniature,ySizeMiniature ),ImVec2( xStartCoord,yStartCoord ),ImVec2( xStartCoord + m_fxOffsetGrid,yStartCoord + m_fyOffsetGrid ) );
+
+	char aBuffer[ 6 ] = "";
+	ImFormatString( aBuffer,sizeof( aBuffer ),"%02X",m_iAdressSelected );
+	ImGui::PushItemWidth( ImGui::CalcTextSize( aBuffer ).x + 10.0f );
+	ImGui::InputText( "##Adress",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
+	ImGui::PopItemWidth();
+	ImGui::SameLine();
+	ImGui::Text( "Tile Adress" );
+
+	ImGui::Checkbox( "Grid",&m_bDrawGrid );
+	ImGui::EndChild();
+}
+
+void BGMapTab::_SetTilesBGData()
+{
+	int iMem = TILE_MAP_DATA_ADDRESS_START_1;
+	int posX = 0;
+	int posY = 0;
+	while( iMem < TILE_MAP_DATA_ADDRESS_END_1 )
+	{
+		int pos = posX;
+		for( int k = 0; k < 8; ++k )
+		{
+			uint16_t iAdress = CPU::GetInstance()->ReadMemory( iMem );
+			iAdress = ( iAdress << 4 ) | 0x9000;
+			uint8_t ilo = CPU::GetInstance()->ReadMemory( iAdress );
+			uint8_t ihi = CPU::GetInstance()->ReadMemory( iAdress + 1 );
+
+			for( int p = 0; p < 8; ++p )
+			{
+				int bit = 7 - p;
+				m_iBGMapDataPixels[ pos ][ posY + p ] = ( ( ( ihi >> bit ) & 1 ) << 1 ) | ( ( ilo >> bit ) & 1 );
+			}
+
+			pos++;
+			iMem += 2;
+		}
+
+		posY += 8;
+		posX += ( posY / m_iXSizeTexture ) * 8;
+		posY %= m_iXSizeTexture;
+	}
 }
