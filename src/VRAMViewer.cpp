@@ -461,12 +461,10 @@ void BGMapTab::DrawOptions( VRAMViewer& oVRAMViewer )
 	ImGui::PushItemWidth( ImGui::CalcTextSize( aBuffer ).x + 10.0f );
 	ImGui::InputText( "##MapAdress",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
 	ImGui::PopItemWidth();
-	ImGui::SameLine();
 	ImGui::TextUnformatted( "Map Adress" );
 
 	ImGui::PushItemWidth( ImGui::CalcTextSize( aBuffer ).x + 10.0f );
 	ImGui::InputText( "##TileAdress",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
-	ImGui::SameLine();
 	ImGui::TextUnformatted( "Tile Adress" );
 	ImGui::PopItemWidth();
 
@@ -480,17 +478,17 @@ void BGMapTab::DrawOptions( VRAMViewer& oVRAMViewer )
 	ImGui::BeginChild( "##map",ImVec2( 0,0 ),
 		ImGuiChildFlags_Borders | ImGuiChildFlags_AutoResizeX | ImGuiChildFlags_AutoResizeY );
 	ImGui::TextUnformatted( "Map" );
-	if( ImGui::RadioButton( "Auto",( m_iMapDetail == MapDetail::AutoM ) ) ){ m_iMapDetail = MapDetail::AutoM; } ImGui::SameLine();
-	if( ImGui::RadioButton( "9800",( m_iMapDetail == MapDetail::x9800 ) ) ) { m_iMapDetail = MapDetail::x9800; } ImGui::SameLine();
-	if( ImGui::RadioButton( "9C00",( m_iMapDetail == MapDetail::x9C00 ) ) ) { m_iMapDetail = MapDetail::x9C00; } ImGui::SameLine();
+	if( ImGui::RadioButton( "Auto",( m_iMapDetail == MapDetail::AutoM ) ) ) { m_iMapDetail = MapDetail::AutoM; } ImGui::SameLine();
+	if( ImGui::RadioButton( "9800",( m_iMapDetail == MapDetail::$9800 ) ) ) { m_iMapDetail = MapDetail::$9800; } ImGui::SameLine();
+	if( ImGui::RadioButton( "9C00",( m_iMapDetail == MapDetail::$9C00 ) ) ) { m_iMapDetail = MapDetail::$9C00; } ImGui::SameLine();
 	ImGui::EndChild();
 
 	ImGui::BeginChild( "##tiles",ImVec2( 0,0 ),
 		ImGuiChildFlags_Borders | ImGuiChildFlags_AutoResizeX | ImGuiChildFlags_AutoResizeY );
 	ImGui::TextUnformatted( "Tiles" );
 	if( ImGui::RadioButton( "Auto",( m_iTilesDetail == TilesDetail::AutoT ) ) ) { m_iTilesDetail = TilesDetail::AutoT; } ImGui::SameLine();
-	if( ImGui::RadioButton( "8800",( m_iTilesDetail == TilesDetail::x8800 ) ) ) { m_iTilesDetail = TilesDetail::x8800; } ImGui::SameLine();
-	if( ImGui::RadioButton( "8000",( m_iTilesDetail == TilesDetail::x8000 ) ) ) { m_iTilesDetail = TilesDetail::x8000; } ImGui::SameLine();
+	if( ImGui::RadioButton( "8800",( m_iTilesDetail == TilesDetail::$8800 ) ) ) { m_iTilesDetail = TilesDetail::$8800; } ImGui::SameLine();
+	if( ImGui::RadioButton( "8000",( m_iTilesDetail == TilesDetail::$8000 ) ) ) { m_iTilesDetail = TilesDetail::$8000; } ImGui::SameLine();
 	ImGui::EndChild();
 
 	ImGui::EndChild();
@@ -498,17 +496,23 @@ void BGMapTab::DrawOptions( VRAMViewer& oVRAMViewer )
 
 void BGMapTab::_SetTilesBGData()
 {
-	int iMem = TILE_MAP_DATA_ADDRESS_START_1;
+	int iMem = ( m_iMapDetail == MapDetail::AutoM || m_iMapDetail == MapDetail::$9800 ) ? TILE_MAP_DATA_ADDRESS_START_1 : TILE_MAP_DATA_ADDRESS_START_2;
+	int iEnd = ( m_iMapDetail == MapDetail::AutoM || m_iMapDetail == MapDetail::$9800 ) ? TILE_MAP_DATA_ADDRESS_END_1 : TILE_MAP_DATA_ADDRESS_END_2;
 	int posX = 0;
 	int posY = 0;
-	while( iMem < TILE_MAP_DATA_ADDRESS_END_1 )
+	while( iMem < iEnd )
 	{
 		int pos = posX;
 
-		uint16_t iAdress = CPU::GetInstance()->ReadMemory( iMem );
-		iAdress = ( iAdress << 4 ) | 0x9000;
-		if( iAdress > 0x97F0 )
-			iAdress = ( CPU::GetInstance()->ReadMemory( iMem ) << 4 ) | 0x8000;
+		uint16_t iAdress = CPU::GetInstance()->ReadMemory( iMem ) << 4;
+		if( m_iTilesDetail == TilesDetail::$8000 )
+			iAdress |= 0x8000;
+		else if( m_iTilesDetail == TilesDetail::AutoT || m_iTilesDetail == TilesDetail::$8800 )
+		{
+			iAdress |= 0x9000;
+			if( iAdress > 0x97F0 )
+				iAdress = ( CPU::GetInstance()->ReadMemory( iMem ) << 4 ) | 0x8000;
+		}
 		
 		for( int k = 0; k < 8; ++k )
 		{

@@ -101,15 +101,15 @@ class BGMapTab : public IEVRAMViewerOption
 		enum MapDetail
 		{
 			AutoM,
-			x9800,
-			x9C00
+			$9800,
+			$9C00
 		};
 
 		enum TilesDetail
 		{
 			AutoT,
-			x8800,
-			x8000
+			$8800,
+			$8000
 		};
 
 		uint8_t		m_iMapDetail;
