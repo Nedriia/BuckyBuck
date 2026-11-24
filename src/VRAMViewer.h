@@ -94,6 +94,26 @@ class BGMapTab : public IEVRAMViewerOption
 	private:
 		void		_SetTilesBGData();
 		uint8_t		m_iBGMapDataPixels[ 256 ][ 256 ];
+
+		bool		m_bScyx;
+		bool		m_bPal;
+
+		enum MapDetail
+		{
+			AutoM,
+			x9800,
+			x9C00
+		};
+
+		enum TilesDetail
+		{
+			AutoT,
+			x8800,
+			x8000
+		};
+
+		uint8_t		m_iMapDetail;
+		uint8_t		m_iTilesDetail;
 };
 
 class TilesTab : public IEVRAMViewerOption

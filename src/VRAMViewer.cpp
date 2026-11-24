@@ -372,7 +372,12 @@ void TilesTab::UpdateTexture( VRAMViewer& oVRAMViewer )
 	glViewport( 0,0,1920,1080 );
 }
 
-BGMapTab::BGMapTab() : IEVRAMViewerOption( 256, 256, 32, 32, 32 )
+BGMapTab::BGMapTab() : 
+	IEVRAMViewerOption( 256, 256, 32, 32, 32 ),
+	m_bScyx( true ),
+	m_bPal( true ),
+	m_iMapDetail( MapDetail::AutoM ),
+	m_iTilesDetail( TilesDetail::AutoT )
 {
 	memset( m_iBGMapDataPixels,0,sizeof( m_iBGMapDataPixels ) );
 	InitTexture();
@@ -438,14 +443,56 @@ void BGMapTab::DrawOptions( VRAMViewer& oVRAMViewer )
 	ImGui::Image( ( ImTextureID )( intptr_t )oVRAMViewer.GetFBOTexture(),ImVec2( xSizeMiniature,ySizeMiniature ),ImVec2( xStartCoord,yStartCoord ),ImVec2( xStartCoord + m_fxOffsetGrid,yStartCoord + m_fyOffsetGrid ) );
 
 	char aBuffer[ 6 ] = "";
+	int iAttribute = 0;
+
+	ImGui::BeginChild( "##details",ImVec2( 0,0 ),
+		ImGuiChildFlags_Borders | ImGuiChildFlags_AutoResizeX | ImGuiChildFlags_AutoResizeY );
+
+	ImGui::TextUnformatted( "Details" );
+	ImFormatString( aBuffer,sizeof( aBuffer ),"%02X", CPU::GetInstance()->ReadMemory( m_iAdressSelected ) );
+	ImGui::PushItemWidth( ImGui::CalcTextSize( "FF" ).x + 10.0f );
+	ImGui::PushStyleVar( ImGuiStyleVar_ItemSpacing,ImVec2( 24.0f,0.0f ) );
+	ImGui::InputInt( "X", &m_iHoveredCol, 0,0,ImGuiInputTextFlags_ReadOnly ); ImGui::SameLine(); ImGui::Spacing(); ImGui::SameLine(); ImGui::InputText( "Tile No.",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
+	ImGui::InputInt( "Y", &m_iHoveredLine,0,0,ImGuiInputTextFlags_ReadOnly ); ImGui::SameLine(); ImGui::Spacing(); ImGui::SameLine(); ImGui::InputInt( "Attribute", &iAttribute,0,0,ImGuiInputTextFlags_ReadOnly );
+	ImGui::PopStyleVar();
+	ImGui::PopItemWidth();
+
 	ImFormatString( aBuffer,sizeof( aBuffer ),"%02X",m_iAdressSelected );
 	ImGui::PushItemWidth( ImGui::CalcTextSize( aBuffer ).x + 10.0f );
-	ImGui::InputText( "##Adress",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
+	ImGui::InputText( "##MapAdress",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
 	ImGui::PopItemWidth();
 	ImGui::SameLine();
-	ImGui::Text( "Map Adress" );
+	ImGui::TextUnformatted( "Map Adress" );
 
-	ImGui::Checkbox( "Grid",&m_bDrawGrid );
+	ImGui::PushItemWidth( ImGui::CalcTextSize( aBuffer ).x + 10.0f );
+	ImGui::InputText( "##TileAdress",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
+	ImGui::SameLine();
+	ImGui::TextUnformatted( "Tile Adress" );
+	ImGui::PopItemWidth();
+
+	bool bTemp = false;
+	ImGui::Checkbox("X-flip", &bTemp );
+	ImGui::Checkbox("Y-flip", &bTemp );
+	ImGui::EndChild();
+
+	ImGui::Checkbox( "Grid",&m_bDrawGrid ); ImGui::SameLine(); ImGui::Checkbox( "scyx",&m_bScyx ); ImGui::SameLine(); ImGui::Checkbox( "pal",&m_bPal );
+
+	ImGui::BeginChild( "##map",ImVec2( 0,0 ),
+		ImGuiChildFlags_Borders | ImGuiChildFlags_AutoResizeX | ImGuiChildFlags_AutoResizeY );
+	ImGui::TextUnformatted( "Map" );
+	if( ImGui::RadioButton( "Auto",( m_iMapDetail == MapDetail::AutoM ) ) ){ m_iMapDetail = MapDetail::AutoM; } ImGui::SameLine();
+	if( ImGui::RadioButton( "9800",( m_iMapDetail == MapDetail::x9800 ) ) ) { m_iMapDetail = MapDetail::x9800; } ImGui::SameLine();
+	if( ImGui::RadioButton( "9C00",( m_iMapDetail == MapDetail::x9C00 ) ) ) { m_iMapDetail = MapDetail::x9C00; } ImGui::SameLine();
+	ImGui::EndChild();
+
+	ImGui::BeginChild( "##tiles",ImVec2( 0,0 ),
+		ImGuiChildFlags_Borders | ImGuiChildFlags_AutoResizeX | ImGuiChildFlags_AutoResizeY );
+	ImGui::TextUnformatted( "Tiles" );
+	if( ImGui::RadioButton( "Auto",( m_iTilesDetail == TilesDetail::AutoT ) ) ) { m_iTilesDetail = TilesDetail::AutoT; } ImGui::SameLine();
+	if( ImGui::RadioButton( "8800",( m_iTilesDetail == TilesDetail::x8800 ) ) ) { m_iTilesDetail = TilesDetail::x8800; } ImGui::SameLine();
+	if( ImGui::RadioButton( "8000",( m_iTilesDetail == TilesDetail::x8000 ) ) ) { m_iTilesDetail = TilesDetail::x8000; } ImGui::SameLine();
+	ImGui::EndChild();
+
 	ImGui::EndChild();
 }
 
