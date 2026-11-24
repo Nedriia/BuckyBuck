@@ -28,7 +28,6 @@ constexpr uint16_t TILE_MAP_DATA_ADDRESS_END_1 = 0x9BFF;
 constexpr uint16_t TILE_MAP_DATA_ADDRESS_START_2 = 0x9C00;
 constexpr uint16_t TILE_MAP_DATA_ADDRESS_END_2 = 0x9FFF;
 
-uint16_t	 IEVRAMViewerOption::m_iAdressSelected = TILE_DATA_ADDRESS_START;
 int			 IEVRAMViewerOption::m_iHoveredLine = 0;
 int			 IEVRAMViewerOption::m_iHoveredCol = 0;
 
@@ -57,7 +56,11 @@ IEVRAMViewerOption::IEVRAMViewerOption( uint16_t XSize,uint16_t YSize,int TilesL
 		m_iTilesPerLine( TilesLine ),
 		m_iTilesPerCol( TilesCol ),
 		m_iSizeTile( SizeTile ),
-		m_bDrawGrid( true )
+		m_fxOffsetGrid( 0.0f ),
+		m_fyOffsetGrid( 0.0f ),
+		m_bDrawGrid( true ),
+		m_iAdressSelected( 0 )
+
 {
 }
 
@@ -344,6 +347,7 @@ TilesTab::TilesTab() : IEVRAMViewerOption( 128, 192, 24, 16, 16 )
 {
 	memset( m_iTilesDataPixels,0,sizeof( m_iTilesDataPixels ) );
 	InitTexture();
+	m_iAdressSelected = TILE_DATA_ADDRESS_START;
 }
 
 void TilesTab::UpdateTexture( VRAMViewer& oVRAMViewer )
@@ -368,10 +372,11 @@ void TilesTab::UpdateTexture( VRAMViewer& oVRAMViewer )
 	glViewport( 0,0,1920,1080 );
 }
 
-BGMapTab::BGMapTab() : IEVRAMViewerOption( 512, 512, 32, 32, 16 )
+BGMapTab::BGMapTab() : IEVRAMViewerOption( 256, 256, 32, 32, 32 )
 {
 	memset( m_iBGMapDataPixels,0,sizeof( m_iBGMapDataPixels ) );
 	InitTexture();
+	m_iAdressSelected = TILE_MAP_DATA_ADDRESS_START_1;
 }
 
 void BGMapTab::UpdateTexture( VRAMViewer& oVRAMViewer )
@@ -396,6 +401,34 @@ void BGMapTab::UpdateTexture( VRAMViewer& oVRAMViewer )
 	glViewport( 0,0,1920,1080 );
 }
 
+void BGMapTab::DetermineTileSelection()
+{
+	ImVec2 vCursorPos = ImGui::GetCursorScreenPos();
+
+	ImVec2 zone_min(
+		vCursorPos.x,
+		vCursorPos.y
+	);
+
+	ImVec2 zone_max(
+		vCursorPos.x + vSizeImage.x,
+		vCursorPos.y + vSizeImage.y );
+
+	if( ImGui::IsMouseHoveringRect( zone_min,zone_max ) )
+	{
+		ImVec2 mouse_pos = ImGui::GetMousePos();
+		float fRelativeX = ( mouse_pos.x - vCursorPos.x );
+		float fRelativeY = ( mouse_pos.y - vCursorPos.y );
+
+		m_iHoveredCol = fRelativeX / ( vSizeImage.x / m_iTilesPerCol );
+		m_iHoveredLine = fRelativeY / ( vSizeImage.y / m_iTilesPerLine );
+
+		m_iAdressSelected = TILE_MAP_DATA_ADDRESS_START_1 + m_iHoveredCol + ( m_iHoveredLine * m_iSizeTile );
+		if( m_iAdressSelected < TILE_MAP_DATA_ADDRESS_START_1 || m_iAdressSelected > TILE_MAP_DATA_ADDRESS_END_1 )
+			m_iAdressSelected = TILE_MAP_DATA_ADDRESS_START_1;
+	}
+}
+
 void BGMapTab::DrawOptions( VRAMViewer& oVRAMViewer )
 {
 	ImGui::BeginChild( "##Options",ImVec2( XOffset,vSizeImage.y ),false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
@@ -410,7 +443,7 @@ void BGMapTab::DrawOptions( VRAMViewer& oVRAMViewer )
 	ImGui::InputText( "##Adress",aBuffer,sizeof( aBuffer ),ImGuiInputTextFlags_ReadOnly );
 	ImGui::PopItemWidth();
 	ImGui::SameLine();
-	ImGui::Text( "Tile Adress" );
+	ImGui::Text( "Map Adress" );
 
 	ImGui::Checkbox( "Grid",&m_bDrawGrid );
 	ImGui::EndChild();
@@ -424,10 +457,14 @@ void BGMapTab::_SetTilesBGData()
 	while( iMem < TILE_MAP_DATA_ADDRESS_END_1 )
 	{
 		int pos = posX;
+
+		uint16_t iAdress = CPU::GetInstance()->ReadMemory( iMem );
+		iAdress = ( iAdress << 4 ) | 0x9000;
+		if( iAdress > 0x97F0 )
+			iAdress = ( CPU::GetInstance()->ReadMemory( iMem ) << 4 ) | 0x8000;
+		
 		for( int k = 0; k < 8; ++k )
 		{
-			uint16_t iAdress = CPU::GetInstance()->ReadMemory( iMem );
-			iAdress = ( iAdress << 4 ) | 0x9000;
 			uint8_t ilo = CPU::GetInstance()->ReadMemory( iAdress );
 			uint8_t ihi = CPU::GetInstance()->ReadMemory( iAdress + 1 );
 
@@ -438,11 +475,12 @@ void BGMapTab::_SetTilesBGData()
 			}
 
 			pos++;
-			iMem += 2;
+			iAdress += 2;
 		}
 
 		posY += 8;
 		posX += ( posY / m_iXSizeTexture ) * 8;
 		posY %= m_iXSizeTexture;
+		iMem ++;
 	}
 }

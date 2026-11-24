@@ -64,7 +64,6 @@ class IEVRAMViewerOption
 		virtual		void DetermineTileSelection() = 0;
 
 	protected:
-		static uint16_t						m_iAdressSelected;
 		static int							m_iHoveredLine;
 		static int							m_iHoveredCol;
 
@@ -81,6 +80,7 @@ class IEVRAMViewerOption
 		float								m_fyOffsetGrid;
 
 		bool								m_bDrawGrid;
+		uint16_t							m_iAdressSelected;
 };
 
 class BGMapTab : public IEVRAMViewerOption
@@ -88,12 +88,12 @@ class BGMapTab : public IEVRAMViewerOption
 	public:
 		BGMapTab();
 		void		UpdateTexture( VRAMViewer& oVRAMViewer )override;
-		void		DetermineTileSelection() override {};
+		void		DetermineTileSelection() override;
 		void		DrawOptions( VRAMViewer& oVRAMViewer ) override;
 
 	private:
 		void		_SetTilesBGData();
-		uint8_t		m_iBGMapDataPixels[ 512 ][ 512 ];
+		uint8_t		m_iBGMapDataPixels[ 256 ][ 256 ];
 };
 
 class TilesTab : public IEVRAMViewerOption
