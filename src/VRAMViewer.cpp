@@ -125,10 +125,10 @@ VRAMViewer::VRAMViewer() :
 	GLint iColorPaletteLocation = glGetUniformLocation( m_sShaderProgram.ID,"colorPalette[0]" );
 	float fGameBoyDMGPalette[ 16 ] =
 	{
-		0.878f, 0.973f, 0.816f, 1.0f,
-		0.533f, 0.753f, 0.439f, 1.0f,
-		0.204f, 0.408f, 0.337f, 1.0f,
-		0.031f, 0.094f, 0.125f, 1.0f
+			0.675f, 0.831f, 0.565f, 1.0f,   // #ACD490
+			0.910f, 0.988f, 0.800f, 1.0f,   // #E8FCCC
+			0.329f, 0.549f, 0.439f, 1.0f,   // #548C70
+			0.078f, 0.173f, 0.220f, 1.0f    // #142C38
 	};
 
 	glUniform4fv( iColorPaletteLocation,4,fGameBoyDMGPalette );
