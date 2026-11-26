@@ -4,7 +4,6 @@
 
 #include "VRAMViewer.h"
 #include <chrono>
-#include "imgui.h"
 #include <imgui_internal.h>
 #include "CPU.h"
 #include "Display.h"
@@ -59,9 +58,7 @@ IEVRAMViewerOption::IEVRAMViewerOption( uint16_t XSize,uint16_t YSize,int TilesL
 		m_fxOffsetGrid( 0.0f ),
 		m_fyOffsetGrid( 0.0f ),
 		m_bDrawGrid( true ),
-		m_iAdressSelected( 0 )
-
-{
+		m_iAdressSelected( 0 ){
 }
 
 void IEVRAMViewerOption::InitTexture()
@@ -84,27 +81,40 @@ void IEVRAMViewerOption::RenderTexture( VRAMViewer& oVRAMViewer )
 {
 	vSizeImage = ImVec2( ImGui::GetContentRegionAvail().x - XOffset,ImGui::GetContentRegionAvail().y );
 	ImGui::BeginChild( "##TextureChild",vSizeImage,false,ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoNav );
-	ImVec2 p = ImGui::GetCursorScreenPos();
+	m_vCursorScreenPos = ImGui::GetCursorScreenPos();
 	ImGui::Image( ( ImTextureID )( intptr_t )oVRAMViewer.GetFBOTexture(),vSizeImage,ImVec2( 0.0f,0.0f ),ImVec2( 1.0f,1.0f ) );
 	ImGui::EndChild();
 
+	ImGui::SameLine();//Need to stay here or miniature textures are not display
+}
+
+void IEVRAMViewerOption::DrawVisualsOptions()
+{
+	ImGui::BeginChild( "##TextureChild" );
 	if( m_bDrawGrid )
 	{
-		ImGui::BeginChild( "##TextureChild" );
 		for( int i = 0; i <= m_iTilesPerCol; ++i )
 		{
 			float fOffset = ( vSizeImage.x / m_iTilesPerCol ) * i;
-			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x + fOffset,p.y ),ImVec2( p.x + fOffset,p.y + vSizeImage.y ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
+			ImGui::GetWindowDrawList()->AddLine( ImVec2( m_vCursorScreenPos.x + fOffset,m_vCursorScreenPos.y ),ImVec2( m_vCursorScreenPos.x + fOffset,m_vCursorScreenPos.y + vSizeImage.y ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
 		}
 		for( int j = 0; j <= m_iTilesPerLine; ++j )
 		{
 			float fOffset = ( vSizeImage.y / m_iTilesPerLine ) * j;
-			ImGui::GetWindowDrawList()->AddLine( ImVec2( p.x,p.y + fOffset ),ImVec2( p.x + vSizeImage.x,p.y + fOffset ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
+			ImGui::GetWindowDrawList()->AddLine( ImVec2( m_vCursorScreenPos.x,m_vCursorScreenPos.y + fOffset ),ImVec2( m_vCursorScreenPos.x + vSizeImage.x,m_vCursorScreenPos.y + fOffset ),ImGui::GetColorU32( ImGuiCol_Border ),2.0f );
 		}
-		ImGui::EndChild();
 	}
 
-	ImGui::SameLine();
+	if( m_iAdressSelected != 0 )
+	{
+		ImVec2 vMin( m_vCursorScreenPos.x + ( ( vSizeImage.x / m_iTilesPerCol ) * m_iHoveredCol ),
+			m_vCursorScreenPos.y + ( ( vSizeImage.y / m_iTilesPerLine ) * m_iHoveredLine ) );
+		ImVec2 vMax( vMin.x + ( vSizeImage.x / m_iTilesPerCol ),
+			vMin.y + ( vSizeImage.y / m_iTilesPerLine ) );
+
+		ImGui::GetWindowDrawList()->AddRect( vMin,vMax,ImGui::GetColorU32( ImGuiCol_WindowBg ),0.0f, 3.5f );
+	}
+	ImGui::EndChild();
 }
 
 IEVRAMViewerOption::~IEVRAMViewerOption()
@@ -199,6 +209,7 @@ void VRAMViewer::Update()
 			m_aTabOption[ iCurrentTab ]->UpdateTexture( *this );
 			m_aTabOption[ iCurrentTab ]->RenderTexture( *this );
 			m_aTabOption[ iCurrentTab ]->DrawOptions( *this );
+			m_aTabOption[ iCurrentTab ]->DrawVisualsOptions();
 		}
 	}
 	ImGui::End();
@@ -491,6 +502,33 @@ void BGMapTab::DrawOptions( VRAMViewer& oVRAMViewer )
 	if( ImGui::RadioButton( "8000",( m_iTilesDetail == TilesDetail::$8000 ) ) ) { m_iTilesDetail = TilesDetail::$8000; } ImGui::SameLine();
 	ImGui::EndChild();
 
+	ImGui::EndChild();
+}
+
+void BGMapTab::DrawVisualsOptions()
+{
+	IEVRAMViewerOption::DrawVisualsOptions();
+
+	ImGui::BeginChild( "##TextureChild" );
+	if( m_bScyx )
+	{
+		uint8_t SCY = CPU::GetInstance()->ReadMemory( 0xFF42 );
+		uint8_t SCX = CPU::GetInstance()->ReadMemory( 0xFF43 );
+
+		//BG Texture is 256*256 so each pixel is 8 coords
+		int iPixelToCoordMinX = ( SCX / 8 ) * ( vSizeImage.x / m_iTilesPerCol );
+		int iPixelToCoordMinY = ( SCY / 8 ) * ( vSizeImage.y / m_iTilesPerLine );
+
+		int iPixelToCoordMaxX = ( ceil( ( SCX + 159 ) / 8.0f ) ) * ( vSizeImage.x / m_iTilesPerCol );
+		int iPixelToCoordMaxY = ( ceil( ( SCY + 143 ) / 8.0f ) ) * ( vSizeImage.y / m_iTilesPerLine );
+
+		ImVec2 vMin( m_vCursorScreenPos.x + iPixelToCoordMinX,
+			m_vCursorScreenPos.y + iPixelToCoordMinY );
+		ImVec2 vMax( m_vCursorScreenPos.x + iPixelToCoordMaxX,
+			m_vCursorScreenPos.y + iPixelToCoordMaxY );
+
+		ImGui::GetWindowDrawList()->AddRect( vMin,vMax,ImGui::GetColorU32( ImGuiCol_WindowBg ),0.0f,2.0f );
+	}
 	ImGui::EndChild();
 }
 

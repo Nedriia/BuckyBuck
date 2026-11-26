@@ -12,6 +12,7 @@
 #include "Shader.h"
 #include <memory>
 #include <array>
+#include <imgui.h>
 
 enum Tab
 {
@@ -57,6 +58,7 @@ class IEVRAMViewerOption
 		IEVRAMViewerOption( uint16_t XSize,uint16_t YSize, int TilesLine, int TilesCol, int SizeTile );
 		virtual		void InitTexture();
 		virtual		void RenderTexture( VRAMViewer& oVRAMViewer );
+		virtual		void DrawVisualsOptions();
 
 		virtual		~IEVRAMViewerOption();
 		virtual		void UpdateTexture( VRAMViewer& oVRAMViewer ) = 0;
@@ -81,6 +83,7 @@ class IEVRAMViewerOption
 
 		bool								m_bDrawGrid;
 		uint16_t							m_iAdressSelected;
+		ImVec2								m_vCursorScreenPos;
 };
 
 class BGMapTab : public IEVRAMViewerOption
@@ -90,6 +93,7 @@ class BGMapTab : public IEVRAMViewerOption
 		void		UpdateTexture( VRAMViewer& oVRAMViewer )override;
 		void		DetermineTileSelection() override;
 		void		DrawOptions( VRAMViewer& oVRAMViewer ) override;
+		void		DrawVisualsOptions() override;
 
 	private:
 		void		_SetTilesBGData();
